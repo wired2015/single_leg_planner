@@ -1,0 +1,17 @@
+<package>
+  <description brief="Sampling based planner for a single leg on board a wheel-on-leg rover. Currently, the planner is tailored towards the DFKI Sherpa_TT rover.">
+  Sampling based planner for a single leg on board a wheel-on-leg rover. Currently, the planner is tailored towards the DFKI Sherpa_TT rover
+  </description>
+  <author>William Reid/will.reid3@gmail.com</author>
+  <license></license>
+  <url>http://</url>
+  <logo>http://</logo>
+  <depend package="base/cmake" />
+  <!--
+   To add any dependencies use the depend tag
+  <depend package="dummy-dependency-0" />
+	...
+  <depend package="dummy-dependency-n-1" />
+  <depend package="dummy-dependency-n" />
+  -->
+</package>
