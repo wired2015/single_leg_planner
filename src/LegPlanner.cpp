@@ -6,27 +6,24 @@
 
 using namespace std;
 
-LegPlanner::LegPlanner()
+LegPlanner::LegPlanner(int legNum)
 {
-    this->plan();
+    this->plan(legNum);
 }
 
 void LegPlanner::getState(double time){
-    cout << "hello world from get state." << endl;
     
     int length = *(this->pathLength);
     int i;
-    
+
     if(time <= this->path[0][0])
     {
-        cout << "BEFORE!" << endl;
         for(int j=0;j<7;j++){
             this->state[j] = this->path[0][j];
         }
     }
     else if(time >= this->path[length-1][0])
     {
-        cout << "AFTER!" << endl;
         for(int j=0;j<7;j++){
             this->state[j] = this->path[length-1][j];
         }
@@ -44,28 +41,73 @@ void LegPlanner::getState(double time){
     
 }
 
-void LegPlanner::plan(void){
+bool LegPlanner::plan(int legNum){
     
-    cout << "hello world from plan." << endl;
-    buildRRTWrapper(this->nInit, this->nGoal, this->NUM_NODES, this->jointLimits, this->K, this->HGAINS,
-            this->NODE_SIZE, this->U, this->U_SIZE, this->dt, this->Dt, this->kinematicConst, this->ankleThreshold,
-            this->exhaustive, this->threshold, this->goalSeedFreq, this->emxT, this->emxPath, this->emxPathJoint);
+/*    cout << "nInit[0] = " << nInit[0] << endl;
+    cout << "nInit[1] = " << nInit[1] << endl;
+    cout << "nInit[2] = " << nInit[2] << endl;
+    cout << "nInit[3] = " << nInit[3] << endl;
+    cout << "nInit[4] = " << nInit[4] << endl;
+    cout << "nInit[5] = " << nInit[5] << endl;
     
-    //printf("Path num dimensions = %d\n",emxPath->numDimensions);
-    //printf("Path size = [%d] x [%d]\n",emxPath->size[0],emxPath->size[1]);
+    cout << "nGoal[0] = " << nGoal[0] << endl;
+    cout << "nGoal[1] = " << nGoal[1] << endl;
+    cout << "nGoal[2] = " << nGoal[2] << endl;
+    cout << "nGoal[3] = " << nGoal[3] << endl;
+    cout << "nGoal[4] = " << nGoal[4] << endl;
+    cout << "nGoal[5] = " << nGoal[5] << endl;
 
-    //double path[emxPath->size[0]][emxPath->size[1]];
-    this->path = new double*[emxPath->size[0]];
-    int i,j;
-    for (i=0; i<emxPath->size[0]; i++){
-        this->path[i] = new double[emxPath->size[1]];
-        for (j=0; j<emxPath->size[1]; j++){
-            this->path[i][j] = emxPath->data[j*emxPath->size[0]+i];
-            //printf("%.2f ", this->path[i][j]);
-        }
-        //printf("]\n\n");
+    cout << "jointLimits[0] = " << jointLimits[0] << endl;
+    cout << "jointLimits[1] = " << jointLimits[1] << endl;
+    cout << "jointLimits[2] = " << jointLimits[2] << endl;
+    cout << "jointLimits[3] = " << jointLimits[3] << endl;
+    cout << "jointLimits[4] = " << jointLimits[4] << endl;
+    cout << "jointLimits[5] = " << jointLimits[5] << endl;
+
+    cout << "kinematicConst[0]  = " << kinematicConst[0] << endl;
+    cout << "kinematicConst[1]  = " << kinematicConst[1] << endl;
+    cout << "kinematicConst[2]  = " << kinematicConst[2] << endl;
+    cout << "kinematicConst[3]  = " << kinematicConst[3] << endl;
+    cout << "kinematicConst[4]  = " << kinematicConst[4] << endl;
+    cout << "kinematicConst[5]  = " << kinematicConst[5] << endl;
+    cout << "kinematicConst[6]  = " << kinematicConst[6] << endl;
+    cout << "kinematicConst[7]  = " << kinematicConst[7] << endl;
+    cout << "kinematicConst[8]  = " << kinematicConst[8] << endl;
+    cout << "kinematicConst[9]  = " << kinematicConst[9] << endl;
+    cout << "kinematicConst[10] = " << kinematicConst[10] << endl;
+    cout << "kinematicConst[11] = " << kinematicConst[11] << endl;
+    cout << "kinematicConst[12] = " << kinematicConst[12] << endl;
+    cout << "kinematicConst[13] = " << kinematicConst[13] << endl;
+    cout << "kinematicConst[14] = " << kinematicConst[14] << endl;
+
+    cout << "this->success = " << (bool) this->success << endl;
+*/
+
+    buildRRTWrapper(this->nInit, this->nGoal, this->jointLimits, this->K, this->U, this->dt_integration, this->dt_planner, this->kinematicConst, this->threshold, legNum, this->emxT,this->emxPathC,this->emxPathJ,&(this->success)); 
+  
+    if((bool) this->success){
+	    //printf("Path num dimensions = %d\n",emxPathC->numDimensions);
+	    //printf("Path size = [%d] x [%d]\n",emxPathC->size[0],emxPathC->size[1]);
+
+	    //double path[emxPathC->size[0]][emxPathC->size[1]];
+	    this->path = new double*[emxPathC->size[0]];
+	    int i,j;
+	    for (i=0; i<emxPathC->size[0]; i++){
+		this->path[i] = new double[emxPathC->size[1]];
+		for (j=0; j<emxPathC->size[1]; j++){
+		    this->path[i][j] = emxPathC->data[j*emxPathC->size[0]+i];
+		    //printf("%.2f ", this->path[i][j]);
+		}
+		//printf("]\n\n");
+	    }
+	    this->pathLength = &(emxPathC->size[0]);
+	}else{
+        //printf("Plan Failed\n");
     }
-    this->pathLength = &(emxPath->size[0]);
+
+    //cout << "this->success " << this->success<< endl;
+
+    return (bool) this->success;
 }
 
 void LegPlanner::interpolateState(double t, double* s1, double* s2)

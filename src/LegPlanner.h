@@ -19,39 +19,38 @@ class LegPlanner
         double L8 = 0.39569+0.378/2;       //[m]
         double zeta = 7*DEG2RAD;           //[rad]
         double r = 0.378/2;                //[m]
-        double bodyW = 0.65;               //[m]
-        double bodyH = 0.65;               //[m]
-        const double kinematicConst[12] = {L1, L2, L3, L4, L5, L6, L7, L8, zeta, r, bodyW, bodyH};
-        int NUM_NODES = 1000;
-        bool exhaustive = false;
+        double B2POffset = 0.564;
+	    double leg1AngleOffset = 0.7854;
+	    double leg2AngleOffset = -0.7854;
+	    double leg3AngleOffset = -2.3562;
+	    double leg4AngleOffset = 2.3562;
+	    const double kinematicConst[15] = {L1, L2, L3, L4, L5, L6, L7, L8, zeta, r, B2POffset, leg1AngleOffset, leg2AngleOffset, leg3AngleOffset, leg4AngleOffset};
         double threshold = 0.04;
-        double ankleThreshold = M_PI/8;
         int NODE_SIZE = 11;
-        double HGAINS[3] = {1, 0, 0.5};
         const double jointLimits[12] = {-2.3562, 2.3562, -1.0385, 0.2967, -0.0873, 1.2863, -0.1745, 0.1745, -0.3491, 0.3491, -0.3491, 0.3491};
-        const double nInit[6] = {-0.4122,-0.6819,-0.6000,0,0,0};
-        const double nGoal[6] = {-0.1328,0.7245,-0.6000,0,0,0};
+        const double nInit[6] = {-0.3352,-0.6625,-0.6000,0,0,0};
+        const double nGoal[6] = {0.3488,0.5778,-0.6000,0,0,0};
         int U_SIZE = 5;
         double stepAccRatio = 14;
-        double Dt = 0.7; //[s]
-        double dt = 0.1;
-        double eta = Dt/stepAccRatio;
+        double dt_planner = 0.7; //[s]
+        double dt_integration = 0.1;
+        double eta = dt_planner/stepAccRatio;
         const double U[10] = {eta*1, -eta*1, 0, 0, 0, 0, 0, eta*1, -eta*1, 0};
         double K = -0.6;
         int goalSeedFreq = 20;
 
         emxArray_real_T *emxT = emxCreate_real_T(0,0);
-        emxArray_real_T *emxPath = emxCreate_real_T(0,0);
-        emxArray_real_T *emxPathJoint = emxCreate_real_T(0,0);
-        //boolean_T *success;
+        emxArray_real_T *emxPathC = emxCreate_real_T(0,0);
+        emxArray_real_T *emxPathJ = emxCreate_real_T(0,0);
+        boolean_T success = 1;
         
         int* pathLength;
         double** path;
         double state[7];
 
-        LegPlanner(void);
+        LegPlanner(int);
         void getState(double);
-        void plan(void);
+        bool plan(int);
         void interpolateState(double t, double* s1,double* s2);
 };
 
