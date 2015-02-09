@@ -2,7 +2,7 @@
 // File: selectInput.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 09-Feb-2015 13:36:11
+// C/C++ source code generated on  : 09-Feb-2015 18:33:49
 //
 
 // Include Files
@@ -46,7 +46,7 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   double candStates_data[55];
   emxArray_real_T *candTransArrays;
   double scale;
-  int i3;
+  int i2;
   int ixstart;
   double U_joint_data[15];
   int i;
@@ -71,7 +71,7 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   double hDiff;
   double aGain;
   double v_LS[2];
-  int i4;
+  int i3;
   boolean_T exitg1;
 
   // Initialize arrays to store the candidate new state data and the
@@ -79,19 +79,19 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   memset(&candStates_data[0], 0, 55U * sizeof(double));
   emxInit_real_T(&candTransArrays, 2);
   scale = rt_roundd_snf(Dt / dt);
-  i3 = candTransArrays->size[0] * candTransArrays->size[1];
+  i2 = candTransArrays->size[0] * candTransArrays->size[1];
   candTransArrays->size[0] = 5;
   candTransArrays->size[1] = (int)((scale + 1.0) * 6.0);
-  emxEnsureCapacity((emxArray__common *)candTransArrays, i3, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)candTransArrays, i2, (int)sizeof(double));
   ixstart = 5 * (int)((scale + 1.0) * 6.0);
-  for (i3 = 0; i3 < ixstart; i3++) {
-    candTransArrays->data[i3] = 0.0;
+  for (i2 = 0; i2 < ixstart; i2++) {
+    candTransArrays->data[i2] = 0.0;
   }
 
   // Transform the control inputs to joint space.
   for (i = 0; i < 5; i++) {
-    for (i3 = 0; i3 < 2; i3++) {
-      U_joint_data[i + 5 * i3] = U[i + 5 * i3];
+    for (i2 = 0; i2 < 2; i2++) {
+      U_joint_data[i + 5 * i2] = U[i + 5 * i2];
     }
 
     U_joint_data[i + 10] = ((-U[5 + i] * kinematicConst[2] * cos(xNear_data[4])
@@ -109,8 +109,8 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   for (i = 0; i < 5; i++) {
     // Generate a candidate state using a fourth order Runge-Kutta
     // integration technique.
-    for (i3 = 0; i3 < 3; i3++) {
-      u[i3] = U_joint_data[i + 5 * i3];
+    for (i2 = 0; i2 < 3; i2++) {
+      u[i2] = U_joint_data[i + 5 * i2];
     }
 
     // rk4 Summary of this function goes here
@@ -121,85 +121,85 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     numIterations = rt_roundd_snf(Dt / dt);
     itmp = 11;
     memset(&tmp_data[0], 0, 11U * sizeof(double));
-    for (i3 = 0; i3 < 11; i3++) {
-      b_xNear_data[i3] = xNear_data[xNear_size[0] * i3];
+    for (i2 = 0; i2 < 11; i2++) {
+      b_xNear_data[i2] = xNear_data[xNear_size[0] * i2];
     }
 
-    for (i3 = 0; i3 < 6; i3++) {
-      xInit_data[i3] = b_xNear_data[3 + i3];
+    for (i2 = 0; i2 < 6; i2++) {
+      xInit_data[i2] = b_xNear_data[3 + i2];
     }
 
     // xInitOrig = xInit;
-    i3 = r0->size[0] * r0->size[1];
+    i2 = r0->size[0] * r0->size[1];
     r0->size[0] = 1;
     r0->size[1] = (int)((numIterations + 1.0) * 6.0);
-    emxEnsureCapacity((emxArray__common *)r0, i3, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)r0, i2, (int)sizeof(double));
     ixstart = (int)((numIterations + 1.0) * 6.0);
-    for (i3 = 0; i3 < ixstart; i3++) {
-      r0->data[i3] = 0.0;
+    for (i2 = 0; i2 < ixstart; i2++) {
+      r0->data[i2] = 0.0;
     }
 
-    for (i3 = 0; i3 < 6; i3++) {
-      r0->data[i3] = xInit_data[i3];
+    for (i2 = 0; i2 < 6; i2++) {
+      r0->data[i2] = xInit_data[i2];
     }
 
     for (ixstart = 0; ixstart < (int)numIterations; ixstart++) {
-      for (i3 = 0; i3 < 6; i3++) {
-        b_xInit_data[i3] = xInit_data[i3];
+      for (i2 = 0; i2 < 6; i2++) {
+        b_xInit_data[i2] = xInit_data[i2];
       }
 
-      for (i3 = 0; i3 < 3; i3++) {
-        k1[i3] = b_xInit_data[3 + i3];
+      for (i2 = 0; i2 < 3; i2++) {
+        k1[i2] = b_xInit_data[3 + i2];
       }
 
-      for (i3 = 0; i3 < 3; i3++) {
-        k1[i3 + 3] = u[i3];
-      }
-
-      scale = dt / 2.0;
-      for (i3 = 0; i3 < 6; i3++) {
-        b_xInit_data[i3] = xInit_data[i3] + scale * k1[i3];
-      }
-
-      for (i3 = 0; i3 < 3; i3++) {
-        k2[i3] = b_xInit_data[3 + i3];
-      }
-
-      for (i3 = 0; i3 < 3; i3++) {
-        k2[i3 + 3] = u[i3];
+      for (i2 = 0; i2 < 3; i2++) {
+        k1[i2 + 3] = u[i2];
       }
 
       scale = dt / 2.0;
-      for (i3 = 0; i3 < 6; i3++) {
-        b_xInit_data[i3] = xInit_data[i3] + scale * k2[i3];
+      for (i2 = 0; i2 < 6; i2++) {
+        b_xInit_data[i2] = xInit_data[i2] + scale * k1[i2];
       }
 
-      for (i3 = 0; i3 < 3; i3++) {
-        k3[i3] = b_xInit_data[3 + i3];
+      for (i2 = 0; i2 < 3; i2++) {
+        k2[i2] = b_xInit_data[3 + i2];
       }
 
-      for (i3 = 0; i3 < 3; i3++) {
-        k3[i3 + 3] = u[i3];
+      for (i2 = 0; i2 < 3; i2++) {
+        k2[i2 + 3] = u[i2];
+      }
+
+      scale = dt / 2.0;
+      for (i2 = 0; i2 < 6; i2++) {
+        b_xInit_data[i2] = xInit_data[i2] + scale * k2[i2];
+      }
+
+      for (i2 = 0; i2 < 3; i2++) {
+        k3[i2] = b_xInit_data[3 + i2];
+      }
+
+      for (i2 = 0; i2 < 3; i2++) {
+        k3[i2 + 3] = u[i2];
       }
 
       scale = dt / 2.0;
       absxk = dt / 6.0;
-      for (i3 = 0; i3 < 6; i3++) {
-        b_xInit_data[i3] = xInit_data[i3] + scale * k3[i3];
+      for (i2 = 0; i2 < 6; i2++) {
+        b_xInit_data[i2] = xInit_data[i2] + scale * k3[i2];
       }
 
-      for (i3 = 0; i3 < 3; i3++) {
-        xInit[i3] = b_xInit_data[3 + i3];
+      for (i2 = 0; i2 < 3; i2++) {
+        xInit[i2] = b_xInit_data[3 + i2];
       }
 
-      for (i3 = 0; i3 < 3; i3++) {
-        xInit[i3 + 3] = u[i3];
+      for (i2 = 0; i2 < 3; i2++) {
+        xInit[i2 + 3] = u[i2];
       }
 
       itmp = 6;
-      for (i3 = 0; i3 < 6; i3++) {
-        tmp_data[i3] = xInit_data[i3] + absxk * (((k1[i3] + 2.0 * k2[i3]) + 2.0 *
-          k3[i3]) + xInit[i3]);
+      for (i2 = 0; i2 < 6; i2++) {
+        tmp_data[i2] = xInit_data[i2] + absxk * (((k1[i2] + 2.0 * k2[i2]) + 2.0 *
+          k3[i2]) + xInit[i2]);
       }
 
       // Check pan angular position limits
@@ -235,54 +235,54 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
         u[2] = 0.0;
       }
 
-      for (i3 = 0; i3 < 6; i3++) {
-        xInit_data[i3] = tmp_data[i3];
+      for (i2 = 0; i2 < 6; i2++) {
+        xInit_data[i2] = tmp_data[i2];
       }
 
       d0 = 6.0 * (1.0 + (double)ixstart) + 1.0;
       if (d0 > 6.0 * ((1.0 + (double)ixstart) + 1.0)) {
-        i3 = 0;
+        i2 = 0;
       } else {
-        i3 = (int)d0 - 1;
+        i2 = (int)d0 - 1;
       }
 
       for (ix = 0; ix < 6; ix++) {
-        r0->data[i3 + ix] = tmp_data[ix];
+        r0->data[i2 + ix] = tmp_data[ix];
       }
     }
 
     // xInit = [zeros(1,3) xInitOrig 0 0];
-    for (i3 = 0; i3 < 3; i3++) {
-      b_tmp_data[i3] = 0.0;
+    for (i2 = 0; i2 < 3; i2++) {
+      b_tmp_data[i2] = 0.0;
     }
 
-    for (i3 = 0; i3 < itmp; i3++) {
-      b_tmp_data[i3 + 3] = tmp_data[i3];
+    for (i2 = 0; i2 < itmp; i2++) {
+      b_tmp_data[i2 + 3] = tmp_data[i2];
     }
 
     b_tmp_data[3 + itmp] = 0.0;
     b_tmp_data[4 + itmp] = 0.0;
     ixstart = 5 + itmp;
-    for (i3 = 0; i3 < ixstart; i3++) {
-      tmp_data[i3] = b_tmp_data[i3];
+    for (i2 = 0; i2 < ixstart; i2++) {
+      tmp_data[i2] = b_tmp_data[i2];
     }
 
     ixstart = 5 + itmp;
-    for (i3 = 0; i3 < ixstart; i3++) {
-      candStates_data[i + 5 * i3] = tmp_data[i3];
+    for (i2 = 0; i2 < ixstart; i2++) {
+      candStates_data[i + 5 * i2] = tmp_data[i2];
     }
 
     ixstart = r0->size[1];
-    for (i3 = 0; i3 < ixstart; i3++) {
-      candTransArrays->data[i + candTransArrays->size[0] * i3] = r0->data
-        [r0->size[0] * i3];
+    for (i2 = 0; i2 < ixstart; i2++) {
+      candTransArrays->data[i + candTransArrays->size[0] * i2] = r0->data
+        [r0->size[0] * i2];
     }
 
     // U_check = sherpaTTFKAcc(U_joint(i,:)',xNear(7:9)',xNear(4:6)',kinematicConst) 
     // Calculate the distance between the candidate state and the random
     // state.
-    for (i3 = 0; i3 < 11; i3++) {
-      b_xNear_data[i3] = candStates_data[i + 5 * i3];
+    for (i2 = 0; i2 < 11; i2++) {
+      b_xNear_data[i2] = candStates_data[i + 5 * i2];
     }
 
     b_xRand_data.data = (double *)xRand_data;
@@ -349,12 +349,12 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // Calculate a distance metric that includes the heurisitc distance
     // as well as any penalty due to ankle movements.
     if (fabs(scale - 3.1415926535897931) > 0.39269908169872414) {
-      i4 = 1;
+      i3 = 1;
     } else {
-      i4 = 0;
+      i3 = 0;
     }
 
-    distance_data[i] = (1.0 - aGain) * hDiff + aGain * (double)i4;
+    distance_data[i] = (1.0 - aGain) * hDiff + aGain * (double)i3;
 
     // distance(i) = hDiff;
   }
@@ -391,18 +391,18 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
 
   xNew_size[0] = 1;
   xNew_size[1] = 11;
-  for (i3 = 0; i3 < 11; i3++) {
-    xNew_data[xNew_size[0] * i3] = candStates_data[itmp + 5 * i3];
+  for (i2 = 0; i2 < 11; i2++) {
+    xNew_data[xNew_size[0] * i2] = candStates_data[itmp + 5 * i2];
   }
 
   ixstart = candTransArrays->size[1];
-  i3 = transitionArray->size[0] * transitionArray->size[1];
+  i2 = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
   transitionArray->size[1] = ixstart;
-  emxEnsureCapacity((emxArray__common *)transitionArray, i3, (int)sizeof(double));
-  for (i3 = 0; i3 < ixstart; i3++) {
-    transitionArray->data[transitionArray->size[0] * i3] = candTransArrays->
-      data[itmp + candTransArrays->size[0] * i3];
+  emxEnsureCapacity((emxArray__common *)transitionArray, i2, (int)sizeof(double));
+  for (i2 = 0; i2 < ixstart; i2++) {
+    transitionArray->data[transitionArray->size[0] * i2] = candTransArrays->
+      data[itmp + candTransArrays->size[0] * i2];
   }
 
   emxFree_real_T(&candTransArrays);

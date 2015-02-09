@@ -2,7 +2,7 @@
 // File: buildRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 09-Feb-2015 13:36:11
+// C/C++ source code generated on  : 09-Feb-2015 18:33:49
 //
 
 // Include Files
@@ -96,7 +96,7 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
               emxArray_real_T *path)
 {
   double transitionArrayLength;
-  int i2;
+  int i1;
   double xStarA;
   int ix;
   int loop_ub;
@@ -133,7 +133,7 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   transitionArrayLength = (rt_roundd_snf(Dt / dt) + 1.0) * 6.0;
 
   // Variable Initialization
-  i2 = T->size[0] * T->size[1];
+  i1 = T->size[0] * T->size[1];
   T->size[0] = 1000;
   xStarA = rt_roundd_snf(11.0 + transitionArrayLength);
   if (xStarA < 2.147483648E+9) {
@@ -149,53 +149,53 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   }
 
   T->size[1] = ix;
-  emxEnsureCapacity((emxArray__common *)T, i2, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)T, i1, (int)sizeof(double));
   xStarA = rt_roundd_snf(11.0 + transitionArrayLength);
   if (xStarA < 2.147483648E+9) {
     if (xStarA >= -2.147483648E+9) {
-      i2 = (int)xStarA;
+      i1 = (int)xStarA;
     } else {
-      i2 = MIN_int32_T;
+      i1 = MIN_int32_T;
     }
   } else if (xStarA >= 2.147483648E+9) {
-    i2 = MAX_int32_T;
+    i1 = MAX_int32_T;
   } else {
-    i2 = 0;
+    i1 = 0;
   }
 
-  loop_ub = 1000 * i2;
-  for (i2 = 0; i2 < loop_ub; i2++) {
-    T->data[i2] = 0.0;
+  loop_ub = 1000 * i1;
+  for (i1 = 0; i1 < loop_ub; i1++) {
+    T->data[i1] = 0.0;
   }
 
   // Define a zero array that will be used to
   // store data from each tree node.
-  for (i2 = 0; i2 < 11; i2++) {
-    T->data[T->size[0] * i2] = nInit[i2];
+  for (i1 = 0; i1 < 11; i1++) {
+    T->data[T->size[0] * i1] = nInit[i1];
   }
 
   loop_ub = (int)transitionArrayLength;
-  for (i2 = 0; i2 < loop_ub; i2++) {
-    T->data[T->size[0] * (i2 + 11)] = 0.0;
+  for (i1 = 0; i1 < loop_ub; i1++) {
+    T->data[T->size[0] * (i1 + 11)] = 0.0;
   }
 
   // Initialize the tree with initial state.
   nodeIDCount = 1U;
-  for (i2 = 0; i2 < 6; i2++) {
-    jointRange[i2] = jointLimits[1 + (i2 << 1)] - jointLimits[i2 << 1];
+  for (i1 = 0; i1 < 6; i1++) {
+    jointRange[i1] = jointLimits[1 + (i1 << 1)] - jointLimits[i1 << 1];
   }
 
   emxInit_real_T(&b_T, 2);
   emxInit_real_T(&d, 2);
   emxInit_real_T(&c_T, 2);
   for (i = 0; i < 999; i++) {
-    i2 = b_T->size[0] * b_T->size[1];
+    i1 = b_T->size[0] * b_T->size[1];
     b_T->size[0] = 1000;
     b_T->size[1] = T->size[1];
-    emxEnsureCapacity((emxArray__common *)b_T, i2, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)b_T, i1, (int)sizeof(double));
     loop_ub = T->size[0] * T->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      b_T->data[i2] = T->data[i2];
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      b_T->data[i1] = T->data[i1];
     }
 
     // randomState Picks a random state from the state space.
@@ -221,8 +221,8 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     betaRand = -asin(dxStar);
     alphaDotRand = jointRange[3] * b_rand() + jointLimits[6];
     gammaDotRand = jointRange[4] * b_rand() + jointLimits[8];
-    for (i2 = 0; i2 < 3; i2++) {
-      dv2[i2] = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      dv2[i1] = 0.0;
     }
 
     dv2[3] = transitionArrayLength;
@@ -270,8 +270,8 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
       cos(kinematicConst[8]) * 0.0);
     xRand_size[0] = 1;
     xRand_size[1] = 9;
-    for (i2 = 0; i2 < 9; i2++) {
-      xRand_data[i2] = dv2[i2];
+    for (i1 = 0; i1 < 9; i1++) {
+      xRand_data[i1] = dv2[i1];
     }
 
     u0 = nodeIDCount;
@@ -284,18 +284,18 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
       20.0) * 20.0);
     if (xStarA < 2.147483648E+9) {
       if (xStarA >= -2.147483648E+9) {
-        i2 = (int)xStarA;
+        i1 = (int)xStarA;
       } else {
-        i2 = MIN_int32_T;
+        i1 = MIN_int32_T;
       }
     } else {
-      i2 = MAX_int32_T;
+      i1 = MAX_int32_T;
     }
 
     if ((unsigned int)ixstart == nodeIDCount) {
       b_ixstart = ixstart - div_s32_floor(ixstart, 20) * 20;
     } else {
-      b_ixstart = i2;
+      b_ixstart = i1;
     }
 
     if (b_ixstart == 0) {
@@ -322,24 +322,24 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // date: 20150107
     // Iterate over the entire tree and apply the distance heuristic function
     // to each node.
-    i2 = d->size[0] * d->size[1];
+    i1 = d->size[0] * d->size[1];
     d->size[0] = 1;
     d->size[1] = (int)nodeIDCount;
-    emxEnsureCapacity((emxArray__common *)d, i2, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)d, i1, (int)sizeof(double));
     loop_ub = (int)nodeIDCount;
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      d->data[i2] = 0.0;
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      d->data[i1] = 0.0;
     }
 
     // parfor i = 1:nodeIDCount
     for (ixstart = 0; ixstart < (int)nodeIDCount; ixstart++) {
       loop_ub = T->size[1];
-      i2 = c_T->size[0] * c_T->size[1];
+      i1 = c_T->size[0] * c_T->size[1];
       c_T->size[0] = 1;
       c_T->size[1] = loop_ub;
-      emxEnsureCapacity((emxArray__common *)c_T, i2, (int)sizeof(double));
-      for (i2 = 0; i2 < loop_ub; i2++) {
-        c_T->data[c_T->size[0] * i2] = T->data[ixstart + T->size[0] * i2];
+      emxEnsureCapacity((emxArray__common *)c_T, i1, (int)sizeof(double));
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        c_T->data[c_T->size[0] * i1] = T->data[ixstart + T->size[0] * i1];
       }
 
       d->data[ixstart] = heuristicSingleLeg(xRand_data, c_T, kinematicConst);
@@ -379,8 +379,8 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // [d,minIndex] = min(d(1:nodeIDCount));
     xNearest_size[0] = 1;
     xNearest_size[1] = 11;
-    for (i2 = 0; i2 < 11; i2++) {
-      xNearest_data[xNearest_size[0] * i2] = T->data[itmp + T->size[0] * i2];
+    for (i1 = 0; i1 < 11; i1++) {
+      xNearest_data[xNearest_size[0] * i1] = T->data[itmp + T->size[0] * i1];
     }
 
     selectInput(xNearest_data, xNearest_size, xRand_data, xRand_size, U, dt, Dt,
@@ -400,25 +400,25 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
       kinematicConst);
 
     // Cost
-    for (i2 = 0; i2 < 11; i2++) {
-      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * i2) - 1] =
-        xNew_data[xNew_size[0] * i2];
+    for (i1 = 0; i1 < 11; i1++) {
+      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * i1) - 1] =
+        xNew_data[xNew_size[0] * i1];
     }
 
     loop_ub = d->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * (i2 + 11)) -
-        1] = d->data[d->size[0] * i2];
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * (i1 + 11)) -
+        1] = d->data[d->size[0] * i1];
     }
 
     // Append the new node to the tree.
-    i2 = T->size[0] * T->size[1];
+    i1 = T->size[0] * T->size[1];
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
-    emxEnsureCapacity((emxArray__common *)T, i2, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)T, i1, (int)sizeof(double));
     loop_ub = b_T->size[0] * b_T->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      T->data[i2] = b_T->data[i2];
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      T->data[i1] = b_T->data[i1];
     }
 
     nodeIDCount++;
@@ -446,13 +446,13 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   // date: 20150107
   // Iterate over the entire tree and apply the distance heuristic function
   // to each node.
-  i2 = d->size[0] * d->size[1];
+  i1 = d->size[0] * d->size[1];
   d->size[0] = 1;
   d->size[1] = (int)nodeIDCount;
-  emxEnsureCapacity((emxArray__common *)d, i2, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)d, i1, (int)sizeof(double));
   loop_ub = (int)nodeIDCount;
-  for (i2 = 0; i2 < loop_ub; i2++) {
-    d->data[i2] = 0.0;
+  for (i1 = 0; i1 < loop_ub; i1++) {
+    d->data[i1] = 0.0;
   }
 
   // parfor i = 1:nodeIDCount
@@ -523,15 +523,15 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   // [d,minIndex] = min(d(1:nodeIDCount));
   xNearest_size[0] = 1;
   xNearest_size[1] = 11;
-  for (i2 = 0; i2 < 11; i2++) {
-    xNearest_data[xNearest_size[0] * i2] = T->data[itmp + T->size[0] * i2];
+  for (i1 = 0; i1 < 11; i1++) {
+    xNearest_data[xNearest_size[0] * i1] = T->data[itmp + T->size[0] * i1];
   }
 
   if (12 > T->size[1]) {
-    i2 = -11;
+    i1 = -11;
     ix = 0;
   } else {
-    i2 = 0;
+    i1 = 0;
     ix = T->size[1];
   }
 
@@ -546,16 +546,16 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
 
   ixstart = path->size[0] * path->size[1];
   path->size[0] = 1;
-  path->size[1] = ix - i2;
+  path->size[1] = ix - i1;
   emxEnsureCapacity((emxArray__common *)path, ixstart, (int)sizeof(double));
   for (ixstart = 0; ixstart < 11; ixstart++) {
     path->data[path->size[0] * ixstart] = xNearest_data[xNearest_size[0] *
       ixstart];
   }
 
-  loop_ub = ix - i2;
+  loop_ub = ix - i1;
   for (ix = 0; ix <= loop_ub - 12; ix++) {
-    path->data[path->size[0] * (ix + 11)] = T->data[itmp + T->size[0] * ((i2 +
+    path->data[path->size[0] * (ix + 11)] = T->data[itmp + T->size[0] * ((i1 +
       ix) + 11)];
   }
 
@@ -563,44 +563,44 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   while ((transitionArrayLength != 0.0) && (d->data[1] != 0.0)) {
     transitionArrayLength = d->data[1];
     loop_ub = T->size[1];
-    i2 = d->size[0] * d->size[1];
+    i1 = d->size[0] * d->size[1];
     d->size[0] = 1;
     d->size[1] = loop_ub;
-    emxEnsureCapacity((emxArray__common *)d, i2, (int)sizeof(double));
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      d->data[d->size[0] * i2] = T->data[((int)transitionArrayLength + T->size[0]
-        * i2) - 1];
+    emxEnsureCapacity((emxArray__common *)d, i1, (int)sizeof(double));
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      d->data[d->size[0] * i1] = T->data[((int)transitionArrayLength + T->size[0]
+        * i1) - 1];
     }
 
-    i2 = b_path->size[0] * b_path->size[1];
+    i1 = b_path->size[0] * b_path->size[1];
     b_path->size[0] = path->size[0] + 1;
     b_path->size[1] = path->size[1];
-    emxEnsureCapacity((emxArray__common *)b_path, i2, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)b_path, i1, (int)sizeof(double));
     loop_ub = path->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
+    for (i1 = 0; i1 < loop_ub; i1++) {
       ixstart = path->size[0];
       for (ix = 0; ix < ixstart; ix++) {
-        b_path->data[ix + b_path->size[0] * i2] = path->data[ix + path->size[0] *
-          i2];
+        b_path->data[ix + b_path->size[0] * i1] = path->data[ix + path->size[0] *
+          i1];
       }
     }
 
     loop_ub = d->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      b_path->data[path->size[0] + b_path->size[0] * i2] = d->data[d->size[0] *
-        i2];
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      b_path->data[path->size[0] + b_path->size[0] * i1] = d->data[d->size[0] *
+        i1];
     }
 
-    i2 = path->size[0] * path->size[1];
+    i1 = path->size[0] * path->size[1];
     path->size[0] = b_path->size[0];
     path->size[1] = b_path->size[1];
-    emxEnsureCapacity((emxArray__common *)path, i2, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)path, i1, (int)sizeof(double));
     loop_ub = b_path->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
+    for (i1 = 0; i1 < loop_ub; i1++) {
       ixstart = b_path->size[0];
       for (ix = 0; ix < ixstart; ix++) {
-        path->data[ix + path->size[0] * i2] = b_path->data[ix + b_path->size[0] *
-          i2];
+        path->data[ix + path->size[0] * i1] = b_path->data[ix + b_path->size[0] *
+          i1];
       }
     }
 

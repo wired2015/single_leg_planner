@@ -2,7 +2,7 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 09-Feb-2015 13:36:11
+// C/C++ source code generated on  : 09-Feb-2015 18:33:49
 //
 
 // Include Files
@@ -12,7 +12,6 @@
 #include "buildRRT.h"
 #include "sherpaTTIKVel.h"
 #include "sherpaTTIK.h"
-#include "inv.h"
 #include "buildRRTWrapper_rtwutil.h"
 #include <stdio.h>
 
@@ -77,10 +76,12 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 
   static const signed char iv1[4] = { 0, 0, 0, 1 };
 
+  double b_TP2B[9];
+  int md2;
+  double c_TP2B[3];
   double TB2P[16];
   double uInitP[3];
   double betaInit;
-  int md2;
   double uGoalP[3];
   double gammaInit;
   double time;
@@ -90,7 +91,6 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   double alphaInit[3];
   double b_TB2P[3];
   double c_TB2P[3];
-  double d_TB2P[3];
   double b_alphaGoal[3];
   double nInitJoint[6];
   double nGoalJoint[6];
@@ -153,7 +153,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     }
   }
 
-  TP2B[12] = kinematicConst[9] * cos(kinematicConst[(int)i0 - 1]);
+  TP2B[12] = kinematicConst[10] * cos(kinematicConst[(int)i0 - 1]);
   i0 = 11L + legNum;
   if (i0 > 2147483647L) {
     i0 = 2147483647L;
@@ -193,15 +193,38 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     }
   }
 
-  TP2B[13] = kinematicConst[9] * sin(kinematicConst[(int)i0 - 1]);
+  TP2B[13] = kinematicConst[10] * sin(kinematicConst[(int)i0 - 1]);
   for (path_idx_0 = 0; path_idx_0 < 4; path_idx_0++) {
     TP2B[2 + (path_idx_0 << 2)] = iv0[path_idx_0];
     TP2B[3 + (path_idx_0 << 2)] = iv1[path_idx_0];
   }
 
-  inv(TP2B, TB2P);
+  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
+    for (md2 = 0; md2 < 3; md2++) {
+      b_TP2B[md2 + 3 * path_idx_0] = -TP2B[path_idx_0 + (md2 << 2)];
+    }
+  }
 
-  // invHomoMatrix(TP2B);%
+  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
+    c_TP2B[path_idx_0] = 0.0;
+    for (md2 = 0; md2 < 3; md2++) {
+      c_TP2B[path_idx_0] += b_TP2B[path_idx_0 + 3 * md2] * TP2B[12 + md2];
+    }
+
+    for (md2 = 0; md2 < 3; md2++) {
+      TB2P[md2 + (path_idx_0 << 2)] = TP2B[path_idx_0 + (md2 << 2)];
+    }
+  }
+
+  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
+    TB2P[12 + path_idx_0] = c_TP2B[path_idx_0];
+  }
+
+  for (path_idx_0 = 0; path_idx_0 < 4; path_idx_0++) {
+    TB2P[3 + (path_idx_0 << 2)] = iv1[path_idx_0];
+  }
+
+  // inv(TP2B);%
   for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
     betaInit = 0.0;
     for (md2 = 0; md2 < 3; md2++) {
@@ -236,21 +259,21 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
         md2];
     }
 
-    b_TB2P[path_idx_0] = uGoalP[path_idx_0];
-    d_TB2P[path_idx_0] = 0.0;
+    c_TP2B[path_idx_0] = uGoalP[path_idx_0];
+    c_TB2P[path_idx_0] = 0.0;
     for (md2 = 0; md2 < 3; md2++) {
-      d_TB2P[path_idx_0] += TB2P[path_idx_0 + (md2 << 2)] * nGoalCartesianB[3 +
+      c_TB2P[path_idx_0] += TB2P[path_idx_0 + (md2 << 2)] * nGoalCartesianB[3 +
         md2];
     }
 
-    c_TB2P[path_idx_0] = d_TB2P[path_idx_0];
+    b_TB2P[path_idx_0] = c_TB2P[path_idx_0];
   }
 
-  sherpaTTIKVel(b_TB2P, alphaInit, kinematicConst, uInitP);
+  sherpaTTIKVel(c_TP2B, alphaInit, kinematicConst, uInitP);
   b_alphaGoal[0] = alphaGoal;
   b_alphaGoal[1] = betaGoal;
   b_alphaGoal[2] = gammaGoal;
-  sherpaTTIKVel(c_TB2P, b_alphaGoal, kinematicConst, uGoalP);
+  sherpaTTIKVel(b_TB2P, b_alphaGoal, kinematicConst, uGoalP);
   nInitJoint[0] = time;
   nInitJoint[1] = betaInit;
   nInitJoint[2] = gammaInit;
@@ -368,7 +391,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
             betaInit += TP2B[path_idx_0 + (md2 << 2)] * b_kinematicConst[md2];
           }
 
-          b_TB2P[path_idx_0] = betaInit + TP2B[12 + path_idx_0];
+          c_TP2B[path_idx_0] = betaInit + TP2B[12 + path_idx_0];
         }
 
         b_uInitP[0] = (-uInitP[0] * sin(uGoalP[0]) * ((((kinematicConst[1] -
@@ -397,7 +420,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
         path->data[(int)count - 1] = time;
         for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
           path->data[((int)count + path->size[0] * (path_idx_0 + 1)) - 1] =
-            b_TB2P[path_idx_0];
+            c_TP2B[path_idx_0];
         }
 
         for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
@@ -490,11 +513,11 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 //
 void buildRRTWrapper_init()
 {
-  int i5;
+  int i4;
   static const double dv3[3] = { 1.0, 0.0, 0.5 };
 
-  for (i5 = 0; i5 < 3; i5++) {
-    HGAINS[i5] = dv3[i5];
+  for (i4 = 0; i4 < 3; i4++) {
+    HGAINS[i4] = dv3[i4];
   }
 }
 
