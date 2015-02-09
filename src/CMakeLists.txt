@@ -22,6 +22,7 @@ rock_library(single_leg_planner
 	buildRRTWrapper_emxAPI.cpp
 	buildRRTWrapper_emxutil.cpp
 	asin.cpp
+	inv.cpp
     HEADERS
 	sherpaTTIK.h
 	asin.h
@@ -48,7 +49,9 @@ rock_library(single_leg_planner
 	buildRRTWrapper_emxutil.h
 	rtGetNaN.h
 	buildRRTWrapper_data.h
+	inv.h
 )
+
 
 rock_executable(single_leg_planner_bin main.cpp
     SOURCES LegPlanner.cpp
