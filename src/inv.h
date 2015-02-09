@@ -1,11 +1,11 @@
 //
-// File: asin.h
+// File: inv.h
 //
 // MATLAB Coder version            : 2.7
 // C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
-#ifndef __ASIN_H__
-#define __ASIN_H__
+#ifndef __INV_H__
+#define __INV_H__
 
 // Include Files
 #include <math.h>
@@ -18,13 +18,12 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern void b_asin(creal_T *x);
-extern void eml_scalar_sqrt(creal_T *x);
+extern void inv(const double x[16], double y[16]);
 
 #endif
 
 //
-// File trailer for asin.h
+// File trailer for inv.h
 //
 // [EOF]
 //

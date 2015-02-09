@@ -2,7 +2,7 @@
 // File: buildRRTWrapper_emxutil.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 #ifndef __BUILDRRTWRAPPER_EMXUTIL_H__
 #define __BUILDRRTWRAPPER_EMXUTIL_H__
@@ -18,7 +18,6 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern void b_emxInit_real_T(emxArray_real_T **pEmxArray, int numDimensions);
 extern void emxEnsureCapacity(emxArray__common *emxArray, int oldNumel, int
   elementSize);
 extern void emxFree_real_T(emxArray_real_T **pEmxArray);

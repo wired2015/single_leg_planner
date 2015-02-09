@@ -2,7 +2,7 @@
 // File: buildRRTWrapper_initialize.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 
 // Include Files
@@ -21,6 +21,7 @@
 void buildRRTWrapper_initialize()
 {
   rt_InitInfAndNaN(8U);
+  buildRRTWrapper_init();
   c_eml_rand_mt19937ar_stateful_i();
 }
 

@@ -2,7 +2,7 @@
 // File: sherpaTTIK.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 #ifndef __SHERPATTIK_H__
 #define __SHERPATTIK_H__
@@ -19,7 +19,7 @@
 
 // Function Declarations
 extern void sherpaTTIK(double xC, double yC, double zC, const double
-  kinematicConst[12], const double jointLimits[12], double *alpha, double *beta,
+  kinematicConst[15], const double jointLimits[12], double *alpha, double *beta,
   double *b_gamma);
 
 #endif

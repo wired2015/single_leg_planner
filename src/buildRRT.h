@@ -2,7 +2,7 @@
 // File: buildRRT.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 #ifndef __BUILDRRT_H__
 #define __BUILDRRT_H__
@@ -18,12 +18,10 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern void rrtLoop(emxArray_real_T *T, const double jointRange[6], const double
-                    jointLimits[12], const double kinematicConst[12], double K,
-                    const double U[10], double Dt, double dt, int NODE_SIZE, int
-                    U_SIZE, const double HGAINS[3], double ankleThreshold,
-                    double *nodeIDCount, const double nGoal[11], int
-                    goalSeedFreq);
+extern void buildRRT(const double nInit[11], const double nGoal[11], const
+                     double jointLimits[12], double K, const double U[10],
+                     double dt, double Dt, const double kinematicConst[15],
+                     emxArray_real_T *T, emxArray_real_T *path);
 
 #endif
 

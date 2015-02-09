@@ -2,7 +2,7 @@
 // File: sherpaTTIKVel.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 
 // Include Files
@@ -71,12 +71,12 @@ static double rt_powd_snf(double u0, double u1)
 // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
 // Arguments    : const double uDot[3]
 //                const double q[3]
-//                const double kinematicConst[12]
+//                const double kinematicConst[15]
 //                double qDot[3]
 // Return Type  : void
 //
 void sherpaTTIKVel(const double uDot[3], const double q[3], const double
-                   kinematicConst[12], double qDot[3])
+                   kinematicConst[15], double qDot[3])
 {
   double x;
   double b_x;

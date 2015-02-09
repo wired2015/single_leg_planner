@@ -2,7 +2,7 @@
 // File: heuristicSingleLeg.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 #ifndef __HEURISTICSINGLELEG_H__
 #define __HEURISTICSINGLELEG_H__
@@ -18,8 +18,8 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern double heuristicSingleLeg(const emxArray_real_T *xA, const
-  emxArray_real_T *xB, const double kinematicConst[12]);
+extern double heuristicSingleLeg(const double xA_data[], const emxArray_real_T
+  *xB, const double kinematicConst[15]);
 
 #endif
 

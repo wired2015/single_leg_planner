@@ -2,7 +2,7 @@
 // File: exp.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 #ifndef __EXP_H__
 #define __EXP_H__

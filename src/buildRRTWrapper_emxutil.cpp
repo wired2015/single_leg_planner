@@ -2,7 +2,7 @@
 // File: buildRRTWrapper_emxutil.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 
 // Include Files
@@ -12,27 +12,6 @@
 #include <stdio.h>
 
 // Function Definitions
-
-//
-// Arguments    : emxArray_real_T **pEmxArray
-//                int numDimensions
-// Return Type  : void
-//
-void b_emxInit_real_T(emxArray_real_T **pEmxArray, int numDimensions)
-{
-  emxArray_real_T *emxArray;
-  int i;
-  *pEmxArray = (emxArray_real_T *)malloc(sizeof(emxArray_real_T));
-  emxArray = *pEmxArray;
-  emxArray->data = (double *)NULL;
-  emxArray->numDimensions = numDimensions;
-  emxArray->size = (int *)malloc((unsigned int)(sizeof(int) * numDimensions));
-  emxArray->allocatedSize = 0;
-  emxArray->canFreeData = true;
-  for (i = 0; i < numDimensions; i++) {
-    emxArray->size[i] = 0;
-  }
-}
 
 //
 // Arguments    : emxArray__common *emxArray

@@ -2,7 +2,7 @@
 // File: selectInput.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 #ifndef __SELECTINPUT_H__
 #define __SELECTINPUT_H__
@@ -18,11 +18,10 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern void selectInput(const emxArray_real_T *xNear, const double xRand_data[],
-  const int xRand_size[2], const double U[10], double dt, double Dt, int
-  NODE_SIZE, int U_SIZE, const double HGAINS[3], const double kinematicConst[12],
-  double ankleThreshold, const double jointLimits[12], emxArray_real_T *xNew,
-  emxArray_real_T *transitionArray);
+extern void selectInput(const double xNear_data[], const int xNear_size[2],
+  const double xRand_data[], const int xRand_size[2], const double U[10], double
+  dt, double Dt, const double kinematicConst[15], const double jointLimits[12],
+  double xNew_data[], int xNew_size[2], emxArray_real_T *transitionArray);
 
 #endif
 

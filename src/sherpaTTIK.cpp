@@ -2,7 +2,7 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 09-Feb-2015 13:36:11
 //
 
 // Include Files
@@ -25,14 +25,14 @@
 // Arguments    : double xC
 //                double yC
 //                double zC
-//                const double kinematicConst[12]
+//                const double kinematicConst[15]
 //                const double jointLimits[12]
 //                double *alpha
 //                double *beta
 //                double *b_gamma
 // Return Type  : void
 //
-void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[12],
+void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[15],
                 const double jointLimits[12], double *alpha, double *beta,
                 double *b_gamma)
 {
