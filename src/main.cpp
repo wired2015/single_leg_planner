@@ -3,8 +3,8 @@
 #include <math.h>
 #include <iostream>
 
-#include "../codegen/lib/buildRRTWrapper/buildRRTWrapper.h"
-#include "../codegen/lib/buildRRTWrapper/buildRRTWrapper_emxAPI.h"
+#include "buildRRTWrapper.h"
+#include "buildRRTWrapper_emxAPI.h"
 #include "LegPlanner.h"
 
 using namespace std;
