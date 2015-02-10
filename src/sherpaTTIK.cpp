@@ -2,7 +2,7 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 09-Feb-2015 18:33:49
+// C/C++ source code generated on  : 10-Feb-2015 17:17:38
 //
 
 // Include Files
