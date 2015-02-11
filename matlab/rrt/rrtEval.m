@@ -9,6 +9,8 @@ clear
 clf
 clc
 
+addpath(genpath('~/Dropbox/PhD/matlab/rvctools'))
+
 planningConstants
 
 pathLengths = zeros(1,NUM_TRIALS);  %Vector of generated path lengths.
@@ -37,8 +39,11 @@ fprintf('Ankle Heuristic Gain: %.2f\n\n',HGAINS(3));
 %fprintf('ICR in the Body frame: %.2f\n',s);
 %fprintf('Maximum Wheel Speed: %.2f\n'qWMax);
 
+jointPaths = zeros(4,1000,7);
+cartesianPaths = zeros(4,1000,7);
+
 %Run the planner mulitple times.
-for i=1:1
+for i=1:4
 
     %Generate the RRT.
     tic
@@ -65,6 +70,10 @@ for i=1:1
         error = cartDist(uFinal,nGoalB(i,1:3));
         fprintf('Final Cartesian Position Error: %.2f m\n',error);
         fprintf('Planning Time: %.3f s\n',planningTime);
+        
+        [h,~] = size(pathJ);
+        jointPaths(i,1:h,:) = pathJ;
+        cartesianPaths(i,1:h,:) = pathC;
 
         %Update the pathLength and pathTime vectors.
     %     pathLengths(i) = pathLength;
@@ -80,9 +89,9 @@ for i=1:1
 
         %Find the path in an x,y,z representation using a forward kinematic
         %model of the system.
-        figure(3)
-        view(-114,54)
-        plotPath(pathC,kinematicConst,nGoalB(i,:),panHeight,jointLimits,true,i);
+        %figure(3)
+        %view(-114,54)
+        %plotPath(pathC,kinematicConst,nGoalB(i,:),panHeight,jointLimits,true,i);
 
         %figure(4)
         %plotAnkle(pathJ,ankleThreshold,Dt);
@@ -92,6 +101,29 @@ for i=1:1
     else
         fprintf('Planning Failed\n');
     end
+end
+
+for i = 1:4
+    for j = 2:1000
+        if cartesianPaths(i,j,1) == 0
+            cartesianPaths(i,j,:) = cartesianPaths(i,j-1,:);
+        end
+        if jointPaths(i,j,1) == 0
+            jointPaths(i,j,:) = jointPaths(i,j-1,:);
+        end
+    end
+end
+
+[h,w] = size(pathC);
+
+init = true;
+t = 0;
+for i = 1:h
+    plotSherpaTT([0 0 bodyHeight],[jointPaths(1,i,2:7); jointPaths(2,i,2:7); jointPaths(3,i,2:7); jointPaths(4,i,2:7)],kinematicConst,init,true,true);
+    pause(dt);
+    t = t + dt;
+    title(['t = ' num2str(t) 's'])
+    init = false;
 end
 
 %If only one tree is being generated, then plot the tree, the trajectory

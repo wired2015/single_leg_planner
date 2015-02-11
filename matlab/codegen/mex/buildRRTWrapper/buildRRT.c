@@ -57,7 +57,7 @@ static emlrtRSInfo q_emlrtRSI = { 29, "randomState",
 };
 
 static emlrtRSInfo r_emlrtRSI = { 7, "getConstrainedBeta",
-  "/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/getConstrainedBeta.m"
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m"
 };
 
 static emlrtRSInfo s_emlrtRSI = { 15, "asin",
@@ -71,7 +71,7 @@ static emlrtECInfo f_emlrtECI = { -1, 68, 5, "buildRRT",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"
 };
 
-static emlrtBCInfo mb_emlrtBCI = { -1, -1, 68, 7, "T", "buildRRT",
+static emlrtBCInfo pb_emlrtBCI = { -1, -1, 68, 7, "T", "buildRRT",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   0 };
 
@@ -391,7 +391,7 @@ void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T jointRange[6
   emxInit_real_T(&st, &b_T, 2, &c_emlrtRTEI, true);
   while (xi - 1 <= (int32_T)*nodeIDCount - 1) {
     n = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(xi, 1, 1000, &gb_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckFastR2012b(xi, 1, 1000, &jb_emlrtBCI, &st);
     ix = b_T->size[0] * b_T->size[1];
     b_T->size[0] = 1;
     b_T->size[1] = n;
@@ -403,7 +403,7 @@ void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T jointRange[6
 
     ix = d->size[1];
     b_st.site = &u_emlrtRSI;
-    d->data[emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &lb_emlrtBCI, &st) - 1]
+    d->data[emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &ob_emlrtBCI, &st) - 1]
       = heuristicSingleLeg(&b_st, xRand_data, b_T, jointLimits, kinematicConst);
     xi++;
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, &st);
@@ -412,7 +412,7 @@ void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T jointRange[6
   emxFree_real_T(&b_T);
   ix = d->size[1];
   xi = (int32_T)*nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &hb_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &kb_emlrtBCI, &st);
   b_st.site = &t_emlrtRSI;
   c_st.site = &y_emlrtRSI;
   d_st.site = &ab_emlrtRSI;
@@ -496,10 +496,10 @@ void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T jointRange[6
 
   /* [d,minIndex] = min(d(1:nodeIDCount)); */
   ix = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, ix, &jb_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(1, 1, ix, &mb_emlrtBCI, &st);
   ix = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(11, 1, ix, &jb_emlrtBCI, &st);
-  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &ib_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(11, 1, ix, &mb_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &lb_emlrtBCI, &st);
   xNear_size[0] = 1;
   xNear_size[1] = 11;
   for (ix = 0; ix < 11; ix++) {
@@ -509,10 +509,10 @@ void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T jointRange[6
   if (12 > T->size[1]) {
   } else {
     ix = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(12, 1, ix, &kb_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckFastR2012b(12, 1, ix, &nb_emlrtBCI, &st);
     ix = T->size[1];
     xi = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &kb_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &nb_emlrtBCI, &st);
   }
 
   emxInit_int32_T(&st, &r3, 1, &c_emlrtRTEI, true);
@@ -537,7 +537,7 @@ void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T jointRange[6
 
   /* Cost */
   ix = (int32_T)*nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1000, &mb_emlrtBCI, sp);
+  emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1000, &pb_emlrtBCI, sp);
   n = T->size[1];
   ix = r3->size[0];
   r3->size[0] = n;

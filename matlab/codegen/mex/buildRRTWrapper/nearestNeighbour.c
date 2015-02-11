@@ -30,7 +30,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[11], const
                       emxArray_real_T *transitionArray, real_T *d)
 {
   emxArray_real_T *b_d;
-  int32_T i4;
+  int32_T i5;
   int32_T ixstart;
   real_T xStarMin;
   real_T dxStarMax;
@@ -92,14 +92,14 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[11], const
   /*        xNear:  The node in the tree that is closet to x. */
   /* Iterate over the entire tree and apply the distance heuristic function */
   /* to each node. */
-  i4 = b_d->size[0] * b_d->size[1];
+  i5 = b_d->size[0] * b_d->size[1];
   b_d->size[0] = 1;
   b_d->size[1] = (int32_T)nodeIDCount;
-  emxEnsureCapacity(sp, (emxArray__common *)b_d, i4, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)b_d, i5, (int32_T)sizeof(real_T),
                     &f_emlrtRTEI);
   ixstart = (int32_T)nodeIDCount;
-  for (i4 = 0; i4 < ixstart; i4++) {
-    b_d->data[i4] = 0.0;
+  for (i5 = 0; i5 < ixstart; i5++) {
+    b_d->data[i5] = 0.0;
   }
 
   /* parfor i = 1:nodeIDCount */
@@ -108,25 +108,25 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[11], const
   ixstart = 0;
   while (ixstart <= (int32_T)nodeIDCount - 1) {
     st.site = &u_emlrtRSI;
-    i4 = ixstart + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i4, 1, 1000, &gb_emlrtBCI, &st);
+    i5 = ixstart + 1;
+    emlrtDynamicBoundsCheckFastR2012b(i5, 1, 1000, &jb_emlrtBCI, &st);
 
     /* heuristicSingleLeg.m */
     /* author: wreid */
     /* date: 20150107 */
     /* heuristic Calculates the distance between states x1 and x2. */
-    i4 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(4, 1, i4, &db_emlrtBCI, &st);
-    i4 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(5, 1, i4, &cb_emlrtBCI, &st);
-    i4 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(6, 1, i4, &bb_emlrtBCI, &st);
-    i4 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(7, 1, i4, &ab_emlrtBCI, &st);
-    i4 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(8, 1, i4, &y_emlrtBCI, &st);
-    i4 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(9, 1, i4, &x_emlrtBCI, &st);
+    i5 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(4, 1, i5, &gb_emlrtBCI, &st);
+    i5 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(5, 1, i5, &fb_emlrtBCI, &st);
+    i5 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(6, 1, i5, &eb_emlrtBCI, &st);
+    i5 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(7, 1, i5, &db_emlrtBCI, &st);
+    i5 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(8, 1, i5, &cb_emlrtBCI, &st);
+    i5 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(9, 1, i5, &bb_emlrtBCI, &st);
 
     /* Calculate the distance between angular positions. */
     xStarMin = (((kinematicConst[1] + kinematicConst[2] * muDoubleScalarCos
@@ -191,16 +191,16 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[11], const
 
     /* Calculate the total distance. */
     /* dPosNorm+dVelNorm  */
-    i4 = b_d->size[1];
-    b_d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i4, &lb_emlrtBCI,
+    i5 = b_d->size[1];
+    b_d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i5, &ob_emlrtBCI,
       sp) - 1] = muDoubleScalarSqrt(dAlphaMax);
     ixstart++;
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
   }
 
-  i4 = b_d->size[1];
+  i5 = b_d->size[1];
   ix = (int32_T)nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(ix, 1, i4, &hb_emlrtBCI, sp);
+  emlrtDynamicBoundsCheckFastR2012b(ix, 1, i5, &kb_emlrtBCI, sp);
   st.site = &t_emlrtRSI;
   b_st.site = &y_emlrtRSI;
   c_st.site = &ab_emlrtRSI;
@@ -285,36 +285,36 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[11], const
   *d = dAlphaMax;
 
   /* [d,minIndex] = min(d(1:nodeIDCount)); */
-  i4 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, i4, &jb_emlrtBCI, sp);
-  i4 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(NODE_SIZE, 1, i4, &jb_emlrtBCI, sp);
-  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &ib_emlrtBCI, sp);
+  i5 = T->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(1, 1, i5, &mb_emlrtBCI, sp);
+  i5 = T->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(NODE_SIZE, 1, i5, &mb_emlrtBCI, sp);
+  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &lb_emlrtBCI, sp);
   xNear_size[0] = 1;
   xNear_size[1] = 11;
-  for (i4 = 0; i4 < 11; i4++) {
-    xNear_data[xNear_size[0] * i4] = T->data[itmp + T->size[0] * i4];
+  for (i5 = 0; i5 < 11; i5++) {
+    xNear_data[xNear_size[0] * i5] = T->data[itmp + T->size[0] * i5];
   }
 
   if (12 > T->size[1]) {
-    i4 = 0;
+    i5 = 0;
     ix = 0;
   } else {
-    i4 = 11;
+    i5 = 11;
     ix = T->size[1];
     ixstart = T->size[1];
-    ix = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &kb_emlrtBCI, sp);
+    ix = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &nb_emlrtBCI, sp);
   }
 
   ixstart = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
-  transitionArray->size[1] = ix - i4;
+  transitionArray->size[1] = ix - i5;
   emxEnsureCapacity(sp, (emxArray__common *)transitionArray, ixstart, (int32_T)
                     sizeof(real_T), &f_emlrtRTEI);
-  ixstart = ix - i4;
+  ixstart = ix - i5;
   for (ix = 0; ix < ixstart; ix++) {
     transitionArray->data[transitionArray->size[0] * ix] = T->data[itmp +
-      T->size[0] * (i4 + ix)];
+      T->size[0] * (i5 + ix)];
   }
 
   emlrtHeapReferenceStackLeaveFcnR2012b(sp);

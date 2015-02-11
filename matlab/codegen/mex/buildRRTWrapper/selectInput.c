@@ -48,7 +48,7 @@ static emlrtECInfo e_emlrtECI = { -1, 56, 9, "rk4",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
-static emlrtBCInfo eb_emlrtBCI = { -1, -1, 56, 9, "transitionArray", "rk4",
+static emlrtBCInfo hb_emlrtBCI = { -1, -1, 56, 9, "transitionArray", "rk4",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   0 };
 
@@ -56,23 +56,23 @@ static emlrtRTEInfo j_emlrtRTEI = { 16, 5, "rk4",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
-static emlrtDCInfo g_emlrtDCI = { 12, 36, "selectInput",
+static emlrtDCInfo i_emlrtDCI = { 12, 36, "selectInput",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m",
   1 };
 
-static emlrtDCInfo h_emlrtDCI = { 12, 36, "selectInput",
+static emlrtDCInfo j_emlrtDCI = { 12, 36, "selectInput",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m",
   4 };
 
-static emlrtDCInfo i_emlrtDCI = { 13, 31, "rk4",
+static emlrtDCInfo k_emlrtDCI = { 13, 31, "rk4",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   1 };
 
-static emlrtDCInfo j_emlrtDCI = { 13, 31, "rk4",
+static emlrtDCInfo l_emlrtDCI = { 13, 31, "rk4",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   4 };
 
-static emlrtBCInfo fb_emlrtBCI = { -1, -1, 14, 5, "transitionArray", "rk4",
+static emlrtBCInfo ib_emlrtBCI = { -1, -1, 14, 5, "transitionArray", "rk4",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   0 };
 
@@ -88,7 +88,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   real_T candStates_data[55];
   emxArray_real_T *candTransArrays;
   real_T scale;
-  int32_T i2;
+  int32_T i3;
   real_T unusedU3;
   int32_T loop_ub;
   real_T UJoint_data[15];
@@ -127,7 +127,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   int32_T iv5[2];
   emxArray_real_T b_xRand_data;
   real_T v_LS[2];
-  int32_T i3;
+  int32_T i4;
   boolean_T exitg1;
   emlrtStack st;
   st.prev = sp;
@@ -146,19 +146,19 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   memset(&candStates_data[0], 0, 55U * sizeof(real_T));
   emxInit_real_T(sp, &candTransArrays, 2, &e_emlrtRTEI, true);
   scale = muDoubleScalarRound(Dt / dt);
-  i2 = candTransArrays->size[0] * candTransArrays->size[1];
+  i3 = candTransArrays->size[0] * candTransArrays->size[1];
   candTransArrays->size[0] = 5;
   unusedU3 = (scale + 1.0) * 6.0;
-  unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &h_emlrtDCI, sp);
+  unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &j_emlrtDCI, sp);
   candTransArrays->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(unusedU3,
-    &g_emlrtDCI, sp);
-  emxEnsureCapacity(sp, (emxArray__common *)candTransArrays, i2, (int32_T)sizeof
+    &i_emlrtDCI, sp);
+  emxEnsureCapacity(sp, (emxArray__common *)candTransArrays, i3, (int32_T)sizeof
                     (real_T), &d_emlrtRTEI);
   unusedU3 = (scale + 1.0) * 6.0;
-  unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &h_emlrtDCI, sp);
-  loop_ub = 5 * (int32_T)emlrtIntegerCheckFastR2012b(unusedU3, &g_emlrtDCI, sp);
-  for (i2 = 0; i2 < loop_ub; i2++) {
-    candTransArrays->data[i2] = 0.0;
+  unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &j_emlrtDCI, sp);
+  loop_ub = 5 * (int32_T)emlrtIntegerCheckFastR2012b(unusedU3, &i_emlrtDCI, sp);
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    candTransArrays->data[i3] = 0.0;
   }
 
   /* Transform the control inputs to joint space. */
@@ -169,8 +169,8 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     extractKinematicConstants(kinematicConst, &numIterations, &scale, &absxk,
       &hDiff, &aGain, &unusedU3, &unusedU4, &unusedU5, &zeta, &unusedU6,
       &unusedU7, &unusedU8, &unusedU9, &unusedUa, &unusedUb, &unusedUc);
-    for (i2 = 0; i2 < 2; i2++) {
-      UJoint_data[i + 5 * i2] = U[i + 5 * i2];
+    for (i3 = 0; i3 < 2; i3++) {
+      UJoint_data[i + 5 * i3] = U[i + 5 * i3];
     }
 
     UJoint_data[i + 10] = ((-U[5 + i] * absxk * muDoubleScalarCos(xNear_data[4])
@@ -188,8 +188,8 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* Generate a candidate state using a fourth order Runge-Kutta  */
     /* integration technique. */
     st.site = &fb_emlrtRSI;
-    for (i2 = 0; i2 < 3; i2++) {
-      u[i2] = UJoint_data[i + 5 * i2];
+    for (i3 = 0; i3 < 3; i3++) {
+      u[i3] = UJoint_data[i + 5 * i3];
     }
 
     /* rk4.m */
@@ -200,96 +200,96 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     numIterations = muDoubleScalarRound(Dt / dt);
     tmp_size[1] = 11;
     memset(&tmp_data[0], 0, 11U * sizeof(real_T));
-    for (i2 = 0; i2 < 11; i2++) {
-      b_xNear_data[i2] = xNear_data[xNear_size[0] * i2];
+    for (i3 = 0; i3 < 11; i3++) {
+      b_xNear_data[i3] = xNear_data[xNear_size[0] * i3];
     }
 
-    for (i2 = 0; i2 < 6; i2++) {
-      xInit_data[i2] = b_xNear_data[3 + i2];
+    for (i3 = 0; i3 < 6; i3++) {
+      xInit_data[i3] = b_xNear_data[3 + i3];
     }
 
     /* xInitOrig = xInit; */
-    i2 = r1->size[0] * r1->size[1];
+    i3 = r1->size[0] * r1->size[1];
     r1->size[0] = 1;
     unusedU3 = (numIterations + 1.0) * 6.0;
-    unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &j_emlrtDCI, &st);
-    r1->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(unusedU3, &i_emlrtDCI,
+    unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &l_emlrtDCI, &st);
+    r1->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(unusedU3, &k_emlrtDCI,
       &st);
-    emxEnsureCapacity(&st, (emxArray__common *)r1, i2, (int32_T)sizeof(real_T),
+    emxEnsureCapacity(&st, (emxArray__common *)r1, i3, (int32_T)sizeof(real_T),
                       &d_emlrtRTEI);
     unusedU3 = (numIterations + 1.0) * 6.0;
-    unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &j_emlrtDCI, &st);
-    loop_ub = (int32_T)emlrtIntegerCheckFastR2012b(unusedU3, &i_emlrtDCI, &st);
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      r1->data[i2] = 0.0;
+    unusedU3 = emlrtNonNegativeCheckFastR2012b(unusedU3, &l_emlrtDCI, &st);
+    loop_ub = (int32_T)emlrtIntegerCheckFastR2012b(unusedU3, &k_emlrtDCI, &st);
+    for (i3 = 0; i3 < loop_ub; i3++) {
+      r1->data[i3] = 0.0;
     }
 
     ixstart = (int32_T)((numIterations + 1.0) * 6.0);
-    for (i2 = 0; i2 < 6; i2++) {
-      r1->data[emlrtDynamicBoundsCheckFastR2012b(i2 + 1, 1, ixstart,
-        &fb_emlrtBCI, &st) - 1] = xInit_data[i2];
+    for (i3 = 0; i3 < 6; i3++) {
+      r1->data[emlrtDynamicBoundsCheckFastR2012b(i3 + 1, 1, ixstart,
+        &ib_emlrtBCI, &st) - 1] = xInit_data[i3];
     }
 
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, numIterations, mxDOUBLE_CLASS,
       (int32_T)numIterations, &j_emlrtRTEI, &st);
     ixstart = 0;
     while (ixstart <= (int32_T)numIterations - 1) {
-      for (i2 = 0; i2 < 6; i2++) {
-        b_xInit_data[i2] = xInit_data[i2];
+      for (i3 = 0; i3 < 6; i3++) {
+        b_xInit_data[i3] = xInit_data[i3];
       }
 
-      for (i2 = 0; i2 < 3; i2++) {
-        k1[i2] = b_xInit_data[3 + i2];
+      for (i3 = 0; i3 < 3; i3++) {
+        k1[i3] = b_xInit_data[3 + i3];
       }
 
-      for (i2 = 0; i2 < 3; i2++) {
-        k1[i2 + 3] = u[i2];
-      }
-
-      scale = dt / 2.0;
-      for (i2 = 0; i2 < 6; i2++) {
-        b_xInit_data[i2] = xInit_data[i2] + scale * k1[i2];
-      }
-
-      for (i2 = 0; i2 < 3; i2++) {
-        k2[i2] = b_xInit_data[3 + i2];
-      }
-
-      for (i2 = 0; i2 < 3; i2++) {
-        k2[i2 + 3] = u[i2];
+      for (i3 = 0; i3 < 3; i3++) {
+        k1[i3 + 3] = u[i3];
       }
 
       scale = dt / 2.0;
-      for (i2 = 0; i2 < 6; i2++) {
-        b_xInit_data[i2] = xInit_data[i2] + scale * k2[i2];
+      for (i3 = 0; i3 < 6; i3++) {
+        b_xInit_data[i3] = xInit_data[i3] + scale * k1[i3];
       }
 
-      for (i2 = 0; i2 < 3; i2++) {
-        k3[i2] = b_xInit_data[3 + i2];
+      for (i3 = 0; i3 < 3; i3++) {
+        k2[i3] = b_xInit_data[3 + i3];
       }
 
-      for (i2 = 0; i2 < 3; i2++) {
-        k3[i2 + 3] = u[i2];
+      for (i3 = 0; i3 < 3; i3++) {
+        k2[i3 + 3] = u[i3];
+      }
+
+      scale = dt / 2.0;
+      for (i3 = 0; i3 < 6; i3++) {
+        b_xInit_data[i3] = xInit_data[i3] + scale * k2[i3];
+      }
+
+      for (i3 = 0; i3 < 3; i3++) {
+        k3[i3] = b_xInit_data[3 + i3];
+      }
+
+      for (i3 = 0; i3 < 3; i3++) {
+        k3[i3 + 3] = u[i3];
       }
 
       scale = dt / 2.0;
       absxk = dt / 6.0;
-      for (i2 = 0; i2 < 6; i2++) {
-        b_xInit_data[i2] = xInit_data[i2] + scale * k3[i2];
+      for (i3 = 0; i3 < 6; i3++) {
+        b_xInit_data[i3] = xInit_data[i3] + scale * k3[i3];
       }
 
-      for (i2 = 0; i2 < 3; i2++) {
-        xInit[i2] = b_xInit_data[3 + i2];
+      for (i3 = 0; i3 < 3; i3++) {
+        xInit[i3] = b_xInit_data[3 + i3];
       }
 
-      for (i2 = 0; i2 < 3; i2++) {
-        xInit[i2 + 3] = u[i2];
+      for (i3 = 0; i3 < 3; i3++) {
+        xInit[i3 + 3] = u[i3];
       }
 
       tmp_size[1] = 6;
-      for (i2 = 0; i2 < 6; i2++) {
-        tmp_data[i2] = xInit_data[i2] + absxk * (((k1[i2] + 2.0 * k2[i2]) + 2.0 *
-          k3[i2]) + xInit[i2]);
+      for (i3 = 0; i3 < 6; i3++) {
+        tmp_data[i3] = xInit_data[i3] + absxk * (((k1[i3] + 2.0 * k2[i3]) + 2.0 *
+          k3[i3]) + xInit[i3]);
       }
 
       /* Check pan angular position limits */
@@ -325,30 +325,30 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
         u[2] = 0.0;
       }
 
-      for (i2 = 0; i2 < 6; i2++) {
-        xInit_data[i2] = tmp_data[i2];
+      for (i3 = 0; i3 < 6; i3++) {
+        xInit_data[i3] = tmp_data[i3];
       }
 
       unusedU3 = 6.0 * (1.0 + (real_T)ixstart) + 1.0;
       scale = 6.0 * ((1.0 + (real_T)ixstart) + 1.0);
       if (unusedU3 > scale) {
-        i2 = 0;
+        i3 = 0;
         loop_ub = 0;
       } else {
-        i2 = r1->size[1];
+        i3 = r1->size[1];
         loop_ub = (int32_T)unusedU3;
-        i2 = emlrtDynamicBoundsCheckFastR2012b(loop_ub, 1, i2, &eb_emlrtBCI, &st)
+        i3 = emlrtDynamicBoundsCheckFastR2012b(loop_ub, 1, i3, &hb_emlrtBCI, &st)
           - 1;
         loop_ub = r1->size[1];
         itmp = (int32_T)scale;
         loop_ub = emlrtDynamicBoundsCheckFastR2012b(itmp, 1, loop_ub,
-          &eb_emlrtBCI, &st);
+          &hb_emlrtBCI, &st);
       }
 
-      loop_ub -= i2;
+      loop_ub -= i3;
       emlrtSizeEqCheck1DFastR2012b(loop_ub, 6, &e_emlrtECI, &st);
       for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        r1->data[i2 + loop_ub] = tmp_data[loop_ub];
+        r1->data[i3 + loop_ub] = tmp_data[loop_ub];
       }
 
       ixstart++;
@@ -357,43 +357,43 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
     /* xInit = [zeros(1,3) xInitOrig 0 0]; */
     ixstart = 5 + tmp_size[1];
-    for (i2 = 0; i2 < 3; i2++) {
-      b_tmp_data[i2] = 0.0;
+    for (i3 = 0; i3 < 3; i3++) {
+      b_tmp_data[i3] = 0.0;
     }
 
     loop_ub = tmp_size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      b_tmp_data[i2 + 3] = tmp_data[i2];
+    for (i3 = 0; i3 < loop_ub; i3++) {
+      b_tmp_data[i3 + 3] = tmp_data[i3];
     }
 
     b_tmp_data[3 + tmp_size[1]] = 0.0;
     b_tmp_data[4 + tmp_size[1]] = 0.0;
     tmp_size[0] = 1;
     tmp_size[1] = ixstart;
-    for (i2 = 0; i2 < ixstart; i2++) {
-      tmp_data[i2] = b_tmp_data[i2];
+    for (i3 = 0; i3 < ixstart; i3++) {
+      tmp_data[i3] = b_tmp_data[i3];
     }
 
     if (!b0) {
-      for (i2 = 0; i2 < 2; i2++) {
-        iv4[i2] = 1 + 10 * i2;
+      for (i3 = 0; i3 < 2; i3++) {
+        iv4[i3] = 1 + 10 * i3;
       }
 
       b0 = true;
     }
 
     emlrtSubAssignSizeCheckR2012b(iv4, 2, tmp_size, 2, &c_emlrtECI, sp);
-    for (i2 = 0; i2 < ixstart; i2++) {
-      candStates_data[i + 5 * i2] = tmp_data[i2];
+    for (i3 = 0; i3 < ixstart; i3++) {
+      candStates_data[i + 5 * i3] = tmp_data[i3];
     }
 
     loop_ub = candTransArrays->size[1];
-    i2 = r2->size[0];
+    i3 = r2->size[0];
     r2->size[0] = loop_ub;
-    emxEnsureCapacity(sp, (emxArray__common *)r2, i2, (int32_T)sizeof(int32_T),
+    emxEnsureCapacity(sp, (emxArray__common *)r2, i3, (int32_T)sizeof(int32_T),
                       &d_emlrtRTEI);
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      r2->data[i2] = i2;
+    for (i3 = 0; i3 < loop_ub; i3++) {
+      r2->data[i3] = i3;
     }
 
     iv5[0] = 1;
@@ -401,17 +401,17 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     emlrtSubAssignSizeCheckR2012b(iv5, 2, *(int32_T (*)[2])r1->size, 2,
       &d_emlrtECI, sp);
     loop_ub = r1->size[1];
-    for (i2 = 0; i2 < loop_ub; i2++) {
-      candTransArrays->data[i + candTransArrays->size[0] * r2->data[i2]] =
-        r1->data[r1->size[0] * i2];
+    for (i3 = 0; i3 < loop_ub; i3++) {
+      candTransArrays->data[i + candTransArrays->size[0] * r2->data[i3]] =
+        r1->data[r1->size[0] * i3];
     }
 
     /* U_check = sherpaTTFKAcc(U_joint(i,:)',xNear(7:9)',xNear(4:6)',kinematicConst) */
     /* velCheck = sherpaTTFKVel(candStates(i,7:9)',candStates(i,4:6)',kinematicConst); */
     /* Calculate the distance between the candidate state and the random */
     /* state. */
-    for (i2 = 0; i2 < 11; i2++) {
-      b_xNear_data[i2] = candStates_data[i + 5 * i2];
+    for (i3 = 0; i3 < 11; i3++) {
+      b_xNear_data[i3] = candStates_data[i + 5 * i3];
     }
 
     b_xRand_data.data = (real_T *)xRand_data;
@@ -481,12 +481,12 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* Calculate a distance metric that includes the heurisitc distance */
     /* as well as any penalty due to ankle movements. */
     if (muDoubleScalarAbs(scale - 3.1415926535897931) > 0.39269908169872414) {
-      i3 = 1;
+      i4 = 1;
     } else {
-      i3 = 0;
+      i4 = 0;
     }
 
-    distance_data[i] = (1.0 - aGain) * hDiff + aGain * (real_T)i3;
+    distance_data[i] = (1.0 - aGain) * hDiff + aGain * (real_T)i4;
 
     /* distance(i) = hDiff; */
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
@@ -526,19 +526,19 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
   xNew_size[0] = 1;
   xNew_size[1] = 11;
-  for (i2 = 0; i2 < 11; i2++) {
-    xNew_data[xNew_size[0] * i2] = candStates_data[itmp + 5 * i2];
+  for (i3 = 0; i3 < 11; i3++) {
+    xNew_data[xNew_size[0] * i3] = candStates_data[itmp + 5 * i3];
   }
 
   loop_ub = candTransArrays->size[1];
-  i2 = transitionArray->size[0] * transitionArray->size[1];
+  i3 = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
   transitionArray->size[1] = loop_ub;
-  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i2, (int32_T)sizeof
+  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i3, (int32_T)sizeof
                     (real_T), &d_emlrtRTEI);
-  for (i2 = 0; i2 < loop_ub; i2++) {
-    transitionArray->data[transitionArray->size[0] * i2] = candTransArrays->
-      data[itmp + candTransArrays->size[0] * i2];
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    transitionArray->data[transitionArray->size[0] * i3] = candTransArrays->
+      data[itmp + candTransArrays->size[0] * i3];
   }
 
   emxFree_real_T(&candTransArrays);

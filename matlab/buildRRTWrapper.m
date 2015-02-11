@@ -67,7 +67,9 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         nGoal = [0 0 0 nGoalJoint 0 0];
         [T,pathJ] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kinematicConst,ankleThreshold,exhaustive,threshold,goalSeedFreq);
         %Transform path back to the Cartesian space.
-        pathC = [0 nInitCartesianB; transformPath(pathJ,NODE_SIZE,kinematicConst,dt,Dt,TP2B)];
+        [pathC,pathJ] = transformPath(pathJ,NODE_SIZE,kinematicConst,dt,Dt,TP2B);
+        pathC = [0 nInitCartesianB; pathC];
+        pathJ = [0 alphaInit betaInit gammaInit qDotInit'; pathJ];
     else
         success = false;
         pathC = [];
@@ -93,7 +95,7 @@ function valid = validState(n,jointLimits)
     end
 end
 
-function path = transformPath(pathOld,NODE_SIZE,kinematicConst,dt,Dt,TP2B)
+function [pathC,pathJ] = transformPath(pathOld,NODE_SIZE,kinematicConst,dt,Dt,TP2B)
     %Take the pathOld array and combine the general nodes and intermediate
     %states into a uniform path. The output path should be a npx6 array
     %that contains the n general nodes and the p intermediate nodes between
@@ -101,21 +103,24 @@ function path = transformPath(pathOld,NODE_SIZE,kinematicConst,dt,Dt,TP2B)
     %[t,x,y,z,xDot,yDot,zDot] state data.
     
     [pathH,pathW] = size(pathOld);
-    path = zeros(round(Dt/dt)*pathH,7);
+    pathC = zeros(round(Dt/dt)*pathH,7);
+    pathJ = zeros(round(Dt/dt)*pathH,7);
     count = 1;
     time = round(Dt/dt)*pathH*dt;
     for i = 1:pathH
-        for j = pathW:-6:NODE_SIZE+7            
+        for j = pathW:-6:NODE_SIZE+7
             [xP,yP,zP] = sherpaTTFK(pathOld(i,j-5),pathOld(i,j-4),pathOld(i,j-3),kinematicConst);
             uB = TP2B(1:3,1:3)*[xP;yP;zP] + TP2B(1:3,4);
             uDot = sherpaTTFKVel([pathOld(i,j-2) pathOld(i,j-1) pathOld(i,j)]',[pathOld(i,j-5) pathOld(i,j-4) pathOld(i,j-3)]',kinematicConst);
             uBDot = TP2B(1:3,1:3)*uDot;
-            path(count,:) = [time uB' uBDot'];
+            pathC(count,:) = [time uB' uBDot'];
+            pathJ(count,:) = [time pathOld(i,j-5:j)];
             time = time - dt;
             count = count + 1;
         end
     end
     
-    path = flipud(path(:,1:end));
+    pathC = flipud(pathC(:,1:end));
+    pathJ = flipud(pathJ(:,1:end));
     
 end

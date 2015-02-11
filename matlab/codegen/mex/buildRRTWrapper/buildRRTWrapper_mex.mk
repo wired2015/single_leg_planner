@@ -25,6 +25,7 @@ SRC_FILES =  \
 	nearestNeighbour.c \
 	heuristicSingleLeg.c \
 	selectInput.c \
+	flipud.c \
 	_coder_buildRRTWrapper_api.c \
 	buildRRTWrapper_emxutil.c \
 	_coder_buildRRTWrapper_mex.c \

@@ -71,27 +71,27 @@ emlrtRTEInfo g_emlrtRTEI = { 5, 33, "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-emlrtBCInfo x_emlrtBCI = { -1, -1, 32, 17, "xB", "heuristicSingleLeg",
+emlrtBCInfo bb_emlrtBCI = { -1, -1, 32, 17, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-emlrtBCInfo y_emlrtBCI = { -1, -1, 31, 16, "xB", "heuristicSingleLeg",
+emlrtBCInfo cb_emlrtBCI = { -1, -1, 31, 16, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-emlrtBCInfo ab_emlrtBCI = { -1, -1, 30, 17, "xB", "heuristicSingleLeg",
+emlrtBCInfo db_emlrtBCI = { -1, -1, 30, 17, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-emlrtBCInfo bb_emlrtBCI = { -1, -1, 24, 14, "xB", "heuristicSingleLeg",
+emlrtBCInfo eb_emlrtBCI = { -1, -1, 24, 14, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-emlrtBCInfo cb_emlrtBCI = { -1, -1, 23, 13, "xB", "heuristicSingleLeg",
+emlrtBCInfo fb_emlrtBCI = { -1, -1, 23, 13, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-emlrtBCInfo db_emlrtBCI = { -1, -1, 22, 14, "xB", "heuristicSingleLeg",
+emlrtBCInfo gb_emlrtBCI = { -1, -1, 22, 14, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
@@ -99,27 +99,27 @@ emlrtRTEInfo k_emlrtRTEI = { 25, 5, "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-emlrtBCInfo gb_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
+emlrtBCInfo jb_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-emlrtBCInfo hb_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
+emlrtBCInfo kb_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-emlrtBCInfo ib_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
+emlrtBCInfo lb_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-emlrtBCInfo jb_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
+emlrtBCInfo mb_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-emlrtBCInfo kb_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
+emlrtBCInfo nb_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-emlrtBCInfo lb_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
+emlrtBCInfo ob_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 

@@ -20,7 +20,8 @@
 
 /* Variable Definitions */
 static emlrtRSInfo e_emlrtRSI = { 13, "sherpaTTIK",
-  "/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/sherpaTTIK.m" };
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
+};
 
 /* Function Definitions */
 void sherpaTTIK(const emlrtStack *sp, real_T xC, real_T yC, real_T zC, const

@@ -68,7 +68,7 @@
 <a name="57"><font color="#888888 "><i>   57   </i></font></a><b>}</b>;
 <a name="58"><font color="#888888 "><i>   58   </i></font></a>
 <a name="59"><font color="#888888 "><i>   59   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_r_emlrtRSI">r_emlrtRSI</a> = <b>{</b> 7, <font color="#1122ff">&quot;getConstrainedBeta&quot;</font>,
-<a name="60"><font color="#888888 "><i>   60   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/getConstrainedBeta.m&quot;</font>
+<a name="60"><font color="#888888 "><i>   60   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m&quot;</font>
 <a name="61"><font color="#888888 "><i>   61   </i></font></a><b>}</b>;
 <a name="62"><font color="#888888 "><i>   62   </i></font></a>
 <a name="63"><font color="#888888 "><i>   63   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_s_emlrtRSI">s_emlrtRSI</a> = <b>{</b> 15, <font color="#1122ff">&quot;asin&quot;</font>,
@@ -82,7 +82,7 @@
 <a name="71"><font color="#888888 "><i>   71   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m&quot;</font>
 <a name="72"><font color="#888888 "><i>   72   </i></font></a><b>}</b>;
 <a name="73"><font color="#888888 "><i>   73   </i></font></a>
-<a name="74"><font color="#888888 "><i>   74   </i></font></a><font color="#112266"><b>static</b></font> emlrtBCInfo <a name="var_mb_emlrtBCI">mb_emlrtBCI</a> = <b>{</b> -1, -1, 68, 7, <font color="#1122ff">&quot;T&quot;</font>, <font color="#1122ff">&quot;buildRRT&quot;</font>,
+<a name="74"><font color="#888888 "><i>   74   </i></font></a><font color="#112266"><b>static</b></font> emlrtBCInfo <a name="var_pb_emlrtBCI">pb_emlrtBCI</a> = <b>{</b> -1, -1, 68, 7, <font color="#1122ff">&quot;T&quot;</font>, <font color="#1122ff">&quot;buildRRT&quot;</font>,
 <a name="75"><font color="#888888 "><i>   75   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m&quot;</font>,
 <a name="76"><font color="#888888 "><i>   76   </i></font></a>  0 <b>}</b>;
 <a name="77"><font color="#888888 "><i>   77   </i></font></a>
@@ -402,7 +402,7 @@
 <a name="391"><font color="#888888 "><i>  391   </i></font></a>  <a href="buildRRTWrapper_emxutil_c.html#fcn_emxInit_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxInit_real_T');" target="_self"><font color="#1122aa">emxInit_real_T</font></a>(&amp;st, &amp;b_T, 2, &amp;<a href="#var_c_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_c_emlrtRTEI');" target="_self"><font color="#1122aa">c_emlrtRTEI</font></a>, true);
 <a name="392"><font color="#888888 "><i>  392   </i></font></a>  <font color="#112266"><b>while</b></font> (xi - 1 &lt;= (int32_T)*nodeIDCount - 1) <b>{</b>
 <a name="393"><font color="#888888 "><i>  393   </i></font></a>    n = T-&gt;size[1];
-<a name="394"><font color="#888888 "><i>  394   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(xi, 1, 1000, &amp;<a href="buildRRTWrapper_data_c.html#var_gb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_gb_emlrtBCI');" target="_self"><font color="#1122aa">gb_emlrtBCI</font></a>, &amp;st);
+<a name="394"><font color="#888888 "><i>  394   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(xi, 1, 1000, &amp;<a href="buildRRTWrapper_data_c.html#var_jb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_jb_emlrtBCI');" target="_self"><font color="#1122aa">jb_emlrtBCI</font></a>, &amp;st);
 <a name="395"><font color="#888888 "><i>  395   </i></font></a>    ix = b_T-&gt;size[0] * b_T-&gt;size[1];
 <a name="396"><font color="#888888 "><i>  396   </i></font></a>    b_T-&gt;size[0] = 1;
 <a name="397"><font color="#888888 "><i>  397   </i></font></a>    b_T-&gt;size[1] = n;
@@ -414,7 +414,7 @@
 <a name="403"><font color="#888888 "><i>  403   </i></font></a>
 <a name="404"><font color="#888888 "><i>  404   </i></font></a>    ix = d-&gt;size[1];
 <a name="405"><font color="#888888 "><i>  405   </i></font></a>    b_st.site = &amp;<a href="buildRRTWrapper_data_c.html#var_u_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_u_emlrtRSI');" target="_self"><font color="#1122aa">u_emlrtRSI</font></a>;
-<a name="406"><font color="#888888 "><i>  406   </i></font></a>    d-&gt;data[emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_lb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_lb_emlrtBCI');" target="_self"><font color="#1122aa">lb_emlrtBCI</font></a>, &amp;st) - 1]
+<a name="406"><font color="#888888 "><i>  406   </i></font></a>    d-&gt;data[emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_ob_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ob_emlrtBCI');" target="_self"><font color="#1122aa">ob_emlrtBCI</font></a>, &amp;st) - 1]
 <a name="407"><font color="#888888 "><i>  407   </i></font></a>      = <a href="heuristicSingleLeg_c.html#fcn_heuristicSingleLeg" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_heuristicSingleLeg');" target="_self"><font color="#1122aa">heuristicSingleLeg</font></a>(&amp;b_st, xRand_data, b_T, jointLimits, kinematicConst);
 <a name="408"><font color="#888888 "><i>  408   </i></font></a>    xi++;
 <a name="409"><font color="#888888 "><i>  409   </i></font></a>    emlrtBreakCheckFastR2012b(<a href="buildRRTWrapper_data_c.html#var_emlrtBreakCheckR2012bFlagVar" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtBreakCheckR2012bFlagVar');" target="_self"><font color="#1122aa">emlrtBreakCheckR2012bFlagVar</font></a>, &amp;st);
@@ -423,7 +423,7 @@
 <a name="412"><font color="#888888 "><i>  412   </i></font></a>  <a href="buildRRTWrapper_emxutil_c.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;b_T);
 <a name="413"><font color="#888888 "><i>  413   </i></font></a>  ix = d-&gt;size[1];
 <a name="414"><font color="#888888 "><i>  414   </i></font></a>  xi = (int32_T)*nodeIDCount;
-<a name="415"><font color="#888888 "><i>  415   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_hb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_hb_emlrtBCI');" target="_self"><font color="#1122aa">hb_emlrtBCI</font></a>, &amp;st);
+<a name="415"><font color="#888888 "><i>  415   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_kb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_kb_emlrtBCI');" target="_self"><font color="#1122aa">kb_emlrtBCI</font></a>, &amp;st);
 <a name="416"><font color="#888888 "><i>  416   </i></font></a>  b_st.site = &amp;<a href="buildRRTWrapper_data_c.html#var_t_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_t_emlrtRSI');" target="_self"><font color="#1122aa">t_emlrtRSI</font></a>;
 <a name="417"><font color="#888888 "><i>  417   </i></font></a>  c_st.site = &amp;<a href="buildRRTWrapper_data_c.html#var_y_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_y_emlrtRSI');" target="_self"><font color="#1122aa">y_emlrtRSI</font></a>;
 <a name="418"><font color="#888888 "><i>  418   </i></font></a>  d_st.site = &amp;<a href="buildRRTWrapper_data_c.html#var_ab_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ab_emlrtRSI');" target="_self"><font color="#1122aa">ab_emlrtRSI</font></a>;
@@ -507,10 +507,10 @@
 <a name="496"><font color="#888888 "><i>  496   </i></font></a>
 <a name="497"><font color="#888888 "><i>  497   </i></font></a>  <font color="#117755"><i>/* [d,minIndex] = min(d(1:nodeIDCount)); */</i></font>
 <a name="498"><font color="#888888 "><i>  498   </i></font></a>  ix = T-&gt;size[1];
-<a name="499"><font color="#888888 "><i>  499   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(1, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_jb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_jb_emlrtBCI');" target="_self"><font color="#1122aa">jb_emlrtBCI</font></a>, &amp;st);
+<a name="499"><font color="#888888 "><i>  499   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(1, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_mb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_mb_emlrtBCI');" target="_self"><font color="#1122aa">mb_emlrtBCI</font></a>, &amp;st);
 <a name="500"><font color="#888888 "><i>  500   </i></font></a>  ix = T-&gt;size[1];
-<a name="501"><font color="#888888 "><i>  501   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(11, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_jb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_jb_emlrtBCI');" target="_self"><font color="#1122aa">jb_emlrtBCI</font></a>, &amp;st);
-<a name="502"><font color="#888888 "><i>  502   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &amp;<a href="buildRRTWrapper_data_c.html#var_ib_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ib_emlrtBCI');" target="_self"><font color="#1122aa">ib_emlrtBCI</font></a>, &amp;st);
+<a name="501"><font color="#888888 "><i>  501   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(11, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_mb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_mb_emlrtBCI');" target="_self"><font color="#1122aa">mb_emlrtBCI</font></a>, &amp;st);
+<a name="502"><font color="#888888 "><i>  502   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &amp;<a href="buildRRTWrapper_data_c.html#var_lb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_lb_emlrtBCI');" target="_self"><font color="#1122aa">lb_emlrtBCI</font></a>, &amp;st);
 <a name="503"><font color="#888888 "><i>  503   </i></font></a>  xNear_size[0] = 1;
 <a name="504"><font color="#888888 "><i>  504   </i></font></a>  xNear_size[1] = 11;
 <a name="505"><font color="#888888 "><i>  505   </i></font></a>  <font color="#112266"><b>for</b></font> (ix = 0; ix &lt; 11; ix++) <b>{</b>
@@ -520,10 +520,10 @@
 <a name="509"><font color="#888888 "><i>  509   </i></font></a>  <font color="#112266"><b>if</b></font> (12 &gt; T-&gt;size[1]) <b>{</b>
 <a name="510"><font color="#888888 "><i>  510   </i></font></a>  <b>}</b> <font color="#112266"><b>else</b></font> <b>{</b>
 <a name="511"><font color="#888888 "><i>  511   </i></font></a>    ix = T-&gt;size[1];
-<a name="512"><font color="#888888 "><i>  512   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(12, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_kb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_kb_emlrtBCI');" target="_self"><font color="#1122aa">kb_emlrtBCI</font></a>, &amp;st);
+<a name="512"><font color="#888888 "><i>  512   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(12, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_nb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_nb_emlrtBCI');" target="_self"><font color="#1122aa">nb_emlrtBCI</font></a>, &amp;st);
 <a name="513"><font color="#888888 "><i>  513   </i></font></a>    ix = T-&gt;size[1];
 <a name="514"><font color="#888888 "><i>  514   </i></font></a>    xi = T-&gt;size[1];
-<a name="515"><font color="#888888 "><i>  515   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_kb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_kb_emlrtBCI');" target="_self"><font color="#1122aa">kb_emlrtBCI</font></a>, &amp;st);
+<a name="515"><font color="#888888 "><i>  515   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(xi, 1, ix, &amp;<a href="buildRRTWrapper_data_c.html#var_nb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_nb_emlrtBCI');" target="_self"><font color="#1122aa">nb_emlrtBCI</font></a>, &amp;st);
 <a name="516"><font color="#888888 "><i>  516   </i></font></a>  <b>}</b>
 <a name="517"><font color="#888888 "><i>  517   </i></font></a>
 <a name="518"><font color="#888888 "><i>  518   </i></font></a>  <a href="buildRRTWrapper_emxutil_c.html#fcn_emxInit_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxInit_int32_T');" target="_self"><font color="#1122aa">emxInit_int32_T</font></a>(&amp;st, &amp;r3, 1, &amp;<a href="#var_c_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_c_emlrtRTEI');" target="_self"><font color="#1122aa">c_emlrtRTEI</font></a>, true);
@@ -548,7 +548,7 @@
 <a name="537"><font color="#888888 "><i>  537   </i></font></a>
 <a name="538"><font color="#888888 "><i>  538   </i></font></a>  <font color="#117755"><i>/* Cost */</i></font>
 <a name="539"><font color="#888888 "><i>  539   </i></font></a>  ix = (int32_T)*nodeIDCount;
-<a name="540"><font color="#888888 "><i>  540   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1000, &amp;<a href="#var_mb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_mb_emlrtBCI');" target="_self"><font color="#1122aa">mb_emlrtBCI</font></a>, sp);
+<a name="540"><font color="#888888 "><i>  540   </i></font></a>  emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1000, &amp;<a href="#var_pb_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_pb_emlrtBCI');" target="_self"><font color="#1122aa">pb_emlrtBCI</font></a>, sp);
 <a name="541"><font color="#888888 "><i>  541   </i></font></a>  n = T-&gt;size[1];
 <a name="542"><font color="#888888 "><i>  542   </i></font></a>  ix = r3-&gt;size[0];
 <a name="543"><font color="#888888 "><i>  543   </i></font></a>  r3-&gt;size[0] = n;

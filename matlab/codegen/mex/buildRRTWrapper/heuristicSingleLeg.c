@@ -19,7 +19,7 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   kinematicConst[16])
 {
   real_T d;
-  int32_T i1;
+  int32_T i2;
   real_T xStarMin;
   real_T dxStarMax;
   real_T dAlphaMax;
@@ -37,18 +37,18 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   /* author: wreid */
   /* date: 20150107 */
   /* heuristic Calculates the distance between states x1 and x2. */
-  i1 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(4, 1, i1, &db_emlrtBCI, sp);
-  i1 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(5, 1, i1, &cb_emlrtBCI, sp);
-  i1 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(6, 1, i1, &bb_emlrtBCI, sp);
-  i1 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(7, 1, i1, &ab_emlrtBCI, sp);
-  i1 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(8, 1, i1, &y_emlrtBCI, sp);
-  i1 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(9, 1, i1, &x_emlrtBCI, sp);
+  i2 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(4, 1, i2, &gb_emlrtBCI, sp);
+  i2 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(5, 1, i2, &fb_emlrtBCI, sp);
+  i2 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(6, 1, i2, &eb_emlrtBCI, sp);
+  i2 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(7, 1, i2, &db_emlrtBCI, sp);
+  i2 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(8, 1, i2, &cb_emlrtBCI, sp);
+  i2 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(9, 1, i2, &bb_emlrtBCI, sp);
 
   /* Calculate the distance between angular positions. */
   xStarMin = (((kinematicConst[1] + kinematicConst[2] * muDoubleScalarCos

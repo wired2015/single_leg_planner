@@ -245,9 +245,9 @@ static real_T (*n_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[6];
   int32_T iv10[2];
-  int32_T i6;
-  for (i6 = 0; i6 < 2; i6++) {
-    iv10[i6] = 1 + 5 * i6;
+  int32_T i7;
+  for (i7 = 0; i7 < 2; i7++) {
+    iv10[i7] = 1 + 5 * i7;
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv10);
@@ -260,9 +260,9 @@ static real_T (*n_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[12];
   int32_T iv11[2];
-  int32_T i7;
-  for (i7 = 0; i7 < 2; i7++) {
-    iv11[i7] = 2 + (i7 << 2);
+  int32_T i8;
+  for (i8 = 0; i8 < 2; i8++) {
+    iv11[i8] = 2 + (i8 << 2);
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv11);
@@ -276,9 +276,9 @@ static real_T (*p_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[10];
   int32_T iv12[2];
-  int32_T i8;
-  for (i8 = 0; i8 < 2; i8++) {
-    iv12[i8] = 5 + -3 * i8;
+  int32_T i9;
+  for (i9 = 0; i9 < 2; i9++) {
+    iv12[i9] = 5 + -3 * i9;
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv12);
@@ -291,9 +291,9 @@ static real_T (*p_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[16];
   int32_T iv13[2];
-  int32_T i9;
-  for (i9 = 0; i9 < 2; i9++) {
-    iv13[i9] = 1 + 15 * i9;
+  int32_T i10;
+  for (i10 = 0; i10 < 2; i10++) {
+    iv13[i10] = 1 + 15 * i10;
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv13);
