@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Code Generation Report</title>
+<link rel="stylesheet" type="text/css" href="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/eml_report.css" />
+<link rel="stylesheet" type="text/css" href="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/jQuery/ui.resizable.css" />
+<link rel="stylesheet" type="text/css" href="file:////Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/html/index.css" />
+
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/jQuery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/jQuery/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/jQuery/jquery.tablesorter.mod.js"></script>
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/jQuery/jquery.hotkeys-0.7.8.js"></script>
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/eml_report_interactions.js"></script>
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/coder/coder/resources/eml_report_layout.js"></script>
+<script type="text/javascript" src="file:////Applications/MATLAB_R2014b.app/toolbox/rtw/rtw/+coder/+report/resources/rtwshrink.js"></script>
+<script type="text/javascript">
+var localizedMessages = {
+    callSelectPrompt: "Select a function call:",
+    callSelectSource: "Calls from this function",
+    callSelectTarget: "Calls to this function",
+    infoForExpression: "Information for the selected expression:",
+    infoForVarType: "Information for the selected variable:",
+    infoForVarConst: "Information for the selected compile-time constant:",
+    infoForVarNone: "This variable does not have information associated with it.",
+    infoForFilter: "Matched {0}/{1} functions, {2}/{3} methods",
+    autoExtrinsicCall: "Only supported within the MATLAB environment."
+};
+var keyBindings = {
+        selectMCodeTab: "Ctrl+m",
+    selectCallStackTab: "Ctrl+k",
+        selectCCodeTab: "Ctrl+c",
+       selectReportTab: "Ctrl+r",
+     selectCenterPanel: "Ctrl+w",
+      selectSummaryTab: "Ctrl+s",
+     selectMessagesTab: "Ctrl+a",
+    selectWatchListTab: "Ctrl+v",
+     selectBuildLogTab: "Ctrl+t"
+};
+var functionInfoTable = {
+ MATLABcode1: "buildRRT1_mcode.html",
+ fpath1: "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m",
+ lines1: [1, 5, 57],
+ watch1: "buildRRT1_watch.html",
+ title1: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m')\">buildRRT</a></span>",
+ tcall1: [  ],
+ scall1: [ [ "From line 27 to buildRRT > rrtLoop", "135#srcline57" ], [ "From line 35 to buildRRT > rrtLoop", "135#srcline57" ], [ "From line 36 to nearestNeighbour > 2", "137#srcline5" ], [ "From line 44 to nearestNeighbour > 2", "137#srcline5" ] ],
+ MATLABcode61: "randomState61_mcode.html",
+ fpath61: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/randomState.m",
+ lines61: [1, 5, 45],
+ watch61: "randomState61_watch.html",
+ title61: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/randomState.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/randomState.m')\">randomState</a></span>",
+ tcall61: [ [ "From buildRRT > rrtLoop line 59", "135#F61N10:B254" ] ],
+ scall61: [  ],
+ MATLABcode62: "legRadius62_mcode.html",
+ fpath62: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m",
+ lines62: [47, 48, 51],
+ watch62: "legRadius62_watch.html",
+ title62: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m')\">heuristicSingleLeg &gt; legRadius</a></span>",
+ tcall62: [ [ "From heuristicSingleLeg > 1 line 38", "77#F62N8:B105" ], [ "From heuristicSingleLeg > 1 line 39", "77#F62N8:B118" ], [ "From heuristicSingleLeg > 2 line 38", "136#F62N8:B105" ], [ "From heuristicSingleLeg > 2 line 39", "136#F62N8:B118" ] ],
+ scall62: [  ],
+ MATLABcode67: "angDiff67_mcode.html",
+ fpath67: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/angDiff.m",
+ lines67: [1, 1, 14],
+ watch67: "angDiff67_watch.html",
+ title67: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/angDiff.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/angDiff.m')\">angDiff</a></span>",
+ tcall67: [ [ "From heuristicSingleLeg > 1 line 42", "77#F67N2:B137" ], [ "From selectInput line 62", "134#F67N2:B281" ], [ "From heuristicSingleLeg > 2 line 42", "136#F67N2:B137" ] ],
+ scall67: [  ],
+ MATLABcode77: "heuristicSingleLeg77_mcode.html",
+ fpath77: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m",
+ lines77: [1, 5, 48],
+ watch77: "heuristicSingleLeg77_watch.html",
+ title77: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m')\">heuristicSingleLeg &gt; 1</a></span>",
+ tcall77: [ [ "From nearestNeighbour > 1 line 26", "103#F77N7:B34" ], [ "From selectInput line 47", "134#F77N7:B225" ], [ "From buildRRT > rrtLoop line 66", "135#F77N7:B325" ] ],
+ scall77: [ [ "From line 38 to heuristicSingleLeg > legRadius", "62#srcline48" ], [ "From line 39 to heuristicSingleLeg > legRadius", "62#srcline48" ], [ "From line 42 to angDiff", "67#srcline1" ] ],
+ MATLABcode103: "nearestNeighbour103_mcode.html",
+ fpath103: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m",
+ lines103: [1, 5, 35],
+ watch103: "nearestNeighbour103_watch.html",
+ title103: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m')\">nearestNeighbour &gt; 1</a></span>",
+ tcall103: [ [ "From buildRRT > rrtLoop line 60", "135#F103N9:B272" ] ],
+ scall103: [ [ "From line 26 to heuristicSingleLeg > 1", "77#srcline5" ] ],
+ MATLABcode107: "f107_mcode.html",
+ fpath107: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m",
+ lines107: [63, 64, 69],
+ watch107: "f107_watch.html",
+ title107: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m')\">rk4 &gt; f &gt; 1</a></span>",
+ tcall107: [ [ "From rk4 line 18", "112#F107N12:B70" ] ],
+ scall107: [  ],
+ MATLABcode111: "f111_mcode.html",
+ fpath111: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m",
+ lines111: [63, 64, 69],
+ watch111: "f111_watch.html",
+ title111: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m')\">rk4 &gt; f &gt; 2</a></span>",
+ tcall111: [ [ "From rk4 line 19", "112#F111N12:B77" ], [ "From rk4 line 20", "112#F111N12:B90" ], [ "From rk4 line 21", "112#F111N12:B103" ] ],
+ scall111: [  ],
+ MATLABcode112: "rk4112_mcode.html",
+ fpath112: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m",
+ lines112: [1, 5, 64],
+ watch112: "rk4112_watch.html",
+ title112: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m')\">rk4</a></span>",
+ tcall112: [ [ "From selectInput line 41", "134#F112N11:B192" ] ],
+ scall112: [ [ "From line 18 to rk4 > f > 1", "107#srcline64" ], [ "From line 19 to rk4 > f > 2", "111#srcline64" ], [ "From line 20 to rk4 > f > 2", "111#srcline64" ], [ "From line 21 to rk4 > f > 2", "111#srcline64" ] ],
+ MATLABcode113: "sherpaTTFKVel113_mcode.html",
+ fpath113: "/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/sherpaTTFKVel.m",
+ lines113: [1, 5, 39],
+ watch113: "sherpaTTFKVel113_watch.html",
+ title113: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/sherpaTTFKVel.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/sherpaTTFKVel.m')\">sherpaTTFKVel</a></span>",
+ tcall113: [ [ "From selectInput line 43", "134#F113N14:B205" ] ],
+ scall113: [  ],
+ MATLABcode133: "calcPhi133_mcode.html",
+ fpath133: "/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/calcPhi.m",
+ lines133: [1, 4, 39],
+ watch133: "calcPhi133_watch.html",
+ title133: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/calcPhi.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/calcPhi.m')\">calcPhi</a></span>",
+ tcall133: [ [ "From selectInput line 61", "134#F133N5:B263" ] ],
+ scall133: [  ],
+ MATLABcode134: "selectInput134_mcode.html",
+ fpath134: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/selectInput.m",
+ lines134: [1, 1, 87],
+ watch134: "selectInput134_watch.html",
+ title134: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/selectInput.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/selectInput.m')\">selectInput</a></span>",
+ tcall134: [ [ "From buildRRT > rrtLoop line 61", "135#F134N13:B286" ] ],
+ scall134: [ [ "From line 41 to rk4", "112#srcline5" ], [ "From line 43 to sherpaTTFKVel", "113#srcline5" ], [ "From line 47 to heuristicSingleLeg > 1", "77#srcline5" ], [ "From line 61 to calcPhi", "133#srcline4" ], [ "From line 62 to angDiff", "67#srcline1" ] ],
+ MATLABcode135: "rrtLoop135_mcode.html",
+ fpath135: "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m",
+ lines135: [56, 57, 74],
+ watch135: "rrtLoop135_watch.html",
+ title135: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m')\">buildRRT &gt; rrtLoop</a></span>",
+ tcall135: [ [ "From buildRRT line 27", "1#F135N4:B90" ], [ "From buildRRT line 35", "1#F135N4:B125" ] ],
+ scall135: [ [ "From line 59 to randomState", "61#srcline5" ], [ "From line 60 to nearestNeighbour > 1", "103#srcline5" ], [ "From line 61 to selectInput", "134#srcline1" ], [ "From line 66 to heuristicSingleLeg > 1", "77#srcline5" ] ],
+ MATLABcode136: "heuristicSingleLeg136_mcode.html",
+ fpath136: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m",
+ lines136: [1, 5, 48],
+ watch136: "heuristicSingleLeg136_watch.html",
+ title136: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m')\">heuristicSingleLeg &gt; 2</a></span>",
+ tcall136: [ [ "From nearestNeighbour > 2 line 26", "137#F136N7:B34" ] ],
+ scall136: [ [ "From line 38 to heuristicSingleLeg > legRadius", "62#srcline48" ], [ "From line 39 to heuristicSingleLeg > legRadius", "62#srcline48" ], [ "From line 42 to angDiff", "67#srcline1" ] ],
+ MATLABcode137: "nearestNeighbour137_mcode.html",
+ fpath137: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m",
+ lines137: [1, 5, 35],
+ watch137: "nearestNeighbour137_watch.html",
+ title137: "Function: <span class='functionname'><a title='/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m' class='functionlink' href=\"matlab: open('/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m')\">nearestNeighbour &gt; 2</a></span>",
+ tcall137: [ [ "From buildRRT line 36", "1#F137N9:B148" ], [ "From buildRRT line 44", "1#F137N9:B171" ] ],
+ scall137: [ [ "From line 26 to heuristicSingleLeg > 2", "136#srcline5" ] ],
+ rootFcnID: "1",
+ firstPage: "1",
+ htmlRoot: "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/html/"
+};
+var scriptInfoTable = {
+ fpath1: "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/buildRRT.m",
+ fpath2: "/Applications/MATLAB_R2014b.app/toolbox/shared/coder/coder/+coder/+internal/assert.m",
+ fpath3: "/Applications/MATLAB_R2014b.app/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m",
+ fpath4: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_scalexp_compatible.m",
+ fpath5: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/div.p",
+ fpath6: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_div.m",
+ fpath7: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/rdivide.m",
+ fpath8: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/mrdivide.p",
+ fpath9: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_round.m",
+ fpath10: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/round.m",
+ fpath11: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/fixedpoint/isnumerictype.m",
+ fpath12: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/fixedpoint/isfi.m",
+ fpath13: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_switch_helper.m",
+ fpath14: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/intmax.m",
+ fpath15: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/intmin.m",
+ fpath16: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m",
+ fpath17: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/randfun/eml_is_rand_extrinsic.m",
+ fpath18: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/randfun/rand.m",
+ fpath19: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_sin.m",
+ fpath20: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/sin.m",
+ fpath21: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_error.m",
+ fpath22: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m",
+ fpath23: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/asin.m",
+ fpath24: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_cos.m",
+ fpath25: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/cos.m",
+ fpath26: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/scalarEg.p",
+ fpath27: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m",
+ fpath28: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p",
+ fpath29: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m",
+ fpath30: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/mod.m",
+ fpath31: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_floor.m",
+ fpath32: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m",
+ fpath33: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_is_float_class.m",
+ fpath34: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_float_model.m",
+ fpath35: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_eps.m",
+ fpath36: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/eps.m",
+ fpath37: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/randomState.m",
+ fpath38: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/heuristicSingleLeg.m",
+ fpath39: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/abs.m",
+ fpath40: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/angDiff.m",
+ fpath41: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/ismatrix.m",
+ fpath42: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/floor.m",
+ fpath43: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/power.m",
+ fpath44: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/mpower.m",
+ fpath45: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m",
+ fpath46: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/sqrt.m",
+ fpath47: "/Applications/MATLAB_R2014b.app/toolbox/shared/coder/coder/+coder/+internal/constNonSingletonDim.m",
+ fpath48: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_const_nonsingleton_dim.m",
+ fpath49: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_index_class.m",
+ fpath50: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/isnan.m",
+ fpath51: "/Applications/MATLAB_R2014b.app/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m",
+ fpath52: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_index_plus.m",
+ fpath53: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_relop.m",
+ fpath54: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m",
+ fpath55: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/datafun/min.m",
+ fpath56: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/nearestNeighbour.m",
+ fpath57: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/length.m",
+ fpath58: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/rk4.m",
+ fpath59: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m",
+ fpath60: "/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/sherpaTTFKVel.m",
+ fpath61: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/+blas/inline.p",
+ fpath62: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/+blas/use_refblas.p",
+ fpath63: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/+blas/threshold.p",
+ fpath64: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p",
+ fpath65: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_realmin.m",
+ fpath66: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elmat/realmin.m",
+ fpath67: "/Applications/MATLAB_R2014b.app/toolbox/shared/coder/coder/+coder/+internal/indexMinus.m",
+ fpath68: "/Applications/MATLAB_R2014b.app/toolbox/shared/coder/coder/+coder/+internal/indexTimes.m",
+ fpath69: "/Applications/MATLAB_R2014b.app/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p",
+ fpath70: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m",
+ fpath71: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/matfun/norm.m",
+ fpath72: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/eml_scalar_atan.m",
+ fpath73: "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/atan.m",
+ fpath74: "/Users/fuji/Dropbox/phd/matlab/kinematics/sherpaTTKinematics/calcPhi.m",
+ fpath75: "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4/selectInput.m"
+};
+</script>
+</head>
+<body>
+
+<div class="west">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="MATLABcode"><span>MATLAB code</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="callstack"><span>Call stack</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="ccode"><span>C code</span></span></li>
+</ul>
+<div id="MATLABcodebody" class="ui-tabs-panel">
+<!-- Begin Filter -->
+<div class="grayline methodset" onclick="filterClick(event);">
+<a class="collapsed">Filter</a>
+</div>
+<div id="filterbody" class="hidden">
+<table class="myfunc-filter-tbl">
+<tr>
+<td title="Use this filter to display only functions and methods that contain variables or expressions with the specified attributes." colspan="2" class="checkbox">
+<div class="myfunc-filterby-chk"><input type="checkbox" class="filterenable" />
+<div class="filter-enable-lbl">Filter functions and methods</div></div></td></tr><tr>
+<td class="label"><div class="myfunc-filterby-lbl">Filter by:</div></td>
+<td class="select">
+<div class="filters">
+<select class="myfunc-filterby">
+<option id="size">Size</option>
+<option id="complex">Complexity</option>
+<option id="class">Class</option>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label"><div class="myfunc-filterstr-lbl">Filter:</div></td>
+<td class="input"><div>
+
+<div class="size">
+<select class="myfunc-filter size">
+<option value="1 61 62 67 77 103 112 113 133 134 135 136 137">1 x 1</option>
+<option value="1 61 135 136 137">1 x 11</option>
+<option value="1 61 77 103 113 133 134 135 136 137">1 x 12</option>
+<option value="1 103 107 111 112 133 134 135 137">1 x 3</option>
+<option value="1 61 103 107 111 112 134 135 137">1 x 6</option>
+<option value="61 103 134 135">1 x <b>:</b>11</option>
+<option value="1 77 103 107 112 134 135 136 137">1 x <b>:</b>?</option>
+<option value="133">2 x 1</option>
+<option value="1 112 134 135">2 x 6</option>
+<option value="113">3 x 1</option>
+<option value="1 134 135">5 x 2</option>
+<option value="134"><b>:</b>? x 3</option>
+<option value="1 103 134 135 137"><b>:</b>? x <b>:</b>?</option>
+</select>
+</div>
+
+<div class="complex">
+<select class="myfunc-filter complex">
+<option value="">Complex values</option>
+<option value="1 61 62 67 77 103 107 111 112 113 133 134 135 136 137">Real values</option>
+</select>
+</div>
+<!-- Begin Class Filter -->
+<div class="class">
+<select class="myfunc-filter class">
+<option value="1 61 62 67 77 103 107 111 112 113 133 134 135 136 137">double</option>
+<option value="1 61 103 134 135 137">int32</option>
+<option value="1">logical</option>
+</select>
+</div>
+<!-- End Class Filter -->
+</div>
+</td>
+</tr>
+</table>
+<div class="myfunc-count"></div>
+</div>
+<!-- End Filter -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionSetClick(event);">
+<a class="expanded">Functions</a>
+</div>
+<!-- Begin Function Tree -->
+<div id="functiontreebody">
+<div class="functionwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionTreeClick(event);">
+<ol class="tree">
+<!-- Begin Function Tree Roots -->
+<li class="leaf  passed"><a href="#" class="fcn " id="F67N2:F1">angDiff</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F1N3:F2">buildRRT</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F135N4:F3">buildRRT &gt; rrtLoop</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F133N5:F4">calcPhi</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F77N7:F5">heuristicSingleLeg &gt; 1</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F136N7:F6">heuristicSingleLeg &gt; 2</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F62N8:F7">heuristicSingleLeg &gt; legRadius</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F103N9:F8">nearestNeighbour &gt; 1</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F137N9:F9">nearestNeighbour &gt; 2</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F61N10:F10">randomState</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F112N11:F11">rk4</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F107N12:F12">rk4 &gt; f &gt; 1</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F111N12:F13">rk4 &gt; f &gt; 2</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F134N13:F14">selectInput</a></li>
+<li class="leaf  passed"><a href="#" class="fcn " id="F113N14:F15">sherpaTTFKVel</a></li>
+<!-- End Function Tree Roots -->
+</ol>
+<!-- Function Tree Nodes -->
+<div class="functiontreenodes hidden">
+</div>
+<!-- End Function Tree Nodes -->
+</div>
+</div>
+<!-- End Function Tree -->
+</div>
+<!-- Begin Call Tree -->
+<div id="callstackbody" class="ui-tabs-panel hidden">
+<div class="treewrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="callTreeClick(event);">
+<ol class="tree">
+<!-- Call Tree Root -->
+<li class="node collapsed passed"><a href="#" class="fcn " id="F1N3:L1">buildRRT</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F135N4:L2">buildRRT &gt; rrtLoop</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F137N9:L3">nearestNeighbour &gt; 2</a></li>
+</ul>
+</li>
+</ol>
+<!-- Call Tree Nodes -->
+<div class="callstacknodes hidden">
+<ol class="callstacknode" id="callstacknode1">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F1N3:l1">buildRRT</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F135N4:l2">buildRRT &gt; rrtLoop</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F137N9:l3">nearestNeighbour &gt; 2</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode61">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F61N10:l4">randomState</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode62">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F62N8:l5">heuristicSingleLeg &gt; legRadius</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode67">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F67N2:l6">angDiff</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode77">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F77N7:l7">heuristicSingleLeg &gt; 1</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F62N8:l8">heuristicSingleLeg &gt; legRadius</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F67N2:l9">angDiff</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode103">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F103N9:l10">nearestNeighbour &gt; 1</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F77N7:l11">heuristicSingleLeg &gt; 1</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode107">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F107N12:l12">rk4 &gt; f &gt; 1</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode111">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F111N12:l13">rk4 &gt; f &gt; 2</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode112">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F112N11:l14">rk4</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F107N12:l15">rk4 &gt; f &gt; 1</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F111N12:l16">rk4 &gt; f &gt; 2</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode113">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F113N14:l17">sherpaTTFKVel</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode133">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F133N5:l18">calcPhi</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode134">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F134N13:l19">selectInput</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F112N11:l20">rk4</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F113N14:l21">sherpaTTFKVel</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F77N7:l22">heuristicSingleLeg &gt; 1</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F133N5:l23">calcPhi</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F67N2:l24">angDiff</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode135">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F135N4:l25">buildRRT &gt; rrtLoop</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F61N10:l26">randomState</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F103N9:l27">nearestNeighbour &gt; 1</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F134N13:l28">selectInput</a></li>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F77N7:l29">heuristicSingleLeg &gt; 1</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode136">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F136N7:l30">heuristicSingleLeg &gt; 2</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F62N8:l31">heuristicSingleLeg &gt; legRadius</a></li>
+<li class="leaf passed"><a href="#" class="fcn " id="F67N2:l32">angDiff</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode137">
+
+<li class="node collapsed passed"><a href="#" class="fcn " id="F137N9:l33">nearestNeighbour &gt; 2</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn " id="F136N7:l34">heuristicSingleLeg &gt; 2</a></li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<!-- End Call Tree -->
+<!-- Begin C Code -->
+<div id="ccodebody" class="ui-tabs-panel hidden">
+<div class="grayline methodset" onclick="ccodeClick(event,1);">
+<a class="expanded">Target Source Files</a>
+</div>
+<!-- Begin C Code List -->
+<div id="ccodelistbody1" class="visible">
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="cFileClickWithMexWarning(event);">
+<tbody>
+<tr class="ccode" id="buildRRT_c.html"><td class="ccode"><a href="#">buildRRT.c</a></td></tr>
+<tr class="ccode" id="buildRRT_h.html"><td class="ccode"><a href="#">buildRRT.h</a></td></tr>
+<tr class="ccode" id="buildRRT_data_c.html"><td class="ccode"><a href="#">buildRRT_data.c</a></td></tr>
+<tr class="ccode" id="buildRRT_data_h.html"><td class="ccode"><a href="#">buildRRT_data.h</a></td></tr>
+<tr class="ccode" id="buildRRT_emxutil_c.html"><td class="ccode"><a href="#">buildRRT_emxutil.c</a></td></tr>
+<tr class="ccode" id="buildRRT_emxutil_h.html"><td class="ccode"><a href="#">buildRRT_emxutil.h</a></td></tr>
+<tr class="ccode" id="buildRRT_initialize_c.html"><td class="ccode"><a href="#">buildRRT_initialize.c</a></td></tr>
+<tr class="ccode" id="buildRRT_initialize_h.html"><td class="ccode"><a href="#">buildRRT_initialize.h</a></td></tr>
+<tr class="ccode" id="buildRRT_mexutil_c.html"><td class="ccode"><a href="#">buildRRT_mexutil.c</a></td></tr>
+<tr class="ccode" id="buildRRT_mexutil_h.html"><td class="ccode"><a href="#">buildRRT_mexutil.h</a></td></tr>
+<tr class="ccode" id="buildRRT_terminate_c.html"><td class="ccode"><a href="#">buildRRT_terminate.c</a></td></tr>
+<tr class="ccode" id="buildRRT_terminate_h.html"><td class="ccode"><a href="#">buildRRT_terminate.h</a></td></tr>
+<tr class="ccode" id="buildRRT_types_h.html"><td class="ccode"><a href="#">buildRRT_types.h</a></td></tr>
+<tr class="ccode" id="calcPhi_c.html"><td class="ccode"><a href="#">calcPhi.c</a></td></tr>
+<tr class="ccode" id="calcPhi_h.html"><td class="ccode"><a href="#">calcPhi.h</a></td></tr>
+<tr class="ccode" id="eml_error_c.html"><td class="ccode"><a href="#">eml_error.c</a></td></tr>
+<tr class="ccode" id="eml_error_h.html"><td class="ccode"><a href="#">eml_error.h</a></td></tr>
+<tr class="ccode" id="eml_int_forloop_overflow_check_c.html"><td class="ccode"><a href="#">eml_int_forloop_overflow_check.c</a></td></tr>
+<tr class="ccode" id="eml_int_forloop_overflow_check_h.html"><td class="ccode"><a href="#">eml_int_forloop_overflow_check.h</a></td></tr>
+<tr class="ccode" id="heuristicSingleLeg_c.html"><td class="ccode"><a href="#">heuristicSingleLeg.c</a></td></tr>
+<tr class="ccode" id="heuristicSingleLeg_h.html"><td class="ccode"><a href="#">heuristicSingleLeg.h</a></td></tr>
+<tr class="ccode" id="nearestNeighbour_c.html"><td class="ccode"><a href="#">nearestNeighbour.c</a></td></tr>
+<tr class="ccode" id="nearestNeighbour_h.html"><td class="ccode"><a href="#">nearestNeighbour.h</a></td></tr>
+<tr class="ccode" id="rt_nonfinite_h.html"><td class="ccode"><a href="#">rt_nonfinite.h</a></td></tr>
+<tr class="ccode" id="rtwtypes_h.html"><td class="ccode"><a href="#">rtwtypes.h</a></td></tr>
+<tr class="ccode" id="selectInput_c.html"><td class="ccode"><a href="#">selectInput.c</a></td></tr>
+<tr class="ccode" id="selectInput_h.html"><td class="ccode"><a href="#">selectInput.h</a></td></tr>
+</tbody>
+</table>
+</div>
+<!-- End C Code List -->
+<div class="grayline methodset" onclick="ccodeClick(event,3);">
+<a class="collapsed">Interface Source Files</a>
+</div>
+<!-- Begin C Code List -->
+<div id="ccodelistbody3" class="hidden">
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="cFileClickWithMexWarning(event);">
+<tbody>
+<tr class="ccode" id="_coder_buildRRT_api_c.html"><td class="ccode"><a href="#">_coder_buildRRT_api.c</a></td></tr>
+<tr class="ccode" id="_coder_buildRRT_api_h.html"><td class="ccode"><a href="#">_coder_buildRRT_api.h</a></td></tr>
+<tr class="ccode" id="_coder_buildRRT_info_c.html"><td class="ccode"><a href="#">_coder_buildRRT_info.c</a></td></tr>
+<tr class="ccode" id="_coder_buildRRT_info_h.html"><td class="ccode"><a href="#">_coder_buildRRT_info.h</a></td></tr>
+<tr class="ccode" id="_coder_buildRRT_mex_c.html"><td class="ccode"><a href="#">_coder_buildRRT_mex.c</a></td></tr>
+</tbody>
+</table>
+</div>
+<!-- End C Code List -->
+</div>
+<!-- End C Code -->
+</div>
+<!-- Tooltips -->
+<div class="aux hidden">
+<div class="tooltips">
+<div class="tooltip" id="TT1"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT2"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT3"><table class="tooltip"><tr><th>Size</th><td>1 x 13</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT4"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT5"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int32</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT6"><table class="tooltip"><tr><th>Size</th><td>1 x 11</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT7"><table class="tooltip"><tr><th>Size</th><td>2 x 6</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT8"><table class="tooltip"><tr><th>Size</th><td>1 x 5</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT9"><table class="tooltip"><tr><th>Size</th><td>1 x 9</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT10"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>coder.internal.indexInt</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT11"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT12"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT13"><table class="tooltip"><tr><th>Size</th><td>1 x 12</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT14"><table class="tooltip"><tr><th>Size</th><td>5 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT15"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT16"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT17"><table class="tooltip"><tr><th>Size</th><td>1 x 30</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT18"><table class="tooltip"><tr><th>Size</th><td>1 x 46</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT19"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT20"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT21"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT22"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT23"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT24"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT25"><table class="tooltip"><tr><th>Size</th><td>1 x 23</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT26"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT27"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 3</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT28"><table class="tooltip"><tr><th>Size</th><td>3 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT29"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT30"><table class="tooltip"><tr><th>Size</th><td>1 x 7</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT31"><table class="tooltip"><tr><th>Size</th><td>1 x 19</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT32"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>11</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT33"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>mxArray</td></tr></table></div>
+<div class="tooltip" id="TT34"><table class="tooltip"><tr><th>Size</th><td>1 x 34</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT35"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT36"><table class="tooltip"><tr><th>Size</th><td>1 x 10</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT37"><table class="tooltip"><tr><th>Size</th><td>1 x 9</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT38"><table class="tooltip"><tr><th>Size</th><td>1 x 36</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT39"><table class="tooltip"><tr><th>Size</th><td>1 x 39</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+</div>
+</div>
+<!-- End Tooltips -->
+
+<div class="south">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="summary"><span>Summary</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="messages"><span>All Messages (0)</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="watchlist"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item hidden"><span class="tab-link" id="watchload"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="buildlog1"><span>Target Build Log</span></span></li>
+</ul>
+
+<!-- Compilation Summary -->
+<div id="summarybody" class="ui-tabs-panel">
+<table cellpadding="1" cellspacing="4">
+<tr><td>C source code generated on:</td><td>04-Feb-2015 16:47:36</td></tr>
+<tr><td>Coding target:</td><td>C MEX Function</td></tr>
+<tr><td>Number of errors:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of warnings:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of notices:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+</table>
+<p/><p/><table>
+<tr><td><b>Tell Us What You Think</b></td></tr>
+<tr><td>We value your feedback. Please take a few minutes to answer this short questionnaire regarding the Code Generation Report.</td></tr>
+<tr><td><a href="matlab: web('http://www.customersat3.com/TakeSurvey.asp?si=ELu7GTnTYtk%3D','-browser');">&gt;&gt;Provide Feedback</a></td></tr>
+</table>
+</div>
+
+<!-- Message Table -->
+<div id="messagesbody" class="ui-tabs-panel hidden">
+<div>
+<div class="msgsuccess">Code generation successful. Click here to <a href="javaScript:selectSummaryTab();">view summary</a>.</div>
+</div>
+</div>
+<!-- Watchlist Table -->
+<div id="watchlistbody" class="ui-tabs-panel hidden">
+</div>
+<div id="watchloadbody" class="ui-tabs-panel hidden">
+Loading Variables table ...
+</div>
+
+<!-- Target Build Log -->
+<div id="buildlog1body" class="ui-tabs-panel hidden">
+<div class="grayline"></div>
+<table cellpadding="4" cellspacing="1"><tr>
+<td align="left" class="td-linebottomrt-gray" colspan="2">Build Parameters</td>
+</tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Build directory</td>
+<td align="left" valign="top" class="td-linebottomrt-link"><a href="matlab: cd('/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT')">/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT</a></td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make wrapper</td>
+<td align="left" valign="top" class="td-linebottomrt-link">sh buildRRT_mex.sh</td></tr>
+</table>
+<br/>
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr><td align="left" class="td-linebottomrt-gray">Build Log</td></tr>
+<tr><td valign="top" class="td-script">
+<pre>
+<span class="td-line-number">    1   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "buildRRT_mexutil.c"</span>
+<span class="td-line-number">    2   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "buildRRT_data.c"</span>
+<span class="td-line-number">    3   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "buildRRT_initialize.c"</span>
+<span class="td-line-number">    4   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "buildRRT_terminate.c"</span>
+<span class="td-line-number">    5   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "buildRRT.c"</span>
+<span class="td-line-number">    6   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "eml_int_forloop_overflow_check.c"</span>
+<span class="td-line-number">    7   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "eml_error.c"</span>
+<span class="td-line-number">    8   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "nearestNeighbour.c"</span>
+<span class="td-line-number">    9   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "heuristicSingleLeg.c"</span>
+<span class="td-line-number">   10   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "selectInput.c"</span>
+<span class="td-line-number">   11   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "calcPhi.c"</span>
+<span class="td-line-number">   12   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "interface/_coder_buildRRT_api.c"</span>
+<span class="td-line-number">   13   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "buildRRT_emxutil.c"</span>
+<span class="td-line-number">   14   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "interface/_coder_buildRRT_mex.c"</span>
+<span class="td-line-number">   15   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -c -fno-common -arch x86_64 -mmacosx-version-min=10.9 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -DMATLAB_MEX_FILE -DMX_COMPAT_32 -O2 -DNDEBUG  -I "/Applications/MATLAB_R2014b.app/simulink/include" -I "/Applications/MATLAB_R2014b.app/toolbox/shared/simtargets" -I "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4/codegen/mex/buildRRT/interface" -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/rrtSherpaTT4" -I "/Applications/MATLAB_R2014b.app/extern/include" -I "." "interface/_coder_buildRRT_info.c"</span>
+<span class="td-line-number">   16   </span><span class="td-line-normal">/usr/bin/xcrun -sdk macosx10.9 clang -Wl,-exported_symbols_list,buildRRT_mex_mex.map -Wl,-twolevel_namespace -undefined error -arch x86_64 -mmacosx-version-min=10.9 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -bundle -L/Applications/MATLAB_R2014b.app/bin/maci64 -lmx -lmex -lmat -lstdc++   -o buildRRT_mex.mexmaci64  buildRRT_mexutil.o buildRRT_data.o buildRRT_initialize.o buildRRT_terminate.o buildRRT.o eml_int_forloop_overflow_check.o eml_error.o nearestNeighbour.o heuristicSingleLeg.o selectInput.o calcPhi.o _coder_buildRRT_api.o buildRRT_emxutil.o _coder_buildRRT_mex.o _coder_buildRRT_info.o   -lemlrt -lcovrt -lut -lmwmathutil -lmwblas </span>
+</pre>
+</td></tr></table>
+
+</div>
+</div>
+<!-- Begin MATLAB Code Panel -->
+<div class="center">
+<div class="center-title">
+<div class="ui-tabs-nav-item ui-tabs-selected">
+<span class="functiontitle">
+</span>
+<!-- Begin Call Sites -->
+<span id="callsiteselecttable" class="call-sites-tbl">
+<span id="callsiteselectlabel" class="filtered">Calls:</span>
+<select id="callsiteselect" onchange="callSiteChange(event)">
+<option value="callsiteprompt">Select a function call:</option>
+</select>
+</span>
+<!-- End Call Sites -->
+</div>
+</div>
+<div class="ui-tabs-panel">
+<div class="code" onmouseover="mcodeMouseOver(event);" onmouseout="mcodeMouseOut(event);"onclick="mcodeClick(event);">
+</div>
+</div>
+</div>
+<!-- End MATLAB Code Panel -->
+</body>
+</html>
