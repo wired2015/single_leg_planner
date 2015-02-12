@@ -3,7 +3,7 @@ function plotSherpaTT(uG,q,kinematicConst,init,showFrames,showPath)
     global fig
     
     if init
-        initializeSherpaTTPlot(showFrames,showPath);
+        initializeSherpaTTPlot(showFrames);
         %initPosVec = TP2G(1:3,1:3)*[xInit; yInit; zInit] + TP2G(1:3,4);
         %set(initPosHandle,'XData',initPosVec(1),'YData',initPosVec(2),'ZData',initPosVec(3));
         %goalPosVec = TP2G(1:3,1:3)*[xGoal; yGoal; zGoal] + TP2G(1:3,4);
@@ -91,7 +91,7 @@ end
 
 %getBodyVertices.m
 
-function initializeSherpaTTPlot(showFrames,showPath)
+function initializeSherpaTTPlot(showFrames)
 
     global body fig wheel
     global initPosHandle goalPosHandle
@@ -102,12 +102,12 @@ function initializeSherpaTTPlot(showFrames,showPath)
     legLinks = gobjects(4,8);
     wheel = gobjects(1,4);
     
-    fig = figure('Name','Sherpa_TT Visualization');
+    fig = figure('Name','Sherpa_TT Visualization','Position',[100 100 700 700]);
     axis([-1.5 1.5 -1.5 1.5 -1.5 1.5]);
     xlabel('X_G [m]');
     ylabel('Y_G [m]');
     zlabel('Z_G [m]');
-    view(-90,90);
+    view(136,40);
 
     hold on
 

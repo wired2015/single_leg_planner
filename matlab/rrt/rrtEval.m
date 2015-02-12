@@ -47,8 +47,8 @@ for i=1:4
 
     %Generate the RRT.
     tic
-    %[T,pathC,pathJ,success] = buildRRTWrapper(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kinematicConst,threshold,i);
-    [T,pathC,pathJ,success] = buildRRTWrapper_mex(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kinematicConst,threshold,int32(i));
+    [T,pathC,pathJ,success] = buildRRTWrapper(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kinematicConst,threshold,i);
+    %[T,pathC,pathJ,success] = buildRRTWrapper_mex(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kinematicConst,threshold,int32(i));
     planningTime = toc;
     
     if success
