@@ -104,6 +104,7 @@ function initializeSherpaTTPlot(showFrames)
     
     fig = figure('Name','Sherpa_TT Visualization','Position',[100 100 700 700]);
     axis([-1.5 1.5 -1.5 1.5 -1.5 1.5]);
+    axis equal
     xlabel('X_G [m]');
     ylabel('Y_G [m]');
     zlabel('Z_G [m]');
