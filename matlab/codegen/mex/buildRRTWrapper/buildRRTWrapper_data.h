@@ -22,7 +22,9 @@
 
 /* Variable Declarations */
 extern const volatile char_T *emlrtBreakCheckR2012bFlagVar;
-extern emlrtRSInfo f_emlrtRSI;
+extern emlrtRSInfo g_emlrtRSI;
+extern emlrtRSInfo r_emlrtRSI;
+extern emlrtRSInfo s_emlrtRSI;
 extern emlrtRSInfo t_emlrtRSI;
 extern emlrtRSInfo u_emlrtRSI;
 extern emlrtRSInfo v_emlrtRSI;
@@ -32,26 +34,24 @@ extern emlrtRSInfo y_emlrtRSI;
 extern emlrtRSInfo ab_emlrtRSI;
 extern emlrtRSInfo bb_emlrtRSI;
 extern emlrtRSInfo cb_emlrtRSI;
-extern emlrtRSInfo db_emlrtRSI;
-extern emlrtRSInfo eb_emlrtRSI;
 extern emlrtMCInfo c_emlrtMCI;
 extern emlrtMCInfo d_emlrtMCI;
-extern emlrtRTEInfo g_emlrtRTEI;
+extern emlrtRTEInfo d_emlrtRTEI;
+extern emlrtRTEInfo j_emlrtRTEI;
+extern emlrtBCInfo l_emlrtBCI;
+extern emlrtBCInfo m_emlrtBCI;
+extern emlrtBCInfo n_emlrtBCI;
+extern emlrtBCInfo o_emlrtBCI;
+extern emlrtBCInfo p_emlrtBCI;
+extern emlrtBCInfo v_emlrtBCI;
+extern emlrtBCInfo w_emlrtBCI;
+extern emlrtBCInfo x_emlrtBCI;
+extern emlrtBCInfo y_emlrtBCI;
+extern emlrtBCInfo ab_emlrtBCI;
 extern emlrtBCInfo bb_emlrtBCI;
 extern emlrtBCInfo cb_emlrtBCI;
-extern emlrtBCInfo db_emlrtBCI;
-extern emlrtBCInfo eb_emlrtBCI;
-extern emlrtBCInfo fb_emlrtBCI;
-extern emlrtBCInfo gb_emlrtBCI;
-extern emlrtRTEInfo k_emlrtRTEI;
-extern emlrtBCInfo jb_emlrtBCI;
-extern emlrtBCInfo kb_emlrtBCI;
-extern emlrtBCInfo lb_emlrtBCI;
-extern emlrtBCInfo mb_emlrtBCI;
-extern emlrtBCInfo nb_emlrtBCI;
-extern emlrtBCInfo ob_emlrtBCI;
-extern emlrtRSInfo ib_emlrtRSI;
-extern emlrtRSInfo lb_emlrtRSI;
+extern emlrtRSInfo gb_emlrtRSI;
+extern emlrtRSInfo jb_emlrtRSI;
 
 #endif
 

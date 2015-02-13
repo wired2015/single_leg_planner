@@ -22,8 +22,8 @@
 
 /* Function Declarations */
 extern real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[],
-  const emxArray_real_T *xB, const real_T jointLimits[12], const real_T
-  kinematicConst[16]);
+  const emxArray_real_T *xB, const real_T jointLimits[12], real_T kC_l2, real_T
+  kC_l3, real_T kC_l4, real_T kC_l5, real_T kC_l7, real_T kC_zeta);
 
 #ifdef __WATCOMC__
 

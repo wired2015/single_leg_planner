@@ -2,16 +2,20 @@
 %author: wreid
 %date: 20150122
 
-function [x,y,z] = sherpaTTFK(alpha,beta,gamma,kinematicConst)
+function u = sherpaTTFK(q,kC)
 %sherpaTTFK Sherpa_TT Forward Kinematics
 %   Calculates the x,y,z position of the contact point given the alpha,
 %   beta and gamma joint values.
-    
-    [L1,L2,L3,L4,L5,L6,L7,L8,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst);
 
-    x = (L2 + L3*cos(-beta)+L4*cos(zeta)+L5*cos(gamma+zeta)-L7).*cos(alpha);
-    y = (L2 + L3*cos(-beta)+L4*cos(zeta)+L5*cos(gamma+zeta)-L7).*sin(alpha);
-    z = (L1 + L3*sin(-beta)-L4*sin(zeta)-L5*sin(gamma+zeta)-L6-L8);
+    alpha = q(1);
+    beta = q(2);
+    gamma = q(3);
+    
+    u = zeros(1,3);
+
+    u(1) = (kC.l2 + kC.l3*cos(-beta)+kC.l4*cos(kC.zeta)+kC.l5*cos(gamma+kC.zeta)-kC.l7).*cos(alpha);
+    u(2) = (kC.l2 + kC.l3*cos(-beta)+kC.l4*cos(kC.zeta)+kC.l5*cos(gamma+kC.zeta)-kC.l7).*sin(alpha);
+    u(3) = (kC.l1 + kC.l3*sin(-beta)-kC.l4*sin(kC.zeta)-kC.l5*sin(gamma+kC.zeta)-kC.l6-(kC.l8+kC.r));
    
 end
 

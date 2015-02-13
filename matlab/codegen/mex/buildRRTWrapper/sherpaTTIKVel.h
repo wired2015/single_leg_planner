@@ -21,8 +21,9 @@
 #include "buildRRTWrapper_types.h"
 
 /* Function Declarations */
-extern void sherpaTTIKVel(const real_T uDot[3], const real_T q[3], const real_T
-  kinematicConst[16], real_T qDot[3]);
+extern void sherpaTTIKVel(const real_T uDot[3], const real_T q[3], real_T kC_l2,
+  real_T kC_l3, real_T kC_l4, real_T kC_l5, real_T kC_l7, real_T kC_zeta, real_T
+  qDot[3]);
 
 #endif
 

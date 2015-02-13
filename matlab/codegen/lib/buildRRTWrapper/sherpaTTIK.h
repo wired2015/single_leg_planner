@@ -2,7 +2,7 @@
 // File: sherpaTTIK.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 12-Feb-2015 09:24:14
+// C/C++ source code generated on  : 13-Feb-2015 14:11:02
 //
 #ifndef __SHERPATTIK_H__
 #define __SHERPATTIK_H__
@@ -18,9 +18,9 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern void sherpaTTIK(double xC, double yC, double zC, const double
-  kinematicConst[16], const double jointLimits[12], double *alpha, double *beta,
-  double *b_gamma);
+extern void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double
+  kC_l3, double kC_l4, double kC_l5, double kC_l6, double kC_l7, double kC_l8,
+  double kC_zeta, double kC_r, const double jointLimits[12], double q[3]);
 
 #endif
 

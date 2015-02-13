@@ -2,7 +2,7 @@
 %author: wreid
 %date: 20150107
 
-function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kinematicConst,ankleThreshold,exhaustive,threshold,goalSeedFreq)
+function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq)
 %buildRRT Icrementally builds a rapidly exploring random tree.
 %   An RRT is build by incrementally selecting a random state from the
 %   available state space as defined by the MIN and MAX vectors. The tree is
@@ -10,8 +10,11 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
 %   been reached. A path is selected if the goal region as defined by xGoal
 %   has been reached by the RRT.
 
+    %%TODO: Make a structure input for nInit and nGoal
+    %%TEMPORARY definition of init and goal nodes.
+    %nInit = makeNode(1,0,0,nInit(4:6),nInit(7:9),)
+
     %Constant Declaration                                                      
-    
     transitionArrayLength = (round(Dt/dt)+1)*6;    
     
     %Variable Initialization
@@ -24,7 +27,7 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
     if ~exhaustive
     
         for i = 2:NUM_NODES
-            [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kinematicConst,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq);
+            [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq);
         end
         
     else
@@ -32,8 +35,8 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
         dist = 100;
         %TODO: make the threshold distance
         while dist > threshold && nodeIDCount < NUM_NODES 
-            [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kinematicConst,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq);
-            [~,~,dist] = nearestNeighbour(nGoal,T,HGAINS,jointLimits,kinematicConst,nodeIDCount,NODE_SIZE);
+            [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq);
+            [~,~,dist] = nearestNeighbour(nGoal,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE);
             if mod(nodeIDCount,100) == 0
                 %fprintf('PROGRESS STATUS: dist = %.3f\n',dist);
             end
@@ -41,7 +44,7 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
     end
     
     %Find the closest node in the tree to the goal node.
-    [xNearest,transitionArrayNearest,~] = nearestNeighbour(nGoal,T,HGAINS,jointLimits,kinematicConst,nodeIDCount,NODE_SIZE);
+    [xNearest,transitionArrayNearest,~] = nearestNeighbour(nGoal,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE);
         
     check = xNearest(1);
     next = xNearest;
@@ -54,20 +57,20 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
     
 end
 
-function [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kinematicConst,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq)
+function [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq)
     
-    xRand = randomState(jointRange,jointLimits(1,:),kinematicConst,panHeight,nGoal,nodeIDCount,goalSeedFreq);
-    [xNear,~,~] = nearestNeighbour(xRand,T,HGAINS,jointLimits,kinematicConst,nodeIDCount,NODE_SIZE);
-    [xNew,transitionArray]  = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kinematicConst,ankleThreshold,jointLimits);
+    xRand = randomState(jointRange,jointLimits(1,:),kC,panHeight,nGoal,nodeIDCount,goalSeedFreq);
+    [xNear,~,~] = nearestNeighbour(xRand,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE);
+    [xNew,transitionArray]  = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kC,ankleThreshold,jointLimits);
     nodeIDCount = nodeIDCount + 1;
 
     xNew(1) = nodeIDCount;                                  %Node ID
     xNew(2) = xNear(1);                                     %Parent ID
-    xNew(3) = heuristicSingleLeg(xNew,xNear,HGAINS,jointLimits,kinematicConst);           %Cost
+    xNew(3) = heuristicSingleLeg(xNew,xNear,HGAINS,jointLimits,kC);           %Cost
 
     T(nodeIDCount,:) = [xNew transitionArray];                                %Append the new node to the tree.    
-    if mod(nodeIDCount,100) == 0
+    %if mod(nodeIDCount,100) == 0
         %fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount);
-    end
+    %end
 end
 

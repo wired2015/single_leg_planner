@@ -2,18 +2,17 @@
 // File: buildRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 12-Feb-2015 09:24:14
+// C/C++ source code generated on  : 13-Feb-2015 14:11:02
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "buildRRT.h"
+#include "rand.h"
 #include "heuristicSingleLeg.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "selectInput.h"
-#include "rand.h"
-#include "extractKinematicConstants.h"
 #include "buildRRTWrapper_rtwutil.h"
 #include <stdio.h>
 
@@ -86,14 +85,14 @@ static int div_s32_floor(int numerator, int denominator)
 //                const double U[10]
 //                double dt
 //                double Dt
-//                const double kinematicConst[16]
+//                const struct0_T *kC
 //                emxArray_real_T *T
 //                emxArray_real_T *path
 // Return Type  : void
 //
 void buildRRT(const double nInit[11], const double nGoal[11], const double
               jointLimits[12], double panHeight, const double U[10], double dt,
-              double Dt, const double kinematicConst[16], emxArray_real_T *T,
+              double Dt, const struct0_T *kC, emxArray_real_T *T,
               emxArray_real_T *path)
 {
   double transitionArrayLength;
@@ -107,30 +106,7 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   emxArray_real_T *d;
   emxArray_real_T *c_T;
   int i;
-  double unusedU7;
-  double unusedU6;
-  double unusedU5;
-  double unusedU4;
-  double gammaDotRand;
   double dxStar;
-  double zeta;
-  double L8;
-  double L7;
-  double L6;
-  double L5;
-  double L4;
-  double L3;
-  double L2;
-  double alphaRand;
-  double gammaRand;
-  double unusedU8;
-  double b_zeta;
-  double b_L8;
-  double b_L6;
-  double b_L5;
-  double b_L4;
-  double b_L3;
-  double L1;
   double dv2[9];
   int xRand_size[2];
   double xRand_data[11];
@@ -150,6 +126,9 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   // buildRRT.m
   // author: wreid
   // date: 20150107
+  // %TODO: Make a structure input for nInit and nGoal
+  // %TEMPORARY definition of init and goal nodes.
+  // nInit = makeNode(1,0,0,nInit(4:6),nInit(7:9),)
   // Constant Declaration
   transitionArrayLength = (rt_roundd_snf(Dt / dt) + 1.0) * 6.0;
 
@@ -233,58 +212,44 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // randomState.m
     // author: wreid
     // date: 20150107
-    extractKinematicConstants(kinematicConst, &transitionArrayLength, &L2, &L3,
-      &L4, &L5, &L6, &L7, &L8, &zeta, &xStarA, &dxStar, &gammaDotRand, &unusedU4,
-      &unusedU5, &unusedU6, &unusedU7);
-    alphaRand = jointRange[0] * b_rand() + jointLimits[0];
-    gammaRand = jointRange[1] * b_rand() + jointLimits[2];
+    // [~,L2,L3,L4,L5,L6,L7,L8,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); 
+    xStarA = jointRange[0] * b_rand() + jointLimits[0];
+    dxStar = jointRange[1] * b_rand() + jointLimits[2];
 
-    // betaRand = -asin((K-L1+L4*sin(zeta)+L5*sin(gammaRand+zeta)+L6+L8)/L3);
-    // GETCONSTRAINEDBETA Calculates the beta joint anglgiven a constrained body 
+    // GETCONSTRAINEDBETA Calculates the beta joint angle given a constrained body 
     // height.
-    extractKinematicConstants(kinematicConst, &L1, &transitionArrayLength, &b_L3,
-      &b_L4, &b_L5, &b_L6, &xStarA, &b_L8, &b_zeta, &dxStar, &gammaDotRand,
-      &unusedU4, &unusedU5, &unusedU6, &unusedU7, &unusedU8);
-    transitionArrayLength = (((((panHeight - L1) + b_L4 * sin(b_zeta)) + b_L5 *
-      sin(gammaRand + b_zeta)) + b_L6) + b_L8) / b_L3;
-    xStarA = -asin(transitionArrayLength);
-    dxStar = jointRange[3] * b_rand() + jointLimits[6];
-    gammaDotRand = jointRange[4] * b_rand() + jointLimits[8];
+    // [L1,~,L3,L4,L5,L6,~,L8,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); 
+    //      check = (panHeight-kC.l1+kC.l4*sin(kC.zeta)+kC.l5*sin(gamma+kC.zeta)+kC.l7+kC.l8+kC.r)/kC.l3; 
+    //
+    //      if check < -1 || check > 1
+    //          gammaMax = asin(1-abs(panHeight)+kC.l1-kC.l4*sin(kC.zeta)-kC.l7-kC.l8+kC.r)-kC.zeta; 
+    //          gammaMin = asin(-1-abs(panHeight)+kC.l1-kC.l4*sin(kC.zeta)-kC.l7-kC.l8+kC.r)-kC.zeta; 
+    //          gamma = gammaMin + rand*(gammaMax-gammaMin);
+    //      end
+    transitionArrayLength = ((((((-panHeight + kC->l1) - kC->l4 * sin(kC->zeta))
+      - kC->l5 * sin(dxStar + kC->zeta)) - kC->l6) - kC->l8) - kC->r) / kC->l3;
+    while ((transitionArrayLength < -1.0) || (transitionArrayLength > 1.0)) {
+      dxStar = jointRange[1] * b_rand() + jointLimits[2];
+      transitionArrayLength = ((((((-panHeight + kC->l1) - kC->l4 * sin(kC->zeta))
+        - kC->l5 * sin(dxStar + kC->zeta)) - kC->l6) - kC->l8) - kC->r) / kC->l3;
+
+      // disp('Imaginary');
+      // disp(count);
+    }
+
+    // alphaDotRand = range(4)*rand+MIN(4);
+    // gammaDotRand = range(5)*rand+MIN(5);
+    // betaDotRand = -(1.0*(1.827e47*KVel + 2.238e31*kC.l2*alphaDotRand - 2.238e31*kC.l6*alphaDotRand - 1.827e47*kC.l6*gammaDotRand + 2.238e31*kC.l3*alphaDotRand*cos(betaRand) + 1.827e47*kC.l3*gammaDotRand*cos(betaRand) - 2.238e31*kC.l2*alphaDotRand*cos(phi) + 2.238e31*kC.l6*alphaDotRand*cos(phi) - 1.37e15*kC.l6*gammaDotRand*cos(phi) + 2.238e31*kC.l4*alphaDotRand*cos(kC.zeta) + 1.827e47*kC.l4*gammaDotRand*cos(kC.zeta) + 2.74e15*kC.l7*alphaDotRand*sin(phi) + 2.74e15*kC.l8*alphaDotRand*sin(phi) + 2.238e31*kC.l7*gammaDotRand*sin(phi) + 2.238e31*kC.l8*gammaDotRand*sin(phi) - 2.237e31*kC.l3*alphaDotRand*cos(betaRand)*cos(phi) + 2.238e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(kC.zeta) + 1.827e47*kC.l5*gammaDotRand*cos(gammaRand)*cos(kC.zeta) - 2.237e31*kC.l4*alphaDotRand*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l3*gammaDotRand*sin(betaRand)*sin(phi) - 2.238e31*kC.l5*alphaDotRand*sin(gammaRand)*sin(kC.zeta) - 1.827e47*kC.l5*gammaDotRand*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*gammaDotRand*sin(phi)*sin(kC.zeta) - 2.237e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l5*alphaDotRand*cos(phi)*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*sin(gammaRand)*cos(kC.zeta)*sin(phi)))/(1.827e47*kC.l4*cos(kC.zeta) - 1.37e15*kC.l6*cos(phi) - 1.827e47*kC.l6 + 2.238e31*kC.l7*sin(phi) + 2.238e31*kC.l8*sin(phi) + 1.827e47*kC.l5*cos(gammaRand)*cos(kC.zeta) - 1.827e47*kC.l5*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*sin(gammaRand)*cos(kC.zeta)*sin(phi)); 
     for (i2 = 0; i2 < 3; i2++) {
       dv2[i2] = 0.0;
     }
 
-    dv2[3] = alphaRand;
-    dv2[4] = gammaRand;
-    dv2[5] = -asin(transitionArrayLength);
-    dv2[6] = dxStar;
-    dv2[7] = gammaDotRand;
-    dv2[8] = -(((((((((((((((((((((((((2.238E+31 * L2 * dxStar - 2.238E+31 * L6 *
-      dxStar) - 1.827E+47 * L6 * gammaDotRand) + 2.238E+31 * L3 * dxStar * cos
-      (xStarA)) + 1.827E+47 * L3 * gammaDotRand * cos(xStarA)) - 2.238E+31 * L2 *
-      dxStar) + 2.238E+31 * L6 * dxStar) - 1.37E+15 * L6 * gammaDotRand) +
-      2.238E+31 * L4 * dxStar * cos(zeta)) + 1.827E+47 * L4 * gammaDotRand * cos
-                               (zeta)) + 2.74E+15 * L7 * dxStar * 0.0) +
-      2.74E+15 * L8 * dxStar * 0.0) + 2.238E+31 * L7 * gammaDotRand * 0.0) +
-      2.238E+31 * L8 * gammaDotRand * 0.0) - 2.237E+31 * L3 * dxStar * cos
-                          (xStarA)) + 2.238E+31 * L5 * dxStar * cos(gammaRand) *
-                         cos(zeta)) + 1.827E+47 * L5 * gammaDotRand * cos
-                        (gammaRand) * cos(zeta)) - 2.237E+31 * L4 * dxStar * cos
-                       (zeta)) + 2.237E+31 * L3 * gammaDotRand * sin(xStarA) *
-                      0.0) - 2.238E+31 * L5 * dxStar * sin(gammaRand) * sin(zeta))
-                    - 1.827E+47 * L5 * gammaDotRand * sin(gammaRand) * sin(zeta))
-                   + 2.237E+31 * L4 * gammaDotRand * 0.0 * sin(zeta)) -
-                  2.237E+31 * L5 * dxStar * cos(gammaRand) * cos(zeta)) +
-                 2.237E+31 * L5 * dxStar * sin(gammaRand) * sin(zeta)) +
-                2.237E+31 * L5 * gammaDotRand * cos(gammaRand) * 0.0 * sin(zeta))
-               + 2.237E+31 * L5 * gammaDotRand * sin(gammaRand) * cos(zeta) *
-               0.0) / (((((((((1.827E+47 * L4 * cos(zeta) - 1.37E+15 * L6) -
-      1.827E+47 * L6) + 2.238E+31 * L7 * 0.0) + 2.238E+31 * L8 * 0.0) +
-      1.827E+47 * L5 * cos(gammaRand) * cos(zeta)) - 1.827E+47 * L5 * sin
-                          (gammaRand) * sin(zeta)) + 2.237E+31 * L4 * 0.0 * sin
-                         (zeta)) + 2.237E+31 * L5 * cos(gammaRand) * 0.0 * sin
-                        (zeta)) + 2.237E+31 * L5 * sin(gammaRand) * cos(zeta) *
-                       0.0);
+    dv2[3] = xStarA;
+    dv2[4] = dxStar;
+    dv2[5] = asin(transitionArrayLength);
+    dv2[6] = 0.0;
+    dv2[7] = 0.0;
+    dv2[8] = 0.0;
     xRand_size[0] = 1;
     xRand_size[1] = 9;
     for (i2 = 0; i2 < 9; i2++) {
@@ -359,7 +324,8 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
         c_T->data[c_T->size[0] * i2] = T->data[ixstart + T->size[0] * i2];
       }
 
-      d->data[ixstart] = heuristicSingleLeg(xRand_data, c_T, kinematicConst);
+      d->data[ixstart] = heuristicSingleLeg(xRand_data, c_T, kC->l2, kC->l3,
+        kC->l4, kC->l5, kC->l7, kC->zeta);
     }
 
     ixstart = 1;
@@ -401,7 +367,8 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     }
 
     selectInput(xNearest_data, xNearest_size, xRand_data, xRand_size, U, dt, Dt,
-                kinematicConst, jointLimits, xNew_data, xNew_size, d);
+                kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta, jointLimits,
+                xNew_data, xNew_size, d);
     xNew_data[0] = (double)nodeIDCount + 1.0;
 
     // Node ID
@@ -413,8 +380,8 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     b_xNearest_data.allocatedSize = 11;
     b_xNearest_data.numDimensions = 2;
     b_xNearest_data.canFreeData = false;
-    xNew_data[2] = heuristicSingleLeg(xNew_data, &b_xNearest_data,
-      kinematicConst);
+    xNew_data[2] = heuristicSingleLeg(xNew_data, &b_xNearest_data, kC->l2,
+      kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta);
 
     // Cost
     for (i2 = 0; i2 < 11; i2++) {
@@ -429,6 +396,9 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     }
 
     // Append the new node to the tree.
+    // if mod(nodeIDCount,100) == 0
+    // fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount);
+    // end
     i2 = T->size[0] * T->size[1];
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
@@ -479,13 +449,11 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // author: wreid
     // date: 20150107
     // Calculate the distance between angular positions.
-    xStarA = (((kinematicConst[1] + kinematicConst[2] * cos(nGoal[4])) +
-               kinematicConst[3] * cos(kinematicConst[8])) + kinematicConst[4] *
-              cos(kinematicConst[8] + nGoal[5])) - kinematicConst[6];
-    dxStar = ((((kinematicConst[1] + kinematicConst[2] * cos(T->data[i +
-      (T->size[0] << 2)])) + kinematicConst[3] * cos(kinematicConst[8])) +
-               kinematicConst[4] * cos(kinematicConst[8] + T->data[i + T->size[0]
-                * 5])) - kinematicConst[6]) - xStarA;
+    xStarA = (((kC->l2 + kC->l3 * cos(nGoal[4])) + kC->l4 * cos(kC->zeta)) +
+              kC->l5 * cos(kC->zeta + nGoal[5])) - kC->l7;
+    dxStar = ((((kC->l2 + kC->l3 * cos(T->data[i + (T->size[0] << 2)])) + kC->l4
+                * cos(kC->zeta)) + kC->l5 * cos(kC->zeta + T->data[i + T->size[0]
+                * 5])) - kC->l7) - xStarA;
 
     // angDiff Finds the angular difference between th1 and th2.
     transitionArrayLength = ((nGoal[3] - T->data[i + T->size[0] * 3]) +

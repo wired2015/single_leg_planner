@@ -1,4 +1,4 @@
-function plotPath(pathC,kinematicConst,nGoalB,K,jointLimits,showConfigSpace,legNum)
+function plotPath(pathC,kC,nGoalB,K,jointLimits,showConfigSpace,legNum)
     %Plots a path in the Cartesian space, referenced to the rover's body
     %coordinate frame.
     
@@ -23,7 +23,7 @@ function plotPath(pathC,kinematicConst,nGoalB,K,jointLimits,showConfigSpace,legN
     plot3(nGoalB(1),nGoalB(2),nGoalB(3),'r*');
     %Plot the leg's configuration space.
     if showConfigSpace
-        plotCartesianConfigSpace(kinematicConst,jointLimits,K,legNum);
+        plotCartesianConfigSpace(kC,jointLimits,K,legNum);
     end
     
     hold off

@@ -2,14 +2,13 @@
 // File: selectInput.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 12-Feb-2015 09:24:14
+// C/C++ source code generated on  : 13-Feb-2015 14:11:02
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "selectInput.h"
-#include "extractKinematicConstants.h"
 #include "heuristicSingleLeg.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "buildRRTWrapper_rtwutil.h"
@@ -31,7 +30,12 @@
 //                const double U[10]
 //                double dt
 //                double Dt
-//                const double kinematicConst[16]
+//                double kC_l2
+//                double kC_l3
+//                double kC_l4
+//                double kC_l5
+//                double kC_l7
+//                double kC_zeta
 //                const double jointLimits[12]
 //                double xNew_data[]
 //                int xNew_size[2]
@@ -40,8 +44,9 @@
 //
 void selectInput(const double xNear_data[], const int xNear_size[2], const
                  double xRand_data[], const int xRand_size[2], const double U[10],
-                 double dt, double Dt, const double kinematicConst[16], const
-                 double jointLimits[12], double xNew_data[], int xNew_size[2],
+                 double dt, double Dt, double kC_l2, double kC_l3, double kC_l4,
+                 double kC_l5, double kC_l7, double kC_zeta, const double
+                 jointLimits[12], double xNew_data[], int xNew_size[2],
                  emxArray_real_T *transitionArray)
 {
   double candStates_data[55];
@@ -51,24 +56,10 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   int ixstart;
   double UJoint_data[15];
   int i;
-  double unusedUc;
-  double unusedUb;
-  double unusedUa;
-  double unusedU9;
-  double unusedU8;
-  double unusedU7;
-  double unusedU6;
-  double zeta;
-  double unusedU5;
-  double unusedU4;
-  double unusedU3;
-  double aGain;
-  double hDiff;
-  double absxk;
-  double numIterations;
   emxArray_real_T *r0;
   double distance_data[5];
   double u[3];
+  double numIterations;
   int itmp;
   double tmp_data[16];
   double b_xNear_data[11];
@@ -77,10 +68,14 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   double k1[6];
   double k2[6];
   double k3[6];
+  double absxk;
   double xInit[6];
+  double d1;
   int ix;
   double b_tmp_data[16];
   emxArray_real_T b_xRand_data;
+  double hDiff;
+  double aGain;
   double v_LS[2];
   int i4;
   boolean_T exitg1;
@@ -102,19 +97,17 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   // Transform the control inputs to joint space.
   for (i = 0; i < 5; i++) {
     // gammaDotDot = (-betaDotDot*L3*cos(beta)+betaDot^2*L3*sin(beta)+gammaDot^2*L5*sin(zeta+gamma))/(L5*cos(zeta+gamma)); 
-    // UNTITLED2 Summary of this function goes here
+    // getConstrainedGammaDotDot Summary of this function goes here
     //    Detailed explanation goes here
-    extractKinematicConstants(kinematicConst, &numIterations, &scale, &absxk,
-      &hDiff, &aGain, &unusedU3, &unusedU4, &unusedU5, &zeta, &unusedU6,
-      &unusedU7, &unusedU8, &unusedU9, &unusedUa, &unusedUb, &unusedUc);
+    // [~,~,L3,~,L5,~,~,~,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); 
     for (i3 = 0; i3 < 2; i3++) {
       UJoint_data[i + 5 * i3] = U[i + 5 * i3];
     }
 
-    UJoint_data[i + 10] = ((-U[5 + i] * absxk * cos(xNear_data[4]) + xNear_data
-      [7] * xNear_data[7] * absxk * sin(xNear_data[4])) + xNear_data[8] *
-      xNear_data[8] * aGain * sin(zeta + xNear_data[5])) / (aGain * cos(zeta +
-      xNear_data[5]));
+    UJoint_data[i + 10] = ((-U[5 + i] * kC_l3 * cos(xNear_data[4]) + xNear_data
+      [7] * xNear_data[7] * kC_l3 * sin(xNear_data[4])) + xNear_data[8] *
+      xNear_data[8] * kC_l5 * sin(kC_zeta + xNear_data[5])) / (kC_l5 * cos
+      (kC_zeta + xNear_data[5]));
   }
 
   // Increment over the control vector. Generate a candidate state for each
@@ -253,11 +246,11 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
         xInit_data[i3] = tmp_data[i3];
       }
 
-      unusedU3 = 6.0 * (1.0 + (double)ixstart) + 1.0;
-      if (unusedU3 > 6.0 * ((1.0 + (double)ixstart) + 1.0)) {
+      d1 = 6.0 * (1.0 + (double)ixstart) + 1.0;
+      if (d1 > 6.0 * ((1.0 + (double)ixstart) + 1.0)) {
         i3 = 0;
       } else {
-        i3 = (int)unusedU3 - 1;
+        i3 = (int)d1 - 1;
       }
 
       for (ix = 0; ix < 6; ix++) {
@@ -305,7 +298,8 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     b_xRand_data.allocatedSize = -1;
     b_xRand_data.numDimensions = 2;
     b_xRand_data.canFreeData = false;
-    hDiff = heuristicSingleLeg(b_xNear_data, &b_xRand_data, kinematicConst);
+    hDiff = heuristicSingleLeg(b_xNear_data, &b_xRand_data, kC_l2, kC_l3, kC_l4,
+      kC_l5, kC_l7, kC_zeta);
 
     // Apply the ankle constraint to penalize any candidate state that
     // requires a change of ankle position greater than the allowed ankle
@@ -324,31 +318,30 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // v_YS = cos(conj(alpha))*conj(L2)*conj(alphaDot) - sin(conj(alpha))*conj(L7)*conj(gammaDot) - sin(conj(alpha))*conj(L7)*conj(betaDot) - cos(conj(alpha))*conj(L6)*conj(alphaDot) + cos(conj(alpha))*cos(conj(beta))*conj(L3)*conj(alphaDot) + 0.99999999999999999999999999999999*cos(conj(alpha))*cos(conj(zeta))*conj(L4)*conj(alphaDot) - 1.0*sin(conj(alpha))*sin(conj(beta))*conj(L3)*conj(betaDot) - 1.0*sin(conj(alpha))*sin(conj(zeta))*conj(L4)*conj(betaDot) - 1.0*sin(conj(alpha))*sin(conj(zeta))*conj(L4)*conj(gammaDot) + 0.99999999999999999999999999999999*cos(conj(alpha))*cos(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(alphaDot) - cos(conj(alpha))*sin(conj(gamma))*sin(conj(zeta))*conj(L5)*conj(alphaDot) - 1.0*cos(conj(gamma))*sin(conj(alpha))*sin(conj(zeta))*conj(L5)*conj(betaDot) - 1.0*sin(conj(alpha))*sin(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(betaDot) - 1.0*cos(conj(gamma))*sin(conj(alpha))*sin(conj(zeta))*conj(L5)*conj(gammaDot) - 1.0*sin(conj(alpha))*sin(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(gammaDot); 
     // qA1 = atan(sS(2)/sS(1));
     // v_WS = [qWDot*r*sign(sS(1))*cos(qA1); qWDot*r*sign(sS(1))*sin(qA1)];
-    v_LS[0] = -kinematicConst[2] * candStates_data[i + 35] * sin
-      (candStates_data[i + 20]) - candStates_data[i + 40] * kinematicConst[4] *
-      sin(kinematicConst[8] + candStates_data[i + 25]);
-    v_LS[1] = candStates_data[i + 30] * (((kinematicConst[1] + kinematicConst[2]
-      * cos(candStates_data[i + 20])) + kinematicConst[3] * cos(kinematicConst[8]))
-      + kinematicConst[4] * cos(kinematicConst[8] + candStates_data[i + 25]));
+    v_LS[0] = -kC_l3 * candStates_data[i + 35] * sin(candStates_data[i + 20]) -
+      candStates_data[i + 40] * kC_l5 * sin(kC_zeta + candStates_data[i + 25]);
+    v_LS[1] = candStates_data[i + 30] * (((kC_l2 + kC_l3 * cos(candStates_data[i
+      + 20])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos(kC_zeta + candStates_data[i
+      + 25]));
 
     //  + v_WS;
-    unusedU3 = 0.0;
+    d1 = 0.0;
     scale = 2.2250738585072014E-308;
     for (ixstart = 0; ixstart < 2; ixstart++) {
       absxk = fabs(v_LS[ixstart]);
       if (absxk > scale) {
         numIterations = scale / absxk;
-        unusedU3 = 1.0 + unusedU3 * numIterations * numIterations;
+        d1 = 1.0 + d1 * numIterations * numIterations;
         scale = absxk;
       } else {
         numIterations = absxk / scale;
-        unusedU3 += numIterations * numIterations;
+        d1 += numIterations * numIterations;
       }
     }
 
-    unusedU3 = scale * sqrt(unusedU3);
+    d1 = scale * sqrt(d1);
     candStates_data[i + 45] = atan(v_LS[0] / v_LS[1]);
-    candStates_data[i + 50] = unusedU3;
+    candStates_data[i + 50] = d1;
 
     // ,Ss,qWDot,r);
     // angDiff Finds the angular difference between th1 and th2.

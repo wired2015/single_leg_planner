@@ -1,4 +1,4 @@
-function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kinematicConst,ankleThreshold,jointLimits)
+function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kC,ankleThreshold,jointLimits)
 %selectInput Selects the most appropriate control input.
 %   A control input is selected from a set of control inputs, U. An input
 %   is selected by applying each of the inputs to to state xNear, which
@@ -19,7 +19,7 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
     %Transform the control inputs to joint space.
     for i = 1:U_SIZE
         %gammaDotDot = (-betaDotDot*L3*cos(beta)+betaDot^2*L3*sin(beta)+gammaDot^2*L5*sin(zeta+gamma))/(L5*cos(zeta+gamma));
-        gammaDotDot = getConstrainedGammaDotDot(kinematicConst,U(i,:),xNear(7:9),xNear(4:6));
+        gammaDotDot = getConstrainedGammaDotDot(kC,U(i,:),xNear(7:9),xNear(4:6));
         UJoint(i,:) = [U(i,:) gammaDotDot];
     end    
 
@@ -35,7 +35,7 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
        
         %Calculate the distance between the candidate state and the random
         %state.
-        hDiff = heuristicSingleLeg(candStates(i,:),xRand,HGAINS,jointLimits,kinematicConst);
+        hDiff = heuristicSingleLeg(candStates(i,:),xRand,HGAINS,jointLimits,kC);
 
         %Apply the ankle constraint to penalize any candidate state that
         %requires a change of ankle position greater than the allowed ankle
@@ -49,7 +49,7 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
         %qWDot = 1;
         %r = 0.378/2;
         
-        [candStates(i,10),candStates(i,11)] = calcPhi(candStates(i,7:9),candStates(i,4:6),kinematicConst);%,Ss,qWDot,r);
+        [candStates(i,10),candStates(i,11)] = calcPhi(candStates(i,7:9),candStates(i,4:6),kC);%,Ss,qWDot,r);
         aDiff = angDiff(qANear,candStates(i,10));
         ankleDiffMax = pi;
         

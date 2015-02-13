@@ -2,7 +2,7 @@
 // File: buildRRTWrapper_types.h 
 //  
 // MATLAB Coder version            : 2.7 
-// C/C++ source code generated on  : 12-Feb-2015 09:24:14 
+// C/C++ source code generated on  : 13-Feb-2015 14:11:02 
 //
 
 #ifndef __BUILDRRTWRAPPER_TYPES_H__
@@ -66,6 +66,22 @@ struct emxArray_real_T_5x3
     int size[2];
 };
 #endif /*struct_emxArray_real_T_5x3*/
+typedef struct
+{
+    double l1;
+    double l2;
+    double l3;
+    double l4;
+    double l5;
+    double l6;
+    double l7;
+    double l8;
+    double zeta;
+    double r;
+    double B2PXOffset;
+    double B2PZOffset;
+    double legAngleOffset[4];
+} struct0_T;
 
 #endif
 // 

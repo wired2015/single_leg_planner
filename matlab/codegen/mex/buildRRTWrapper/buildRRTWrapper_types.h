@@ -105,6 +105,25 @@ struct emxArray_real_T_5x3
 #define typedef_emxArray_real_T_5x3
 typedef struct emxArray_real_T_5x3 emxArray_real_T_5x3;
 #endif /*typedef_emxArray_real_T_5x3*/
+#ifndef typedef_struct0_T
+#define typedef_struct0_T
+typedef struct
+{
+    real_T l1;
+    real_T l2;
+    real_T l3;
+    real_T l4;
+    real_T l5;
+    real_T l6;
+    real_T l7;
+    real_T l8;
+    real_T zeta;
+    real_T r;
+    real_T B2PXOffset;
+    real_T B2PZOffset;
+    real_T legAngleOffset[4];
+} struct0_T;
+#endif /*typedef_struct0_T*/
 
 #endif
 /* End of code generation (buildRRTWrapper_types.h) */

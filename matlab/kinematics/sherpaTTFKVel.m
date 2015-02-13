@@ -2,10 +2,8 @@
 %author: wreid
 %date: 20150122
 
-function [uDot,uDotNew] = sherpaTTFKVel(qDot,q,kinematicConst)
+function uDot = sherpaTTFKVel(qDot,q,kC)
 %sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
-
-    [~,L2,L3,L4,L5,~,L7,~,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst);
 
     alpha = q(1);
     beta = q(2);
@@ -16,14 +14,14 @@ function [uDot,uDotNew] = sherpaTTFKVel(qDot,q,kinematicConst)
     betaDot = qDot(2);
     gammaDot = qDot(3);
 
-    xDot =      - alphaDot*sin(alpha)*(L2 - L7 + L5*cos(gamma + zeta) + L3*cos(beta) + L4*cos(zeta))...
-                - betaDot*L3*cos(alpha)*sin(beta)...
-                - gammaDot*L5*sin(gamma + zeta)*cos(alpha);
-    yDot =      alphaDot*cos(alpha)*(L2 - L7 + L5*cos(gamma + zeta) + L3*cos(beta) + L4*cos(zeta))...
-                -gammaDot*L5*sin(gamma + zeta)*sin(alpha)...
-                -betaDot*L3*sin(alpha)*sin(beta);
-    zDot =      -betaDot*L3*cos(beta)...
-                -L5*gammaDot*cos(zeta+gamma);
+    xDot =      - alphaDot*sin(alpha)*(kC.l2 - kC.l7 + kC.l5*cos(gamma + kC.zeta) + kC.l3*cos(beta) + kC.l4*cos(kC.zeta))...
+                - betaDot*kC.l3*cos(alpha)*sin(beta)...
+                - gammaDot*kC.l5*sin(gamma + kC.zeta)*cos(alpha);
+    yDot =      alphaDot*cos(alpha)*(kC.l2 - kC.l7 + kC.l5*cos(gamma + kC.zeta) + kC.l3*cos(beta) + kC.l4*cos(kC.zeta))...
+                -gammaDot*kC.l5*sin(gamma + kC.zeta)*sin(alpha)...
+                -betaDot*kC.l3*sin(alpha)*sin(beta);
+    zDot =      -betaDot*kC.l3*cos(beta)...
+                -kC.l5*gammaDot*cos(kC.zeta+gamma);
 
     uDot = [xDot yDot zDot]';
 

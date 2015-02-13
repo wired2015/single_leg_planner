@@ -2,7 +2,7 @@
 // File: heuristicSingleLeg.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 12-Feb-2015 09:24:14
+// C/C++ source code generated on  : 13-Feb-2015 14:11:02
 //
 
 // Include Files
@@ -18,11 +18,17 @@
 // heuristic Calculates the distance between states x1 and x2.
 // Arguments    : const double xA_data[]
 //                const emxArray_real_T *xB
-//                const double kinematicConst[16]
+//                double kC_l2
+//                double kC_l3
+//                double kC_l4
+//                double kC_l5
+//                double kC_l7
+//                double kC_zeta
 // Return Type  : double
 //
 double heuristicSingleLeg(const double xA_data[], const emxArray_real_T *xB,
-  const double kinematicConst[16])
+  double kC_l2, double kC_l3, double kC_l4, double kC_l5, double kC_l7, double
+  kC_zeta)
 {
   double d;
   double xStarA;
@@ -33,12 +39,10 @@ double heuristicSingleLeg(const double xA_data[], const emxArray_real_T *xB,
   // author: wreid
   // date: 20150107
   // Calculate the distance between angular positions.
-  xStarA = (((kinematicConst[1] + kinematicConst[2] * cos(xA_data[4])) +
-             kinematicConst[3] * cos(kinematicConst[8])) + kinematicConst[4] *
-            cos(kinematicConst[8] + xA_data[5])) - kinematicConst[6];
-  dxStar = ((((kinematicConst[1] + kinematicConst[2] * cos(xB->data[4])) +
-              kinematicConst[3] * cos(kinematicConst[8])) + kinematicConst[4] *
-             cos(kinematicConst[8] + xB->data[5])) - kinematicConst[6]) - xStarA;
+  xStarA = (((kC_l2 + kC_l3 * cos(xA_data[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 *
+            cos(kC_zeta + xA_data[5])) - kC_l7;
+  dxStar = ((((kC_l2 + kC_l3 * cos(xB->data[4])) + kC_l4 * cos(kC_zeta)) + kC_l5
+             * cos(kC_zeta + xB->data[5])) - kC_l7) - xStarA;
 
   // angDiff Finds the angular difference between th1 and th2.
   dAlpha = ((xA_data[3] - xB->data[3]) + 3.1415926535897931) /

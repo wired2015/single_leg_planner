@@ -21,7 +21,6 @@
 #include "buildRRTWrapper_types.h"
 
 /* Function Declarations */
-extern void b_eml_error(const emlrtStack *sp);
 extern void eml_error(const emlrtStack *sp);
 
 #endif

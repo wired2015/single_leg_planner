@@ -2,7 +2,7 @@
 %author: wreid
 %date: 20150107
 
-function [xNear,transitionArray,d] = nearestNeighbour(x,T,HGAINS,jointLimits,kinematicConst,nodeIDCount,NODE_SIZE)
+function [xNear,transitionArray,d] = nearestNeighbour(x,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE)
 %nearestNeigbour Finds the node in the tree closest to x.
 %   This function scans each node within the tree and finds the node that
 %   is closest to the xRand node. The nearest node is returned by the
@@ -23,7 +23,7 @@ function [xNear,transitionArray,d] = nearestNeighbour(x,T,HGAINS,jointLimits,kin
     
     %parfor i = 1:nodeIDCount
     for i = 1:nodeIDCount
-        d(i) = heuristicSingleLeg(x,T(i,:),HGAINS,jointLimits,kinematicConst);
+        d(i) = heuristicSingleLeg(x,T(i,:),HGAINS,jointLimits,kC);
     end
     
     [d,minIndex] = min(d(1:nodeIDCount));

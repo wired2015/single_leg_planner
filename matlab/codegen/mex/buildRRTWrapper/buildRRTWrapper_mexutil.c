@@ -16,9 +16,9 @@ const mxArray *b_message(const emlrtStack *sp, const mxArray *b, emlrtMCInfo
   *location)
 {
   const mxArray *pArray;
-  const mxArray *m7;
+  const mxArray *m8;
   pArray = b;
-  return emlrtCallMATLABR2012b(sp, 1, &m7, 1, &pArray, "message", true, location);
+  return emlrtCallMATLABR2012b(sp, 1, &m8, 1, &pArray, "message", true, location);
 }
 
 void error(const emlrtStack *sp, const mxArray *b, emlrtMCInfo *location)

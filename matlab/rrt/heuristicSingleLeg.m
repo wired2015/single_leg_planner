@@ -2,18 +2,8 @@
 %author: wreid
 %date: 20150107
 
-function d = heuristicSingleLeg(xA,xB,HGAINS,jointLimits,kinematicConst)
+function d = heuristicSingleLeg(xA,xB,HGAINS,jointLimits,kC)
 %heuristic Calculates the distance between states x1 and x2.
-
-    L1 = kinematicConst(1);
-    L2 = kinematicConst(2);
-    L3 = kinematicConst(3);
-    L4 = kinematicConst(4);
-    L5 = kinematicConst(5);
-    L6 = kinematicConst(6);
-    L7 = kinematicConst(7);
-    L8 = kinematicConst(8);
-    zeta = kinematicConst(9);
 
     alphaA = xA(4); 
     betaA = xA(5);
@@ -32,16 +22,16 @@ function d = heuristicSingleLeg(xA,xB,HGAINS,jointLimits,kinematicConst)
     gammaDotB = xB(9);
     
     %Calculate the distance between angular positions.
-    xStarMin = legRadius(jointLimits(1,2),jointLimits(1,3),zeta,L2,L3,L4,L5,L7);
-    xStarMax = legRadius(jointLimits(2,2),jointLimits(2,3),zeta,L2,L3,L4,L5,L7);
+    xStarMin = legRadius(jointLimits(1,2),jointLimits(1,3),kC);
+    xStarMax = legRadius(jointLimits(2,2),jointLimits(2,3),kC);
     
     dxStarMax = xStarMax-xStarMin;
     dAlphaMax = angDiff(jointLimits(1,1),jointLimits(1,2));
     
     dPosMax = posMetric(xStarMin,dxStarMax,dAlphaMax);
     
-    xStarA = legRadius(betaA,gammaA,zeta,L2,L3,L4,L5,L7);
-    xStarB = legRadius(betaB,gammaB,zeta,L2,L3,L4,L5,L7);
+    xStarA = legRadius(betaA,gammaA,kC);
+    xStarB = legRadius(betaB,gammaB,kC);
     
     dxStar = xStarB-xStarA;
     dAlpha = angDiff(alphaA,alphaB);
@@ -54,8 +44,8 @@ function d = heuristicSingleLeg(xA,xB,HGAINS,jointLimits,kinematicConst)
     
 end
 
-function xStar = legRadius(beta,gamma,zeta,L2,L3,L4,L5,L7)
-    xStar = L2+L3*cos(beta)+L4*cos(zeta)+L5*cos(zeta+gamma)-L7;
+function xStar = legRadius(beta,gamma,kC)
+    xStar = kC.l2+kC.l3*cos(beta)+kC.l4*cos(kC.zeta)+kC.l5*cos(kC.zeta+gamma)-kC.l7;
 end
 
 function dPos = posMetric(x,dx,dTheta)

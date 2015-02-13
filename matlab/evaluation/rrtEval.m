@@ -13,6 +13,8 @@ addpath(genpath('~/Dropbox/PhD/matlab/rvctools'))
 
 planningConstants
 
+numLegs = 4;
+
 pathLengths = zeros(1,NUM_TRIALS);  %Vector of generated path lengths.
 pathTimes = zeros(1,NUM_TRIALS);    %Vector of generated path times.
 planningTimes = zeros(1,NUM_TRIALS);    %Vector of generated path times.
@@ -43,12 +45,12 @@ jointPaths = zeros(4,1000,7);
 cartesianPaths = zeros(4,1000,7);
 
 %Run the planner mulitple times.
-for i=1:4
+for i=1:numLegs
 
     %Generate the RRT.
     tic
-    %[T,pathC,pathJ,success] = buildRRTWrapper(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kinematicConst,threshold,i);
-    [T,pathC,pathJ,success] = buildRRTWrapper_mex(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kinematicConst,threshold,int32(i));
+    %[T,pathC,pathJ,success] = buildRRTWrapper(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i);
+    [T,pathC,pathJ,success] = buildRRTWrapper_mex(nInitB(i,:),nGoalB(i,:),jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i));
     planningTime = toc;
     
     if success
@@ -81,8 +83,8 @@ for i=1:4
     %     planningTimes(i) = planningTime;
         %errors(i) = error;
 
-        %figure(1)
-        %printRRT(T,nGoalB,MIN,MAX,pathJ,kinematicConst,jointLimits,true,K,NUM_NODES,NODE_SIZE);
+        %figure(i)
+        %printRRT(T,nGoalB,MIN,MAX,pathJ,kC,jointLimits,true,K,NUM_NODES,NODE_SIZE);
 
         %figure(2)
         %plotVelocities(pathJ,Dt);
@@ -91,7 +93,7 @@ for i=1:4
         %model of the system.
         %figure(3)
         %view(-114,54)
-        %plotPath(pathC,kinematicConst,nGoalB(i,:),panHeight,jointLimits,true,i);
+        %plotPath(pathC,kC,nGoalB(i,:),panHeight,jointLimits,true,i);
 
         %figure(4)
         %plotAnkle(pathJ,ankleThreshold,Dt);
@@ -103,7 +105,7 @@ for i=1:4
     end
 end
 
-for i = 1:4
+for i = 1:numLegs
     for j = 2:1000
         if cartesianPaths(i,j,1) == 0
             cartesianPaths(i,j,:) = cartesianPaths(i,j-1,:);
@@ -119,7 +121,7 @@ end
 init = true;
 t = 0;
 for i = 1:h
-    plotSherpaTT([0 0 bodyHeight],[jointPaths(1,i,2:7); jointPaths(2,i,2:7); jointPaths(3,i,2:7); jointPaths(4,i,2:7)],kinematicConst,init,true,true);
+    plotSherpaTT([0 0 bodyHeight],[jointPaths(1,i,2:7); jointPaths(2,i,2:7); jointPaths(3,i,2:7); jointPaths(4,i,2:7)],kC,init,true,true);
     pause(dt);
     t = t + dt;
     title(['t = ' num2str(t) 's'])

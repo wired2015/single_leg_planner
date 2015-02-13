@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'buildRRTWrapper'. 
 ## 
 ## Makefile     : buildRRTWrapper_rtw.mk
-## Generated on : Thu Feb 12 09:24:32 2015
+## Generated on : Fri Feb 13 14:11:17 2015
 ## MATLAB Coder version: 2.7 (R2014b)
 ## 
 ## Build Info:
@@ -170,7 +170,7 @@ BUILD_TYPE = "Static Library"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper -I/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt -I/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/src -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -186,7 +186,7 @@ DEFINES = $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_rtwutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_data.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_initialize.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_terminate.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/extractKinematicConstants.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/sin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/sherpaTTIK.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/exp.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/log.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/asin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/sherpaTTIKVel.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRT.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rand.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/eml_rand_mt19937ar_stateful.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/heuristicSingleLeg.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/selectInput.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/flipud.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_emxutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_emxAPI.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rt_nonfinite.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rtGetNaN.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rtGetInf.cpp
+SRCS = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_rtwutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_data.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_initialize.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_terminate.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/sin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/sherpaTTIK.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/exp.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/log.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/asin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/sherpaTTIKVel.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRT.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rand.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/eml_rand_mt19937ar_stateful.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/heuristicSingleLeg.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/selectInput.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/flipud.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_emxutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_emxAPI.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rt_nonfinite.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rtGetNaN.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/rtGetInf.cpp
 
 ALL_SRCS = $(SRCS)
 
@@ -194,7 +194,7 @@ ALL_SRCS = $(SRCS)
 ## OBJECTS
 ###########################################################################
 
-OBJS = buildRRTWrapper_rtwutil.o buildRRTWrapper_data.o buildRRTWrapper_initialize.o buildRRTWrapper_terminate.o buildRRTWrapper.o extractKinematicConstants.o sin.o sherpaTTIK.o exp.o log.o asin.o sherpaTTIKVel.o buildRRT.o rand.o eml_rand_mt19937ar_stateful.o heuristicSingleLeg.o selectInput.o flipud.o buildRRTWrapper_emxutil.o buildRRTWrapper_emxAPI.o rt_nonfinite.o rtGetNaN.o rtGetInf.o
+OBJS = buildRRTWrapper_rtwutil.o buildRRTWrapper_data.o buildRRTWrapper_initialize.o buildRRTWrapper_terminate.o buildRRTWrapper.o sin.o sherpaTTIK.o exp.o log.o asin.o sherpaTTIKVel.o buildRRT.o rand.o eml_rand_mt19937ar_stateful.o heuristicSingleLeg.o selectInput.o flipud.o buildRRTWrapper_emxutil.o buildRRTWrapper_emxAPI.o rt_nonfinite.o rtGetNaN.o rtGetInf.o
 
 ALL_OBJS = $(OBJS)
 
@@ -280,14 +280,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 #---------------------
 # SOURCE-TO-OBJECT
 #---------------------
-
-%.o : %.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : %.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
 
 %.o : $(RELATIVE_PATH_TO_ANCHOR)/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"

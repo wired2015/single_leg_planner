@@ -2,13 +2,12 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 12-Feb-2015 09:24:14
+// C/C++ source code generated on  : 13-Feb-2015 14:11:02
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
-#include "extractKinematicConstants.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "flipud.h"
 #include "buildRRT.h"
@@ -54,7 +53,7 @@ static boolean_T validState(const double n[6], const double jointLimits[12])
 //                const double U[10]
 //                double dt
 //                double Dt
-//                const double kinematicConst[16]
+//                const struct0_T *kC
 //                double threshold
 //                int legNum
 //                emxArray_real_T *T
@@ -66,27 +65,10 @@ static boolean_T validState(const double n[6], const double jointLimits[12])
 void buildRRTWrapper(const double nInitCartesianB[6], const double
                      nGoalCartesianB[6], const double jointLimits[12], double
                      bodyHeight, const double U[10], double dt, double Dt, const
-                     double kinematicConst[16], double, int legNum,
-                     emxArray_real_T *T, emxArray_real_T *pathC, emxArray_real_T
-                     *pathJ, boolean_T *success)
+                     struct0_T *kC, double, int legNum, emxArray_real_T *T,
+                     emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T
+                     *success)
 {
-  double unusedUe;
-  double unusedUd;
-  double unusedUc;
-  double unusedUb;
-  double B2PZOffset;
-  double unusedUa;
-  double unusedU9;
-  double unusedU8;
-  double unusedU7;
-  double unusedU6;
-  double unusedU5;
-  double unusedU4;
-  double unusedU3;
-  double unusedU2;
-  double unusedU1;
-  double unusedU0;
-  double legAngleOffset;
   double TP2B[16];
   int i0;
   static const signed char iv0[4] = { 0, 0, 0, 1 };
@@ -95,16 +77,12 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   int i1;
   double c_TP2B[3];
   double TB2P[16];
-  double uInitP[3];
-  double uGoalP[3];
-  double gammaInit;
-  double betaInit;
-  double alphaInit;
-  double b_alphaInit[3];
   double b_TB2P[3];
-  double qDotInit[3];
-  double alphaGoal[3];
+  double d0;
+  double qInit[3];
+  double qGoal[3];
   double nInitJoint[6];
+  double qDotInit[3];
   double nGoalJoint[6];
   emxArray_real_T *b_T;
   emxArray_real_T *b_pathC;
@@ -114,64 +92,36 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   double dv0[11];
   double dv1[11];
   int loop_ub;
+  double alpha;
   unsigned int count;
   double time;
   int j;
-  double zeta;
-  double L8;
-  double d_pathJ[3];
-  double e_pathJ[3];
-  double b_zeta;
-  double L7;
-  double L5;
-  double L4;
-  double L3;
-  double L2;
-  double b_L2[3];
-  double b_uInitP[3];
+  double uP[3];
+  double betaDot;
+  double gammaDot;
+  double alphaDot[3];
 
   // buildRRTWrapper.m
   // author: wreid
   // date: 20150502
   // GETPANHEIGHT Summary of this function goes here
   //    Detailed explanation goes here
-  extractKinematicConstants(kinematicConst, &unusedU0, &unusedU1, &unusedU2,
-    &unusedU3, &unusedU4, &unusedU5, &unusedU6, &unusedU7, &unusedU8, &unusedU9,
-    &unusedUa, &B2PZOffset, &unusedUb, &unusedUc, &unusedUd, &unusedUe);
-
   // Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame 
   // to the pan coordinate frame.
   // TRP2B Calculates the homogeneous transformation matrix between the body
   // and pan coordinate frames.
-  extractKinematicConstants(kinematicConst, &unusedU0, &unusedU1, &unusedU2,
-    &unusedU3, &unusedU4, &unusedU5, &unusedU6, &unusedU7, &unusedU8, &unusedU9,
-    &unusedUa, &unusedUb, &unusedUc, &unusedUd, &unusedUe, &legAngleOffset);
-  switch (legNum) {
-   case 1:
-    legAngleOffset = unusedUc;
-    break;
-
-   case 2:
-    legAngleOffset = unusedUd;
-    break;
-
-   case 3:
-    legAngleOffset = unusedUe;
-    break;
-  }
-
-  TP2B[0] = cos(legAngleOffset);
-  TP2B[4] = -sin(legAngleOffset);
-  TP2B[8] = sin(legAngleOffset) * 0.0;
-  TP2B[12] = unusedUa * cos(legAngleOffset);
-  TP2B[1] = sin(legAngleOffset);
-  TP2B[5] = cos(legAngleOffset);
-  TP2B[9] = -cos(legAngleOffset) * 0.0;
-  TP2B[13] = unusedUa * sin(legAngleOffset);
+  TP2B[0] = cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[4] = -sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[8] = sin(kC->legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[12] = kC->B2PXOffset * cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[1] = sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[5] = cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[9] = -cos(kC->legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[13] = kC->B2PXOffset * sin(kC->legAngleOffset[legNum - 1]);
   TP2B[2] = 0.0;
   TP2B[6] = 0.0;
   TP2B[10] = 1.0;
-  TP2B[14] = unusedUb;
+  TP2B[14] = kC->B2PZOffset;
   for (i0 = 0; i0 < 4; i0++) {
     TP2B[3 + (i0 << 2)] = iv0[i0];
   }
@@ -202,65 +152,58 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   }
 
   // inv(TP2B);%
-  for (i0 = 0; i0 < 3; i0++) {
-    unusedUa = 0.0;
-    for (i1 = 0; i1 < 3; i1++) {
-      unusedUa += TB2P[i0 + (i1 << 2)] * nInitCartesianB[i1];
-    }
-
-    uInitP[i0] = unusedUa + TB2P[12 + i0];
-  }
-
-  for (i0 = 0; i0 < 3; i0++) {
-    unusedUa = 0.0;
-    for (i1 = 0; i1 < 3; i1++) {
-      unusedUa += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[i1];
-    }
-
-    uGoalP[i0] = unusedUa + TB2P[12 + i0];
-  }
-
   // Transform the Cartesian goal and final positions in the pan coordinate
   // frame to the joint space.
-  sherpaTTIK(uInitP[0], uInitP[1], uInitP[2], kinematicConst, jointLimits,
-             &alphaInit, &betaInit, &gammaInit);
-  sherpaTTIK(uGoalP[0], uGoalP[1], uGoalP[2], kinematicConst, jointLimits,
-             &unusedUa, &unusedUb, &unusedUc);
-  b_alphaInit[0] = alphaInit;
-  b_alphaInit[1] = betaInit;
-  b_alphaInit[2] = gammaInit;
   for (i0 = 0; i0 < 3; i0++) {
-    uGoalP[i0] = 0.0;
+    d0 = 0.0;
     for (i1 = 0; i1 < 3; i1++) {
-      uGoalP[i0] += TB2P[i0 + (i1 << 2)] * nInitCartesianB[3 + i1];
+      d0 += TB2P[i0 + (i1 << 2)] * nInitCartesianB[i1];
     }
 
-    c_TP2B[i0] = uGoalP[i0];
-    qDotInit[i0] = 0.0;
-    for (i1 = 0; i1 < 3; i1++) {
-      qDotInit[i0] += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[3 + i1];
-    }
-
-    b_TB2P[i0] = qDotInit[i0];
+    b_TB2P[i0] = d0 + TB2P[12 + i0];
   }
 
-  sherpaTTIKVel(c_TP2B, b_alphaInit, kinematicConst, qDotInit);
-  alphaGoal[0] = unusedUa;
-  alphaGoal[1] = unusedUb;
-  alphaGoal[2] = unusedUc;
-  sherpaTTIKVel(b_TB2P, alphaGoal, kinematicConst, uInitP);
-  nInitJoint[0] = alphaInit;
-  nInitJoint[1] = betaInit;
-  nInitJoint[2] = gammaInit;
-  nInitJoint[3] = qDotInit[0];
-  nInitJoint[4] = qDotInit[1];
-  nInitJoint[5] = qDotInit[2];
-  nGoalJoint[0] = unusedUa;
-  nGoalJoint[1] = unusedUb;
-  nGoalJoint[2] = unusedUc;
-  nGoalJoint[3] = uInitP[0];
-  nGoalJoint[4] = uInitP[1];
-  nGoalJoint[5] = uInitP[2];
+  sherpaTTIK(b_TB2P, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
+             kC->l8, kC->zeta, kC->r, jointLimits, qInit);
+  for (i0 = 0; i0 < 3; i0++) {
+    d0 = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      d0 += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[i1];
+    }
+
+    b_TB2P[i0] = d0 + TB2P[12 + i0];
+  }
+
+  sherpaTTIK(b_TB2P, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
+             kC->l8, kC->zeta, kC->r, jointLimits, qGoal);
+  for (i0 = 0; i0 < 3; i0++) {
+    c_TP2B[i0] = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += TB2P[i0 + (i1 << 2)] * nInitCartesianB[3 + i1];
+    }
+
+    b_TB2P[i0] = c_TP2B[i0];
+    nInitJoint[i0] = qInit[i0];
+  }
+
+  sherpaTTIKVel(b_TB2P, qInit, kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta,
+                qDotInit);
+  for (i0 = 0; i0 < 3; i0++) {
+    nInitJoint[i0 + 3] = qDotInit[i0];
+    c_TP2B[i0] = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[3 + i1];
+    }
+
+    b_TB2P[i0] = c_TP2B[i0];
+    nGoalJoint[i0] = qGoal[i0];
+  }
+
+  sherpaTTIKVel(b_TB2P, qGoal, kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta,
+                c_TP2B);
+  for (i0 = 0; i0 < 3; i0++) {
+    nGoalJoint[i0 + 3] = c_TP2B[i0];
+  }
 
   // Check that the initial and final positions are valid. If they are not
   // return failure and an empty path.
@@ -292,8 +235,8 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 
     dv1[9] = 0.0;
     dv1[10] = 0.0;
-    buildRRT(dv0, dv1, jointLimits, -(bodyHeight + B2PZOffset), U, dt, Dt,
-             kinematicConst, b_T, pathJ);
+    buildRRT(dv0, dv1, jointLimits, -(bodyHeight + kC->B2PZOffset), U, dt, Dt,
+             kC, b_T, pathJ);
     i0 = T->size[0] * T->size[1];
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
@@ -309,24 +252,24 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     // that contains the n general nodes and the p intermediate nodes between
     // general nodes. Each row in the path matrix contains
     // [t,x,y,z,xDot,yDot,zDot] state data.
-    unusedUa = rt_roundd_snf(Dt / dt);
-    loop_ub = (int)(unusedUa * (double)pathJ->size[0]);
+    alpha = rt_roundd_snf(Dt / dt);
+    loop_ub = (int)(alpha * (double)pathJ->size[0]);
     i0 = b_pathC->size[0] * b_pathC->size[1];
     b_pathC->size[0] = loop_ub;
     b_pathC->size[1] = 7;
     emxEnsureCapacity((emxArray__common *)b_pathC, i0, (int)sizeof(double));
-    loop_ub = (int)(unusedUa * (double)pathJ->size[0]) * 7;
+    loop_ub = (int)(alpha * (double)pathJ->size[0]) * 7;
     for (i0 = 0; i0 < loop_ub; i0++) {
       b_pathC->data[i0] = 0.0;
     }
 
-    unusedUa = rt_roundd_snf(Dt / dt);
-    loop_ub = (int)(unusedUa * (double)pathJ->size[0]);
+    alpha = rt_roundd_snf(Dt / dt);
+    loop_ub = (int)(alpha * (double)pathJ->size[0]);
     i0 = b_pathJ->size[0] * b_pathJ->size[1];
     b_pathJ->size[0] = loop_ub;
     b_pathJ->size[1] = 7;
     emxEnsureCapacity((emxArray__common *)b_pathJ, i0, (int)sizeof(double));
-    loop_ub = (int)(unusedUa * (double)pathJ->size[0]) * 7;
+    loop_ub = (int)(alpha * (double)pathJ->size[0]) * 7;
     for (i0 = 0; i0 < loop_ub; i0++) {
       b_pathJ->data[i0] = 0.0;
     }
@@ -334,75 +277,67 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     count = 1U;
     time = rt_roundd_snf(Dt / dt) * (double)pathJ->size[0] * dt;
     for (loop_ub = 0; loop_ub < pathJ->size[0]; loop_ub++) {
-      for (j = pathJ->size[1] - 4; j + 4 >= 18; j -= 6) {
+      for (j = pathJ->size[1] - 6; j + 6 >= 18; j -= 6) {
         // sherpaTTFK Sherpa_TT Forward Kinematics
         //    Calculates the x,y,z position of the contact point given the alpha, 
         //    beta and gamma joint values.
         // sherpaTTFK.m
         // author: wreid
         // date: 20150122
-        extractKinematicConstants(kinematicConst, &unusedUa, &unusedUb,
-          &unusedUc, &unusedUd, &unusedUe, &legAngleOffset, &B2PZOffset, &L8,
-          &zeta, &unusedU0, &unusedU1, &unusedU2, &unusedU3, &unusedU4,
-          &unusedU5, &unusedU6);
-        d_pathJ[0] = pathJ->data[loop_ub + pathJ->size[0] * (j + 1)];
-        d_pathJ[1] = pathJ->data[loop_ub + pathJ->size[0] * (j + 2)];
-        d_pathJ[2] = pathJ->data[loop_ub + pathJ->size[0] * (j + 3)];
-        for (i0 = 0; i0 < 3; i0++) {
-          uInitP[i0] = d_pathJ[i0];
-        }
-
-        e_pathJ[0] = pathJ->data[loop_ub + pathJ->size[0] * (j - 2)];
-        e_pathJ[1] = pathJ->data[loop_ub + pathJ->size[0] * (j - 1)];
-        e_pathJ[2] = pathJ->data[loop_ub + pathJ->size[0] * j];
-        for (i0 = 0; i0 < 3; i0++) {
-          uGoalP[i0] = e_pathJ[i0];
-        }
+        alpha = pathJ->data[loop_ub + pathJ->size[0] * j];
+        uP[0] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[loop_ub + pathJ->size[0] *
+                     (1 + j)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos
+                  (pathJ->data[loop_ub + pathJ->size[0] * (2 + j)] + kC->zeta))
+                 - kC->l7) * cos(alpha);
+        uP[1] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[loop_ub + pathJ->size[0] *
+                     (1 + j)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos
+                  (pathJ->data[loop_ub + pathJ->size[0] * (2 + j)] + kC->zeta))
+                 - kC->l7) * sin(alpha);
+        uP[2] = ((((kC->l1 + kC->l3 * sin(-pathJ->data[loop_ub + pathJ->size[0] *
+                     (1 + j)])) - kC->l4 * sin(kC->zeta)) - kC->l5 * sin
+                  (pathJ->data[loop_ub + pathJ->size[0] * (2 + j)] + kC->zeta))
+                 - kC->l6) - (kC->l8 + kC->r);
 
         // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
         // sherpaTTFKVel.m
         // author: wreid
         // date: 20150122
-        extractKinematicConstants(kinematicConst, &unusedU0, &L2, &L3, &L4, &L5,
-          &unusedU1, &L7, &unusedU2, &b_zeta, &unusedU3, &unusedU4, &unusedU5,
-          &unusedU6, &unusedU7, &unusedU8, &unusedU9);
-        b_L2[0] = ((((unusedUb + unusedUc * cos(-pathJ->data[loop_ub +
-          pathJ->size[0] * (j - 1)])) + unusedUd * cos(zeta)) + unusedUe * cos
-                    (pathJ->data[loop_ub + pathJ->size[0] * j] + zeta)) -
-                   B2PZOffset) * cos(pathJ->data[loop_ub + pathJ->size[0] * (j -
-          2)]);
-        b_L2[1] = ((((unusedUb + unusedUc * cos(-pathJ->data[loop_ub +
-          pathJ->size[0] * (j - 1)])) + unusedUd * cos(zeta)) + unusedUe * cos
-                    (pathJ->data[loop_ub + pathJ->size[0] * j] + zeta)) -
-                   B2PZOffset) * sin(pathJ->data[loop_ub + pathJ->size[0] * (j -
-          2)]);
-        b_L2[2] = ((((unusedUa + unusedUc * sin(-pathJ->data[loop_ub +
-          pathJ->size[0] * (j - 1)])) - unusedUd * sin(zeta)) - unusedUe * sin
-                    (pathJ->data[loop_ub + pathJ->size[0] * j] + zeta)) -
-                   legAngleOffset) - L8;
+        alpha = pathJ->data[loop_ub + pathJ->size[0] * (3 + j)];
+        betaDot = pathJ->data[loop_ub + pathJ->size[0] * (4 + j)];
+        gammaDot = pathJ->data[loop_ub + pathJ->size[0] * (5 + j)];
         for (i0 = 0; i0 < 3; i0++) {
-          unusedUa = 0.0;
+          d0 = 0.0;
           for (i1 = 0; i1 < 3; i1++) {
-            unusedUa += TP2B[i0 + (i1 << 2)] * b_L2[i1];
+            d0 += TP2B[i0 + (i1 << 2)] * uP[i1];
           }
 
-          c_TP2B[i0] = unusedUa + TP2B[12 + i0];
+          c_TP2B[i0] = d0 + TP2B[12 + i0];
         }
 
-        b_uInitP[0] = (-uInitP[0] * sin(uGoalP[0]) * ((((L2 - L7) + L5 * cos
-          (uGoalP[2] + b_zeta)) + L3 * cos(uGoalP[1])) + L4 * cos(b_zeta)) -
-                       uInitP[1] * L3 * cos(uGoalP[0]) * sin(uGoalP[1])) -
-          uInitP[2] * L5 * sin(uGoalP[2] + b_zeta) * cos(uGoalP[0]);
-        b_uInitP[1] = (uInitP[0] * cos(uGoalP[0]) * ((((L2 - L7) + L5 * cos
-          (uGoalP[2] + b_zeta)) + L3 * cos(uGoalP[1])) + L4 * cos(b_zeta)) -
-                       uInitP[2] * L5 * sin(uGoalP[2] + b_zeta) * sin(uGoalP[0]))
-          - uInitP[1] * L3 * sin(uGoalP[0]) * sin(uGoalP[1]);
-        b_uInitP[2] = -uInitP[1] * L3 * cos(uGoalP[1]) - L5 * uInitP[2] * cos
-          (b_zeta + uGoalP[2]);
+        alphaDot[0] = (-alpha * sin(pathJ->data[loop_ub + pathJ->size[0] * j]) *
+                       ((((kC->l2 - kC->l7) + kC->l5 * cos(pathJ->data[loop_ub +
+          pathJ->size[0] * (2 + j)] + kC->zeta)) + kC->l3 * cos(pathJ->
+          data[loop_ub + pathJ->size[0] * (1 + j)])) + kC->l4 * cos(kC->zeta)) -
+                       betaDot * kC->l3 * cos(pathJ->data[loop_ub + pathJ->size
+          [0] * j]) * sin(pathJ->data[loop_ub + pathJ->size[0] * (1 + j)])) -
+          gammaDot * kC->l5 * sin(pathJ->data[loop_ub + pathJ->size[0] * (2 + j)]
+          + kC->zeta) * cos(pathJ->data[loop_ub + pathJ->size[0] * j]);
+        alphaDot[1] = (alpha * cos(pathJ->data[loop_ub + pathJ->size[0] * j]) *
+                       ((((kC->l2 - kC->l7) + kC->l5 * cos(pathJ->data[loop_ub +
+          pathJ->size[0] * (2 + j)] + kC->zeta)) + kC->l3 * cos(pathJ->
+          data[loop_ub + pathJ->size[0] * (1 + j)])) + kC->l4 * cos(kC->zeta)) -
+                       gammaDot * kC->l5 * sin(pathJ->data[loop_ub + pathJ->
+          size[0] * (2 + j)] + kC->zeta) * sin(pathJ->data[loop_ub + pathJ->
+          size[0] * j])) - betaDot * kC->l3 * sin(pathJ->data[loop_ub +
+          pathJ->size[0] * j]) * sin(pathJ->data[loop_ub + pathJ->size[0] * (1 +
+          j)]);
+        alphaDot[2] = -betaDot * kC->l3 * cos(pathJ->data[loop_ub + pathJ->size
+          [0] * (1 + j)]) - kC->l5 * gammaDot * cos(kC->zeta + pathJ->
+          data[loop_ub + pathJ->size[0] * (2 + j)]);
         for (i0 = 0; i0 < 3; i0++) {
-          uGoalP[i0] = 0.0;
+          b_TB2P[i0] = 0.0;
           for (i1 = 0; i1 < 3; i1++) {
-            uGoalP[i0] += TP2B[i0 + (i1 << 2)] * b_uInitP[i1];
+            b_TB2P[i0] += TP2B[i0 + (i1 << 2)] * alphaDot[i1];
           }
         }
 
@@ -414,13 +349,13 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 
         for (i0 = 0; i0 < 3; i0++) {
           b_pathC->data[((int)count + b_pathC->size[0] * (i0 + 4)) - 1] =
-            uGoalP[i0];
+            b_TB2P[i0];
         }
 
         b_pathJ->data[(int)count - 1] = time;
         for (i0 = 0; i0 < 6; i0++) {
           b_pathJ->data[((int)count + b_pathJ->size[0] * (i0 + 1)) - 1] =
-            pathJ->data[loop_ub + pathJ->size[0] * ((i0 + j) - 2)];
+            pathJ->data[loop_ub + pathJ->size[0] * (i0 + j)];
         }
 
         time -= dt;
@@ -500,9 +435,10 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     pathJ->size[1] = 7;
     emxEnsureCapacity((emxArray__common *)pathJ, i0, (int)sizeof(double));
     pathJ->data[0] = 0.0;
-    pathJ->data[pathJ->size[0]] = alphaInit;
-    pathJ->data[pathJ->size[0] << 1] = betaInit;
-    pathJ->data[pathJ->size[0] * 3] = gammaInit;
+    for (i0 = 0; i0 < 3; i0++) {
+      pathJ->data[pathJ->size[0] * (i0 + 1)] = qInit[i0];
+    }
+
     for (i0 = 0; i0 < 3; i0++) {
       pathJ->data[pathJ->size[0] * (i0 + 4)] = qDotInit[i0];
     }

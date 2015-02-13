@@ -15,11 +15,11 @@
 
 /* Function Definitions */
 real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
-  emxArray_real_T *xB, const real_T jointLimits[12], const real_T
-  kinematicConst[16])
+  emxArray_real_T *xB, const real_T jointLimits[12], real_T kC_l2, real_T kC_l3,
+  real_T kC_l4, real_T kC_l5, real_T kC_l7, real_T kC_zeta)
 {
   real_T d;
-  int32_T i2;
+  int32_T i4;
   real_T xStarMin;
   real_T dxStarMax;
   real_T dAlphaMax;
@@ -37,29 +37,26 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   /* author: wreid */
   /* date: 20150107 */
   /* heuristic Calculates the distance between states x1 and x2. */
-  i2 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(4, 1, i2, &gb_emlrtBCI, sp);
-  i2 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(5, 1, i2, &fb_emlrtBCI, sp);
-  i2 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(6, 1, i2, &eb_emlrtBCI, sp);
-  i2 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(7, 1, i2, &db_emlrtBCI, sp);
-  i2 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(8, 1, i2, &cb_emlrtBCI, sp);
-  i2 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(9, 1, i2, &bb_emlrtBCI, sp);
+  i4 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(4, 1, i4, &cb_emlrtBCI, sp);
+  i4 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(5, 1, i4, &bb_emlrtBCI, sp);
+  i4 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(6, 1, i4, &ab_emlrtBCI, sp);
+  i4 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(7, 1, i4, &y_emlrtBCI, sp);
+  i4 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(8, 1, i4, &x_emlrtBCI, sp);
+  i4 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(9, 1, i4, &w_emlrtBCI, sp);
 
   /* Calculate the distance between angular positions. */
-  xStarMin = (((kinematicConst[1] + kinematicConst[2] * muDoubleScalarCos
-                (jointLimits[2])) + kinematicConst[3] * muDoubleScalarCos
-               (kinematicConst[8])) + kinematicConst[4] * muDoubleScalarCos
-              (kinematicConst[8] + jointLimits[4])) - kinematicConst[6];
-  dxStarMax = ((((kinematicConst[1] + kinematicConst[2] * muDoubleScalarCos
-                  (jointLimits[3])) + kinematicConst[3] * muDoubleScalarCos
-                 (kinematicConst[8])) + kinematicConst[4] * muDoubleScalarCos
-                (kinematicConst[8] + jointLimits[5])) - kinematicConst[6]) -
-    xStarMin;
+  xStarMin = (((kC_l2 + kC_l3 * muDoubleScalarCos(jointLimits[2])) + kC_l4 *
+               muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(kC_zeta +
+    jointLimits[4])) - kC_l7;
+  dxStarMax = ((((kC_l2 + kC_l3 * muDoubleScalarCos(jointLimits[3])) + kC_l4 *
+                 muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(kC_zeta
+    + jointLimits[5])) - kC_l7) - xStarMin;
 
   /* angDiff Finds the angular difference between th1 and th2. */
   dAlphaMax = ((jointLimits[0] - jointLimits[2]) + 3.1415926535897931) /
@@ -73,23 +70,20 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   }
 
   dAlphaMax = muDoubleScalarAbs(dAlphaMax - 3.1415926535897931);
-  st.site = &v_emlrtRSI;
-  b_st.site = &x_emlrtRSI;
+  st.site = &t_emlrtRSI;
+  b_st.site = &v_emlrtRSI;
   if (dxStarMax * dxStarMax + xStarMin * xStarMin * (dAlphaMax * dAlphaMax) <
       0.0) {
-    c_st.site = &f_emlrtRSI;
+    c_st.site = &g_emlrtRSI;
     eml_error(&c_st);
   }
 
-  xStarMin = (((kinematicConst[1] + kinematicConst[2] * muDoubleScalarCos
-                (xA_data[4])) + kinematicConst[3] * muDoubleScalarCos
-               (kinematicConst[8])) + kinematicConst[4] * muDoubleScalarCos
-              (kinematicConst[8] + xA_data[5])) - kinematicConst[6];
-  dxStarMax = ((((kinematicConst[1] + kinematicConst[2] * muDoubleScalarCos
-                  (xB->data[4])) + kinematicConst[3] * muDoubleScalarCos
-                 (kinematicConst[8])) + kinematicConst[4] * muDoubleScalarCos
-                (kinematicConst[8] + xB->data[5])) - kinematicConst[6]) -
-    xStarMin;
+  xStarMin = (((kC_l2 + kC_l3 * muDoubleScalarCos(xA_data[4])) + kC_l4 *
+               muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(kC_zeta +
+    xA_data[5])) - kC_l7;
+  dxStarMax = ((((kC_l2 + kC_l3 * muDoubleScalarCos(xB->data[4])) + kC_l4 *
+                 muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(kC_zeta
+    + xB->data[5])) - kC_l7) - xStarMin;
 
   /* angDiff Finds the angular difference between th1 and th2. */
   dAlphaMax = ((xA_data[3] - xB->data[3]) + 3.1415926535897931) /
@@ -103,11 +97,11 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   }
 
   dAlphaMax = muDoubleScalarAbs(dAlphaMax - 3.1415926535897931);
-  st.site = &w_emlrtRSI;
+  st.site = &u_emlrtRSI;
   dAlphaMax = dxStarMax * dxStarMax + xStarMin * xStarMin * (dAlphaMax *
     dAlphaMax);
   if (dAlphaMax < 0.0) {
-    b_st.site = &f_emlrtRSI;
+    b_st.site = &g_emlrtRSI;
     eml_error(&b_st);
   }
 

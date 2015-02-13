@@ -1,43 +1,57 @@
-global fig body l1 l2 l3 l4 l5 l6 l7 l8 wheel
-global trB2G trP2G trI2G trJ2G trO2G trQ2G trS2G trC2G
-global initPosHandle goalPosHandle
+function initializeSherpaTTPlot(showFrames)
 
-fig = figure('Name','Sherpa_TT Visualization');
-axis([-1.5 1.5 -1.5 1.5 -1.5 1.5]);
-xlabel('X_G [m]');
-ylabel('Y_G [m]');
-zlabel('Z_G [m]');
-view(145,42);
+    global body fig wheel
+    global initPosHandle goalPosHandle
+    global trMats trBody trGround
+    global legLinks
+    
+    trMats = gobjects(4,8);
+    legLinks = gobjects(4,8);
+    wheel = gobjects(1,4);
+    
+    fig = figure('Name','Sherpa_TT Visualization','Position',[100 100 700 700]);
+    axis([-1.5 1.5 -1.5 1.5 -1.5 1.5]);
+    axis equal
+    xlabel('X_G [m]');
+    ylabel('Y_G [m]');
+    zlabel('Z_G [m]');
+    view(136,40);
 
-hold on
+    hold on
 
-%Plot the initial and final position.
-initPosHandle = plot3(0,0,0,'g*');
-goalPosHandle = plot3(0,0,0,'r*');
+    %Plot the initial and final position.
+    initPosHandle = plot3(0,0,0,'g*');
+    goalPosHandle = plot3(0,0,0,'r*');
 
-body = fill3(0,0,0,'r');
-l1 = line([0 0],[0 0],'LineWidth',3);
-l2 = line([0 0],[0 0],'LineWidth',3);
-l3 = line([0 0],[0 0],'LineWidth',3);
-l4 = line([0 0],[0 0],'LineWidth',3);
-l5 = line([0 0],[0 0],'LineWidth',3);
-l6 = line([0 0],[0 0],'LineWidth',3);
-l7 = line([0 0],[0 0],'LineWidth',3);
-l8 = line([0 0],[0 0],'LineWidth',3);
-wheel = fill3(0,0,0,'k');
+    body = fill3(0,0,0,'r');
 
-axesLen = 0.1;
+    axesLen = 0.1;
 
-if showFrames
-    trB2G = trplot(eye(4,4),'color','b','length',axesLen,'frame','P');
-    trP2G = trplot(eye(4,4),'color','b','length',axesLen,'frame','P');
-    trI2G = trplot(eye(4,4),'length',axesLen,'frame','I');
-    trJ2G = trplot(eye(4,4),'length',axesLen,'frame','J');
-    trO2G = trplot(eye(4,4),'length',axesLen,'frame','O');
-    trQ2G = trplot(eye(4,4),'length',axesLen,'frame','Q');
-    %trplot(TI2P*TJ2I*TO2J*TQ2O*TR2Q,'length',axesLen,'frame','R');
-    trS2G = trplot(eye(4,4),'length',axesLen,'frame','S');
-    trC2G = trplot(eye(4,4),'length',axesLen,'frame','C');
+    
+    if showFrames
+        trGround = trplot(eye(4,4),'length',axesLen,'frame','G','rgb');
+        trBody = trplot(eye(4,4),'length',axesLen,'frame','B','rgb');
+    end
+    
+    for i = 1:4
+        
+        wheel(i) = fill3(0,0,0,'k');
+        
+        for j = 1:8
+            legLinks(i,j) = line([0 0],[0 0],'LineWidth',3,'Color','k');
+        end
+        
+        if showFrames
+            trMats(i,1) = trplot(eye(4,4),'length',axesLen,'frame',['P_' num2str(i)],'rgb');
+            trMats(i,2) = trplot(eye(4,4),'length',axesLen,'frame',['I_' num2str(i)],'rgb');
+            trMats(i,3) = trplot(eye(4,4),'length',axesLen,'frame',['J_' num2str(i)],'rgb');
+            trMats(i,4) = trplot(eye(4,4),'length',axesLen,'frame',['O_' num2str(i)],'rgb');
+            trMats(i,5) = trplot(eye(4,4),'length',axesLen,'frame',['Q_' num2str(i)],'rgb');
+            trMats(i,6) = trplot(eye(4,4),'length',axesLen,'frame',['S_' num2str(i)],'rgb');
+            trMats(i,7) = trplot(eye(4,4),'length',axesLen,'frame',['W_' num2str(i)],'rgb');
+            trMats(i,8) = trplot(eye(4,4),'length',axesLen,'frame',['C_' num2str(i)],'rgb');
+        end
+    end
+
 end
 
-hold off

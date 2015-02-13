@@ -16,14 +16,6 @@ static emlrtRTEInfo i_emlrtRTEI = { 20, 5, "eml_error",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_error.m" };
 
 /* Function Definitions */
-void b_eml_error(const emlrtStack *sp)
-{
-  static const char_T varargin_1[4] = { 'a', 's', 'i', 'n' };
-
-  emlrtErrorWithMessageIdR2012b(sp, &i_emlrtRTEI,
-    "Coder:toolbox:ElFunDomainError", 3, 4, 4, varargin_1);
-}
-
 void eml_error(const emlrtStack *sp)
 {
   static const char_T varargin_1[4] = { 's', 'q', 'r', 't' };

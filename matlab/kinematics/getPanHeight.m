@@ -1,9 +1,8 @@
-function panHeight = getPanHeight( bodyHeight,kinematicConst )
+function panHeight = getPanHeight(bodyHeight,kC)
 %GETPANHEIGHT Summary of this function goes here
 %   Detailed explanation goes here
 
-    [~,~,~,~,~,~,~,~,~,~,~,B2PZOffset,~,~,~,~] = extractKinematicConstants(kinematicConst);
-    panHeight = -(bodyHeight + B2PZOffset);
+    panHeight = -(bodyHeight + kC.B2PZOffset);
 
 end
 

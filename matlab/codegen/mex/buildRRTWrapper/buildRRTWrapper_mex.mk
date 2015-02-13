@@ -12,7 +12,6 @@ SRC_FILES =  \
 	buildRRTWrapper_initialize.c \
 	buildRRTWrapper_terminate.c \
 	buildRRTWrapper.c \
-	extractKinematicConstants.c \
 	sin.c \
 	sherpaTTIK.c \
 	eml_error.c \
@@ -62,6 +61,7 @@ SYS_INCLUDE = $(ML_INCLUDES)
 SYS_INCLUDE += -I "$(START_DIR)"
 SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper"
 SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper/interface"
+SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt"
 SYS_INCLUDE += -I "$(MATLAB_ROOT)/extern/include"
 SYS_INCLUDE += -I "."
 

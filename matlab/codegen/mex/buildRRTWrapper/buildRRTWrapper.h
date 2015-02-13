@@ -28,9 +28,9 @@ extern void U_SIZE_not_empty_init(void);
 extern void ankleThreshold_not_empty_init(void);
 extern void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   const real_T nGoalCartesianB[6], const real_T jointLimits[12], real_T
-  bodyHeight, const real_T U[10], real_T dt, real_T Dt, const real_T
-  kinematicConst[16], real_T threshold, int32_T legNum, emxArray_real_T *T,
-  emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
+  bodyHeight, const real_T U[10], real_T dt, real_T Dt, const struct0_T *kC,
+  real_T threshold, int32_T legNum, emxArray_real_T *T, emxArray_real_T *pathC,
+  emxArray_real_T *pathJ, boolean_T *success);
 extern void buildRRTWrapper_init(void);
 extern void exhaustive_not_empty_init(void);
 extern void goalSeedFreq_not_empty_init(void);

@@ -42,48 +42,37 @@ jointLimits = [MIN;MAX];
 %The name that will put on the path.
 name = 'Single Leg RRT';
 
-% %The goal and initial positions.
-% xInitP = 0.1;    %[m]
-% yInitP = 0.1;    %[m]
-% zInitP = -0.6;       %[m]
-% 
-% % xInit = 0.4345;    %[m]
-% % yInit = 0.2627;    %[m]
-% % zInit = -0.6;       %[m]
-% 
-% xGoalP = -0.1;    %[m]
-% yGoalP = -0.1;     %[m]
-% zGoalP = -0.6;       %[m]
-% 
-% xDotInitP = 0;
-% yDotInitP = 0;
-% zDotInitP = 0;
-% 
-% xDotGoalP = 0;
-% yDotGoalP = 0;
-% zDotGoalP = 0;
-% 
-% TP2B = generateDHTransMatrix(kinematicConst(11+legNum),0,kinematicConst(10),0);
-% TB2P = inv(TP2B);
-% 
-% uInitB = TP2B(1:3,1:3)*[xInitP;yInitP;zInitP] + TP2B(1:3,4);
-% uGoalB = TP2B(1:3,1:3)*[xGoalP;yGoalP;zGoalP] + TP2B(1:3,4);
-% uDotInitB = TP2B(1:3,1:3)*[xDotInitP;yDotInitP;zDotInitP];
-% uDotGoalB = TP2B(1:3,1:3)*[xDotGoalP;yDotGoalP;zDotGoalP];
-% 
-% [alphaInit,betaInit,gammaInit] = sherpaTTIK(xInitP,yInitP,zInitP,kinematicConst,jointLimits);
-% [alphaGoal,betaGoal,gammaGoal] = sherpaTTIK(xGoalP,yGoalP,zGoalP,kinematicConst,jointLimits);
-
-nInitB = [0.9397 0.9397 -0.6 0 0 0;
-            0.9397 -0.9397 -0.6 0 0 0;
-            -0.9397 0.9397 -0.6 0 0 0;
-            -0.9397 -0.9397 -0.6 0 0 0];
+nInitB = [0.996 0.996 -1 0 0 0;
+            0.996 -0.996 -1 0 0 0;
+            -0.996 0.996 -1 0 0 0;
+            -0.9967 -0.996 -1 0 0 0];
       
-nGoalB = [1.126 0.3385 -0.6 0 0 0;
-          0.1859 -1.019 -0.6 0 0 0;
-          -0.04015 0.9478 -0.6 0 0 0;
-          -1.09 -0.3415 -0.6 0 0 0];
+nGoalB = [1.257 0.3278 -1 0 0 0;
+          1.257 -0.3278 -1 0 0 0;
+          -1.257 0.3278 -1 0 0 0;
+          -1.257 -0.3278 -1 0 0 0];
 
+qInit = zeros(4,6);
+qGoal = zeros(4,6);
+
+for i = 1:4  
+    [~,TP2B,~,~,~,~,~,~,~,~] = generateTrMatrices([0,0,0],[0,0,0,0],kC,i);
+    TB2P = invHomoMatrix(TP2B); %inv(TP2B);%
+    uInitP = TB2P(1:3,1:3)*nInitB(i,1:3)' + TB2P(1:3,4);
+    uDotInitP = TB2P(1:3,1:3)*nInitB(i,4:6)';
+    uGoalP = TB2P(1:3,1:3)*nGoalB(i,1:3)' + TB2P(1:3,4);
+    uDotGoalP = TB2P(1:3,1:3)*nGoalB(i,4:6)';
+    qInit(i,1:3) = sherpaTTIK(uInitP,kC,jointLimits);
+    qGoal(i,1:3) = sherpaTTIK(uGoalP,kC,jointLimits);
+    qInit(i,4:6) = sherpaTTIKVel(uDotInitP',qInit',kC)';
+    qGoal(i,4:6) = sherpaTTIKVel(uDotGoalP',qGoal',kC)';
+end
+
+%qInit(:,1:3)
+%qGoal(:,1:3)
+
+clear qInit qGoal qDotInit qDotGoal
+      
 U_SIZE = int32(5);
 
 stepAccRatio = 14;
@@ -101,8 +90,8 @@ U = eta*[1 0;                   % The control input set:
 
 NUM_TRIALS = 1;
 
-bodyHeight = 0.6;
-panHeight = getPanHeight(bodyHeight,kinematicConst);
+bodyHeight = -sum(nInitB(:,3))/4;
+panHeight = getPanHeight(bodyHeight,kC);
 
 goalSeedFreq = int32(20);
 

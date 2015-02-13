@@ -7,13 +7,13 @@
 <body bgcolor="#eeeeee" text="#1122aa" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};">
 <p>
 <table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
-<h4>File: <a href="../buildRRTWrapper_types.h" target="rtwreport_document_frame" id="linkToText_plain">buildRRTWrapper_types.h</a></h4>
+<h4>File: <a href="../../../../../../../../../PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/lib/buildRRTWrapper/buildRRTWrapper_types.h" target="rtwreport_document_frame" id="linkToText_plain">buildRRTWrapper_types.h</a></h4>
 <pre id="RTWcode">
 <a name="1"><font color="#888888 "><i>    1   </i></font></a><font color="#117755"><i>// </i></font>
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: buildRRTWrapper_types.h </i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//  </i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7 </i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 12-Feb-2015 09:24:14 </i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 13-Feb-2015 14:11:02 </i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#992211">#</font><font color="#992211"><b>ifndef</b></font> __BUILDRRTWRAPPER_TYPES_H__
@@ -77,14 +77,30 @@
 <a name="66"><font color="#888888 "><i>   66   </i></font></a>    <font color="#112266"><b>int</b></font> size[2];
 <a name="67"><font color="#888888 "><i>   67   </i></font></a><b>}</b>;
 <a name="68"><font color="#888888 "><i>   68   </i></font></a><font color="#992211">#</font><font color="#992211"><b>endif</b></font> <font color="#117755"><i>/*struct_emxArray_real_T_5x3*/</i></font>
-<a name="69"><font color="#888888 "><i>   69   </i></font></a>
-<a name="70"><font color="#888888 "><i>   70   </i></font></a><font color="#992211">#</font><font color="#992211"><b>endif</b></font>
-<a name="71"><font color="#888888 "><i>   71   </i></font></a><font color="#117755"><i>// </i></font>
-<a name="72"><font color="#888888 "><i>   72   </i></font></a><font color="#117755"><i>// File trailer for buildRRTWrapper_types.h </i></font>
-<a name="73"><font color="#888888 "><i>   73   </i></font></a><font color="#117755"><i>//  </i></font>
-<a name="74"><font color="#888888 "><i>   74   </i></font></a><font color="#117755"><i>// [EOF] </i></font>
-<a name="75"><font color="#888888 "><i>   75   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="76"><font color="#888888 "><i>   76   </i></font></a></pre>
+<a name="69"><font color="#888888 "><i>   69   </i></font></a><font color="#112266"><b>typedef</b></font> <font color="#112266"><b>struct</b></font>
+<a name="70"><font color="#888888 "><i>   70   </i></font></a><b>{</b>
+<a name="71"><font color="#888888 "><i>   71   </i></font></a>    <font color="#112266"><b>double</b></font> l1;
+<a name="72"><font color="#888888 "><i>   72   </i></font></a>    <font color="#112266"><b>double</b></font> l2;
+<a name="73"><font color="#888888 "><i>   73   </i></font></a>    <font color="#112266"><b>double</b></font> l3;
+<a name="74"><font color="#888888 "><i>   74   </i></font></a>    <font color="#112266"><b>double</b></font> l4;
+<a name="75"><font color="#888888 "><i>   75   </i></font></a>    <font color="#112266"><b>double</b></font> l5;
+<a name="76"><font color="#888888 "><i>   76   </i></font></a>    <font color="#112266"><b>double</b></font> l6;
+<a name="77"><font color="#888888 "><i>   77   </i></font></a>    <font color="#112266"><b>double</b></font> l7;
+<a name="78"><font color="#888888 "><i>   78   </i></font></a>    <font color="#112266"><b>double</b></font> l8;
+<a name="79"><font color="#888888 "><i>   79   </i></font></a>    <font color="#112266"><b>double</b></font> zeta;
+<a name="80"><font color="#888888 "><i>   80   </i></font></a>    <font color="#112266"><b>double</b></font> r;
+<a name="81"><font color="#888888 "><i>   81   </i></font></a>    <font color="#112266"><b>double</b></font> B2PXOffset;
+<a name="82"><font color="#888888 "><i>   82   </i></font></a>    <font color="#112266"><b>double</b></font> B2PZOffset;
+<a name="83"><font color="#888888 "><i>   83   </i></font></a>    <font color="#112266"><b>double</b></font> legAngleOffset[4];
+<a name="84"><font color="#888888 "><i>   84   </i></font></a><b>}</b> <a name="type_struct0_T">struct0_T</a>;
+<a name="85"><font color="#888888 "><i>   85   </i></font></a>
+<a name="86"><font color="#888888 "><i>   86   </i></font></a><font color="#992211">#</font><font color="#992211"><b>endif</b></font>
+<a name="87"><font color="#888888 "><i>   87   </i></font></a><font color="#117755"><i>// </i></font>
+<a name="88"><font color="#888888 "><i>   88   </i></font></a><font color="#117755"><i>// File trailer for buildRRTWrapper_types.h </i></font>
+<a name="89"><font color="#888888 "><i>   89   </i></font></a><font color="#117755"><i>//  </i></font>
+<a name="90"><font color="#888888 "><i>   90   </i></font></a><font color="#117755"><i>// [EOF] </i></font>
+<a name="91"><font color="#888888 "><i>   91   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="92"><font color="#888888 "><i>   92   </i></font></a></pre>
 </td></tr></table>
 </p>
 </body>
