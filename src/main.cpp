@@ -5,7 +5,7 @@
 
 #include "buildRRTWrapper.h"
 #include "buildRRTWrapper_emxAPI.h"
-#include "LegPlanner.h"
+#include "LegPlanner1.h"
 
 using namespace std;
 
