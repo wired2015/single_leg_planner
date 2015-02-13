@@ -2,13 +2,14 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "buildRRTWrapper_emxutil.h"
+#include "flipud.h"
 #include "buildRRT.h"
 #include "sherpaTTIKVel.h"
 #include "sherpaTTIK.h"
@@ -45,15 +46,14 @@ static boolean_T validState(const double n[6], const double jointLimits[12])
 }
 
 //
-// buildRRTWrapper(nInitCartesianB,nGoalCartesianB,NUM_NODES,jointLimits,K,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kinematicConst,ankleThreshold,exhaustive,threshold,goalSeedFreq,legNum)
 // Arguments    : const double nInitCartesianB[6]
 //                const double nGoalCartesianB[6]
 //                const double jointLimits[12]
-//                double K
+//                double bodyHeight
 //                const double U[10]
 //                double dt
 //                double Dt
-//                const double kinematicConst[15]
+//                const struct0_T *kC
 //                double threshold
 //                int legNum
 //                emxArray_real_T *T
@@ -63,235 +63,155 @@ static boolean_T validState(const double n[6], const double jointLimits[12])
 // Return Type  : void
 //
 void buildRRTWrapper(const double nInitCartesianB[6], const double
-                     nGoalCartesianB[6], const double jointLimits[12], double K,
-                     const double U[10], double dt, double Dt, const double
-                     kinematicConst[15], double, int legNum, emxArray_real_T *T,
+                     nGoalCartesianB[6], const double jointLimits[12], double
+                     bodyHeight, const double U[10], double dt, double Dt, const
+                     struct0_T *kC, double, int legNum, emxArray_real_T *T,
                      emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T
                      *success)
 {
-  long i0;
   double TP2B[16];
-  int path_idx_0;
-  static const signed char iv0[4] = { 0, 0, 1, 0 };
-
-  static const signed char iv1[4] = { 0, 0, 0, 1 };
+  int i0;
+  static const signed char iv0[4] = { 0, 0, 0, 1 };
 
   double b_TP2B[9];
-  int md2;
+  int i1;
   double c_TP2B[3];
   double TB2P[16];
-  double uInitP[3];
-  double betaInit;
-  double uGoalP[3];
-  double gammaInit;
-  double time;
-  double gammaGoal;
-  double betaGoal;
-  double alphaGoal;
-  double alphaInit[3];
   double b_TB2P[3];
-  double c_TB2P[3];
-  double b_alphaGoal[3];
+  double d0;
+  double qInit[3];
+  double qGoal[3];
   double nInitJoint[6];
+  double qDotInit[3];
   double nGoalJoint[6];
   emxArray_real_T *b_T;
-  emxArray_real_T *path;
-  emxArray_real_T *x;
+  emxArray_real_T *b_pathC;
+  emxArray_real_T *b_pathJ;
+  emxArray_real_T *c_pathC;
+  emxArray_real_T *c_pathJ;
   double dv0[11];
   double dv1[11];
-  int m;
+  int loop_ub;
+  double alpha;
   unsigned int count;
-  int i;
+  double time;
   int j;
-  double b_pathJ[3];
-  double c_pathJ[3];
-  double b_kinematicConst[3];
-  double b_uInitP[3];
-  int b_path_idx_0;
+  double uP[3];
+  double betaDot;
+  double gammaDot;
+  double alphaDot[3];
 
   // buildRRTWrapper.m
   // author: wreid
   // date: 20150502
+  // GETPANHEIGHT Summary of this function goes here
+  //    Detailed explanation goes here
   // Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame 
   // to the pan coordinate frame.
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
+  // TRP2B Calculates the homogeneous transformation matrix between the body
+  // and pan coordinate frames.
+  TP2B[0] = cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[4] = -sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[8] = sin(kC->legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[12] = kC->B2PXOffset * cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[1] = sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[5] = cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[9] = -cos(kC->legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[13] = kC->B2PXOffset * sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[2] = 0.0;
+  TP2B[6] = 0.0;
+  TP2B[10] = 1.0;
+  TP2B[14] = kC->B2PZOffset;
+  for (i0 = 0; i0 < 4; i0++) {
+    TP2B[3 + (i0 << 2)] = iv0[i0];
+  }
+
+  for (i0 = 0; i0 < 3; i0++) {
+    for (i1 = 0; i1 < 3; i1++) {
+      b_TP2B[i1 + 3 * i0] = -TP2B[i0 + (i1 << 2)];
     }
   }
 
-  TP2B[0] = cos(kinematicConst[(int)i0 - 1]);
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
+  for (i0 = 0; i0 < 3; i0++) {
+    c_TP2B[i0] = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += b_TP2B[i0 + 3 * i1] * TP2B[12 + i1];
+    }
+
+    for (i1 = 0; i1 < 3; i1++) {
+      TB2P[i1 + (i0 << 2)] = TP2B[i0 + (i1 << 2)];
     }
   }
 
-  TP2B[4] = -sin(kinematicConst[(int)i0 - 1]);
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
-    }
+  for (i0 = 0; i0 < 3; i0++) {
+    TB2P[12 + i0] = c_TP2B[i0];
   }
 
-  TP2B[8] = sin(kinematicConst[(int)i0 - 1]) * 0.0;
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
-    }
-  }
-
-  TP2B[12] = kinematicConst[10] * cos(kinematicConst[(int)i0 - 1]);
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
-    }
-  }
-
-  TP2B[1] = sin(kinematicConst[(int)i0 - 1]);
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
-    }
-  }
-
-  TP2B[5] = cos(kinematicConst[(int)i0 - 1]);
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
-    }
-  }
-
-  TP2B[9] = -cos(kinematicConst[(int)i0 - 1]) * 0.0;
-  i0 = 11L + legNum;
-  if (i0 > 2147483647L) {
-    i0 = 2147483647L;
-  } else {
-    if (i0 < -2147483648L) {
-      i0 = -2147483648L;
-    }
-  }
-
-  TP2B[13] = kinematicConst[10] * sin(kinematicConst[(int)i0 - 1]);
-  for (path_idx_0 = 0; path_idx_0 < 4; path_idx_0++) {
-    TP2B[2 + (path_idx_0 << 2)] = iv0[path_idx_0];
-    TP2B[3 + (path_idx_0 << 2)] = iv1[path_idx_0];
-  }
-
-  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-    for (md2 = 0; md2 < 3; md2++) {
-      b_TP2B[md2 + 3 * path_idx_0] = -TP2B[path_idx_0 + (md2 << 2)];
-    }
-  }
-
-  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-    c_TP2B[path_idx_0] = 0.0;
-    for (md2 = 0; md2 < 3; md2++) {
-      c_TP2B[path_idx_0] += b_TP2B[path_idx_0 + 3 * md2] * TP2B[12 + md2];
-    }
-
-    for (md2 = 0; md2 < 3; md2++) {
-      TB2P[md2 + (path_idx_0 << 2)] = TP2B[path_idx_0 + (md2 << 2)];
-    }
-  }
-
-  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-    TB2P[12 + path_idx_0] = c_TP2B[path_idx_0];
-  }
-
-  for (path_idx_0 = 0; path_idx_0 < 4; path_idx_0++) {
-    TB2P[3 + (path_idx_0 << 2)] = iv1[path_idx_0];
+  for (i0 = 0; i0 < 4; i0++) {
+    TB2P[3 + (i0 << 2)] = iv0[i0];
   }
 
   // inv(TP2B);%
-  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-    betaInit = 0.0;
-    for (md2 = 0; md2 < 3; md2++) {
-      betaInit += TB2P[path_idx_0 + (md2 << 2)] * nInitCartesianB[md2];
-    }
-
-    uInitP[path_idx_0] = betaInit + TB2P[12 + path_idx_0];
-  }
-
-  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-    betaInit = 0.0;
-    for (md2 = 0; md2 < 3; md2++) {
-      betaInit += TB2P[path_idx_0 + (md2 << 2)] * nGoalCartesianB[md2];
-    }
-
-    uGoalP[path_idx_0] = betaInit + TB2P[12 + path_idx_0];
-  }
-
   // Transform the Cartesian goal and final positions in the pan coordinate
   // frame to the joint space.
-  sherpaTTIK(uInitP[0], uInitP[1], uInitP[2], kinematicConst, jointLimits, &time,
-             &betaInit, &gammaInit);
-  sherpaTTIK(uGoalP[0], uGoalP[1], uGoalP[2], kinematicConst, jointLimits,
-             &alphaGoal, &betaGoal, &gammaGoal);
-  alphaInit[0] = time;
-  alphaInit[1] = betaInit;
-  alphaInit[2] = gammaInit;
-  for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-    uGoalP[path_idx_0] = 0.0;
-    for (md2 = 0; md2 < 3; md2++) {
-      uGoalP[path_idx_0] += TB2P[path_idx_0 + (md2 << 2)] * nInitCartesianB[3 +
-        md2];
+  for (i0 = 0; i0 < 3; i0++) {
+    d0 = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      d0 += TB2P[i0 + (i1 << 2)] * nInitCartesianB[i1];
     }
 
-    c_TP2B[path_idx_0] = uGoalP[path_idx_0];
-    c_TB2P[path_idx_0] = 0.0;
-    for (md2 = 0; md2 < 3; md2++) {
-      c_TB2P[path_idx_0] += TB2P[path_idx_0 + (md2 << 2)] * nGoalCartesianB[3 +
-        md2];
-    }
-
-    b_TB2P[path_idx_0] = c_TB2P[path_idx_0];
+    b_TB2P[i0] = d0 + TB2P[12 + i0];
   }
 
-  sherpaTTIKVel(c_TP2B, alphaInit, kinematicConst, uInitP);
-  b_alphaGoal[0] = alphaGoal;
-  b_alphaGoal[1] = betaGoal;
-  b_alphaGoal[2] = gammaGoal;
-  sherpaTTIKVel(b_TB2P, b_alphaGoal, kinematicConst, uGoalP);
-  nInitJoint[0] = time;
-  nInitJoint[1] = betaInit;
-  nInitJoint[2] = gammaInit;
-  nInitJoint[3] = uInitP[0];
-  nInitJoint[4] = uInitP[1];
-  nInitJoint[5] = uInitP[2];
-  nGoalJoint[0] = alphaGoal;
-  nGoalJoint[1] = betaGoal;
-  nGoalJoint[2] = gammaGoal;
-  nGoalJoint[3] = uGoalP[0];
-  nGoalJoint[4] = uGoalP[1];
-  nGoalJoint[5] = uGoalP[2];
+  sherpaTTIK(b_TB2P, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
+             kC->l8, kC->zeta, kC->r, jointLimits, qInit);
+  for (i0 = 0; i0 < 3; i0++) {
+    d0 = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      d0 += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[i1];
+    }
+
+    b_TB2P[i0] = d0 + TB2P[12 + i0];
+  }
+
+  sherpaTTIK(b_TB2P, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
+             kC->l8, kC->zeta, kC->r, jointLimits, qGoal);
+  for (i0 = 0; i0 < 3; i0++) {
+    c_TP2B[i0] = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += TB2P[i0 + (i1 << 2)] * nInitCartesianB[3 + i1];
+    }
+
+    b_TB2P[i0] = c_TP2B[i0];
+    nInitJoint[i0] = qInit[i0];
+  }
+
+  sherpaTTIKVel(b_TB2P, qInit, kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta,
+                qDotInit);
+  for (i0 = 0; i0 < 3; i0++) {
+    nInitJoint[i0 + 3] = qDotInit[i0];
+    c_TP2B[i0] = 0.0;
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[3 + i1];
+    }
+
+    b_TB2P[i0] = c_TP2B[i0];
+    nGoalJoint[i0] = qGoal[i0];
+  }
+
+  sherpaTTIKVel(b_TB2P, qGoal, kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta,
+                c_TP2B);
+  for (i0 = 0; i0 < 3; i0++) {
+    nGoalJoint[i0 + 3] = c_TP2B[i0];
+  }
 
   // Check that the initial and final positions are valid. If they are not
   // return failure and an empty path.
   emxInit_real_T(&b_T, 2);
-  emxInit_real_T(&path, 2);
-  emxInit_real_T(&x, 2);
+  emxInit_real_T(&b_pathC, 2);
+  emxInit_real_T(&b_pathJ, 2);
+  emxInit_real_T(&c_pathC, 2);
+  emxInit_real_T(&c_pathJ, 2);
   if (validState(nInitJoint, jointLimits) && validState(nGoalJoint, jointLimits))
   {
     *success = true;
@@ -300,8 +220,8 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     dv0[0] = 0.0;
     dv0[1] = 0.0;
     dv0[2] = 0.0;
-    for (path_idx_0 = 0; path_idx_0 < 6; path_idx_0++) {
-      dv0[path_idx_0 + 3] = nInitJoint[path_idx_0];
+    for (i0 = 0; i0 < 6; i0++) {
+      dv0[i0 + 3] = nInitJoint[i0];
     }
 
     dv0[9] = 0.0;
@@ -309,20 +229,21 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     dv1[0] = 0.0;
     dv1[1] = 0.0;
     dv1[2] = 0.0;
-    for (path_idx_0 = 0; path_idx_0 < 6; path_idx_0++) {
-      dv1[path_idx_0 + 3] = nGoalJoint[path_idx_0];
+    for (i0 = 0; i0 < 6; i0++) {
+      dv1[i0 + 3] = nGoalJoint[i0];
     }
 
     dv1[9] = 0.0;
     dv1[10] = 0.0;
-    buildRRT(dv0, dv1, jointLimits, K, U, dt, Dt, kinematicConst, b_T, pathJ);
-    path_idx_0 = T->size[0] * T->size[1];
+    buildRRT(dv0, dv1, jointLimits, -(bodyHeight + kC->B2PZOffset), U, dt, Dt,
+             kC, b_T, pathJ);
+    i0 = T->size[0] * T->size[1];
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
-    emxEnsureCapacity((emxArray__common *)T, path_idx_0, (int)sizeof(double));
-    m = b_T->size[0] * b_T->size[1];
-    for (path_idx_0 = 0; path_idx_0 < m; path_idx_0++) {
-      T->data[path_idx_0] = b_T->data[path_idx_0];
+    emxEnsureCapacity((emxArray__common *)T, i0, (int)sizeof(double));
+    loop_ub = b_T->size[0] * b_T->size[1];
+    for (i0 = 0; i0 < loop_ub; i0++) {
+      T->data[i0] = b_T->data[i0];
     }
 
     // Transform path back to the Cartesian space.
@@ -331,101 +252,110 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     // that contains the n general nodes and the p intermediate nodes between
     // general nodes. Each row in the path matrix contains
     // [t,x,y,z,xDot,yDot,zDot] state data.
-    time = rt_roundd_snf(Dt / dt);
-    m = (int)(time * (double)pathJ->size[0]);
-    path_idx_0 = path->size[0] * path->size[1];
-    path->size[0] = m;
-    path->size[1] = 7;
-    emxEnsureCapacity((emxArray__common *)path, path_idx_0, (int)sizeof(double));
-    m = (int)(time * (double)pathJ->size[0]) * 7;
-    for (path_idx_0 = 0; path_idx_0 < m; path_idx_0++) {
-      path->data[path_idx_0] = 0.0;
+    alpha = rt_roundd_snf(Dt / dt);
+    loop_ub = (int)(alpha * (double)pathJ->size[0]);
+    i0 = b_pathC->size[0] * b_pathC->size[1];
+    b_pathC->size[0] = loop_ub;
+    b_pathC->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)b_pathC, i0, (int)sizeof(double));
+    loop_ub = (int)(alpha * (double)pathJ->size[0]) * 7;
+    for (i0 = 0; i0 < loop_ub; i0++) {
+      b_pathC->data[i0] = 0.0;
+    }
+
+    alpha = rt_roundd_snf(Dt / dt);
+    loop_ub = (int)(alpha * (double)pathJ->size[0]);
+    i0 = b_pathJ->size[0] * b_pathJ->size[1];
+    b_pathJ->size[0] = loop_ub;
+    b_pathJ->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)b_pathJ, i0, (int)sizeof(double));
+    loop_ub = (int)(alpha * (double)pathJ->size[0]) * 7;
+    for (i0 = 0; i0 < loop_ub; i0++) {
+      b_pathJ->data[i0] = 0.0;
     }
 
     count = 1U;
     time = rt_roundd_snf(Dt / dt) * (double)pathJ->size[0] * dt;
-    for (i = 0; i < pathJ->size[0]; i++) {
-      for (j = pathJ->size[1] - 4; j + 4 >= 18; j -= 6) {
+    for (loop_ub = 0; loop_ub < pathJ->size[0]; loop_ub++) {
+      for (j = pathJ->size[1] - 6; j + 6 >= 18; j -= 6) {
         // sherpaTTFK Sherpa_TT Forward Kinematics
         //    Calculates the x,y,z position of the contact point given the alpha, 
         //    beta and gamma joint values.
         // sherpaTTFK.m
         // author: wreid
         // date: 20150122
-        b_pathJ[0] = pathJ->data[i + pathJ->size[0] * (j + 1)];
-        b_pathJ[1] = pathJ->data[i + pathJ->size[0] * (j + 2)];
-        b_pathJ[2] = pathJ->data[i + pathJ->size[0] * (j + 3)];
-        for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-          uInitP[path_idx_0] = b_pathJ[path_idx_0];
-        }
-
-        c_pathJ[0] = pathJ->data[i + pathJ->size[0] * (j - 2)];
-        c_pathJ[1] = pathJ->data[i + pathJ->size[0] * (j - 1)];
-        c_pathJ[2] = pathJ->data[i + pathJ->size[0] * j];
-        for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-          uGoalP[path_idx_0] = c_pathJ[path_idx_0];
-        }
+        alpha = pathJ->data[loop_ub + pathJ->size[0] * j];
+        uP[0] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[loop_ub + pathJ->size[0] *
+                     (1 + j)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos
+                  (pathJ->data[loop_ub + pathJ->size[0] * (2 + j)] + kC->zeta))
+                 - kC->l7) * cos(alpha);
+        uP[1] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[loop_ub + pathJ->size[0] *
+                     (1 + j)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos
+                  (pathJ->data[loop_ub + pathJ->size[0] * (2 + j)] + kC->zeta))
+                 - kC->l7) * sin(alpha);
+        uP[2] = ((((kC->l1 + kC->l3 * sin(-pathJ->data[loop_ub + pathJ->size[0] *
+                     (1 + j)])) - kC->l4 * sin(kC->zeta)) - kC->l5 * sin
+                  (pathJ->data[loop_ub + pathJ->size[0] * (2 + j)] + kC->zeta))
+                 - kC->l6) - (kC->l8 + kC->r);
 
         // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
         // sherpaTTFKVel.m
         // author: wreid
         // date: 20150122
-        b_kinematicConst[0] = ((((kinematicConst[1] + kinematicConst[2] * cos
-          (-pathJ->data[i + pathJ->size[0] * (j - 1)])) + kinematicConst[3] *
-          cos(kinematicConst[8])) + kinematicConst[4] * cos(pathJ->data[i +
-          pathJ->size[0] * j] + kinematicConst[8])) - kinematicConst[6]) * cos
-          (pathJ->data[i + pathJ->size[0] * (j - 2)]);
-        b_kinematicConst[1] = ((((kinematicConst[1] + kinematicConst[2] * cos
-          (-pathJ->data[i + pathJ->size[0] * (j - 1)])) + kinematicConst[3] *
-          cos(kinematicConst[8])) + kinematicConst[4] * cos(pathJ->data[i +
-          pathJ->size[0] * j] + kinematicConst[8])) - kinematicConst[6]) * sin
-          (pathJ->data[i + pathJ->size[0] * (j - 2)]);
-        b_kinematicConst[2] = ((((kinematicConst[0] + kinematicConst[2] * sin
-          (-pathJ->data[i + pathJ->size[0] * (j - 1)])) - kinematicConst[3] *
-          sin(kinematicConst[8])) - kinematicConst[4] * sin(pathJ->data[i +
-          pathJ->size[0] * j] + kinematicConst[8])) - kinematicConst[5]) -
-          kinematicConst[7];
-        for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-          betaInit = 0.0;
-          for (md2 = 0; md2 < 3; md2++) {
-            betaInit += TP2B[path_idx_0 + (md2 << 2)] * b_kinematicConst[md2];
+        alpha = pathJ->data[loop_ub + pathJ->size[0] * (3 + j)];
+        betaDot = pathJ->data[loop_ub + pathJ->size[0] * (4 + j)];
+        gammaDot = pathJ->data[loop_ub + pathJ->size[0] * (5 + j)];
+        for (i0 = 0; i0 < 3; i0++) {
+          d0 = 0.0;
+          for (i1 = 0; i1 < 3; i1++) {
+            d0 += TP2B[i0 + (i1 << 2)] * uP[i1];
           }
 
-          c_TP2B[path_idx_0] = betaInit + TP2B[12 + path_idx_0];
+          c_TP2B[i0] = d0 + TP2B[12 + i0];
         }
 
-        b_uInitP[0] = (-uInitP[0] * sin(uGoalP[0]) * ((((kinematicConst[1] -
-          kinematicConst[6]) + kinematicConst[4] * cos(uGoalP[2] +
-          kinematicConst[8])) + kinematicConst[2] * cos(uGoalP[1])) +
-          kinematicConst[3] * cos(kinematicConst[8])) - uInitP[1] *
-                       kinematicConst[2] * cos(uGoalP[0]) * sin(uGoalP[1])) -
-          uInitP[2] * kinematicConst[4] * sin(uGoalP[2] + kinematicConst[8]) *
-          cos(uGoalP[0]);
-        b_uInitP[1] = (uInitP[0] * cos(uGoalP[0]) * ((((kinematicConst[1] -
-          kinematicConst[6]) + kinematicConst[4] * cos(uGoalP[2] +
-          kinematicConst[8])) + kinematicConst[2] * cos(uGoalP[1])) +
-          kinematicConst[3] * cos(kinematicConst[8])) - uInitP[2] *
-                       kinematicConst[4] * sin(uGoalP[2] + kinematicConst[8]) *
-                       sin(uGoalP[0])) - uInitP[1] * kinematicConst[2] * sin
-          (uGoalP[0]) * sin(uGoalP[1]);
-        b_uInitP[2] = -uInitP[1] * kinematicConst[2] * cos(uGoalP[1]) -
-          kinematicConst[4] * uInitP[2] * cos(kinematicConst[8] + uGoalP[2]);
-        for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-          uGoalP[path_idx_0] = 0.0;
-          for (md2 = 0; md2 < 3; md2++) {
-            uGoalP[path_idx_0] += TP2B[path_idx_0 + (md2 << 2)] * b_uInitP[md2];
+        alphaDot[0] = (-alpha * sin(pathJ->data[loop_ub + pathJ->size[0] * j]) *
+                       ((((kC->l2 - kC->l7) + kC->l5 * cos(pathJ->data[loop_ub +
+          pathJ->size[0] * (2 + j)] + kC->zeta)) + kC->l3 * cos(pathJ->
+          data[loop_ub + pathJ->size[0] * (1 + j)])) + kC->l4 * cos(kC->zeta)) -
+                       betaDot * kC->l3 * cos(pathJ->data[loop_ub + pathJ->size
+          [0] * j]) * sin(pathJ->data[loop_ub + pathJ->size[0] * (1 + j)])) -
+          gammaDot * kC->l5 * sin(pathJ->data[loop_ub + pathJ->size[0] * (2 + j)]
+          + kC->zeta) * cos(pathJ->data[loop_ub + pathJ->size[0] * j]);
+        alphaDot[1] = (alpha * cos(pathJ->data[loop_ub + pathJ->size[0] * j]) *
+                       ((((kC->l2 - kC->l7) + kC->l5 * cos(pathJ->data[loop_ub +
+          pathJ->size[0] * (2 + j)] + kC->zeta)) + kC->l3 * cos(pathJ->
+          data[loop_ub + pathJ->size[0] * (1 + j)])) + kC->l4 * cos(kC->zeta)) -
+                       gammaDot * kC->l5 * sin(pathJ->data[loop_ub + pathJ->
+          size[0] * (2 + j)] + kC->zeta) * sin(pathJ->data[loop_ub + pathJ->
+          size[0] * j])) - betaDot * kC->l3 * sin(pathJ->data[loop_ub +
+          pathJ->size[0] * j]) * sin(pathJ->data[loop_ub + pathJ->size[0] * (1 +
+          j)]);
+        alphaDot[2] = -betaDot * kC->l3 * cos(pathJ->data[loop_ub + pathJ->size
+          [0] * (1 + j)]) - kC->l5 * gammaDot * cos(kC->zeta + pathJ->
+          data[loop_ub + pathJ->size[0] * (2 + j)]);
+        for (i0 = 0; i0 < 3; i0++) {
+          b_TB2P[i0] = 0.0;
+          for (i1 = 0; i1 < 3; i1++) {
+            b_TB2P[i0] += TP2B[i0 + (i1 << 2)] * alphaDot[i1];
           }
         }
 
-        path->data[(int)count - 1] = time;
-        for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-          path->data[((int)count + path->size[0] * (path_idx_0 + 1)) - 1] =
-            c_TP2B[path_idx_0];
+        b_pathC->data[(int)count - 1] = time;
+        for (i0 = 0; i0 < 3; i0++) {
+          b_pathC->data[((int)count + b_pathC->size[0] * (i0 + 1)) - 1] =
+            c_TP2B[i0];
         }
 
-        for (path_idx_0 = 0; path_idx_0 < 3; path_idx_0++) {
-          path->data[((int)count + path->size[0] * (path_idx_0 + 4)) - 1] =
-            uGoalP[path_idx_0];
+        for (i0 = 0; i0 < 3; i0++) {
+          b_pathC->data[((int)count + b_pathC->size[0] * (i0 + 4)) - 1] =
+            b_TB2P[i0];
+        }
+
+        b_pathJ->data[(int)count - 1] = time;
+        for (i0 = 0; i0 < 6; i0++) {
+          b_pathJ->data[((int)count + b_pathJ->size[0] * (i0 + 1)) - 1] =
+            pathJ->data[loop_ub + pathJ->size[0] * (i0 + j)];
         }
 
         time -= dt;
@@ -433,77 +363,113 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       }
     }
 
-    m = path->size[0];
-    path_idx_0 = x->size[0] * x->size[1];
-    x->size[0] = m;
-    x->size[1] = 7;
-    emxEnsureCapacity((emxArray__common *)x, path_idx_0, (int)sizeof(double));
-    for (path_idx_0 = 0; path_idx_0 < 7; path_idx_0++) {
-      for (md2 = 0; md2 < m; md2++) {
-        x->data[md2 + x->size[0] * path_idx_0] = path->data[md2 + path->size[0] *
-          path_idx_0];
+    loop_ub = b_pathC->size[0];
+    i0 = c_pathC->size[0] * c_pathC->size[1];
+    c_pathC->size[0] = loop_ub;
+    c_pathC->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)c_pathC, i0, (int)sizeof(double));
+    for (i0 = 0; i0 < 7; i0++) {
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        c_pathC->data[i1 + c_pathC->size[0] * i0] = b_pathC->data[i1 +
+          b_pathC->size[0] * i0];
       }
     }
 
-    path_idx_0 = path->size[0] * path->size[1];
-    path->size[0] = x->size[0];
-    path->size[1] = 7;
-    emxEnsureCapacity((emxArray__common *)path, path_idx_0, (int)sizeof(double));
-    m = x->size[0] * x->size[1];
-    for (path_idx_0 = 0; path_idx_0 < m; path_idx_0++) {
-      path->data[path_idx_0] = x->data[path_idx_0];
-    }
-
-    m = x->size[0];
-    md2 = x->size[0] >> 1;
-    for (j = 0; j < 7; j++) {
-      for (i = 1; i <= md2; i++) {
-        path_idx_0 = path->size[0];
-        time = path->data[(i + path_idx_0 * j) - 1];
-        path_idx_0 = path->size[0];
-        b_path_idx_0 = path->size[0];
-        path->data[(i + path_idx_0 * j) - 1] = path->data[(m - i) + b_path_idx_0
-          * j];
-        path_idx_0 = path->size[0];
-        path->data[(m - i) + path_idx_0 * j] = time;
+    i0 = b_pathC->size[0] * b_pathC->size[1];
+    b_pathC->size[0] = c_pathC->size[0];
+    b_pathC->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)b_pathC, i0, (int)sizeof(double));
+    for (i0 = 0; i0 < 7; i0++) {
+      loop_ub = c_pathC->size[0];
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        b_pathC->data[i1 + b_pathC->size[0] * i0] = c_pathC->data[i1 +
+          c_pathC->size[0] * i0];
       }
     }
 
-    path_idx_0 = pathC->size[0] * pathC->size[1];
-    pathC->size[0] = 1 + path->size[0];
+    flipud(b_pathC);
+    loop_ub = b_pathJ->size[0];
+    i0 = c_pathJ->size[0] * c_pathJ->size[1];
+    c_pathJ->size[0] = loop_ub;
+    c_pathJ->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)c_pathJ, i0, (int)sizeof(double));
+    for (i0 = 0; i0 < 7; i0++) {
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        c_pathJ->data[i1 + c_pathJ->size[0] * i0] = b_pathJ->data[i1 +
+          b_pathJ->size[0] * i0];
+      }
+    }
+
+    i0 = b_pathJ->size[0] * b_pathJ->size[1];
+    b_pathJ->size[0] = c_pathJ->size[0];
+    b_pathJ->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)b_pathJ, i0, (int)sizeof(double));
+    for (i0 = 0; i0 < 7; i0++) {
+      loop_ub = c_pathJ->size[0];
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        b_pathJ->data[i1 + b_pathJ->size[0] * i0] = c_pathJ->data[i1 +
+          c_pathJ->size[0] * i0];
+      }
+    }
+
+    flipud(b_pathJ);
+    i0 = pathC->size[0] * pathC->size[1];
+    pathC->size[0] = 1 + b_pathC->size[0];
     pathC->size[1] = 7;
-    emxEnsureCapacity((emxArray__common *)pathC, path_idx_0, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)pathC, i0, (int)sizeof(double));
     pathC->data[0] = 0.0;
-    for (path_idx_0 = 0; path_idx_0 < 6; path_idx_0++) {
-      pathC->data[pathC->size[0] * (path_idx_0 + 1)] =
-        nInitCartesianB[path_idx_0];
+    for (i0 = 0; i0 < 6; i0++) {
+      pathC->data[pathC->size[0] * (i0 + 1)] = nInitCartesianB[i0];
     }
 
-    for (path_idx_0 = 0; path_idx_0 < 7; path_idx_0++) {
-      m = path->size[0];
-      for (md2 = 0; md2 < m; md2++) {
-        pathC->data[(md2 + pathC->size[0] * path_idx_0) + 1] = path->data[md2 +
-          path->size[0] * path_idx_0];
+    for (i0 = 0; i0 < 7; i0++) {
+      loop_ub = b_pathC->size[0];
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        pathC->data[(i1 + pathC->size[0] * i0) + 1] = b_pathC->data[i1 +
+          b_pathC->size[0] * i0];
+      }
+    }
+
+    i0 = pathJ->size[0] * pathJ->size[1];
+    pathJ->size[0] = 1 + b_pathJ->size[0];
+    pathJ->size[1] = 7;
+    emxEnsureCapacity((emxArray__common *)pathJ, i0, (int)sizeof(double));
+    pathJ->data[0] = 0.0;
+    for (i0 = 0; i0 < 3; i0++) {
+      pathJ->data[pathJ->size[0] * (i0 + 1)] = qInit[i0];
+    }
+
+    for (i0 = 0; i0 < 3; i0++) {
+      pathJ->data[pathJ->size[0] * (i0 + 4)] = qDotInit[i0];
+    }
+
+    for (i0 = 0; i0 < 7; i0++) {
+      loop_ub = b_pathJ->size[0];
+      for (i1 = 0; i1 < loop_ub; i1++) {
+        pathJ->data[(i1 + pathJ->size[0] * i0) + 1] = b_pathJ->data[i1 +
+          b_pathJ->size[0] * i0];
       }
     }
   } else {
     *success = false;
-    path_idx_0 = pathC->size[0] * pathC->size[1];
+    i0 = pathC->size[0] * pathC->size[1];
     pathC->size[0] = 0;
     pathC->size[1] = 0;
-    emxEnsureCapacity((emxArray__common *)pathC, path_idx_0, (int)sizeof(double));
-    path_idx_0 = pathJ->size[0] * pathJ->size[1];
+    emxEnsureCapacity((emxArray__common *)pathC, i0, (int)sizeof(double));
+    i0 = pathJ->size[0] * pathJ->size[1];
     pathJ->size[0] = 0;
     pathJ->size[1] = 0;
-    emxEnsureCapacity((emxArray__common *)pathJ, path_idx_0, (int)sizeof(double));
-    path_idx_0 = T->size[0] * T->size[1];
+    emxEnsureCapacity((emxArray__common *)pathJ, i0, (int)sizeof(double));
+    i0 = T->size[0] * T->size[1];
     T->size[0] = 0;
     T->size[1] = 0;
-    emxEnsureCapacity((emxArray__common *)T, path_idx_0, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)T, i0, (int)sizeof(double));
   }
 
-  emxFree_real_T(&x);
-  emxFree_real_T(&path);
+  emxFree_real_T(&c_pathJ);
+  emxFree_real_T(&c_pathC);
+  emxFree_real_T(&b_pathJ);
+  emxFree_real_T(&b_pathC);
   emxFree_real_T(&b_T);
 }
 
@@ -513,11 +479,11 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 //
 void buildRRTWrapper_init()
 {
-  int i4;
+  int i5;
   static const double dv3[3] = { 1.0, 0.0, 0.5 };
 
-  for (i4 = 0; i4 < 3; i4++) {
-    HGAINS[i4] = dv3[i4];
+  for (i5 = 0; i5 < 3; i5++) {
+    HGAINS[i5] = dv3[i5];
   }
 }
 

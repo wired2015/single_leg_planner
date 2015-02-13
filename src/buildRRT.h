@@ -2,7 +2,7 @@
 // File: buildRRT.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 #ifndef __BUILDRRT_H__
 #define __BUILDRRT_H__
@@ -19,9 +19,9 @@
 
 // Function Declarations
 extern void buildRRT(const double nInit[11], const double nGoal[11], const
-                     double jointLimits[12], double K, const double U[10],
-                     double dt, double Dt, const double kinematicConst[15],
-                     emxArray_real_T *T, emxArray_real_T *path);
+                     double jointLimits[12], double panHeight, const double U[10],
+                     double dt, double Dt, const struct0_T *kC, emxArray_real_T *
+                     T, emxArray_real_T *path);
 
 #endif
 

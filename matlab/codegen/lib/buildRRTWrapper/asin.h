@@ -2,7 +2,7 @@
 // File: asin.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 13-Feb-2015 14:11:02
+// C/C++ source code generated on  : 13-Feb-2015 15:27:34
 //
 #ifndef __ASIN_H__
 #define __ASIN_H__

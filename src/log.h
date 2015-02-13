@@ -2,7 +2,7 @@
 // File: log.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 #ifndef __LOG_H__
 #define __LOG_H__

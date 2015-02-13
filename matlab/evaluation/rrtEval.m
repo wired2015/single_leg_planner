@@ -44,6 +44,7 @@ fprintf('Ankle Heuristic Gain: %.2f\n\n',HGAINS(3));
 jointPaths = zeros(4,1000,7);
 cartesianPaths = zeros(4,1000,7);
 
+h = 0;
 %Run the planner mulitple times.
 for i=1:numLegs
 
@@ -100,6 +101,12 @@ for i=1:numLegs
 
         %figure(5)
         %plotWheelSpeed(pathJ,Dt);
+        
+        [hTemp,~] = size(pathC);
+        if hTemp > h
+            h = hTemp;
+        end
+        
     else
         fprintf('Planning Failed\n');
     end
@@ -115,8 +122,6 @@ for i = 1:numLegs
         end
     end
 end
-
-[h,w] = size(pathC);
 
 init = true;
 t = 0;

@@ -18,7 +18,7 @@ function initializeSherpaTTPlot(showFrames)
     view(136,40);
 
     hold on
-
+    
     %Plot the initial and final position.
     initPosHandle = plot3(0,0,0,'g*');
     goalPosHandle = plot3(0,0,0,'r*');

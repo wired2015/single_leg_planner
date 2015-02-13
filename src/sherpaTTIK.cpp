@@ -2,7 +2,7 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 
 // Include Files
@@ -22,25 +22,33 @@
 // sherpaTTIK Calculates the joint values for a g1iven contact point.
 //    Calculates the joint values for a g1iven contact point for the Sherpa TT
 //    leg. All coord1inates are in the pan joint coord1inate frame.
-// Arguments    : double xC
-//                double yC
-//                double zC
-//                const double kinematicConst[15]
+// Arguments    : const double u[3]
+//                double kC_l1
+//                double kC_l2
+//                double kC_l3
+//                double kC_l4
+//                double kC_l5
+//                double kC_l6
+//                double kC_l7
+//                double kC_l8
+//                double kC_zeta
+//                double kC_r
 //                const double jointLimits[12]
-//                double *alpha
-//                double *beta
-//                double *b_gamma
+//                double q[3]
 // Return Type  : void
 //
-void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[15],
-                const double jointLimits[12], double *alpha, double *beta,
-                double *b_gamma)
+void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
+                double kC_l4, double kC_l5, double kC_l6, double kC_l7, double
+                kC_l8, double kC_zeta, double kC_r, const double jointLimits[12],
+                double q[3])
 {
   double x;
   double a;
+  double b_a;
   double b_x;
   double c_x;
-  double b_a;
+  double c_a;
+  double d_a;
   double d_x;
   double e_x;
   creal_T dc0;
@@ -62,18 +70,21 @@ void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[15]
   creal_T dc16;
   creal_T dc17;
   creal_T dc18;
-  double zC_re;
-  double zC_im;
-  double kinematicConst_re;
-  double kinematicConst_im;
-  double b_kinematicConst_re;
-  double b_kinematicConst_im;
-  double c_kinematicConst_re;
-  double c_kinematicConst_im;
+  double u_re;
+  double u_im;
+  double kC_l1_re;
+  double kC_l1_im;
+  double kC_l6_re;
+  double kC_l6_im;
+  double kC_l8_re;
+  double kC_l8_im;
   double re;
-  double im;
-  double d_kinematicConst_re;
-  double b_re;
+  double r;
+  double kC_l4_re;
+  double kC_l4_im;
+  double beta;
+  double kC_l2_re;
+  double kC_l2_im;
   creal_T dc19;
   creal_T dc20;
   creal_T dc21;
@@ -86,640 +97,584 @@ void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[15]
   creal_T k_x;
   creal_T dc23;
   creal_T dc24;
-  double d_kinematicConst_im;
-  double e_kinematicConst_re;
-  double e_kinematicConst_im;
-  double f_kinematicConst_re;
-  double f_kinematicConst_im;
-  double g_kinematicConst_re;
-  double g_kinematicConst_im;
+  double kC_l3_re;
+  double kC_l3_im;
+  double kC_l5_re;
+  double kC_l5_im;
+  double kC_l7_re;
+  double kC_l7_im;
+  double a_re;
+  double a_im;
   double x_re;
   double x_im;
-  double h_kinematicConst_re;
-  double h_kinematicConst_im;
-  double i_kinematicConst_re;
-  double i_kinematicConst_im;
-  double j_kinematicConst_re;
-  double j_kinematicConst_im;
-  double k_kinematicConst_re;
-  double k_kinematicConst_im;
-  double l_kinematicConst_re;
-  double l_kinematicConst_im;
-  double m_kinematicConst_re;
-  double m_kinematicConst_im;
-  double n_kinematicConst_re;
-  double n_kinematicConst_im;
-  double o_kinematicConst_re;
-  double o_kinematicConst_im;
-  double p_kinematicConst_re;
-  double p_kinematicConst_im;
-  double q_kinematicConst_re;
-  double q_kinematicConst_im;
-  double r_kinematicConst_re;
-  double r_kinematicConst_im;
-  double s_kinematicConst_re;
-  double s_kinematicConst_im;
-  double t_kinematicConst_re;
-  double t_kinematicConst_im;
+  double b_kC_l1_re;
+  double b_kC_l1_im;
+  double c_kC_l1_re;
+  double c_kC_l1_im;
+  double b_kC_l2_re;
+  double b_kC_l2_im;
+  double b_kC_l6_re;
+  double b_kC_l6_im;
+  double c_kC_l2_re;
+  double c_kC_l2_im;
+  double b_kC_l7_re;
+  double b_kC_l7_im;
+  double d_kC_l1_re;
+  double d_kC_l1_im;
+  double c_kC_l6_re;
+  double c_kC_l6_im;
+  double b_kC_l4_re;
+  double b_kC_l4_im;
+  double c_kC_l4_re;
+  double c_kC_l4_im;
+  double d_kC_l4_re;
   double b_x_re;
   double b_x_im;
-  double u_kinematicConst_re;
-  double u_kinematicConst_im;
+  double d_kC_l2_re;
+  double d_kC_l2_im;
+  double c_kC_l7_re;
+  double c_kC_l7_im;
   double ar;
-  double brm;
-  double r;
+  double alpha;
   creal_T y;
   creal_T gammaRaw[2];
 
   // sherpaTTIK.m
   // author: wreid
   // date: 20150122
-  x = sqrt(xC * xC + yC * yC);
-  a = ((((((((((((((((((((((((kinematicConst[0] * kinematicConst[0] - 2.0 * sin
-    (kinematicConst[8]) * kinematicConst[0] * kinematicConst[3]) - 2.0 *
-    kinematicConst[0] * kinematicConst[5]) - 2.0 * kinematicConst[0] *
-    kinematicConst[7]) - 2.0 * kinematicConst[0] * zC) + kinematicConst[1] *
-    kinematicConst[1]) + 2.0 * cos(kinematicConst[8]) * kinematicConst[1] *
-    kinematicConst[3]) - 2.0 * kinematicConst[1] * kinematicConst[6]) - 2.0 *
-                       kinematicConst[1] * x) - kinematicConst[2] *
-                      kinematicConst[2]) + kinematicConst[3] * kinematicConst[3])
-                    + 2.0 * sin(kinematicConst[8]) * kinematicConst[3] *
-                    kinematicConst[5]) - 2.0 * cos(kinematicConst[8]) *
-                   kinematicConst[3] * kinematicConst[6]) + 2.0 * sin
-                  (kinematicConst[8]) * kinematicConst[3] * kinematicConst[7]) -
-                 2.0 * cos(kinematicConst[8]) * kinematicConst[3] * x) + 2.0 *
-                sin(kinematicConst[8]) * kinematicConst[3] * zC) +
-               kinematicConst[4] * kinematicConst[4]) + kinematicConst[5] *
-              kinematicConst[5]) + 2.0 * kinematicConst[5] * kinematicConst[7])
-            + 2.0 * kinematicConst[5] * zC) + kinematicConst[6] *
-           kinematicConst[6]) + 2.0 * kinematicConst[6] * x) + kinematicConst[7]
-         * kinematicConst[7]) + 2.0 * kinematicConst[7] * zC) + x * x) + zC * zC;
-  b_x = cos(kinematicConst[8]);
-  c_x = sin(kinematicConst[8]);
-  b_a = ((((((((((((((((((((((((kinematicConst[0] * kinematicConst[0] - 2.0 *
-    sin(kinematicConst[8]) * kinematicConst[0] * kinematicConst[3]) - 2.0 *
-    kinematicConst[0] * kinematicConst[5]) - 2.0 * kinematicConst[0] *
-    kinematicConst[7]) - 2.0 * kinematicConst[0] * zC) + kinematicConst[1] *
-    kinematicConst[1]) + 2.0 * cos(kinematicConst[8]) * kinematicConst[1] *
-    kinematicConst[3]) - 2.0 * kinematicConst[1] * kinematicConst[6]) - 2.0 *
-    kinematicConst[1] * x) - kinematicConst[2] * kinematicConst[2]) +
-                       kinematicConst[3] * kinematicConst[3]) + 2.0 * sin
-                      (kinematicConst[8]) * kinematicConst[3] * kinematicConst[5])
-                     - 2.0 * cos(kinematicConst[8]) * kinematicConst[3] *
-                     kinematicConst[6]) + 2.0 * sin(kinematicConst[8]) *
-                    kinematicConst[3] * kinematicConst[7]) - 2.0 * cos
-                   (kinematicConst[8]) * kinematicConst[3] * x) + 2.0 * sin
-                  (kinematicConst[8]) * kinematicConst[3] * zC) +
-                 kinematicConst[4] * kinematicConst[4]) + kinematicConst[5] *
-                kinematicConst[5]) + 2.0 * kinematicConst[5] * kinematicConst[7])
-              + 2.0 * kinematicConst[5] * zC) + kinematicConst[6] *
-             kinematicConst[6]) + 2.0 * kinematicConst[6] * x) + kinematicConst
-           [7] * kinematicConst[7]) + 2.0 * kinematicConst[7] * zC) + x * x) +
-    zC * zC;
-  d_x = cos(kinematicConst[8]);
-  e_x = sin(kinematicConst[8]);
-  dc0.re = kinematicConst[8] * 0.0;
-  dc0.im = kinematicConst[8];
+  x = sqrt(u[0] * u[0] + u[1] * u[1]);
+  a = kC_l8 + kC_r;
+  b_a = kC_l8 + kC_r;
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
+           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = cos(kC_zeta);
+  c_x = sin(kC_zeta);
+  c_a = kC_l8 + kC_r;
+  d_a = kC_l8 + kC_r;
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
+           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = cos(kC_zeta);
+  e_x = sin(kC_zeta);
+  dc0.re = kC_zeta * 0.0;
+  dc0.im = kC_zeta;
   b_exp(&dc0);
-  dc1.re = kinematicConst[8] * 0.0;
-  dc1.im = kinematicConst[8];
+  dc1.re = kC_zeta * 0.0;
+  dc1.im = kC_zeta;
   b_exp(&dc1);
-  dc2.re = kinematicConst[8] * 0.0;
-  dc2.im = kinematicConst[8];
+  dc2.re = kC_zeta * 0.0;
+  dc2.im = kC_zeta;
   b_exp(&dc2);
-  dc3.re = kinematicConst[8] * 0.0;
-  dc3.im = kinematicConst[8];
+  dc3.re = kC_zeta * 0.0;
+  dc3.im = kC_zeta;
   b_exp(&dc3);
-  dc4.re = kinematicConst[8] * 0.0;
-  dc4.im = kinematicConst[8];
+  dc4.re = kC_zeta * 0.0;
+  dc4.im = kC_zeta;
   b_exp(&dc4);
-  dc5.re = kinematicConst[8] * 0.0;
-  dc5.im = kinematicConst[8];
+  dc5.re = kC_zeta * 0.0;
+  dc5.im = kC_zeta;
   b_exp(&dc5);
-  dc6.re = kinematicConst[8] * 0.0;
-  dc6.im = kinematicConst[8];
+  dc6.re = kC_zeta * 0.0;
+  dc6.im = kC_zeta;
   b_exp(&dc6);
-  dc7.re = kinematicConst[8] * 0.0;
-  dc7.im = kinematicConst[8];
+  dc7.re = kC_zeta * 0.0;
+  dc7.im = kC_zeta;
   b_exp(&dc7);
-  dc8.re = kinematicConst[8] * 0.0;
-  dc8.im = kinematicConst[8];
+  dc8.re = kC_zeta * 0.0;
+  dc8.im = kC_zeta;
   b_exp(&dc8);
-  dc9.re = kinematicConst[8] * 2.0 * 0.0;
-  dc9.im = kinematicConst[8] * 2.0;
+  dc9.re = kC_zeta * 2.0 * 0.0;
+  dc9.im = kC_zeta * 2.0;
   b_exp(&dc9);
-  dc10.re = kinematicConst[8] * 0.0;
-  dc10.im = kinematicConst[8];
+  dc10.re = kC_zeta * 0.0;
+  dc10.im = kC_zeta;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  zC_re = zC * dc12.re;
-  zC_im = zC * dc12.im;
-  kinematicConst_re = kinematicConst[0] * dc13.re;
-  kinematicConst_im = kinematicConst[0] * dc13.im;
-  b_kinematicConst_re = kinematicConst[5] * dc15.re;
-  b_kinematicConst_im = kinematicConst[5] * dc15.im;
-  c_kinematicConst_re = kinematicConst[7] * dc17.re;
-  c_kinematicConst_im = kinematicConst[7] * dc17.im;
-  re = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc10.re;
-  im = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc10.im;
-  d_kinematicConst_re = ((((((-kinematicConst[3] + x * dc11.re) + (zC_re * 0.0 -
-    zC_im)) - (kinematicConst_re * 0.0 - kinematicConst_im)) - kinematicConst[1]
-    * dc14.re) + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) +
-    kinematicConst[6] * dc16.re) + (c_kinematicConst_re * 0.0 -
-    c_kinematicConst_im);
-  kinematicConst_im = (((((x * dc11.im + (zC_re + zC_im * 0.0)) -
-    (kinematicConst_re + kinematicConst_im * 0.0)) - kinematicConst[1] * dc14.im)
-                        + (b_kinematicConst_re + b_kinematicConst_im * 0.0)) +
-                       kinematicConst[6] * dc16.im) + (c_kinematicConst_re +
-    c_kinematicConst_im * 0.0);
-  b_re = re * d_kinematicConst_re - im * kinematicConst_im;
-  im = re * kinematicConst_im + im * d_kinematicConst_re;
-  kinematicConst_re = ((((((kinematicConst[1] - kinematicConst[0] * 0.0) +
-    kinematicConst[5] * 0.0) - kinematicConst[6]) + kinematicConst[7] * 0.0) - x)
-                       + zC * 0.0) + kinematicConst[3] * dc18.re;
-  kinematicConst_im = ((((0.0 - kinematicConst[0]) + kinematicConst[5]) +
-                        kinematicConst[7]) + zC) + kinematicConst[3] * dc18.im;
-  dc9.re = dc9.re * (a * a) + (b_re * kinematicConst_re - im * kinematicConst_im);
-  dc9.im = dc9.im * (a * a) + (b_re * kinematicConst_im + im * kinematicConst_re);
+  u_re = u[2] * dc12.re;
+  u_im = u[2] * dc12.im;
+  kC_l1_re = kC_l1 * dc13.re;
+  kC_l1_im = kC_l1 * dc13.im;
+  kC_l6_re = kC_l6 * dc15.re;
+  kC_l6_im = kC_l6 * dc15.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc17.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc17.im;
+  re = 4.0 * (kC_l5 * kC_l5) * dc10.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc10.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc11.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc14.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc16.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc11.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc14.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc16.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  beta = re * kC_l4_re - r * kC_l4_im;
+  r = re * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc18.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc18.im;
+  dc9.re = dc9.re * (b_a * b_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc9.im = dc9.im * (b_a * b_a) + (beta * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc9);
-  dc10.re = kinematicConst[8] * 2.0 * 0.0;
-  dc10.im = kinematicConst[8] * 2.0;
+  dc10.re = kC_zeta * 2.0 * 0.0;
+  dc10.im = kC_zeta * 2.0;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  dc19.re = kinematicConst[8] * 0.0;
-  dc19.im = kinematicConst[8];
+  dc19.re = kC_zeta * 0.0;
+  dc19.im = kC_zeta;
   b_exp(&dc19);
-  dc20.re = kinematicConst[8] * 0.0;
-  dc20.im = kinematicConst[8];
+  dc20.re = kC_zeta * 0.0;
+  dc20.im = kC_zeta;
   b_exp(&dc20);
-  dc21.re = kinematicConst[8] * 0.0;
-  dc21.im = kinematicConst[8];
+  dc21.re = kC_zeta * 0.0;
+  dc21.im = kC_zeta;
   b_exp(&dc21);
-  dc22.re = kinematicConst[8] * 2.0 * 0.0;
-  dc22.im = kinematicConst[8] * 2.0;
+  dc22.re = kC_zeta * 2.0 * 0.0;
+  dc22.im = kC_zeta * 2.0;
   b_exp(&dc22);
-  f_x.re = kinematicConst[8] * 2.0 * 0.0;
-  f_x.im = kinematicConst[8] * 2.0;
+  f_x.re = kC_zeta * 2.0 * 0.0;
+  f_x.im = kC_zeta * 2.0;
   b_exp(&f_x);
-  g_x.re = kinematicConst[8] * 0.0;
-  g_x.im = kinematicConst[8];
+  g_x.re = kC_zeta * 0.0;
+  g_x.im = kC_zeta;
   b_exp(&g_x);
-  h_x.re = kinematicConst[8] * 0.0;
-  h_x.im = kinematicConst[8];
+  h_x.re = kC_zeta * 0.0;
+  h_x.im = kC_zeta;
   b_exp(&h_x);
-  i_x.re = kinematicConst[8] * 0.0;
-  i_x.im = kinematicConst[8];
+  i_x.re = kC_zeta * 0.0;
+  i_x.im = kC_zeta;
   b_exp(&i_x);
-  j_x.re = kinematicConst[8] * 0.0;
-  j_x.im = kinematicConst[8];
+  j_x.re = kC_zeta * 0.0;
+  j_x.im = kC_zeta;
   b_exp(&j_x);
-  k_x.re = kinematicConst[8] * 0.0;
-  k_x.im = kinematicConst[8];
+  k_x.re = kC_zeta * 0.0;
+  k_x.im = kC_zeta;
   b_exp(&k_x);
-  dc23.re = kinematicConst[8] * 0.0;
-  dc23.im = kinematicConst[8];
+  dc23.re = kC_zeta * 0.0;
+  dc23.im = kC_zeta;
   b_exp(&dc23);
-  dc24.re = kinematicConst[8] * 0.0;
-  dc24.im = kinematicConst[8];
+  dc24.re = kC_zeta * 0.0;
+  dc24.im = kC_zeta;
   b_exp(&dc24);
-  kinematicConst_re = kinematicConst[0] * kinematicConst[0] * dc0.re;
-  kinematicConst_im = kinematicConst[0] * kinematicConst[0] * dc0.im;
-  b_kinematicConst_re = kinematicConst[1] * kinematicConst[1] * dc1.re;
-  b_kinematicConst_im = kinematicConst[1] * kinematicConst[1] * dc1.im;
-  c_kinematicConst_re = kinematicConst[2] * kinematicConst[2] * dc2.re;
-  c_kinematicConst_im = kinematicConst[2] * kinematicConst[2] * dc2.im;
-  d_kinematicConst_re = kinematicConst[4] * kinematicConst[4] * dc3.re;
-  d_kinematicConst_im = kinematicConst[4] * kinematicConst[4] * dc3.im;
-  e_kinematicConst_re = kinematicConst[5] * kinematicConst[5] * dc4.re;
-  e_kinematicConst_im = kinematicConst[5] * kinematicConst[5] * dc4.im;
-  f_kinematicConst_re = kinematicConst[6] * kinematicConst[6] * dc5.re;
-  f_kinematicConst_im = kinematicConst[6] * kinematicConst[6] * dc5.im;
-  g_kinematicConst_re = kinematicConst[7] * kinematicConst[7] * dc6.re;
-  g_kinematicConst_im = kinematicConst[7] * kinematicConst[7] * dc6.im;
+  kC_l1_re = kC_l1 * kC_l1 * dc0.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc0.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc1.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc1.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc2.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc2.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc3.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc3.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc4.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc4.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc5.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc5.im;
+  a_re = a * a * dc6.re;
+  a_im = a * a * dc6.im;
   x_re = x * x * dc7.re;
   x_im = x * x * dc7.im;
-  zC_re = zC * zC * dc8.re;
-  zC_im = zC * zC * dc8.im;
+  u_re = u[2] * u[2] * dc8.re;
+  u_im = u[2] * u[2] * dc8.im;
   if (dc10.im == 0.0) {
     re = dc10.re / 2.0;
-    im = 0.0;
+    r = 0.0;
   } else if (dc10.re == 0.0) {
     re = 0.0;
-    im = dc10.im / 2.0;
+    r = dc10.im / 2.0;
   } else {
     re = dc10.re / 2.0;
-    im = dc10.im / 2.0;
+    r = dc10.im / 2.0;
   }
 
-  h_kinematicConst_re = 2.0 * (kinematicConst[3] * x * (re + 0.5));
-  h_kinematicConst_im = 2.0 * (kinematicConst[3] * x * im);
-  i_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc11.re);
-  i_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc11.im);
-  j_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc12.re);
-  j_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc12.im);
-  k_kinematicConst_re = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc13.re);
-  k_kinematicConst_im = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc13.im);
-  l_kinematicConst_re = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc14.re);
-  l_kinematicConst_im = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc14.im);
-  m_kinematicConst_re = 2.0 * (kinematicConst[1] * x * dc15.re);
-  m_kinematicConst_im = 2.0 * (kinematicConst[1] * x * dc15.im);
-  n_kinematicConst_re = 2.0 * (kinematicConst[6] * x * dc16.re);
-  n_kinematicConst_im = 2.0 * (kinematicConst[6] * x * dc16.im);
-  o_kinematicConst_re = 2.0 * (kinematicConst[0] * zC * dc17.re);
-  o_kinematicConst_im = 2.0 * (kinematicConst[0] * zC * dc17.im);
-  p_kinematicConst_re = 2.0 * (kinematicConst[5] * zC * dc18.re);
-  p_kinematicConst_im = 2.0 * (kinematicConst[5] * zC * dc18.im);
-  q_kinematicConst_re = 2.0 * (kinematicConst[7] * zC * dc19.re);
-  q_kinematicConst_im = 2.0 * (kinematicConst[7] * zC * dc19.im);
-  r_kinematicConst_re = b_x * b_x * (kinematicConst[3] * kinematicConst[3] *
-    dc20.re);
-  r_kinematicConst_im = b_x * b_x * (kinematicConst[3] * kinematicConst[3] *
-    dc20.im);
-  s_kinematicConst_re = c_x * c_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.re);
-  s_kinematicConst_im = c_x * c_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.im);
+  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc11.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc11.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc12.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc12.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc13.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc13.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc14.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc14.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc15.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc15.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc16.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc16.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc17.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc17.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc18.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc18.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc19.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc19.im);
+  b_kC_l4_re = b_x * b_x * (kC_l4 * kC_l4 * dc20.re);
+  b_kC_l4_im = b_x * b_x * (kC_l4 * kC_l4 * dc20.im);
+  c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc21.re);
+  c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc21.im);
   if (dc22.im == 0.0) {
     re = dc22.re / 2.0;
-    im = 0.0;
+    r = 0.0;
   } else if (dc22.re == 0.0) {
     re = 0.0;
-    im = dc22.im / 2.0;
+    r = dc22.im / 2.0;
   } else {
     re = dc22.re / 2.0;
-    im = dc22.im / 2.0;
+    r = dc22.im / 2.0;
   }
 
-  t_kinematicConst_re = 2.0 * (kinematicConst[3] * kinematicConst[6] * (re + 0.5));
-  t_kinematicConst_im = 2.0 * (kinematicConst[3] * kinematicConst[6] * im);
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (re + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * r);
   b_x_re = x * g_x.re;
   b_x_im = x * g_x.im;
-  b_re = kinematicConst[1] * j_x.re;
-  im = kinematicConst[1] * j_x.im;
-  u_kinematicConst_re = kinematicConst[6] * dc23.re;
-  u_kinematicConst_im = kinematicConst[6] * dc23.im;
-  ar = -((((((((((((((((((((((((((((kinematicConst_re * 0.0 - kinematicConst_im)
-    + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) - (c_kinematicConst_re *
-    0.0 - c_kinematicConst_im)) + (d_kinematicConst_re * 0.0 -
-    d_kinematicConst_im)) + (e_kinematicConst_re * 0.0 - e_kinematicConst_im)) +
-    (f_kinematicConst_re * 0.0 - f_kinematicConst_im)) + (g_kinematicConst_re *
-    0.0 - g_kinematicConst_im)) + (x_re * 0.0 - x_im)) + (zC_re * 0.0 - zC_im))
-    - (dc9.re * 0.0 - dc9.im)) - (h_kinematicConst_re * 0.0 -
-    h_kinematicConst_im)) - (i_kinematicConst_re * 0.0 - i_kinematicConst_im)) -
-                        (j_kinematicConst_re * 0.0 - j_kinematicConst_im)) -
-                       (k_kinematicConst_re * 0.0 - k_kinematicConst_im)) +
-                      (l_kinematicConst_re * 0.0 - l_kinematicConst_im)) -
-                     kinematicConst[0] * kinematicConst[3] * (cos(2.0 *
-    kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[5] * (cos
-    (2.0 * kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[7] *
-                   (cos(2.0 * kinematicConst[8]) - 1.0)) - (m_kinematicConst_re *
-    0.0 - m_kinematicConst_im)) + (n_kinematicConst_re * 0.0 -
-    n_kinematicConst_im)) - (o_kinematicConst_re * 0.0 - o_kinematicConst_im)) +
-               (p_kinematicConst_re * 0.0 - p_kinematicConst_im)) +
-              (q_kinematicConst_re * 0.0 - q_kinematicConst_im)) +
-             kinematicConst[3] * zC * (cos(2.0 * kinematicConst[8]) - 1.0)) +
-            (r_kinematicConst_re * 0.0 - r_kinematicConst_im)) +
-           (s_kinematicConst_re * 0.0 - s_kinematicConst_im)) -
-          (t_kinematicConst_re * 0.0 - t_kinematicConst_im)) + kinematicConst[1]
-         * kinematicConst[3] * (f_x.re * 0.0 - f_x.im));
-  t_kinematicConst_re = -((((((((((((((((((((((((((((kinematicConst_re +
-    kinematicConst_im * 0.0) + (b_kinematicConst_re + b_kinematicConst_im * 0.0))
-    - (c_kinematicConst_re + c_kinematicConst_im * 0.0)) + (d_kinematicConst_re
-    + d_kinematicConst_im * 0.0)) + (e_kinematicConst_re + e_kinematicConst_im *
-    0.0)) + (f_kinematicConst_re + f_kinematicConst_im * 0.0)) +
-    (g_kinematicConst_re + g_kinematicConst_im * 0.0)) + (x_re + x_im * 0.0)) +
-    (zC_re + zC_im * 0.0)) - (dc9.re + dc9.im * 0.0)) - (h_kinematicConst_re +
-    h_kinematicConst_im * 0.0)) - (i_kinematicConst_re + i_kinematicConst_im *
-    0.0)) - (j_kinematicConst_re + j_kinematicConst_im * 0.0)) -
-    (k_kinematicConst_re + k_kinematicConst_im * 0.0)) + (l_kinematicConst_re +
-    l_kinematicConst_im * 0.0)) - kinematicConst[0] * kinematicConst[3] * sin
-    (2.0 * kinematicConst[8])) + kinematicConst[3] * kinematicConst[5] * sin(2.0
-    * kinematicConst[8])) + kinematicConst[3] * kinematicConst[7] * sin(2.0 *
-    kinematicConst[8])) - (m_kinematicConst_re + m_kinematicConst_im * 0.0)) +
-    (n_kinematicConst_re + n_kinematicConst_im * 0.0)) - (o_kinematicConst_re +
-    o_kinematicConst_im * 0.0)) + (p_kinematicConst_re + p_kinematicConst_im *
-    0.0)) + (q_kinematicConst_re + q_kinematicConst_im * 0.0)) + kinematicConst
-    [3] * zC * sin(2.0 * kinematicConst[8])) + (r_kinematicConst_re +
-    r_kinematicConst_im * 0.0)) + (s_kinematicConst_re + s_kinematicConst_im *
-    0.0)) - (t_kinematicConst_re + t_kinematicConst_im * 0.0)) + kinematicConst
-    [1] * kinematicConst[3] * ((f_x.re + f_x.im * 0.0) + 1.0));
-  t_kinematicConst_im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] * 0.0
-    - (b_x_re * 0.0 - b_x_im)) + zC * h_x.re) - kinematicConst[0] * i_x.re) +
-    (b_re * 0.0 - im)) + kinematicConst[5] * k_x.re) - (u_kinematicConst_re *
-    0.0 - u_kinematicConst_im)) + kinematicConst[7] * dc24.re);
-  im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] - (b_x_re + b_x_im *
-    0.0)) + zC * h_x.im) - kinematicConst[0] * i_x.im) + (b_re + im * 0.0)) +
-    kinematicConst[5] * k_x.im) - (u_kinematicConst_re + u_kinematicConst_im *
-    0.0)) + kinematicConst[7] * dc24.im);
-  if (im == 0.0) {
-    if (t_kinematicConst_re == 0.0) {
-      dc0.re = ar / t_kinematicConst_im;
+  d_kC_l2_re = kC_l2 * j_x.re;
+  d_kC_l2_im = kC_l2 * j_x.im;
+  c_kC_l7_re = kC_l7 * dc23.re;
+  c_kC_l7_im = kC_l7 * dc23.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) - (dc9.re * 0.0 -
+    dc9.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im)) -
+                        (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc9.re + dc9.im *
+    0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
+    (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
+    h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc24.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (b_x_re + b_x_im * 0.0)) + u[2] * h_x.im) -
+    kC_l1 * i_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * k_x.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) *
+                     dc24.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      dc0.re = ar / u_re;
       dc0.im = 0.0;
     } else if (ar == 0.0) {
       dc0.re = 0.0;
-      dc0.im = t_kinematicConst_re / t_kinematicConst_im;
+      dc0.im = u_im / u_re;
     } else {
-      dc0.re = ar / t_kinematicConst_im;
-      dc0.im = t_kinematicConst_re / t_kinematicConst_im;
+      dc0.re = ar / u_re;
+      dc0.im = u_im / u_re;
     }
-  } else if (t_kinematicConst_im == 0.0) {
+  } else if (u_re == 0.0) {
     if (ar == 0.0) {
-      dc0.re = t_kinematicConst_re / im;
+      dc0.re = u_im / r;
       dc0.im = 0.0;
-    } else if (t_kinematicConst_re == 0.0) {
+    } else if (u_im == 0.0) {
       dc0.re = 0.0;
-      dc0.im = -(ar / im);
+      dc0.im = -(ar / r);
     } else {
-      dc0.re = t_kinematicConst_re / im;
-      dc0.im = -(ar / im);
+      dc0.re = u_im / r;
+      dc0.im = -(ar / r);
     }
   } else {
-    brm = fabs(t_kinematicConst_im);
-    r = fabs(im);
-    if (brm > r) {
-      b_re = im / t_kinematicConst_im;
-      r = t_kinematicConst_im + b_re * im;
-      dc0.re = (ar + b_re * t_kinematicConst_re) / r;
-      dc0.im = (t_kinematicConst_re - b_re * ar) / r;
-    } else if (r == brm) {
-      if (t_kinematicConst_im > 0.0) {
-        b_re = 0.5;
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      dc0.re = (ar + beta * u_im) / alpha;
+      dc0.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
       } else {
-        b_re = -0.5;
+        beta = -0.5;
       }
 
-      if (im > 0.0) {
-        r = 0.5;
+      if (r > 0.0) {
+        alpha = 0.5;
       } else {
-        r = -0.5;
+        alpha = -0.5;
       }
 
-      dc0.re = (ar * b_re + t_kinematicConst_re * r) / brm;
-      dc0.im = (t_kinematicConst_re * b_re - ar * r) / brm;
+      dc0.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      dc0.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
     } else {
-      b_re = t_kinematicConst_im / im;
-      r = im + b_re * t_kinematicConst_im;
-      dc0.re = (b_re * ar + t_kinematicConst_re) / r;
-      dc0.im = (b_re * t_kinematicConst_re - ar) / r;
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      dc0.re = (beta * ar + u_im) / alpha;
+      dc0.im = (beta * u_im - ar) / alpha;
     }
   }
 
   b_log(&dc0);
-  dc1.re = kinematicConst[8] * 0.0;
-  dc1.im = kinematicConst[8];
+  dc1.re = kC_zeta * 0.0;
+  dc1.im = kC_zeta;
   b_exp(&dc1);
-  dc2.re = kinematicConst[8] * 0.0;
-  dc2.im = kinematicConst[8];
+  dc2.re = kC_zeta * 0.0;
+  dc2.im = kC_zeta;
   b_exp(&dc2);
-  dc3.re = kinematicConst[8] * 0.0;
-  dc3.im = kinematicConst[8];
+  dc3.re = kC_zeta * 0.0;
+  dc3.im = kC_zeta;
   b_exp(&dc3);
-  dc4.re = kinematicConst[8] * 0.0;
-  dc4.im = kinematicConst[8];
+  dc4.re = kC_zeta * 0.0;
+  dc4.im = kC_zeta;
   b_exp(&dc4);
-  dc5.re = kinematicConst[8] * 0.0;
-  dc5.im = kinematicConst[8];
+  dc5.re = kC_zeta * 0.0;
+  dc5.im = kC_zeta;
   b_exp(&dc5);
-  dc6.re = kinematicConst[8] * 0.0;
-  dc6.im = kinematicConst[8];
+  dc6.re = kC_zeta * 0.0;
+  dc6.im = kC_zeta;
   b_exp(&dc6);
-  dc7.re = kinematicConst[8] * 0.0;
-  dc7.im = kinematicConst[8];
+  dc7.re = kC_zeta * 0.0;
+  dc7.im = kC_zeta;
   b_exp(&dc7);
-  dc8.re = kinematicConst[8] * 0.0;
-  dc8.im = kinematicConst[8];
+  dc8.re = kC_zeta * 0.0;
+  dc8.im = kC_zeta;
   b_exp(&dc8);
-  dc9.re = kinematicConst[8] * 0.0;
-  dc9.im = kinematicConst[8];
+  dc9.re = kC_zeta * 0.0;
+  dc9.im = kC_zeta;
   b_exp(&dc9);
-  dc10.re = kinematicConst[8] * 2.0 * 0.0;
-  dc10.im = kinematicConst[8] * 2.0;
+  dc10.re = kC_zeta * 2.0 * 0.0;
+  dc10.im = kC_zeta * 2.0;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  dc19.re = kinematicConst[8] * 0.0;
-  dc19.im = kinematicConst[8];
+  dc19.re = kC_zeta * 0.0;
+  dc19.im = kC_zeta;
   b_exp(&dc19);
-  zC_re = zC * dc13.re;
-  zC_im = zC * dc13.im;
-  kinematicConst_re = kinematicConst[0] * dc14.re;
-  kinematicConst_im = kinematicConst[0] * dc14.im;
-  b_kinematicConst_re = kinematicConst[5] * dc16.re;
-  b_kinematicConst_im = kinematicConst[5] * dc16.im;
-  c_kinematicConst_re = kinematicConst[7] * dc18.re;
-  c_kinematicConst_im = kinematicConst[7] * dc18.im;
-  re = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc11.re;
-  im = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc11.im;
-  d_kinematicConst_re = ((((((-kinematicConst[3] + x * dc12.re) + (zC_re * 0.0 -
-    zC_im)) - (kinematicConst_re * 0.0 - kinematicConst_im)) - kinematicConst[1]
-    * dc15.re) + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) +
-    kinematicConst[6] * dc17.re) + (c_kinematicConst_re * 0.0 -
-    c_kinematicConst_im);
-  kinematicConst_im = (((((x * dc12.im + (zC_re + zC_im * 0.0)) -
-    (kinematicConst_re + kinematicConst_im * 0.0)) - kinematicConst[1] * dc15.im)
-                        + (b_kinematicConst_re + b_kinematicConst_im * 0.0)) +
-                       kinematicConst[6] * dc17.im) + (c_kinematicConst_re +
-    c_kinematicConst_im * 0.0);
-  b_re = re * d_kinematicConst_re - im * kinematicConst_im;
-  im = re * kinematicConst_im + im * d_kinematicConst_re;
-  kinematicConst_re = ((((((kinematicConst[1] - kinematicConst[0] * 0.0) +
-    kinematicConst[5] * 0.0) - kinematicConst[6]) + kinematicConst[7] * 0.0) - x)
-                       + zC * 0.0) + kinematicConst[3] * dc19.re;
-  kinematicConst_im = ((((0.0 - kinematicConst[0]) + kinematicConst[5]) +
-                        kinematicConst[7]) + zC) + kinematicConst[3] * dc19.im;
-  dc10.re = dc10.re * (b_a * b_a) + (b_re * kinematicConst_re - im *
-    kinematicConst_im);
-  dc10.im = dc10.im * (b_a * b_a) + (b_re * kinematicConst_im + im *
-    kinematicConst_re);
+  u_re = u[2] * dc13.re;
+  u_im = u[2] * dc13.im;
+  kC_l1_re = kC_l1 * dc14.re;
+  kC_l1_im = kC_l1 * dc14.im;
+  kC_l6_re = kC_l6 * dc16.re;
+  kC_l6_im = kC_l6 * dc16.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc18.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc18.im;
+  re = 4.0 * (kC_l5 * kC_l5) * dc11.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc11.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc12.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc15.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc17.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc12.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc15.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc17.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  beta = re * kC_l4_re - r * kC_l4_im;
+  r = re * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc19.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc19.im;
+  dc10.re = dc10.re * (d_a * d_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc10.im = dc10.im * (d_a * d_a) + (beta * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc10);
-  dc11.re = kinematicConst[8] * 2.0 * 0.0;
-  dc11.im = kinematicConst[8] * 2.0;
+  dc11.re = kC_zeta * 2.0 * 0.0;
+  dc11.im = kC_zeta * 2.0;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  dc19.re = kinematicConst[8] * 0.0;
-  dc19.im = kinematicConst[8];
+  dc19.re = kC_zeta * 0.0;
+  dc19.im = kC_zeta;
   b_exp(&dc19);
-  dc20.re = kinematicConst[8] * 0.0;
-  dc20.im = kinematicConst[8];
+  dc20.re = kC_zeta * 0.0;
+  dc20.im = kC_zeta;
   b_exp(&dc20);
-  dc21.re = kinematicConst[8] * 0.0;
-  dc21.im = kinematicConst[8];
+  dc21.re = kC_zeta * 0.0;
+  dc21.im = kC_zeta;
   b_exp(&dc21);
-  dc22.re = kinematicConst[8] * 0.0;
-  dc22.im = kinematicConst[8];
+  dc22.re = kC_zeta * 0.0;
+  dc22.im = kC_zeta;
   b_exp(&dc22);
-  f_x.re = kinematicConst[8] * 2.0 * 0.0;
-  f_x.im = kinematicConst[8] * 2.0;
+  f_x.re = kC_zeta * 2.0 * 0.0;
+  f_x.im = kC_zeta * 2.0;
   b_exp(&f_x);
-  g_x.re = kinematicConst[8] * 2.0 * 0.0;
-  g_x.im = kinematicConst[8] * 2.0;
+  g_x.re = kC_zeta * 2.0 * 0.0;
+  g_x.im = kC_zeta * 2.0;
   b_exp(&g_x);
-  h_x.re = kinematicConst[8] * 0.0;
-  h_x.im = kinematicConst[8];
+  h_x.re = kC_zeta * 0.0;
+  h_x.im = kC_zeta;
   b_exp(&h_x);
-  i_x.re = kinematicConst[8] * 0.0;
-  i_x.im = kinematicConst[8];
+  i_x.re = kC_zeta * 0.0;
+  i_x.im = kC_zeta;
   b_exp(&i_x);
-  j_x.re = kinematicConst[8] * 0.0;
-  j_x.im = kinematicConst[8];
+  j_x.re = kC_zeta * 0.0;
+  j_x.im = kC_zeta;
   b_exp(&j_x);
-  k_x.re = kinematicConst[8] * 0.0;
-  k_x.im = kinematicConst[8];
+  k_x.re = kC_zeta * 0.0;
+  k_x.im = kC_zeta;
   b_exp(&k_x);
-  dc23.re = kinematicConst[8] * 0.0;
-  dc23.im = kinematicConst[8];
+  dc23.re = kC_zeta * 0.0;
+  dc23.im = kC_zeta;
   b_exp(&dc23);
-  dc24.re = kinematicConst[8] * 0.0;
-  dc24.im = kinematicConst[8];
+  dc24.re = kC_zeta * 0.0;
+  dc24.im = kC_zeta;
   b_exp(&dc24);
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   b_exp(&y);
-  kinematicConst_re = kinematicConst[0] * kinematicConst[0] * dc1.re;
-  kinematicConst_im = kinematicConst[0] * kinematicConst[0] * dc1.im;
-  b_kinematicConst_re = kinematicConst[1] * kinematicConst[1] * dc2.re;
-  b_kinematicConst_im = kinematicConst[1] * kinematicConst[1] * dc2.im;
-  c_kinematicConst_re = kinematicConst[2] * kinematicConst[2] * dc3.re;
-  c_kinematicConst_im = kinematicConst[2] * kinematicConst[2] * dc3.im;
-  d_kinematicConst_re = kinematicConst[4] * kinematicConst[4] * dc4.re;
-  d_kinematicConst_im = kinematicConst[4] * kinematicConst[4] * dc4.im;
-  e_kinematicConst_re = kinematicConst[5] * kinematicConst[5] * dc5.re;
-  e_kinematicConst_im = kinematicConst[5] * kinematicConst[5] * dc5.im;
-  f_kinematicConst_re = kinematicConst[6] * kinematicConst[6] * dc6.re;
-  f_kinematicConst_im = kinematicConst[6] * kinematicConst[6] * dc6.im;
-  g_kinematicConst_re = kinematicConst[7] * kinematicConst[7] * dc7.re;
-  g_kinematicConst_im = kinematicConst[7] * kinematicConst[7] * dc7.im;
+  kC_l1_re = kC_l1 * kC_l1 * dc1.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc1.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc2.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc2.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc3.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc3.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc4.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc4.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc5.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc5.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc6.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc6.im;
+  a_re = c_a * c_a * dc7.re;
+  a_im = c_a * c_a * dc7.im;
   x_re = x * x * dc8.re;
   x_im = x * x * dc8.im;
-  zC_re = zC * zC * dc9.re;
-  zC_im = zC * zC * dc9.im;
+  u_re = u[2] * u[2] * dc9.re;
+  u_im = u[2] * u[2] * dc9.im;
   if (dc11.im == 0.0) {
     re = dc11.re / 2.0;
-    im = 0.0;
+    r = 0.0;
   } else if (dc11.re == 0.0) {
     re = 0.0;
-    im = dc11.im / 2.0;
+    r = dc11.im / 2.0;
   } else {
     re = dc11.re / 2.0;
-    im = dc11.im / 2.0;
+    r = dc11.im / 2.0;
   }
 
-  h_kinematicConst_re = 2.0 * (kinematicConst[3] * x * (re + 0.5));
-  h_kinematicConst_im = 2.0 * (kinematicConst[3] * x * im);
-  i_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc12.re);
-  i_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc12.im);
-  j_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc13.re);
-  j_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc13.im);
-  k_kinematicConst_re = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc14.re);
-  k_kinematicConst_im = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc14.im);
-  l_kinematicConst_re = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc15.re);
-  l_kinematicConst_im = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc15.im);
-  m_kinematicConst_re = 2.0 * (kinematicConst[1] * x * dc16.re);
-  m_kinematicConst_im = 2.0 * (kinematicConst[1] * x * dc16.im);
-  n_kinematicConst_re = 2.0 * (kinematicConst[6] * x * dc17.re);
-  n_kinematicConst_im = 2.0 * (kinematicConst[6] * x * dc17.im);
-  o_kinematicConst_re = 2.0 * (kinematicConst[0] * zC * dc18.re);
-  o_kinematicConst_im = 2.0 * (kinematicConst[0] * zC * dc18.im);
-  p_kinematicConst_re = 2.0 * (kinematicConst[5] * zC * dc19.re);
-  p_kinematicConst_im = 2.0 * (kinematicConst[5] * zC * dc19.im);
-  q_kinematicConst_re = 2.0 * (kinematicConst[7] * zC * dc20.re);
-  q_kinematicConst_im = 2.0 * (kinematicConst[7] * zC * dc20.im);
-  r_kinematicConst_re = d_x * d_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.re);
-  r_kinematicConst_im = d_x * d_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.im);
-  s_kinematicConst_re = e_x * e_x * (kinematicConst[3] * kinematicConst[3] *
-    dc22.re);
-  s_kinematicConst_im = e_x * e_x * (kinematicConst[3] * kinematicConst[3] *
-    dc22.im);
+  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc12.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc12.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc13.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc13.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc14.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc14.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc15.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc15.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc16.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc16.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc17.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc17.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc18.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc18.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc19.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc19.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc20.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc20.im);
+  b_kC_l4_re = d_x * d_x * (kC_l4 * kC_l4 * dc21.re);
+  b_kC_l4_im = d_x * d_x * (kC_l4 * kC_l4 * dc21.im);
+  c_kC_l4_re = e_x * e_x * (kC_l4 * kC_l4 * dc22.re);
+  c_kC_l4_im = e_x * e_x * (kC_l4 * kC_l4 * dc22.im);
   if (f_x.im == 0.0) {
     b_x_re = f_x.re / 2.0;
     b_x_im = 0.0;
@@ -731,515 +686,449 @@ void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[15]
     b_x_im = f_x.im / 2.0;
   }
 
-  t_kinematicConst_re = 2.0 * (kinematicConst[3] * kinematicConst[6] * (b_x_re +
-    0.5));
-  t_kinematicConst_im = 2.0 * (kinematicConst[3] * kinematicConst[6] * b_x_im);
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_x_re + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * b_x_im);
   b_x_re = x * h_x.re;
   b_x_im = x * h_x.im;
-  b_re = kinematicConst[1] * k_x.re;
-  im = kinematicConst[1] * k_x.im;
-  u_kinematicConst_re = kinematicConst[6] * dc24.re;
-  u_kinematicConst_im = kinematicConst[6] * dc24.im;
-  ar = -((((((((((((((((((((((((((((kinematicConst_re * 0.0 - kinematicConst_im)
-    + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) - (c_kinematicConst_re *
-    0.0 - c_kinematicConst_im)) + (d_kinematicConst_re * 0.0 -
-    d_kinematicConst_im)) + (e_kinematicConst_re * 0.0 - e_kinematicConst_im)) +
-    (f_kinematicConst_re * 0.0 - f_kinematicConst_im)) + (g_kinematicConst_re *
-    0.0 - g_kinematicConst_im)) + (x_re * 0.0 - x_im)) + (zC_re * 0.0 - zC_im))
-    + (dc10.re * 0.0 - dc10.im)) - (h_kinematicConst_re * 0.0 -
-    h_kinematicConst_im)) - (i_kinematicConst_re * 0.0 - i_kinematicConst_im)) -
-                        (j_kinematicConst_re * 0.0 - j_kinematicConst_im)) -
-                       (k_kinematicConst_re * 0.0 - k_kinematicConst_im)) +
-                      (l_kinematicConst_re * 0.0 - l_kinematicConst_im)) -
-                     kinematicConst[0] * kinematicConst[3] * (cos(2.0 *
-    kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[5] * (cos
-    (2.0 * kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[7] *
-                   (cos(2.0 * kinematicConst[8]) - 1.0)) - (m_kinematicConst_re *
-    0.0 - m_kinematicConst_im)) + (n_kinematicConst_re * 0.0 -
-    n_kinematicConst_im)) - (o_kinematicConst_re * 0.0 - o_kinematicConst_im)) +
-               (p_kinematicConst_re * 0.0 - p_kinematicConst_im)) +
-              (q_kinematicConst_re * 0.0 - q_kinematicConst_im)) +
-             kinematicConst[3] * zC * (cos(2.0 * kinematicConst[8]) - 1.0)) +
-            (r_kinematicConst_re * 0.0 - r_kinematicConst_im)) +
-           (s_kinematicConst_re * 0.0 - s_kinematicConst_im)) -
-          (t_kinematicConst_re * 0.0 - t_kinematicConst_im)) + kinematicConst[1]
-         * kinematicConst[3] * (g_x.re * 0.0 - g_x.im));
-  t_kinematicConst_re = -((((((((((((((((((((((((((((kinematicConst_re +
-    kinematicConst_im * 0.0) + (b_kinematicConst_re + b_kinematicConst_im * 0.0))
-    - (c_kinematicConst_re + c_kinematicConst_im * 0.0)) + (d_kinematicConst_re
-    + d_kinematicConst_im * 0.0)) + (e_kinematicConst_re + e_kinematicConst_im *
-    0.0)) + (f_kinematicConst_re + f_kinematicConst_im * 0.0)) +
-    (g_kinematicConst_re + g_kinematicConst_im * 0.0)) + (x_re + x_im * 0.0)) +
-    (zC_re + zC_im * 0.0)) + (dc10.re + dc10.im * 0.0)) - (h_kinematicConst_re +
-    h_kinematicConst_im * 0.0)) - (i_kinematicConst_re + i_kinematicConst_im *
-    0.0)) - (j_kinematicConst_re + j_kinematicConst_im * 0.0)) -
-    (k_kinematicConst_re + k_kinematicConst_im * 0.0)) + (l_kinematicConst_re +
-    l_kinematicConst_im * 0.0)) - kinematicConst[0] * kinematicConst[3] * sin
-    (2.0 * kinematicConst[8])) + kinematicConst[3] * kinematicConst[5] * sin(2.0
-    * kinematicConst[8])) + kinematicConst[3] * kinematicConst[7] * sin(2.0 *
-    kinematicConst[8])) - (m_kinematicConst_re + m_kinematicConst_im * 0.0)) +
-    (n_kinematicConst_re + n_kinematicConst_im * 0.0)) - (o_kinematicConst_re +
-    o_kinematicConst_im * 0.0)) + (p_kinematicConst_re + p_kinematicConst_im *
-    0.0)) + (q_kinematicConst_re + q_kinematicConst_im * 0.0)) + kinematicConst
-    [3] * zC * sin(2.0 * kinematicConst[8])) + (r_kinematicConst_re +
-    r_kinematicConst_im * 0.0)) + (s_kinematicConst_re + s_kinematicConst_im *
-    0.0)) - (t_kinematicConst_re + t_kinematicConst_im * 0.0)) + kinematicConst
-    [1] * kinematicConst[3] * ((g_x.re + g_x.im * 0.0) + 1.0));
-  t_kinematicConst_im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] * 0.0
-    - (b_x_re * 0.0 - b_x_im)) + zC * i_x.re) - kinematicConst[0] * j_x.re) +
-    (b_re * 0.0 - im)) + kinematicConst[5] * dc23.re) - (u_kinematicConst_re *
-    0.0 - u_kinematicConst_im)) + kinematicConst[7] * y.re);
-  im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] - (b_x_re + b_x_im *
-    0.0)) + zC * i_x.im) - kinematicConst[0] * j_x.im) + (b_re + im * 0.0)) +
-    kinematicConst[5] * dc23.im) - (u_kinematicConst_re + u_kinematicConst_im *
-    0.0)) + kinematicConst[7] * y.im);
-  if (im == 0.0) {
-    if (t_kinematicConst_re == 0.0) {
-      dc1.re = ar / t_kinematicConst_im;
+  d_kC_l2_re = kC_l2 * k_x.re;
+  d_kC_l2_im = kC_l2 * k_x.im;
+  c_kC_l7_re = kC_l7 * dc24.re;
+  c_kC_l7_im = kC_l7 * dc24.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) + (dc10.re * 0.0 -
+    dc10.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
+                        - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (g_x.re * 0.0 - g_x.im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc10.re + dc10.im *
+    0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
+    (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((g_x.re + g_x.im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
+    i_x.re) - kC_l1 * j_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    dc23.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (b_x_re + b_x_im * 0.0)) + u[2] * i_x.im) -
+    kC_l1 * j_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * dc23.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) * y.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      dc1.re = ar / u_re;
       dc1.im = 0.0;
     } else if (ar == 0.0) {
       dc1.re = 0.0;
-      dc1.im = t_kinematicConst_re / t_kinematicConst_im;
+      dc1.im = u_im / u_re;
     } else {
-      dc1.re = ar / t_kinematicConst_im;
-      dc1.im = t_kinematicConst_re / t_kinematicConst_im;
+      dc1.re = ar / u_re;
+      dc1.im = u_im / u_re;
     }
-  } else if (t_kinematicConst_im == 0.0) {
+  } else if (u_re == 0.0) {
     if (ar == 0.0) {
-      dc1.re = t_kinematicConst_re / im;
+      dc1.re = u_im / r;
       dc1.im = 0.0;
-    } else if (t_kinematicConst_re == 0.0) {
+    } else if (u_im == 0.0) {
       dc1.re = 0.0;
-      dc1.im = -(ar / im);
+      dc1.im = -(ar / r);
     } else {
-      dc1.re = t_kinematicConst_re / im;
-      dc1.im = -(ar / im);
+      dc1.re = u_im / r;
+      dc1.im = -(ar / r);
     }
   } else {
-    brm = fabs(t_kinematicConst_im);
-    r = fabs(im);
-    if (brm > r) {
-      b_re = im / t_kinematicConst_im;
-      r = t_kinematicConst_im + b_re * im;
-      dc1.re = (ar + b_re * t_kinematicConst_re) / r;
-      dc1.im = (t_kinematicConst_re - b_re * ar) / r;
-    } else if (r == brm) {
-      if (t_kinematicConst_im > 0.0) {
-        b_re = 0.5;
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      dc1.re = (ar + beta * u_im) / alpha;
+      dc1.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
       } else {
-        b_re = -0.5;
+        beta = -0.5;
       }
 
-      if (im > 0.0) {
-        r = 0.5;
+      if (r > 0.0) {
+        alpha = 0.5;
       } else {
-        r = -0.5;
+        alpha = -0.5;
       }
 
-      dc1.re = (ar * b_re + t_kinematicConst_re * r) / brm;
-      dc1.im = (t_kinematicConst_re * b_re - ar * r) / brm;
+      dc1.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      dc1.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
     } else {
-      b_re = t_kinematicConst_im / im;
-      r = im + b_re * t_kinematicConst_im;
-      dc1.re = (b_re * ar + t_kinematicConst_re) / r;
-      dc1.im = (b_re * t_kinematicConst_re - ar) / r;
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      dc1.re = (beta * ar + u_im) / alpha;
+      dc1.im = (beta * u_im - ar) / alpha;
     }
   }
 
   b_log(&dc1);
-  gammaRaw[0].re = -kinematicConst[8] - (dc0.re * 0.0 - dc0.im);
+  gammaRaw[0].re = -kC_zeta - (dc0.re * 0.0 - dc0.im);
   re = dc1.re * 0.0 - dc1.im;
-  a = ((((((((((((((((((((((((kinematicConst[0] * kinematicConst[0] - 2.0 * sin
-    (kinematicConst[8]) * kinematicConst[0] * kinematicConst[3]) - 2.0 *
-    kinematicConst[0] * kinematicConst[5]) - 2.0 * kinematicConst[0] *
-    kinematicConst[7]) - 2.0 * kinematicConst[0] * zC) + kinematicConst[1] *
-    kinematicConst[1]) + 2.0 * cos(kinematicConst[8]) * kinematicConst[1] *
-    kinematicConst[3]) - 2.0 * kinematicConst[1] * kinematicConst[6]) - 2.0 *
-                       kinematicConst[1] * x) - kinematicConst[2] *
-                      kinematicConst[2]) + kinematicConst[3] * kinematicConst[3])
-                    + 2.0 * sin(kinematicConst[8]) * kinematicConst[3] *
-                    kinematicConst[5]) - 2.0 * cos(kinematicConst[8]) *
-                   kinematicConst[3] * kinematicConst[6]) + 2.0 * sin
-                  (kinematicConst[8]) * kinematicConst[3] * kinematicConst[7]) -
-                 2.0 * cos(kinematicConst[8]) * kinematicConst[3] * x) + 2.0 *
-                sin(kinematicConst[8]) * kinematicConst[3] * zC) +
-               kinematicConst[4] * kinematicConst[4]) + kinematicConst[5] *
-              kinematicConst[5]) + 2.0 * kinematicConst[5] * kinematicConst[7])
-            + 2.0 * kinematicConst[5] * zC) + kinematicConst[6] *
-           kinematicConst[6]) + 2.0 * kinematicConst[6] * x) + kinematicConst[7]
-         * kinematicConst[7]) + 2.0 * kinematicConst[7] * zC) + x * x) + zC * zC;
-  b_x = cos(kinematicConst[8]);
-  c_x = sin(kinematicConst[8]);
-  b_a = ((((((((((((((((((((((((kinematicConst[0] * kinematicConst[0] - 2.0 *
-    sin(kinematicConst[8]) * kinematicConst[0] * kinematicConst[3]) - 2.0 *
-    kinematicConst[0] * kinematicConst[5]) - 2.0 * kinematicConst[0] *
-    kinematicConst[7]) - 2.0 * kinematicConst[0] * zC) + kinematicConst[1] *
-    kinematicConst[1]) + 2.0 * cos(kinematicConst[8]) * kinematicConst[1] *
-    kinematicConst[3]) - 2.0 * kinematicConst[1] * kinematicConst[6]) - 2.0 *
-    kinematicConst[1] * x) - kinematicConst[2] * kinematicConst[2]) +
-                       kinematicConst[3] * kinematicConst[3]) + 2.0 * sin
-                      (kinematicConst[8]) * kinematicConst[3] * kinematicConst[5])
-                     - 2.0 * cos(kinematicConst[8]) * kinematicConst[3] *
-                     kinematicConst[6]) + 2.0 * sin(kinematicConst[8]) *
-                    kinematicConst[3] * kinematicConst[7]) - 2.0 * cos
-                   (kinematicConst[8]) * kinematicConst[3] * x) + 2.0 * sin
-                  (kinematicConst[8]) * kinematicConst[3] * zC) +
-                 kinematicConst[4] * kinematicConst[4]) + kinematicConst[5] *
-                kinematicConst[5]) + 2.0 * kinematicConst[5] * kinematicConst[7])
-              + 2.0 * kinematicConst[5] * zC) + kinematicConst[6] *
-             kinematicConst[6]) + 2.0 * kinematicConst[6] * x) + kinematicConst
-           [7] * kinematicConst[7]) + 2.0 * kinematicConst[7] * zC) + x * x) +
-    zC * zC;
-  d_x = cos(kinematicConst[8]);
-  e_x = sin(kinematicConst[8]);
-  y.re = kinematicConst[8] * 2.0 * 0.0;
-  y.im = kinematicConst[8] * 2.0;
+  a = kC_l8 + kC_r;
+  b_a = kC_l8 + kC_r;
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
+           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = cos(kC_zeta);
+  c_x = sin(kC_zeta);
+  c_a = kC_l8 + kC_r;
+  d_a = kC_l8 + kC_r;
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
+           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = cos(kC_zeta);
+  e_x = sin(kC_zeta);
+  y.re = kC_zeta * 2.0 * 0.0;
+  y.im = kC_zeta * 2.0;
   r = exp(y.re / 2.0);
   x_re = r * (r * cos(y.im));
   x_im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   f_x.re = r * (r * cos(y.im));
   f_x.im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   g_x.re = r * (r * cos(y.im));
   g_x.im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   h_x.re = r * (r * cos(y.im));
   h_x.im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   i_x.re = r * (r * cos(y.im));
   i_x.im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   j_x.re = r * (r * cos(y.im));
   j_x.im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   k_x.re = r * (r * cos(y.im));
   k_x.im = r * (r * sin(y.im));
-  y.re = kinematicConst[8] * 0.0;
-  y.im = kinematicConst[8];
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
   r = exp(y.re / 2.0);
   y.re = r * (r * cos(y.im));
   y.im = r * (r * sin(y.im));
-  dc0.re = kinematicConst[8] * 0.0;
-  dc0.im = kinematicConst[8];
+  dc0.re = kC_zeta * 0.0;
+  dc0.im = kC_zeta;
   b_exp(&dc0);
-  dc1.re = kinematicConst[8] * 0.0;
-  dc1.im = kinematicConst[8];
+  dc1.re = kC_zeta * 0.0;
+  dc1.im = kC_zeta;
   b_exp(&dc1);
-  dc2.re = kinematicConst[8] * 0.0;
-  dc2.im = kinematicConst[8];
+  dc2.re = kC_zeta * 0.0;
+  dc2.im = kC_zeta;
   b_exp(&dc2);
-  dc3.re = kinematicConst[8] * 0.0;
-  dc3.im = kinematicConst[8];
+  dc3.re = kC_zeta * 0.0;
+  dc3.im = kC_zeta;
   b_exp(&dc3);
-  dc4.re = kinematicConst[8] * 0.0;
-  dc4.im = kinematicConst[8];
+  dc4.re = kC_zeta * 0.0;
+  dc4.im = kC_zeta;
   b_exp(&dc4);
-  dc5.re = kinematicConst[8] * 0.0;
-  dc5.im = kinematicConst[8];
+  dc5.re = kC_zeta * 0.0;
+  dc5.im = kC_zeta;
   b_exp(&dc5);
-  dc6.re = kinematicConst[8] * 0.0;
-  dc6.im = kinematicConst[8];
+  dc6.re = kC_zeta * 0.0;
+  dc6.im = kC_zeta;
   b_exp(&dc6);
-  dc7.re = kinematicConst[8] * 0.0;
-  dc7.im = kinematicConst[8];
+  dc7.re = kC_zeta * 0.0;
+  dc7.im = kC_zeta;
   b_exp(&dc7);
-  dc8.re = kinematicConst[8] * 0.0;
-  dc8.im = kinematicConst[8];
+  dc8.re = kC_zeta * 0.0;
+  dc8.im = kC_zeta;
   b_exp(&dc8);
-  dc9.re = kinematicConst[8] * 2.0 * 0.0;
-  dc9.im = kinematicConst[8] * 2.0;
+  dc9.re = kC_zeta * 2.0 * 0.0;
+  dc9.im = kC_zeta * 2.0;
   b_exp(&dc9);
-  dc10.re = kinematicConst[8] * 0.0;
-  dc10.im = kinematicConst[8];
+  dc10.re = kC_zeta * 0.0;
+  dc10.im = kC_zeta;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  zC_re = zC * dc12.re;
-  zC_im = zC * dc12.im;
-  kinematicConst_re = kinematicConst[0] * dc13.re;
-  kinematicConst_im = kinematicConst[0] * dc13.im;
-  b_kinematicConst_re = kinematicConst[5] * dc15.re;
-  b_kinematicConst_im = kinematicConst[5] * dc15.im;
-  c_kinematicConst_re = kinematicConst[7] * dc17.re;
-  c_kinematicConst_im = kinematicConst[7] * dc17.im;
-  b_re = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc10.re;
-  im = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc10.im;
-  d_kinematicConst_re = ((((((-kinematicConst[3] + x * dc11.re) + (zC_re * 0.0 -
-    zC_im)) - (kinematicConst_re * 0.0 - kinematicConst_im)) - kinematicConst[1]
-    * dc14.re) + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) +
-    kinematicConst[6] * dc16.re) + (c_kinematicConst_re * 0.0 -
-    c_kinematicConst_im);
-  kinematicConst_im = (((((x * dc11.im + (zC_re + zC_im * 0.0)) -
-    (kinematicConst_re + kinematicConst_im * 0.0)) - kinematicConst[1] * dc14.im)
-                        + (b_kinematicConst_re + b_kinematicConst_im * 0.0)) +
-                       kinematicConst[6] * dc16.im) + (c_kinematicConst_re +
-    c_kinematicConst_im * 0.0);
-  r = b_re * d_kinematicConst_re - im * kinematicConst_im;
-  im = b_re * kinematicConst_im + im * d_kinematicConst_re;
-  kinematicConst_re = ((((((kinematicConst[1] - kinematicConst[0] * 0.0) +
-    kinematicConst[5] * 0.0) - kinematicConst[6]) + kinematicConst[7] * 0.0) - x)
-                       + zC * 0.0) + kinematicConst[3] * dc18.re;
-  kinematicConst_im = ((((0.0 - kinematicConst[0]) + kinematicConst[5]) +
-                        kinematicConst[7]) + zC) + kinematicConst[3] * dc18.im;
-  dc9.re = dc9.re * (b_a * b_a) + (r * kinematicConst_re - im *
-    kinematicConst_im);
-  dc9.im = dc9.im * (b_a * b_a) + (r * kinematicConst_im + im *
-    kinematicConst_re);
+  u_re = u[2] * dc12.re;
+  u_im = u[2] * dc12.im;
+  kC_l1_re = kC_l1 * dc13.re;
+  kC_l1_im = kC_l1 * dc13.im;
+  kC_l6_re = kC_l6 * dc15.re;
+  kC_l6_im = kC_l6 * dc15.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc17.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc17.im;
+  beta = 4.0 * (kC_l5 * kC_l5) * dc10.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc10.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc11.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc14.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc16.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc11.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc14.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc16.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  alpha = beta * kC_l4_re - r * kC_l4_im;
+  r = beta * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc18.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc18.im;
+  dc9.re = dc9.re * (d_a * d_a) + (alpha * kC_l2_re - r * kC_l2_im);
+  dc9.im = dc9.im * (d_a * d_a) + (alpha * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc9);
-  dc10.re = kinematicConst[8] * 2.0 * 0.0;
-  dc10.im = kinematicConst[8] * 2.0;
+  dc10.re = kC_zeta * 2.0 * 0.0;
+  dc10.im = kC_zeta * 2.0;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  dc19.re = kinematicConst[8] * 0.0;
-  dc19.im = kinematicConst[8];
+  dc19.re = kC_zeta * 0.0;
+  dc19.im = kC_zeta;
   b_exp(&dc19);
-  dc20.re = kinematicConst[8] * 0.0;
-  dc20.im = kinematicConst[8];
+  dc20.re = kC_zeta * 0.0;
+  dc20.im = kC_zeta;
   b_exp(&dc20);
-  dc21.re = kinematicConst[8] * 0.0;
-  dc21.im = kinematicConst[8];
+  dc21.re = kC_zeta * 0.0;
+  dc21.im = kC_zeta;
   b_exp(&dc21);
-  dc22.re = kinematicConst[8] * 2.0 * 0.0;
-  dc22.im = kinematicConst[8] * 2.0;
+  dc22.re = kC_zeta * 2.0 * 0.0;
+  dc22.im = kC_zeta * 2.0;
   b_exp(&dc22);
-  kinematicConst_re = kinematicConst[0] * kinematicConst[0] * dc0.re;
-  kinematicConst_im = kinematicConst[0] * kinematicConst[0] * dc0.im;
-  b_kinematicConst_re = kinematicConst[1] * kinematicConst[1] * dc1.re;
-  b_kinematicConst_im = kinematicConst[1] * kinematicConst[1] * dc1.im;
-  c_kinematicConst_re = kinematicConst[2] * kinematicConst[2] * dc2.re;
-  c_kinematicConst_im = kinematicConst[2] * kinematicConst[2] * dc2.im;
-  d_kinematicConst_re = kinematicConst[4] * kinematicConst[4] * dc3.re;
-  d_kinematicConst_im = kinematicConst[4] * kinematicConst[4] * dc3.im;
-  e_kinematicConst_re = kinematicConst[5] * kinematicConst[5] * dc4.re;
-  e_kinematicConst_im = kinematicConst[5] * kinematicConst[5] * dc4.im;
-  f_kinematicConst_re = kinematicConst[6] * kinematicConst[6] * dc5.re;
-  f_kinematicConst_im = kinematicConst[6] * kinematicConst[6] * dc5.im;
-  g_kinematicConst_re = kinematicConst[7] * kinematicConst[7] * dc6.re;
-  g_kinematicConst_im = kinematicConst[7] * kinematicConst[7] * dc6.im;
+  kC_l1_re = kC_l1 * kC_l1 * dc0.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc0.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc1.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc1.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc2.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc2.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc3.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc3.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc4.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc4.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc5.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc5.im;
+  a_re = c_a * c_a * dc6.re;
+  a_im = c_a * c_a * dc6.im;
   b_x_re = x * x * dc7.re;
   b_x_im = x * x * dc7.im;
-  zC_re = zC * zC * dc8.re;
-  zC_im = zC * zC * dc8.im;
+  u_re = u[2] * u[2] * dc8.re;
+  u_im = u[2] * u[2] * dc8.im;
   if (dc10.im == 0.0) {
-    b_re = dc10.re / 2.0;
-    im = 0.0;
+    beta = dc10.re / 2.0;
+    r = 0.0;
   } else if (dc10.re == 0.0) {
-    b_re = 0.0;
-    im = dc10.im / 2.0;
+    beta = 0.0;
+    r = dc10.im / 2.0;
   } else {
-    b_re = dc10.re / 2.0;
-    im = dc10.im / 2.0;
+    beta = dc10.re / 2.0;
+    r = dc10.im / 2.0;
   }
 
-  h_kinematicConst_re = 2.0 * (kinematicConst[3] * x * (b_re + 0.5));
-  h_kinematicConst_im = 2.0 * (kinematicConst[3] * x * im);
-  i_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc11.re);
-  i_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc11.im);
-  j_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc12.re);
-  j_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc12.im);
-  k_kinematicConst_re = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc13.re);
-  k_kinematicConst_im = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc13.im);
-  l_kinematicConst_re = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc14.re);
-  l_kinematicConst_im = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc14.im);
-  m_kinematicConst_re = 2.0 * (kinematicConst[1] * x * dc15.re);
-  m_kinematicConst_im = 2.0 * (kinematicConst[1] * x * dc15.im);
-  n_kinematicConst_re = 2.0 * (kinematicConst[6] * x * dc16.re);
-  n_kinematicConst_im = 2.0 * (kinematicConst[6] * x * dc16.im);
-  o_kinematicConst_re = 2.0 * (kinematicConst[0] * zC * dc17.re);
-  o_kinematicConst_im = 2.0 * (kinematicConst[0] * zC * dc17.im);
-  p_kinematicConst_re = 2.0 * (kinematicConst[5] * zC * dc18.re);
-  p_kinematicConst_im = 2.0 * (kinematicConst[5] * zC * dc18.im);
-  q_kinematicConst_re = 2.0 * (kinematicConst[7] * zC * dc19.re);
-  q_kinematicConst_im = 2.0 * (kinematicConst[7] * zC * dc19.im);
-  r_kinematicConst_re = d_x * d_x * (kinematicConst[3] * kinematicConst[3] *
-    dc20.re);
-  r_kinematicConst_im = d_x * d_x * (kinematicConst[3] * kinematicConst[3] *
-    dc20.im);
-  s_kinematicConst_re = e_x * e_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.re);
-  s_kinematicConst_im = e_x * e_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.im);
+  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc11.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc11.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc12.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc12.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc13.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc13.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc14.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc14.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc15.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc15.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc16.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc16.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc17.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc17.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc18.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc18.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc19.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc19.im);
+  b_kC_l4_re = d_x * d_x * (kC_l4 * kC_l4 * dc20.re);
+  b_kC_l4_im = d_x * d_x * (kC_l4 * kC_l4 * dc20.im);
+  c_kC_l4_re = e_x * e_x * (kC_l4 * kC_l4 * dc21.re);
+  c_kC_l4_im = e_x * e_x * (kC_l4 * kC_l4 * dc21.im);
   if (dc22.im == 0.0) {
-    b_re = dc22.re / 2.0;
-    im = 0.0;
+    beta = dc22.re / 2.0;
+    r = 0.0;
   } else if (dc22.re == 0.0) {
-    b_re = 0.0;
-    im = dc22.im / 2.0;
+    beta = 0.0;
+    r = dc22.im / 2.0;
   } else {
-    b_re = dc22.re / 2.0;
-    im = dc22.im / 2.0;
+    beta = dc22.re / 2.0;
+    r = dc22.im / 2.0;
   }
 
-  t_kinematicConst_re = 2.0 * (kinematicConst[3] * kinematicConst[6] * (b_re +
-    0.5));
-  t_kinematicConst_im = 2.0 * (kinematicConst[3] * kinematicConst[6] * im);
-  r = x * f_x.re;
-  brm = x * f_x.im;
-  b_re = kinematicConst[1] * i_x.re;
-  im = kinematicConst[1] * i_x.im;
-  u_kinematicConst_re = kinematicConst[6] * k_x.re;
-  u_kinematicConst_im = kinematicConst[6] * k_x.im;
-  ar = -((((((((((((((((((((((((((((kinematicConst_re * 0.0 - kinematicConst_im)
-    + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) - (c_kinematicConst_re *
-    0.0 - c_kinematicConst_im)) + (d_kinematicConst_re * 0.0 -
-    d_kinematicConst_im)) + (e_kinematicConst_re * 0.0 - e_kinematicConst_im)) +
-    (f_kinematicConst_re * 0.0 - f_kinematicConst_im)) + (g_kinematicConst_re *
-    0.0 - g_kinematicConst_im)) + (b_x_re * 0.0 - b_x_im)) + (zC_re * 0.0 -
-    zC_im)) + (dc9.re * 0.0 - dc9.im)) - (h_kinematicConst_re * 0.0 -
-    h_kinematicConst_im)) - (i_kinematicConst_re * 0.0 - i_kinematicConst_im)) -
-                        (j_kinematicConst_re * 0.0 - j_kinematicConst_im)) -
-                       (k_kinematicConst_re * 0.0 - k_kinematicConst_im)) +
-                      (l_kinematicConst_re * 0.0 - l_kinematicConst_im)) -
-                     kinematicConst[0] * kinematicConst[3] * (cos(2.0 *
-    kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[5] * (cos
-    (2.0 * kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[7] *
-                   (cos(2.0 * kinematicConst[8]) - 1.0)) - (m_kinematicConst_re *
-    0.0 - m_kinematicConst_im)) + (n_kinematicConst_re * 0.0 -
-    n_kinematicConst_im)) - (o_kinematicConst_re * 0.0 - o_kinematicConst_im)) +
-               (p_kinematicConst_re * 0.0 - p_kinematicConst_im)) +
-              (q_kinematicConst_re * 0.0 - q_kinematicConst_im)) +
-             kinematicConst[3] * zC * (cos(2.0 * kinematicConst[8]) - 1.0)) +
-            (r_kinematicConst_re * 0.0 - r_kinematicConst_im)) +
-           (s_kinematicConst_re * 0.0 - s_kinematicConst_im)) -
-          (t_kinematicConst_re * 0.0 - t_kinematicConst_im)) + kinematicConst[1]
-         * kinematicConst[3] * (x_re * 0.0 - x_im));
-  t_kinematicConst_re = -((((((((((((((((((((((((((((kinematicConst_re +
-    kinematicConst_im * 0.0) + (b_kinematicConst_re + b_kinematicConst_im * 0.0))
-    - (c_kinematicConst_re + c_kinematicConst_im * 0.0)) + (d_kinematicConst_re
-    + d_kinematicConst_im * 0.0)) + (e_kinematicConst_re + e_kinematicConst_im *
-    0.0)) + (f_kinematicConst_re + f_kinematicConst_im * 0.0)) +
-    (g_kinematicConst_re + g_kinematicConst_im * 0.0)) + (b_x_re + b_x_im * 0.0))
-    + (zC_re + zC_im * 0.0)) + (dc9.re + dc9.im * 0.0)) - (h_kinematicConst_re +
-    h_kinematicConst_im * 0.0)) - (i_kinematicConst_re + i_kinematicConst_im *
-    0.0)) - (j_kinematicConst_re + j_kinematicConst_im * 0.0)) -
-    (k_kinematicConst_re + k_kinematicConst_im * 0.0)) + (l_kinematicConst_re +
-    l_kinematicConst_im * 0.0)) - kinematicConst[0] * kinematicConst[3] * sin
-    (2.0 * kinematicConst[8])) + kinematicConst[3] * kinematicConst[5] * sin(2.0
-    * kinematicConst[8])) + kinematicConst[3] * kinematicConst[7] * sin(2.0 *
-    kinematicConst[8])) - (m_kinematicConst_re + m_kinematicConst_im * 0.0)) +
-    (n_kinematicConst_re + n_kinematicConst_im * 0.0)) - (o_kinematicConst_re +
-    o_kinematicConst_im * 0.0)) + (p_kinematicConst_re + p_kinematicConst_im *
-    0.0)) + (q_kinematicConst_re + q_kinematicConst_im * 0.0)) + kinematicConst
-    [3] * zC * sin(2.0 * kinematicConst[8])) + (r_kinematicConst_re +
-    r_kinematicConst_im * 0.0)) + (s_kinematicConst_re + s_kinematicConst_im *
-    0.0)) - (t_kinematicConst_re + t_kinematicConst_im * 0.0)) + kinematicConst
-    [1] * kinematicConst[3] * ((x_re + x_im * 0.0) + 1.0));
-  t_kinematicConst_im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] * 0.0
-    - (r * 0.0 - brm)) + zC * g_x.re) - kinematicConst[0] * h_x.re) + (b_re *
-    0.0 - im)) + kinematicConst[5] * j_x.re) - (u_kinematicConst_re * 0.0 -
-    u_kinematicConst_im)) + kinematicConst[7] * y.re);
-  im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] - (r + brm * 0.0)) +
-    zC * g_x.im) - kinematicConst[0] * h_x.im) + (b_re + im * 0.0)) +
-    kinematicConst[5] * j_x.im) - (u_kinematicConst_re + u_kinematicConst_im *
-    0.0)) + kinematicConst[7] * y.im);
-  if (im == 0.0) {
-    if (t_kinematicConst_re == 0.0) {
-      y.re = ar / t_kinematicConst_im;
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * r);
+  alpha = x * f_x.re;
+  beta = x * f_x.im;
+  d_kC_l2_re = kC_l2 * i_x.re;
+  d_kC_l2_im = kC_l2 * i_x.im;
+  c_kC_l7_re = kC_l7 * k_x.re;
+  c_kC_l7_im = kC_l7 * k_x.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) + (dc9.re * 0.0 -
+    dc9.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im)) -
+                        (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (x_re * 0.0 - x_im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc9.re + dc9.im
+    * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
+                          (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re +
+    b_kC_l2_im * 0.0)) + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((x_re + x_im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+    g_x.re) - kC_l1 * h_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    j_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * g_x.im) -
+    kC_l1 * h_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * j_x.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) * y.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      y.re = ar / u_re;
       y.im = 0.0;
     } else if (ar == 0.0) {
       y.re = 0.0;
-      y.im = t_kinematicConst_re / t_kinematicConst_im;
+      y.im = u_im / u_re;
     } else {
-      y.re = ar / t_kinematicConst_im;
-      y.im = t_kinematicConst_re / t_kinematicConst_im;
+      y.re = ar / u_re;
+      y.im = u_im / u_re;
     }
-  } else if (t_kinematicConst_im == 0.0) {
+  } else if (u_re == 0.0) {
     if (ar == 0.0) {
-      y.re = t_kinematicConst_re / im;
+      y.re = u_im / r;
       y.im = 0.0;
-    } else if (t_kinematicConst_re == 0.0) {
+    } else if (u_im == 0.0) {
       y.re = 0.0;
-      y.im = -(ar / im);
+      y.im = -(ar / r);
     } else {
-      y.re = t_kinematicConst_re / im;
-      y.im = -(ar / im);
+      y.re = u_im / r;
+      y.im = -(ar / r);
     }
   } else {
-    brm = fabs(t_kinematicConst_im);
-    r = fabs(im);
-    if (brm > r) {
-      b_re = im / t_kinematicConst_im;
-      r = t_kinematicConst_im + b_re * im;
-      y.re = (ar + b_re * t_kinematicConst_re) / r;
-      y.im = (t_kinematicConst_re - b_re * ar) / r;
-    } else if (r == brm) {
-      if (t_kinematicConst_im > 0.0) {
-        b_re = 0.5;
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      y.re = (ar + beta * u_im) / alpha;
+      y.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
       } else {
-        b_re = -0.5;
+        beta = -0.5;
       }
 
-      if (im > 0.0) {
-        r = 0.5;
+      if (r > 0.0) {
+        alpha = 0.5;
       } else {
-        r = -0.5;
+        alpha = -0.5;
       }
 
-      y.re = (ar * b_re + t_kinematicConst_re * r) / brm;
-      y.im = (t_kinematicConst_re * b_re - ar * r) / brm;
+      y.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      y.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
     } else {
-      b_re = t_kinematicConst_im / im;
-      r = im + b_re * t_kinematicConst_im;
-      y.re = (b_re * ar + t_kinematicConst_re) / r;
-      y.im = (b_re * t_kinematicConst_re - ar) / r;
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      y.re = (beta * ar + u_im) / alpha;
+      y.im = (beta * u_im - ar) / alpha;
     }
   }
 
@@ -1266,390 +1155,365 @@ void sherpaTTIK(double xC, double yC, double zC, const double kinematicConst[15]
     x_im = cos(b_x_re) * sinh(x_im);
   }
 
-  dc0.re = kinematicConst[8] * 0.0;
-  dc0.im = kinematicConst[8];
+  dc0.re = kC_zeta * 0.0;
+  dc0.im = kC_zeta;
   b_exp(&dc0);
-  dc1.re = kinematicConst[8] * 0.0;
-  dc1.im = kinematicConst[8];
+  dc1.re = kC_zeta * 0.0;
+  dc1.im = kC_zeta;
   b_exp(&dc1);
-  dc2.re = kinematicConst[8] * 0.0;
-  dc2.im = kinematicConst[8];
+  dc2.re = kC_zeta * 0.0;
+  dc2.im = kC_zeta;
   b_exp(&dc2);
-  dc3.re = kinematicConst[8] * 0.0;
-  dc3.im = kinematicConst[8];
+  dc3.re = kC_zeta * 0.0;
+  dc3.im = kC_zeta;
   b_exp(&dc3);
-  dc4.re = kinematicConst[8] * 0.0;
-  dc4.im = kinematicConst[8];
+  dc4.re = kC_zeta * 0.0;
+  dc4.im = kC_zeta;
   b_exp(&dc4);
-  dc5.re = kinematicConst[8] * 0.0;
-  dc5.im = kinematicConst[8];
+  dc5.re = kC_zeta * 0.0;
+  dc5.im = kC_zeta;
   b_exp(&dc5);
-  dc6.re = kinematicConst[8] * 0.0;
-  dc6.im = kinematicConst[8];
+  dc6.re = kC_zeta * 0.0;
+  dc6.im = kC_zeta;
   b_exp(&dc6);
-  dc7.re = kinematicConst[8] * 0.0;
-  dc7.im = kinematicConst[8];
+  dc7.re = kC_zeta * 0.0;
+  dc7.im = kC_zeta;
   b_exp(&dc7);
-  dc8.re = kinematicConst[8] * 0.0;
-  dc8.im = kinematicConst[8];
+  dc8.re = kC_zeta * 0.0;
+  dc8.im = kC_zeta;
   b_exp(&dc8);
-  dc9.re = kinematicConst[8] * 2.0 * 0.0;
-  dc9.im = kinematicConst[8] * 2.0;
+  dc9.re = kC_zeta * 2.0 * 0.0;
+  dc9.im = kC_zeta * 2.0;
   b_exp(&dc9);
-  dc10.re = kinematicConst[8] * 0.0;
-  dc10.im = kinematicConst[8];
+  dc10.re = kC_zeta * 0.0;
+  dc10.im = kC_zeta;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  zC_re = zC * dc12.re;
-  zC_im = zC * dc12.im;
-  kinematicConst_re = kinematicConst[0] * dc13.re;
-  kinematicConst_im = kinematicConst[0] * dc13.im;
-  b_kinematicConst_re = kinematicConst[5] * dc15.re;
-  b_kinematicConst_im = kinematicConst[5] * dc15.im;
-  c_kinematicConst_re = kinematicConst[7] * dc17.re;
-  c_kinematicConst_im = kinematicConst[7] * dc17.im;
-  b_re = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc10.re;
-  im = 4.0 * (kinematicConst[4] * kinematicConst[4]) * dc10.im;
-  d_kinematicConst_re = ((((((-kinematicConst[3] + x * dc11.re) + (zC_re * 0.0 -
-    zC_im)) - (kinematicConst_re * 0.0 - kinematicConst_im)) - kinematicConst[1]
-    * dc14.re) + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) +
-    kinematicConst[6] * dc16.re) + (c_kinematicConst_re * 0.0 -
-    c_kinematicConst_im);
-  kinematicConst_im = (((((x * dc11.im + (zC_re + zC_im * 0.0)) -
-    (kinematicConst_re + kinematicConst_im * 0.0)) - kinematicConst[1] * dc14.im)
-                        + (b_kinematicConst_re + b_kinematicConst_im * 0.0)) +
-                       kinematicConst[6] * dc16.im) + (c_kinematicConst_re +
-    c_kinematicConst_im * 0.0);
-  r = b_re * d_kinematicConst_re - im * kinematicConst_im;
-  im = b_re * kinematicConst_im + im * d_kinematicConst_re;
-  kinematicConst_re = ((((((kinematicConst[1] - kinematicConst[0] * 0.0) +
-    kinematicConst[5] * 0.0) - kinematicConst[6]) + kinematicConst[7] * 0.0) - x)
-                       + zC * 0.0) + kinematicConst[3] * dc18.re;
-  kinematicConst_im = ((((0.0 - kinematicConst[0]) + kinematicConst[5]) +
-                        kinematicConst[7]) + zC) + kinematicConst[3] * dc18.im;
-  dc9.re = dc9.re * (a * a) + (r * kinematicConst_re - im * kinematicConst_im);
-  dc9.im = dc9.im * (a * a) + (r * kinematicConst_im + im * kinematicConst_re);
+  u_re = u[2] * dc12.re;
+  u_im = u[2] * dc12.im;
+  kC_l1_re = kC_l1 * dc13.re;
+  kC_l1_im = kC_l1 * dc13.im;
+  kC_l6_re = kC_l6 * dc15.re;
+  kC_l6_im = kC_l6 * dc15.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc17.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc17.im;
+  beta = 4.0 * (kC_l5 * kC_l5) * dc10.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc10.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc11.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc14.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc16.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc11.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc14.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc16.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  alpha = beta * kC_l4_re - r * kC_l4_im;
+  r = beta * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc18.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc18.im;
+  dc9.re = dc9.re * (b_a * b_a) + (alpha * kC_l2_re - r * kC_l2_im);
+  dc9.im = dc9.im * (b_a * b_a) + (alpha * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc9);
-  dc10.re = kinematicConst[8] * 2.0 * 0.0;
-  dc10.im = kinematicConst[8] * 2.0;
+  dc10.re = kC_zeta * 2.0 * 0.0;
+  dc10.im = kC_zeta * 2.0;
   b_exp(&dc10);
-  dc11.re = kinematicConst[8] * 0.0;
-  dc11.im = kinematicConst[8];
+  dc11.re = kC_zeta * 0.0;
+  dc11.im = kC_zeta;
   b_exp(&dc11);
-  dc12.re = kinematicConst[8] * 0.0;
-  dc12.im = kinematicConst[8];
+  dc12.re = kC_zeta * 0.0;
+  dc12.im = kC_zeta;
   b_exp(&dc12);
-  dc13.re = kinematicConst[8] * 0.0;
-  dc13.im = kinematicConst[8];
+  dc13.re = kC_zeta * 0.0;
+  dc13.im = kC_zeta;
   b_exp(&dc13);
-  dc14.re = kinematicConst[8] * 0.0;
-  dc14.im = kinematicConst[8];
+  dc14.re = kC_zeta * 0.0;
+  dc14.im = kC_zeta;
   b_exp(&dc14);
-  dc15.re = kinematicConst[8] * 0.0;
-  dc15.im = kinematicConst[8];
+  dc15.re = kC_zeta * 0.0;
+  dc15.im = kC_zeta;
   b_exp(&dc15);
-  dc16.re = kinematicConst[8] * 0.0;
-  dc16.im = kinematicConst[8];
+  dc16.re = kC_zeta * 0.0;
+  dc16.im = kC_zeta;
   b_exp(&dc16);
-  dc17.re = kinematicConst[8] * 0.0;
-  dc17.im = kinematicConst[8];
+  dc17.re = kC_zeta * 0.0;
+  dc17.im = kC_zeta;
   b_exp(&dc17);
-  dc18.re = kinematicConst[8] * 0.0;
-  dc18.im = kinematicConst[8];
+  dc18.re = kC_zeta * 0.0;
+  dc18.im = kC_zeta;
   b_exp(&dc18);
-  dc19.re = kinematicConst[8] * 0.0;
-  dc19.im = kinematicConst[8];
+  dc19.re = kC_zeta * 0.0;
+  dc19.im = kC_zeta;
   b_exp(&dc19);
-  dc20.re = kinematicConst[8] * 0.0;
-  dc20.im = kinematicConst[8];
+  dc20.re = kC_zeta * 0.0;
+  dc20.im = kC_zeta;
   b_exp(&dc20);
-  dc21.re = kinematicConst[8] * 0.0;
-  dc21.im = kinematicConst[8];
+  dc21.re = kC_zeta * 0.0;
+  dc21.im = kC_zeta;
   b_exp(&dc21);
-  dc22.re = kinematicConst[8] * 2.0 * 0.0;
-  dc22.im = kinematicConst[8] * 2.0;
+  dc22.re = kC_zeta * 2.0 * 0.0;
+  dc22.im = kC_zeta * 2.0;
   b_exp(&dc22);
-  f_x.re = kinematicConst[8] * 2.0 * 0.0;
-  f_x.im = kinematicConst[8] * 2.0;
+  f_x.re = kC_zeta * 2.0 * 0.0;
+  f_x.im = kC_zeta * 2.0;
   b_exp(&f_x);
-  g_x.re = kinematicConst[8] * 0.0;
-  g_x.im = kinematicConst[8];
+  g_x.re = kC_zeta * 0.0;
+  g_x.im = kC_zeta;
   b_exp(&g_x);
-  h_x.re = kinematicConst[8] * 0.0;
-  h_x.im = kinematicConst[8];
+  h_x.re = kC_zeta * 0.0;
+  h_x.im = kC_zeta;
   b_exp(&h_x);
-  i_x.re = kinematicConst[8] * 0.0;
-  i_x.im = kinematicConst[8];
+  i_x.re = kC_zeta * 0.0;
+  i_x.im = kC_zeta;
   b_exp(&i_x);
-  j_x.re = kinematicConst[8] * 0.0;
-  j_x.im = kinematicConst[8];
+  j_x.re = kC_zeta * 0.0;
+  j_x.im = kC_zeta;
   b_exp(&j_x);
-  k_x.re = kinematicConst[8] * 0.0;
-  k_x.im = kinematicConst[8];
+  k_x.re = kC_zeta * 0.0;
+  k_x.im = kC_zeta;
   b_exp(&k_x);
-  dc23.re = kinematicConst[8] * 0.0;
-  dc23.im = kinematicConst[8];
+  dc23.re = kC_zeta * 0.0;
+  dc23.im = kC_zeta;
   b_exp(&dc23);
-  dc24.re = kinematicConst[8] * 0.0;
-  dc24.im = kinematicConst[8];
+  dc24.re = kC_zeta * 0.0;
+  dc24.im = kC_zeta;
   b_exp(&dc24);
-  kinematicConst_re = kinematicConst[0] * kinematicConst[0] * dc0.re;
-  kinematicConst_im = kinematicConst[0] * kinematicConst[0] * dc0.im;
-  b_kinematicConst_re = kinematicConst[1] * kinematicConst[1] * dc1.re;
-  b_kinematicConst_im = kinematicConst[1] * kinematicConst[1] * dc1.im;
-  c_kinematicConst_re = kinematicConst[2] * kinematicConst[2] * dc2.re;
-  c_kinematicConst_im = kinematicConst[2] * kinematicConst[2] * dc2.im;
-  d_kinematicConst_re = kinematicConst[4] * kinematicConst[4] * dc3.re;
-  d_kinematicConst_im = kinematicConst[4] * kinematicConst[4] * dc3.im;
-  e_kinematicConst_re = kinematicConst[5] * kinematicConst[5] * dc4.re;
-  e_kinematicConst_im = kinematicConst[5] * kinematicConst[5] * dc4.im;
-  f_kinematicConst_re = kinematicConst[6] * kinematicConst[6] * dc5.re;
-  f_kinematicConst_im = kinematicConst[6] * kinematicConst[6] * dc5.im;
-  g_kinematicConst_re = kinematicConst[7] * kinematicConst[7] * dc6.re;
-  g_kinematicConst_im = kinematicConst[7] * kinematicConst[7] * dc6.im;
+  kC_l1_re = kC_l1 * kC_l1 * dc0.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc0.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc1.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc1.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc2.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc2.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc3.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc3.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc4.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc4.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc5.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc5.im;
+  a_re = a * a * dc6.re;
+  a_im = a * a * dc6.im;
   b_x_re = x * x * dc7.re;
   b_x_im = x * x * dc7.im;
-  zC_re = zC * zC * dc8.re;
-  zC_im = zC * zC * dc8.im;
+  u_re = u[2] * u[2] * dc8.re;
+  u_im = u[2] * u[2] * dc8.im;
   if (dc10.im == 0.0) {
-    b_re = dc10.re / 2.0;
-    im = 0.0;
+    beta = dc10.re / 2.0;
+    r = 0.0;
   } else if (dc10.re == 0.0) {
-    b_re = 0.0;
-    im = dc10.im / 2.0;
+    beta = 0.0;
+    r = dc10.im / 2.0;
   } else {
-    b_re = dc10.re / 2.0;
-    im = dc10.im / 2.0;
+    beta = dc10.re / 2.0;
+    r = dc10.im / 2.0;
   }
 
-  h_kinematicConst_re = 2.0 * (kinematicConst[3] * x * (b_re + 0.5));
-  h_kinematicConst_im = 2.0 * (kinematicConst[3] * x * im);
-  i_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc11.re);
-  i_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[5] * dc11.im);
-  j_kinematicConst_re = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc12.re);
-  j_kinematicConst_im = 2.0 * (kinematicConst[0] * kinematicConst[7] * dc12.im);
-  k_kinematicConst_re = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc13.re);
-  k_kinematicConst_im = 2.0 * (kinematicConst[1] * kinematicConst[6] * dc13.im);
-  l_kinematicConst_re = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc14.re);
-  l_kinematicConst_im = 2.0 * (kinematicConst[5] * kinematicConst[7] * dc14.im);
-  m_kinematicConst_re = 2.0 * (kinematicConst[1] * x * dc15.re);
-  m_kinematicConst_im = 2.0 * (kinematicConst[1] * x * dc15.im);
-  n_kinematicConst_re = 2.0 * (kinematicConst[6] * x * dc16.re);
-  n_kinematicConst_im = 2.0 * (kinematicConst[6] * x * dc16.im);
-  o_kinematicConst_re = 2.0 * (kinematicConst[0] * zC * dc17.re);
-  o_kinematicConst_im = 2.0 * (kinematicConst[0] * zC * dc17.im);
-  p_kinematicConst_re = 2.0 * (kinematicConst[5] * zC * dc18.re);
-  p_kinematicConst_im = 2.0 * (kinematicConst[5] * zC * dc18.im);
-  q_kinematicConst_re = 2.0 * (kinematicConst[7] * zC * dc19.re);
-  q_kinematicConst_im = 2.0 * (kinematicConst[7] * zC * dc19.im);
-  r_kinematicConst_re = b_x * b_x * (kinematicConst[3] * kinematicConst[3] *
-    dc20.re);
-  r_kinematicConst_im = b_x * b_x * (kinematicConst[3] * kinematicConst[3] *
-    dc20.im);
-  s_kinematicConst_re = c_x * c_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.re);
-  s_kinematicConst_im = c_x * c_x * (kinematicConst[3] * kinematicConst[3] *
-    dc21.im);
+  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc11.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc11.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc12.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc12.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc13.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc13.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc14.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc14.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc15.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc15.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc16.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc16.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc17.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc17.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc18.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc18.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc19.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc19.im);
+  b_kC_l4_re = b_x * b_x * (kC_l4 * kC_l4 * dc20.re);
+  b_kC_l4_im = b_x * b_x * (kC_l4 * kC_l4 * dc20.im);
+  c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc21.re);
+  c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc21.im);
   if (dc22.im == 0.0) {
-    b_re = dc22.re / 2.0;
-    im = 0.0;
+    beta = dc22.re / 2.0;
+    r = 0.0;
   } else if (dc22.re == 0.0) {
-    b_re = 0.0;
-    im = dc22.im / 2.0;
+    beta = 0.0;
+    r = dc22.im / 2.0;
   } else {
-    b_re = dc22.re / 2.0;
-    im = dc22.im / 2.0;
+    beta = dc22.re / 2.0;
+    r = dc22.im / 2.0;
   }
 
-  t_kinematicConst_re = 2.0 * (kinematicConst[3] * kinematicConst[6] * (b_re +
-    0.5));
-  t_kinematicConst_im = 2.0 * (kinematicConst[3] * kinematicConst[6] * im);
-  r = x * g_x.re;
-  brm = x * g_x.im;
-  b_re = kinematicConst[1] * j_x.re;
-  im = kinematicConst[1] * j_x.im;
-  u_kinematicConst_re = kinematicConst[6] * dc23.re;
-  u_kinematicConst_im = kinematicConst[6] * dc23.im;
-  ar = -((((((((((((((((((((((((((((kinematicConst_re * 0.0 - kinematicConst_im)
-    + (b_kinematicConst_re * 0.0 - b_kinematicConst_im)) - (c_kinematicConst_re *
-    0.0 - c_kinematicConst_im)) + (d_kinematicConst_re * 0.0 -
-    d_kinematicConst_im)) + (e_kinematicConst_re * 0.0 - e_kinematicConst_im)) +
-    (f_kinematicConst_re * 0.0 - f_kinematicConst_im)) + (g_kinematicConst_re *
-    0.0 - g_kinematicConst_im)) + (b_x_re * 0.0 - b_x_im)) + (zC_re * 0.0 -
-    zC_im)) - (dc9.re * 0.0 - dc9.im)) - (h_kinematicConst_re * 0.0 -
-    h_kinematicConst_im)) - (i_kinematicConst_re * 0.0 - i_kinematicConst_im)) -
-                        (j_kinematicConst_re * 0.0 - j_kinematicConst_im)) -
-                       (k_kinematicConst_re * 0.0 - k_kinematicConst_im)) +
-                      (l_kinematicConst_re * 0.0 - l_kinematicConst_im)) -
-                     kinematicConst[0] * kinematicConst[3] * (cos(2.0 *
-    kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[5] * (cos
-    (2.0 * kinematicConst[8]) - 1.0)) + kinematicConst[3] * kinematicConst[7] *
-                   (cos(2.0 * kinematicConst[8]) - 1.0)) - (m_kinematicConst_re *
-    0.0 - m_kinematicConst_im)) + (n_kinematicConst_re * 0.0 -
-    n_kinematicConst_im)) - (o_kinematicConst_re * 0.0 - o_kinematicConst_im)) +
-               (p_kinematicConst_re * 0.0 - p_kinematicConst_im)) +
-              (q_kinematicConst_re * 0.0 - q_kinematicConst_im)) +
-             kinematicConst[3] * zC * (cos(2.0 * kinematicConst[8]) - 1.0)) +
-            (r_kinematicConst_re * 0.0 - r_kinematicConst_im)) +
-           (s_kinematicConst_re * 0.0 - s_kinematicConst_im)) -
-          (t_kinematicConst_re * 0.0 - t_kinematicConst_im)) + kinematicConst[1]
-         * kinematicConst[3] * (f_x.re * 0.0 - f_x.im));
-  t_kinematicConst_re = -((((((((((((((((((((((((((((kinematicConst_re +
-    kinematicConst_im * 0.0) + (b_kinematicConst_re + b_kinematicConst_im * 0.0))
-    - (c_kinematicConst_re + c_kinematicConst_im * 0.0)) + (d_kinematicConst_re
-    + d_kinematicConst_im * 0.0)) + (e_kinematicConst_re + e_kinematicConst_im *
-    0.0)) + (f_kinematicConst_re + f_kinematicConst_im * 0.0)) +
-    (g_kinematicConst_re + g_kinematicConst_im * 0.0)) + (b_x_re + b_x_im * 0.0))
-    + (zC_re + zC_im * 0.0)) - (dc9.re + dc9.im * 0.0)) - (h_kinematicConst_re +
-    h_kinematicConst_im * 0.0)) - (i_kinematicConst_re + i_kinematicConst_im *
-    0.0)) - (j_kinematicConst_re + j_kinematicConst_im * 0.0)) -
-    (k_kinematicConst_re + k_kinematicConst_im * 0.0)) + (l_kinematicConst_re +
-    l_kinematicConst_im * 0.0)) - kinematicConst[0] * kinematicConst[3] * sin
-    (2.0 * kinematicConst[8])) + kinematicConst[3] * kinematicConst[5] * sin(2.0
-    * kinematicConst[8])) + kinematicConst[3] * kinematicConst[7] * sin(2.0 *
-    kinematicConst[8])) - (m_kinematicConst_re + m_kinematicConst_im * 0.0)) +
-    (n_kinematicConst_re + n_kinematicConst_im * 0.0)) - (o_kinematicConst_re +
-    o_kinematicConst_im * 0.0)) + (p_kinematicConst_re + p_kinematicConst_im *
-    0.0)) + (q_kinematicConst_re + q_kinematicConst_im * 0.0)) + kinematicConst
-    [3] * zC * sin(2.0 * kinematicConst[8])) + (r_kinematicConst_re +
-    r_kinematicConst_im * 0.0)) + (s_kinematicConst_re + s_kinematicConst_im *
-    0.0)) - (t_kinematicConst_re + t_kinematicConst_im * 0.0)) + kinematicConst
-    [1] * kinematicConst[3] * ((f_x.re + f_x.im * 0.0) + 1.0));
-  t_kinematicConst_im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] * 0.0
-    - (r * 0.0 - brm)) + zC * h_x.re) - kinematicConst[0] * i_x.re) + (b_re *
-    0.0 - im)) + kinematicConst[5] * k_x.re) - (u_kinematicConst_re * 0.0 -
-    u_kinematicConst_im)) + kinematicConst[7] * dc24.re);
-  im = 2.0 * kinematicConst[4] * (((((((kinematicConst[3] - (r + brm * 0.0)) +
-    zC * h_x.im) - kinematicConst[0] * i_x.im) + (b_re + im * 0.0)) +
-    kinematicConst[5] * k_x.im) - (u_kinematicConst_re + u_kinematicConst_im *
-    0.0)) + kinematicConst[7] * dc24.im);
-  if (im == 0.0) {
-    if (t_kinematicConst_re == 0.0) {
-      dc0.re = ar / t_kinematicConst_im;
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * r);
+  alpha = x * g_x.re;
+  beta = x * g_x.im;
+  d_kC_l2_re = kC_l2 * j_x.re;
+  d_kC_l2_im = kC_l2 * j_x.im;
+  c_kC_l7_re = kC_l7 * dc23.re;
+  c_kC_l7_im = kC_l7 * dc23.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) - (dc9.re * 0.0 -
+    dc9.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im)) -
+                        (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc9.re + dc9.im
+    * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
+                          (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re +
+    b_kC_l2_im * 0.0)) + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+    h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc24.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * h_x.im) -
+    kC_l1 * i_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * k_x.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) *
+                     dc24.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      dc0.re = ar / u_re;
       dc0.im = 0.0;
     } else if (ar == 0.0) {
       dc0.re = 0.0;
-      dc0.im = t_kinematicConst_re / t_kinematicConst_im;
+      dc0.im = u_im / u_re;
     } else {
-      dc0.re = ar / t_kinematicConst_im;
-      dc0.im = t_kinematicConst_re / t_kinematicConst_im;
+      dc0.re = ar / u_re;
+      dc0.im = u_im / u_re;
     }
-  } else if (t_kinematicConst_im == 0.0) {
+  } else if (u_re == 0.0) {
     if (ar == 0.0) {
-      dc0.re = t_kinematicConst_re / im;
+      dc0.re = u_im / r;
       dc0.im = 0.0;
-    } else if (t_kinematicConst_re == 0.0) {
+    } else if (u_im == 0.0) {
       dc0.re = 0.0;
-      dc0.im = -(ar / im);
+      dc0.im = -(ar / r);
     } else {
-      dc0.re = t_kinematicConst_re / im;
-      dc0.im = -(ar / im);
+      dc0.re = u_im / r;
+      dc0.im = -(ar / r);
     }
   } else {
-    brm = fabs(t_kinematicConst_im);
-    r = fabs(im);
-    if (brm > r) {
-      b_re = im / t_kinematicConst_im;
-      r = t_kinematicConst_im + b_re * im;
-      dc0.re = (ar + b_re * t_kinematicConst_re) / r;
-      dc0.im = (t_kinematicConst_re - b_re * ar) / r;
-    } else if (r == brm) {
-      if (t_kinematicConst_im > 0.0) {
-        b_re = 0.5;
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      dc0.re = (ar + beta * u_im) / alpha;
+      dc0.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
       } else {
-        b_re = -0.5;
+        beta = -0.5;
       }
 
-      if (im > 0.0) {
-        r = 0.5;
+      if (r > 0.0) {
+        alpha = 0.5;
       } else {
-        r = -0.5;
+        alpha = -0.5;
       }
 
-      dc0.re = (ar * b_re + t_kinematicConst_re * r) / brm;
-      dc0.im = (t_kinematicConst_re * b_re - ar * r) / brm;
+      dc0.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      dc0.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
     } else {
-      b_re = t_kinematicConst_im / im;
-      r = im + b_re * t_kinematicConst_im;
-      dc0.re = (b_re * ar + t_kinematicConst_re) / r;
-      dc0.im = (b_re * t_kinematicConst_re - ar) / r;
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      dc0.re = (beta * ar + u_im) / alpha;
+      dc0.im = (beta * u_im - ar) / alpha;
     }
   }
 
   b_log(&dc0);
-  b_re = dc0.re;
+  beta = dc0.re;
   dc0.re = dc0.re * 0.0 - dc0.im;
-  dc0.im = b_re + dc0.im * 0.0;
+  dc0.im = beta + dc0.im * 0.0;
   b_sin(&dc0);
-  kinematicConst_re = ((((kinematicConst[5] - kinematicConst[0]) +
-    kinematicConst[7]) + zC) + kinematicConst[3] * sin(kinematicConst[8])) -
-    kinematicConst[4] * dc0.re;
-  kinematicConst_im = 0.0 - kinematicConst[4] * dc0.im;
-  if (kinematicConst_im == 0.0) {
-    dc0.re = kinematicConst_re / kinematicConst[2];
+  kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta))
+    - kC_l5 * dc0.re;
+  kC_l6_im = 0.0 - kC_l5 * dc0.im;
+  if (kC_l6_im == 0.0) {
+    dc0.re = kC_l6_re / kC_l3;
     dc0.im = 0.0;
-  } else if (kinematicConst_re == 0.0) {
+  } else if (kC_l6_re == 0.0) {
     dc0.re = 0.0;
-    dc0.im = kinematicConst_im / kinematicConst[2];
+    dc0.im = kC_l6_im / kC_l3;
   } else {
-    dc0.re = kinematicConst_re / kinematicConst[2];
-    dc0.im = kinematicConst_im / kinematicConst[2];
+    dc0.re = kC_l6_re / kC_l3;
+    dc0.im = kC_l6_im / kC_l3;
   }
 
   b_asin(&dc0);
-  ar = ((((kinematicConst[5] - kinematicConst[0]) + kinematicConst[7]) + zC) +
-        kinematicConst[3] * sin(kinematicConst[8])) - kinematicConst[4] * x_re;
-  t_kinematicConst_re = 0.0 - kinematicConst[4] * x_im;
-  if (t_kinematicConst_re == 0.0) {
-    dc1.re = ar / kinematicConst[2];
+  ar = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta)) -
+    kC_l5 * x_re;
+  u_im = 0.0 - kC_l5 * x_im;
+  if (u_im == 0.0) {
+    dc1.re = ar / kC_l3;
     dc1.im = 0.0;
   } else if (ar == 0.0) {
     dc1.re = 0.0;
-    dc1.im = t_kinematicConst_re / kinematicConst[2];
+    dc1.im = u_im / kC_l3;
   } else {
-    dc1.re = ar / kinematicConst[2];
-    dc1.im = t_kinematicConst_re / kinematicConst[2];
+    dc1.re = ar / kC_l3;
+    dc1.im = u_im / kC_l3;
   }
 
   b_asin(&dc1);
-  *alpha = rt_atan2d_snf(yC, xC);
+  alpha = rt_atan2d_snf(u[1], u[0]);
 
   // beta = betaRaw(1);
   // gamma = gammaRaw(1);
-  if ((*alpha >= jointLimits[0]) && (*alpha <= jointLimits[1]) && (-dc0.re >=
+  if ((alpha >= jointLimits[0]) && (alpha <= jointLimits[1]) && (-dc0.re >=
        jointLimits[2]) && (-dc0.re <= jointLimits[3]) && (gammaRaw[0].re >=
        jointLimits[4]) && (gammaRaw[0].re <= jointLimits[5])) {
-    *beta = -dc0.re;
-    *b_gamma = gammaRaw[0].re;
+    beta = -dc0.re;
+    r = gammaRaw[0].re;
 
     // elseif alpha >= alphaMin && alpha <= alphaMax && betaRaw(2) >= betaMin && betaRaw(2) <= betaMax && gammaRaw(2) >= gammaMin && gammaRaw(2) <= gammaMax 
   } else {
-    *beta = -dc1.re;
-    *b_gamma = -kinematicConst[8] - re;
+    beta = -dc1.re;
+    r = -kC_zeta - re;
   }
+
+  q[0] = alpha;
+  q[1] = beta;
+  q[2] = r;
 }
 
 //

@@ -2,7 +2,7 @@
 // File: heuristicSingleLeg.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 #ifndef __HEURISTICSINGLELEG_H__
 #define __HEURISTICSINGLELEG_H__
@@ -19,7 +19,8 @@
 
 // Function Declarations
 extern double heuristicSingleLeg(const double xA_data[], const emxArray_real_T
-  *xB, const double kinematicConst[15]);
+  *xB, double kC_l2, double kC_l3, double kC_l4, double kC_l5, double kC_l7,
+  double kC_zeta);
 
 #endif
 

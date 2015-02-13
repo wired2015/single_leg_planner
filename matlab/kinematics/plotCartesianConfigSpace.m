@@ -1,4 +1,4 @@
-function plotCartesianConfigSpace(kC,jointLimits,panHeight,legNum)   
+function plotCartesianConfigSpace(kC,jointLimits,panHeight,legNum,color)   
     
     vecLength = 20;
     
@@ -25,7 +25,7 @@ function plotCartesianConfigSpace(kC,jointLimits,panHeight,legNum)
                 index = index + 1;
                 u(index,:) = sherpaTTFK([alpha(i) beta(j) gamma(j)],kC);
                 uB = TP2B(1:3,1:3)*u(index,:)' + TP2B(1:3,4);
-                plot3(uB(1),uB(2),uB(3),'Color',[0.1,0.1,0.1],'Marker','.','LineStyle','none');
+                plot3(uB(1),uB(2),uB(3),'Color',color,'Marker','.','LineStyle','none');
             end
         end
     end

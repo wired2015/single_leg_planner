@@ -2,7 +2,7 @@
 // File: sherpaTTIKVel.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 
 // Include Files
@@ -24,17 +24,17 @@ static double rt_powd_snf(double u0, double u1);
 static double rt_powd_snf(double u0, double u1)
 {
   double y;
-  double d1;
   double d2;
+  double d3;
   if (rtIsNaN(u0) || rtIsNaN(u1)) {
     y = rtNaN;
   } else {
-    d1 = fabs(u0);
-    d2 = fabs(u1);
+    d2 = fabs(u0);
+    d3 = fabs(u1);
     if (rtIsInf(u1)) {
-      if (d1 == 1.0) {
+      if (d2 == 1.0) {
         y = rtNaN;
-      } else if (d1 > 1.0) {
+      } else if (d2 > 1.0) {
         if (u1 > 0.0) {
           y = rtInf;
         } else {
@@ -45,9 +45,9 @@ static double rt_powd_snf(double u0, double u1)
       } else {
         y = rtInf;
       }
-    } else if (d2 == 0.0) {
+    } else if (d3 == 0.0) {
       y = 1.0;
-    } else if (d2 == 1.0) {
+    } else if (d3 == 1.0) {
       if (u1 > 0.0) {
         y = u0;
       } else {
@@ -71,12 +71,18 @@ static double rt_powd_snf(double u0, double u1)
 // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
 // Arguments    : const double uDot[3]
 //                const double q[3]
-//                const double kinematicConst[15]
+//                double kC_l2
+//                double kC_l3
+//                double kC_l4
+//                double kC_l5
+//                double kC_l7
+//                double kC_zeta
 //                double qDot[3]
 // Return Type  : void
 //
-void sherpaTTIKVel(const double uDot[3], const double q[3], const double
-                   kinematicConst[15], double qDot[3])
+void sherpaTTIKVel(const double uDot[3], const double q[3], double kC_l2, double
+                   kC_l3, double kC_l4, double kC_l5, double kC_l7, double
+                   kC_zeta, double qDot[3])
 {
   double x;
   double b_x;
@@ -186,11 +192,11 @@ void sherpaTTIKVel(const double uDot[3], const double q[3], const double
   // date: 20150122
   x = cos(q[1]);
   b_x = sin(q[0]);
-  c_x = cos(q[2] + kinematicConst[8]);
+  c_x = cos(q[2] + kC_zeta);
   d_x = sin(q[0]);
   e_x = sin(q[0]);
   f_x = sin(q[0]);
-  g_x = cos(q[2] + kinematicConst[8]);
+  g_x = cos(q[2] + kC_zeta);
   h_x = cos(q[0]);
   i_x = cos(q[0]);
   j_x = cos(q[1]);
@@ -208,15 +214,15 @@ void sherpaTTIKVel(const double uDot[3], const double q[3], const double
   v_x = cos(q[0]);
   w_x = cos(q[0]);
   x_x = cos(q[0]);
-  y_x = sin(q[2] + kinematicConst[8]);
+  y_x = sin(q[2] + kC_zeta);
   ab_x = sin(q[1]);
   bb_x = cos(q[1]);
   cb_x = sin(q[0]);
-  db_x = cos(q[2] + kinematicConst[8]);
+  db_x = cos(q[2] + kC_zeta);
   eb_x = sin(q[0]);
   fb_x = sin(q[0]);
   gb_x = sin(q[0]);
-  hb_x = cos(q[2] + kinematicConst[8]);
+  hb_x = cos(q[2] + kC_zeta);
   ib_x = cos(q[0]);
   jb_x = cos(q[0]);
   kb_x = cos(q[1]);
@@ -236,11 +242,11 @@ void sherpaTTIKVel(const double uDot[3], const double q[3], const double
   yb_x = cos(q[0]);
   ac_x = cos(q[1]);
   bc_x = sin(q[0]);
-  cc_x = cos(q[2] + kinematicConst[8]);
+  cc_x = cos(q[2] + kC_zeta);
   dc_x = sin(q[0]);
   ec_x = sin(q[0]);
   fc_x = sin(q[0]);
-  gc_x = cos(q[2] + kinematicConst[8]);
+  gc_x = cos(q[2] + kC_zeta);
   hc_x = cos(q[0]);
   ic_x = cos(q[0]);
   jc_x = cos(q[1]);
@@ -286,170 +292,109 @@ void sherpaTTIKVel(const double uDot[3], const double q[3], const double
   yd_x = sin(q[0]);
   ae_x = cos(q[0]);
   be_x = cos(q[0]);
-  qDot[0] = (uDot[0] * (cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * sin(q[0]) * (kinematicConst[4] * kinematicConst[4]) -
-                        cos(q[1]) * sin(q[0]) * sin(q[1]) * (kinematicConst[2] *
-    kinematicConst[2])) / (((((((((((((((((((rt_powd_snf(kinematicConst[2], 3.0)
-    * (x * x) * (b_x * b_x) * sin(q[1]) - rt_powd_snf(kinematicConst[4], 3.0) *
-    (c_x * c_x) * sin(q[2] + kinematicConst[8]) * (d_x * d_x)) + kinematicConst
-    [1] * (kinematicConst[2] * kinematicConst[2]) * cos(q[1]) * (e_x * e_x) *
-    sin(q[1])) - kinematicConst[2] * kinematicConst[2] * kinematicConst[6] * cos
-                              (q[1]) * (f_x * f_x) * sin(q[1])) -
-    kinematicConst[2] * (kinematicConst[4] * kinematicConst[4]) * (g_x * g_x) *
-                             (h_x * h_x) * sin(q[1])) + kinematicConst[2] *
-    kinematicConst[2] * kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (i_x
-    * i_x) * (j_x * j_x)) - kinematicConst[1] * (kinematicConst[4] *
-    kinematicConst[4]) * cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * (k_x * k_x)) + kinematicConst[4] * kinematicConst[4] *
-    kinematicConst[6] * cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * (l_x * l_x)) + kinematicConst[2] * kinematicConst[2] *
-    kinematicConst[3] * cos(q[1]) * (m_x * m_x) * sin(q[1]) * cos
-    (kinematicConst[8])) + kinematicConst[2] * (kinematicConst[4] *
-    kinematicConst[4]) * cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * (n_x * n_x) * cos(q[1])) - kinematicConst[2] *
-    (kinematicConst[4] * kinematicConst[4]) * cos(q[2] + kinematicConst[8]) *
-    sin(q[2] + kinematicConst[8]) * cos(q[1]) * (o_x * o_x)) - kinematicConst[2]
-    * kinematicConst[2] * kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-    (p_x * p_x) * cos(q[1]) * sin(q[1])) - kinematicConst[3] * (kinematicConst[4]
-    * kinematicConst[4]) * cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * (q_x * q_x) * cos(kinematicConst[8])) + kinematicConst
-    [2] * kinematicConst[2] * kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-    cos(q[1]) * (r_x * r_x) * sin(q[1])) - kinematicConst[1] * kinematicConst[2]
-    * kinematicConst[4] * cos(q[2] + kinematicConst[8]) * (s_x * s_x) * sin(q[1]))
-    + kinematicConst[1] * kinematicConst[2] * kinematicConst[4] * sin(q[2] +
-    kinematicConst[8]) * (t_x * t_x) * cos(q[1])) + kinematicConst[2] *
-    kinematicConst[4] * kinematicConst[6] * cos(q[2] + kinematicConst[8]) * (u_x
-    * u_x) * sin(q[1])) - kinematicConst[2] * kinematicConst[4] *
-    kinematicConst[6] * sin(q[2] + kinematicConst[8]) * (v_x * v_x) * cos(q[1]))
-    - kinematicConst[2] * kinematicConst[3] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * (w_x * w_x) * sin(q[1]) * cos(kinematicConst[8])) +
-              kinematicConst[2] * kinematicConst[3] * kinematicConst[4] * sin(q
-    [2] + kinematicConst[8]) * (x_x * x_x) * cos(q[1]) * cos(kinematicConst[8]))
-             - uDot[2] * (kinematicConst[4] * kinematicConst[4] * (y_x * y_x) *
-              cos(q[0]) * sin(q[0]) - kinematicConst[2] * kinematicConst[2] *
-              cos(q[0]) * sin(q[0]) * (ab_x * ab_x)) /
-             (((((((((((((((((((rt_powd_snf(kinematicConst[2], 3.0) * (bb_x *
-    bb_x) * (cb_x * cb_x) * sin(q[1]) - rt_powd_snf(kinematicConst[4], 3.0) *
-    (db_x * db_x) * sin(q[2] + kinematicConst[8]) * (eb_x * eb_x)) +
-    kinematicConst[1] * (kinematicConst[2] * kinematicConst[2]) * cos(q[1]) *
-    (fb_x * fb_x) * sin(q[1])) - kinematicConst[2] * kinematicConst[2] *
-    kinematicConst[6] * cos(q[1]) * (gb_x * gb_x) * sin(q[1])) - kinematicConst
-    [2] * (kinematicConst[4] * kinematicConst[4]) * (hb_x * hb_x) * (ib_x * ib_x)
-    * sin(q[1])) + kinematicConst[2] * kinematicConst[2] * kinematicConst[4] *
-    sin(q[2] + kinematicConst[8]) * (jb_x * jb_x) * (kb_x * kb_x)) -
-    kinematicConst[1] * (kinematicConst[4] * kinematicConst[4]) * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (lb_x * lb_x)) +
-    kinematicConst[4] * kinematicConst[4] * kinematicConst[6] * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (mb_x * mb_x)) +
-    kinematicConst[2] * kinematicConst[2] * kinematicConst[3] * cos(q[1]) *
-    (nb_x * nb_x) * sin(q[1]) * cos(kinematicConst[8])) + kinematicConst[2] *
-                        (kinematicConst[4] * kinematicConst[4]) * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (ob_x * ob_x) * cos(q[1]))
-                       - kinematicConst[2] * (kinematicConst[4] *
-    kinematicConst[4]) * cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * cos(q[1]) * (pb_x * pb_x)) - kinematicConst[2] *
-                      kinematicConst[2] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * (qb_x * qb_x) * cos(q[1]) * sin(q[1])) -
-                     kinematicConst[3] * (kinematicConst[4] * kinematicConst[4])
-                     * cos(q[2] + kinematicConst[8]) * sin(q[2] +
-    kinematicConst[8]) * (rb_x * rb_x) * cos(kinematicConst[8])) +
-                    kinematicConst[2] * kinematicConst[2] * kinematicConst[4] *
-                    cos(q[2] + kinematicConst[8]) * cos(q[1]) * (sb_x * sb_x) *
-                    sin(q[1])) - kinematicConst[1] * kinematicConst[2] *
-                   kinematicConst[4] * cos(q[2] + kinematicConst[8]) * (tb_x *
-    tb_x) * sin(q[1])) + kinematicConst[1] * kinematicConst[2] * kinematicConst
-                  [4] * sin(q[2] + kinematicConst[8]) * (ub_x * ub_x) * cos(q[1]))
-                 + kinematicConst[2] * kinematicConst[4] * kinematicConst[6] *
-                 cos(q[2] + kinematicConst[8]) * (vb_x * vb_x) * sin(q[1])) -
-                kinematicConst[2] * kinematicConst[4] * kinematicConst[6] * sin
-                (q[2] + kinematicConst[8]) * (wb_x * wb_x) * cos(q[1])) -
-               kinematicConst[2] * kinematicConst[3] * kinematicConst[4] * cos
-               (q[2] + kinematicConst[8]) * (xb_x * xb_x) * sin(q[1]) * cos
-               (kinematicConst[8])) + kinematicConst[2] * kinematicConst[3] *
-              kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (yb_x * yb_x) *
-              cos(q[1]) * cos(kinematicConst[8]))) - uDot[1] * (kinematicConst[2]
-    * kinematicConst[4] * cos(q[2] + kinematicConst[8]) * cos(q[0]) * sin(q[1])
-    - kinematicConst[2] * kinematicConst[4] * sin(q[2] + kinematicConst[8]) *
-    cos(q[0]) * cos(q[1])) / (((((((((((((((((((rt_powd_snf(kinematicConst[2],
-    3.0) * (ac_x * ac_x) * (bc_x * bc_x) * sin(q[1]) - rt_powd_snf
-    (kinematicConst[4], 3.0) * (cc_x * cc_x) * sin(q[2] + kinematicConst[8]) *
-    (dc_x * dc_x)) + kinematicConst[1] * (kinematicConst[2] * kinematicConst[2])
-    * cos(q[1]) * (ec_x * ec_x) * sin(q[1])) - kinematicConst[2] *
-    kinematicConst[2] * kinematicConst[6] * cos(q[1]) * (fc_x * fc_x) * sin(q[1]))
-    - kinematicConst[2] * (kinematicConst[4] * kinematicConst[4]) * (gc_x * gc_x)
-    * (hc_x * hc_x) * sin(q[1])) + kinematicConst[2] * kinematicConst[2] *
-    kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (ic_x * ic_x) * (jc_x *
-    jc_x)) - kinematicConst[1] * (kinematicConst[4] * kinematicConst[4]) * cos
-    (q[2] + kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (kc_x * kc_x))
-    + kinematicConst[4] * kinematicConst[4] * kinematicConst[6] * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (lc_x * lc_x)) +
-    kinematicConst[2] * kinematicConst[2] * kinematicConst[3] * cos(q[1]) *
-    (mc_x * mc_x) * sin(q[1]) * cos(kinematicConst[8])) + kinematicConst[2] *
-    (kinematicConst[4] * kinematicConst[4]) * cos(q[2] + kinematicConst[8]) *
-    sin(q[2] + kinematicConst[8]) * (nc_x * nc_x) * cos(q[1])) - kinematicConst
-    [2] * (kinematicConst[4] * kinematicConst[4]) * cos(q[2] + kinematicConst[8])
-    * sin(q[2] + kinematicConst[8]) * cos(q[1]) * (oc_x * oc_x)) -
-    kinematicConst[2] * kinematicConst[2] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * (pc_x * pc_x) * cos(q[1]) * sin(q[1])) -
-    kinematicConst[3] * (kinematicConst[4] * kinematicConst[4]) * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (qc_x * qc_x) * cos
-    (kinematicConst[8])) + kinematicConst[2] * kinematicConst[2] *
-    kinematicConst[4] * cos(q[2] + kinematicConst[8]) * cos(q[1]) * (rc_x * rc_x)
-    * sin(q[1])) - kinematicConst[1] * kinematicConst[2] * kinematicConst[4] *
-    cos(q[2] + kinematicConst[8]) * (sc_x * sc_x) * sin(q[1])) + kinematicConst
-    [1] * kinematicConst[2] * kinematicConst[4] * sin(q[2] + kinematicConst[8]) *
-                                  (tc_x * tc_x) * cos(q[1])) + kinematicConst[2]
-    * kinematicConst[4] * kinematicConst[6] * cos(q[2] + kinematicConst[8]) *
-    (uc_x * uc_x) * sin(q[1])) - kinematicConst[2] * kinematicConst[4] *
-    kinematicConst[6] * sin(q[2] + kinematicConst[8]) * (vc_x * vc_x) * cos(q[1]))
-    - kinematicConst[2] * kinematicConst[3] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * (wc_x * wc_x) * sin(q[1]) * cos(kinematicConst[8])) +
-    kinematicConst[2] * kinematicConst[3] * kinematicConst[4] * sin(q[2] +
-    kinematicConst[8]) * (xc_x * xc_x) * cos(q[1]) * cos(kinematicConst[8]));
-  qDot[1] = (uDot[2] * (kinematicConst[4] * sin(q[2] + kinematicConst[8]) *
-                        (yc_x * yc_x) + kinematicConst[2] * sin(q[1]) * (ad_x *
-    ad_x)) / (((kinematicConst[4] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (bd_x * bd_x) -
-                kinematicConst[2] * kinematicConst[2] * cos(q[1]) * (cd_x * cd_x)
-                * sin(q[1])) + kinematicConst[2] * kinematicConst[4] * cos(q[2]
-    + kinematicConst[8]) * (dd_x * dd_x) * sin(q[1])) - kinematicConst[2] *
-              kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (ed_x * ed_x) *
-              cos(q[1])) - kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-             cos(q[0]) * uDot[0] / (((kinematicConst[4] * kinematicConst[4] *
-    cos(q[2] + kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (fd_x * fd_x)
-    - kinematicConst[2] * kinematicConst[2] * cos(q[1]) * (gd_x * gd_x) * sin(q
-    [1])) + kinematicConst[2] * kinematicConst[4] * cos(q[2] + kinematicConst[8])
-    * (hd_x * hd_x) * sin(q[1])) - kinematicConst[2] * kinematicConst[4] * sin
-              (q[2] + kinematicConst[8]) * (id_x * id_x) * cos(q[1]))) -
-    kinematicConst[4] * cos(q[2] + kinematicConst[8]) * sin(q[0]) * uDot[1] /
-    (((kinematicConst[4] * kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-       sin(q[2] + kinematicConst[8]) * (jd_x * jd_x) - kinematicConst[2] *
-       kinematicConst[2] * cos(q[1]) * (kd_x * kd_x) * sin(q[1])) +
-      kinematicConst[2] * kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-      (ld_x * ld_x) * sin(q[1])) - kinematicConst[2] * kinematicConst[4] * sin
-     (q[2] + kinematicConst[8]) * (md_x * md_x) * cos(q[1]));
-  qDot[2] = (kinematicConst[2] * cos(q[0]) * cos(q[1]) * uDot[0] /
-             (((kinematicConst[4] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (nd_x * nd_x) -
-                kinematicConst[2] * kinematicConst[2] * cos(q[1]) * (od_x * od_x)
-                * sin(q[1])) + kinematicConst[2] * kinematicConst[4] * cos(q[2]
-    + kinematicConst[8]) * (pd_x * pd_x) * sin(q[1])) - kinematicConst[2] *
-              kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (qd_x * qd_x) *
-              cos(q[1])) - uDot[2] * (kinematicConst[2] * sin(q[1]) * (rd_x *
-    rd_x) + kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (sd_x * sd_x)) /
-             (((kinematicConst[4] * kinematicConst[4] * cos(q[2] +
-    kinematicConst[8]) * sin(q[2] + kinematicConst[8]) * (td_x * td_x) -
-                kinematicConst[2] * kinematicConst[2] * cos(q[1]) * (ud_x * ud_x)
-                * sin(q[1])) + kinematicConst[2] * kinematicConst[4] * cos(q[2]
-    + kinematicConst[8]) * (vd_x * vd_x) * sin(q[1])) - kinematicConst[2] *
-              kinematicConst[4] * sin(q[2] + kinematicConst[8]) * (wd_x * wd_x) *
-              cos(q[1]))) + kinematicConst[2] * cos(q[1]) * sin(q[0]) * uDot[1] /
-    (((kinematicConst[4] * kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-       sin(q[2] + kinematicConst[8]) * (xd_x * xd_x) - kinematicConst[2] *
-       kinematicConst[2] * cos(q[1]) * (yd_x * yd_x) * sin(q[1])) +
-      kinematicConst[2] * kinematicConst[4] * cos(q[2] + kinematicConst[8]) *
-      (ae_x * ae_x) * sin(q[1])) - kinematicConst[2] * kinematicConst[4] * sin
-     (q[2] + kinematicConst[8]) * (be_x * be_x) * cos(q[1]));
+  qDot[0] = (uDot[0] * (cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * sin(q[0]) *
+                        (kC_l5 * kC_l5) - cos(q[1]) * sin(q[0]) * sin(q[1]) *
+                        (kC_l3 * kC_l3)) / (((((((((((((((((((rt_powd_snf(kC_l3,
+    3.0) * (x * x) * (b_x * b_x) * sin(q[1]) - rt_powd_snf(kC_l5, 3.0) * (c_x *
+    c_x) * sin(q[2] + kC_zeta) * (d_x * d_x)) + kC_l2 * (kC_l3 * kC_l3) * cos(q
+    [1]) * (e_x * e_x) * sin(q[1])) - kC_l3 * kC_l3 * kC_l7 * cos(q[1]) * (f_x *
+    f_x) * sin(q[1])) - kC_l3 * (kC_l5 * kC_l5) * (g_x * g_x) * (h_x * h_x) *
+    sin(q[1])) + kC_l3 * kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (i_x * i_x) *
+    (j_x * j_x)) - kC_l2 * (kC_l5 * kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] +
+    kC_zeta) * (k_x * k_x)) + kC_l5 * kC_l5 * kC_l7 * cos(q[2] + kC_zeta) * sin
+    (q[2] + kC_zeta) * (l_x * l_x)) + kC_l3 * kC_l3 * kC_l4 * cos(q[1]) * (m_x *
+    m_x) * sin(q[1]) * cos(kC_zeta)) + kC_l3 * (kC_l5 * kC_l5) * cos(q[2] +
+    kC_zeta) * sin(q[2] + kC_zeta) * (n_x * n_x) * cos(q[1])) - kC_l3 * (kC_l5 *
+    kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * cos(q[1]) * (o_x * o_x))
+    - kC_l3 * kC_l3 * kC_l5 * cos(q[2] + kC_zeta) * (p_x * p_x) * cos(q[1]) *
+    sin(q[1])) - kC_l4 * (kC_l5 * kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] +
+    kC_zeta) * (q_x * q_x) * cos(kC_zeta)) + kC_l3 * kC_l3 * kC_l5 * cos(q[2] +
+    kC_zeta) * cos(q[1]) * (r_x * r_x) * sin(q[1])) - kC_l2 * kC_l3 * kC_l5 *
+    cos(q[2] + kC_zeta) * (s_x * s_x) * sin(q[1])) + kC_l2 * kC_l3 * kC_l5 * sin
+                  (q[2] + kC_zeta) * (t_x * t_x) * cos(q[1])) + kC_l3 * kC_l5 *
+    kC_l7 * cos(q[2] + kC_zeta) * (u_x * u_x) * sin(q[1])) - kC_l3 * kC_l5 *
+    kC_l7 * sin(q[2] + kC_zeta) * (v_x * v_x) * cos(q[1])) - kC_l3 * kC_l4 *
+    kC_l5 * cos(q[2] + kC_zeta) * (w_x * w_x) * sin(q[1]) * cos(kC_zeta)) +
+              kC_l3 * kC_l4 * kC_l5 * sin(q[2] + kC_zeta) * (x_x * x_x) * cos(q
+    [1]) * cos(kC_zeta)) - uDot[2] * (kC_l5 * kC_l5 * (y_x * y_x) * cos(q[0]) *
+              sin(q[0]) - kC_l3 * kC_l3 * cos(q[0]) * sin(q[0]) * (ab_x * ab_x))
+             / (((((((((((((((((((rt_powd_snf(kC_l3, 3.0) * (bb_x * bb_x) *
+    (cb_x * cb_x) * sin(q[1]) - rt_powd_snf(kC_l5, 3.0) * (db_x * db_x) * sin(q
+    [2] + kC_zeta) * (eb_x * eb_x)) + kC_l2 * (kC_l3 * kC_l3) * cos(q[1]) *
+    (fb_x * fb_x) * sin(q[1])) - kC_l3 * kC_l3 * kC_l7 * cos(q[1]) * (gb_x *
+    gb_x) * sin(q[1])) - kC_l3 * (kC_l5 * kC_l5) * (hb_x * hb_x) * (ib_x * ib_x)
+    * sin(q[1])) + kC_l3 * kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (jb_x * jb_x) *
+                            (kb_x * kb_x)) - kC_l2 * (kC_l5 * kC_l5) * cos(q[2]
+    + kC_zeta) * sin(q[2] + kC_zeta) * (lb_x * lb_x)) + kC_l5 * kC_l5 * kC_l7 *
+    cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (mb_x * mb_x)) + kC_l3 * kC_l3 *
+    kC_l4 * cos(q[1]) * (nb_x * nb_x) * sin(q[1]) * cos(kC_zeta)) + kC_l3 *
+    (kC_l5 * kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (ob_x * ob_x) *
+    cos(q[1])) - kC_l3 * (kC_l5 * kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] +
+    kC_zeta) * cos(q[1]) * (pb_x * pb_x)) - kC_l3 * kC_l3 * kC_l5 * cos(q[2] +
+    kC_zeta) * (qb_x * qb_x) * cos(q[1]) * sin(q[1])) - kC_l4 * (kC_l5 * kC_l5) *
+                       cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (rb_x * rb_x)
+                       * cos(kC_zeta)) + kC_l3 * kC_l3 * kC_l5 * cos(q[2] +
+    kC_zeta) * cos(q[1]) * (sb_x * sb_x) * sin(q[1])) - kC_l2 * kC_l3 * kC_l5 *
+                     cos(q[2] + kC_zeta) * (tb_x * tb_x) * sin(q[1])) + kC_l2 *
+                    kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (ub_x * ub_x) * cos(q
+    [1])) + kC_l3 * kC_l5 * kC_l7 * cos(q[2] + kC_zeta) * (vb_x * vb_x) * sin(q
+    [1])) - kC_l3 * kC_l5 * kC_l7 * sin(q[2] + kC_zeta) * (wb_x * wb_x) * cos(q
+    [1])) - kC_l3 * kC_l4 * kC_l5 * cos(q[2] + kC_zeta) * (xb_x * xb_x) * sin(q
+    [1]) * cos(kC_zeta)) + kC_l3 * kC_l4 * kC_l5 * sin(q[2] + kC_zeta) * (yb_x *
+    yb_x) * cos(q[1]) * cos(kC_zeta))) - uDot[1] * (kC_l3 * kC_l5 * cos(q[2] +
+    kC_zeta) * cos(q[0]) * sin(q[1]) - kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * cos
+    (q[0]) * cos(q[1])) / (((((((((((((((((((rt_powd_snf(kC_l3, 3.0) * (ac_x *
+    ac_x) * (bc_x * bc_x) * sin(q[1]) - rt_powd_snf(kC_l5, 3.0) * (cc_x * cc_x) *
+    sin(q[2] + kC_zeta) * (dc_x * dc_x)) + kC_l2 * (kC_l3 * kC_l3) * cos(q[1]) *
+    (ec_x * ec_x) * sin(q[1])) - kC_l3 * kC_l3 * kC_l7 * cos(q[1]) * (fc_x *
+    fc_x) * sin(q[1])) - kC_l3 * (kC_l5 * kC_l5) * (gc_x * gc_x) * (hc_x * hc_x)
+    * sin(q[1])) + kC_l3 * kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (ic_x * ic_x) *
+    (jc_x * jc_x)) - kC_l2 * (kC_l5 * kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] +
+    kC_zeta) * (kc_x * kc_x)) + kC_l5 * kC_l5 * kC_l7 * cos(q[2] + kC_zeta) *
+    sin(q[2] + kC_zeta) * (lc_x * lc_x)) + kC_l3 * kC_l3 * kC_l4 * cos(q[1]) *
+    (mc_x * mc_x) * sin(q[1]) * cos(kC_zeta)) + kC_l3 * (kC_l5 * kC_l5) * cos(q
+    [2] + kC_zeta) * sin(q[2] + kC_zeta) * (nc_x * nc_x) * cos(q[1])) - kC_l3 *
+                                    (kC_l5 * kC_l5) * cos(q[2] + kC_zeta) * sin
+    (q[2] + kC_zeta) * cos(q[1]) * (oc_x * oc_x)) - kC_l3 * kC_l3 * kC_l5 * cos
+    (q[2] + kC_zeta) * (pc_x * pc_x) * cos(q[1]) * sin(q[1])) - kC_l4 * (kC_l5 *
+    kC_l5) * cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (qc_x * qc_x) * cos
+    (kC_zeta)) + kC_l3 * kC_l3 * kC_l5 * cos(q[2] + kC_zeta) * cos(q[1]) * (rc_x
+    * rc_x) * sin(q[1])) - kC_l2 * kC_l3 * kC_l5 * cos(q[2] + kC_zeta) * (sc_x *
+    sc_x) * sin(q[1])) + kC_l2 * kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (tc_x *
+    tc_x) * cos(q[1])) + kC_l3 * kC_l5 * kC_l7 * cos(q[2] + kC_zeta) * (uc_x *
+    uc_x) * sin(q[1])) - kC_l3 * kC_l5 * kC_l7 * sin(q[2] + kC_zeta) * (vc_x *
+    vc_x) * cos(q[1])) - kC_l3 * kC_l4 * kC_l5 * cos(q[2] + kC_zeta) * (wc_x *
+    wc_x) * sin(q[1]) * cos(kC_zeta)) + kC_l3 * kC_l4 * kC_l5 * sin(q[2] +
+    kC_zeta) * (xc_x * xc_x) * cos(q[1]) * cos(kC_zeta));
+  qDot[1] = (uDot[2] * (kC_l5 * sin(q[2] + kC_zeta) * (yc_x * yc_x) + kC_l3 *
+                        sin(q[1]) * (ad_x * ad_x)) / (((kC_l5 * kC_l5 * cos(q[2]
+    + kC_zeta) * sin(q[2] + kC_zeta) * (bd_x * bd_x) - kC_l3 * kC_l3 * cos(q[1])
+    * (cd_x * cd_x) * sin(q[1])) + kC_l3 * kC_l5 * cos(q[2] + kC_zeta) * (dd_x *
+    dd_x) * sin(q[1])) - kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (ed_x * ed_x) *
+              cos(q[1])) - kC_l5 * cos(q[2] + kC_zeta) * cos(q[0]) * uDot[0] /
+             (((kC_l5 * kC_l5 * cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) *
+                (fd_x * fd_x) - kC_l3 * kC_l3 * cos(q[1]) * (gd_x * gd_x) * sin
+                (q[1])) + kC_l3 * kC_l5 * cos(q[2] + kC_zeta) * (hd_x * hd_x) *
+               sin(q[1])) - kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (id_x * id_x) *
+              cos(q[1]))) - kC_l5 * cos(q[2] + kC_zeta) * sin(q[0]) * uDot[1] /
+    (((kC_l5 * kC_l5 * cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (jd_x * jd_x)
+       - kC_l3 * kC_l3 * cos(q[1]) * (kd_x * kd_x) * sin(q[1])) + kC_l3 * kC_l5 *
+      cos(q[2] + kC_zeta) * (ld_x * ld_x) * sin(q[1])) - kC_l3 * kC_l5 * sin(q[2]
+      + kC_zeta) * (md_x * md_x) * cos(q[1]));
+  qDot[2] = (kC_l3 * cos(q[0]) * cos(q[1]) * uDot[0] / (((kC_l5 * kC_l5 * cos(q
+    [2] + kC_zeta) * sin(q[2] + kC_zeta) * (nd_x * nd_x) - kC_l3 * kC_l3 * cos
+    (q[1]) * (od_x * od_x) * sin(q[1])) + kC_l3 * kC_l5 * cos(q[2] + kC_zeta) *
+               (pd_x * pd_x) * sin(q[1])) - kC_l3 * kC_l5 * sin(q[2] + kC_zeta) *
+              (qd_x * qd_x) * cos(q[1])) - uDot[2] * (kC_l3 * sin(q[1]) * (rd_x *
+    rd_x) + kC_l5 * sin(q[2] + kC_zeta) * (sd_x * sd_x)) / (((kC_l5 * kC_l5 *
+    cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (td_x * td_x) - kC_l3 * kC_l3 *
+    cos(q[1]) * (ud_x * ud_x) * sin(q[1])) + kC_l3 * kC_l5 * cos(q[2] + kC_zeta)
+    * (vd_x * vd_x) * sin(q[1])) - kC_l3 * kC_l5 * sin(q[2] + kC_zeta) * (wd_x *
+    wd_x) * cos(q[1]))) + kC_l3 * cos(q[1]) * sin(q[0]) * uDot[1] / (((kC_l5 *
+    kC_l5 * cos(q[2] + kC_zeta) * sin(q[2] + kC_zeta) * (xd_x * xd_x) - kC_l3 *
+    kC_l3 * cos(q[1]) * (yd_x * yd_x) * sin(q[1])) + kC_l3 * kC_l5 * cos(q[2] +
+    kC_zeta) * (ae_x * ae_x) * sin(q[1])) - kC_l3 * kC_l5 * sin(q[2] + kC_zeta) *
+    (be_x * be_x) * cos(q[1]));
 }
 
 //

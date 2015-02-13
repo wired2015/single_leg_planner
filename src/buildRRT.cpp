@@ -2,17 +2,17 @@
 // File: buildRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 10-Feb-2015 17:17:38
+// C/C++ source code generated on  : 13-Feb-2015 15:29:21
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "buildRRT.h"
+#include "rand.h"
 #include "heuristicSingleLeg.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "selectInput.h"
-#include "rand.h"
 #include "buildRRTWrapper_rtwutil.h"
 #include <stdio.h>
 
@@ -81,22 +81,22 @@ static int div_s32_floor(int numerator, int denominator)
 // Arguments    : const double nInit[11]
 //                const double nGoal[11]
 //                const double jointLimits[12]
-//                double K
+//                double panHeight
 //                const double U[10]
 //                double dt
 //                double Dt
-//                const double kinematicConst[15]
+//                const struct0_T *kC
 //                emxArray_real_T *T
 //                emxArray_real_T *path
 // Return Type  : void
 //
 void buildRRT(const double nInit[11], const double nGoal[11], const double
-              jointLimits[12], double K, const double U[10], double dt, double
-              Dt, const double kinematicConst[15], emxArray_real_T *T,
+              jointLimits[12], double panHeight, const double U[10], double dt,
+              double Dt, const struct0_T *kC, emxArray_real_T *T,
               emxArray_real_T *path)
 {
   double transitionArrayLength;
-  int i1;
+  int i2;
   double xStarA;
   int ix;
   int loop_ub;
@@ -107,9 +107,6 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   emxArray_real_T *c_T;
   int i;
   double dxStar;
-  double betaRand;
-  double alphaDotRand;
-  double gammaDotRand;
   double dv2[9];
   int xRand_size[2];
   double xRand_data[11];
@@ -129,11 +126,14 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   // buildRRT.m
   // author: wreid
   // date: 20150107
+  // %TODO: Make a structure input for nInit and nGoal
+  // %TEMPORARY definition of init and goal nodes.
+  // nInit = makeNode(1,0,0,nInit(4:6),nInit(7:9),)
   // Constant Declaration
   transitionArrayLength = (rt_roundd_snf(Dt / dt) + 1.0) * 6.0;
 
   // Variable Initialization
-  i1 = T->size[0] * T->size[1];
+  i2 = T->size[0] * T->size[1];
   T->size[0] = 1000;
   xStarA = rt_roundd_snf(11.0 + transitionArrayLength);
   if (xStarA < 2.147483648E+9) {
@@ -149,53 +149,53 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   }
 
   T->size[1] = ix;
-  emxEnsureCapacity((emxArray__common *)T, i1, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)T, i2, (int)sizeof(double));
   xStarA = rt_roundd_snf(11.0 + transitionArrayLength);
   if (xStarA < 2.147483648E+9) {
     if (xStarA >= -2.147483648E+9) {
-      i1 = (int)xStarA;
+      i2 = (int)xStarA;
     } else {
-      i1 = MIN_int32_T;
+      i2 = MIN_int32_T;
     }
   } else if (xStarA >= 2.147483648E+9) {
-    i1 = MAX_int32_T;
+    i2 = MAX_int32_T;
   } else {
-    i1 = 0;
+    i2 = 0;
   }
 
-  loop_ub = 1000 * i1;
-  for (i1 = 0; i1 < loop_ub; i1++) {
-    T->data[i1] = 0.0;
+  loop_ub = 1000 * i2;
+  for (i2 = 0; i2 < loop_ub; i2++) {
+    T->data[i2] = 0.0;
   }
 
   // Define a zero array that will be used to
   // store data from each tree node.
-  for (i1 = 0; i1 < 11; i1++) {
-    T->data[T->size[0] * i1] = nInit[i1];
+  for (i2 = 0; i2 < 11; i2++) {
+    T->data[T->size[0] * i2] = nInit[i2];
   }
 
   loop_ub = (int)transitionArrayLength;
-  for (i1 = 0; i1 < loop_ub; i1++) {
-    T->data[T->size[0] * (i1 + 11)] = 0.0;
+  for (i2 = 0; i2 < loop_ub; i2++) {
+    T->data[T->size[0] * (i2 + 11)] = 0.0;
   }
 
   // Initialize the tree with initial state.
   nodeIDCount = 1U;
-  for (i1 = 0; i1 < 6; i1++) {
-    jointRange[i1] = jointLimits[1 + (i1 << 1)] - jointLimits[i1 << 1];
+  for (i2 = 0; i2 < 6; i2++) {
+    jointRange[i2] = jointLimits[1 + (i2 << 1)] - jointLimits[i2 << 1];
   }
 
   emxInit_real_T(&b_T, 2);
   emxInit_real_T(&d, 2);
   emxInit_real_T(&c_T, 2);
   for (i = 0; i < 999; i++) {
-    i1 = b_T->size[0] * b_T->size[1];
+    i2 = b_T->size[0] * b_T->size[1];
     b_T->size[0] = 1000;
     b_T->size[1] = T->size[1];
-    emxEnsureCapacity((emxArray__common *)b_T, i1, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)b_T, i2, (int)sizeof(double));
     loop_ub = T->size[0] * T->size[1];
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      b_T->data[i1] = T->data[i1];
+    for (i2 = 0; i2 < loop_ub; i2++) {
+      b_T->data[i2] = T->data[i2];
     }
 
     // randomState Picks a random state from the state space.
@@ -212,66 +212,48 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // randomState.m
     // author: wreid
     // date: 20150107
-    transitionArrayLength = jointRange[0] * b_rand() + jointLimits[0];
-    xStarA = jointRange[1] * b_rand() + jointLimits[2];
-    dxStar = (((((K - kinematicConst[0]) + kinematicConst[3] * sin
-                 (kinematicConst[8])) + kinematicConst[4] * sin(xStarA +
-      kinematicConst[8])) + kinematicConst[5]) + kinematicConst[7]) /
-      kinematicConst[2];
-    betaRand = -asin(dxStar);
-    alphaDotRand = jointRange[3] * b_rand() + jointLimits[6];
-    gammaDotRand = jointRange[4] * b_rand() + jointLimits[8];
-    for (i1 = 0; i1 < 3; i1++) {
-      dv2[i1] = 0.0;
+    // [~,L2,L3,L4,L5,L6,L7,L8,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); 
+    xStarA = jointRange[0] * b_rand() + jointLimits[0];
+    dxStar = jointRange[1] * b_rand() + jointLimits[2];
+
+    // GETCONSTRAINEDBETA Calculates the beta joint angle given a constrained body 
+    // height.
+    // [L1,~,L3,L4,L5,L6,~,L8,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); 
+    //      check = (panHeight-kC.l1+kC.l4*sin(kC.zeta)+kC.l5*sin(gamma+kC.zeta)+kC.l7+kC.l8+kC.r)/kC.l3; 
+    //
+    //      if check < -1 || check > 1
+    //          gammaMax = asin(1-abs(panHeight)+kC.l1-kC.l4*sin(kC.zeta)-kC.l7-kC.l8+kC.r)-kC.zeta; 
+    //          gammaMin = asin(-1-abs(panHeight)+kC.l1-kC.l4*sin(kC.zeta)-kC.l7-kC.l8+kC.r)-kC.zeta; 
+    //          gamma = gammaMin + rand*(gammaMax-gammaMin);
+    //      end
+    transitionArrayLength = ((((((-panHeight + kC->l1) - kC->l4 * sin(kC->zeta))
+      - kC->l5 * sin(dxStar + kC->zeta)) - kC->l6) - kC->l8) - kC->r) / kC->l3;
+    while ((transitionArrayLength < -1.0) || (transitionArrayLength > 1.0)) {
+      dxStar = jointRange[1] * b_rand() + jointLimits[2];
+      transitionArrayLength = ((((((-panHeight + kC->l1) - kC->l4 * sin(kC->zeta))
+        - kC->l5 * sin(dxStar + kC->zeta)) - kC->l6) - kC->l8) - kC->r) / kC->l3;
+
+      // disp('Imaginary');
+      // disp(count);
     }
 
-    dv2[3] = transitionArrayLength;
-    dv2[4] = xStarA;
-    dv2[5] = -asin(dxStar);
-    dv2[6] = alphaDotRand;
-    dv2[7] = gammaDotRand;
-    dv2[8] = -(((((((((((((((((((((((((2.238E+31 * kinematicConst[1] *
-      alphaDotRand - 2.238E+31 * kinematicConst[5] * alphaDotRand) - 1.827E+47 *
-      kinematicConst[5] * gammaDotRand) + 2.238E+31 * kinematicConst[2] *
-      alphaDotRand * cos(betaRand)) + 1.827E+47 * kinematicConst[2] *
-      gammaDotRand * cos(betaRand)) - 2.238E+31 * kinematicConst[1] *
-      alphaDotRand) + 2.238E+31 * kinematicConst[5] * alphaDotRand) - 1.37E+15 *
-      kinematicConst[5] * gammaDotRand) + 2.238E+31 * kinematicConst[3] *
-      alphaDotRand * cos(kinematicConst[8])) + 1.827E+47 * kinematicConst[3] *
-      gammaDotRand * cos(kinematicConst[8])) + 2.74E+15 * kinematicConst[6] *
-      alphaDotRand * 0.0) + 2.74E+15 * kinematicConst[7] * alphaDotRand * 0.0) +
-      2.238E+31 * kinematicConst[6] * gammaDotRand * 0.0) + 2.238E+31 *
-      kinematicConst[7] * gammaDotRand * 0.0) - 2.237E+31 * kinematicConst[2] *
-                          alphaDotRand * cos(betaRand)) + 2.238E+31 *
-                         kinematicConst[4] * alphaDotRand * cos(xStarA) * cos
-                         (kinematicConst[8])) + 1.827E+47 * kinematicConst[4] *
-                        gammaDotRand * cos(xStarA) * cos(kinematicConst[8])) -
-                       2.237E+31 * kinematicConst[3] * alphaDotRand * cos
-                       (kinematicConst[8])) + 2.237E+31 * kinematicConst[2] *
-                      gammaDotRand * sin(betaRand) * 0.0) - 2.238E+31 *
-                     kinematicConst[4] * alphaDotRand * sin(xStarA) * sin
-                     (kinematicConst[8])) - 1.827E+47 * kinematicConst[4] *
-                    gammaDotRand * sin(xStarA) * sin(kinematicConst[8])) +
-                   2.237E+31 * kinematicConst[3] * gammaDotRand * 0.0 * sin
-                   (kinematicConst[8])) - 2.237E+31 * kinematicConst[4] *
-                  alphaDotRand * cos(xStarA) * cos(kinematicConst[8])) +
-                 2.237E+31 * kinematicConst[4] * alphaDotRand * sin(xStarA) *
-                 sin(kinematicConst[8])) + 2.237E+31 * kinematicConst[4] *
-                gammaDotRand * cos(xStarA) * 0.0 * sin(kinematicConst[8])) +
-               2.237E+31 * kinematicConst[4] * gammaDotRand * sin(xStarA) * cos
-               (kinematicConst[8]) * 0.0) / (((((((((1.827E+47 * kinematicConst
-      [3] * cos(kinematicConst[8]) - 1.37E+15 * kinematicConst[5]) - 1.827E+47 *
-      kinematicConst[5]) + 2.238E+31 * kinematicConst[6] * 0.0) + 2.238E+31 *
-      kinematicConst[7] * 0.0) + 1.827E+47 * kinematicConst[4] * cos(xStarA) *
-      cos(kinematicConst[8])) - 1.827E+47 * kinematicConst[4] * sin(xStarA) *
-      sin(kinematicConst[8])) + 2.237E+31 * kinematicConst[3] * 0.0 * sin
-      (kinematicConst[8])) + 2.237E+31 * kinematicConst[4] * cos(xStarA) * 0.0 *
-      sin(kinematicConst[8])) + 2.237E+31 * kinematicConst[4] * sin(xStarA) *
-      cos(kinematicConst[8]) * 0.0);
+    // alphaDotRand = range(4)*rand+MIN(4);
+    // gammaDotRand = range(5)*rand+MIN(5);
+    // betaDotRand = -(1.0*(1.827e47*KVel + 2.238e31*kC.l2*alphaDotRand - 2.238e31*kC.l6*alphaDotRand - 1.827e47*kC.l6*gammaDotRand + 2.238e31*kC.l3*alphaDotRand*cos(betaRand) + 1.827e47*kC.l3*gammaDotRand*cos(betaRand) - 2.238e31*kC.l2*alphaDotRand*cos(phi) + 2.238e31*kC.l6*alphaDotRand*cos(phi) - 1.37e15*kC.l6*gammaDotRand*cos(phi) + 2.238e31*kC.l4*alphaDotRand*cos(kC.zeta) + 1.827e47*kC.l4*gammaDotRand*cos(kC.zeta) + 2.74e15*kC.l7*alphaDotRand*sin(phi) + 2.74e15*kC.l8*alphaDotRand*sin(phi) + 2.238e31*kC.l7*gammaDotRand*sin(phi) + 2.238e31*kC.l8*gammaDotRand*sin(phi) - 2.237e31*kC.l3*alphaDotRand*cos(betaRand)*cos(phi) + 2.238e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(kC.zeta) + 1.827e47*kC.l5*gammaDotRand*cos(gammaRand)*cos(kC.zeta) - 2.237e31*kC.l4*alphaDotRand*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l3*gammaDotRand*sin(betaRand)*sin(phi) - 2.238e31*kC.l5*alphaDotRand*sin(gammaRand)*sin(kC.zeta) - 1.827e47*kC.l5*gammaDotRand*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*gammaDotRand*sin(phi)*sin(kC.zeta) - 2.237e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l5*alphaDotRand*cos(phi)*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*sin(gammaRand)*cos(kC.zeta)*sin(phi)))/(1.827e47*kC.l4*cos(kC.zeta) - 1.37e15*kC.l6*cos(phi) - 1.827e47*kC.l6 + 2.238e31*kC.l7*sin(phi) + 2.238e31*kC.l8*sin(phi) + 1.827e47*kC.l5*cos(gammaRand)*cos(kC.zeta) - 1.827e47*kC.l5*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*sin(gammaRand)*cos(kC.zeta)*sin(phi)); 
+    for (i2 = 0; i2 < 3; i2++) {
+      dv2[i2] = 0.0;
+    }
+
+    dv2[3] = xStarA;
+    dv2[4] = dxStar;
+    dv2[5] = asin(transitionArrayLength);
+    dv2[6] = 0.0;
+    dv2[7] = 0.0;
+    dv2[8] = 0.0;
     xRand_size[0] = 1;
     xRand_size[1] = 9;
-    for (i1 = 0; i1 < 9; i1++) {
-      xRand_data[i1] = dv2[i1];
+    for (i2 = 0; i2 < 9; i2++) {
+      xRand_data[i2] = dv2[i2];
     }
 
     u0 = nodeIDCount;
@@ -284,18 +266,18 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
       20.0) * 20.0);
     if (xStarA < 2.147483648E+9) {
       if (xStarA >= -2.147483648E+9) {
-        i1 = (int)xStarA;
+        i2 = (int)xStarA;
       } else {
-        i1 = MIN_int32_T;
+        i2 = MIN_int32_T;
       }
     } else {
-      i1 = MAX_int32_T;
+      i2 = MAX_int32_T;
     }
 
     if ((unsigned int)ixstart == nodeIDCount) {
       b_ixstart = ixstart - div_s32_floor(ixstart, 20) * 20;
     } else {
-      b_ixstart = i1;
+      b_ixstart = i2;
     }
 
     if (b_ixstart == 0) {
@@ -322,27 +304,28 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // date: 20150107
     // Iterate over the entire tree and apply the distance heuristic function
     // to each node.
-    i1 = d->size[0] * d->size[1];
+    i2 = d->size[0] * d->size[1];
     d->size[0] = 1;
     d->size[1] = (int)nodeIDCount;
-    emxEnsureCapacity((emxArray__common *)d, i1, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)d, i2, (int)sizeof(double));
     loop_ub = (int)nodeIDCount;
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      d->data[i1] = 0.0;
+    for (i2 = 0; i2 < loop_ub; i2++) {
+      d->data[i2] = 0.0;
     }
 
     // parfor i = 1:nodeIDCount
     for (ixstart = 0; ixstart < (int)nodeIDCount; ixstart++) {
       loop_ub = T->size[1];
-      i1 = c_T->size[0] * c_T->size[1];
+      i2 = c_T->size[0] * c_T->size[1];
       c_T->size[0] = 1;
       c_T->size[1] = loop_ub;
-      emxEnsureCapacity((emxArray__common *)c_T, i1, (int)sizeof(double));
-      for (i1 = 0; i1 < loop_ub; i1++) {
-        c_T->data[c_T->size[0] * i1] = T->data[ixstart + T->size[0] * i1];
+      emxEnsureCapacity((emxArray__common *)c_T, i2, (int)sizeof(double));
+      for (i2 = 0; i2 < loop_ub; i2++) {
+        c_T->data[c_T->size[0] * i2] = T->data[ixstart + T->size[0] * i2];
       }
 
-      d->data[ixstart] = heuristicSingleLeg(xRand_data, c_T, kinematicConst);
+      d->data[ixstart] = heuristicSingleLeg(xRand_data, c_T, kC->l2, kC->l3,
+        kC->l4, kC->l5, kC->l7, kC->zeta);
     }
 
     ixstart = 1;
@@ -379,12 +362,13 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // [d,minIndex] = min(d(1:nodeIDCount));
     xNearest_size[0] = 1;
     xNearest_size[1] = 11;
-    for (i1 = 0; i1 < 11; i1++) {
-      xNearest_data[xNearest_size[0] * i1] = T->data[itmp + T->size[0] * i1];
+    for (i2 = 0; i2 < 11; i2++) {
+      xNearest_data[xNearest_size[0] * i2] = T->data[itmp + T->size[0] * i2];
     }
 
     selectInput(xNearest_data, xNearest_size, xRand_data, xRand_size, U, dt, Dt,
-                kinematicConst, jointLimits, xNew_data, xNew_size, d);
+                kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta, jointLimits,
+                xNew_data, xNew_size, d);
     xNew_data[0] = (double)nodeIDCount + 1.0;
 
     // Node ID
@@ -396,29 +380,32 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     b_xNearest_data.allocatedSize = 11;
     b_xNearest_data.numDimensions = 2;
     b_xNearest_data.canFreeData = false;
-    xNew_data[2] = heuristicSingleLeg(xNew_data, &b_xNearest_data,
-      kinematicConst);
+    xNew_data[2] = heuristicSingleLeg(xNew_data, &b_xNearest_data, kC->l2,
+      kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta);
 
     // Cost
-    for (i1 = 0; i1 < 11; i1++) {
-      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * i1) - 1] =
-        xNew_data[xNew_size[0] * i1];
+    for (i2 = 0; i2 < 11; i2++) {
+      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * i2) - 1] =
+        xNew_data[xNew_size[0] * i2];
     }
 
     loop_ub = d->size[1];
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * (i1 + 11)) -
-        1] = d->data[d->size[0] * i1];
+    for (i2 = 0; i2 < loop_ub; i2++) {
+      b_T->data[((int)((double)nodeIDCount + 1.0) + b_T->size[0] * (i2 + 11)) -
+        1] = d->data[d->size[0] * i2];
     }
 
     // Append the new node to the tree.
-    i1 = T->size[0] * T->size[1];
+    // if mod(nodeIDCount,100) == 0
+    // fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount);
+    // end
+    i2 = T->size[0] * T->size[1];
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
-    emxEnsureCapacity((emxArray__common *)T, i1, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)T, i2, (int)sizeof(double));
     loop_ub = b_T->size[0] * b_T->size[1];
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      T->data[i1] = b_T->data[i1];
+    for (i2 = 0; i2 < loop_ub; i2++) {
+      T->data[i2] = b_T->data[i2];
     }
 
     nodeIDCount++;
@@ -446,13 +433,13 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   // date: 20150107
   // Iterate over the entire tree and apply the distance heuristic function
   // to each node.
-  i1 = d->size[0] * d->size[1];
+  i2 = d->size[0] * d->size[1];
   d->size[0] = 1;
   d->size[1] = (int)nodeIDCount;
-  emxEnsureCapacity((emxArray__common *)d, i1, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)d, i2, (int)sizeof(double));
   loop_ub = (int)nodeIDCount;
-  for (i1 = 0; i1 < loop_ub; i1++) {
-    d->data[i1] = 0.0;
+  for (i2 = 0; i2 < loop_ub; i2++) {
+    d->data[i2] = 0.0;
   }
 
   // parfor i = 1:nodeIDCount
@@ -462,13 +449,11 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
     // author: wreid
     // date: 20150107
     // Calculate the distance between angular positions.
-    xStarA = (((kinematicConst[1] + kinematicConst[2] * cos(nGoal[4])) +
-               kinematicConst[3] * cos(kinematicConst[8])) + kinematicConst[4] *
-              cos(kinematicConst[8] + nGoal[5])) - kinematicConst[6];
-    dxStar = ((((kinematicConst[1] + kinematicConst[2] * cos(T->data[i +
-      (T->size[0] << 2)])) + kinematicConst[3] * cos(kinematicConst[8])) +
-               kinematicConst[4] * cos(kinematicConst[8] + T->data[i + T->size[0]
-                * 5])) - kinematicConst[6]) - xStarA;
+    xStarA = (((kC->l2 + kC->l3 * cos(nGoal[4])) + kC->l4 * cos(kC->zeta)) +
+              kC->l5 * cos(kC->zeta + nGoal[5])) - kC->l7;
+    dxStar = ((((kC->l2 + kC->l3 * cos(T->data[i + (T->size[0] << 2)])) + kC->l4
+                * cos(kC->zeta)) + kC->l5 * cos(kC->zeta + T->data[i + T->size[0]
+                * 5])) - kC->l7) - xStarA;
 
     // angDiff Finds the angular difference between th1 and th2.
     transitionArrayLength = ((nGoal[3] - T->data[i + T->size[0] * 3]) +
@@ -523,15 +508,15 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   // [d,minIndex] = min(d(1:nodeIDCount));
   xNearest_size[0] = 1;
   xNearest_size[1] = 11;
-  for (i1 = 0; i1 < 11; i1++) {
-    xNearest_data[xNearest_size[0] * i1] = T->data[itmp + T->size[0] * i1];
+  for (i2 = 0; i2 < 11; i2++) {
+    xNearest_data[xNearest_size[0] * i2] = T->data[itmp + T->size[0] * i2];
   }
 
   if (12 > T->size[1]) {
-    i1 = -11;
+    i2 = -11;
     ix = 0;
   } else {
-    i1 = 0;
+    i2 = 0;
     ix = T->size[1];
   }
 
@@ -546,16 +531,16 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
 
   ixstart = path->size[0] * path->size[1];
   path->size[0] = 1;
-  path->size[1] = ix - i1;
+  path->size[1] = ix - i2;
   emxEnsureCapacity((emxArray__common *)path, ixstart, (int)sizeof(double));
   for (ixstart = 0; ixstart < 11; ixstart++) {
     path->data[path->size[0] * ixstart] = xNearest_data[xNearest_size[0] *
       ixstart];
   }
 
-  loop_ub = ix - i1;
+  loop_ub = ix - i2;
   for (ix = 0; ix <= loop_ub - 12; ix++) {
-    path->data[path->size[0] * (ix + 11)] = T->data[itmp + T->size[0] * ((i1 +
+    path->data[path->size[0] * (ix + 11)] = T->data[itmp + T->size[0] * ((i2 +
       ix) + 11)];
   }
 
@@ -563,44 +548,44 @@ void buildRRT(const double nInit[11], const double nGoal[11], const double
   while ((transitionArrayLength != 0.0) && (d->data[1] != 0.0)) {
     transitionArrayLength = d->data[1];
     loop_ub = T->size[1];
-    i1 = d->size[0] * d->size[1];
+    i2 = d->size[0] * d->size[1];
     d->size[0] = 1;
     d->size[1] = loop_ub;
-    emxEnsureCapacity((emxArray__common *)d, i1, (int)sizeof(double));
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      d->data[d->size[0] * i1] = T->data[((int)transitionArrayLength + T->size[0]
-        * i1) - 1];
+    emxEnsureCapacity((emxArray__common *)d, i2, (int)sizeof(double));
+    for (i2 = 0; i2 < loop_ub; i2++) {
+      d->data[d->size[0] * i2] = T->data[((int)transitionArrayLength + T->size[0]
+        * i2) - 1];
     }
 
-    i1 = b_path->size[0] * b_path->size[1];
+    i2 = b_path->size[0] * b_path->size[1];
     b_path->size[0] = path->size[0] + 1;
     b_path->size[1] = path->size[1];
-    emxEnsureCapacity((emxArray__common *)b_path, i1, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)b_path, i2, (int)sizeof(double));
     loop_ub = path->size[1];
-    for (i1 = 0; i1 < loop_ub; i1++) {
+    for (i2 = 0; i2 < loop_ub; i2++) {
       ixstart = path->size[0];
       for (ix = 0; ix < ixstart; ix++) {
-        b_path->data[ix + b_path->size[0] * i1] = path->data[ix + path->size[0] *
-          i1];
+        b_path->data[ix + b_path->size[0] * i2] = path->data[ix + path->size[0] *
+          i2];
       }
     }
 
     loop_ub = d->size[1];
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      b_path->data[path->size[0] + b_path->size[0] * i1] = d->data[d->size[0] *
-        i1];
+    for (i2 = 0; i2 < loop_ub; i2++) {
+      b_path->data[path->size[0] + b_path->size[0] * i2] = d->data[d->size[0] *
+        i2];
     }
 
-    i1 = path->size[0] * path->size[1];
+    i2 = path->size[0] * path->size[1];
     path->size[0] = b_path->size[0];
     path->size[1] = b_path->size[1];
-    emxEnsureCapacity((emxArray__common *)path, i1, (int)sizeof(double));
+    emxEnsureCapacity((emxArray__common *)path, i2, (int)sizeof(double));
     loop_ub = b_path->size[1];
-    for (i1 = 0; i1 < loop_ub; i1++) {
+    for (i2 = 0; i2 < loop_ub; i2++) {
       ixstart = b_path->size[0];
       for (ix = 0; ix < ixstart; ix++) {
-        path->data[ix + path->size[0] * i1] = b_path->data[ix + b_path->size[0] *
-          i1];
+        path->data[ix + path->size[0] * i2] = b_path->data[ix + b_path->size[0] *
+          i2];
       }
     }
 
