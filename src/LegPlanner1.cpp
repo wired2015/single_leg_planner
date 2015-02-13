@@ -83,7 +83,7 @@ bool LegPlanner::plan(int legNum){
     cout << "this->success = " << (bool) this->success << endl;
 */
 
-    buildRRTWrapper(this->nInit, this->nGoal, this->jointLimits, this->K, this->U, this->dt_integration, this->dt_planner, this->kinematicConst, this->threshold, legNum, this->emxT,this->emxPathC,this->emxPathJ,&(this->success)); 
+    //buildRRTWrapper(this->nInit, this->nGoal, this->jointLimits, this->K, this->U, this->dt_integration, this->dt_planner, this->kinematicConst, this->threshold, legNum, this->emxT,this->emxPathC,this->emxPathJ,&(this->success)); 
   
     if((bool) this->success){
 	    //printf("Path num dimensions = %d\n",emxPathC->numDimensions);
