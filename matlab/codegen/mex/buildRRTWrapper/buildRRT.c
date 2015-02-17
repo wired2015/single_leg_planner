@@ -322,7 +322,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   real_T b_r;
   real_T b_xMin[3];
   real_T q[3];
-  real_T dv14[9];
+  real_T dv15[9];
   int32_T ix;
   int32_T xRand_size[2];
   real_T xRand_data[11];
@@ -453,19 +453,19 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   /* gammaDotRand = range(5)*rand+MIN(5); */
   /* betaDotRand = -(1.0*(1.827e47*KVel + 2.238e31*kC.l2*alphaDotRand - 2.238e31*kC.l6*alphaDotRand - 1.827e47*kC.l6*gammaDotRand + 2.238e31*kC.l3*alphaDotRand*cos(betaRand) + 1.827e47*kC.l3*gammaDotRand*cos(betaRand) - 2.238e31*kC.l2*alphaDotRand*cos(phi) + 2.238e31*kC.l6*alphaDotRand*cos(phi) - 1.37e15*kC.l6*gammaDotRand*cos(phi) + 2.238e31*kC.l4*alphaDotRand*cos(kC.zeta) + 1.827e47*kC.l4*gammaDotRand*cos(kC.zeta) + 2.74e15*kC.l7*alphaDotRand*sin(phi) + 2.74e15*kC.l8*alphaDotRand*sin(phi) + 2.238e31*kC.l7*gammaDotRand*sin(phi) + 2.238e31*kC.l8*gammaDotRand*sin(phi) - 2.237e31*kC.l3*alphaDotRand*cos(betaRand)*cos(phi) + 2.238e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(kC.zeta) + 1.827e47*kC.l5*gammaDotRand*cos(gammaRand)*cos(kC.zeta) - 2.237e31*kC.l4*alphaDotRand*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l3*gammaDotRand*sin(betaRand)*sin(phi) - 2.238e31*kC.l5*alphaDotRand*sin(gammaRand)*sin(kC.zeta) - 1.827e47*kC.l5*gammaDotRand*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*gammaDotRand*sin(phi)*sin(kC.zeta) - 2.237e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l5*alphaDotRand*cos(phi)*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*sin(gammaRand)*cos(kC.zeta)*sin(phi)))/(1.827e47*kC.l4*cos(kC.zeta) - 1.37e15*kC.l6*cos(phi) - 1.827e47*kC.l6 + 2.238e31*kC.l7*sin(phi) + 2.238e31*kC.l8*sin(phi) + 1.827e47*kC.l5*cos(gammaRand)*cos(kC.zeta) - 1.827e47*kC.l5*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*sin(gammaRand)*cos(kC.zeta)*sin(phi)); */
   for (ix = 0; ix < 3; ix++) {
-    dv14[ix] = 0.0;
+    dv15[ix] = 0.0;
   }
 
-  dv14[3] = jointLimits[0] + (jointLimits[1] - jointLimits[0]) * r;
-  dv14[4] = q[1];
-  dv14[5] = q[2];
-  dv14[6] = 0.0;
-  dv14[7] = 0.0;
-  dv14[8] = 0.0;
+  dv15[3] = jointLimits[0] + (jointLimits[1] - jointLimits[0]) * r;
+  dv15[4] = q[1];
+  dv15[5] = q[2];
+  dv15[6] = 0.0;
+  dv15[7] = 0.0;
+  dv15[8] = 0.0;
   xRand_size[0] = 1;
   xRand_size[1] = 9;
   for (ix = 0; ix < 9; ix++) {
-    xRand_data[ix] = dv14[ix];
+    xRand_data[ix] = dv15[ix];
   }
 
   r = muDoubleScalarRound(*nodeIDCount);

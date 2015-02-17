@@ -2,7 +2,7 @@
 // File: selectInput.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 13:54:41
+// C/C++ source code generated on  : 17-Feb-2015 14:05:36
 //
 
 // Include Files
@@ -11,6 +11,7 @@
 #include "selectInput.h"
 #include "heuristicSingleLeg.h"
 #include "trInv.h"
+#include "generateTrMatrices.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "buildRRTWrapper_rtwutil.h"
 #include <stdio.h>
@@ -66,56 +67,50 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
   double y;
   double k2[6];
   double k3[6];
-  double AdP2S[6];
+  double AdO2S[6];
   int itmp;
-  double TP2S[16];
+  double TO2S[16];
   emxArray_real_T b_xRand_data;
   double hDiff;
   double aGain;
-  double q[4];
-  double TI2S[16];
-  double TO2S[16];
-  double TO2J[16];
-  double TQ2O[16];
-  double TR2Q[16];
-  static const signed char iv2[4] = { 0, 0, 0, 1 };
-
-  static const signed char iv3[4] = { 0, 0, 1, 0 };
-
-  static const double dv0[4] = { 0.0, -1.0, 6.123233995736766E-17, 0.0 };
-
-  static const signed char iv4[4] = { 1, 0, 0, 0 };
-
-  double TS2R[16];
-  static const signed char iv5[4] = { 0, 1, 0, 0 };
-
-  double dv1[16];
-  double dv2[16];
-  double TS2O[16];
+  double candStates[4];
   double TB2S[16];
-  double dv3[16];
-  double dv4[16];
-  double dv5[16];
+  double TP2S[16];
+  double TS2R[16];
+  double TR2Q[16];
+  double TQ2O[16];
+  double TO2J[16];
+  double TJ2I[16];
+  double TI2P[16];
+  double TI2S[16];
   double b_TI2S[16];
   double c_TI2S[16];
   double d_TI2S[16];
-  double e_TI2S[16];
-  double f_TI2S[16];
-  double b_TO2S[16];
-  double c_TO2S[16];
-  double d_TO2S[16];
-  double e_TO2S[16];
-  double b_TS2O[9];
-  double dv6[9];
+  double b_TI2P[16];
+  double c_TI2P[16];
+  double d_TI2P[16];
+  double e_TI2P[16];
+  double f_TI2P[16];
+  double b_TJ2I[16];
+  double c_TJ2I[16];
+  double d_TJ2I[16];
+  double e_TJ2I[16];
+  double b_TQ2O[16];
+  double c_TQ2O[16];
+  double dv0[9];
+  double dv1[9];
   double b_AdB2S[36];
-  double dv7[9];
-  double b_AdP2S[36];
-  double dv8[9];
+  double dv2[9];
+  double AdP2S[36];
+  double dv3[9];
   double AdI2S[36];
-  double dv9[9];
-  double AdO2S[36];
+  double dv4[9];
+  double b_AdO2S[36];
+  double uPDot[6];
+  double uIDot[6];
   double c_AdB2S[6];
-  double b_AdO2S[6];
+  double b_AdP2S[6];
+  double uODot[6];
   double uSDot[6];
   double t;
   int i5;
@@ -237,17 +232,17 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
       }
 
       for (i4 = 0; i4 < 3; i4++) {
-        AdP2S[i4] = AdB2S[3 + i4];
+        AdO2S[i4] = AdB2S[3 + i4];
       }
 
       for (i4 = 0; i4 < 3; i4++) {
-        AdP2S[i4 + 3] = vS[i4];
+        AdO2S[i4 + 3] = vS[i4];
       }
 
       ix = 6;
       for (i4 = 0; i4 < 6; i4++) {
         tmp_data[i4] = xInit_data[i4] + scale * (((k1[i4] + 2.0 * k2[i4]) + 2.0 *
-          k3[i4]) + AdP2S[i4]);
+          k3[i4]) + AdO2S[i4]);
       }
 
       // Check pan angular position limits
@@ -301,18 +296,18 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
 
     // xInit = [zeros(1,3) xInitOrig 0 0];
     for (i4 = 0; i4 < 3; i4++) {
-      TP2S[i4] = 0.0;
+      TO2S[i4] = 0.0;
     }
 
     for (i4 = 0; i4 < ix; i4++) {
-      TP2S[i4 + 3] = tmp_data[i4];
+      TO2S[i4 + 3] = tmp_data[i4];
     }
 
-    TP2S[3 + ix] = 0.0;
-    TP2S[4 + ix] = 0.0;
+    TO2S[3 + ix] = 0.0;
+    TO2S[4 + ix] = 0.0;
     ixstart = 5 + ix;
     for (i4 = 0; i4 < ixstart; i4++) {
-      tmp_data[i4] = TP2S[i4];
+      tmp_data[i4] = TO2S[i4];
     }
 
     ixstart = 5 + ix;
@@ -350,207 +345,29 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
       aGain = 0.0;
     }
 
-    for (i4 = 0; i4 < 3; i4++) {
-      q[i4] = candStates_data[i + 5 * (3 + i4)];
-    }
-
     // Homogeneous transformation matrices.
-    // GENERATETRMATRICES Generates each of the homogeneous transformation
-    // matrices that describe the kinematic chain between the Sherpa_TT rover's
-    // body coordinate frame and its wheel contact frame. Denavit-Hartenburg
-    // parameters are used to express the transformation between each coordinate 
-    // frame in the kinematic chain.
-    //
-    // Inputs:
-    // -uG: A 1x3 vector giving the [x y z] relationship between the body and
-    // coordinate frame
-    // -q: A 1x4 vector describing the leg's joint state. This vector includes
-    // [alpha beta gamma].
-    // -kC: A struct containing the kinematic parameters of the Sherpa_TT leg.
-    // -legNum: The number of the leg that is being considered (1,2,3 or 4).
-    //
-    // Outputs:
-    // TB2G: Transformation from the body to the ground.
-    // TP2B: Transformation from the pan joint to the body.
-    // TI2P: Transformation from the inner leg joint to the pan joint.
-    // TJ2I: Transformation from the inner leg knee joint to the inner leg joint. 
-    // TO2J: Transformation from the outer leg joint to the inner leg knee joint. 
-    // TQ2O: Transformation from the outer leg end joint to the outer leg joint. 
-    // TR2Q: Transformation from the steering base joint to the outer leg end
-    // joint.
-    // TS2R: Transformation from the steering joint to the steering base joint.
-    // TW2S: Transformation from the wheel joint to the steering joint.
-    // TC2W: Transformation from the wheel contact point to the wheel joint.
-    //
-    // generateTrMatrices.m
-    // author:    wreid
-    // date:      20140214
-    // TODO: Use a 6-DOF relationship between the ground and body frames by
-    // including the roll, pitch and yaw of the platform.
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    TI2S[0] = cos(q[0]);
-    TI2S[4] = -sin(q[0]) * 6.123233995736766E-17;
-    TI2S[8] = -sin(q[0]);
-    TI2S[12] = kC->l2 * cos(q[0]);
-    TI2S[1] = sin(q[0]);
-    TI2S[5] = cos(q[0]) * 6.123233995736766E-17;
-    TI2S[9] = -(double)-cos(q[0]);
-    TI2S[13] = kC->l2 * sin(q[0]);
-    TI2S[2] = 0.0;
-    TI2S[6] = -1.0;
-    TI2S[10] = 6.123233995736766E-17;
-    TI2S[14] = kC->l1;
-
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    TO2S[0] = cos(q[1]);
-    TO2S[4] = -sin(q[1]);
-    TO2S[8] = sin(q[1]) * 0.0;
-    TO2S[12] = kC->l3 * cos(q[1]);
-    TO2S[1] = sin(q[1]);
-    TO2S[5] = cos(q[1]);
-    TO2S[9] = -cos(q[1]) * 0.0;
-    TO2S[13] = kC->l3 * sin(q[1]);
-    scale = -q[1] + kC->zeta;
-
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    TO2J[0] = cos(scale);
-    TO2J[4] = -sin(scale);
-    TO2J[8] = sin(scale) * 0.0;
-    TO2J[12] = kC->l4 * cos(scale);
-    TO2J[1] = sin(scale);
-    TO2J[5] = cos(scale);
-    TO2J[9] = -cos(scale) * 0.0;
-    TO2J[13] = kC->l4 * sin(scale);
-
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    TQ2O[0] = cos(q[2]);
-    TQ2O[4] = -sin(q[2]);
-    TQ2O[8] = sin(q[2]) * 0.0;
-    TQ2O[12] = kC->l5 * cos(q[2]);
-    TQ2O[1] = sin(q[2]);
-    TQ2O[5] = cos(q[2]);
-    TQ2O[9] = -cos(q[2]) * 0.0;
-    TQ2O[13] = kC->l5 * sin(q[2]);
-    scale = -q[2] - kC->zeta;
-
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    TR2Q[0] = cos(scale);
-    TR2Q[4] = -sin(scale) * 6.123233995736766E-17;
-    TR2Q[8] = -sin(scale);
-    TR2Q[12] = -kC->l7 * cos(scale);
-    TR2Q[1] = sin(scale);
-    TR2Q[5] = cos(scale) * 6.123233995736766E-17;
-    TR2Q[9] = -(double)-cos(scale);
-    TR2Q[13] = -kC->l7 * sin(scale);
-    for (i4 = 0; i4 < 4; i4++) {
-      TI2S[3 + (i4 << 2)] = iv2[i4];
-      TO2S[2 + (i4 << 2)] = iv3[i4];
-      TO2S[3 + (i4 << 2)] = iv2[i4];
-      TO2J[2 + (i4 << 2)] = iv3[i4];
-      TO2J[3 + (i4 << 2)] = iv2[i4];
-      TQ2O[2 + (i4 << 2)] = iv3[i4];
-      TQ2O[3 + (i4 << 2)] = iv2[i4];
-      TR2Q[2 + (i4 << 2)] = dv0[i4];
-      TR2Q[3 + (i4 << 2)] = iv2[i4];
-
-      // TRDH Generates the homogeneous transformation matrix A using the
-      // Denavit-Hartenberg parameters theta, d, a and alpha.
-      //
-      // trDH.m
-      // author:    wreid
-      // date:      20150214
-      TS2R[i4 << 2] = iv4[i4];
-      TS2R[1 + (i4 << 2)] = iv5[i4];
+    for (i4 = 0; i4 < 3; i4++) {
+      candStates[i4] = candStates_data[i + 5 * (3 + i4)];
     }
 
-    TS2R[2] = 0.0;
-    TS2R[6] = 0.0;
-    TS2R[10] = 1.0;
-    TS2R[14] = kC->l6;
-
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    // TRDH Generates the homogeneous transformation matrix A using the
-    // Denavit-Hartenberg parameters theta, d, a and alpha.
-    //
-    // trDH.m
-    // author:    wreid
-    // date:      20150214
-    for (i4 = 0; i4 < 4; i4++) {
-      TS2R[3 + (i4 << 2)] = iv2[i4];
-      for (itmp = 0; itmp < 4; itmp++) {
-        TP2S[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          TP2S[i4 + (itmp << 2)] += TQ2O[i4 + (ixstart << 2)] * TR2Q[ixstart +
-            (itmp << 2)];
-        }
-      }
-    }
-
-    dv2[0] = cos(kC->legAngleOffset[legNum - 1]);
-    dv2[4] = -sin(kC->legAngleOffset[legNum - 1]);
-    dv2[8] = sin(kC->legAngleOffset[legNum - 1]) * 0.0;
-    dv2[12] = kC->B2PXOffset * cos(kC->legAngleOffset[legNum - 1]);
-    dv2[1] = sin(kC->legAngleOffset[legNum - 1]);
-    dv2[5] = cos(kC->legAngleOffset[legNum - 1]);
-    dv2[9] = -cos(kC->legAngleOffset[legNum - 1]) * 0.0;
-    dv2[13] = kC->B2PXOffset * sin(kC->legAngleOffset[legNum - 1]);
-    dv2[2] = 0.0;
-    dv2[6] = 0.0;
-    dv2[10] = 1.0;
-    dv2[14] = kC->B2PZOffset;
+    candStates[3] = 0.0;
+    generateTrMatrices(candStates, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5,
+                       kC->l6, kC->l7, kC->l8, kC->zeta, kC->r, kC->B2PXOffset,
+                       kC->B2PZOffset, kC->legAngleOffset, legNum, TO2S, TI2S,
+                       TI2P, TJ2I, TO2J, TQ2O, TR2Q, TS2R, TP2S, TB2S);
     for (i4 = 0; i4 < 4; i4++) {
       for (itmp = 0; itmp < 4; itmp++) {
-        TS2O[i4 + (itmp << 2)] = 0.0;
+        TO2S[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          TS2O[i4 + (itmp << 2)] += TP2S[i4 + (ixstart << 2)] * TS2R[ixstart +
+          TO2S[i4 + (itmp << 2)] += TI2S[i4 + (ixstart << 2)] * TI2P[ixstart +
             (itmp << 2)];
         }
       }
 
-      dv2[3 + (i4 << 2)] = iv2[i4];
-    }
-
-    for (i4 = 0; i4 < 4; i4++) {
       for (itmp = 0; itmp < 4; itmp++) {
         TP2S[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          TP2S[i4 + (itmp << 2)] += dv2[i4 + (ixstart << 2)] * TI2S[ixstart +
+          TP2S[i4 + (itmp << 2)] += TO2S[i4 + (ixstart << 2)] * TJ2I[ixstart +
             (itmp << 2)];
         }
       }
@@ -558,45 +375,7 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
       for (itmp = 0; itmp < 4; itmp++) {
         TB2S[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          TB2S[i4 + (itmp << 2)] += TP2S[i4 + (ixstart << 2)] * TO2S[ixstart +
-            (itmp << 2)];
-        }
-      }
-
-      for (itmp = 0; itmp < 4; itmp++) {
-        dv3[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          dv3[i4 + (itmp << 2)] += TB2S[i4 + (ixstart << 2)] * TO2J[ixstart +
-            (itmp << 2)];
-        }
-      }
-
-      for (itmp = 0; itmp < 4; itmp++) {
-        dv4[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          dv4[i4 + (itmp << 2)] += dv3[i4 + (ixstart << 2)] * TQ2O[ixstart +
-            (itmp << 2)];
-        }
-      }
-
-      for (itmp = 0; itmp < 4; itmp++) {
-        dv5[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          dv5[i4 + (itmp << 2)] += dv4[i4 + (ixstart << 2)] * TR2Q[ixstart +
-            (itmp << 2)];
-        }
-      }
-
-      for (itmp = 0; itmp < 4; itmp++) {
-        dv1[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          dv1[i4 + (itmp << 2)] += dv5[i4 + (ixstart << 2)] * TS2R[ixstart +
-            (itmp << 2)];
-        }
-
-        b_TI2S[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          b_TI2S[i4 + (itmp << 2)] += TI2S[i4 + (ixstart << 2)] * TO2S[ixstart +
+          TB2S[i4 + (itmp << 2)] += TP2S[i4 + (ixstart << 2)] * TO2J[ixstart +
             (itmp << 2)];
         }
       }
@@ -604,93 +383,114 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
       for (itmp = 0; itmp < 4; itmp++) {
         c_TI2S[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          c_TI2S[i4 + (itmp << 2)] += b_TI2S[i4 + (ixstart << 2)] * TO2J[ixstart
-            + (itmp << 2)];
+          c_TI2S[i4 + (itmp << 2)] += TB2S[i4 + (ixstart << 2)] * TQ2O[ixstart +
+            (itmp << 2)];
         }
       }
 
       for (itmp = 0; itmp < 4; itmp++) {
         d_TI2S[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          d_TI2S[i4 + (itmp << 2)] += c_TI2S[i4 + (ixstart << 2)] * TQ2O[ixstart
+          d_TI2S[i4 + (itmp << 2)] += c_TI2S[i4 + (ixstart << 2)] * TR2Q[ixstart
             + (itmp << 2)];
         }
       }
 
       for (itmp = 0; itmp < 4; itmp++) {
-        e_TI2S[i4 + (itmp << 2)] = 0.0;
+        b_TI2S[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          e_TI2S[i4 + (itmp << 2)] += d_TI2S[i4 + (ixstart << 2)] * TR2Q[ixstart
-            + (itmp << 2)];
-        }
-      }
-
-      for (itmp = 0; itmp < 4; itmp++) {
-        f_TI2S[i4 + (itmp << 2)] = 0.0;
-        for (ixstart = 0; ixstart < 4; ixstart++) {
-          f_TI2S[i4 + (itmp << 2)] += e_TI2S[i4 + (ixstart << 2)] * TS2R[ixstart
+          b_TI2S[i4 + (itmp << 2)] += d_TI2S[i4 + (ixstart << 2)] * TS2R[ixstart
             + (itmp << 2)];
         }
 
-        b_TO2S[i4 + (itmp << 2)] = 0.0;
+        b_TI2P[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          b_TO2S[i4 + (itmp << 2)] += TO2S[i4 + (ixstart << 2)] * TO2J[ixstart +
+          b_TI2P[i4 + (itmp << 2)] += TI2P[i4 + (ixstart << 2)] * TJ2I[ixstart +
             (itmp << 2)];
         }
       }
 
       for (itmp = 0; itmp < 4; itmp++) {
-        c_TO2S[i4 + (itmp << 2)] = 0.0;
+        c_TI2P[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          c_TO2S[i4 + (itmp << 2)] += b_TO2S[i4 + (ixstart << 2)] * TQ2O[ixstart
+          c_TI2P[i4 + (itmp << 2)] += b_TI2P[i4 + (ixstart << 2)] * TO2J[ixstart
             + (itmp << 2)];
         }
       }
 
       for (itmp = 0; itmp < 4; itmp++) {
-        d_TO2S[i4 + (itmp << 2)] = 0.0;
+        d_TI2P[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          d_TO2S[i4 + (itmp << 2)] += c_TO2S[i4 + (ixstart << 2)] * TR2Q[ixstart
+          d_TI2P[i4 + (itmp << 2)] += c_TI2P[i4 + (ixstart << 2)] * TQ2O[ixstart
             + (itmp << 2)];
         }
       }
 
       for (itmp = 0; itmp < 4; itmp++) {
-        e_TO2S[i4 + (itmp << 2)] = 0.0;
+        e_TI2P[i4 + (itmp << 2)] = 0.0;
         for (ixstart = 0; ixstart < 4; ixstart++) {
-          e_TO2S[i4 + (itmp << 2)] += d_TO2S[i4 + (ixstart << 2)] * TS2R[ixstart
+          e_TI2P[i4 + (itmp << 2)] += d_TI2P[i4 + (ixstart << 2)] * TR2Q[ixstart
+            + (itmp << 2)];
+        }
+      }
+
+      for (itmp = 0; itmp < 4; itmp++) {
+        f_TI2P[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          f_TI2P[i4 + (itmp << 2)] += e_TI2P[i4 + (ixstart << 2)] * TS2R[ixstart
+            + (itmp << 2)];
+        }
+
+        b_TJ2I[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          b_TJ2I[i4 + (itmp << 2)] += TJ2I[i4 + (ixstart << 2)] * TO2J[ixstart +
+            (itmp << 2)];
+        }
+      }
+
+      for (itmp = 0; itmp < 4; itmp++) {
+        c_TJ2I[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          c_TJ2I[i4 + (itmp << 2)] += b_TJ2I[i4 + (ixstart << 2)] * TQ2O[ixstart
+            + (itmp << 2)];
+        }
+      }
+
+      for (itmp = 0; itmp < 4; itmp++) {
+        d_TJ2I[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          d_TJ2I[i4 + (itmp << 2)] += c_TJ2I[i4 + (ixstart << 2)] * TR2Q[ixstart
+            + (itmp << 2)];
+        }
+      }
+
+      for (itmp = 0; itmp < 4; itmp++) {
+        e_TJ2I[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          e_TJ2I[i4 + (itmp << 2)] += d_TJ2I[i4 + (ixstart << 2)] * TS2R[ixstart
+            + (itmp << 2)];
+        }
+
+        b_TQ2O[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          b_TQ2O[i4 + (itmp << 2)] += TQ2O[i4 + (ixstart << 2)] * TR2Q[ixstart +
+            (itmp << 2)];
+        }
+      }
+
+      for (itmp = 0; itmp < 4; itmp++) {
+        c_TQ2O[i4 + (itmp << 2)] = 0.0;
+        for (ixstart = 0; ixstart < 4; ixstart++) {
+          c_TQ2O[i4 + (itmp << 2)] += b_TQ2O[i4 + (ixstart << 2)] * TS2R[ixstart
             + (itmp << 2)];
         }
       }
     }
 
-    trInv(dv1, TB2S);
-    trInv(f_TI2S, TP2S);
-    trInv(e_TO2S, TI2S);
-    for (i4 = 0; i4 < 3; i4++) {
-      for (itmp = 0; itmp < 3; itmp++) {
-        b_TS2O[itmp + 3 * i4] = -TS2O[i4 + (itmp << 2)];
-      }
-    }
-
-    for (i4 = 0; i4 < 3; i4++) {
-      vS[i4] = 0.0;
-      for (itmp = 0; itmp < 3; itmp++) {
-        vS[i4] += b_TS2O[i4 + 3 * itmp] * TS2O[12 + itmp];
-      }
-
-      for (itmp = 0; itmp < 3; itmp++) {
-        TO2S[itmp + (i4 << 2)] = TS2O[i4 + (itmp << 2)];
-      }
-    }
-
-    for (i4 = 0; i4 < 3; i4++) {
-      TO2S[12 + i4] = vS[i4];
-    }
-
-    for (i4 = 0; i4 < 4; i4++) {
-      TO2S[3 + (i4 << 2)] = iv2[i4];
-    }
+    trInv(b_TI2S, TB2S);
+    trInv(f_TI2P, TP2S);
+    trInv(e_TJ2I, TI2S);
+    trInv(c_TQ2O, TO2S);
 
     // Adjunct transformation matrices.
     // TR2ADJ Returns the adjunct matrix, A, based on the homogeneous
@@ -704,20 +504,20 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // Outputs:
     // -A: The adjunct matrix that transforms velocity vectors from one frame to 
     // another.
-    dv6[0] = 0.0;
-    dv6[3] = -TB2S[14];
-    dv6[6] = TB2S[13];
-    dv6[1] = TB2S[14];
-    dv6[4] = 0.0;
-    dv6[7] = -TB2S[12];
-    dv6[2] = -TB2S[13];
-    dv6[5] = TB2S[12];
-    dv6[8] = 0.0;
+    dv0[0] = 0.0;
+    dv0[3] = -TB2S[14];
+    dv0[6] = TB2S[13];
+    dv0[1] = TB2S[14];
+    dv0[4] = 0.0;
+    dv0[7] = -TB2S[12];
+    dv0[2] = -TB2S[13];
+    dv0[5] = TB2S[12];
+    dv0[8] = 0.0;
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        b_TS2O[i4 + 3 * itmp] = 0.0;
+        dv1[i4 + 3 * itmp] = 0.0;
         for (ixstart = 0; ixstart < 3; ixstart++) {
-          b_TS2O[i4 + 3 * itmp] += dv6[i4 + 3 * ixstart] * TB2S[ixstart + (itmp <<
+          dv1[i4 + 3 * itmp] += dv0[i4 + 3 * ixstart] * TB2S[ixstart + (itmp <<
             2)];
         }
 
@@ -727,7 +527,7 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
 
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        b_AdB2S[itmp + 6 * (i4 + 3)] = b_TS2O[itmp + 3 * i4];
+        b_AdB2S[itmp + 6 * (i4 + 3)] = dv1[itmp + 3 * i4];
       }
     }
 
@@ -748,37 +548,37 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // Outputs:
     // -A: The adjunct matrix that transforms velocity vectors from one frame to 
     // another.
-    dv7[0] = 0.0;
-    dv7[3] = -TP2S[14];
-    dv7[6] = TP2S[13];
-    dv7[1] = TP2S[14];
-    dv7[4] = 0.0;
-    dv7[7] = -TP2S[12];
-    dv7[2] = -TP2S[13];
-    dv7[5] = TP2S[12];
-    dv7[8] = 0.0;
+    dv2[0] = 0.0;
+    dv2[3] = -TP2S[14];
+    dv2[6] = TP2S[13];
+    dv2[1] = TP2S[14];
+    dv2[4] = 0.0;
+    dv2[7] = -TP2S[12];
+    dv2[2] = -TP2S[13];
+    dv2[5] = TP2S[12];
+    dv2[8] = 0.0;
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
         b_AdB2S[(itmp + 6 * (i4 + 3)) + 3] = TB2S[itmp + (i4 << 2)];
-        b_TS2O[i4 + 3 * itmp] = 0.0;
+        dv1[i4 + 3 * itmp] = 0.0;
         for (ixstart = 0; ixstart < 3; ixstart++) {
-          b_TS2O[i4 + 3 * itmp] += dv7[i4 + 3 * ixstart] * TP2S[ixstart + (itmp <<
+          dv1[i4 + 3 * itmp] += dv2[i4 + 3 * ixstart] * TP2S[ixstart + (itmp <<
             2)];
         }
 
-        b_AdP2S[itmp + 6 * i4] = TP2S[itmp + (i4 << 2)];
+        AdP2S[itmp + 6 * i4] = TP2S[itmp + (i4 << 2)];
       }
     }
 
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        b_AdP2S[itmp + 6 * (i4 + 3)] = b_TS2O[itmp + 3 * i4];
+        AdP2S[itmp + 6 * (i4 + 3)] = dv1[itmp + 3 * i4];
       }
     }
 
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        b_AdP2S[(itmp + 6 * i4) + 3] = 0.0;
+        AdP2S[(itmp + 6 * i4) + 3] = 0.0;
       }
     }
 
@@ -793,21 +593,21 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // Outputs:
     // -A: The adjunct matrix that transforms velocity vectors from one frame to 
     // another.
-    dv8[0] = 0.0;
-    dv8[3] = -TI2S[14];
-    dv8[6] = TI2S[13];
-    dv8[1] = TI2S[14];
-    dv8[4] = 0.0;
-    dv8[7] = -TI2S[12];
-    dv8[2] = -TI2S[13];
-    dv8[5] = TI2S[12];
-    dv8[8] = 0.0;
+    dv3[0] = 0.0;
+    dv3[3] = -TI2S[14];
+    dv3[6] = TI2S[13];
+    dv3[1] = TI2S[14];
+    dv3[4] = 0.0;
+    dv3[7] = -TI2S[12];
+    dv3[2] = -TI2S[13];
+    dv3[5] = TI2S[12];
+    dv3[8] = 0.0;
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        b_AdP2S[(itmp + 6 * (i4 + 3)) + 3] = TP2S[itmp + (i4 << 2)];
-        b_TS2O[i4 + 3 * itmp] = 0.0;
+        AdP2S[(itmp + 6 * (i4 + 3)) + 3] = TP2S[itmp + (i4 << 2)];
+        dv1[i4 + 3 * itmp] = 0.0;
         for (ixstart = 0; ixstart < 3; ixstart++) {
-          b_TS2O[i4 + 3 * itmp] += dv8[i4 + 3 * ixstart] * TI2S[ixstart + (itmp <<
+          dv1[i4 + 3 * itmp] += dv3[i4 + 3 * ixstart] * TI2S[ixstart + (itmp <<
             2)];
         }
 
@@ -817,7 +617,7 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
 
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        AdI2S[itmp + 6 * (i4 + 3)] = b_TS2O[itmp + 3 * i4];
+        AdI2S[itmp + 6 * (i4 + 3)] = dv1[itmp + 3 * i4];
       }
     }
 
@@ -838,43 +638,37 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // Outputs:
     // -A: The adjunct matrix that transforms velocity vectors from one frame to 
     // another.
-    dv9[0] = 0.0;
-    dv9[3] = -TO2S[14];
-    dv9[6] = TO2S[13];
-    dv9[1] = TO2S[14];
-    dv9[4] = 0.0;
-    dv9[7] = -TO2S[12];
-    dv9[2] = -TO2S[13];
-    dv9[5] = TO2S[12];
-    dv9[8] = 0.0;
+    dv4[0] = 0.0;
+    dv4[3] = -TO2S[14];
+    dv4[6] = TO2S[13];
+    dv4[1] = TO2S[14];
+    dv4[4] = 0.0;
+    dv4[7] = -TO2S[12];
+    dv4[2] = -TO2S[13];
+    dv4[5] = TO2S[12];
+    dv4[8] = 0.0;
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
         AdI2S[(itmp + 6 * (i4 + 3)) + 3] = TI2S[itmp + (i4 << 2)];
-        b_TS2O[i4 + 3 * itmp] = 0.0;
+        dv1[i4 + 3 * itmp] = 0.0;
         for (ixstart = 0; ixstart < 3; ixstart++) {
-          b_TS2O[i4 + 3 * itmp] += dv9[i4 + 3 * ixstart] * TO2S[ixstart + (itmp <<
+          dv1[i4 + 3 * itmp] += dv4[i4 + 3 * ixstart] * TO2S[ixstart + (itmp <<
             2)];
         }
 
-        AdO2S[itmp + 6 * i4] = TO2S[itmp + (i4 << 2)];
+        b_AdO2S[itmp + 6 * i4] = TO2S[itmp + (i4 << 2)];
       }
     }
 
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        AdO2S[itmp + 6 * (i4 + 3)] = b_TS2O[itmp + 3 * i4];
+        b_AdO2S[itmp + 6 * (i4 + 3)] = dv1[itmp + 3 * i4];
       }
     }
 
     for (i4 = 0; i4 < 3; i4++) {
       for (itmp = 0; itmp < 3; itmp++) {
-        AdO2S[(itmp + 6 * i4) + 3] = 0.0;
-      }
-    }
-
-    for (i4 = 0; i4 < 3; i4++) {
-      for (itmp = 0; itmp < 3; itmp++) {
-        AdO2S[(itmp + 6 * (i4 + 3)) + 3] = TO2S[itmp + (i4 << 2)];
+        b_AdO2S[(itmp + 6 * i4) + 3] = 0.0;
       }
     }
 
@@ -882,74 +676,109 @@ void selectInput(const double xNear_data[], const int xNear_size[2], const
     // [rad/s]
     // [m/s]
     // [rad/s]
+    for (i4 = 0; i4 < 3; i4++) {
+      for (itmp = 0; itmp < 3; itmp++) {
+        b_AdO2S[(itmp + 6 * (i4 + 3)) + 3] = TO2S[itmp + (i4 << 2)];
+      }
+
+      AdB2S[i4] = 0.0;
+    }
+
+    AdB2S[3] = 0.0;
+    AdB2S[4] = 0.0;
+    AdB2S[5] = candStates_data[i + 30];
+    for (i4 = 0; i4 < 6; i4++) {
+      uPDot[i4] = AdB2S[i4];
+    }
+
     // Beta joint rate
     // [rad/s]
     // [m/s]
     // [rad/s]
+    for (i4 = 0; i4 < 3; i4++) {
+      AdB2S[i4] = 0.0;
+    }
+
+    AdB2S[3] = 0.0;
+    AdB2S[4] = 0.0;
+    AdB2S[5] = candStates_data[i + 35];
+    for (i4 = 0; i4 < 6; i4++) {
+      uIDot[i4] = AdB2S[i4];
+    }
+
     // Gamma joint rate
     // [rad/s]
     // [m/s]
     // [rad/s]
+    for (i4 = 0; i4 < 3; i4++) {
+      AdB2S[i4] = 0.0;
+    }
+
+    AdB2S[3] = 0.0;
+    AdB2S[4] = 0.0;
+    AdB2S[5] = candStates_data[i + 40];
+
     // Velocity vector for the ankle frame.
     for (i4 = 0; i4 < 6; i4++) {
-      AdB2S[i4] = 0.0;
+      uODot[i4] = AdB2S[i4];
+      c_AdB2S[i4] = 0.0;
       for (itmp = 0; itmp < 6; itmp++) {
-        AdB2S[i4] += b_AdB2S[i4 + 6 * itmp] * uBDot[itmp];
+        c_AdB2S[i4] += b_AdB2S[i4 + 6 * itmp] * uBDot[itmp];
       }
 
-      AdP2S[i4] = 0.0;
+      b_AdP2S[i4] = 0.0;
       for (itmp = 0; itmp < 6; itmp++) {
-        AdP2S[i4] += b_AdP2S[i4 + 6 * itmp] * 0.0;
-      }
-    }
-
-    for (i4 = 0; i4 < 6; i4++) {
-      scale = 0.0;
-      for (itmp = 0; itmp < 6; itmp++) {
-        scale += AdI2S[i4 + 6 * itmp] * 0.0;
-      }
-
-      c_AdB2S[i4] = (AdB2S[i4] + AdP2S[i4]) + scale;
-    }
-
-    for (i4 = 0; i4 < 6; i4++) {
-      b_AdO2S[i4] = 0.0;
-      for (itmp = 0; itmp < 6; itmp++) {
-        b_AdO2S[i4] += AdO2S[i4 + 6 * itmp] * 0.0;
-      }
-
-      uSDot[i4] = c_AdB2S[i4] + b_AdO2S[i4];
-      AdB2S[i4] = 0.0;
-      for (itmp = 0; itmp < 6; itmp++) {
-        AdB2S[i4] += b_AdB2S[i4 + 6 * itmp] * uBDot[itmp];
-      }
-
-      AdP2S[i4] = 0.0;
-      for (itmp = 0; itmp < 6; itmp++) {
-        AdP2S[i4] += b_AdP2S[i4 + 6 * itmp] * 0.0;
+        b_AdP2S[i4] += AdP2S[i4 + 6 * itmp] * uPDot[itmp];
       }
     }
 
     for (i4 = 0; i4 < 6; i4++) {
       scale = 0.0;
       for (itmp = 0; itmp < 6; itmp++) {
-        scale += AdI2S[i4 + 6 * itmp] * 0.0;
+        scale += AdI2S[i4 + 6 * itmp] * uIDot[itmp];
       }
 
-      c_AdB2S[i4] = (AdB2S[i4] + AdP2S[i4]) + scale;
+      AdB2S[i4] = (c_AdB2S[i4] + b_AdP2S[i4]) + scale;
     }
 
     for (i4 = 0; i4 < 6; i4++) {
-      b_AdO2S[i4] = 0.0;
+      AdO2S[i4] = 0.0;
       for (itmp = 0; itmp < 6; itmp++) {
-        b_AdO2S[i4] += AdO2S[i4 + 6 * itmp] * 0.0;
+        AdO2S[i4] += b_AdO2S[i4 + 6 * itmp] * uODot[itmp];
       }
 
-      AdB2S[i4] = c_AdB2S[i4] + b_AdO2S[i4];
+      uSDot[i4] = AdB2S[i4] + AdO2S[i4];
+      c_AdB2S[i4] = 0.0;
+      for (itmp = 0; itmp < 6; itmp++) {
+        c_AdB2S[i4] += b_AdB2S[i4 + 6 * itmp] * uBDot[itmp];
+      }
+
+      b_AdP2S[i4] = 0.0;
+      for (itmp = 0; itmp < 6; itmp++) {
+        b_AdP2S[i4] += AdP2S[i4 + 6 * itmp] * uPDot[itmp];
+      }
+    }
+
+    for (i4 = 0; i4 < 6; i4++) {
+      scale = 0.0;
+      for (itmp = 0; itmp < 6; itmp++) {
+        scale += AdI2S[i4 + 6 * itmp] * uIDot[itmp];
+      }
+
+      AdB2S[i4] = (c_AdB2S[i4] + b_AdP2S[i4]) + scale;
+    }
+
+    for (i4 = 0; i4 < 6; i4++) {
+      AdO2S[i4] = 0.0;
+      for (itmp = 0; itmp < 6; itmp++) {
+        AdO2S[i4] += b_AdO2S[i4 + 6 * itmp] * uODot[itmp];
+      }
+
+      c_AdB2S[i4] = AdB2S[i4] + AdO2S[i4];
     }
 
     for (i4 = 0; i4 < 3; i4++) {
-      vS[i4] = AdB2S[i4];
+      vS[i4] = c_AdB2S[i4];
     }
 
     // [m/s]

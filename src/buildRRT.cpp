@@ -2,7 +2,7 @@
 // File: buildRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 13:54:41
+// C/C++ source code generated on  : 17-Feb-2015 14:05:36
 //
 
 // Include Files
@@ -97,7 +97,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[12], const double
   double xMin;
   double xRand[3];
   double q[3];
-  double dv11[9];
+  double dv12[9];
   int ix;
   int xRand_size[2];
   double xRand_data[11];
@@ -299,19 +299,19 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[12], const double
   // gammaDotRand = range(5)*rand+MIN(5);
   // betaDotRand = -(1.0*(1.827e47*KVel + 2.238e31*kC.l2*alphaDotRand - 2.238e31*kC.l6*alphaDotRand - 1.827e47*kC.l6*gammaDotRand + 2.238e31*kC.l3*alphaDotRand*cos(betaRand) + 1.827e47*kC.l3*gammaDotRand*cos(betaRand) - 2.238e31*kC.l2*alphaDotRand*cos(phi) + 2.238e31*kC.l6*alphaDotRand*cos(phi) - 1.37e15*kC.l6*gammaDotRand*cos(phi) + 2.238e31*kC.l4*alphaDotRand*cos(kC.zeta) + 1.827e47*kC.l4*gammaDotRand*cos(kC.zeta) + 2.74e15*kC.l7*alphaDotRand*sin(phi) + 2.74e15*kC.l8*alphaDotRand*sin(phi) + 2.238e31*kC.l7*gammaDotRand*sin(phi) + 2.238e31*kC.l8*gammaDotRand*sin(phi) - 2.237e31*kC.l3*alphaDotRand*cos(betaRand)*cos(phi) + 2.238e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(kC.zeta) + 1.827e47*kC.l5*gammaDotRand*cos(gammaRand)*cos(kC.zeta) - 2.237e31*kC.l4*alphaDotRand*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l3*gammaDotRand*sin(betaRand)*sin(phi) - 2.238e31*kC.l5*alphaDotRand*sin(gammaRand)*sin(kC.zeta) - 1.827e47*kC.l5*gammaDotRand*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*gammaDotRand*sin(phi)*sin(kC.zeta) - 2.237e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l5*alphaDotRand*cos(phi)*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*sin(gammaRand)*cos(kC.zeta)*sin(phi)))/(1.827e47*kC.l4*cos(kC.zeta) - 1.37e15*kC.l6*cos(phi) - 1.827e47*kC.l6 + 2.238e31*kC.l7*sin(phi) + 2.238e31*kC.l8*sin(phi) + 1.827e47*kC.l5*cos(gammaRand)*cos(kC.zeta) - 1.827e47*kC.l5*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*sin(gammaRand)*cos(kC.zeta)*sin(phi)); 
   for (ix = 0; ix < 3; ix++) {
-    dv11[ix] = 0.0;
+    dv12[ix] = 0.0;
   }
 
-  dv11[3] = alphaRand;
-  dv11[4] = q[1];
-  dv11[5] = q[2];
-  dv11[6] = 0.0;
-  dv11[7] = 0.0;
-  dv11[8] = 0.0;
+  dv12[3] = alphaRand;
+  dv12[4] = q[1];
+  dv12[5] = q[2];
+  dv12[6] = 0.0;
+  dv12[7] = 0.0;
+  dv12[8] = 0.0;
   xRand_size[0] = 1;
   xRand_size[1] = 9;
   for (ix = 0; ix < 9; ix++) {
-    xRand_data[ix] = dv11[ix];
+    xRand_data[ix] = dv12[ix];
   }
 
   xMax = rt_roundd_snf(*nodeIDCount);

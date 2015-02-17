@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: buildRRT.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 17-Feb-2015 13:54:41</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 17-Feb-2015 14:05:36</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -108,7 +108,7 @@
 <a name="97"><font color="#888888 "><i>   97   </i></font></a>  <font color="#112266"><b>double</b></font> xMin;
 <a name="98"><font color="#888888 "><i>   98   </i></font></a>  <font color="#112266"><b>double</b></font> xRand[3];
 <a name="99"><font color="#888888 "><i>   99   </i></font></a>  <font color="#112266"><b>double</b></font> q[3];
-<a name="100"><font color="#888888 "><i>  100   </i></font></a>  <font color="#112266"><b>double</b></font> dv11[9];
+<a name="100"><font color="#888888 "><i>  100   </i></font></a>  <font color="#112266"><b>double</b></font> dv12[9];
 <a name="101"><font color="#888888 "><i>  101   </i></font></a>  <font color="#112266"><b>int</b></font> ix;
 <a name="102"><font color="#888888 "><i>  102   </i></font></a>  <font color="#112266"><b>int</b></font> xRand_size[2];
 <a name="103"><font color="#888888 "><i>  103   </i></font></a>  <font color="#112266"><b>double</b></font> xRand_data[11];
@@ -310,19 +310,19 @@
 <a name="299"><font color="#888888 "><i>  299   </i></font></a>  <font color="#117755"><i>// gammaDotRand = range(5)*rand+MIN(5);</i></font>
 <a name="300"><font color="#888888 "><i>  300   </i></font></a>  <font color="#117755"><i>// betaDotRand = -(1.0*(1.827e47*KVel + 2.238e31*kC.l2*alphaDotRand - 2.238e31*kC.l6*alphaDotRand - 1.827e47*kC.l6*gammaDotRand + 2.238e31*kC.l3*alphaDotRand*cos(betaRand) + 1.827e47*kC.l3*gammaDotRand*cos(betaRand) - 2.238e31*kC.l2*alphaDotRand*cos(phi) + 2.238e31*kC.l6*alphaDotRand*cos(phi) - 1.37e15*kC.l6*gammaDotRand*cos(phi) + 2.238e31*kC.l4*alphaDotRand*cos(kC.zeta) + 1.827e47*kC.l4*gammaDotRand*cos(kC.zeta) + 2.74e15*kC.l7*alphaDotRand*sin(phi) + 2.74e15*kC.l8*alphaDotRand*sin(phi) + 2.238e31*kC.l7*gammaDotRand*sin(phi) + 2.238e31*kC.l8*gammaDotRand*sin(phi) - 2.237e31*kC.l3*alphaDotRand*cos(betaRand)*cos(phi) + 2.238e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(kC.zeta) + 1.827e47*kC.l5*gammaDotRand*cos(gammaRand)*cos(kC.zeta) - 2.237e31*kC.l4*alphaDotRand*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l3*gammaDotRand*sin(betaRand)*sin(phi) - 2.238e31*kC.l5*alphaDotRand*sin(gammaRand)*sin(kC.zeta) - 1.827e47*kC.l5*gammaDotRand*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*gammaDotRand*sin(phi)*sin(kC.zeta) - 2.237e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l5*alphaDotRand*cos(phi)*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*sin(gammaRand)*cos(kC.zeta)*sin(phi)))/(1.827e47*kC.l4*cos(kC.zeta) - 1.37e15*kC.l6*cos(phi) - 1.827e47*kC.l6 + 2.238e31*kC.l7*sin(phi) + 2.238e31*kC.l8*sin(phi) + 1.827e47*kC.l5*cos(gammaRand)*cos(kC.zeta) - 1.827e47*kC.l5*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*sin(gammaRand)*cos(kC.zeta)*sin(phi)); </i></font>
 <a name="301"><font color="#888888 "><i>  301   </i></font></a>  <font color="#112266"><b>for</b></font> (ix = 0; ix &lt; 3; ix++) <b>{</b>
-<a name="302"><font color="#888888 "><i>  302   </i></font></a>    dv11[ix] = 0.0;
+<a name="302"><font color="#888888 "><i>  302   </i></font></a>    dv12[ix] = 0.0;
 <a name="303"><font color="#888888 "><i>  303   </i></font></a>  <b>}</b>
 <a name="304"><font color="#888888 "><i>  304   </i></font></a>
-<a name="305"><font color="#888888 "><i>  305   </i></font></a>  dv11[3] = alphaRand;
-<a name="306"><font color="#888888 "><i>  306   </i></font></a>  dv11[4] = q[1];
-<a name="307"><font color="#888888 "><i>  307   </i></font></a>  dv11[5] = q[2];
-<a name="308"><font color="#888888 "><i>  308   </i></font></a>  dv11[6] = 0.0;
-<a name="309"><font color="#888888 "><i>  309   </i></font></a>  dv11[7] = 0.0;
-<a name="310"><font color="#888888 "><i>  310   </i></font></a>  dv11[8] = 0.0;
+<a name="305"><font color="#888888 "><i>  305   </i></font></a>  dv12[3] = alphaRand;
+<a name="306"><font color="#888888 "><i>  306   </i></font></a>  dv12[4] = q[1];
+<a name="307"><font color="#888888 "><i>  307   </i></font></a>  dv12[5] = q[2];
+<a name="308"><font color="#888888 "><i>  308   </i></font></a>  dv12[6] = 0.0;
+<a name="309"><font color="#888888 "><i>  309   </i></font></a>  dv12[7] = 0.0;
+<a name="310"><font color="#888888 "><i>  310   </i></font></a>  dv12[8] = 0.0;
 <a name="311"><font color="#888888 "><i>  311   </i></font></a>  xRand_size[0] = 1;
 <a name="312"><font color="#888888 "><i>  312   </i></font></a>  xRand_size[1] = 9;
 <a name="313"><font color="#888888 "><i>  313   </i></font></a>  <font color="#112266"><b>for</b></font> (ix = 0; ix &lt; 9; ix++) <b>{</b>
-<a name="314"><font color="#888888 "><i>  314   </i></font></a>    xRand_data[ix] = dv11[ix];
+<a name="314"><font color="#888888 "><i>  314   </i></font></a>    xRand_data[ix] = dv12[ix];
 <a name="315"><font color="#888888 "><i>  315   </i></font></a>  <b>}</b>
 <a name="316"><font color="#888888 "><i>  316   </i></font></a>
 <a name="317"><font color="#888888 "><i>  317   </i></font></a>  xMax = <a href="buildRRTWrapper_rtwutil_cpp.html#fcn_rt_roundd_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_roundd_snf');" target="_self"><font color="#1122aa">rt_roundd_snf</font></a>(*nodeIDCount);

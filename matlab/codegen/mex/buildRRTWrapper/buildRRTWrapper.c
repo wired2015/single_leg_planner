@@ -761,10 +761,10 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 void buildRRTWrapper_init(void)
 {
   int32_T i10;
-  static const real_T dv13[3] = { 1.0, 0.0, 0.5 };
+  static const real_T dv14[3] = { 1.0, 0.0, 0.5 };
 
   for (i10 = 0; i10 < 3; i10++) {
-    HGAINS[i10] = dv13[i10];
+    HGAINS[i10] = dv14[i10];
   }
 }
 

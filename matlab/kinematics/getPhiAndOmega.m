@@ -1,4 +1,4 @@
-function [phi,omega] = getPhiAndOmega(uBDot,q,kC,legNum)
+function [phi,omega] = getPhiAndOmega(uBDot,q,qDot,kC,legNum)
 
     uG = [0 0 0];
 
@@ -22,19 +22,19 @@ function [phi,omega] = getPhiAndOmega(uBDot,q,kC,legNum)
     AdO2S = tr2Adj(TO2S);   
 
     %Pan joint rate
-    alphaDot = 0;               %[rad/s]
+    alphaDot = qDot(1);         %[rad/s]
     vP = zeros(1,3);            %[m/s]
     omegaP = [0 0  alphaDot];   %[rad/s]
     uPDot = [vP omegaP]';
 
     %Beta joint rate
-    betaDot = 0;                %[rad/s]
+    betaDot = qDot(2);          %[rad/s]
     vI = zeros(1,3);            %[m/s]
     omegaI = [0 0  betaDot];    %[rad/s]
     uIDot = [vI omegaI]';
 
     %Gamma joint rate
-    gammaDot = 0;               %[rad/s]
+    gammaDot = qDot(3);         %[rad/s]
     vO = zeros(1,3);            %[m/s]
     omegaO = [0 0  gammaDot];   %[rad/s]
     uODot = [vO omegaO]';

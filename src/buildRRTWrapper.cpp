@@ -2,7 +2,7 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 13:54:41
+// C/C++ source code generated on  : 17-Feb-2015 14:05:36
 //
 
 // Include Files
@@ -839,11 +839,11 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 //
 void buildRRTWrapper_init()
 {
-  int i6;
-  static const double dv10[3] = { 1.0, 0.0, 0.5 };
+  int i8;
+  static const double dv11[3] = { 1.0, 0.0, 0.5 };
 
-  for (i6 = 0; i6 < 3; i6++) {
-    HGAINS[i6] = dv10[i6];
+  for (i8 = 0; i8 < 3; i8++) {
+    HGAINS[i8] = dv11[i8];
   }
 }
 

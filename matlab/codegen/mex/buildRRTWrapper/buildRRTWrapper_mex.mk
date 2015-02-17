@@ -25,7 +25,9 @@ SRC_FILES =  \
 	buildRRT.c \
 	getXStar.c \
 	heuristicSingleLeg.c \
+	angDiff.c \
 	selectInput.c \
+	getConstrainedGammaDotDot.c \
 	flipud.c \
 	_coder_buildRRTWrapper_api.c \
 	buildRRTWrapper_emxutil.c \

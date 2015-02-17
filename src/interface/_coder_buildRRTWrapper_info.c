@@ -2,7 +2,7 @@
  * File: _coder_buildRRTWrapper_info.c
  *
  * MATLAB Coder version            : 2.7
- * C/C++ source code generated on  : 17-Feb-2015 13:54:41
+ * C/C++ source code generated on  : 17-Feb-2015 14:05:36
  */
 
 /* Include Files */
@@ -4686,7 +4686,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "resolved", 237);
-  emlrtAddField(*info, b_emlrt_marshallOut(1424177439U), "fileTimeLo", 237);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424178134U), "fileTimeLo", 237);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 237);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 237);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 237);
@@ -4917,9 +4917,9 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("getPhiAndOmega"), "name", 252);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 252);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "resolved", 252);
-  emlrtAddField(*info, b_emlrt_marshallOut(1424177452U), "fileTimeLo", 252);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424178159U), "fileTimeLo", 252);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 252);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 252);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 252);
@@ -4928,7 +4928,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs252), "rhs", 252);
   emlrtAddField(*info, emlrtAliasP(lhs252), "lhs", 252);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 253);
   emlrtAddField(*info, emlrt_marshallOut("generateTrMatrices"), "name", 253);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 253);
@@ -5457,7 +5457,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs270), "rhs", 270);
   emlrtAddField(*info, emlrtAliasP(lhs270), "lhs", 270);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 271);
   emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 271);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 271);
@@ -5473,7 +5473,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs271), "rhs", 271);
   emlrtAddField(*info, emlrtAliasP(lhs271), "lhs", 271);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 272);
   emlrtAddField(*info, emlrt_marshallOut("trInv"), "name", 272);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 272);
@@ -5489,7 +5489,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs272), "rhs", 272);
   emlrtAddField(*info, emlrtAliasP(lhs272), "lhs", 272);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 273);
   emlrtAddField(*info, emlrt_marshallOut("tr2Adj"), "name", 273);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 273);
@@ -5521,7 +5521,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs274), "rhs", 274);
   emlrtAddField(*info, emlrtAliasP(lhs274), "lhs", 274);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 275);
   emlrtAddField(*info, emlrt_marshallOut("atan2"), "name", 275);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 275);
@@ -5536,7 +5536,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs275), "rhs", 275);
   emlrtAddField(*info, emlrtAliasP(lhs275), "lhs", 275);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 276);
   emlrtAddField(*info, emlrt_marshallOut("norm"), "name", 276);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 276);
@@ -5800,7 +5800,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs291), "rhs", 291);
   emlrtAddField(*info, emlrtAliasP(lhs291), "lhs", 291);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"),
                 "context", 292);
   emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 292);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 292);

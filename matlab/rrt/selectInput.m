@@ -45,7 +45,7 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
             aGain = 0;
         end
         
-        [candStates(i,10),candStates(i,11)] = getPhiAndOmega(uBDot,[candStates(i,4:6) 0],kC,legNum);
+        [candStates(i,10),candStates(i,11)] = getPhiAndOmega(uBDot,[candStates(i,4:6) 0],candStates(i,7:9),kC,legNum);
         
         aDiff = angDiff(qANear,candStates(i,10));
         ankleDiffMax = pi;

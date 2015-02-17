@@ -10,6 +10,8 @@
 #include "buildRRTWrapper.h"
 #include "selectInput.h"
 #include "buildRRTWrapper_emxutil.h"
+#include "getConstrainedGammaDotDot.h"
+#include "angDiff.h"
 #include "trInv.h"
 #include "heuristicSingleLeg.h"
 #include "buildRRTWrapper_data.h"
@@ -33,7 +35,7 @@ static emlrtRSInfo ob_emlrtRSI = { 67, "selectInput",
 };
 
 static emlrtRSInfo pb_emlrtRSI = { 6, "getPhiAndOmega",
-  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"
 };
 
 static emlrtRTEInfo e_emlrtRTEI = { 1, 35, "selectInput",
@@ -106,6 +108,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   int32_T loop_ub;
   real_T UJoint_data[15];
   int32_T i;
+  real_T b_U[2];
   emxArray_real_T *r1;
   emxArray_int32_T *r2;
   real_T distance_data[5];
@@ -121,7 +124,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   real_T y;
   real_T k2[6];
   real_T k3[6];
-  real_T AdP2S[6];
+  real_T AdO2S[6];
   int32_T itmp;
   real_T TP2S[16];
   int32_T iv6[2];
@@ -130,8 +133,8 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   real_T hDiff;
   real_T aGain;
   real_T q[4];
-  real_T TI2S[16];
   real_T TO2S[16];
+  real_T TI2S[16];
   real_T TO2J[16];
   real_T TQ2O[16];
   real_T TR2Q[16];
@@ -147,32 +150,36 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   static const int8_T iv11[4] = { 0, 1, 0, 0 };
 
   real_T dv4[16];
-  real_T dv5[16];
-  real_T TS2O[16];
   real_T TB2S[16];
+  real_T dv5[16];
   real_T dv6[16];
   real_T dv7[16];
   real_T dv8[16];
-  real_T b_TI2S[16];
-  real_T c_TI2S[16];
-  real_T d_TI2S[16];
-  real_T e_TI2S[16];
-  real_T f_TI2S[16];
   real_T b_TO2S[16];
   real_T c_TO2S[16];
   real_T d_TO2S[16];
   real_T e_TO2S[16];
-  real_T b_TS2O[9];
+  real_T f_TO2S[16];
+  real_T b_TI2S[16];
+  real_T c_TI2S[16];
+  real_T d_TI2S[16];
+  real_T e_TI2S[16];
+  real_T b_TQ2O[16];
+  real_T c_TQ2O[16];
   real_T dv9[9];
-  real_T b_AdB2S[36];
   real_T dv10[9];
-  real_T b_AdP2S[36];
+  real_T b_AdB2S[36];
   real_T dv11[9];
-  real_T AdI2S[36];
+  real_T AdP2S[36];
   real_T dv12[9];
-  real_T AdO2S[36];
+  real_T AdI2S[36];
+  real_T dv13[9];
+  real_T b_AdO2S[36];
+  real_T uPDot[6];
+  real_T uIDot[6];
   real_T c_AdB2S[6];
-  real_T b_AdO2S[6];
+  real_T b_AdP2S[6];
+  real_T uODot[6];
   real_T uSDot[6];
   int32_T i9;
   boolean_T exitg1;
@@ -214,17 +221,17 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   /* Transform the control inputs to joint space. */
   for (i = 0; i < 5; i++) {
     /* gammaDotDot = (-betaDotDot*L3*cos(beta)+betaDot^2*L3*sin(beta)+gammaDot^2*L5*sin(zeta+gamma))/(L5*cos(zeta+gamma)); */
-    /* getConstrainedGammaDotDot Summary of this function goes here */
-    /*    Detailed explanation goes here */
-    /* [~,~,L3,~,L5,~,~,~,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); */
+    for (i8 = 0; i8 < 2; i8++) {
+      b_U[i8] = U[i + 5 * i8];
+    }
+
+    t = getConstrainedGammaDotDot(kC->l3, kC->l5, kC->zeta, b_U, *(real_T (*)[3])
+      &xNear_data[6], *(real_T (*)[3])&xNear_data[3]);
     for (i8 = 0; i8 < 2; i8++) {
       UJoint_data[i + 5 * i8] = U[i + 5 * i8];
     }
 
-    UJoint_data[i + 10] = ((-U[5 + i] * kC->l3 * muDoubleScalarCos(xNear_data[4])
-      + xNear_data[7] * xNear_data[7] * kC->l3 * muDoubleScalarSin(xNear_data[4]))
-      + xNear_data[8] * xNear_data[8] * kC->l5 * muDoubleScalarSin(kC->zeta +
-      xNear_data[5])) / (kC->l5 * muDoubleScalarCos(kC->zeta + xNear_data[5]));
+    UJoint_data[i + 10] = t;
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
   }
 
@@ -326,17 +333,17 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
       }
 
       for (i8 = 0; i8 < 3; i8++) {
-        AdP2S[i8] = AdB2S[3 + i8];
+        AdO2S[i8] = AdB2S[3 + i8];
       }
 
       for (i8 = 0; i8 < 3; i8++) {
-        AdP2S[i8 + 3] = vS[i8];
+        AdO2S[i8 + 3] = vS[i8];
       }
 
       tmp_size[1] = 6;
       for (i8 = 0; i8 < 6; i8++) {
         tmp_data[i8] = xInit_data[i8] + scale * (((k1[i8] + 2.0 * k2[i8]) + 2.0 *
-          k3[i8]) + AdP2S[i8]);
+          k3[i8]) + AdO2S[i8]);
       }
 
       /* Check pan angular position limits */
@@ -532,18 +539,18 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* trDH.m */
     /* author:    wreid */
     /* date:      20150214 */
-    TI2S[0] = muDoubleScalarCos(q[0]);
-    TI2S[4] = -muDoubleScalarSin(q[0]) * 6.123233995736766E-17;
-    TI2S[8] = -muDoubleScalarSin(q[0]);
-    TI2S[12] = kC->l2 * muDoubleScalarCos(q[0]);
-    TI2S[1] = muDoubleScalarSin(q[0]);
-    TI2S[5] = muDoubleScalarCos(q[0]) * 6.123233995736766E-17;
-    TI2S[9] = -(-muDoubleScalarCos(q[0]));
-    TI2S[13] = kC->l2 * muDoubleScalarSin(q[0]);
-    TI2S[2] = 0.0;
-    TI2S[6] = -1.0;
-    TI2S[10] = 6.123233995736766E-17;
-    TI2S[14] = kC->l1;
+    TO2S[0] = muDoubleScalarCos(q[0]);
+    TO2S[4] = -muDoubleScalarSin(q[0]) * 6.123233995736766E-17;
+    TO2S[8] = -muDoubleScalarSin(q[0]);
+    TO2S[12] = kC->l2 * muDoubleScalarCos(q[0]);
+    TO2S[1] = muDoubleScalarSin(q[0]);
+    TO2S[5] = muDoubleScalarCos(q[0]) * 6.123233995736766E-17;
+    TO2S[9] = -(-muDoubleScalarCos(q[0]));
+    TO2S[13] = kC->l2 * muDoubleScalarSin(q[0]);
+    TO2S[2] = 0.0;
+    TO2S[6] = -1.0;
+    TO2S[10] = 6.123233995736766E-17;
+    TO2S[14] = kC->l1;
 
     /* TRDH Generates the homogeneous transformation matrix A using the  */
     /* Denavit-Hartenberg parameters theta, d, a and alpha. */
@@ -551,14 +558,14 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* trDH.m */
     /* author:    wreid */
     /* date:      20150214 */
-    TO2S[0] = muDoubleScalarCos(q[1]);
-    TO2S[4] = -muDoubleScalarSin(q[1]);
-    TO2S[8] = muDoubleScalarSin(q[1]) * 0.0;
-    TO2S[12] = kC->l3 * muDoubleScalarCos(q[1]);
-    TO2S[1] = muDoubleScalarSin(q[1]);
-    TO2S[5] = muDoubleScalarCos(q[1]);
-    TO2S[9] = -muDoubleScalarCos(q[1]) * 0.0;
-    TO2S[13] = kC->l3 * muDoubleScalarSin(q[1]);
+    TI2S[0] = muDoubleScalarCos(q[1]);
+    TI2S[4] = -muDoubleScalarSin(q[1]);
+    TI2S[8] = muDoubleScalarSin(q[1]) * 0.0;
+    TI2S[12] = kC->l3 * muDoubleScalarCos(q[1]);
+    TI2S[1] = muDoubleScalarSin(q[1]);
+    TI2S[5] = muDoubleScalarCos(q[1]);
+    TI2S[9] = -muDoubleScalarCos(q[1]) * 0.0;
+    TI2S[13] = kC->l3 * muDoubleScalarSin(q[1]);
     scale = -q[1] + kC->zeta;
 
     /* TRDH Generates the homogeneous transformation matrix A using the  */
@@ -607,9 +614,9 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     TR2Q[9] = -(-muDoubleScalarCos(scale));
     TR2Q[13] = -kC->l7 * muDoubleScalarSin(scale);
     for (i8 = 0; i8 < 4; i8++) {
-      TI2S[3 + (i8 << 2)] = iv8[i8];
-      TO2S[2 + (i8 << 2)] = iv9[i8];
       TO2S[3 + (i8 << 2)] = iv8[i8];
+      TI2S[2 + (i8 << 2)] = iv9[i8];
+      TI2S[3 + (i8 << 2)] = iv8[i8];
       TO2J[2 + (i8 << 2)] = iv9[i8];
       TO2J[3 + (i8 << 2)] = iv8[i8];
       TQ2O[2 + (i8 << 2)] = iv9[i8];
@@ -647,47 +654,23 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* trDH.m */
     /* author:    wreid */
     /* date:      20150214 */
-    dv5[0] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
-    dv5[4] = -muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
-    dv5[8] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]) * 0.0;
-    dv5[12] = kC->B2PXOffset * muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
-    dv5[1] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
-    dv5[5] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
-    dv5[9] = -muDoubleScalarCos(kC->legAngleOffset[legNum - 1]) * 0.0;
-    dv5[13] = kC->B2PXOffset * muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
-    dv5[2] = 0.0;
-    dv5[6] = 0.0;
-    dv5[10] = 1.0;
-    dv5[14] = kC->B2PZOffset;
+    TP2S[0] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
+    TP2S[4] = -muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
+    TP2S[8] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]) * 0.0;
+    TP2S[12] = kC->B2PXOffset * muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
+    TP2S[1] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
+    TP2S[5] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
+    TP2S[9] = -muDoubleScalarCos(kC->legAngleOffset[legNum - 1]) * 0.0;
+    TP2S[13] = kC->B2PXOffset * muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
+    TP2S[2] = 0.0;
+    TP2S[6] = 0.0;
+    TP2S[10] = 1.0;
+    TP2S[14] = kC->B2PZOffset;
     for (i8 = 0; i8 < 4; i8++) {
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        TP2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          TP2S[i8 + (loop_ub << 2)] += TQ2O[i8 + (itmp << 2)] * TR2Q[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        TS2O[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          TS2O[i8 + (loop_ub << 2)] += TP2S[i8 + (itmp << 2)] * TS2R[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
-      dv5[3 + (i8 << 2)] = iv8[i8];
+      TP2S[3 + (i8 << 2)] = iv8[i8];
     }
 
     for (i8 = 0; i8 < 4; i8++) {
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        TP2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          TP2S[i8 + (loop_ub << 2)] += dv5[i8 + (itmp << 2)] * TI2S[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
       for (loop_ub = 0; loop_ub < 4; loop_ub++) {
         TB2S[i8 + (loop_ub << 2)] = 0.0;
         for (itmp = 0; itmp < 4; itmp++) {
@@ -697,9 +680,17 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
       }
 
       for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        dv5[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          dv5[i8 + (loop_ub << 2)] += TB2S[i8 + (itmp << 2)] * TI2S[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
         dv6[i8 + (loop_ub << 2)] = 0.0;
         for (itmp = 0; itmp < 4; itmp++) {
-          dv6[i8 + (loop_ub << 2)] += TB2S[i8 + (itmp << 2)] * TO2J[itmp +
+          dv6[i8 + (loop_ub << 2)] += dv5[i8 + (itmp << 2)] * TO2J[itmp +
             (loop_ub << 2)];
         }
       }
@@ -727,47 +718,9 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
             (loop_ub << 2)];
         }
 
-        b_TI2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          b_TI2S[i8 + (loop_ub << 2)] += TI2S[i8 + (itmp << 2)] * TO2S[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        c_TI2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          c_TI2S[i8 + (loop_ub << 2)] += b_TI2S[i8 + (itmp << 2)] * TO2J[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        d_TI2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          d_TI2S[i8 + (loop_ub << 2)] += c_TI2S[i8 + (itmp << 2)] * TQ2O[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        e_TI2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          e_TI2S[i8 + (loop_ub << 2)] += d_TI2S[i8 + (itmp << 2)] * TR2Q[itmp +
-            (loop_ub << 2)];
-        }
-      }
-
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        f_TI2S[i8 + (loop_ub << 2)] = 0.0;
-        for (itmp = 0; itmp < 4; itmp++) {
-          f_TI2S[i8 + (loop_ub << 2)] += e_TI2S[i8 + (itmp << 2)] * TS2R[itmp +
-            (loop_ub << 2)];
-        }
-
         b_TO2S[i8 + (loop_ub << 2)] = 0.0;
         for (itmp = 0; itmp < 4; itmp++) {
-          b_TO2S[i8 + (loop_ub << 2)] += TO2S[i8 + (itmp << 2)] * TO2J[itmp +
+          b_TO2S[i8 + (loop_ub << 2)] += TO2S[i8 + (itmp << 2)] * TI2S[itmp +
             (loop_ub << 2)];
         }
       }
@@ -775,7 +728,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
       for (loop_ub = 0; loop_ub < 4; loop_ub++) {
         c_TO2S[i8 + (loop_ub << 2)] = 0.0;
         for (itmp = 0; itmp < 4; itmp++) {
-          c_TO2S[i8 + (loop_ub << 2)] += b_TO2S[i8 + (itmp << 2)] * TQ2O[itmp +
+          c_TO2S[i8 + (loop_ub << 2)] += b_TO2S[i8 + (itmp << 2)] * TO2J[itmp +
             (loop_ub << 2)];
         }
       }
@@ -783,7 +736,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
       for (loop_ub = 0; loop_ub < 4; loop_ub++) {
         d_TO2S[i8 + (loop_ub << 2)] = 0.0;
         for (itmp = 0; itmp < 4; itmp++) {
-          d_TO2S[i8 + (loop_ub << 2)] += c_TO2S[i8 + (itmp << 2)] * TR2Q[itmp +
+          d_TO2S[i8 + (loop_ub << 2)] += c_TO2S[i8 + (itmp << 2)] * TQ2O[itmp +
             (loop_ub << 2)];
         }
       }
@@ -791,39 +744,68 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
       for (loop_ub = 0; loop_ub < 4; loop_ub++) {
         e_TO2S[i8 + (loop_ub << 2)] = 0.0;
         for (itmp = 0; itmp < 4; itmp++) {
-          e_TO2S[i8 + (loop_ub << 2)] += d_TO2S[i8 + (itmp << 2)] * TS2R[itmp +
+          e_TO2S[i8 + (loop_ub << 2)] += d_TO2S[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        f_TO2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          f_TO2S[i8 + (loop_ub << 2)] += e_TO2S[i8 + (itmp << 2)] * TS2R[itmp +
+            (loop_ub << 2)];
+        }
+
+        b_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          b_TI2S[i8 + (loop_ub << 2)] += TI2S[i8 + (itmp << 2)] * TO2J[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        c_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          c_TI2S[i8 + (loop_ub << 2)] += b_TI2S[i8 + (itmp << 2)] * TQ2O[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        d_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          d_TI2S[i8 + (loop_ub << 2)] += c_TI2S[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        e_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          e_TI2S[i8 + (loop_ub << 2)] += d_TI2S[i8 + (itmp << 2)] * TS2R[itmp +
+            (loop_ub << 2)];
+        }
+
+        b_TQ2O[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          b_TQ2O[i8 + (loop_ub << 2)] += TQ2O[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        c_TQ2O[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          c_TQ2O[i8 + (loop_ub << 2)] += b_TQ2O[i8 + (itmp << 2)] * TS2R[itmp +
             (loop_ub << 2)];
         }
       }
     }
 
     trInv(dv4, TB2S);
-    trInv(f_TI2S, TP2S);
-    trInv(e_TO2S, TI2S);
-    for (i8 = 0; i8 < 3; i8++) {
-      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        b_TS2O[loop_ub + 3 * i8] = -TS2O[i8 + (loop_ub << 2)];
-      }
-    }
-
-    for (i8 = 0; i8 < 3; i8++) {
-      vS[i8] = 0.0;
-      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        vS[i8] += b_TS2O[i8 + 3 * loop_ub] * TS2O[12 + loop_ub];
-      }
-
-      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        TO2S[loop_ub + (i8 << 2)] = TS2O[i8 + (loop_ub << 2)];
-      }
-    }
-
-    for (i8 = 0; i8 < 3; i8++) {
-      TO2S[12 + i8] = vS[i8];
-    }
-
-    for (i8 = 0; i8 < 4; i8++) {
-      TO2S[3 + (i8 << 2)] = iv8[i8];
-    }
+    trInv(f_TO2S, TP2S);
+    trInv(e_TI2S, TI2S);
+    trInv(c_TQ2O, TO2S);
 
     /* Adjunct transformation matrices. */
     /* TR2ADJ Returns the adjunct matrix, A, based on the homogeneous */
@@ -848,9 +830,9 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     dv9[8] = 0.0;
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        dv10[i8 + 3 * loop_ub] = 0.0;
         for (itmp = 0; itmp < 3; itmp++) {
-          b_TS2O[i8 + 3 * loop_ub] += dv9[i8 + 3 * itmp] * TB2S[itmp + (loop_ub <<
+          dv10[i8 + 3 * loop_ub] += dv9[i8 + 3 * itmp] * TB2S[itmp + (loop_ub <<
             2)];
         }
 
@@ -860,7 +842,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        b_AdB2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+        b_AdB2S[loop_ub + 6 * (i8 + 3)] = dv10[loop_ub + 3 * i8];
       }
     }
 
@@ -881,37 +863,37 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* Outputs: */
     /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
     /* another. */
-    dv10[0] = 0.0;
-    dv10[3] = -TP2S[14];
-    dv10[6] = TP2S[13];
-    dv10[1] = TP2S[14];
-    dv10[4] = 0.0;
-    dv10[7] = -TP2S[12];
-    dv10[2] = -TP2S[13];
-    dv10[5] = TP2S[12];
-    dv10[8] = 0.0;
+    dv11[0] = 0.0;
+    dv11[3] = -TP2S[14];
+    dv11[6] = TP2S[13];
+    dv11[1] = TP2S[14];
+    dv11[4] = 0.0;
+    dv11[7] = -TP2S[12];
+    dv11[2] = -TP2S[13];
+    dv11[5] = TP2S[12];
+    dv11[8] = 0.0;
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
         b_AdB2S[(loop_ub + 6 * (i8 + 3)) + 3] = TB2S[loop_ub + (i8 << 2)];
-        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        dv10[i8 + 3 * loop_ub] = 0.0;
         for (itmp = 0; itmp < 3; itmp++) {
-          b_TS2O[i8 + 3 * loop_ub] += dv10[i8 + 3 * itmp] * TP2S[itmp + (loop_ub
-            << 2)];
+          dv10[i8 + 3 * loop_ub] += dv11[i8 + 3 * itmp] * TP2S[itmp + (loop_ub <<
+            2)];
         }
 
-        b_AdP2S[loop_ub + 6 * i8] = TP2S[loop_ub + (i8 << 2)];
+        AdP2S[loop_ub + 6 * i8] = TP2S[loop_ub + (i8 << 2)];
       }
     }
 
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        b_AdP2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+        AdP2S[loop_ub + 6 * (i8 + 3)] = dv10[loop_ub + 3 * i8];
       }
     }
 
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        b_AdP2S[(loop_ub + 6 * i8) + 3] = 0.0;
+        AdP2S[(loop_ub + 6 * i8) + 3] = 0.0;
       }
     }
 
@@ -926,22 +908,22 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* Outputs: */
     /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
     /* another. */
-    dv11[0] = 0.0;
-    dv11[3] = -TI2S[14];
-    dv11[6] = TI2S[13];
-    dv11[1] = TI2S[14];
-    dv11[4] = 0.0;
-    dv11[7] = -TI2S[12];
-    dv11[2] = -TI2S[13];
-    dv11[5] = TI2S[12];
-    dv11[8] = 0.0;
+    dv12[0] = 0.0;
+    dv12[3] = -TI2S[14];
+    dv12[6] = TI2S[13];
+    dv12[1] = TI2S[14];
+    dv12[4] = 0.0;
+    dv12[7] = -TI2S[12];
+    dv12[2] = -TI2S[13];
+    dv12[5] = TI2S[12];
+    dv12[8] = 0.0;
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        b_AdP2S[(loop_ub + 6 * (i8 + 3)) + 3] = TP2S[loop_ub + (i8 << 2)];
-        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        AdP2S[(loop_ub + 6 * (i8 + 3)) + 3] = TP2S[loop_ub + (i8 << 2)];
+        dv10[i8 + 3 * loop_ub] = 0.0;
         for (itmp = 0; itmp < 3; itmp++) {
-          b_TS2O[i8 + 3 * loop_ub] += dv11[i8 + 3 * itmp] * TI2S[itmp + (loop_ub
-            << 2)];
+          dv10[i8 + 3 * loop_ub] += dv12[i8 + 3 * itmp] * TI2S[itmp + (loop_ub <<
+            2)];
         }
 
         AdI2S[loop_ub + 6 * i8] = TI2S[loop_ub + (i8 << 2)];
@@ -950,7 +932,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        AdI2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+        AdI2S[loop_ub + 6 * (i8 + 3)] = dv10[loop_ub + 3 * i8];
       }
     }
 
@@ -971,43 +953,37 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* Outputs: */
     /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
     /* another. */
-    dv12[0] = 0.0;
-    dv12[3] = -TO2S[14];
-    dv12[6] = TO2S[13];
-    dv12[1] = TO2S[14];
-    dv12[4] = 0.0;
-    dv12[7] = -TO2S[12];
-    dv12[2] = -TO2S[13];
-    dv12[5] = TO2S[12];
-    dv12[8] = 0.0;
+    dv13[0] = 0.0;
+    dv13[3] = -TO2S[14];
+    dv13[6] = TO2S[13];
+    dv13[1] = TO2S[14];
+    dv13[4] = 0.0;
+    dv13[7] = -TO2S[12];
+    dv13[2] = -TO2S[13];
+    dv13[5] = TO2S[12];
+    dv13[8] = 0.0;
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
         AdI2S[(loop_ub + 6 * (i8 + 3)) + 3] = TI2S[loop_ub + (i8 << 2)];
-        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        dv10[i8 + 3 * loop_ub] = 0.0;
         for (itmp = 0; itmp < 3; itmp++) {
-          b_TS2O[i8 + 3 * loop_ub] += dv12[i8 + 3 * itmp] * TO2S[itmp + (loop_ub
-            << 2)];
+          dv10[i8 + 3 * loop_ub] += dv13[i8 + 3 * itmp] * TO2S[itmp + (loop_ub <<
+            2)];
         }
 
-        AdO2S[loop_ub + 6 * i8] = TO2S[loop_ub + (i8 << 2)];
+        b_AdO2S[loop_ub + 6 * i8] = TO2S[loop_ub + (i8 << 2)];
       }
     }
 
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        AdO2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+        b_AdO2S[loop_ub + 6 * (i8 + 3)] = dv10[loop_ub + 3 * i8];
       }
     }
 
     for (i8 = 0; i8 < 3; i8++) {
       for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        AdO2S[(loop_ub + 6 * i8) + 3] = 0.0;
-      }
-    }
-
-    for (i8 = 0; i8 < 3; i8++) {
-      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-        AdO2S[(loop_ub + 6 * (i8 + 3)) + 3] = TO2S[loop_ub + (i8 << 2)];
+        b_AdO2S[(loop_ub + 6 * i8) + 3] = 0.0;
       }
     }
 
@@ -1015,74 +991,109 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* [rad/s] */
     /* [m/s] */
     /* [rad/s] */
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdO2S[(loop_ub + 6 * (i8 + 3)) + 3] = TO2S[loop_ub + (i8 << 2)];
+      }
+
+      AdB2S[i8] = 0.0;
+    }
+
+    AdB2S[3] = 0.0;
+    AdB2S[4] = 0.0;
+    AdB2S[5] = candStates_data[i + 30];
+    for (i8 = 0; i8 < 6; i8++) {
+      uPDot[i8] = AdB2S[i8];
+    }
+
     /* Beta joint rate */
     /* [rad/s] */
     /* [m/s] */
     /* [rad/s] */
+    for (i8 = 0; i8 < 3; i8++) {
+      AdB2S[i8] = 0.0;
+    }
+
+    AdB2S[3] = 0.0;
+    AdB2S[4] = 0.0;
+    AdB2S[5] = candStates_data[i + 35];
+    for (i8 = 0; i8 < 6; i8++) {
+      uIDot[i8] = AdB2S[i8];
+    }
+
     /* Gamma joint rate */
     /* [rad/s] */
     /* [m/s] */
     /* [rad/s] */
+    for (i8 = 0; i8 < 3; i8++) {
+      AdB2S[i8] = 0.0;
+    }
+
+    AdB2S[3] = 0.0;
+    AdB2S[4] = 0.0;
+    AdB2S[5] = candStates_data[i + 40];
+
     /* Velocity vector for the ankle frame. */
     for (i8 = 0; i8 < 6; i8++) {
-      AdB2S[i8] = 0.0;
+      uODot[i8] = AdB2S[i8];
+      c_AdB2S[i8] = 0.0;
       for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        AdB2S[i8] += b_AdB2S[i8 + 6 * loop_ub] * uBDot[loop_ub];
+        c_AdB2S[i8] += b_AdB2S[i8 + 6 * loop_ub] * uBDot[loop_ub];
       }
 
-      AdP2S[i8] = 0.0;
+      b_AdP2S[i8] = 0.0;
       for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        AdP2S[i8] += b_AdP2S[i8 + 6 * loop_ub] * 0.0;
-      }
-    }
-
-    for (i8 = 0; i8 < 6; i8++) {
-      t = 0.0;
-      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        t += AdI2S[i8 + 6 * loop_ub] * 0.0;
-      }
-
-      c_AdB2S[i8] = (AdB2S[i8] + AdP2S[i8]) + t;
-    }
-
-    for (i8 = 0; i8 < 6; i8++) {
-      b_AdO2S[i8] = 0.0;
-      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        b_AdO2S[i8] += AdO2S[i8 + 6 * loop_ub] * 0.0;
-      }
-
-      uSDot[i8] = c_AdB2S[i8] + b_AdO2S[i8];
-      AdB2S[i8] = 0.0;
-      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        AdB2S[i8] += b_AdB2S[i8 + 6 * loop_ub] * uBDot[loop_ub];
-      }
-
-      AdP2S[i8] = 0.0;
-      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        AdP2S[i8] += b_AdP2S[i8 + 6 * loop_ub] * 0.0;
+        b_AdP2S[i8] += AdP2S[i8 + 6 * loop_ub] * uPDot[loop_ub];
       }
     }
 
     for (i8 = 0; i8 < 6; i8++) {
       t = 0.0;
       for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        t += AdI2S[i8 + 6 * loop_ub] * 0.0;
+        t += AdI2S[i8 + 6 * loop_ub] * uIDot[loop_ub];
       }
 
-      c_AdB2S[i8] = (AdB2S[i8] + AdP2S[i8]) + t;
+      AdB2S[i8] = (c_AdB2S[i8] + b_AdP2S[i8]) + t;
     }
 
     for (i8 = 0; i8 < 6; i8++) {
-      b_AdO2S[i8] = 0.0;
+      AdO2S[i8] = 0.0;
       for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        b_AdO2S[i8] += AdO2S[i8 + 6 * loop_ub] * 0.0;
+        AdO2S[i8] += b_AdO2S[i8 + 6 * loop_ub] * uODot[loop_ub];
       }
 
-      AdB2S[i8] = c_AdB2S[i8] + b_AdO2S[i8];
+      uSDot[i8] = AdB2S[i8] + AdO2S[i8];
+      c_AdB2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        c_AdB2S[i8] += b_AdB2S[i8 + 6 * loop_ub] * uBDot[loop_ub];
+      }
+
+      b_AdP2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        b_AdP2S[i8] += AdP2S[i8 + 6 * loop_ub] * uPDot[loop_ub];
+      }
+    }
+
+    for (i8 = 0; i8 < 6; i8++) {
+      t = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        t += AdI2S[i8 + 6 * loop_ub] * uIDot[loop_ub];
+      }
+
+      AdB2S[i8] = (c_AdB2S[i8] + b_AdP2S[i8]) + t;
+    }
+
+    for (i8 = 0; i8 < 6; i8++) {
+      AdO2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        AdO2S[i8] += b_AdO2S[i8 + 6 * loop_ub] * uODot[loop_ub];
+      }
+
+      c_AdB2S[i8] = AdB2S[i8] + AdO2S[i8];
     }
 
     for (i8 = 0; i8 < 3; i8++) {
-      vS[i8] = AdB2S[i8];
+      vS[i8] = c_AdB2S[i8];
     }
 
     /* [m/s] */
@@ -1110,19 +1121,10 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     candStates_data[i + 45] = muDoubleScalarAtan2(uSDot[1], uSDot[0]);
     candStates_data[i + 50] = y / kC->r;
 
-    /* angDiff Finds the angular difference between th1 and th2. */
-    scale = ((xNear_data[10] - candStates_data[i + 45]) + 3.1415926535897931) /
-      6.2831853071795862;
-    if (muDoubleScalarAbs(scale - muDoubleScalarRound(scale)) <=
-        2.2204460492503131E-16 * muDoubleScalarAbs(scale)) {
-      scale = 0.0;
-    } else {
-      scale = (scale - muDoubleScalarFloor(scale)) * 6.2831853071795862;
-    }
-
     /* Calculate a distance metric that includes the heurisitc distance */
     /* as well as any penalty due to ankle movements. */
-    if (muDoubleScalarAbs(scale - 3.1415926535897931) > 0.39269908169872414) {
+    if (angDiff(xNear_data[10], candStates_data[i + 45]) > 0.39269908169872414)
+    {
       i9 = 1;
     } else {
       i9 = 0;

@@ -2,7 +2,7 @@
  * File: _coder_buildRRTWrapper_info.h 
  *  
  * MATLAB Coder version            : 2.7 
- * C/C++ source code generated on  : 17-Feb-2015 13:54:41 
+ * C/C++ source code generated on  : 17-Feb-2015 14:05:36 
  */
 
 #ifndef ___CODER_BUILDRRTWRAPPER_INFO_H__
