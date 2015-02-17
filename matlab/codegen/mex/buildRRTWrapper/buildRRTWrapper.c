@@ -11,6 +11,7 @@
 #include "buildRRTWrapper_emxutil.h"
 #include "flipud.h"
 #include "buildRRT.h"
+#include "validJointState.h"
 #include "sherpaTTIKVel.h"
 #include "sherpaTTIK.h"
 #include "buildRRTWrapper_data.h"
@@ -18,110 +19,93 @@
 
 /* Variable Definitions */
 static real_T HGAINS[3];
-static emlrtRSInfo emlrtRSI = { 42, "buildRRTWrapper",
+static real_T cartesianLimits[4];
+static boolean_T cartesianLimits_not_empty;
+static emlrtRSInfo emlrtRSI = { 81, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo b_emlrtRSI = { 51, "buildRRTWrapper",
+static emlrtRSInfo b_emlrtRSI = { 90, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo c_emlrtRSI = { 52, "buildRRTWrapper",
+static emlrtRSInfo c_emlrtRSI = { 91, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo d_emlrtRSI = { 66, "buildRRTWrapper",
+static emlrtRSInfo d_emlrtRSI = { 105, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo e_emlrtRSI = { 68, "buildRRTWrapper",
+static emlrtRSInfo e_emlrtRSI = { 107, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRTEInfo emlrtRTEI = { 6, 36, "buildRRTWrapper",
+static emlrtRTEInfo emlrtRTEI = { 27, 36, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtBCInfo emlrtBCI = { -1, -1, 115, 19, "pathJ", "buildRRTWrapper",
+static emlrtBCInfo emlrtBCI = { -1, -1, 138, 19, "pathJ", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo b_emlrtBCI = { -1, -1, 114, 19, "pathC", "buildRRTWrapper",
+static emlrtBCInfo b_emlrtBCI = { -1, -1, 137, 19, "pathC", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo c_emlrtBCI = { -1, -1, 115, 44, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo c_emlrtBCI = { -1, -1, 138, 44, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo d_emlrtBCI = { -1, -1, 112, 60, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo d_emlrtBCI = { -1, -1, 135, 60, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo e_emlrtBCI = { -1, -1, 112, 42, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo e_emlrtBCI = { -1, -1, 135, 42, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo f_emlrtBCI = { -1, -1, 110, 37, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo f_emlrtBCI = { -1, -1, 133, 37, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo g_emlrtBCI = { 1, 4, 5, 30, "kC.legAngleOffset", "trP2B",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m",
+static emlrtBCInfo g_emlrtBCI = { 1, 4, 18, 17, "kC.legAngleOffset", "trP2B",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m",
   0 };
 
-static emlrtDCInfo emlrtDCI = { 104, 19, "buildRRTWrapper",
+static emlrtDCInfo emlrtDCI = { 127, 19, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   1 };
 
-static emlrtDCInfo b_emlrtDCI = { 104, 19, "buildRRTWrapper",
+static emlrtDCInfo b_emlrtDCI = { 127, 19, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   4 };
 
-static emlrtDCInfo c_emlrtDCI = { 105, 19, "buildRRTWrapper",
+static emlrtDCInfo c_emlrtDCI = { 128, 19, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   1 };
 
-static emlrtDCInfo d_emlrtDCI = { 105, 19, "buildRRTWrapper",
+static emlrtDCInfo d_emlrtDCI = { 128, 19, "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   4 };
 
-static emlrtBCInfo h_emlrtBCI = { -1, -1, 110, 39, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo h_emlrtBCI = { -1, -1, 133, 39, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo i_emlrtBCI = { -1, -1, 112, 44, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo i_emlrtBCI = { -1, -1, 135, 44, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo j_emlrtBCI = { -1, -1, 112, 62, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo j_emlrtBCI = { -1, -1, 135, 62, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo k_emlrtBCI = { -1, -1, 115, 46, "pathOld", "buildRRTWrapper",
+static emlrtBCInfo k_emlrtBCI = { -1, -1, 138, 46, "pathOld", "buildRRTWrapper",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
-
-/* Function Declarations */
-static boolean_T validState(const real_T n[6], const real_T jointLimits[12]);
 
 /* Function Definitions */
-static boolean_T validState(const real_T n[6], const real_T jointLimits[12])
-{
-  boolean_T valid;
-  if ((n[0] < jointLimits[0]) || (n[0] > jointLimits[1]) || (n[1] < jointLimits
-       [2]) || (n[1] > jointLimits[3]) || (n[2] < jointLimits[4]) || (n[2] >
-       jointLimits[5]) || (n[3] < jointLimits[6]) || (n[3] > jointLimits[7]) ||
-      (n[4] < jointLimits[8]) || (n[4] > jointLimits[9]) || (n[5] < jointLimits
-       [10]) || (n[5] > jointLimits[11])) {
-    valid = false;
-  } else {
-    valid = true;
-  }
-
-  return valid;
-}
-
 void HGAINS_not_empty_init(void)
 {
 }
@@ -146,11 +130,12 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
                      const real_T nGoalCartesianB[6], const real_T jointLimits
                      [12], real_T bodyHeight, const real_T U[10], real_T dt,
                      real_T Dt, const struct0_T *kC, real_T threshold, int32_T
-                     legNum, emxArray_real_T *T, emxArray_real_T *pathC,
-                     emxArray_real_T *pathJ, boolean_T *success)
+                     legNum, const real_T uBDot[6], emxArray_real_T *T,
+                     emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T
+                     *success)
 {
-  real_T TP2B[16];
   int32_T i0;
+  real_T TP2B[16];
   static const int8_T iv0[4] = { 0, 0, 0, 1 };
 
   real_T b_TP2B[9];
@@ -171,6 +156,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   emxArray_real_T *c_pathJ;
   real_T dv0[11];
   real_T dv1[11];
+  real_T dv2[4];
   int32_T loop_ub;
   real_T alpha;
   uint32_T count;
@@ -188,18 +174,140 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   st.tls = sp->tls;
   emlrtHeapReferenceStackEnterFcnR2012b(sp);
 
+  /* BUILDRRTWRAPPER This function acts as a wrapper for the buildRRT function. */
+  /* Code generation for the singleLegPlanner is performed using this function */
+  /* as an entry point. */
+  /*    */
+  /* Inputs: */
+  /* -nInitCartesianB: the */
+  /* -nGoalCartesianB: */
+  /* -jointLimits: */
+  /* -bodyHeight: */
+  /* -U: */
+  /* -dt: */
+  /* -Dt: */
+  /* -kC: */
+  /* -threshold: */
+  /* -legNum: */
+  /*  */
+  /* Outputs: */
+  /* -T: */
+  /* -pathC: */
+  /* -pathJ: */
+  /* -success: */
+  /*  */
   /* buildRRTWrapper.m */
   /* author: wreid */
   /* date: 20150502 */
+  if (!cartesianLimits_not_empty) {
+    for (i0 = 0; i0 < 4; i0++) {
+      cartesianLimits[i0] = 0.0;
+    }
+
+    cartesianLimits_not_empty = true;
+
+    /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
+    /* relative to the pan coordinate frame for the SherpaTT Leg. */
+    /*  */
+    /* Inputs: */
+    /* -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] */
+    /* -kC: A struct containing the kinematic constants of the SherpaTT leg. */
+    /* Outputs: */
+    /*  */
+    /* sherpaTTFK.m */
+    /* author: wreid */
+    /* date: 20150122 */
+    /* sherpaTTFK Sherpa_TT Forward Kinematics */
+    /*    Calculates the x,y,z position of the contact point given the alpha, */
+    /*    beta and gamma joint values. */
+    cartesianLimits[0] = ((((kC->l1 + kC->l3 * muDoubleScalarSin(-jointLimits[2]))
+      - kC->l4 * muDoubleScalarSin(kC->zeta)) - kC->l5 * muDoubleScalarSin
+      (jointLimits[4] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+
+    /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
+    /* relative to the pan coordinate frame for the SherpaTT Leg. */
+    /*  */
+    /* Inputs: */
+    /* -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] */
+    /* -kC: A struct containing the kinematic constants of the SherpaTT leg. */
+    /* Outputs: */
+    /*  */
+    /* sherpaTTFK.m */
+    /* author: wreid */
+    /* date: 20150122 */
+    /* sherpaTTFK Sherpa_TT Forward Kinematics */
+    /*    Calculates the x,y,z position of the contact point given the alpha, */
+    /*    beta and gamma joint values. */
+    cartesianLimits[1] = ((((kC->l1 + kC->l3 * muDoubleScalarSin(-jointLimits[3]))
+      - kC->l4 * muDoubleScalarSin(kC->zeta)) - kC->l5 * muDoubleScalarSin
+      (jointLimits[5] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+
+    /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
+    /* relative to the pan coordinate frame for the SherpaTT Leg. */
+    /*  */
+    /* Inputs: */
+    /* -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] */
+    /* -kC: A struct containing the kinematic constants of the SherpaTT leg. */
+    /* Outputs: */
+    /*  */
+    /* sherpaTTFK.m */
+    /* author: wreid */
+    /* date: 20150122 */
+    /* sherpaTTFK Sherpa_TT Forward Kinematics */
+    /*    Calculates the x,y,z position of the contact point given the alpha, */
+    /*    beta and gamma joint values. */
+    cartesianLimits[2] = ((((kC->l1 + kC->l3 * muDoubleScalarSin(-jointLimits[2]))
+      - kC->l4 * muDoubleScalarSin(kC->zeta)) - kC->l5 * muDoubleScalarSin
+      (jointLimits[5] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+
+    /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
+    /* relative to the pan coordinate frame for the SherpaTT Leg. */
+    /*  */
+    /* Inputs: */
+    /* -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] */
+    /* -kC: A struct containing the kinematic constants of the SherpaTT leg. */
+    /* Outputs: */
+    /*  */
+    /* sherpaTTFK.m */
+    /* author: wreid */
+    /* date: 20150122 */
+    /* sherpaTTFK Sherpa_TT Forward Kinematics */
+    /*    Calculates the x,y,z position of the contact point given the alpha, */
+    /*    beta and gamma joint values. */
+    cartesianLimits[3] = ((((kC->l1 + kC->l3 * muDoubleScalarSin(-jointLimits[3]))
+      - kC->l4 * muDoubleScalarSin(kC->zeta)) - kC->l5 * muDoubleScalarSin
+      (jointLimits[4] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+  }
+
   /* GETPANHEIGHT Summary of this function goes here */
   /*    Detailed explanation goes here */
   /* Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame */
   /* to the pan coordinate frame. */
   st.site = &emlrtRSI;
 
-  /* TRP2B Calculates the homogeneous transformation matrix between the body */
-  /* and pan coordinate frames. */
+  /* TRP2B Generates the homogeneous transformation matrix between the body */
+  /* and pan coordinate frames. kC is a struct containing the kinematic */
+  /* constants of the leg. legNum indicates the number of the leg that is being */
+  /* considered. */
+  /*  */
+  /* Inputs: */
+  /* -kC: Struct of kinematic constants of the Sherpa_TT leg */
+  /* -legNum: The leg number identification. */
+  /* Outputs: */
+  /* -TP2B: The homogeneous transformation matrix that is used to transform */
+  /* coordinates from the pan frame to the body frame. */
+  /*  */
+  /* trP2B.m */
+  /* author:    wreid */
+  /* date:      20150214 */
   emlrtDynamicBoundsCheckFastR2012b(legNum, 1, 4, &g_emlrtBCI, &st);
+
+  /* TRDH Generates the homogeneous transformation matrix A using the  */
+  /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+  /*  */
+  /* trDH.m */
+  /* author:    wreid */
+  /* date:      20150214 */
   TP2B[0] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
   TP2B[4] = -muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
   TP2B[8] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]) * 0.0;
@@ -304,8 +412,8 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   emxInit_real_T(sp, &b_pathJ, 2, &emlrtRTEI, true);
   emxInit_real_T(sp, &c_pathC, 2, &emlrtRTEI, true);
   emxInit_real_T(sp, &c_pathJ, 2, &emlrtRTEI, true);
-  if (validState(nInitJoint, jointLimits) && validState(nGoalJoint, jointLimits))
-  {
+  if (validJointState(nInitJoint, jointLimits) && validJointState(nGoalJoint,
+       jointLimits)) {
     *success = true;
 
     /* Run buildRRT. */
@@ -327,9 +435,13 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 
     dv1[9] = 0.0;
     dv1[10] = 0.0;
+    for (i0 = 0; i0 < 4; i0++) {
+      dv2[i0] = cartesianLimits[i0];
+    }
+
     st.site = &d_emlrtRSI;
-    buildRRT(&st, dv0, dv1, jointLimits, -(bodyHeight + kC->B2PZOffset), U, dt,
-             Dt, kC, b_T, pathJ);
+    buildRRT(&st, dv0, dv1, jointLimits, dv2, -(bodyHeight + kC->B2PZOffset), U,
+             dt, Dt, kC, uBDot, legNum, b_T, pathJ);
     i0 = T->size[0] * T->size[1];
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
@@ -395,6 +507,14 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
           emlrtDynamicBoundsCheckFastR2012b(loop_ub, 1, i1, &h_emlrtBCI, &st);
         }
 
+        /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
+        /* relative to the pan coordinate frame for the SherpaTT Leg. */
+        /*  */
+        /* Inputs: */
+        /* -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] */
+        /* -kC: A struct containing the kinematic constants of the SherpaTT leg. */
+        /* Outputs: */
+        /*  */
         /* sherpaTTFK.m */
         /* author: wreid */
         /* date: 20150122 */
@@ -640,12 +760,17 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 
 void buildRRTWrapper_init(void)
 {
-  int32_T i8;
-  static const real_T dv3[3] = { 1.0, 0.0, 0.5 };
+  int32_T i10;
+  static const real_T dv13[3] = { 1.0, 0.0, 0.5 };
 
-  for (i8 = 0; i8 < 3; i8++) {
-    HGAINS[i8] = dv3[i8];
+  for (i10 = 0; i10 < 3; i10++) {
+    HGAINS[i10] = dv13[i10];
   }
+}
+
+void cartesianLimits_not_empty_init(void)
+{
+  cartesianLimits_not_empty = false;
 }
 
 void exhaustive_not_empty_init(void)

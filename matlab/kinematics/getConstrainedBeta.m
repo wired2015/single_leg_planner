@@ -2,8 +2,6 @@ function [beta,gamma] = getConstrainedBeta(panHeight,gamma,kC,range,min)
 %GETCONSTRAINEDBETA Calculates the beta joint angle given a constrained body
 %height.
 
-    %[L1,~,L3,L4,L5,L6,~,L8,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst);
-
 %     check = (panHeight-kC.l1+kC.l4*sin(kC.zeta)+kC.l5*sin(gamma+kC.zeta)+kC.l7+kC.l8+kC.r)/kC.l3;
 % 
 %     if check < -1 || check > 1

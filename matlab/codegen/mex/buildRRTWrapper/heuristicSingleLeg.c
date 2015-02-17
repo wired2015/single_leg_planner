@@ -19,7 +19,7 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   real_T kC_l4, real_T kC_l5, real_T kC_l7, real_T kC_zeta)
 {
   real_T d;
-  int32_T i4;
+  int32_T i7;
   real_T xStarMin;
   real_T dxStarMax;
   real_T dAlphaMax;
@@ -37,18 +37,18 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   /* author: wreid */
   /* date: 20150107 */
   /* heuristic Calculates the distance between states x1 and x2. */
-  i4 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(4, 1, i4, &cb_emlrtBCI, sp);
-  i4 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(5, 1, i4, &bb_emlrtBCI, sp);
-  i4 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(6, 1, i4, &ab_emlrtBCI, sp);
-  i4 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(7, 1, i4, &y_emlrtBCI, sp);
-  i4 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(8, 1, i4, &x_emlrtBCI, sp);
-  i4 = xB->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(9, 1, i4, &w_emlrtBCI, sp);
+  i7 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(4, 1, i7, &q_emlrtBCI, sp);
+  i7 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(5, 1, i7, &p_emlrtBCI, sp);
+  i7 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(6, 1, i7, &o_emlrtBCI, sp);
+  i7 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(7, 1, i7, &n_emlrtBCI, sp);
+  i7 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(8, 1, i7, &m_emlrtBCI, sp);
+  i7 = xB->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(9, 1, i7, &l_emlrtBCI, sp);
 
   /* Calculate the distance between angular positions. */
   xStarMin = (((kC_l2 + kC_l3 * muDoubleScalarCos(jointLimits[2])) + kC_l4 *
@@ -70,8 +70,8 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   }
 
   dAlphaMax = muDoubleScalarAbs(dAlphaMax - 3.1415926535897931);
-  st.site = &t_emlrtRSI;
-  b_st.site = &v_emlrtRSI;
+  st.site = &cb_emlrtRSI;
+  b_st.site = &eb_emlrtRSI;
   if (dxStarMax * dxStarMax + xStarMin * xStarMin * (dAlphaMax * dAlphaMax) <
       0.0) {
     c_st.site = &g_emlrtRSI;
@@ -97,7 +97,7 @@ real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[], const
   }
 
   dAlphaMax = muDoubleScalarAbs(dAlphaMax - 3.1415926535897931);
-  st.site = &u_emlrtRSI;
+  st.site = &db_emlrtRSI;
   dAlphaMax = dxStarMax * dxStarMax + xStarMin * xStarMin * (dAlphaMax *
     dAlphaMax);
   if (dAlphaMax < 0.0) {

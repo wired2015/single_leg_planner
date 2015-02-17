@@ -1,3 +1,11 @@
+%SHERPATTFK Calcluates the Cartesian position of the wheel contact point
+%relative to the pan coordinate frame for the SherpaTT Leg.
+%
+%Inputs:
+%-q: A 1x3 vector containing the joint angular positions [alpha beta gamma]
+%-kC: A struct containing the kinematic constants of the SherpaTT leg.
+%Outputs:
+%
 %sherpaTTFK.m
 %author: wreid
 %date: 20150122

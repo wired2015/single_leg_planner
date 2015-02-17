@@ -1,0 +1,52 @@
+kinematicConstants
+uG = [0 0 0];
+q = deg2rad([0 -35 50 0]);
+legNum = 1;
+
+[~,TP2B,TI2P,TJ2I,TO2J,TQ2O,TR2Q,TS2R,TW2S,~] = generateTrMatrices(uG,q,kC,legNum);
+
+TS2B = TP2B*TI2P*TJ2I*TO2J*TQ2O*TR2Q*TS2R;
+TS2P = TI2P*TJ2I*TO2J*TQ2O*TR2Q*TS2R;
+TS2I = TJ2I*TO2J*TQ2O*TR2Q*TS2R;
+TS2O = TQ2O*TR2Q*TS2R;
+
+TB2S = trInv(TS2B);
+TP2S = trInv(TS2P);
+TI2S = trInv(TS2I);
+TO2S = trInv(TS2O);
+
+AdB2S = tr2Adj(TB2S);
+AdP2S = tr2Adj(TP2S);
+AdI2S = tr2Adj(TI2S);
+AdO2S = tr2Adj(TO2S);
+
+%BODY RATES
+vB = [1 0 0]';          %[m/s]
+omegaB = [0 0 1]';      %[rad/s]
+uBDot = [vB; omegaB];
+
+%PAN JOINT RATE
+alphaDot = 0;         %[rad/s]
+vP = zeros(1,3);
+omegaP = [0 0  alphaDot];
+uPDot = [vP omegaP]';
+
+%BETA JOINT RATE
+betaDot = 0;         %[rad/s]
+vI = zeros(1,3);
+omegaI = [0 0  betaDot];
+uIDot = [vI omegaI]';
+
+%GAMMA JOINT RATE
+gammaDot = 0;         %[rad/s]
+vO = zeros(1,3);
+omegaO = [0 0  gammaDot];
+uODot = [vO omegaO]';
+
+uSDot = AdB2S*uBDot + AdP2S*uPDot + AdI2S*uIDot + AdO2S*uODot
+
+vS = uSDot(1:3);
+omegaS = uSDot(4:6)
+
+omega = norm(vS)/kC.r;
+phi = atan()

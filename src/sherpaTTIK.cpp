@@ -2,13 +2,14 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 13-Feb-2015 15:29:21
+// C/C++ source code generated on  : 17-Feb-2015 13:54:41
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "sherpaTTIK.h"
+#include "selectInput.h"
 #include "asin.h"
 #include "sin.h"
 #include "log.h"
@@ -17,6 +18,1504 @@
 #include <stdio.h>
 
 // Function Definitions
+
+//
+// sherpaTTIK Calculates the joint values for a g1iven contact point.
+//    Calculates the joint values for a g1iven contact point for the Sherpa TT
+//    leg. All coord1inates are in the pan joint coord1inate frame.
+// Arguments    : const double u[3]
+//                double kC_l1
+//                double kC_l2
+//                double kC_l3
+//                double kC_l4
+//                double kC_l5
+//                double kC_l6
+//                double kC_l7
+//                double kC_l8
+//                double kC_zeta
+//                double kC_r
+//                const double jointLimits[12]
+//                double q[3]
+// Return Type  : void
+//
+void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
+                  double kC_l4, double kC_l5, double kC_l6, double kC_l7, double
+                  kC_l8, double kC_zeta, double kC_r, const double jointLimits
+                  [12], double q[3])
+{
+  double x;
+  double a;
+  double b_a;
+  double b_x;
+  double c_x;
+  double c_a;
+  double d_a;
+  double d_x;
+  double e_x;
+  creal_T dc25;
+  creal_T dc26;
+  creal_T dc27;
+  creal_T dc28;
+  creal_T dc29;
+  creal_T dc30;
+  creal_T dc31;
+  creal_T dc32;
+  creal_T dc33;
+  creal_T dc34;
+  creal_T dc35;
+  creal_T dc36;
+  creal_T dc37;
+  creal_T dc38;
+  creal_T dc39;
+  creal_T dc40;
+  creal_T dc41;
+  creal_T dc42;
+  creal_T dc43;
+  double u_re;
+  double u_im;
+  double kC_l1_re;
+  double kC_l1_im;
+  double kC_l6_re;
+  double kC_l6_im;
+  double kC_l8_re;
+  double kC_l8_im;
+  double re;
+  double r;
+  double kC_l4_re;
+  double kC_l4_im;
+  double beta;
+  double kC_l2_re;
+  double kC_l2_im;
+  creal_T dc44;
+  creal_T dc45;
+  creal_T dc46;
+  creal_T dc47;
+  creal_T f_x;
+  creal_T g_x;
+  creal_T h_x;
+  creal_T i_x;
+  creal_T j_x;
+  creal_T k_x;
+  creal_T dc48;
+  creal_T dc49;
+  double kC_l3_re;
+  double kC_l3_im;
+  double kC_l5_re;
+  double kC_l5_im;
+  double kC_l7_re;
+  double kC_l7_im;
+  double a_re;
+  double a_im;
+  double x_re;
+  double x_im;
+  double b_kC_l1_re;
+  double b_kC_l1_im;
+  double c_kC_l1_re;
+  double c_kC_l1_im;
+  double b_kC_l2_re;
+  double b_kC_l2_im;
+  double b_kC_l6_re;
+  double b_kC_l6_im;
+  double c_kC_l2_re;
+  double c_kC_l2_im;
+  double b_kC_l7_re;
+  double b_kC_l7_im;
+  double d_kC_l1_re;
+  double d_kC_l1_im;
+  double c_kC_l6_re;
+  double c_kC_l6_im;
+  double b_kC_l4_re;
+  double b_kC_l4_im;
+  double c_kC_l4_re;
+  double c_kC_l4_im;
+  double d_kC_l4_re;
+  double b_x_re;
+  double b_x_im;
+  double d_kC_l2_re;
+  double d_kC_l2_im;
+  double c_kC_l7_re;
+  double c_kC_l7_im;
+  double ar;
+  double alpha;
+  creal_T y;
+  creal_T gammaRaw[2];
+
+  // sherpaTTIK.m
+  // author: wreid
+  // date: 20150122
+  x = sqrt(u[0] * u[0]);
+  a = kC_l8 + kC_r;
+  b_a = kC_l8 + kC_r;
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
+           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = cos(kC_zeta);
+  c_x = sin(kC_zeta);
+  c_a = kC_l8 + kC_r;
+  d_a = kC_l8 + kC_r;
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
+           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = cos(kC_zeta);
+  e_x = sin(kC_zeta);
+  dc25.re = kC_zeta * 0.0;
+  dc25.im = kC_zeta;
+  b_exp(&dc25);
+  dc26.re = kC_zeta * 0.0;
+  dc26.im = kC_zeta;
+  b_exp(&dc26);
+  dc27.re = kC_zeta * 0.0;
+  dc27.im = kC_zeta;
+  b_exp(&dc27);
+  dc28.re = kC_zeta * 0.0;
+  dc28.im = kC_zeta;
+  b_exp(&dc28);
+  dc29.re = kC_zeta * 0.0;
+  dc29.im = kC_zeta;
+  b_exp(&dc29);
+  dc30.re = kC_zeta * 0.0;
+  dc30.im = kC_zeta;
+  b_exp(&dc30);
+  dc31.re = kC_zeta * 0.0;
+  dc31.im = kC_zeta;
+  b_exp(&dc31);
+  dc32.re = kC_zeta * 0.0;
+  dc32.im = kC_zeta;
+  b_exp(&dc32);
+  dc33.re = kC_zeta * 0.0;
+  dc33.im = kC_zeta;
+  b_exp(&dc33);
+  dc34.re = kC_zeta * 2.0 * 0.0;
+  dc34.im = kC_zeta * 2.0;
+  b_exp(&dc34);
+  dc35.re = kC_zeta * 0.0;
+  dc35.im = kC_zeta;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  u_re = u[2] * dc37.re;
+  u_im = u[2] * dc37.im;
+  kC_l1_re = kC_l1 * dc38.re;
+  kC_l1_im = kC_l1 * dc38.im;
+  kC_l6_re = kC_l6 * dc40.re;
+  kC_l6_im = kC_l6 * dc40.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc42.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc42.im;
+  re = 4.0 * (kC_l5 * kC_l5) * dc35.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc35.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc36.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc39.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc41.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc36.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc39.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc41.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  beta = re * kC_l4_re - r * kC_l4_im;
+  r = re * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc43.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc43.im;
+  dc34.re = dc34.re * (b_a * b_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc34.im = dc34.im * (b_a * b_a) + (beta * kC_l2_im + r * kC_l2_re);
+  eml_scalar_sqrt(&dc34);
+  dc35.re = kC_zeta * 2.0 * 0.0;
+  dc35.im = kC_zeta * 2.0;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  dc44.re = kC_zeta * 0.0;
+  dc44.im = kC_zeta;
+  b_exp(&dc44);
+  dc45.re = kC_zeta * 0.0;
+  dc45.im = kC_zeta;
+  b_exp(&dc45);
+  dc46.re = kC_zeta * 0.0;
+  dc46.im = kC_zeta;
+  b_exp(&dc46);
+  dc47.re = kC_zeta * 2.0 * 0.0;
+  dc47.im = kC_zeta * 2.0;
+  b_exp(&dc47);
+  f_x.re = kC_zeta * 2.0 * 0.0;
+  f_x.im = kC_zeta * 2.0;
+  b_exp(&f_x);
+  g_x.re = kC_zeta * 0.0;
+  g_x.im = kC_zeta;
+  b_exp(&g_x);
+  h_x.re = kC_zeta * 0.0;
+  h_x.im = kC_zeta;
+  b_exp(&h_x);
+  i_x.re = kC_zeta * 0.0;
+  i_x.im = kC_zeta;
+  b_exp(&i_x);
+  j_x.re = kC_zeta * 0.0;
+  j_x.im = kC_zeta;
+  b_exp(&j_x);
+  k_x.re = kC_zeta * 0.0;
+  k_x.im = kC_zeta;
+  b_exp(&k_x);
+  dc48.re = kC_zeta * 0.0;
+  dc48.im = kC_zeta;
+  b_exp(&dc48);
+  dc49.re = kC_zeta * 0.0;
+  dc49.im = kC_zeta;
+  b_exp(&dc49);
+  kC_l1_re = kC_l1 * kC_l1 * dc25.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc25.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc26.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc26.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc27.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc27.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc28.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc28.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc29.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc29.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc30.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc30.im;
+  a_re = a * a * dc31.re;
+  a_im = a * a * dc31.im;
+  x_re = x * x * dc32.re;
+  x_im = x * x * dc32.im;
+  u_re = u[2] * u[2] * dc33.re;
+  u_im = u[2] * u[2] * dc33.im;
+  if (dc35.im == 0.0) {
+    re = dc35.re / 2.0;
+    r = 0.0;
+  } else if (dc35.re == 0.0) {
+    re = 0.0;
+    r = dc35.im / 2.0;
+  } else {
+    re = dc35.re / 2.0;
+    r = dc35.im / 2.0;
+  }
+
+  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc36.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc36.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc37.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc37.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc38.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc38.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc39.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc39.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc40.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc40.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc41.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc41.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc42.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc42.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc43.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc43.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc44.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc44.im);
+  b_kC_l4_re = b_x * b_x * (kC_l4 * kC_l4 * dc45.re);
+  b_kC_l4_im = b_x * b_x * (kC_l4 * kC_l4 * dc45.im);
+  c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc46.re);
+  c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc46.im);
+  if (dc47.im == 0.0) {
+    re = dc47.re / 2.0;
+    r = 0.0;
+  } else if (dc47.re == 0.0) {
+    re = 0.0;
+    r = dc47.im / 2.0;
+  } else {
+    re = dc47.re / 2.0;
+    r = dc47.im / 2.0;
+  }
+
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (re + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * r);
+  b_x_re = x * g_x.re;
+  b_x_im = x * g_x.im;
+  d_kC_l2_re = kC_l2 * j_x.re;
+  d_kC_l2_im = kC_l2 * j_x.im;
+  c_kC_l7_re = kC_l7 * dc48.re;
+  c_kC_l7_im = kC_l7 * dc48.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) - (dc34.re * 0.0 -
+    dc34.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
+                        - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc34.re + dc34.im *
+    0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
+    (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
+    h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc49.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (b_x_re + b_x_im * 0.0)) + u[2] * h_x.im) -
+    kC_l1 * i_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * k_x.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) *
+                     dc49.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      dc25.re = ar / u_re;
+      dc25.im = 0.0;
+    } else if (ar == 0.0) {
+      dc25.re = 0.0;
+      dc25.im = u_im / u_re;
+    } else {
+      dc25.re = ar / u_re;
+      dc25.im = u_im / u_re;
+    }
+  } else if (u_re == 0.0) {
+    if (ar == 0.0) {
+      dc25.re = u_im / r;
+      dc25.im = 0.0;
+    } else if (u_im == 0.0) {
+      dc25.re = 0.0;
+      dc25.im = -(ar / r);
+    } else {
+      dc25.re = u_im / r;
+      dc25.im = -(ar / r);
+    }
+  } else {
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      dc25.re = (ar + beta * u_im) / alpha;
+      dc25.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
+      } else {
+        beta = -0.5;
+      }
+
+      if (r > 0.0) {
+        alpha = 0.5;
+      } else {
+        alpha = -0.5;
+      }
+
+      dc25.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      dc25.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+    } else {
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      dc25.re = (beta * ar + u_im) / alpha;
+      dc25.im = (beta * u_im - ar) / alpha;
+    }
+  }
+
+  b_log(&dc25);
+  dc26.re = kC_zeta * 0.0;
+  dc26.im = kC_zeta;
+  b_exp(&dc26);
+  dc27.re = kC_zeta * 0.0;
+  dc27.im = kC_zeta;
+  b_exp(&dc27);
+  dc28.re = kC_zeta * 0.0;
+  dc28.im = kC_zeta;
+  b_exp(&dc28);
+  dc29.re = kC_zeta * 0.0;
+  dc29.im = kC_zeta;
+  b_exp(&dc29);
+  dc30.re = kC_zeta * 0.0;
+  dc30.im = kC_zeta;
+  b_exp(&dc30);
+  dc31.re = kC_zeta * 0.0;
+  dc31.im = kC_zeta;
+  b_exp(&dc31);
+  dc32.re = kC_zeta * 0.0;
+  dc32.im = kC_zeta;
+  b_exp(&dc32);
+  dc33.re = kC_zeta * 0.0;
+  dc33.im = kC_zeta;
+  b_exp(&dc33);
+  dc34.re = kC_zeta * 0.0;
+  dc34.im = kC_zeta;
+  b_exp(&dc34);
+  dc35.re = kC_zeta * 2.0 * 0.0;
+  dc35.im = kC_zeta * 2.0;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  dc44.re = kC_zeta * 0.0;
+  dc44.im = kC_zeta;
+  b_exp(&dc44);
+  u_re = u[2] * dc38.re;
+  u_im = u[2] * dc38.im;
+  kC_l1_re = kC_l1 * dc39.re;
+  kC_l1_im = kC_l1 * dc39.im;
+  kC_l6_re = kC_l6 * dc41.re;
+  kC_l6_im = kC_l6 * dc41.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc43.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc43.im;
+  re = 4.0 * (kC_l5 * kC_l5) * dc36.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc36.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc37.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc40.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc42.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc37.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc40.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc42.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  beta = re * kC_l4_re - r * kC_l4_im;
+  r = re * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc44.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc44.im;
+  dc35.re = dc35.re * (d_a * d_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc35.im = dc35.im * (d_a * d_a) + (beta * kC_l2_im + r * kC_l2_re);
+  eml_scalar_sqrt(&dc35);
+  dc36.re = kC_zeta * 2.0 * 0.0;
+  dc36.im = kC_zeta * 2.0;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  dc44.re = kC_zeta * 0.0;
+  dc44.im = kC_zeta;
+  b_exp(&dc44);
+  dc45.re = kC_zeta * 0.0;
+  dc45.im = kC_zeta;
+  b_exp(&dc45);
+  dc46.re = kC_zeta * 0.0;
+  dc46.im = kC_zeta;
+  b_exp(&dc46);
+  dc47.re = kC_zeta * 0.0;
+  dc47.im = kC_zeta;
+  b_exp(&dc47);
+  f_x.re = kC_zeta * 2.0 * 0.0;
+  f_x.im = kC_zeta * 2.0;
+  b_exp(&f_x);
+  g_x.re = kC_zeta * 2.0 * 0.0;
+  g_x.im = kC_zeta * 2.0;
+  b_exp(&g_x);
+  h_x.re = kC_zeta * 0.0;
+  h_x.im = kC_zeta;
+  b_exp(&h_x);
+  i_x.re = kC_zeta * 0.0;
+  i_x.im = kC_zeta;
+  b_exp(&i_x);
+  j_x.re = kC_zeta * 0.0;
+  j_x.im = kC_zeta;
+  b_exp(&j_x);
+  k_x.re = kC_zeta * 0.0;
+  k_x.im = kC_zeta;
+  b_exp(&k_x);
+  dc48.re = kC_zeta * 0.0;
+  dc48.im = kC_zeta;
+  b_exp(&dc48);
+  dc49.re = kC_zeta * 0.0;
+  dc49.im = kC_zeta;
+  b_exp(&dc49);
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  b_exp(&y);
+  kC_l1_re = kC_l1 * kC_l1 * dc26.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc26.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc27.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc27.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc28.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc28.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc29.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc29.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc30.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc30.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc31.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc31.im;
+  a_re = c_a * c_a * dc32.re;
+  a_im = c_a * c_a * dc32.im;
+  x_re = x * x * dc33.re;
+  x_im = x * x * dc33.im;
+  u_re = u[2] * u[2] * dc34.re;
+  u_im = u[2] * u[2] * dc34.im;
+  if (dc36.im == 0.0) {
+    re = dc36.re / 2.0;
+    r = 0.0;
+  } else if (dc36.re == 0.0) {
+    re = 0.0;
+    r = dc36.im / 2.0;
+  } else {
+    re = dc36.re / 2.0;
+    r = dc36.im / 2.0;
+  }
+
+  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc37.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc37.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc38.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc38.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc39.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc39.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc40.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc40.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc41.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc41.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc42.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc42.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc43.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc43.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc44.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc44.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc45.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc45.im);
+  b_kC_l4_re = d_x * d_x * (kC_l4 * kC_l4 * dc46.re);
+  b_kC_l4_im = d_x * d_x * (kC_l4 * kC_l4 * dc46.im);
+  c_kC_l4_re = e_x * e_x * (kC_l4 * kC_l4 * dc47.re);
+  c_kC_l4_im = e_x * e_x * (kC_l4 * kC_l4 * dc47.im);
+  if (f_x.im == 0.0) {
+    b_x_re = f_x.re / 2.0;
+    b_x_im = 0.0;
+  } else if (f_x.re == 0.0) {
+    b_x_re = 0.0;
+    b_x_im = f_x.im / 2.0;
+  } else {
+    b_x_re = f_x.re / 2.0;
+    b_x_im = f_x.im / 2.0;
+  }
+
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_x_re + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * b_x_im);
+  b_x_re = x * h_x.re;
+  b_x_im = x * h_x.im;
+  d_kC_l2_re = kC_l2 * k_x.re;
+  d_kC_l2_im = kC_l2 * k_x.im;
+  c_kC_l7_re = kC_l7 * dc49.re;
+  c_kC_l7_im = kC_l7 * dc49.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) + (dc35.re * 0.0 -
+    dc35.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
+                        - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (g_x.re * 0.0 - g_x.im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc35.re + dc35.im *
+    0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
+    (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((g_x.re + g_x.im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
+    i_x.re) - kC_l1 * j_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    dc48.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (b_x_re + b_x_im * 0.0)) + u[2] * i_x.im) -
+    kC_l1 * j_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * dc48.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) * y.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      dc26.re = ar / u_re;
+      dc26.im = 0.0;
+    } else if (ar == 0.0) {
+      dc26.re = 0.0;
+      dc26.im = u_im / u_re;
+    } else {
+      dc26.re = ar / u_re;
+      dc26.im = u_im / u_re;
+    }
+  } else if (u_re == 0.0) {
+    if (ar == 0.0) {
+      dc26.re = u_im / r;
+      dc26.im = 0.0;
+    } else if (u_im == 0.0) {
+      dc26.re = 0.0;
+      dc26.im = -(ar / r);
+    } else {
+      dc26.re = u_im / r;
+      dc26.im = -(ar / r);
+    }
+  } else {
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      dc26.re = (ar + beta * u_im) / alpha;
+      dc26.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
+      } else {
+        beta = -0.5;
+      }
+
+      if (r > 0.0) {
+        alpha = 0.5;
+      } else {
+        alpha = -0.5;
+      }
+
+      dc26.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      dc26.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+    } else {
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      dc26.re = (beta * ar + u_im) / alpha;
+      dc26.im = (beta * u_im - ar) / alpha;
+    }
+  }
+
+  b_log(&dc26);
+  gammaRaw[0].re = -kC_zeta - (dc25.re * 0.0 - dc25.im);
+  re = dc26.re * 0.0 - dc26.im;
+  a = kC_l8 + kC_r;
+  b_a = kC_l8 + kC_r;
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
+           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = cos(kC_zeta);
+  c_x = sin(kC_zeta);
+  c_a = kC_l8 + kC_r;
+  d_a = kC_l8 + kC_r;
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+    kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
+    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
+    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
+                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
+                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
+                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
+                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
+    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
+           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = cos(kC_zeta);
+  e_x = sin(kC_zeta);
+  y.re = kC_zeta * 2.0 * 0.0;
+  y.im = kC_zeta * 2.0;
+  r = exp(y.re / 2.0);
+  x_re = r * (r * cos(y.im));
+  x_im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  f_x.re = r * (r * cos(y.im));
+  f_x.im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  g_x.re = r * (r * cos(y.im));
+  g_x.im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  h_x.re = r * (r * cos(y.im));
+  h_x.im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  i_x.re = r * (r * cos(y.im));
+  i_x.im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  j_x.re = r * (r * cos(y.im));
+  j_x.im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  k_x.re = r * (r * cos(y.im));
+  k_x.im = r * (r * sin(y.im));
+  y.re = kC_zeta * 0.0;
+  y.im = kC_zeta;
+  r = exp(y.re / 2.0);
+  y.re = r * (r * cos(y.im));
+  y.im = r * (r * sin(y.im));
+  dc25.re = kC_zeta * 0.0;
+  dc25.im = kC_zeta;
+  b_exp(&dc25);
+  dc26.re = kC_zeta * 0.0;
+  dc26.im = kC_zeta;
+  b_exp(&dc26);
+  dc27.re = kC_zeta * 0.0;
+  dc27.im = kC_zeta;
+  b_exp(&dc27);
+  dc28.re = kC_zeta * 0.0;
+  dc28.im = kC_zeta;
+  b_exp(&dc28);
+  dc29.re = kC_zeta * 0.0;
+  dc29.im = kC_zeta;
+  b_exp(&dc29);
+  dc30.re = kC_zeta * 0.0;
+  dc30.im = kC_zeta;
+  b_exp(&dc30);
+  dc31.re = kC_zeta * 0.0;
+  dc31.im = kC_zeta;
+  b_exp(&dc31);
+  dc32.re = kC_zeta * 0.0;
+  dc32.im = kC_zeta;
+  b_exp(&dc32);
+  dc33.re = kC_zeta * 0.0;
+  dc33.im = kC_zeta;
+  b_exp(&dc33);
+  dc34.re = kC_zeta * 2.0 * 0.0;
+  dc34.im = kC_zeta * 2.0;
+  b_exp(&dc34);
+  dc35.re = kC_zeta * 0.0;
+  dc35.im = kC_zeta;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  u_re = u[2] * dc37.re;
+  u_im = u[2] * dc37.im;
+  kC_l1_re = kC_l1 * dc38.re;
+  kC_l1_im = kC_l1 * dc38.im;
+  kC_l6_re = kC_l6 * dc40.re;
+  kC_l6_im = kC_l6 * dc40.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc42.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc42.im;
+  beta = 4.0 * (kC_l5 * kC_l5) * dc35.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc35.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc36.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc39.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc41.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc36.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc39.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc41.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  alpha = beta * kC_l4_re - r * kC_l4_im;
+  r = beta * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc43.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc43.im;
+  dc34.re = dc34.re * (d_a * d_a) + (alpha * kC_l2_re - r * kC_l2_im);
+  dc34.im = dc34.im * (d_a * d_a) + (alpha * kC_l2_im + r * kC_l2_re);
+  eml_scalar_sqrt(&dc34);
+  dc35.re = kC_zeta * 2.0 * 0.0;
+  dc35.im = kC_zeta * 2.0;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  dc44.re = kC_zeta * 0.0;
+  dc44.im = kC_zeta;
+  b_exp(&dc44);
+  dc45.re = kC_zeta * 0.0;
+  dc45.im = kC_zeta;
+  b_exp(&dc45);
+  dc46.re = kC_zeta * 0.0;
+  dc46.im = kC_zeta;
+  b_exp(&dc46);
+  dc47.re = kC_zeta * 2.0 * 0.0;
+  dc47.im = kC_zeta * 2.0;
+  b_exp(&dc47);
+  kC_l1_re = kC_l1 * kC_l1 * dc25.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc25.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc26.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc26.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc27.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc27.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc28.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc28.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc29.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc29.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc30.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc30.im;
+  a_re = c_a * c_a * dc31.re;
+  a_im = c_a * c_a * dc31.im;
+  b_x_re = x * x * dc32.re;
+  b_x_im = x * x * dc32.im;
+  u_re = u[2] * u[2] * dc33.re;
+  u_im = u[2] * u[2] * dc33.im;
+  if (dc35.im == 0.0) {
+    beta = dc35.re / 2.0;
+    r = 0.0;
+  } else if (dc35.re == 0.0) {
+    beta = 0.0;
+    r = dc35.im / 2.0;
+  } else {
+    beta = dc35.re / 2.0;
+    r = dc35.im / 2.0;
+  }
+
+  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc36.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc36.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc37.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc37.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc38.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc38.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc39.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc39.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc40.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc40.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc41.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc41.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc42.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc42.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc43.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc43.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc44.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc44.im);
+  b_kC_l4_re = d_x * d_x * (kC_l4 * kC_l4 * dc45.re);
+  b_kC_l4_im = d_x * d_x * (kC_l4 * kC_l4 * dc45.im);
+  c_kC_l4_re = e_x * e_x * (kC_l4 * kC_l4 * dc46.re);
+  c_kC_l4_im = e_x * e_x * (kC_l4 * kC_l4 * dc46.im);
+  if (dc47.im == 0.0) {
+    beta = dc47.re / 2.0;
+    r = 0.0;
+  } else if (dc47.re == 0.0) {
+    beta = 0.0;
+    r = dc47.im / 2.0;
+  } else {
+    beta = dc47.re / 2.0;
+    r = dc47.im / 2.0;
+  }
+
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * r);
+  alpha = x * f_x.re;
+  beta = x * f_x.im;
+  d_kC_l2_re = kC_l2 * i_x.re;
+  d_kC_l2_im = kC_l2 * i_x.im;
+  c_kC_l7_re = kC_l7 * k_x.re;
+  c_kC_l7_im = kC_l7 * k_x.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) + (dc34.re * 0.0 -
+    dc34.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
+                        - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (x_re * 0.0 - x_im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc34.re +
+    dc34.im * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im *
+    0.0)) - (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0))
+                        + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((x_re + x_im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+    g_x.re) - kC_l1 * h_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    j_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * g_x.im) -
+    kC_l1 * h_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * j_x.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) * y.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      y.re = ar / u_re;
+      y.im = 0.0;
+    } else if (ar == 0.0) {
+      y.re = 0.0;
+      y.im = u_im / u_re;
+    } else {
+      y.re = ar / u_re;
+      y.im = u_im / u_re;
+    }
+  } else if (u_re == 0.0) {
+    if (ar == 0.0) {
+      y.re = u_im / r;
+      y.im = 0.0;
+    } else if (u_im == 0.0) {
+      y.re = 0.0;
+      y.im = -(ar / r);
+    } else {
+      y.re = u_im / r;
+      y.im = -(ar / r);
+    }
+  } else {
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      y.re = (ar + beta * u_im) / alpha;
+      y.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
+      } else {
+        beta = -0.5;
+      }
+
+      if (r > 0.0) {
+        alpha = 0.5;
+      } else {
+        alpha = -0.5;
+      }
+
+      y.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      y.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+    } else {
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      y.re = (beta * ar + u_im) / alpha;
+      y.im = (beta * u_im - ar) / alpha;
+    }
+  }
+
+  if ((y.im == 0.0) && rtIsNaN(y.re)) {
+  } else if ((fabs(y.re) > 8.9884656743115785E+307) || (fabs(y.im) >
+              8.9884656743115785E+307)) {
+    r = y.re;
+    y.re = log(rt_hypotd_snf(y.re / 2.0, y.im / 2.0)) + 0.69314718055994529;
+    y.im = rt_atan2d_snf(y.im, r);
+  } else {
+    r = y.re;
+    y.re = log(rt_hypotd_snf(y.re, y.im));
+    y.im = rt_atan2d_snf(y.im, r);
+  }
+
+  x_re = y.re * 0.0 - y.im;
+  x_im = y.re + y.im * 0.0;
+  if (x_im == 0.0) {
+    x_re = sin(x_re);
+    x_im = 0.0;
+  } else {
+    b_x_re = x_re;
+    x_re = sin(x_re) * cosh(x_im);
+    x_im = cos(b_x_re) * sinh(x_im);
+  }
+
+  dc25.re = kC_zeta * 0.0;
+  dc25.im = kC_zeta;
+  b_exp(&dc25);
+  dc26.re = kC_zeta * 0.0;
+  dc26.im = kC_zeta;
+  b_exp(&dc26);
+  dc27.re = kC_zeta * 0.0;
+  dc27.im = kC_zeta;
+  b_exp(&dc27);
+  dc28.re = kC_zeta * 0.0;
+  dc28.im = kC_zeta;
+  b_exp(&dc28);
+  dc29.re = kC_zeta * 0.0;
+  dc29.im = kC_zeta;
+  b_exp(&dc29);
+  dc30.re = kC_zeta * 0.0;
+  dc30.im = kC_zeta;
+  b_exp(&dc30);
+  dc31.re = kC_zeta * 0.0;
+  dc31.im = kC_zeta;
+  b_exp(&dc31);
+  dc32.re = kC_zeta * 0.0;
+  dc32.im = kC_zeta;
+  b_exp(&dc32);
+  dc33.re = kC_zeta * 0.0;
+  dc33.im = kC_zeta;
+  b_exp(&dc33);
+  dc34.re = kC_zeta * 2.0 * 0.0;
+  dc34.im = kC_zeta * 2.0;
+  b_exp(&dc34);
+  dc35.re = kC_zeta * 0.0;
+  dc35.im = kC_zeta;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  u_re = u[2] * dc37.re;
+  u_im = u[2] * dc37.im;
+  kC_l1_re = kC_l1 * dc38.re;
+  kC_l1_im = kC_l1 * dc38.im;
+  kC_l6_re = kC_l6 * dc40.re;
+  kC_l6_im = kC_l6 * dc40.im;
+  kC_l8_re = (kC_l8 + kC_r) * dc42.re;
+  kC_l8_im = (kC_l8 + kC_r) * dc42.im;
+  beta = 4.0 * (kC_l5 * kC_l5) * dc35.re;
+  r = 4.0 * (kC_l5 * kC_l5) * dc35.im;
+  kC_l4_re = ((((((-kC_l4 + x * dc36.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
+    0.0 - kC_l1_im)) - kC_l2 * dc39.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
+              dc41.re) + (kC_l8_re * 0.0 - kC_l8_im);
+  kC_l4_im = (((((x * dc36.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
+    0.0)) - kC_l2 * dc39.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc41.im) +
+    (kC_l8_re + kC_l8_im * 0.0);
+  alpha = beta * kC_l4_re - r * kC_l4_im;
+  r = beta * kC_l4_im + r * kC_l4_re;
+  kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
+                * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc43.re;
+  kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
+    dc43.im;
+  dc34.re = dc34.re * (b_a * b_a) + (alpha * kC_l2_re - r * kC_l2_im);
+  dc34.im = dc34.im * (b_a * b_a) + (alpha * kC_l2_im + r * kC_l2_re);
+  eml_scalar_sqrt(&dc34);
+  dc35.re = kC_zeta * 2.0 * 0.0;
+  dc35.im = kC_zeta * 2.0;
+  b_exp(&dc35);
+  dc36.re = kC_zeta * 0.0;
+  dc36.im = kC_zeta;
+  b_exp(&dc36);
+  dc37.re = kC_zeta * 0.0;
+  dc37.im = kC_zeta;
+  b_exp(&dc37);
+  dc38.re = kC_zeta * 0.0;
+  dc38.im = kC_zeta;
+  b_exp(&dc38);
+  dc39.re = kC_zeta * 0.0;
+  dc39.im = kC_zeta;
+  b_exp(&dc39);
+  dc40.re = kC_zeta * 0.0;
+  dc40.im = kC_zeta;
+  b_exp(&dc40);
+  dc41.re = kC_zeta * 0.0;
+  dc41.im = kC_zeta;
+  b_exp(&dc41);
+  dc42.re = kC_zeta * 0.0;
+  dc42.im = kC_zeta;
+  b_exp(&dc42);
+  dc43.re = kC_zeta * 0.0;
+  dc43.im = kC_zeta;
+  b_exp(&dc43);
+  dc44.re = kC_zeta * 0.0;
+  dc44.im = kC_zeta;
+  b_exp(&dc44);
+  dc45.re = kC_zeta * 0.0;
+  dc45.im = kC_zeta;
+  b_exp(&dc45);
+  dc46.re = kC_zeta * 0.0;
+  dc46.im = kC_zeta;
+  b_exp(&dc46);
+  dc47.re = kC_zeta * 2.0 * 0.0;
+  dc47.im = kC_zeta * 2.0;
+  b_exp(&dc47);
+  f_x.re = kC_zeta * 2.0 * 0.0;
+  f_x.im = kC_zeta * 2.0;
+  b_exp(&f_x);
+  g_x.re = kC_zeta * 0.0;
+  g_x.im = kC_zeta;
+  b_exp(&g_x);
+  h_x.re = kC_zeta * 0.0;
+  h_x.im = kC_zeta;
+  b_exp(&h_x);
+  i_x.re = kC_zeta * 0.0;
+  i_x.im = kC_zeta;
+  b_exp(&i_x);
+  j_x.re = kC_zeta * 0.0;
+  j_x.im = kC_zeta;
+  b_exp(&j_x);
+  k_x.re = kC_zeta * 0.0;
+  k_x.im = kC_zeta;
+  b_exp(&k_x);
+  dc48.re = kC_zeta * 0.0;
+  dc48.im = kC_zeta;
+  b_exp(&dc48);
+  dc49.re = kC_zeta * 0.0;
+  dc49.im = kC_zeta;
+  b_exp(&dc49);
+  kC_l1_re = kC_l1 * kC_l1 * dc25.re;
+  kC_l1_im = kC_l1 * kC_l1 * dc25.im;
+  kC_l2_re = kC_l2 * kC_l2 * dc26.re;
+  kC_l2_im = kC_l2 * kC_l2 * dc26.im;
+  kC_l3_re = kC_l3 * kC_l3 * dc27.re;
+  kC_l3_im = kC_l3 * kC_l3 * dc27.im;
+  kC_l5_re = kC_l5 * kC_l5 * dc28.re;
+  kC_l5_im = kC_l5 * kC_l5 * dc28.im;
+  kC_l6_re = kC_l6 * kC_l6 * dc29.re;
+  kC_l6_im = kC_l6 * kC_l6 * dc29.im;
+  kC_l7_re = kC_l7 * kC_l7 * dc30.re;
+  kC_l7_im = kC_l7 * kC_l7 * dc30.im;
+  a_re = a * a * dc31.re;
+  a_im = a * a * dc31.im;
+  b_x_re = x * x * dc32.re;
+  b_x_im = x * x * dc32.im;
+  u_re = u[2] * u[2] * dc33.re;
+  u_im = u[2] * u[2] * dc33.im;
+  if (dc35.im == 0.0) {
+    beta = dc35.re / 2.0;
+    r = 0.0;
+  } else if (dc35.re == 0.0) {
+    beta = 0.0;
+    r = dc35.im / 2.0;
+  } else {
+    beta = dc35.re / 2.0;
+    r = dc35.im / 2.0;
+  }
+
+  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_im = 2.0 * (kC_l4 * x * r);
+  b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc36.re);
+  b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc36.im);
+  c_kC_l1_re = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc37.re);
+  c_kC_l1_im = 2.0 * (kC_l1 * (kC_l8 + kC_r) * dc37.im);
+  b_kC_l2_re = 2.0 * (kC_l2 * kC_l7 * dc38.re);
+  b_kC_l2_im = 2.0 * (kC_l2 * kC_l7 * dc38.im);
+  b_kC_l6_re = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc39.re);
+  b_kC_l6_im = 2.0 * (kC_l6 * (kC_l8 + kC_r) * dc39.im);
+  c_kC_l2_re = 2.0 * (kC_l2 * x * dc40.re);
+  c_kC_l2_im = 2.0 * (kC_l2 * x * dc40.im);
+  b_kC_l7_re = 2.0 * (kC_l7 * x * dc41.re);
+  b_kC_l7_im = 2.0 * (kC_l7 * x * dc41.im);
+  d_kC_l1_re = 2.0 * (kC_l1 * u[2] * dc42.re);
+  d_kC_l1_im = 2.0 * (kC_l1 * u[2] * dc42.im);
+  c_kC_l6_re = 2.0 * (kC_l6 * u[2] * dc43.re);
+  c_kC_l6_im = 2.0 * (kC_l6 * u[2] * dc43.im);
+  kC_l8_re = 2.0 * ((kC_l8 + kC_r) * u[2] * dc44.re);
+  kC_l8_im = 2.0 * ((kC_l8 + kC_r) * u[2] * dc44.im);
+  b_kC_l4_re = b_x * b_x * (kC_l4 * kC_l4 * dc45.re);
+  b_kC_l4_im = b_x * b_x * (kC_l4 * kC_l4 * dc45.im);
+  c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc46.re);
+  c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc46.im);
+  if (dc47.im == 0.0) {
+    beta = dc47.re / 2.0;
+    r = 0.0;
+  } else if (dc47.re == 0.0) {
+    beta = 0.0;
+    r = dc47.im / 2.0;
+  } else {
+    beta = dc47.re / 2.0;
+    r = dc47.im / 2.0;
+  }
+
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  r = 2.0 * (kC_l4 * kC_l7 * r);
+  alpha = x * g_x.re;
+  beta = x * g_x.im;
+  d_kC_l2_re = kC_l2 * j_x.re;
+  d_kC_l2_im = kC_l2 * j_x.im;
+  c_kC_l7_re = kC_l7 * dc48.re;
+  c_kC_l7_im = kC_l7 * dc48.im;
+  ar = -((((((((((((((((((((((((((((kC_l1_re * 0.0 - kC_l1_im) + (kC_l2_re * 0.0
+    - kC_l2_im)) - (kC_l3_re * 0.0 - kC_l3_im)) + (kC_l5_re * 0.0 - kC_l5_im)) +
+    (kC_l6_re * 0.0 - kC_l6_im)) + (kC_l7_re * 0.0 - kC_l7_im)) + (a_re * 0.0 -
+    a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) - (dc34.re * 0.0 -
+    dc34.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
+                        - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
+    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
+                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
+    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
+    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
+             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
+             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
+           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+  u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
+    kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
+    + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
+    * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc34.re +
+    dc34.im * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im *
+    0.0)) - (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0))
+                        + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
+                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
+                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
+    d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
+    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
+    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
+           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+    h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
+    k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc49.re);
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * h_x.im) -
+    kC_l1 * i_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * k_x.im) -
+                      (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) *
+                     dc49.im);
+  if (r == 0.0) {
+    if (u_im == 0.0) {
+      dc25.re = ar / u_re;
+      dc25.im = 0.0;
+    } else if (ar == 0.0) {
+      dc25.re = 0.0;
+      dc25.im = u_im / u_re;
+    } else {
+      dc25.re = ar / u_re;
+      dc25.im = u_im / u_re;
+    }
+  } else if (u_re == 0.0) {
+    if (ar == 0.0) {
+      dc25.re = u_im / r;
+      dc25.im = 0.0;
+    } else if (u_im == 0.0) {
+      dc25.re = 0.0;
+      dc25.im = -(ar / r);
+    } else {
+      dc25.re = u_im / r;
+      dc25.im = -(ar / r);
+    }
+  } else {
+    d_kC_l4_re = fabs(u_re);
+    alpha = fabs(r);
+    if (d_kC_l4_re > alpha) {
+      beta = r / u_re;
+      alpha = u_re + beta * r;
+      dc25.re = (ar + beta * u_im) / alpha;
+      dc25.im = (u_im - beta * ar) / alpha;
+    } else if (alpha == d_kC_l4_re) {
+      if (u_re > 0.0) {
+        beta = 0.5;
+      } else {
+        beta = -0.5;
+      }
+
+      if (r > 0.0) {
+        alpha = 0.5;
+      } else {
+        alpha = -0.5;
+      }
+
+      dc25.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
+      dc25.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+    } else {
+      beta = u_re / r;
+      alpha = r + beta * u_re;
+      dc25.re = (beta * ar + u_im) / alpha;
+      dc25.im = (beta * u_im - ar) / alpha;
+    }
+  }
+
+  b_log(&dc25);
+  beta = dc25.re;
+  dc25.re = dc25.re * 0.0 - dc25.im;
+  dc25.im = beta + dc25.im * 0.0;
+  b_sin(&dc25);
+  kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta))
+    - kC_l5 * dc25.re;
+  kC_l6_im = 0.0 - kC_l5 * dc25.im;
+  if (kC_l6_im == 0.0) {
+    dc25.re = kC_l6_re / kC_l3;
+    dc25.im = 0.0;
+  } else if (kC_l6_re == 0.0) {
+    dc25.re = 0.0;
+    dc25.im = kC_l6_im / kC_l3;
+  } else {
+    dc25.re = kC_l6_re / kC_l3;
+    dc25.im = kC_l6_im / kC_l3;
+  }
+
+  b_asin(&dc25);
+  ar = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta)) -
+    kC_l5 * x_re;
+  u_im = 0.0 - kC_l5 * x_im;
+  if (u_im == 0.0) {
+    dc26.re = ar / kC_l3;
+    dc26.im = 0.0;
+  } else if (ar == 0.0) {
+    dc26.re = 0.0;
+    dc26.im = u_im / kC_l3;
+  } else {
+    dc26.re = ar / kC_l3;
+    dc26.im = u_im / kC_l3;
+  }
+
+  b_asin(&dc26);
+  alpha = rt_atan2d_snf(0.0, u[0]);
+
+  // beta = betaRaw(1);
+  // gamma = gammaRaw(1);
+  if ((alpha >= jointLimits[0]) && (alpha <= jointLimits[1]) && (-dc25.re >=
+       jointLimits[2]) && (-dc25.re <= jointLimits[3]) && (gammaRaw[0].re >=
+       jointLimits[4]) && (gammaRaw[0].re <= jointLimits[5])) {
+    beta = -dc25.re;
+    r = gammaRaw[0].re;
+
+    // elseif alpha >= alphaMin && alpha <= alphaMax && betaRaw(2) >= betaMin && betaRaw(2) <= betaMax && gammaRaw(2) >= gammaMin && gammaRaw(2) <= gammaMax 
+  } else {
+    beta = -dc26.re;
+    r = -kC_zeta - re;
+  }
+
+  q[0] = alpha;
+  q[1] = beta;
+  q[2] = r;
+}
 
 //
 // sherpaTTIK Calculates the joint values for a g1iven contact point.

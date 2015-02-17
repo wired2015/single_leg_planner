@@ -23,9 +23,9 @@
 /* Function Declarations */
 extern void selectInput(const emlrtStack *sp, const real_T xNear_data[], const
   int32_T xNear_size[2], const real_T xRand_data[], const int32_T xRand_size[2],
-  const real_T U[10], real_T dt, real_T Dt, real_T kC_l2, real_T kC_l3, real_T
-  kC_l4, real_T kC_l5, real_T kC_l7, real_T kC_zeta, const real_T jointLimits[12],
-  real_T xNew_data[], int32_T xNew_size[2], emxArray_real_T *transitionArray);
+  const real_T U[10], real_T dt, real_T Dt, const struct0_T *kC, const real_T
+  jointLimits[12], const real_T uBDot[6], int32_T legNum, real_T xNew_data[],
+  int32_T xNew_size[2], emxArray_real_T *transitionArray);
 
 #endif
 

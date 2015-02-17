@@ -22,11 +22,11 @@ static emlrtMCInfo b_emlrtMCI = { 86, 15, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo hb_emlrtRSI = { 86, "eml_int_forloop_overflow_check",
+static emlrtRSInfo rb_emlrtRSI = { 86, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo ib_emlrtRSI = { 87, "eml_int_forloop_overflow_check",
+static emlrtRSInfo sb_emlrtRSI = { 87, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
@@ -39,10 +39,10 @@ static const mxArray *message(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location)
 {
   const mxArray *pArrays[2];
-  const mxArray *m7;
+  const mxArray *m6;
   pArrays[0] = b;
   pArrays[1] = c;
-  return emlrtCallMATLABR2012b(sp, 1, &m7, 2, pArrays, "message", true, location);
+  return emlrtCallMATLABR2012b(sp, 1, &m6, 2, pArrays, "message", true, location);
 }
 
 void check_forloop_overflow_error(const emlrtStack *sp)
@@ -85,8 +85,8 @@ void check_forloop_overflow_error(const emlrtStack *sp)
 
   emlrtInitCharArrayR2013a(sp, 5, m1, cv4);
   emlrtAssign(&b_y, m1);
-  st.site = &hb_emlrtRSI;
-  b_st.site = &ib_emlrtRSI;
+  st.site = &rb_emlrtRSI;
+  b_st.site = &sb_emlrtRSI;
   error(&st, message(&b_st, y, b_y, &emlrtMCI), &b_emlrtMCI);
 }
 

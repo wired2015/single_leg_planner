@@ -2,7 +2,7 @@
 // File: selectInput.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 13-Feb-2015 15:29:21
+// C/C++ source code generated on  : 17-Feb-2015 13:54:41
 //
 #ifndef __SELECTINPUT_H__
 #define __SELECTINPUT_H__
@@ -20,9 +20,9 @@
 // Function Declarations
 extern void selectInput(const double xNear_data[], const int xNear_size[2],
   const double xRand_data[], const int xRand_size[2], const double U[10], double
-  dt, double Dt, double kC_l2, double kC_l3, double kC_l4, double kC_l5, double
-  kC_l7, double kC_zeta, const double jointLimits[12], double xNew_data[], int
-  xNew_size[2], emxArray_real_T *transitionArray);
+  dt, double Dt, const struct0_T *kC, const double jointLimits[12], const double
+  uBDot[6], int legNum, double xNew_data[], int xNew_size[2], emxArray_real_T
+  *transitionArray);
 
 #endif
 

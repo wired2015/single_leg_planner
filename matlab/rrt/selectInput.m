@@ -1,4 +1,4 @@
-function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kC,ankleThreshold,jointLimits)
+function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kC,ankleThreshold,jointLimits,uBDot,legNum)
 %selectInput Selects the most appropriate control input.
 %   A control input is selected from a set of control inputs, U. An input
 %   is selected by applying each of the inputs to to state xNear, which
@@ -45,11 +45,8 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
             aGain = 0;
         end
         
-        %Ss = [1000 1];
-        %qWDot = 1;
-        %r = 0.378/2;
+        [candStates(i,10),candStates(i,11)] = getPhiAndOmega(uBDot,[candStates(i,4:6) 0],kC,legNum);
         
-        [candStates(i,10),candStates(i,11)] = calcPhi(candStates(i,7:9),candStates(i,4:6),kC);%,Ss,qWDot,r);
         aDiff = angDiff(qANear,candStates(i,10));
         ankleDiffMax = pi;
         

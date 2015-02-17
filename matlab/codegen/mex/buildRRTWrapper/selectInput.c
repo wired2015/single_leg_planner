@@ -10,21 +10,30 @@
 #include "buildRRTWrapper.h"
 #include "selectInput.h"
 #include "buildRRTWrapper_emxutil.h"
+#include "trInv.h"
 #include "heuristicSingleLeg.h"
 #include "buildRRTWrapper_data.h"
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo db_emlrtRSI = { 32, "selectInput",
+static emlrtRSInfo lb_emlrtRSI = { 32, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtRSInfo eb_emlrtRSI = { 38, "selectInput",
+static emlrtRSInfo mb_emlrtRSI = { 38, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtRSInfo fb_emlrtRSI = { 70, "selectInput",
+static emlrtRSInfo nb_emlrtRSI = { 48, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
+};
+
+static emlrtRSInfo ob_emlrtRSI = { 67, "selectInput",
+  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
+};
+
+static emlrtRSInfo pb_emlrtRSI = { 6, "getPhiAndOmega",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"
 };
 
 static emlrtRTEInfo e_emlrtRTEI = { 1, 35, "selectInput",
@@ -35,25 +44,30 @@ static emlrtRTEInfo f_emlrtRTEI = { 12, 5, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtECInfo d_emlrtECI = { -1, 32, 10, "selectInput",
+static emlrtECInfo c_emlrtECI = { -1, 32, 10, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtECInfo e_emlrtECI = { -1, 32, 26, "selectInput",
+static emlrtECInfo d_emlrtECI = { -1, 32, 26, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtECInfo f_emlrtECI = { -1, 56, 9, "rk4",
+static emlrtECInfo e_emlrtECI = { -1, 56, 9, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
-static emlrtBCInfo db_emlrtBCI = { -1, -1, 56, 9, "transitionArray", "rk4",
+static emlrtBCInfo cb_emlrtBCI = { -1, -1, 56, 9, "transitionArray", "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   0 };
 
-static emlrtRTEInfo k_emlrtRTEI = { 16, 5, "rk4",
+static emlrtRTEInfo j_emlrtRTEI = { 16, 5, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
+
+static emlrtBCInfo db_emlrtBCI = { 1, 4, 42, 17, "kC.legAngleOffset",
+  "generateTrMatrices",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m",
+  0 };
 
 static emlrtDCInfo i_emlrtDCI = { 12, 36, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m",
@@ -78,49 +92,96 @@ static emlrtBCInfo eb_emlrtBCI = { -1, -1, 14, 5, "transitionArray", "rk4",
 /* Function Definitions */
 void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
                  xNear_size[2], const real_T xRand_data[], const int32_T
-                 xRand_size[2], const real_T U[10], real_T dt, real_T Dt, real_T
-                 kC_l2, real_T kC_l3, real_T kC_l4, real_T kC_l5, real_T kC_l7,
-                 real_T kC_zeta, const real_T jointLimits[12], real_T xNew_data[],
-                 int32_T xNew_size[2], emxArray_real_T *transitionArray)
+                 xRand_size[2], const real_T U[10], real_T dt, real_T Dt, const
+                 struct0_T *kC, const real_T jointLimits[12], const real_T
+                 uBDot[6], int32_T legNum, real_T xNew_data[], int32_T
+                 xNew_size[2], emxArray_real_T *transitionArray)
 {
   boolean_T b2;
   real_T candStates_data[55];
   emxArray_real_T *candTransArrays;
   real_T scale;
-  int32_T i5;
-  real_T d1;
+  int32_T i8;
+  real_T t;
   int32_T loop_ub;
   real_T UJoint_data[15];
   int32_T i;
   emxArray_real_T *r1;
   emxArray_int32_T *r2;
   real_T distance_data[5];
-  real_T u[3];
+  real_T vS[3];
   real_T numIterations;
   int32_T tmp_size[2];
   real_T tmp_data[16];
   real_T b_xNear_data[11];
   real_T xInit_data[11];
   int32_T ixstart;
-  real_T b_xInit_data[6];
+  real_T AdB2S[6];
   real_T k1[6];
+  real_T y;
   real_T k2[6];
   real_T k3[6];
-  real_T absxk;
-  real_T xInit[6];
+  real_T AdP2S[6];
   int32_T itmp;
-  real_T b_tmp_data[16];
+  real_T TP2S[16];
   int32_T iv6[2];
   int32_T iv7[2];
   emxArray_real_T b_xRand_data;
   real_T hDiff;
   real_T aGain;
-  real_T v_LS[2];
-  int32_T i6;
+  real_T q[4];
+  real_T TI2S[16];
+  real_T TO2S[16];
+  real_T TO2J[16];
+  real_T TQ2O[16];
+  real_T TR2Q[16];
+  static const int8_T iv8[4] = { 0, 0, 0, 1 };
+
+  static const int8_T iv9[4] = { 0, 0, 1, 0 };
+
+  static const real_T dv3[4] = { 0.0, -1.0, 6.123233995736766E-17, 0.0 };
+
+  static const int8_T iv10[4] = { 1, 0, 0, 0 };
+
+  real_T TS2R[16];
+  static const int8_T iv11[4] = { 0, 1, 0, 0 };
+
+  real_T dv4[16];
+  real_T dv5[16];
+  real_T TS2O[16];
+  real_T TB2S[16];
+  real_T dv6[16];
+  real_T dv7[16];
+  real_T dv8[16];
+  real_T b_TI2S[16];
+  real_T c_TI2S[16];
+  real_T d_TI2S[16];
+  real_T e_TI2S[16];
+  real_T f_TI2S[16];
+  real_T b_TO2S[16];
+  real_T c_TO2S[16];
+  real_T d_TO2S[16];
+  real_T e_TO2S[16];
+  real_T b_TS2O[9];
+  real_T dv9[9];
+  real_T b_AdB2S[36];
+  real_T dv10[9];
+  real_T b_AdP2S[36];
+  real_T dv11[9];
+  real_T AdI2S[36];
+  real_T dv12[9];
+  real_T AdO2S[36];
+  real_T c_AdB2S[6];
+  real_T b_AdO2S[6];
+  real_T uSDot[6];
+  int32_T i9;
   boolean_T exitg1;
   emlrtStack st;
+  emlrtStack b_st;
   st.prev = sp;
   st.tls = sp->tls;
+  b_st.prev = &st;
+  b_st.tls = st.tls;
   emlrtHeapReferenceStackEnterFcnR2012b(sp);
   b2 = false;
 
@@ -135,19 +196,19 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   memset(&candStates_data[0], 0, 55U * sizeof(real_T));
   emxInit_real_T(sp, &candTransArrays, 2, &f_emlrtRTEI, true);
   scale = muDoubleScalarRound(Dt / dt);
-  i5 = candTransArrays->size[0] * candTransArrays->size[1];
+  i8 = candTransArrays->size[0] * candTransArrays->size[1];
   candTransArrays->size[0] = 5;
-  d1 = (scale + 1.0) * 6.0;
-  d1 = emlrtNonNegativeCheckFastR2012b(d1, &j_emlrtDCI, sp);
-  candTransArrays->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(d1,
-    &i_emlrtDCI, sp);
-  emxEnsureCapacity(sp, (emxArray__common *)candTransArrays, i5, (int32_T)sizeof
+  t = (scale + 1.0) * 6.0;
+  t = emlrtNonNegativeCheckFastR2012b(t, &j_emlrtDCI, sp);
+  candTransArrays->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(t, &i_emlrtDCI,
+    sp);
+  emxEnsureCapacity(sp, (emxArray__common *)candTransArrays, i8, (int32_T)sizeof
                     (real_T), &e_emlrtRTEI);
-  d1 = (scale + 1.0) * 6.0;
-  d1 = emlrtNonNegativeCheckFastR2012b(d1, &j_emlrtDCI, sp);
-  loop_ub = 5 * (int32_T)emlrtIntegerCheckFastR2012b(d1, &i_emlrtDCI, sp);
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    candTransArrays->data[i5] = 0.0;
+  t = (scale + 1.0) * 6.0;
+  t = emlrtNonNegativeCheckFastR2012b(t, &j_emlrtDCI, sp);
+  loop_ub = 5 * (int32_T)emlrtIntegerCheckFastR2012b(t, &i_emlrtDCI, sp);
+  for (i8 = 0; i8 < loop_ub; i8++) {
+    candTransArrays->data[i8] = 0.0;
   }
 
   /* Transform the control inputs to joint space. */
@@ -156,14 +217,14 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* getConstrainedGammaDotDot Summary of this function goes here */
     /*    Detailed explanation goes here */
     /* [~,~,L3,~,L5,~,~,~,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst); */
-    for (i5 = 0; i5 < 2; i5++) {
-      UJoint_data[i + 5 * i5] = U[i + 5 * i5];
+    for (i8 = 0; i8 < 2; i8++) {
+      UJoint_data[i + 5 * i8] = U[i + 5 * i8];
     }
 
-    UJoint_data[i + 10] = ((-U[5 + i] * kC_l3 * muDoubleScalarCos(xNear_data[4])
-      + xNear_data[7] * xNear_data[7] * kC_l3 * muDoubleScalarSin(xNear_data[4]))
-      + xNear_data[8] * xNear_data[8] * kC_l5 * muDoubleScalarSin(kC_zeta +
-      xNear_data[5])) / (kC_l5 * muDoubleScalarCos(kC_zeta + xNear_data[5]));
+    UJoint_data[i + 10] = ((-U[5 + i] * kC->l3 * muDoubleScalarCos(xNear_data[4])
+      + xNear_data[7] * xNear_data[7] * kC->l3 * muDoubleScalarSin(xNear_data[4]))
+      + xNear_data[8] * xNear_data[8] * kC->l5 * muDoubleScalarSin(kC->zeta +
+      xNear_data[5])) / (kC->l5 * muDoubleScalarCos(kC->zeta + xNear_data[5]));
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
   }
 
@@ -174,9 +235,9 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
   for (i = 0; i < 5; i++) {
     /* Generate a candidate state using a fourth order Runge-Kutta  */
     /* integration technique. */
-    st.site = &db_emlrtRSI;
-    for (i5 = 0; i5 < 3; i5++) {
-      u[i5] = UJoint_data[i + 5 * i5];
+    st.site = &lb_emlrtRSI;
+    for (i8 = 0; i8 < 3; i8++) {
+      vS[i8] = UJoint_data[i + 5 * i8];
     }
 
     /* rk4.m */
@@ -187,102 +248,102 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     numIterations = muDoubleScalarRound(Dt / dt);
     tmp_size[1] = 11;
     memset(&tmp_data[0], 0, 11U * sizeof(real_T));
-    for (i5 = 0; i5 < 11; i5++) {
-      b_xNear_data[i5] = xNear_data[xNear_size[0] * i5];
+    for (i8 = 0; i8 < 11; i8++) {
+      b_xNear_data[i8] = xNear_data[xNear_size[0] * i8];
     }
 
-    for (i5 = 0; i5 < 6; i5++) {
-      xInit_data[i5] = b_xNear_data[3 + i5];
+    for (i8 = 0; i8 < 6; i8++) {
+      xInit_data[i8] = b_xNear_data[3 + i8];
     }
 
     /* xInitOrig = xInit; */
-    i5 = r1->size[0] * r1->size[1];
+    i8 = r1->size[0] * r1->size[1];
     r1->size[0] = 1;
-    d1 = (numIterations + 1.0) * 6.0;
-    d1 = emlrtNonNegativeCheckFastR2012b(d1, &l_emlrtDCI, &st);
-    r1->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(d1, &k_emlrtDCI, &st);
-    emxEnsureCapacity(&st, (emxArray__common *)r1, i5, (int32_T)sizeof(real_T),
+    t = (numIterations + 1.0) * 6.0;
+    t = emlrtNonNegativeCheckFastR2012b(t, &l_emlrtDCI, &st);
+    r1->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(t, &k_emlrtDCI, &st);
+    emxEnsureCapacity(&st, (emxArray__common *)r1, i8, (int32_T)sizeof(real_T),
                       &e_emlrtRTEI);
-    d1 = (numIterations + 1.0) * 6.0;
-    d1 = emlrtNonNegativeCheckFastR2012b(d1, &l_emlrtDCI, &st);
-    loop_ub = (int32_T)emlrtIntegerCheckFastR2012b(d1, &k_emlrtDCI, &st);
-    for (i5 = 0; i5 < loop_ub; i5++) {
-      r1->data[i5] = 0.0;
+    t = (numIterations + 1.0) * 6.0;
+    t = emlrtNonNegativeCheckFastR2012b(t, &l_emlrtDCI, &st);
+    loop_ub = (int32_T)emlrtIntegerCheckFastR2012b(t, &k_emlrtDCI, &st);
+    for (i8 = 0; i8 < loop_ub; i8++) {
+      r1->data[i8] = 0.0;
     }
 
     ixstart = (int32_T)((numIterations + 1.0) * 6.0);
-    for (i5 = 0; i5 < 6; i5++) {
-      r1->data[emlrtDynamicBoundsCheckFastR2012b(i5 + 1, 1, ixstart,
-        &eb_emlrtBCI, &st) - 1] = xInit_data[i5];
+    for (i8 = 0; i8 < 6; i8++) {
+      r1->data[emlrtDynamicBoundsCheckFastR2012b(i8 + 1, 1, ixstart,
+        &eb_emlrtBCI, &st) - 1] = xInit_data[i8];
     }
 
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, numIterations, mxDOUBLE_CLASS,
-      (int32_T)numIterations, &k_emlrtRTEI, &st);
+      (int32_T)numIterations, &j_emlrtRTEI, &st);
     ixstart = 0;
     while (ixstart <= (int32_T)numIterations - 1) {
-      for (i5 = 0; i5 < 6; i5++) {
-        b_xInit_data[i5] = xInit_data[i5];
+      for (i8 = 0; i8 < 6; i8++) {
+        AdB2S[i8] = xInit_data[i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        k1[i5] = b_xInit_data[3 + i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        k1[i8] = AdB2S[3 + i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        k1[i5 + 3] = u[i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        k1[i8 + 3] = vS[i8];
       }
 
-      scale = dt / 2.0;
-      for (i5 = 0; i5 < 6; i5++) {
-        b_xInit_data[i5] = xInit_data[i5] + scale * k1[i5];
+      y = dt / 2.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        AdB2S[i8] = xInit_data[i8] + y * k1[i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        k2[i5] = b_xInit_data[3 + i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        k2[i8] = AdB2S[3 + i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        k2[i5 + 3] = u[i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        k2[i8 + 3] = vS[i8];
       }
 
-      scale = dt / 2.0;
-      for (i5 = 0; i5 < 6; i5++) {
-        b_xInit_data[i5] = xInit_data[i5] + scale * k2[i5];
+      y = dt / 2.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        AdB2S[i8] = xInit_data[i8] + y * k2[i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        k3[i5] = b_xInit_data[3 + i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        k3[i8] = AdB2S[3 + i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        k3[i5 + 3] = u[i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        k3[i8 + 3] = vS[i8];
       }
 
-      scale = dt / 2.0;
-      absxk = dt / 6.0;
-      for (i5 = 0; i5 < 6; i5++) {
-        b_xInit_data[i5] = xInit_data[i5] + scale * k3[i5];
+      y = dt / 2.0;
+      scale = dt / 6.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        AdB2S[i8] = xInit_data[i8] + y * k3[i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        xInit[i5] = b_xInit_data[3 + i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        AdP2S[i8] = AdB2S[3 + i8];
       }
 
-      for (i5 = 0; i5 < 3; i5++) {
-        xInit[i5 + 3] = u[i5];
+      for (i8 = 0; i8 < 3; i8++) {
+        AdP2S[i8 + 3] = vS[i8];
       }
 
       tmp_size[1] = 6;
-      for (i5 = 0; i5 < 6; i5++) {
-        tmp_data[i5] = xInit_data[i5] + absxk * (((k1[i5] + 2.0 * k2[i5]) + 2.0 *
-          k3[i5]) + xInit[i5]);
+      for (i8 = 0; i8 < 6; i8++) {
+        tmp_data[i8] = xInit_data[i8] + scale * (((k1[i8] + 2.0 * k2[i8]) + 2.0 *
+          k3[i8]) + AdP2S[i8]);
       }
 
       /* Check pan angular position limits */
       if ((tmp_data[0] > jointLimits[1]) || (tmp_data[0] < jointLimits[0])) {
         tmp_data[0] = xInit_data[0];
         tmp_data[3] = 0.0;
-        u[0] = 0.0;
+        vS[0] = 0.0;
       }
 
       /* Check inner and outer leg angular position limits */
@@ -292,14 +353,14 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
         tmp_data[2] = xInit_data[2];
         tmp_data[4] = 0.0;
         tmp_data[5] = 0.0;
-        u[1] = 0.0;
-        u[2] = 0.0;
+        vS[1] = 0.0;
+        vS[2] = 0.0;
       }
 
       /* Check pan angular velocity limits */
       if ((tmp_data[3] > jointLimits[7]) || (tmp_data[3] < jointLimits[6])) {
         tmp_data[3] = xInit_data[3];
-        u[0] = 0.0;
+        vS[0] = 0.0;
       }
 
       /* Check inner and outer leg angular velocity limits */
@@ -307,34 +368,34 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
           (tmp_data[5] > jointLimits[11]) || (tmp_data[5] < jointLimits[10])) {
         tmp_data[4] = xInit_data[4];
         tmp_data[5] = xInit_data[5];
-        u[1] = 0.0;
-        u[2] = 0.0;
+        vS[1] = 0.0;
+        vS[2] = 0.0;
       }
 
-      for (i5 = 0; i5 < 6; i5++) {
-        xInit_data[i5] = tmp_data[i5];
+      for (i8 = 0; i8 < 6; i8++) {
+        xInit_data[i8] = tmp_data[i8];
       }
 
-      d1 = 6.0 * (1.0 + (real_T)ixstart) + 1.0;
+      t = 6.0 * (1.0 + (real_T)ixstart) + 1.0;
       scale = 6.0 * ((1.0 + (real_T)ixstart) + 1.0);
-      if (d1 > scale) {
-        i5 = 0;
+      if (t > scale) {
+        i8 = 0;
         loop_ub = 0;
       } else {
-        i5 = r1->size[1];
-        loop_ub = (int32_T)d1;
-        i5 = emlrtDynamicBoundsCheckFastR2012b(loop_ub, 1, i5, &db_emlrtBCI, &st)
+        i8 = r1->size[1];
+        loop_ub = (int32_T)t;
+        i8 = emlrtDynamicBoundsCheckFastR2012b(loop_ub, 1, i8, &cb_emlrtBCI, &st)
           - 1;
         loop_ub = r1->size[1];
         itmp = (int32_T)scale;
         loop_ub = emlrtDynamicBoundsCheckFastR2012b(itmp, 1, loop_ub,
-          &db_emlrtBCI, &st);
+          &cb_emlrtBCI, &st);
       }
 
-      loop_ub -= i5;
-      emlrtSizeEqCheck1DFastR2012b(loop_ub, 6, &f_emlrtECI, &st);
+      loop_ub -= i8;
+      emlrtSizeEqCheck1DFastR2012b(loop_ub, 6, &e_emlrtECI, &st);
       for (loop_ub = 0; loop_ub < 6; loop_ub++) {
-        r1->data[i5 + loop_ub] = tmp_data[loop_ub];
+        r1->data[i8 + loop_ub] = tmp_data[loop_ub];
       }
 
       ixstart++;
@@ -343,61 +404,61 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
     /* xInit = [zeros(1,3) xInitOrig 0 0]; */
     ixstart = 5 + tmp_size[1];
-    for (i5 = 0; i5 < 3; i5++) {
-      b_tmp_data[i5] = 0.0;
+    for (i8 = 0; i8 < 3; i8++) {
+      TP2S[i8] = 0.0;
     }
 
     loop_ub = tmp_size[1];
-    for (i5 = 0; i5 < loop_ub; i5++) {
-      b_tmp_data[i5 + 3] = tmp_data[i5];
+    for (i8 = 0; i8 < loop_ub; i8++) {
+      TP2S[i8 + 3] = tmp_data[i8];
     }
 
-    b_tmp_data[3 + tmp_size[1]] = 0.0;
-    b_tmp_data[4 + tmp_size[1]] = 0.0;
+    TP2S[3 + tmp_size[1]] = 0.0;
+    TP2S[4 + tmp_size[1]] = 0.0;
     tmp_size[0] = 1;
     tmp_size[1] = ixstart;
-    for (i5 = 0; i5 < ixstart; i5++) {
-      tmp_data[i5] = b_tmp_data[i5];
+    for (i8 = 0; i8 < ixstart; i8++) {
+      tmp_data[i8] = TP2S[i8];
     }
 
     if (!b2) {
-      for (i5 = 0; i5 < 2; i5++) {
-        iv6[i5] = 1 + 10 * i5;
+      for (i8 = 0; i8 < 2; i8++) {
+        iv6[i8] = 1 + 10 * i8;
       }
 
       b2 = true;
     }
 
-    emlrtSubAssignSizeCheckR2012b(iv6, 2, tmp_size, 2, &d_emlrtECI, sp);
-    for (i5 = 0; i5 < ixstart; i5++) {
-      candStates_data[i + 5 * i5] = tmp_data[i5];
+    emlrtSubAssignSizeCheckR2012b(iv6, 2, tmp_size, 2, &c_emlrtECI, sp);
+    for (i8 = 0; i8 < ixstart; i8++) {
+      candStates_data[i + 5 * i8] = tmp_data[i8];
     }
 
     loop_ub = candTransArrays->size[1];
-    i5 = r2->size[0];
+    i8 = r2->size[0];
     r2->size[0] = loop_ub;
-    emxEnsureCapacity(sp, (emxArray__common *)r2, i5, (int32_T)sizeof(int32_T),
+    emxEnsureCapacity(sp, (emxArray__common *)r2, i8, (int32_T)sizeof(int32_T),
                       &e_emlrtRTEI);
-    for (i5 = 0; i5 < loop_ub; i5++) {
-      r2->data[i5] = i5;
+    for (i8 = 0; i8 < loop_ub; i8++) {
+      r2->data[i8] = i8;
     }
 
     iv7[0] = 1;
     iv7[1] = r2->size[0];
     emlrtSubAssignSizeCheckR2012b(iv7, 2, *(int32_T (*)[2])r1->size, 2,
-      &e_emlrtECI, sp);
+      &d_emlrtECI, sp);
     loop_ub = r1->size[1];
-    for (i5 = 0; i5 < loop_ub; i5++) {
-      candTransArrays->data[i + candTransArrays->size[0] * r2->data[i5]] =
-        r1->data[r1->size[0] * i5];
+    for (i8 = 0; i8 < loop_ub; i8++) {
+      candTransArrays->data[i + candTransArrays->size[0] * r2->data[i8]] =
+        r1->data[r1->size[0] * i8];
     }
 
     /* U_check = sherpaTTFKAcc(U_joint(i,:)',xNear(7:9)',xNear(4:6)',kinematicConst) */
     /* velCheck = sherpaTTFKVel(candStates(i,7:9)',candStates(i,4:6)',kinematicConst); */
     /* Calculate the distance between the candidate state and the random */
     /* state. */
-    for (i5 = 0; i5 < 11; i5++) {
-      b_xNear_data[i5] = candStates_data[i + 5 * i5];
+    for (i8 = 0; i8 < 11; i8++) {
+      b_xNear_data[i8] = candStates_data[i + 5 * i8];
     }
 
     b_xRand_data.data = (real_T *)xRand_data;
@@ -405,9 +466,9 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     b_xRand_data.allocatedSize = -1;
     b_xRand_data.numDimensions = 2;
     b_xRand_data.canFreeData = false;
-    st.site = &eb_emlrtRSI;
+    st.site = &mb_emlrtRSI;
     hDiff = heuristicSingleLeg(&st, b_xNear_data, &b_xRand_data, jointLimits,
-      kC_l2, kC_l3, kC_l4, kC_l5, kC_l7, kC_zeta);
+      kC->l2, kC->l3, kC->l4, kC->l5, kC->l7, kC->zeta);
 
     /* Apply the ankle constraint to penalize any candidate state that */
     /* requires a change of ankle position greater than the allowed ankle */
@@ -417,42 +478,638 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
       aGain = 0.0;
     }
 
-    /* Ss = [1000 1]; */
-    /* qWDot = 1; */
-    /* r = 0.378/2; */
-    /* calcPhi.m */
-    /* function [qS,qWDot] = calcPhi(qDot,q,kinematicConst,sS,qWDot,r) */
-    /* v_XS = sin(conj(alpha))*conj(L6)*conj(alphaDot) - sin(conj(alpha))*conj(L2)*conj(alphaDot) - cos(conj(alpha))*conj(L7)*conj(gammaDot) - cos(conj(alpha))*conj(L7)*conj(betaDot) - cos(conj(beta))*sin(conj(alpha))*conj(L3)*conj(alphaDot) - cos(conj(alpha))*sin(conj(beta))*conj(L3)*conj(betaDot) - sin(conj(alpha))*cos(conj(zeta))*conj(L4)*conj(alphaDot) - cos(conj(alpha))*sin(conj(zeta))*conj(L4)*conj(betaDot) - cos(conj(alpha))*sin(conj(zeta))*conj(L4)*conj(gammaDot) - cos(conj(gamma))*sin(conj(alpha))*cos(conj(zeta))*conj(L5)*conj(alphaDot) - cos(conj(alpha))*cos(conj(gamma))*sin(conj(zeta))*conj(L5)*conj(betaDot) - cos(conj(alpha))*sin(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(betaDot) - cos(conj(alpha))*cos(conj(gamma))*sin(conj(zeta))*conj(L5)*conj(gammaDot) - cos(conj(alpha))*sin(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(gammaDot) + sin(conj(alpha))*sin(conj(gamma))*sin(conj(zeta))*conj(L5)*conj(alphaDot); */
-    /* v_YS = cos(conj(alpha))*conj(L2)*conj(alphaDot) - sin(conj(alpha))*conj(L7)*conj(gammaDot) - sin(conj(alpha))*conj(L7)*conj(betaDot) - cos(conj(alpha))*conj(L6)*conj(alphaDot) + cos(conj(alpha))*cos(conj(beta))*conj(L3)*conj(alphaDot) + 0.99999999999999999999999999999999*cos(conj(alpha))*cos(conj(zeta))*conj(L4)*conj(alphaDot) - 1.0*sin(conj(alpha))*sin(conj(beta))*conj(L3)*conj(betaDot) - 1.0*sin(conj(alpha))*sin(conj(zeta))*conj(L4)*conj(betaDot) - 1.0*sin(conj(alpha))*sin(conj(zeta))*conj(L4)*conj(gammaDot) + 0.99999999999999999999999999999999*cos(conj(alpha))*cos(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(alphaDot) - cos(conj(alpha))*sin(conj(gamma))*sin(conj(zeta))*conj(L5)*conj(alphaDot) - 1.0*cos(conj(gamma))*sin(conj(alpha))*sin(conj(zeta))*conj(L5)*conj(betaDot) - 1.0*sin(conj(alpha))*sin(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(betaDot) - 1.0*cos(conj(gamma))*sin(conj(alpha))*sin(conj(zeta))*conj(L5)*conj(gammaDot) - 1.0*sin(conj(alpha))*sin(conj(gamma))*cos(conj(zeta))*conj(L5)*conj(gammaDot); */
-    /* qA1 = atan(sS(2)/sS(1)); */
-    /* v_WS = [qWDot*r*sign(sS(1))*cos(qA1); qWDot*r*sign(sS(1))*sin(qA1)]; */
-    v_LS[0] = -kC_l3 * candStates_data[i + 35] * muDoubleScalarSin
-      (candStates_data[i + 20]) - candStates_data[i + 40] * kC_l5 *
-      muDoubleScalarSin(kC_zeta + candStates_data[i + 25]);
-    v_LS[1] = candStates_data[i + 30] * (((kC_l2 + kC_l3 * muDoubleScalarCos
-      (candStates_data[i + 20])) + kC_l4 * muDoubleScalarCos(kC_zeta)) + kC_l5 *
-      muDoubleScalarCos(kC_zeta + candStates_data[i + 25]));
+    st.site = &nb_emlrtRSI;
+    for (i8 = 0; i8 < 3; i8++) {
+      q[i8] = candStates_data[i + 5 * (3 + i8)];
+    }
 
-    /*  + v_WS;     */
-    d1 = 0.0;
-    scale = 2.2250738585072014E-308;
-    for (ixstart = 0; ixstart < 2; ixstart++) {
-      absxk = muDoubleScalarAbs(v_LS[ixstart]);
-      if (absxk > scale) {
-        numIterations = scale / absxk;
-        d1 = 1.0 + d1 * numIterations * numIterations;
-        scale = absxk;
-      } else {
-        numIterations = absxk / scale;
-        d1 += numIterations * numIterations;
+    /* Homogeneous transformation matrices. */
+    b_st.site = &pb_emlrtRSI;
+
+    /* GENERATETRMATRICES Generates each of the homogeneous transformation */
+    /* matrices that describe the kinematic chain between the Sherpa_TT rover's */
+    /* body coordinate frame and its wheel contact frame. Denavit-Hartenburg */
+    /* parameters are used to express the transformation between each coordinate */
+    /* frame in the kinematic chain. */
+    /*  */
+    /* Inputs: */
+    /* -uG: A 1x3 vector giving the [x y z] relationship between the body and */
+    /* coordinate frame */
+    /* -q: A 1x4 vector describing the leg's joint state. This vector includes  */
+    /* [alpha beta gamma]. */
+    /* -kC: A struct containing the kinematic parameters of the Sherpa_TT leg. */
+    /* -legNum: The number of the leg that is being considered (1,2,3 or 4). */
+    /*  */
+    /* Outputs: */
+    /* TB2G: Transformation from the body to the ground. */
+    /* TP2B: Transformation from the pan joint to the body. */
+    /* TI2P: Transformation from the inner leg joint to the pan joint. */
+    /* TJ2I: Transformation from the inner leg knee joint to the inner leg joint. */
+    /* TO2J: Transformation from the outer leg joint to the inner leg knee joint. */
+    /* TQ2O: Transformation from the outer leg end joint to the outer leg joint. */
+    /* TR2Q: Transformation from the steering base joint to the outer leg end */
+    /* joint. */
+    /* TS2R: Transformation from the steering joint to the steering base joint. */
+    /* TW2S: Transformation from the wheel joint to the steering joint. */
+    /* TC2W: Transformation from the wheel contact point to the wheel joint. */
+    /*  */
+    /* generateTrMatrices.m */
+    /* author:    wreid */
+    /* date:      20140214 */
+    /* TODO: Use a 6-DOF relationship between the ground and body frames by */
+    /* including the roll, pitch and yaw of the platform. */
+    emlrtDynamicBoundsCheckFastR2012b(legNum, 1, 4, &db_emlrtBCI, &b_st);
+
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    TI2S[0] = muDoubleScalarCos(q[0]);
+    TI2S[4] = -muDoubleScalarSin(q[0]) * 6.123233995736766E-17;
+    TI2S[8] = -muDoubleScalarSin(q[0]);
+    TI2S[12] = kC->l2 * muDoubleScalarCos(q[0]);
+    TI2S[1] = muDoubleScalarSin(q[0]);
+    TI2S[5] = muDoubleScalarCos(q[0]) * 6.123233995736766E-17;
+    TI2S[9] = -(-muDoubleScalarCos(q[0]));
+    TI2S[13] = kC->l2 * muDoubleScalarSin(q[0]);
+    TI2S[2] = 0.0;
+    TI2S[6] = -1.0;
+    TI2S[10] = 6.123233995736766E-17;
+    TI2S[14] = kC->l1;
+
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    TO2S[0] = muDoubleScalarCos(q[1]);
+    TO2S[4] = -muDoubleScalarSin(q[1]);
+    TO2S[8] = muDoubleScalarSin(q[1]) * 0.0;
+    TO2S[12] = kC->l3 * muDoubleScalarCos(q[1]);
+    TO2S[1] = muDoubleScalarSin(q[1]);
+    TO2S[5] = muDoubleScalarCos(q[1]);
+    TO2S[9] = -muDoubleScalarCos(q[1]) * 0.0;
+    TO2S[13] = kC->l3 * muDoubleScalarSin(q[1]);
+    scale = -q[1] + kC->zeta;
+
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    TO2J[0] = muDoubleScalarCos(scale);
+    TO2J[4] = -muDoubleScalarSin(scale);
+    TO2J[8] = muDoubleScalarSin(scale) * 0.0;
+    TO2J[12] = kC->l4 * muDoubleScalarCos(scale);
+    TO2J[1] = muDoubleScalarSin(scale);
+    TO2J[5] = muDoubleScalarCos(scale);
+    TO2J[9] = -muDoubleScalarCos(scale) * 0.0;
+    TO2J[13] = kC->l4 * muDoubleScalarSin(scale);
+
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    TQ2O[0] = muDoubleScalarCos(q[2]);
+    TQ2O[4] = -muDoubleScalarSin(q[2]);
+    TQ2O[8] = muDoubleScalarSin(q[2]) * 0.0;
+    TQ2O[12] = kC->l5 * muDoubleScalarCos(q[2]);
+    TQ2O[1] = muDoubleScalarSin(q[2]);
+    TQ2O[5] = muDoubleScalarCos(q[2]);
+    TQ2O[9] = -muDoubleScalarCos(q[2]) * 0.0;
+    TQ2O[13] = kC->l5 * muDoubleScalarSin(q[2]);
+    scale = -q[2] - kC->zeta;
+
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    TR2Q[0] = muDoubleScalarCos(scale);
+    TR2Q[4] = -muDoubleScalarSin(scale) * 6.123233995736766E-17;
+    TR2Q[8] = -muDoubleScalarSin(scale);
+    TR2Q[12] = -kC->l7 * muDoubleScalarCos(scale);
+    TR2Q[1] = muDoubleScalarSin(scale);
+    TR2Q[5] = muDoubleScalarCos(scale) * 6.123233995736766E-17;
+    TR2Q[9] = -(-muDoubleScalarCos(scale));
+    TR2Q[13] = -kC->l7 * muDoubleScalarSin(scale);
+    for (i8 = 0; i8 < 4; i8++) {
+      TI2S[3 + (i8 << 2)] = iv8[i8];
+      TO2S[2 + (i8 << 2)] = iv9[i8];
+      TO2S[3 + (i8 << 2)] = iv8[i8];
+      TO2J[2 + (i8 << 2)] = iv9[i8];
+      TO2J[3 + (i8 << 2)] = iv8[i8];
+      TQ2O[2 + (i8 << 2)] = iv9[i8];
+      TQ2O[3 + (i8 << 2)] = iv8[i8];
+      TR2Q[2 + (i8 << 2)] = dv3[i8];
+      TR2Q[3 + (i8 << 2)] = iv8[i8];
+
+      /* TRDH Generates the homogeneous transformation matrix A using the  */
+      /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+      /*  */
+      /* trDH.m */
+      /* author:    wreid */
+      /* date:      20150214 */
+      TS2R[i8 << 2] = iv10[i8];
+      TS2R[1 + (i8 << 2)] = iv11[i8];
+    }
+
+    TS2R[2] = 0.0;
+    TS2R[6] = 0.0;
+    TS2R[10] = 1.0;
+    TS2R[14] = kC->l6;
+    for (i8 = 0; i8 < 4; i8++) {
+      TS2R[3 + (i8 << 2)] = iv8[i8];
+    }
+
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    /* TRDH Generates the homogeneous transformation matrix A using the  */
+    /* Denavit-Hartenberg parameters theta, d, a and alpha. */
+    /*  */
+    /* trDH.m */
+    /* author:    wreid */
+    /* date:      20150214 */
+    dv5[0] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
+    dv5[4] = -muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
+    dv5[8] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]) * 0.0;
+    dv5[12] = kC->B2PXOffset * muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
+    dv5[1] = muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
+    dv5[5] = muDoubleScalarCos(kC->legAngleOffset[legNum - 1]);
+    dv5[9] = -muDoubleScalarCos(kC->legAngleOffset[legNum - 1]) * 0.0;
+    dv5[13] = kC->B2PXOffset * muDoubleScalarSin(kC->legAngleOffset[legNum - 1]);
+    dv5[2] = 0.0;
+    dv5[6] = 0.0;
+    dv5[10] = 1.0;
+    dv5[14] = kC->B2PZOffset;
+    for (i8 = 0; i8 < 4; i8++) {
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        TP2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          TP2S[i8 + (loop_ub << 2)] += TQ2O[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        TS2O[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          TS2O[i8 + (loop_ub << 2)] += TP2S[i8 + (itmp << 2)] * TS2R[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      dv5[3 + (i8 << 2)] = iv8[i8];
+    }
+
+    for (i8 = 0; i8 < 4; i8++) {
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        TP2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          TP2S[i8 + (loop_ub << 2)] += dv5[i8 + (itmp << 2)] * TI2S[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        TB2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          TB2S[i8 + (loop_ub << 2)] += TP2S[i8 + (itmp << 2)] * TO2S[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        dv6[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          dv6[i8 + (loop_ub << 2)] += TB2S[i8 + (itmp << 2)] * TO2J[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        dv7[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          dv7[i8 + (loop_ub << 2)] += dv6[i8 + (itmp << 2)] * TQ2O[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        dv8[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          dv8[i8 + (loop_ub << 2)] += dv7[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        dv4[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          dv4[i8 + (loop_ub << 2)] += dv8[i8 + (itmp << 2)] * TS2R[itmp +
+            (loop_ub << 2)];
+        }
+
+        b_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          b_TI2S[i8 + (loop_ub << 2)] += TI2S[i8 + (itmp << 2)] * TO2S[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        c_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          c_TI2S[i8 + (loop_ub << 2)] += b_TI2S[i8 + (itmp << 2)] * TO2J[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        d_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          d_TI2S[i8 + (loop_ub << 2)] += c_TI2S[i8 + (itmp << 2)] * TQ2O[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        e_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          e_TI2S[i8 + (loop_ub << 2)] += d_TI2S[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        f_TI2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          f_TI2S[i8 + (loop_ub << 2)] += e_TI2S[i8 + (itmp << 2)] * TS2R[itmp +
+            (loop_ub << 2)];
+        }
+
+        b_TO2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          b_TO2S[i8 + (loop_ub << 2)] += TO2S[i8 + (itmp << 2)] * TO2J[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        c_TO2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          c_TO2S[i8 + (loop_ub << 2)] += b_TO2S[i8 + (itmp << 2)] * TQ2O[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        d_TO2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          d_TO2S[i8 + (loop_ub << 2)] += c_TO2S[i8 + (itmp << 2)] * TR2Q[itmp +
+            (loop_ub << 2)];
+        }
+      }
+
+      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+        e_TO2S[i8 + (loop_ub << 2)] = 0.0;
+        for (itmp = 0; itmp < 4; itmp++) {
+          e_TO2S[i8 + (loop_ub << 2)] += d_TO2S[i8 + (itmp << 2)] * TS2R[itmp +
+            (loop_ub << 2)];
+        }
       }
     }
 
-    d1 = scale * muDoubleScalarSqrt(d1);
-    candStates_data[i + 45] = muDoubleScalarAtan(v_LS[0] / v_LS[1]);
-    candStates_data[i + 50] = d1;
+    trInv(dv4, TB2S);
+    trInv(f_TI2S, TP2S);
+    trInv(e_TO2S, TI2S);
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_TS2O[loop_ub + 3 * i8] = -TS2O[i8 + (loop_ub << 2)];
+      }
+    }
 
-    /* ,Ss,qWDot,r); */
+    for (i8 = 0; i8 < 3; i8++) {
+      vS[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        vS[i8] += b_TS2O[i8 + 3 * loop_ub] * TS2O[12 + loop_ub];
+      }
+
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        TO2S[loop_ub + (i8 << 2)] = TS2O[i8 + (loop_ub << 2)];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      TO2S[12 + i8] = vS[i8];
+    }
+
+    for (i8 = 0; i8 < 4; i8++) {
+      TO2S[3 + (i8 << 2)] = iv8[i8];
+    }
+
+    /* Adjunct transformation matrices. */
+    /* TR2ADJ Returns the adjunct matrix, A, based on the homogeneous */
+    /* transformation matrix, T. The adjunct matrix serves to transform the */
+    /* velocity from the one frame to another, as described by the homoegenous */
+    /* transformation matrix. */
+    /*  */
+    /* Inputs: */
+    /* -T: The 4x4 homogeneous transformation matrix representing the */
+    /* transformation from one frame to another. */
+    /* Outputs: */
+    /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
+    /* another. */
+    dv9[0] = 0.0;
+    dv9[3] = -TB2S[14];
+    dv9[6] = TB2S[13];
+    dv9[1] = TB2S[14];
+    dv9[4] = 0.0;
+    dv9[7] = -TB2S[12];
+    dv9[2] = -TB2S[13];
+    dv9[5] = TB2S[12];
+    dv9[8] = 0.0;
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        for (itmp = 0; itmp < 3; itmp++) {
+          b_TS2O[i8 + 3 * loop_ub] += dv9[i8 + 3 * itmp] * TB2S[itmp + (loop_ub <<
+            2)];
+        }
+
+        b_AdB2S[loop_ub + 6 * i8] = TB2S[loop_ub + (i8 << 2)];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdB2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdB2S[(loop_ub + 6 * i8) + 3] = 0.0;
+      }
+    }
+
+    /* TR2ADJ Returns the adjunct matrix, A, based on the homogeneous */
+    /* transformation matrix, T. The adjunct matrix serves to transform the */
+    /* velocity from the one frame to another, as described by the homoegenous */
+    /* transformation matrix. */
+    /*  */
+    /* Inputs: */
+    /* -T: The 4x4 homogeneous transformation matrix representing the */
+    /* transformation from one frame to another. */
+    /* Outputs: */
+    /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
+    /* another. */
+    dv10[0] = 0.0;
+    dv10[3] = -TP2S[14];
+    dv10[6] = TP2S[13];
+    dv10[1] = TP2S[14];
+    dv10[4] = 0.0;
+    dv10[7] = -TP2S[12];
+    dv10[2] = -TP2S[13];
+    dv10[5] = TP2S[12];
+    dv10[8] = 0.0;
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdB2S[(loop_ub + 6 * (i8 + 3)) + 3] = TB2S[loop_ub + (i8 << 2)];
+        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        for (itmp = 0; itmp < 3; itmp++) {
+          b_TS2O[i8 + 3 * loop_ub] += dv10[i8 + 3 * itmp] * TP2S[itmp + (loop_ub
+            << 2)];
+        }
+
+        b_AdP2S[loop_ub + 6 * i8] = TP2S[loop_ub + (i8 << 2)];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdP2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdP2S[(loop_ub + 6 * i8) + 3] = 0.0;
+      }
+    }
+
+    /* TR2ADJ Returns the adjunct matrix, A, based on the homogeneous */
+    /* transformation matrix, T. The adjunct matrix serves to transform the */
+    /* velocity from the one frame to another, as described by the homoegenous */
+    /* transformation matrix. */
+    /*  */
+    /* Inputs: */
+    /* -T: The 4x4 homogeneous transformation matrix representing the */
+    /* transformation from one frame to another. */
+    /* Outputs: */
+    /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
+    /* another. */
+    dv11[0] = 0.0;
+    dv11[3] = -TI2S[14];
+    dv11[6] = TI2S[13];
+    dv11[1] = TI2S[14];
+    dv11[4] = 0.0;
+    dv11[7] = -TI2S[12];
+    dv11[2] = -TI2S[13];
+    dv11[5] = TI2S[12];
+    dv11[8] = 0.0;
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        b_AdP2S[(loop_ub + 6 * (i8 + 3)) + 3] = TP2S[loop_ub + (i8 << 2)];
+        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        for (itmp = 0; itmp < 3; itmp++) {
+          b_TS2O[i8 + 3 * loop_ub] += dv11[i8 + 3 * itmp] * TI2S[itmp + (loop_ub
+            << 2)];
+        }
+
+        AdI2S[loop_ub + 6 * i8] = TI2S[loop_ub + (i8 << 2)];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        AdI2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        AdI2S[(loop_ub + 6 * i8) + 3] = 0.0;
+      }
+    }
+
+    /* TR2ADJ Returns the adjunct matrix, A, based on the homogeneous */
+    /* transformation matrix, T. The adjunct matrix serves to transform the */
+    /* velocity from the one frame to another, as described by the homoegenous */
+    /* transformation matrix. */
+    /*  */
+    /* Inputs: */
+    /* -T: The 4x4 homogeneous transformation matrix representing the */
+    /* transformation from one frame to another. */
+    /* Outputs: */
+    /* -A: The adjunct matrix that transforms velocity vectors from one frame to */
+    /* another. */
+    dv12[0] = 0.0;
+    dv12[3] = -TO2S[14];
+    dv12[6] = TO2S[13];
+    dv12[1] = TO2S[14];
+    dv12[4] = 0.0;
+    dv12[7] = -TO2S[12];
+    dv12[2] = -TO2S[13];
+    dv12[5] = TO2S[12];
+    dv12[8] = 0.0;
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        AdI2S[(loop_ub + 6 * (i8 + 3)) + 3] = TI2S[loop_ub + (i8 << 2)];
+        b_TS2O[i8 + 3 * loop_ub] = 0.0;
+        for (itmp = 0; itmp < 3; itmp++) {
+          b_TS2O[i8 + 3 * loop_ub] += dv12[i8 + 3 * itmp] * TO2S[itmp + (loop_ub
+            << 2)];
+        }
+
+        AdO2S[loop_ub + 6 * i8] = TO2S[loop_ub + (i8 << 2)];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        AdO2S[loop_ub + 6 * (i8 + 3)] = b_TS2O[loop_ub + 3 * i8];
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        AdO2S[(loop_ub + 6 * i8) + 3] = 0.0;
+      }
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      for (loop_ub = 0; loop_ub < 3; loop_ub++) {
+        AdO2S[(loop_ub + 6 * (i8 + 3)) + 3] = TO2S[loop_ub + (i8 << 2)];
+      }
+    }
+
+    /* Pan joint rate */
+    /* [rad/s] */
+    /* [m/s] */
+    /* [rad/s] */
+    /* Beta joint rate */
+    /* [rad/s] */
+    /* [m/s] */
+    /* [rad/s] */
+    /* Gamma joint rate */
+    /* [rad/s] */
+    /* [m/s] */
+    /* [rad/s] */
+    /* Velocity vector for the ankle frame. */
+    for (i8 = 0; i8 < 6; i8++) {
+      AdB2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        AdB2S[i8] += b_AdB2S[i8 + 6 * loop_ub] * uBDot[loop_ub];
+      }
+
+      AdP2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        AdP2S[i8] += b_AdP2S[i8 + 6 * loop_ub] * 0.0;
+      }
+    }
+
+    for (i8 = 0; i8 < 6; i8++) {
+      t = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        t += AdI2S[i8 + 6 * loop_ub] * 0.0;
+      }
+
+      c_AdB2S[i8] = (AdB2S[i8] + AdP2S[i8]) + t;
+    }
+
+    for (i8 = 0; i8 < 6; i8++) {
+      b_AdO2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        b_AdO2S[i8] += AdO2S[i8 + 6 * loop_ub] * 0.0;
+      }
+
+      uSDot[i8] = c_AdB2S[i8] + b_AdO2S[i8];
+      AdB2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        AdB2S[i8] += b_AdB2S[i8 + 6 * loop_ub] * uBDot[loop_ub];
+      }
+
+      AdP2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        AdP2S[i8] += b_AdP2S[i8 + 6 * loop_ub] * 0.0;
+      }
+    }
+
+    for (i8 = 0; i8 < 6; i8++) {
+      t = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        t += AdI2S[i8 + 6 * loop_ub] * 0.0;
+      }
+
+      c_AdB2S[i8] = (AdB2S[i8] + AdP2S[i8]) + t;
+    }
+
+    for (i8 = 0; i8 < 6; i8++) {
+      b_AdO2S[i8] = 0.0;
+      for (loop_ub = 0; loop_ub < 6; loop_ub++) {
+        b_AdO2S[i8] += AdO2S[i8 + 6 * loop_ub] * 0.0;
+      }
+
+      AdB2S[i8] = c_AdB2S[i8] + b_AdO2S[i8];
+    }
+
+    for (i8 = 0; i8 < 3; i8++) {
+      vS[i8] = AdB2S[i8];
+    }
+
+    /* [m/s] */
+    /* [rad/s] */
+    /* Calculate the required phi joint angle and the required wheel speed, */
+    /* omega. */
+    /* [rad] */
+    y = 0.0;
+    scale = 2.2250738585072014E-308;
+    for (ixstart = 0; ixstart < 3; ixstart++) {
+      numIterations = muDoubleScalarAbs(vS[ixstart]);
+      if (numIterations > scale) {
+        t = scale / numIterations;
+        y = 1.0 + y * t * t;
+        scale = numIterations;
+      } else {
+        t = numIterations / scale;
+        y += t * t;
+      }
+    }
+
+    y = scale * muDoubleScalarSqrt(y);
+
+    /* [rad/s] */
+    candStates_data[i + 45] = muDoubleScalarAtan2(uSDot[1], uSDot[0]);
+    candStates_data[i + 50] = y / kC->r;
+
     /* angDiff Finds the angular difference between th1 and th2. */
     scale = ((xNear_data[10] - candStates_data[i + 45]) + 3.1415926535897931) /
       6.2831853071795862;
@@ -466,12 +1123,12 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
     /* Calculate a distance metric that includes the heurisitc distance */
     /* as well as any penalty due to ankle movements. */
     if (muDoubleScalarAbs(scale - 3.1415926535897931) > 0.39269908169872414) {
-      i6 = 1;
+      i9 = 1;
     } else {
-      i6 = 0;
+      i9 = 0;
     }
 
-    distance_data[i] = (1.0 - aGain) * hDiff + aGain * (real_T)i6;
+    distance_data[i] = (1.0 - aGain) * hDiff + aGain * (real_T)i9;
 
     /* distance(i) = hDiff; */
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
@@ -479,7 +1136,8 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
   emxFree_int32_T(&r2);
   emxFree_real_T(&r1);
-  st.site = &fb_emlrtRSI;
+  st.site = &ob_emlrtRSI;
+  b_st.site = &fb_emlrtRSI;
   ixstart = 1;
   scale = distance_data[0];
   itmp = 0;
@@ -511,19 +1169,19 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const int32_T
 
   xNew_size[0] = 1;
   xNew_size[1] = 11;
-  for (i5 = 0; i5 < 11; i5++) {
-    xNew_data[xNew_size[0] * i5] = candStates_data[itmp + 5 * i5];
+  for (i8 = 0; i8 < 11; i8++) {
+    xNew_data[xNew_size[0] * i8] = candStates_data[itmp + 5 * i8];
   }
 
   loop_ub = candTransArrays->size[1];
-  i5 = transitionArray->size[0] * transitionArray->size[1];
+  i8 = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
   transitionArray->size[1] = loop_ub;
-  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i5, (int32_T)sizeof
+  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i8, (int32_T)sizeof
                     (real_T), &e_emlrtRTEI);
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    transitionArray->data[transitionArray->size[0] * i5] = candTransArrays->
-      data[itmp + candTransArrays->size[0] * i5];
+  for (i8 = 0; i8 < loop_ub; i8++) {
+    transitionArray->data[transitionArray->size[0] * i8] = candTransArrays->
+      data[itmp + candTransArrays->size[0] * i8];
   }
 
   emxFree_real_T(&candTransArrays);

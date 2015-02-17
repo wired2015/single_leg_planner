@@ -1,14 +1,4 @@
-function plotJointConfigSpace(kinematicConst,jointLimits,K)
-
-    L1 = kinematicConst(1);
-    L2 = kinematicConst(2);
-    L3 = kinematicConst(3);
-    L4 = kinematicConst(4);
-    L5 = kinematicConst(5);
-    L6 = kinematicConst(6);
-    L7 = kinematicConst(7);
-    L8 = kinematicConst(8);
-    zeta = kinematicConst(9);
+function plotJointConfigSpace(kC,jointLimits,panHeight)
     
     vecLength = 40;
 
@@ -16,11 +6,8 @@ function plotJointConfigSpace(kinematicConst,jointLimits,K)
     alpha = linspace(jointLimits(1,1),jointLimits(2,1),vecLength);
     %beta = linspace(betaMIN,betaMAX,vecLength);
     gamma = linspace(jointLimits(1,3),jointLimits(2,3),vecLength);
-    beta = -asin((K-L1+L4*sin(zeta)+L5*sin(gamma+zeta)+L6+L8)/L3);
-
-    xVec = zeros(1,vecLength^2);
-    yVec = zeros(1,vecLength^2);
-    zVec = zeros(1,vecLength^2);
+    B = kC.l1-kC.l4*sin(kC.zeta)-kC.l6-kC.l8-kC.r;
+    beta = asin((-panHeight+B-kC.l5*sin(gamma+kC.zeta))/kC.l3);
 
     %For each possible alpha,beta,gamma groups calculate the corresponding x,y,z
     %Cartesian position of the contact point.

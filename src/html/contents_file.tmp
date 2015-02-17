@@ -48,4 +48,8 @@
 <tr><td><a href="sherpaTTIKVel_h.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="sherpaTTIKVel_h.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">sherpaTTIKVel.h</a><span> </span></td></tr><tr></tr>
 <tr><td><a href="sin_cpp.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="sin_cpp.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">sin.cpp</a><span> </span></td></tr><tr></tr>
 <tr><td><a href="sin_h.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="sin_h.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">sin.h</a><span> </span></td></tr><tr></tr>
+<tr><td><a href="trInv_cpp.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="trInv_cpp.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">trInv.cpp</a><span> </span></td></tr><tr></tr>
+<tr><td><a href="trInv_h.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="trInv_h.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">trInv.h</a><span> </span></td></tr><tr></tr>
+<tr><td><a href="validJointState_cpp.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="validJointState_cpp.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">validJointState.cpp</a><span> </span></td></tr><tr></tr>
+<tr><td><a href="validJointState_h.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="validJointState_h.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">validJointState.h</a><span> </span></td></tr><tr></tr>
 </table>

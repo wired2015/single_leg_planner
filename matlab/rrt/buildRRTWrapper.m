@@ -1,9 +1,30 @@
+%BUILDRRTWRAPPER This function acts as a wrapper for the buildRRT function.
+%Code generation for the singleLegPlanner is performed using this function
+%as an entry point.
+%  
+%Inputs:
+%-nInitCartesianB: the
+%-nGoalCartesianB:
+%-jointLimits:
+%-bodyHeight:
+%-U:
+%-dt:
+%-Dt:
+%-kC:
+%-threshold:
+%-legNum:
+%
+%Outputs:
+%-T:
+%-pathC:
+%-pathJ:
+%-success:
+%
 %buildRRTWrapper.m
 %author: wreid
 %date: 20150502
 
-
-function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum)
+function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot)
 
     persistent NUM_NODES 
     persistent HGAINS
@@ -12,6 +33,7 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     persistent ankleThreshold 
     persistent exhaustive 
     persistent goalSeedFreq 
+    persistent cartesianLimits
     
     if isempty(NUM_NODES)
         NUM_NODES = int32(1000);
@@ -35,12 +57,29 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         goalSeedFreq = int32(20);
     end
     
+    if isempty(cartesianLimits)
+        cartesianLimits = zeros(1,4);
+        betaMin = jointLimits(1,2);
+        betaMax = jointLimits(2,2);
+        gammaMin = jointLimits(1,3);
+        gammaMax = jointLimits(2,3);
+        u1 = sherpaTTFK([0 betaMin gammaMin],kC);
+        u2 = sherpaTTFK([0 betaMax gammaMax],kC);
+        u3 = sherpaTTFK([0 betaMin gammaMax],kC);
+        u4 = sherpaTTFK([0 betaMax gammaMin],kC);
+        cartesianLimits(1) = u1(3);
+        cartesianLimits(2) = u2(3);
+        cartesianLimits(3) = u3(3);
+        cartesianLimits(4) = u4(3);
+    end
+
+    
     panHeight  = getPanHeight(bodyHeight,kC);
 
     %Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame
     %to the pan coordinate frame.
     TP2B = trP2B(kC,legNum);
-    TB2P = invHomoMatrix(TP2B); %inv(TP2B);%
+    TB2P = trInv(TP2B); %inv(TP2B);%
     uInitP = TB2P(1:3,1:3)*nInitCartesianB(1:3)' + TB2P(1:3,4);
     uDotInitP = TB2P(1:3,1:3)*nInitCartesianB(4:6)';
     uGoalP = TB2P(1:3,1:3)*nGoalCartesianB(1:3)' + TB2P(1:3,4);
@@ -58,12 +97,12 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     
     %Check that the initial and final positions are valid. If they are not
     %return failure and an empty path.
-    if (validState(nInitJoint,jointLimits) && validState(nGoalJoint,jointLimits))
+    if (validJointState(nInitJoint,jointLimits) && validJointState(nGoalJoint,jointLimits))
         success = true;
         %Run buildRRT.
         nInit = [0 0 0 nInitJoint 0 0];
         nGoal = [0 0 0 nGoalJoint 0 0];
-        [T,pathJ] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq);
+        [T,pathJ] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq,uBDot,legNum);
         %Transform path back to the Cartesian space.
         [pathC,pathJ] = transformPath(pathJ,NODE_SIZE,kC,dt,Dt,TP2B);
         pathC = [0 nInitCartesianB; pathC];
@@ -75,22 +114,6 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         T = [];
     end 
 
-end
-
-function valid = validState(n,jointLimits)
-    
-    if n(1) < jointLimits(1,1) || n(1) > jointLimits(2,1) ||...
-       n(2) < jointLimits(1,2) || n(2) > jointLimits(2,2) ||...
-       n(3) < jointLimits(1,3) || n(3) > jointLimits(2,3) ||...
-       n(4) < jointLimits(1,4) || n(4) > jointLimits(2,4) ||...
-       n(5) < jointLimits(1,5) || n(5) > jointLimits(2,5) ||...
-       n(6) < jointLimits(1,6) || n(6) > jointLimits(2,6)
-    
-        valid = false;
-    else
-        valid = true;
-        
-    end
 end
 
 function [pathC,pathJ] = transformPath(pathOld,NODE_SIZE,kC,dt,Dt,TP2B)

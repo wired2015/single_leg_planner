@@ -2,7 +2,7 @@
  * File: _coder_buildRRTWrapper_info.c
  *
  * MATLAB Coder version            : 2.7
- * C/C++ source code generated on  : 13-Feb-2015 15:29:21
+ * C/C++ source code generated on  : 17-Feb-2015 13:54:41
  */
 
 /* Include Files */
@@ -27,7 +27,7 @@ const mxArray *emlrtMexFcnResolvedFunctionsInfo()
 {
   const mxArray *nameCaptureInfo;
   nameCaptureInfo = NULL;
-  emlrtAssign(&nameCaptureInfo, emlrtCreateStructMatrix(288, 1, 0, NULL));
+  emlrtAssign(&nameCaptureInfo, emlrtCreateStructMatrix(311, 1, 0, NULL));
   info_helper(&nameCaptureInfo);
   b_info_helper(&nameCaptureInfo);
   c_info_helper(&nameCaptureInfo);
@@ -278,12 +278,12 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
                 "context", 7);
-  emlrtAddField(*info, emlrt_marshallOut("getPanHeight"), "name", 7);
+  emlrtAddField(*info, emlrt_marshallOut("sherpaTTFK"), "name", 7);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 7);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPanHeight.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
                 "resolved", 7);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423746331U), "fileTimeLo", 7);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424084107U), "fileTimeLo", 7);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 7);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 7);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 7);
@@ -292,14 +292,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs7), "rhs", 7);
   emlrtAddField(*info, emlrtAliasP(lhs7), "lhs", 7);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
                 "context", 8);
-  emlrtAddField(*info, emlrt_marshallOut("trP2B"), "name", 8);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 8);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 8);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 8);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m"),
-                "resolved", 8);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423741442U), "fileTimeLo", 8);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 8);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 8);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 8);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 8);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 8);
@@ -308,14 +307,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs8), "rhs", 8);
   emlrtAddField(*info, emlrtAliasP(lhs8), "lhs", 8);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m"),
-                "context", 9);
-  emlrtAddField(*info, emlrt_marshallOut("generateDHTransMatrix"), "name", 9);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "context", 9);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_cos"), "name", 9);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 9);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateDHTransMatrix.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_cos.m"),
                 "resolved", 9);
-  emlrtAddField(*info, b_emlrt_marshallOut(1421843698U), "fileTimeLo", 9);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786322U), "fileTimeLo", 9);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 9);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 9);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 9);
@@ -324,13 +322,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs9), "rhs", 9);
   emlrtAddField(*info, emlrtAliasP(lhs9), "lhs", 9);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateDHTransMatrix.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
                 "context", 10);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 10);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 10);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 10);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 10);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 10);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 10);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 10);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 10);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 10);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 10);
@@ -339,13 +337,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs10), "rhs", 10);
   emlrtAddField(*info, emlrtAliasP(lhs10), "lhs", 10);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "context", 11);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_cos"), "name", 11);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "context", 11);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_sin"), "name", 11);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 11);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_cos.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sin.m"),
                 "resolved", 11);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786322U), "fileTimeLo", 11);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786336U), "fileTimeLo", 11);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 11);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 11);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 11);
@@ -354,13 +352,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs11), "rhs", 11);
   emlrtAddField(*info, emlrtAliasP(lhs11), "lhs", 11);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateDHTransMatrix.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
                 "context", 12);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 12);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 12);
+  emlrtAddField(*info, emlrt_marshallOut("getPanHeight"), "name", 12);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 12);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 12);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 12);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPanHeight.m"),
+                "resolved", 12);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423746331U), "fileTimeLo", 12);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 12);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 12);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 12);
@@ -369,13 +368,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs12), "rhs", 12);
   emlrtAddField(*info, emlrtAliasP(lhs12), "lhs", 12);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "context", 13);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_sin"), "name", 13);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 13);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+                "context", 13);
+  emlrtAddField(*info, emlrt_marshallOut("trP2B"), "name", 13);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 13);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sin.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m"),
                 "resolved", 13);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786336U), "fileTimeLo", 13);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424007016U), "fileTimeLo", 13);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 13);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 13);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 13);
@@ -384,14 +384,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs13), "rhs", 13);
   emlrtAddField(*info, emlrtAliasP(lhs13), "lhs", 13);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m"),
                 "context", 14);
-  emlrtAddField(*info, emlrt_marshallOut("invHomoMatrix"), "name", 14);
+  emlrtAddField(*info, emlrt_marshallOut("trDH"), "name", 14);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 14);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/invHomoMatrix.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trDH.m"),
                 "resolved", 14);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423473828U), "fileTimeLo", 14);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423922934U), "fileTimeLo", 14);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 14);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 14);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 14);
@@ -400,14 +400,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs14), "rhs", 14);
   emlrtAddField(*info, emlrtAliasP(lhs14), "lhs", 14);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/invHomoMatrix.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trDH.m"),
                 "context", 15);
-  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 15);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 15);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 15);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 15);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
-                "resolved", 15);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 15);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 15);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 15);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 15);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 15);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 15);
@@ -416,15 +415,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs15), "rhs", 15);
   emlrtAddField(*info, emlrtAliasP(lhs15), "lhs", 15);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m!common_checks"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trDH.m"),
                 "context", 16);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 16);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 16);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 16);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 16);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 16);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 16);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 16);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 16);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 16);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 16);
@@ -433,14 +430,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs16), "rhs", 16);
   emlrtAddField(*info, emlrtAliasP(lhs16), "lhs", 16);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
                 "context", 17);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 17);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 17);
+  emlrtAddField(*info, emlrt_marshallOut("trInv"), "name", 17);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 17);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trInv.m"),
                 "resolved", 17);
-  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 17);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423915247U), "fileTimeLo", 17);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 17);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 17);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 17);
@@ -449,14 +446,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs17), "rhs", 17);
   emlrtAddField(*info, emlrtAliasP(lhs17), "lhs", 17);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trInv.m"),
                 "context", 18);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 18);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 18);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 18);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 18);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                18);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 18);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+                "resolved", 18);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 18);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 18);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 18);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 18);
@@ -465,14 +462,15 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs18), "rhs", 18);
   emlrtAddField(*info, emlrtAliasP(lhs18), "lhs", 18);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "context",
-                19);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 19);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m!common_checks"),
+                "context", 19);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 19);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 19);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 19);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 19);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 19);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 19);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 19);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 19);
@@ -483,12 +481,12 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
                 "context", 20);
-  emlrtAddField(*info, emlrt_marshallOut("eml_xgemm"), "name", 20);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 20);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 20);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 20);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xgemm.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
                 "resolved", 20);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951890U), "fileTimeLo", 20);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 20);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 20);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 20);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 20);
@@ -497,15 +495,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs20), "rhs", 20);
   emlrtAddField(*info, emlrtAliasP(lhs20), "lhs", 20);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xgemm.m"), "context",
-                21);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.inline"), "name",
-                21);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 21);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+                "context", 21);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 21);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 21);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/inline.p"),
-                "resolved", 21);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 21);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                21);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 21);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 21);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 21);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 21);
@@ -514,13 +511,12 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs21), "rhs", 21);
   emlrtAddField(*info, emlrtAliasP(lhs21), "lhs", 21);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xgemm.m"), "context",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "context",
                 22);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.xgemm"), "name",
-                22);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 22);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 22);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 22);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
                 "resolved", 22);
   emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 22);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 22);
@@ -531,15 +527,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs22), "rhs", 22);
   emlrtAddField(*info, emlrtAliasP(lhs22), "lhs", 22);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
                 "context", 23);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.use_refblas"),
-                "name", 23);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 23);
+  emlrtAddField(*info, emlrt_marshallOut("eml_xgemm"), "name", 23);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 23);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/use_refblas.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xgemm.m"),
                 "resolved", 23);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 23);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951890U), "fileTimeLo", 23);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 23);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 23);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 23);
@@ -548,14 +543,15 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs23), "rhs", 23);
   emlrtAddField(*info, emlrtAliasP(lhs23), "lhs", 23);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
-                "context", 24);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 24);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 24);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xgemm.m"), "context",
+                24);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.inline"), "name",
+                24);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 24);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/inline.p"),
                 "resolved", 24);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 24);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 24);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 24);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 24);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 24);
@@ -564,15 +560,15 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs24), "rhs", 24);
   emlrtAddField(*info, emlrtAliasP(lhs24), "lhs", 24);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
-                "context", 25);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.refblas.xgemm"), "name",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xgemm.m"), "context",
+                25);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.xgemm"), "name",
                 25);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 25);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xgemm.p"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
                 "resolved", 25);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 25);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 25);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 25);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 25);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 25);
@@ -581,14 +577,15 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs25), "rhs", 25);
   emlrtAddField(*info, emlrtAliasP(lhs25), "lhs", 25);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
                 "context", 26);
-  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 26);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.use_refblas"),
+                "name", 26);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 26);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/use_refblas.p"),
                 "resolved", 26);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 26);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 26);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 26);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 26);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 26);
@@ -597,14 +594,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs26), "rhs", 26);
   emlrtAddField(*info, emlrtAliasP(lhs26), "lhs", 26);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
                 "context", 27);
-  emlrtAddField(*info, emlrt_marshallOut("sherpaTTIK"), "name", 27);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 27);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 27);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 27);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
                 "resolved", 27);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423754499U), "fileTimeLo", 27);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 27);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 27);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 27);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 27);
@@ -613,13 +610,15 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs27), "rhs", 27);
   emlrtAddField(*info, emlrtAliasP(lhs27), "lhs", 27);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xgemm.p"),
                 "context", 28);
-  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 28);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 28);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.refblas.xgemm"), "name",
+                28);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 28);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 28);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 28);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xgemm.p"),
+                "resolved", 28);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 28);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 28);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 28);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 28);
@@ -628,14 +627,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs28), "rhs", 28);
   emlrtAddField(*info, emlrtAliasP(lhs28), "lhs", 28);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "context", 29);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 29);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 29);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+                "context", 29);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 29);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 29);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
                 "resolved", 29);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 29);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 29);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 29);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 29);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 29);
@@ -644,13 +643,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs29), "rhs", 29);
   emlrtAddField(*info, emlrtAliasP(lhs29), "lhs", 29);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "context", 30);
-  emlrtAddField(*info, emlrt_marshallOut("ismatrix"), "name", 30);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 30);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+                "context", 30);
+  emlrtAddField(*info, emlrt_marshallOut("sherpaTTIK"), "name", 30);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 30);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/ismatrix.m"), "resolved",
-                30);
-  emlrtAddField(*info, b_emlrt_marshallOut(1331268858U), "fileTimeLo", 30);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+                "resolved", 30);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423754499U), "fileTimeLo", 30);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 30);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 30);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 30);
@@ -659,12 +659,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs30), "rhs", 30);
   emlrtAddField(*info, emlrtAliasP(lhs30), "lhs", 30);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "context", 31);
-  emlrtAddField(*info, emlrt_marshallOut("power"), "name", 31);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+                "context", 31);
+  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 31);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 31);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m"), "resolved", 31);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292506U), "fileTimeLo", 31);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 31);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 31);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 31);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 31);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 31);
@@ -673,7 +674,7 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs31), "rhs", 31);
   emlrtAddField(*info, emlrtAliasP(lhs31), "lhs", 31);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m"), "context", 32);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "context", 32);
   emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
                 "name", 32);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 32);
@@ -689,14 +690,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs32), "rhs", 32);
   emlrtAddField(*info, emlrtAliasP(lhs32), "lhs", 32);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!fltpower"), "context",
-                33);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 33);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "context", 33);
+  emlrtAddField(*info, emlrt_marshallOut("ismatrix"), "name", 33);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 33);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/ismatrix.m"), "resolved",
                 33);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 33);
+  emlrtAddField(*info, b_emlrt_marshallOut(1331268858U), "fileTimeLo", 33);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 33);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 33);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 33);
@@ -705,14 +705,12 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs33), "rhs", 33);
   emlrtAddField(*info, emlrtAliasP(lhs33), "lhs", 33);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!fltpower"), "context",
-                34);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 34);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "context", 34);
+  emlrtAddField(*info, emlrt_marshallOut("power"), "name", 34);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 34);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
-                "resolved", 34);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 34);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m"), "resolved", 34);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292506U), "fileTimeLo", 34);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 34);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 34);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 34);
@@ -721,15 +719,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs34), "rhs", 34);
   emlrtAddField(*info, emlrtAliasP(lhs34), "lhs", 34);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
-                "context", 35);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalexpAlloc"), "name",
-                35);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m"), "context", 35);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 35);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 35);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 35);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 35);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 35);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 35);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 35);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 35);
@@ -740,11 +737,12 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!fltpower"), "context",
                 36);
-  emlrtAddField(*info, emlrt_marshallOut("floor"), "name", 36);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 36);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 36);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "resolved", 36);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 36);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                36);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 36);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 36);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 36);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 36);
@@ -753,14 +751,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs36), "rhs", 36);
   emlrtAddField(*info, emlrtAliasP(lhs36), "lhs", 36);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "context", 37);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 37);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!fltpower"), "context",
+                37);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 37);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 37);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
                 "resolved", 37);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 37);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 37);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 37);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 37);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 37);
@@ -769,13 +767,15 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs37), "rhs", 37);
   emlrtAddField(*info, emlrtAliasP(lhs37), "lhs", 37);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "context", 38);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_floor"), "name", 38);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
+                "context", 38);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalexpAlloc"), "name",
+                38);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 38);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_floor.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p"),
                 "resolved", 38);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 38);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 38);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 38);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 38);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 38);
@@ -784,14 +784,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs38), "rhs", 38);
   emlrtAddField(*info, emlrtAliasP(lhs38), "lhs", 38);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!scalar_float_power"),
-                "context", 39);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 39);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!fltpower"), "context",
+                39);
+  emlrtAddField(*info, emlrt_marshallOut("floor"), "name", 39);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 39);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                39);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 39);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "resolved", 39);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 39);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 39);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 39);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 39);
@@ -800,13 +799,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs39), "rhs", 39);
   emlrtAddField(*info, emlrtAliasP(lhs39), "lhs", 39);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
-                "context", 40);
-  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 40);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "context", 40);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 40);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 40);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 40);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 40);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 40);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 40);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 40);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 40);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 40);
@@ -815,12 +815,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs40), "rhs", 40);
   emlrtAddField(*info, emlrtAliasP(lhs40), "lhs", 40);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "context", 41);
-  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 41);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 41);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "context", 41);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_floor"), "name", 41);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 41);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved", 41);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 41);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_floor.m"),
+                "resolved", 41);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 41);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 41);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 41);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 41);
@@ -829,13 +830,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs41), "rhs", 41);
   emlrtAddField(*info, emlrtAliasP(lhs41), "lhs", 41);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "context", 42);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_sqrt"), "name", 42);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!scalar_float_power"),
+                "context", 42);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 42);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 42);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m"),
-                "resolved", 42);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786338U), "fileTimeLo", 42);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                42);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 42);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 42);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 42);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 42);
@@ -844,14 +846,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs42), "rhs", 42);
   emlrtAddField(*info, emlrtAliasP(lhs42), "lhs", 42);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 43);
-  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 43);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 43);
+  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 43);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 43);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
-                "resolved", 43);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 43);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 43);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 43);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 43);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 43);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 43);
@@ -860,13 +861,12 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs43), "rhs", 43);
   emlrtAddField(*info, emlrtAliasP(lhs43), "lhs", 43);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
-                "context", 44);
-  emlrtAddField(*info, emlrt_marshallOut("exp"), "name", 44);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 44);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "context", 44);
+  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 44);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 44);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/exp.m"), "resolved", 44);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801580U), "fileTimeLo", 44);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved", 44);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 44);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 44);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 44);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 44);
@@ -875,13 +875,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs44), "rhs", 44);
   emlrtAddField(*info, emlrtAliasP(lhs44), "lhs", 44);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/exp.m"), "context", 45);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_exp"), "name", 45);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "context", 45);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_sqrt"), "name", 45);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 45);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_exp.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m"),
                 "resolved", 45);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292500U), "fileTimeLo", 45);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786338U), "fileTimeLo", 45);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 45);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 45);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 45);
@@ -890,13 +890,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs45), "rhs", 45);
   emlrtAddField(*info, emlrtAliasP(lhs45), "lhs", 45);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_exp.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 46);
-  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 46);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 46);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 46);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 46);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 46);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 46);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+                "resolved", 46);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 46);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 46);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 46);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 46);
@@ -905,14 +906,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs46), "rhs", 46);
   emlrtAddField(*info, emlrtAliasP(lhs46), "lhs", 46);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "context", 47);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 47);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+                "context", 47);
+  emlrtAddField(*info, emlrt_marshallOut("exp"), "name", 47);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 47);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 47);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 47);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/exp.m"), "resolved", 47);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801580U), "fileTimeLo", 47);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 47);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 47);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 47);
@@ -921,28 +921,28 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs47), "rhs", 47);
   emlrtAddField(*info, emlrtAliasP(lhs47), "lhs", 47);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_exp.m"),
-                "context", 48);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 48);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/exp.m"), "context", 48);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_exp"), "name", 48);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 48);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 48);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 48);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_exp.m"),
+                "resolved", 48);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292500U), "fileTimeLo", 48);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 48);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 48);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 48);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 48);
   emlrtAssign(&rhs48, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs48, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs48), "rhs", 48);
   emlrtAddField(*info, emlrtAliasP(lhs48), "lhs", 48);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_exp.m"),
                 "context", 49);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 49);
+  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 49);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 49);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 49);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 49);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 49);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 49);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 49);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 49);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 49);
@@ -951,13 +951,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs49), "rhs", 49);
   emlrtAddField(*info, emlrtAliasP(lhs49), "lhs", 49);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
-                "context", 50);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 50);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "context", 50);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 50);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 50);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 50);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 50);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 50);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 50);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 50);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 50);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 50);
@@ -966,7 +967,7 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs50), "rhs", 50);
   emlrtAddField(*info, emlrtAliasP(lhs50), "lhs", 50);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_exp.m"),
                 "context", 51);
   emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 51);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 51);
@@ -981,13 +982,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs51), "rhs", 51);
   emlrtAddField(*info, emlrtAliasP(lhs51), "lhs", 51);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!scalar_float_power"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 52);
-  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 52);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 52);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 52);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 52);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 52);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 52);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 52);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 52);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 52);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 52);
@@ -996,13 +997,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs52), "rhs", 52);
   emlrtAddField(*info, emlrtAliasP(lhs52), "lhs", 52);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 53);
-  emlrtAddField(*info, emlrt_marshallOut("rdivide"), "name", 53);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 53);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 53);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/rdivide.m"), "resolved", 53);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677880U), "fileTimeLo", 53);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 53);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 53);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 53);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 53);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 53);
@@ -1011,29 +1012,28 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs53), "rhs", 53);
   emlrtAddField(*info, emlrtAliasP(lhs53), "lhs", 53);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 54);
-  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 54);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 54);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 54);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 54);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 54);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 54);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 54);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 54);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 54);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 54);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 54);
   emlrtAssign(&rhs54, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs54, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs54), "rhs", 54);
   emlrtAddField(*info, emlrtAliasP(lhs54), "lhs", 54);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "context", 55);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 55);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/power.m!scalar_float_power"),
+                "context", 55);
+  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 55);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 55);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 55);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 55);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 55);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 55);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 55);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 55);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 55);
@@ -1044,12 +1044,11 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 56);
-  emlrtAddField(*info, emlrt_marshallOut("eml_guarded_nan"), "name", 56);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 56);
+  emlrtAddField(*info, emlrt_marshallOut("rdivide"), "name", 56);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 56);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_nan.m"),
-                "resolved", 56);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786376U), "fileTimeLo", 56);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/rdivide.m"), "resolved", 56);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677880U), "fileTimeLo", 56);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 56);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 56);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 56);
@@ -1058,14 +1057,13 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs56), "rhs", 56);
   emlrtAddField(*info, emlrtAliasP(lhs56), "lhs", 56);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_nan.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 57);
-  emlrtAddField(*info, emlrt_marshallOut("eml_is_float_class"), "name", 57);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 57);
+  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 57);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 57);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_is_float_class.m"),
-                "resolved", 57);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786382U), "fileTimeLo", 57);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 57);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 57);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 57);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 57);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 57);
@@ -1074,13 +1072,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs57), "rhs", 57);
   emlrtAddField(*info, emlrtAliasP(lhs57), "lhs", 57);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
-                "context", 58);
-  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 58);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "context", 58);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 58);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 58);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 58);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 58);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 58);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 58);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 58);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 58);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 58);
@@ -1091,10 +1090,10 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 59);
-  emlrtAddField(*info, emlrt_marshallOut("eml_guarded_inf"), "name", 59);
+  emlrtAddField(*info, emlrt_marshallOut("eml_guarded_nan"), "name", 59);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 59);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_inf.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_nan.m"),
                 "resolved", 59);
   emlrtAddField(*info, b_emlrt_marshallOut(1286786376U), "fileTimeLo", 59);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 59);
@@ -1105,7 +1104,7 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs59), "rhs", 59);
   emlrtAddField(*info, emlrtAliasP(lhs59), "lhs", 59);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_inf.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_nan.m"),
                 "context", 60);
   emlrtAddField(*info, emlrt_marshallOut("eml_is_float_class"), "name", 60);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 60);
@@ -1123,11 +1122,11 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 61);
-  emlrtAddField(*info, emlrt_marshallOut("realmax"), "name", 61);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 61);
+  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 61);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 61);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmax.m"), "resolved", 61);
-  emlrtAddField(*info, b_emlrt_marshallOut(1307622442U), "fileTimeLo", 61);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 61);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 61);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 61);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 61);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 61);
@@ -1136,13 +1135,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs61), "rhs", 61);
   emlrtAddField(*info, emlrtAliasP(lhs61), "lhs", 61);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmax.m"), "context", 62);
-  emlrtAddField(*info, emlrt_marshallOut("eml_realmax"), "name", 62);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
+                "context", 62);
+  emlrtAddField(*info, emlrt_marshallOut("eml_guarded_inf"), "name", 62);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 62);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmax.m"), "resolved",
-                62);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 62);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_inf.m"),
+                "resolved", 62);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786376U), "fileTimeLo", 62);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 62);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 62);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 62);
@@ -1151,14 +1151,14 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs62), "rhs", 62);
   emlrtAddField(*info, emlrtAliasP(lhs62), "lhs", 62);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmax.m"), "context",
-                63);
-  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 63);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_guarded_inf.m"),
+                "context", 63);
+  emlrtAddField(*info, emlrt_marshallOut("eml_is_float_class"), "name", 63);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 63);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_is_float_class.m"),
                 "resolved", 63);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 63);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786382U), "fileTimeLo", 63);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 63);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 63);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 63);
@@ -1462,27 +1462,26 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 64);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 64);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 64);
+  emlrtAddField(*info, emlrt_marshallOut("realmax"), "name", 64);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 64);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 64);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 64);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmax.m"), "resolved", 64);
+  emlrtAddField(*info, b_emlrt_marshallOut(1307622442U), "fileTimeLo", 64);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 64);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 64);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 64);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 64);
   emlrtAssign(&rhs64, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs64, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs64), "rhs", 64);
   emlrtAddField(*info, emlrtAliasP(lhs64), "lhs", 64);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
-                "context", 65);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_hypot"), "name", 65);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 65);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmax.m"), "context", 65);
+  emlrtAddField(*info, emlrt_marshallOut("eml_realmax"), "name", 65);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 65);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
-                "resolved", 65);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 65);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmax.m"), "resolved",
+                65);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 65);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 65);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 65);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 65);
@@ -1491,14 +1490,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs65), "rhs", 65);
   emlrtAddField(*info, emlrtAliasP(lhs65), "lhs", 65);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
-                "context", 66);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 66);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 66);
-  emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmax.m"), "context",
                 66);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 66);
+  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 66);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 66);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
+                "resolved", 66);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 66);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 66);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 66);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 66);
@@ -1507,30 +1506,29 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs66), "rhs", 66);
   emlrtAddField(*info, emlrtAliasP(lhs66), "lhs", 66);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 67);
-  emlrtAddField(*info, emlrt_marshallOut("eml_dlapy2"), "name", 67);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 67);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 67);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_dlapy2.m"), "resolved",
-                67);
-  emlrtAddField(*info, b_emlrt_marshallOut(1350378254U), "fileTimeLo", 67);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 67);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 67);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 67);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 67);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 67);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 67);
   emlrtAssign(&rhs67, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs67, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs67), "rhs", 67);
   emlrtAddField(*info, emlrtAliasP(lhs67), "lhs", 67);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/div.p!eml_fldiv"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m!eml_complex_scalar_sqrt"),
                 "context", 68);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 68);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_hypot"), "name", 68);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 68);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
                 "resolved", 68);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 68);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 68);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 68);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 68);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 68);
@@ -1539,15 +1537,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs68), "rhs", 68);
   emlrtAddField(*info, emlrtAliasP(lhs68), "lhs", 68);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/div.p!eml_fldiv"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
                 "context", 69);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalexpAlloc"), "name",
-                69);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 69);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 69);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p"),
-                "resolved", 69);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 69);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                69);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 69);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 69);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 69);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 69);
@@ -1556,13 +1553,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs69), "rhs", 69);
   emlrtAddField(*info, emlrtAliasP(lhs69), "lhs", 69);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/div.p!eml_fldiv"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
                 "context", 70);
-  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 70);
+  emlrtAddField(*info, emlrt_marshallOut("eml_dlapy2"), "name", 70);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 70);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 70);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 70);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_dlapy2.m"), "resolved",
+                70);
+  emlrtAddField(*info, b_emlrt_marshallOut(1350378254U), "fileTimeLo", 70);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 70);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 70);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 70);
@@ -1571,14 +1569,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs70), "rhs", 70);
   emlrtAddField(*info, emlrtAliasP(lhs70), "lhs", 70);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "context", 71);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 71);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/div.p!eml_fldiv"),
+                "context", 71);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 71);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 71);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
                 "resolved", 71);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 71);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 71);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 71);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 71);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 71);
@@ -1587,13 +1585,15 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs71), "rhs", 71);
   emlrtAddField(*info, emlrtAliasP(lhs71), "lhs", 71);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "context", 72);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_abs"), "name", 72);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/div.p!eml_fldiv"),
+                "context", 72);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalexpAlloc"), "name",
+                72);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 72);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p"),
                 "resolved", 72);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786312U), "fileTimeLo", 72);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 72);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 72);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 72);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 72);
@@ -1602,13 +1602,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs72), "rhs", 72);
   emlrtAddField(*info, emlrtAliasP(lhs72), "lhs", 72);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/div.p!eml_fldiv"),
                 "context", 73);
-  emlrtAddField(*info, emlrt_marshallOut("log"), "name", 73);
+  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 73);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 73);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/log.m"), "resolved", 73);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292500U), "fileTimeLo", 73);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 73);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 73);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 73);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 73);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 73);
@@ -1617,13 +1617,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs73), "rhs", 73);
   emlrtAddField(*info, emlrtAliasP(lhs73), "lhs", 73);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/log.m"), "context", 74);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_log"), "name", 74);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "context", 74);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 74);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 74);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 74);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786328U), "fileTimeLo", 74);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 74);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 74);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 74);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 74);
@@ -1632,13 +1633,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs74), "rhs", 74);
   emlrtAddField(*info, emlrtAliasP(lhs74), "lhs", 74);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
-                "context", 75);
-  emlrtAddField(*info, emlrt_marshallOut("realmax"), "name", 75);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 75);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "context", 75);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_abs"), "name", 75);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 75);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmax.m"), "resolved", 75);
-  emlrtAddField(*info, b_emlrt_marshallOut(1307622442U), "fileTimeLo", 75);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
+                "resolved", 75);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786312U), "fileTimeLo", 75);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 75);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 75);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 75);
@@ -1647,28 +1648,28 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs75), "rhs", 75);
   emlrtAddField(*info, emlrtAliasP(lhs75), "lhs", 75);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 76);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 76);
+  emlrtAddField(*info, emlrt_marshallOut("log"), "name", 76);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 76);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 76);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 76);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/log.m"), "resolved", 76);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292500U), "fileTimeLo", 76);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 76);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 76);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 76);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 76);
   emlrtAssign(&rhs76, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs76, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs76), "rhs", 76);
   emlrtAddField(*info, emlrtAliasP(lhs76), "lhs", 76);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
-                "context", 77);
-  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 77);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/log.m"), "context", 77);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_log"), "name", 77);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 77);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 77);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 77);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
+                "resolved", 77);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786328U), "fileTimeLo", 77);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 77);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 77);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 77);
@@ -1679,12 +1680,11 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
                 "context", 78);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_hypot"), "name", 78);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 78);
+  emlrtAddField(*info, emlrt_marshallOut("realmax"), "name", 78);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 78);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
-                "resolved", 78);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 78);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmax.m"), "resolved", 78);
+  emlrtAddField(*info, b_emlrt_marshallOut(1307622442U), "fileTimeLo", 78);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 78);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 78);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 78);
@@ -1695,14 +1695,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
                 "context", 79);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan2"), "name", 79);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 79);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 79);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan2.m"),
-                "resolved", 79);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786320U), "fileTimeLo", 79);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 79);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 79);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 79);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 79);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 79);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 79);
   emlrtAssign(&rhs79, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs79, emlrtCreateCellMatrix(0, 1));
@@ -1711,12 +1710,11 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
                 "context", 80);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_abs"), "name", 80);
+  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 80);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 80);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
-                "resolved", 80);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786312U), "fileTimeLo", 80);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 80);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 80);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 80);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 80);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 80);
@@ -1725,14 +1723,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs80), "rhs", 80);
   emlrtAddField(*info, emlrtAliasP(lhs80), "lhs", 80);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
                 "context", 81);
-  emlrtAddField(*info, emlrt_marshallOut("eml_dlapy2"), "name", 81);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_hypot"), "name", 81);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 81);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_dlapy2.m"), "resolved",
-                81);
-  emlrtAddField(*info, b_emlrt_marshallOut(1350378254U), "fileTimeLo", 81);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_hypot.m"),
+                "resolved", 81);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 81);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 81);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 81);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 81);
@@ -1741,13 +1739,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs81), "rhs", 81);
   emlrtAddField(*info, emlrtAliasP(lhs81), "lhs", 81);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
                 "context", 82);
-  emlrtAddField(*info, emlrt_marshallOut("asin"), "name", 82);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan2"), "name", 82);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 82);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "resolved", 82);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292494U), "fileTimeLo", 82);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan2.m"),
+                "resolved", 82);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786320U), "fileTimeLo", 82);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 82);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 82);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 82);
@@ -1756,13 +1755,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs82), "rhs", 82);
   emlrtAddField(*info, emlrtAliasP(lhs82), "lhs", 82);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "context", 83);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_asin"), "name", 83);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
+                "context", 83);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_abs"), "name", 83);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 83);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
                 "resolved", 83);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801576U), "fileTimeLo", 83);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786312U), "fileTimeLo", 83);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 83);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 83);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 83);
@@ -1771,13 +1771,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs83), "rhs", 83);
   emlrtAddField(*info, emlrtAliasP(lhs83), "lhs", 83);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
                 "context", 84);
-  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 84);
+  emlrtAddField(*info, emlrt_marshallOut("eml_dlapy2"), "name", 84);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 84);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 84);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 84);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_dlapy2.m"), "resolved",
+                84);
+  emlrtAddField(*info, b_emlrt_marshallOut(1350378254U), "fileTimeLo", 84);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 84);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 84);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 84);
@@ -1786,14 +1787,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs84), "rhs", 84);
   emlrtAddField(*info, emlrtAliasP(lhs84), "lhs", 84);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 85);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_sqrt"), "name", 85);
+  emlrtAddField(*info, emlrt_marshallOut("asin"), "name", 85);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 85);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m"),
-                "resolved", 85);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786338U), "fileTimeLo", 85);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "resolved", 85);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292494U), "fileTimeLo", 85);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 85);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 85);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 85);
@@ -1802,14 +1802,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs85), "rhs", 85);
   emlrtAddField(*info, emlrtAliasP(lhs85), "lhs", 85);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
-                "context", 86);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan2"), "name", 86);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "context", 86);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_asin"), "name", 86);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 86);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan2.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
                 "resolved", 86);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786320U), "fileTimeLo", 86);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801576U), "fileTimeLo", 86);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 86);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 86);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 86);
@@ -1820,12 +1819,11 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
                 "context", 87);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_asinh"), "name", 87);
+  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 87);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 87);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asinh.m"),
-                "resolved", 87);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786318U), "fileTimeLo", 87);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 87);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 87);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 87);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 87);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 87);
@@ -1834,14 +1832,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs87), "rhs", 87);
   emlrtAddField(*info, emlrtAliasP(lhs87), "lhs", 87);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asinh.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
                 "context", 88);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_log1p"), "name", 88);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_sqrt"), "name", 88);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 88);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sqrt.m"),
                 "resolved", 88);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786328U), "fileTimeLo", 88);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786338U), "fileTimeLo", 88);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 88);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 88);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 88);
@@ -1850,13 +1848,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs88), "rhs", 88);
   emlrtAddField(*info, emlrtAliasP(lhs88), "lhs", 88);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
                 "context", 89);
-  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 89);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan2"), "name", 89);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 89);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 89);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 89);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan2.m"),
+                "resolved", 89);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786320U), "fileTimeLo", 89);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 89);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 89);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 89);
@@ -1865,13 +1864,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs89), "rhs", 89);
   emlrtAddField(*info, emlrtAliasP(lhs89), "lhs", 89);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asin.m"),
                 "context", 90);
-  emlrtAddField(*info, emlrt_marshallOut("eps"), "name", 90);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 90);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_asinh"), "name", 90);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 90);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "resolved", 90);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 90);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asinh.m"),
+                "resolved", 90);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786318U), "fileTimeLo", 90);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 90);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 90);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 90);
@@ -1880,13 +1880,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs90), "rhs", 90);
   emlrtAddField(*info, emlrtAliasP(lhs90), "lhs", 90);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "context", 91);
-  emlrtAddField(*info, emlrt_marshallOut("eml_is_float_class"), "name", 91);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 91);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_asinh.m"),
+                "context", 91);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_log1p"), "name", 91);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 91);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_is_float_class.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
                 "resolved", 91);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786382U), "fileTimeLo", 91);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786328U), "fileTimeLo", 91);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 91);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 91);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 91);
@@ -1895,12 +1896,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs91), "rhs", 91);
   emlrtAddField(*info, emlrtAliasP(lhs91), "lhs", 91);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "context", 92);
-  emlrtAddField(*info, emlrt_marshallOut("eml_eps"), "name", 92);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 92);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+                "context", 92);
+  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 92);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 92);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_eps.m"), "resolved", 92);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 92);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 92);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 92);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 92);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 92);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 92);
@@ -1909,12 +1911,12 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs92), "rhs", 92);
   emlrtAddField(*info, emlrtAliasP(lhs92), "lhs", 92);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_eps.m"), "context", 93);
-  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 93);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+                "context", 93);
+  emlrtAddField(*info, emlrt_marshallOut("eps"), "name", 93);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 93);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
-                "resolved", 93);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "resolved", 93);
   emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 93);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 93);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 93);
@@ -1924,14 +1926,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs93), "rhs", 93);
   emlrtAddField(*info, emlrtAliasP(lhs93), "lhs", 93);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
-                "context", 94);
-  emlrtAddField(*info, emlrt_marshallOut("isfinite"), "name", 94);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 94);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "context", 94);
+  emlrtAddField(*info, emlrt_marshallOut("eml_is_float_class"), "name", 94);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 94);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "resolved",
-                94);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 94);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_is_float_class.m"),
+                "resolved", 94);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786382U), "fileTimeLo", 94);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 94);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 94);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 94);
@@ -1940,14 +1941,12 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs94), "rhs", 94);
   emlrtAddField(*info, emlrtAliasP(lhs94), "lhs", 94);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "context", 95);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 95);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 95);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "context", 95);
+  emlrtAddField(*info, emlrt_marshallOut("eml_eps"), "name", 95);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 95);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 95);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 95);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_eps.m"), "resolved", 95);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 95);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 95);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 95);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 95);
@@ -1956,12 +1955,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs95), "rhs", 95);
   emlrtAddField(*info, emlrtAliasP(lhs95), "lhs", 95);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "context", 96);
-  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 96);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 96);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_eps.m"), "context", 96);
+  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 96);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 96);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 96);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 96);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
+                "resolved", 96);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 96);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 96);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 96);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 96);
@@ -1970,12 +1970,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs96), "rhs", 96);
   emlrtAddField(*info, emlrtAliasP(lhs96), "lhs", 96);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "context", 97);
-  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 97);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+                "context", 97);
+  emlrtAddField(*info, emlrt_marshallOut("isfinite"), "name", 97);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 97);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 97);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 97);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "resolved",
+                97);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 97);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 97);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 97);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 97);
@@ -1984,14 +1986,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs97), "rhs", 97);
   emlrtAddField(*info, emlrtAliasP(lhs97), "lhs", 97);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
-                "context", 98);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_log"), "name", 98);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "context", 98);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 98);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 98);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 98);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786328U), "fileTimeLo", 98);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 98);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 98);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 98);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 98);
@@ -2000,13 +2002,12 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs98), "rhs", 98);
   emlrtAddField(*info, emlrtAliasP(lhs98), "lhs", 98);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
-                "context", 99);
-  emlrtAddField(*info, emlrt_marshallOut("atan2"), "name", 99);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "context", 99);
+  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 99);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 99);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "resolved", 99);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 99);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 99);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 99);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 99);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 99);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 99);
@@ -2015,13 +2016,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs99), "rhs", 99);
   emlrtAddField(*info, emlrtAliasP(lhs99), "lhs", 99);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "context", 100);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 100);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isfinite.m"), "context",
+                100);
+  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 100);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 100);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                100);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 100);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 100);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 100);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 100);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 100);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 100);
@@ -2030,13 +2031,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs100), "rhs", 100);
   emlrtAddField(*info, emlrtAliasP(lhs100), "lhs", 100);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "context", 101);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 101);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log1p.m"),
+                "context", 101);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_log"), "name", 101);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 101);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_log.m"),
                 "resolved", 101);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 101);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786328U), "fileTimeLo", 101);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 101);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 101);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 101);
@@ -2045,13 +2047,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs101), "rhs", 101);
   emlrtAddField(*info, emlrtAliasP(lhs101), "lhs", 101);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "context", 102);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan2"), "name", 102);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
+                "context", 102);
+  emlrtAddField(*info, emlrt_marshallOut("atan2"), "name", 102);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 102);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan2.m"),
-                "resolved", 102);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786320U), "fileTimeLo", 102);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "resolved", 102);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 102);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 102);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 102);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 102);
@@ -2060,14 +2062,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs102), "rhs", 102);
   emlrtAddField(*info, emlrtAliasP(lhs102), "lhs", 102);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
-                "context", 103);
-  emlrtAddField(*info, emlrt_marshallOut("fprintf"), "name", 103);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 103);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "context", 103);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 103);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 103);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
                 103);
-  emlrtAddField(*info, b_emlrt_marshallOut(1402585696U), "fileTimeLo", 103);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 103);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 103);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 103);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 103);
@@ -2076,13 +2077,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs103), "rhs", 103);
   emlrtAddField(*info, emlrtAliasP(lhs103), "lhs", 103);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 104);
-  emlrtAddField(*info, emlrt_marshallOut("isequal"), "name", 104);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 104);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "context", 104);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 104);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 104);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "resolved",
-                104);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786358U), "fileTimeLo", 104);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
+                "resolved", 104);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 104);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 104);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 104);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 104);
@@ -2091,13 +2092,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs104), "rhs", 104);
   emlrtAddField(*info, emlrtAliasP(lhs104), "lhs", 104);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "context", 105);
-  emlrtAddField(*info, emlrt_marshallOut("eml_isequal_core"), "name", 105);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 105);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "context", 105);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan2"), "name", 105);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 105);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan2.m"),
                 "resolved", 105);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786386U), "fileTimeLo", 105);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786320U), "fileTimeLo", 105);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 105);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 105);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 105);
@@ -2106,13 +2107,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs105), "rhs", 105);
   emlrtAddField(*info, emlrtAliasP(lhs105), "lhs", 105);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m!isequal_scalar"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "context", 106);
-  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 106);
+  emlrtAddField(*info, emlrt_marshallOut("fprintf"), "name", 106);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 106);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 106);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 106);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "resolved",
+                106);
+  emlrtAddField(*info, b_emlrt_marshallOut(1402585696U), "fileTimeLo", 106);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 106);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 106);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 106);
@@ -2121,14 +2123,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs106), "rhs", 106);
   emlrtAddField(*info, emlrtAliasP(lhs106), "lhs", 106);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "context", 107);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 107);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 107);
+  emlrtAddField(*info, emlrt_marshallOut("isequal"), "name", 107);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 107);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 107);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 107);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "resolved",
+                107);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786358U), "fileTimeLo", 107);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 107);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 107);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 107);
@@ -2137,13 +2138,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs107), "rhs", 107);
   emlrtAddField(*info, emlrtAliasP(lhs107), "lhs", 107);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 108);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 108);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "context", 108);
+  emlrtAddField(*info, emlrt_marshallOut("eml_isequal_core"), "name", 108);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 108);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m"),
                 "resolved", 108);
-  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 108);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786386U), "fileTimeLo", 108);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 108);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 108);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 108);
@@ -2152,13 +2153,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs108), "rhs", 108);
   emlrtAddField(*info, emlrtAliasP(lhs108), "lhs", 108);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 109);
-  emlrtAddField(*info, emlrt_marshallOut("fprintf"), "name", 109);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 109);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m!isequal_scalar"),
+                "context", 109);
+  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 109);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 109);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "resolved",
-                109);
-  emlrtAddField(*info, b_emlrt_marshallOut(1402585696U), "fileTimeLo", 109);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 109);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 109);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 109);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 109);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 109);
@@ -2167,12 +2168,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs109), "rhs", 109);
   emlrtAddField(*info, emlrtAliasP(lhs109), "lhs", 109);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 110);
-  emlrtAddField(*info, emlrt_marshallOut("upper"), "name", 110);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "context", 110);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 110);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 110);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/upper.m"), "resolved", 110);
-  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 110);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 110);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 110);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 110);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 110);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 110);
@@ -2181,13 +2184,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs110), "rhs", 110);
   emlrtAddField(*info, emlrtAliasP(lhs110), "lhs", 110);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/upper.m"), "context", 111);
-  emlrtAddField(*info, emlrt_marshallOut("eml_string_transform"), "name", 111);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 111);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 111);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 111);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
                 "resolved", 111);
-  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 111);
+  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 111);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 111);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 111);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 111);
@@ -2196,15 +2199,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs111), "rhs", 111);
   emlrtAddField(*info, emlrtAliasP(lhs111), "lhs", 111);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
-                "context", 112);
-  emlrtAddField(*info, emlrt_marshallOut("eml_assert_supported_string"), "name",
-                112);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 112);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 112);
+  emlrtAddField(*info, emlrt_marshallOut("fprintf"), "name", 112);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 112);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_assert_supported_string.m"),
-                "resolved", 112);
-  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 112);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "resolved",
+                112);
+  emlrtAddField(*info, b_emlrt_marshallOut(1402585696U), "fileTimeLo", 112);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 112);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 112);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 112);
@@ -2213,13 +2214,11 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs112), "rhs", 112);
   emlrtAddField(*info, emlrtAliasP(lhs112), "lhs", 112);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_assert_supported_string.m!inrange"),
-                "context", 113);
-  emlrtAddField(*info, emlrt_marshallOut("eml_charmax"), "name", 113);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 113);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 113);
+  emlrtAddField(*info, emlrt_marshallOut("upper"), "name", 113);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 113);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_charmax.m"),
-                "resolved", 113);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/upper.m"), "resolved", 113);
   emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 113);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 113);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 113);
@@ -2229,13 +2228,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs113), "rhs", 113);
   emlrtAddField(*info, emlrtAliasP(lhs113), "lhs", 113);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_charmax.m"), "context",
-                114);
-  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 114);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/upper.m"), "context", 114);
+  emlrtAddField(*info, emlrt_marshallOut("eml_string_transform"), "name", 114);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 114);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 114);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 114);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
+                "resolved", 114);
+  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 114);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 114);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 114);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 114);
@@ -2244,13 +2243,15 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs114), "rhs", 114);
   emlrtAddField(*info, emlrtAliasP(lhs114), "lhs", 114);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "context", 115);
-  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 115);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 115);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
+                "context", 115);
+  emlrtAddField(*info, emlrt_marshallOut("eml_assert_supported_string"), "name",
+                115);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 115);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_assert_supported_string.m"),
                 "resolved", 115);
-  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 115);
+  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 115);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 115);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 115);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 115);
@@ -2259,7 +2260,7 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs115), "rhs", 115);
   emlrtAddField(*info, emlrtAliasP(lhs115), "lhs", 115);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_assert_supported_string.m!inrange"),
                 "context", 116);
   emlrtAddField(*info, emlrt_marshallOut("eml_charmax"), "name", 116);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 116);
@@ -2275,13 +2276,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs116), "rhs", 116);
   emlrtAddField(*info, emlrtAliasP(lhs116), "lhs", 116);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
-                "context", 117);
-  emlrtAddField(*info, emlrt_marshallOut("colon"), "name", 117);
-  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 117);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_charmax.m"), "context",
+                117);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 117);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 117);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "resolved", 117);
-  emlrtAddField(*info, b_emlrt_marshallOut(1378267188U), "fileTimeLo", 117);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 117);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 117);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 117);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 117);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 117);
@@ -2290,12 +2291,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs117), "rhs", 117);
   emlrtAddField(*info, emlrtAliasP(lhs117), "lhs", 117);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 118);
-  emlrtAddField(*info, emlrt_marshallOut("colon"), "name", 118);
-  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 118);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "context", 118);
+  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 118);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 118);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "resolved", 118);
-  emlrtAddField(*info, b_emlrt_marshallOut(1378267188U), "fileTimeLo", 118);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+                "resolved", 118);
+  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 118);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 118);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 118);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 118);
@@ -2304,14 +2306,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs118), "rhs", 118);
   emlrtAddField(*info, emlrtAliasP(lhs118), "lhs", 118);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 119);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 119);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 119);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
+                "context", 119);
+  emlrtAddField(*info, emlrt_marshallOut("eml_charmax"), "name", 119);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 119);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_charmax.m"),
                 "resolved", 119);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 119);
+  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 119);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 119);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 119);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 119);
@@ -2320,14 +2322,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs119), "rhs", 119);
   emlrtAddField(*info, emlrtAliasP(lhs119), "lhs", 119);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 120);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 120);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
+                "context", 120);
+  emlrtAddField(*info, emlrt_marshallOut("colon"), "name", 120);
   emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 120);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 120);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 120);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "resolved", 120);
+  emlrtAddField(*info, b_emlrt_marshallOut(1378267188U), "fileTimeLo", 120);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 120);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 120);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 120);
@@ -2337,11 +2338,11 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(lhs120), "lhs", 120);
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 121);
-  emlrtAddField(*info, emlrt_marshallOut("floor"), "name", 121);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 121);
+  emlrtAddField(*info, emlrt_marshallOut("colon"), "name", 121);
+  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 121);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "resolved", 121);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 121);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "resolved", 121);
+  emlrtAddField(*info, b_emlrt_marshallOut(1378267188U), "fileTimeLo", 121);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 121);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 121);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 121);
@@ -2350,13 +2351,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs121), "rhs", 121);
   emlrtAddField(*info, emlrtAliasP(lhs121), "lhs", 121);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!checkrange"),
-                "context", 122);
-  emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 122);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 122);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 122);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 122);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 122);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "resolved", 122);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 122);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 122);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 122);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 122);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 122);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 122);
@@ -2365,13 +2367,14 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs122), "rhs", 122);
   emlrtAddField(*info, emlrtAliasP(lhs122), "lhs", 122);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "context", 123);
-  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 123);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 123);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 123);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 123);
+  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 123);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 123);
-  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 123);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 123);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 123);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 123);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 123);
@@ -2380,13 +2383,12 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs123), "rhs", 123);
   emlrtAddField(*info, emlrtAliasP(lhs123), "lhs", 123);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!checkrange"),
-                "context", 124);
-  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 124);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 124);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m"), "context", 124);
+  emlrtAddField(*info, emlrt_marshallOut("floor"), "name", 124);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 124);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 124);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 124);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/floor.m"), "resolved", 124);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 124);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 124);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 124);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 124);
@@ -2395,7 +2397,7 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs124), "rhs", 124);
   emlrtAddField(*info, emlrtAliasP(lhs124), "lhs", 124);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_integer_colon_dispatcher"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!checkrange"),
                 "context", 125);
   emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 125);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 125);
@@ -2410,13 +2412,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs125), "rhs", 125);
   emlrtAddField(*info, emlrtAliasP(lhs125), "lhs", 125);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_integer_colon_dispatcher"),
-                "context", 126);
-  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 126);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 126);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "context", 126);
+  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 126);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 126);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 126);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 126);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+                "resolved", 126);
+  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 126);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 126);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 126);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 126);
@@ -2425,14 +2427,13 @@ static void b_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs126), "rhs", 126);
   emlrtAddField(*info, emlrtAliasP(lhs126), "lhs", 126);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_integer_colon_dispatcher"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!checkrange"),
                 "context", 127);
-  emlrtAddField(*info, emlrt_marshallOut("eml_isa_uint"), "name", 127);
-  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 127);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 127);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 127);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isa_uint.m"), "resolved",
-                127);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 127);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 127);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 127);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 127);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 127);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 127);
@@ -2705,14 +2706,13 @@ static void c_info_helper(const mxArray **info)
   const mxArray *rhs191 = NULL;
   const mxArray *lhs191 = NULL;
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isa_uint.m"), "context",
-                128);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isaUint"), "name", 128);
-  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 128);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_integer_colon_dispatcher"),
+                "context", 128);
+  emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 128);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 128);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/isaUint.p"),
-                "resolved", 128);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 128);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "resolved", 128);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 128);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 128);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 128);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 128);
@@ -2721,14 +2721,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs128), "rhs", 128);
   emlrtAddField(*info, emlrtAliasP(lhs128), "lhs", 128);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_integer_colon_dispatcher"),
                 "context", 129);
-  emlrtAddField(*info, emlrt_marshallOut("eml_unsigned_class"), "name", 129);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 129);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 129);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_unsigned_class.m"),
-                "resolved", 129);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 129);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 129);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 129);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 129);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 129);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 129);
@@ -2737,15 +2736,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs129), "rhs", 129);
   emlrtAddField(*info, emlrtAliasP(lhs129), "lhs", 129);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_unsigned_class.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_integer_colon_dispatcher"),
                 "context", 130);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.unsignedClass"), "name",
-                130);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 130);
+  emlrtAddField(*info, emlrt_marshallOut("eml_isa_uint"), "name", 130);
+  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 130);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/unsignedClass.p"),
-                "resolved", 130);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 130);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isa_uint.m"), "resolved",
+                130);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 130);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 130);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 130);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 130);
@@ -2754,14 +2752,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs130), "rhs", 130);
   emlrtAddField(*info, emlrtAliasP(lhs130), "lhs", 130);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/unsignedClass.p"),
-                "context", 131);
-  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 131);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 131);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isa_uint.m"), "context",
+                131);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isaUint"), "name", 131);
+  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 131);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/isaUint.p"),
                 "resolved", 131);
-  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 131);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 131);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 131);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 131);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 131);
@@ -2772,12 +2770,12 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
                 "context", 132);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 132);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 132);
+  emlrtAddField(*info, emlrt_marshallOut("eml_unsigned_class"), "name", 132);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 132);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_unsigned_class.m"),
                 "resolved", 132);
-  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 132);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 132);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 132);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 132);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 132);
@@ -2786,13 +2784,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs132), "rhs", 132);
   emlrtAddField(*info, emlrtAliasP(lhs132), "lhs", 132);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_unsigned_class.m"),
                 "context", 133);
-  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 133);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.unsignedClass"), "name",
+                133);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 133);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 133);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 133);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/unsignedClass.p"),
+                "resolved", 133);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 133);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 133);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 133);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 133);
@@ -2801,14 +2801,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs133), "rhs", 133);
   emlrtAddField(*info, emlrtAliasP(lhs133), "lhs", 133);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/unsignedClass.p"),
                 "context", 134);
-  emlrtAddField(*info, emlrt_marshallOut("eml_isa_uint"), "name", 134);
-  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 134);
+  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 134);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 134);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isa_uint.m"), "resolved",
-                134);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 134);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+                "resolved", 134);
+  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 134);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 134);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 134);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 134);
@@ -2819,12 +2819,12 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
                 "context", 135);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_plus"), "name", 135);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 135);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 135);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 135);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
                 "resolved", 135);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 135);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 135);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 135);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 135);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 135);
@@ -2833,15 +2833,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs135), "rhs", 135);
   emlrtAddField(*info, emlrtAliasP(lhs135), "lhs", 135);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"), "context",
-                136);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexPlus"), "name",
-                136);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 136);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
+                "context", 136);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 136);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 136);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m"),
-                "resolved", 136);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 136);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 136);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 136);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 136);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 136);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 136);
@@ -2850,15 +2848,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs136), "rhs", 136);
   emlrtAddField(*info, emlrtAliasP(lhs136), "lhs", 136);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_signed_integer_colon"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
                 "context", 137);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 137);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 137);
+  emlrtAddField(*info, emlrt_marshallOut("eml_isa_uint"), "name", 137);
+  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 137);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
-                "resolved", 137);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 137);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isa_uint.m"), "resolved",
+                137);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 137);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 137);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 137);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 137);
@@ -2867,14 +2864,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs137), "rhs", 137);
   emlrtAddField(*info, emlrtAliasP(lhs137), "lhs", 137);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!integer_colon_length_nonnegd"),
                 "context", 138);
-  emlrtAddField(*info, emlrt_marshallOut("isfi"), "name", 138);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
-                "dominantType", 138);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_plus"), "name", 138);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 138);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isfi.m"), "resolved", 138);
-  emlrtAddField(*info, b_emlrt_marshallOut(1346481558U), "fileTimeLo", 138);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"),
+                "resolved", 138);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 138);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 138);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 138);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 138);
@@ -2883,13 +2880,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs138), "rhs", 138);
   emlrtAddField(*info, emlrtAliasP(lhs138), "lhs", 138);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isfi.m"), "context", 139);
-  emlrtAddField(*info, emlrt_marshallOut("isnumerictype"), "name", 139);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 139);
-  emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isnumerictype.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"), "context",
                 139);
-  emlrtAddField(*info, b_emlrt_marshallOut(1398846798U), "fileTimeLo", 139);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexPlus"), "name",
+                139);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 139);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m"),
+                "resolved", 139);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 139);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 139);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 139);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 139);
@@ -2898,13 +2897,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs139), "rhs", 139);
   emlrtAddField(*info, emlrtAliasP(lhs139), "lhs", 139);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/colon.m!eml_signed_integer_colon"),
                 "context", 140);
-  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 140);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 140);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 140);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 140);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 140);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 140);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+                "resolved", 140);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 140);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 140);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 140);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 140);
@@ -2915,11 +2916,12 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
                 "context", 141);
-  emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 141);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 141);
+  emlrtAddField(*info, emlrt_marshallOut("isfi"), "name", 141);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
+                "dominantType", 141);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "resolved", 141);
-  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 141);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isfi.m"), "resolved", 141);
+  emlrtAddField(*info, b_emlrt_marshallOut(1346481558U), "fileTimeLo", 141);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 141);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 141);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 141);
@@ -2928,13 +2930,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs141), "rhs", 141);
   emlrtAddField(*info, emlrtAliasP(lhs141), "lhs", 141);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
-                "context", 142);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "name", 142);
-  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 142);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isfi.m"), "context", 142);
+  emlrtAddField(*info, emlrt_marshallOut("isnumerictype"), "name", 142);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 142);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/char.m"), "resolved", 142);
-  emlrtAddField(*info, b_emlrt_marshallOut(1319697568U), "fileTimeLo", 142);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isnumerictype.m"), "resolved",
+                142);
+  emlrtAddField(*info, b_emlrt_marshallOut(1398846798U), "fileTimeLo", 142);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 142);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 142);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 142);
@@ -2943,13 +2945,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs142), "rhs", 142);
   emlrtAddField(*info, emlrtAliasP(lhs142), "lhs", 142);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 143);
-  emlrtAddField(*info, emlrt_marshallOut("fidCheck"), "name", 143);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 143);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
+                "context", 143);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 143);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 143);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fidCheck.m"),
-                "resolved", 143);
-  emlrtAddField(*info, b_emlrt_marshallOut(1381817902U), "fileTimeLo", 143);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 143);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 143);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 143);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 143);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 143);
@@ -2958,13 +2960,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs143), "rhs", 143);
   emlrtAddField(*info, emlrtAliasP(lhs143), "lhs", 143);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fidCheck.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
                 "context", 144);
-  emlrtAddField(*info, emlrt_marshallOut("upper"), "name", 144);
+  emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 144);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 144);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/upper.m"), "resolved", 144);
-  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 144);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "resolved", 144);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 144);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 144);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 144);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 144);
@@ -2973,14 +2975,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs144), "rhs", 144);
   emlrtAddField(*info, emlrtAliasP(lhs144), "lhs", 144);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fidCheck.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/eml_string_transform.m"),
                 "context", 145);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 145);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 145);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "name", 145);
+  emlrtAddField(*info, emlrt_marshallOut("int8"), "dominantType", 145);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
-                "resolved", 145);
-  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 145);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/char.m"), "resolved", 145);
+  emlrtAddField(*info, b_emlrt_marshallOut(1319697568U), "fileTimeLo", 145);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 145);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 145);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 145);
@@ -2990,10 +2991,10 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(lhs145), "lhs", 145);
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 146);
-  emlrtAddField(*info, emlrt_marshallOut("fileManager"), "name", 146);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 146);
+  emlrtAddField(*info, emlrt_marshallOut("fidCheck"), "name", 146);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 146);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m"),
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fidCheck.m"),
                 "resolved", 146);
   emlrtAddField(*info, b_emlrt_marshallOut(1381817902U), "fileTimeLo", 146);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 146);
@@ -3004,14 +3005,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs146), "rhs", 146);
   emlrtAddField(*info, emlrtAliasP(lhs146), "lhs", 146);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m"),
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fidCheck.m"),
                 "context", 147);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.errorIf"), "name", 147);
+  emlrtAddField(*info, emlrt_marshallOut("upper"), "name", 147);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 147);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/errorIf.m"),
-                "resolved", 147);
-  emlrtAddField(*info, b_emlrt_marshallOut(1334043138U), "fileTimeLo", 147);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/strfun/upper.m"), "resolved", 147);
+  emlrtAddField(*info, b_emlrt_marshallOut(1327383110U), "fileTimeLo", 147);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 147);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 147);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 147);
@@ -3020,14 +3020,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs147), "rhs", 147);
   emlrtAddField(*info, emlrtAliasP(lhs147), "lhs", 147);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m"),
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fidCheck.m"),
                 "context", 148);
-  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 148);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 148);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 148);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 148);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
                 "resolved", 148);
-  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 148);
+  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 148);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 148);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 148);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 148);
@@ -3036,14 +3036,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs148), "rhs", 148);
   emlrtAddField(*info, emlrtAliasP(lhs148), "lhs", 148);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m!STANDALONE"),
-                "context", 149);
-  emlrtAddField(*info, emlrt_marshallOut("isequal"), "name", 149);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 149);
+  emlrtAddField(*info, emlrt_marshallOut("fileManager"), "name", 149);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 149);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "resolved",
-                149);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786358U), "fileTimeLo", 149);
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m"),
+                "resolved", 149);
+  emlrtAddField(*info, b_emlrt_marshallOut(1381817902U), "fileTimeLo", 149);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 149);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 149);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 149);
@@ -3052,7 +3051,7 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs149), "rhs", 149);
   emlrtAddField(*info, emlrtAliasP(lhs149), "lhs", 149);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m!cast_and_validate_fid"),
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m"),
                 "context", 150);
   emlrtAddField(*info, emlrt_marshallOut("coder.internal.errorIf"), "name", 150);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 150);
@@ -3068,13 +3067,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs150), "rhs", 150);
   emlrtAddField(*info, emlrtAliasP(lhs150), "lhs", 150);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 151);
-  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 151);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 151);
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m"),
+                "context", 151);
+  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 151);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 151);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved",
-                151);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 151);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
+                "resolved", 151);
+  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 151);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 151);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 151);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 151);
@@ -3083,14 +3083,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs151), "rhs", 151);
   emlrtAddField(*info, emlrtAliasP(lhs151), "lhs", 151);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m!STANDALONE"),
                 "context", 152);
-  emlrtAddField(*info, emlrt_marshallOut("sherpaTTIKVel"), "name", 152);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 152);
+  emlrtAddField(*info, emlrt_marshallOut("isequal"), "name", 152);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 152);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
-                "resolved", 152);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423746386U), "fileTimeLo", 152);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "resolved",
+                152);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786358U), "fileTimeLo", 152);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 152);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 152);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 152);
@@ -3099,13 +3099,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs152), "rhs", 152);
   emlrtAddField(*info, emlrtAliasP(lhs152), "lhs", 152);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
+    "[ILXPE]$matlabroot$/toolbox/eml/lib/matlab/iofun/private/fileManager.m!cast_and_validate_fid"),
                 "context", 153);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 153);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 153);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.errorIf"), "name", 153);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 153);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 153);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 153);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/errorIf.m"),
+                "resolved", 153);
+  emlrtAddField(*info, b_emlrt_marshallOut(1334043138U), "fileTimeLo", 153);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 153);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 153);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 153);
@@ -3114,13 +3115,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs153), "rhs", 153);
   emlrtAddField(*info, emlrtAliasP(lhs153), "lhs", 153);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
-                "context", 154);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 154);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 154);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/iofun/fprintf.m"), "context", 154);
+  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 154);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 154);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 154);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 154);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved",
+                154);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 154);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 154);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 154);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 154);
@@ -3129,13 +3130,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs154), "rhs", 154);
   emlrtAddField(*info, emlrtAliasP(lhs154), "lhs", 154);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
                 "context", 155);
-  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 155);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 155);
+  emlrtAddField(*info, emlrt_marshallOut("sherpaTTIKVel"), "name", 155);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 155);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 155);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 155);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
+                "resolved", 155);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423746386U), "fileTimeLo", 155);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 155);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 155);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 155);
@@ -3144,29 +3146,28 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs155), "rhs", 155);
   emlrtAddField(*info, emlrtAliasP(lhs155), "lhs", 155);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
                 "context", 156);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 156);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 156);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 156);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 156);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 156);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 156);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 156);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 156);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 156);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 156);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 156);
   emlrtAssign(&rhs156, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs156, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs156), "rhs", 156);
   emlrtAddField(*info, emlrtAliasP(lhs156), "lhs", 156);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
                 "context", 157);
-  emlrtAddField(*info, emlrt_marshallOut("buildRRT"), "name", 157);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 157);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 157);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 157);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
-                "resolved", 157);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423748977U), "fileTimeLo", 157);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 157);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 157);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 157);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 157);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 157);
@@ -3175,44 +3176,44 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs157), "rhs", 157);
   emlrtAddField(*info, emlrtAliasP(lhs157), "lhs", 157);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
                 "context", 158);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 158);
+  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 158);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 158);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 158);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 158);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 158);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 158);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 158);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 158);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 158);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 158);
   emlrtAssign(&rhs158, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs158, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs158), "rhs", 158);
   emlrtAddField(*info, emlrtAliasP(lhs158), "lhs", 158);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIKVel.m"),
                 "context", 159);
-  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 159);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 159);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 159);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 159);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 159);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 159);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 159);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 159);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 159);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 159);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 159);
   emlrtAssign(&rhs159, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs159, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs159), "rhs", 159);
   emlrtAddField(*info, emlrtAliasP(lhs159), "lhs", 159);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "context", 160);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 160);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+                "context", 160);
+  emlrtAddField(*info, emlrt_marshallOut("validJointState"), "name", 160);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 160);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/validJointState.m"),
                 "resolved", 160);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 160);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423922578U), "fileTimeLo", 160);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 160);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 160);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 160);
@@ -3221,13 +3222,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs160), "rhs", 160);
   emlrtAddField(*info, emlrtAliasP(lhs160), "lhs", 160);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "context", 161);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_round"), "name", 161);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 161);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"),
+                "context", 161);
+  emlrtAddField(*info, emlrt_marshallOut("buildRRT"), "name", 161);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 161);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_round.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
                 "resolved", 161);
-  emlrtAddField(*info, b_emlrt_marshallOut(1307622438U), "fileTimeLo", 161);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424177399U), "fileTimeLo", 161);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 161);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 161);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 161);
@@ -3238,28 +3240,26 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
                 "context", 162);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 162);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 162);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 162);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 162);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
-                "resolved", 162);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 162);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 162);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 162);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 162);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 162);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 162);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 162);
   emlrtAssign(&rhs162, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs162, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs162), "rhs", 162);
   emlrtAddField(*info, emlrtAliasP(lhs162), "lhs", 162);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
                 "context", 163);
-  emlrtAddField(*info, emlrt_marshallOut("isfi"), "name", 163);
-  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 163);
+  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 163);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 163);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isfi.m"), "resolved", 163);
-  emlrtAddField(*info, b_emlrt_marshallOut(1346481558U), "fileTimeLo", 163);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 163);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 163);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 163);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 163);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 163);
@@ -3268,14 +3268,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs163), "rhs", 163);
   emlrtAddField(*info, emlrtAliasP(lhs163), "lhs", 163);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
-                "context", 164);
-  emlrtAddField(*info, emlrt_marshallOut("randomState"), "name", 164);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 164);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "context", 164);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 164);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 164);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 164);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423832019U), "fileTimeLo", 164);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 164);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 164);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 164);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 164);
@@ -3284,13 +3284,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs164), "rhs", 164);
   emlrtAddField(*info, emlrtAliasP(lhs164), "lhs", 164);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
-                "context", 165);
-  emlrtAddField(*info, emlrt_marshallOut("rand"), "name", 165);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 165);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "context", 165);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_round"), "name", 165);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 165);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "resolved", 165);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841290U), "fileTimeLo", 165);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_round.m"),
+                "resolved", 165);
+  emlrtAddField(*info, b_emlrt_marshallOut(1307622438U), "fileTimeLo", 165);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 165);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 165);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 165);
@@ -3299,13 +3299,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs165), "rhs", 165);
   emlrtAddField(*info, emlrtAliasP(lhs165), "lhs", 165);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "context", 166);
-  emlrtAddField(*info, emlrt_marshallOut("eml_is_rand_extrinsic"), "name", 166);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+                "context", 166);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 166);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 166);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_is_rand_extrinsic.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
                 "resolved", 166);
-  emlrtAddField(*info, b_emlrt_marshallOut(1368154232U), "fileTimeLo", 166);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 166);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 166);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 166);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 166);
@@ -3314,13 +3316,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs166), "rhs", 166);
   emlrtAddField(*info, emlrtAliasP(lhs166), "lhs", 166);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "context", 167);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand"), "name", 167);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 167);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m!eml_int_forloop_overflow_check_helper"),
+                "context", 167);
+  emlrtAddField(*info, emlrt_marshallOut("isfi"), "name", 167);
+  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 167);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "resolved",
-                167);
-  emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 167);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/fixedpoint/isfi.m"), "resolved", 167);
+  emlrtAddField(*info, b_emlrt_marshallOut(1346481558U), "fileTimeLo", 167);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 167);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 167);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 167);
@@ -3329,14 +3331,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs167), "rhs", 167);
   emlrtAddField(*info, emlrtAliasP(lhs167), "lhs", 167);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
-                168);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_str2id"), "name", 168);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 168);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
+                "context", 168);
+  emlrtAddField(*info, emlrt_marshallOut("randomState"), "name", 168);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 168);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_str2id.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 168);
-  emlrtAddField(*info, b_emlrt_marshallOut(1313319022U), "fileTimeLo", 168);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424086522U), "fileTimeLo", 168);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 168);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 168);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 168);
@@ -3345,14 +3347,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs168), "rhs", 168);
   emlrtAddField(*info, emlrtAliasP(lhs168), "lhs", 168);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_str2id.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "context", 169);
-  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 169);
+  emlrtAddField(*info, emlrt_marshallOut("rand"), "name", 169);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 169);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
-                "resolved", 169);
-  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 169);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "resolved", 169);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841290U), "fileTimeLo", 169);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 169);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 169);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 169);
@@ -3361,15 +3362,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs169), "rhs", 169);
   emlrtAddField(*info, emlrtAliasP(lhs169), "lhs", 169);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
-                170);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mcg16807_stateful"), "name",
-                170);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 170);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "context", 170);
+  emlrtAddField(*info, emlrt_marshallOut("eml_is_rand_extrinsic"), "name", 170);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 170);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807_stateful.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_is_rand_extrinsic.m"),
                 "resolved", 170);
-  emlrtAddField(*info, b_emlrt_marshallOut(1366133444U), "fileTimeLo", 170);
+  emlrtAddField(*info, b_emlrt_marshallOut(1368154232U), "fileTimeLo", 170);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 170);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 170);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 170);
@@ -3378,13 +3377,12 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs170), "rhs", 170);
   emlrtAddField(*info, emlrtAliasP(lhs170), "lhs", 170);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807_stateful.m"),
-                "context", 171);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mcg16807"), "name", 171);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "context", 171);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand"), "name", 171);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 171);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807.m"),
-                "resolved", 171);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "resolved",
+                171);
   emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 171);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 171);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 171);
@@ -3394,14 +3392,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs171), "rhs", 171);
   emlrtAddField(*info, emlrtAliasP(lhs171), "lhs", 171);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807_stateful.m"),
-                "context", 172);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mcg16807"), "name", 172);
-  emlrtAddField(*info, emlrt_marshallOut("uint32"), "dominantType", 172);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
+                172);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_str2id"), "name", 172);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 172);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_str2id.m"),
                 "resolved", 172);
-  emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 172);
+  emlrtAddField(*info, b_emlrt_marshallOut(1313319022U), "fileTimeLo", 172);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 172);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 172);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 172);
@@ -3410,15 +3408,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs172), "rhs", 172);
   emlrtAddField(*info, emlrtAliasP(lhs172), "lhs", 172);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
-                173);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_shr3cong_stateful"), "name",
-                173);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 173);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_str2id.m"),
+                "context", 173);
+  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 173);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 173);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong_stateful.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
                 "resolved", 173);
-  emlrtAddField(*info, b_emlrt_marshallOut(1366133444U), "fileTimeLo", 173);
+  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 173);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 173);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 173);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 173);
@@ -3427,14 +3424,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs173), "rhs", 173);
   emlrtAddField(*info, emlrtAliasP(lhs173), "lhs", 173);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong_stateful.m"),
-                "context", 174);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_shr3cong"), "name", 174);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
+                174);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mcg16807_stateful"), "name",
+                174);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 174);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807_stateful.m"),
                 "resolved", 174);
-  emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 174);
+  emlrtAddField(*info, b_emlrt_marshallOut(1366133444U), "fileTimeLo", 174);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 174);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 174);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 174);
@@ -3443,12 +3441,12 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs174), "rhs", 174);
   emlrtAddField(*info, emlrtAliasP(lhs174), "lhs", 174);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong_stateful.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807_stateful.m"),
                 "context", 175);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_shr3cong"), "name", 175);
-  emlrtAddField(*info, emlrt_marshallOut("uint32"), "dominantType", 175);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mcg16807"), "name", 175);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 175);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807.m"),
                 "resolved", 175);
   emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 175);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 175);
@@ -3459,15 +3457,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs175), "rhs", 175);
   emlrtAddField(*info, emlrtAliasP(lhs175), "lhs", 175);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
-                176);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mt19937ar_stateful"), "name",
-                176);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 176);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807_stateful.m"),
+                "context", 176);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mcg16807"), "name", 176);
+  emlrtAddField(*info, emlrt_marshallOut("uint32"), "dominantType", 176);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar_stateful.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mcg16807.m"),
                 "resolved", 176);
-  emlrtAddField(*info, b_emlrt_marshallOut(1366133444U), "fileTimeLo", 176);
+  emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 176);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 176);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 176);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 176);
@@ -3476,14 +3473,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs176), "rhs", 176);
   emlrtAddField(*info, emlrtAliasP(lhs176), "lhs", 176);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar_stateful.m"),
-                "context", 177);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mt19937ar"), "name", 177);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
+                177);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_shr3cong_stateful"), "name",
+                177);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 177);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong_stateful.m"),
                 "resolved", 177);
-  emlrtAddField(*info, b_emlrt_marshallOut(1406784348U), "fileTimeLo", 177);
+  emlrtAddField(*info, b_emlrt_marshallOut(1366133444U), "fileTimeLo", 177);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 177);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 177);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 177);
@@ -3492,14 +3490,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs177), "rhs", 177);
   emlrtAddField(*info, emlrtAliasP(lhs177), "lhs", 177);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar_stateful.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong_stateful.m"),
                 "context", 178);
-  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mt19937ar"), "name", 178);
-  emlrtAddField(*info, emlrt_marshallOut("uint32"), "dominantType", 178);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_shr3cong"), "name", 178);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 178);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong.m"),
                 "resolved", 178);
-  emlrtAddField(*info, b_emlrt_marshallOut(1406784348U), "fileTimeLo", 178);
+  emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 178);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 178);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 178);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 178);
@@ -3508,13 +3506,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs178), "rhs", 178);
   emlrtAddField(*info, emlrtAliasP(lhs178), "lhs", 178);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!genrandu"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong_stateful.m"),
                 "context", 179);
-  emlrtAddField(*info, emlrt_marshallOut("eps"), "name", 179);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 179);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_shr3cong"), "name", 179);
+  emlrtAddField(*info, emlrt_marshallOut("uint32"), "dominantType", 179);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "resolved", 179);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 179);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_shr3cong.m"),
+                "resolved", 179);
+  emlrtAddField(*info, b_emlrt_marshallOut(1313319020U), "fileTimeLo", 179);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 179);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 179);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 179);
@@ -3523,14 +3522,15 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs179), "rhs", 179);
   emlrtAddField(*info, emlrtAliasP(lhs179), "lhs", 179);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!is_valid_state"),
-                "context", 180);
-  emlrtAddField(*info, emlrt_marshallOut("isequal"), "name", 180);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 180);
-  emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand.m"), "context",
                 180);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786358U), "fileTimeLo", 180);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mt19937ar_stateful"), "name",
+                180);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 180);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar_stateful.m"),
+                "resolved", 180);
+  emlrtAddField(*info, b_emlrt_marshallOut(1366133444U), "fileTimeLo", 180);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 180);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 180);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 180);
@@ -3539,13 +3539,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs180), "rhs", 180);
   emlrtAddField(*info, emlrtAliasP(lhs180), "lhs", 180);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "context", 181);
-  emlrtAddField(*info, emlrt_marshallOut("eml_isequal_core"), "name", 181);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 181);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar_stateful.m"),
+                "context", 181);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mt19937ar"), "name", 181);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 181);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m"),
                 "resolved", 181);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786386U), "fileTimeLo", 181);
+  emlrtAddField(*info, b_emlrt_marshallOut(1406784348U), "fileTimeLo", 181);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 181);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 181);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 181);
@@ -3554,13 +3555,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs181), "rhs", 181);
   emlrtAddField(*info, emlrtAliasP(lhs181), "lhs", 181);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m!isequal_scalar"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar_stateful.m"),
                 "context", 182);
-  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 182);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 182);
+  emlrtAddField(*info, emlrt_marshallOut("eml_rand_mt19937ar"), "name", 182);
+  emlrtAddField(*info, emlrt_marshallOut("uint32"), "dominantType", 182);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 182);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 182);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m"),
+                "resolved", 182);
+  emlrtAddField(*info, b_emlrt_marshallOut(1406784348U), "fileTimeLo", 182);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 182);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 182);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 182);
@@ -3569,14 +3571,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs182), "rhs", 182);
   emlrtAddField(*info, emlrtAliasP(lhs182), "lhs", 182);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!is_valid_state"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!genrandu"),
                 "context", 183);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 183);
+  emlrtAddField(*info, emlrt_marshallOut("eps"), "name", 183);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 183);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
-                "resolved", 183);
-  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 183);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "resolved", 183);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 183);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 183);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 183);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 183);
@@ -3587,12 +3588,12 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!is_valid_state"),
                 "context", 184);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_plus"), "name", 184);
+  emlrtAddField(*info, emlrt_marshallOut("isequal"), "name", 184);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 184);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"),
-                "resolved", 184);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 184);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "resolved",
+                184);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786358U), "fileTimeLo", 184);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 184);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 184);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 184);
@@ -3601,14 +3602,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs184), "rhs", 184);
   emlrtAddField(*info, emlrtAliasP(lhs184), "lhs", 184);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!genrandu"),
-                "context", 185);
-  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 185);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 185);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isequal.m"), "context", 185);
+  emlrtAddField(*info, emlrt_marshallOut("eml_isequal_core"), "name", 185);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 185);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved",
-                185);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 185);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m"),
+                "resolved", 185);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786386U), "fileTimeLo", 185);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 185);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 185);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 185);
@@ -3617,14 +3617,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs185), "rhs", 185);
   emlrtAddField(*info, emlrtAliasP(lhs185), "lhs", 185);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_isequal_core.m!isequal_scalar"),
                 "context", 186);
-  emlrtAddField(*info, emlrt_marshallOut("getConstrainedBeta"), "name", 186);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 186);
+  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 186);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 186);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m"),
-                "resolved", 186);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423832453U), "fileTimeLo", 186);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 186);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 186);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 186);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 186);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 186);
@@ -3633,13 +3632,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs186), "rhs", 186);
   emlrtAddField(*info, emlrtAliasP(lhs186), "lhs", 186);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!is_valid_state"),
                 "context", 187);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 187);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 187);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 187);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 187);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 187);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 187);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
+                "resolved", 187);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 187);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 187);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 187);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 187);
@@ -3648,28 +3648,30 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs187), "rhs", 187);
   emlrtAddField(*info, emlrtAliasP(lhs187), "lhs", 187);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!is_valid_state"),
                 "context", 188);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 188);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_plus"), "name", 188);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 188);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 188);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 188);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"),
+                "resolved", 188);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 188);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 188);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 188);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 188);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 188);
   emlrtAssign(&rhs188, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs188, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs188), "rhs", 188);
   emlrtAddField(*info, emlrtAliasP(lhs188), "lhs", 188);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/eml_rand_mt19937ar.m!genrandu"),
                 "context", 189);
-  emlrtAddField(*info, emlrt_marshallOut("rand"), "name", 189);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 189);
+  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 189);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 189);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/randfun/rand.m"), "resolved", 189);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841290U), "fileTimeLo", 189);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved",
+                189);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 189);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 189);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 189);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 189);
@@ -3678,13 +3680,14 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs189), "rhs", 189);
   emlrtAddField(*info, emlrtAliasP(lhs189), "lhs", 189);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedBeta.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "context", 190);
-  emlrtAddField(*info, emlrt_marshallOut("asin"), "name", 190);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 190);
+  emlrtAddField(*info, emlrt_marshallOut("getXStar"), "name", 190);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 190);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "resolved", 190);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292494U), "fileTimeLo", 190);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"),
+                "resolved", 190);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424084603U), "fileTimeLo", 190);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 190);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 190);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 190);
@@ -3693,13 +3696,13 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs190), "rhs", 190);
   emlrtAddField(*info, emlrtAliasP(lhs190), "lhs", 190);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "context", 191);
-  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 191);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 191);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"),
+                "context", 191);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 191);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 191);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved",
-                191);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 191);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 191);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 191);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 191);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 191);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 191);
@@ -3972,13 +3975,13 @@ static void d_info_helper(const mxArray **info)
   const mxArray *rhs255 = NULL;
   const mxArray *lhs255 = NULL;
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"),
                 "context", 192);
-  emlrtAddField(*info, emlrt_marshallOut("mod"), "name", 192);
-  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 192);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 192);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 192);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "resolved", 192);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 192);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 192);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 192);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 192);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 192);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 192);
@@ -3987,30 +3990,28 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs192), "rhs", 192);
   emlrtAddField(*info, emlrtAliasP(lhs192), "lhs", 192);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 193);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 193);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"),
+                "context", 193);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 193);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 193);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 193);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 193);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 193);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 193);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 193);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 193);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 193);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 193);
   emlrtAssign(&rhs193, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs193, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs193), "rhs", 193);
   emlrtAddField(*info, emlrtAliasP(lhs193), "lhs", 193);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 194);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 194);
-  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 194);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"),
+                "context", 194);
+  emlrtAddField(*info, emlrt_marshallOut("asin"), "name", 194);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 194);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
-                "resolved", 194);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 194);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "resolved", 194);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292494U), "fileTimeLo", 194);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 194);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 194);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 194);
@@ -4019,13 +4020,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs194), "rhs", 194);
   emlrtAddField(*info, emlrtAliasP(lhs194), "lhs", 194);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 195);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 195);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/asin.m"), "context", 195);
+  emlrtAddField(*info, emlrt_marshallOut("eml_error"), "name", 195);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 195);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
-                "resolved", 195);
-  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 195);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_error.m"), "resolved",
+                195);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801558U), "fileTimeLo", 195);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 195);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 195);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 195);
@@ -4034,29 +4035,29 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs195), "rhs", 195);
   emlrtAddField(*info, emlrtAliasP(lhs195), "lhs", 195);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 196);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 196);
-  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 196);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+                "context", 196);
+  emlrtAddField(*info, emlrt_marshallOut("disp"), "name", 196);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 196);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                196);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 196);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 196);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 196);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 196);
+    "[IXMB]$matlabroot$/toolbox/matlab/lang/disp"), "resolved", 196);
+  emlrtAddField(*info, b_emlrt_marshallOut(MAX_uint32_T), "fileTimeLo", 196);
+  emlrtAddField(*info, b_emlrt_marshallOut(MAX_uint32_T), "fileTimeHi", 196);
+  emlrtAddField(*info, b_emlrt_marshallOut(MAX_uint32_T), "mFileTimeLo", 196);
+  emlrtAddField(*info, b_emlrt_marshallOut(MAX_uint32_T), "mFileTimeHi", 196);
   emlrtAssign(&rhs196, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs196, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs196), "rhs", 196);
   emlrtAddField(*info, emlrtAliasP(lhs196), "lhs", 196);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "context",
-                197);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 197);
-  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 197);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+                "context", 197);
+  emlrtAddField(*info, emlrt_marshallOut("sherpaTTIK"), "name", 197);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 197);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"),
                 "resolved", 197);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 197);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423754499U), "fileTimeLo", 197);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 197);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 197);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 197);
@@ -4065,13 +4066,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs197), "rhs", 197);
   emlrtAddField(*info, emlrtAliasP(lhs197), "lhs", 197);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 198);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 198);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+                "context", 198);
+  emlrtAddField(*info, emlrt_marshallOut("mod"), "name", 198);
   emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 198);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
-                "resolved", 198);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 198);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "resolved", 198);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 198);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 198);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 198);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 198);
@@ -4080,15 +4081,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs198), "rhs", 198);
   emlrtAddField(*info, emlrtAliasP(lhs198), "lhs", 198);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
-                "context", 199);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalexpAlloc"), "name",
-                199);
-  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 199);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 199);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 199);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 199);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 199);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 199);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 199);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 199);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 199);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 199);
@@ -4097,14 +4097,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs199), "rhs", 199);
   emlrtAddField(*info, emlrtAliasP(lhs199), "lhs", 199);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!intmod"), "context",
-                200);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 200);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 200);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 200);
   emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 200);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                200);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 200);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 200);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 200);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 200);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 200);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 200);
@@ -4113,14 +4113,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs200), "rhs", 200);
   emlrtAddField(*info, emlrtAliasP(lhs200), "lhs", 200);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
-                201);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 201);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 201);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 201);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 201);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 201);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                201);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 201);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
+                "resolved", 201);
+  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 201);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 201);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 201);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 201);
@@ -4129,14 +4128,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs201), "rhs", 201);
   emlrtAddField(*info, emlrtAliasP(lhs201), "lhs", 201);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
-                202);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_floor"), "name", 202);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 202);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 202);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 202);
+  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 202);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_floor.m"),
-                "resolved", 202);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 202);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                202);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 202);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 202);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 202);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 202);
@@ -4145,14 +4143,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs202), "rhs", 202);
   emlrtAddField(*info, emlrtAliasP(lhs202), "lhs", 202);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "context",
                 203);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_round"), "name", 203);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 203);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalarEg"), "name", 203);
+  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 203);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_round.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalarEg.p"),
                 "resolved", 203);
-  emlrtAddField(*info, b_emlrt_marshallOut(1307622438U), "fileTimeLo", 203);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 203);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 203);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 203);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 203);
@@ -4161,14 +4159,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs203), "rhs", 203);
   emlrtAddField(*info, emlrtAliasP(lhs203), "lhs", 203);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
-                204);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_abs"), "name", 204);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 204);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 204);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 204);
+  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 204);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
                 "resolved", 204);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786312U), "fileTimeLo", 204);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 204);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 204);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 204);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 204);
@@ -4177,13 +4174,15 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs204), "rhs", 204);
   emlrtAddField(*info, emlrtAliasP(lhs204), "lhs", 204);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
+                "context", 205);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.scalexpAlloc"), "name",
                 205);
-  emlrtAddField(*info, emlrt_marshallOut("eps"), "name", 205);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 205);
+  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 205);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "resolved", 205);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 205);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/scalexpAlloc.p"),
+                "resolved", 205);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 205);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 205);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 205);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 205);
@@ -4192,14 +4191,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs205), "rhs", 205);
   emlrtAddField(*info, emlrtAliasP(lhs205), "lhs", 205);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
-                "context", 206);
-  emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 206);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 206);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!intmod"), "context",
+                206);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 206);
+  emlrtAddField(*info, emlrt_marshallOut("int32"), "dominantType", 206);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
-                "resolved", 206);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740143U), "fileTimeLo", 206);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                206);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 206);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 206);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 206);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 206);
@@ -4208,14 +4207,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs206), "rhs", 206);
   emlrtAddField(*info, emlrtAliasP(lhs206), "lhs", 206);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
-                "context", 207);
-  emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 207);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 207);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
+                207);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 207);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 207);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
-                "resolved", 207);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740677U), "fileTimeLo", 207);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                207);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 207);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 207);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 207);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 207);
@@ -4224,13 +4223,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs207), "rhs", 207);
   emlrtAddField(*info, emlrtAliasP(lhs207), "lhs", 207);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m!legRadius"),
-                "context", 208);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 208);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
+                208);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_floor"), "name", 208);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 208);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 208);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 208);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_floor.m"),
+                "resolved", 208);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786326U), "fileTimeLo", 208);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 208);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 208);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 208);
@@ -4239,14 +4239,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs208), "rhs", 208);
   emlrtAddField(*info, emlrtAliasP(lhs208), "lhs", 208);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
-                "context", 209);
-  emlrtAddField(*info, emlrt_marshallOut("angDiff"), "name", 209);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
+                209);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_round"), "name", 209);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 209);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_round.m"),
                 "resolved", 209);
-  emlrtAddField(*info, b_emlrt_marshallOut(1421072834U), "fileTimeLo", 209);
+  emlrtAddField(*info, b_emlrt_marshallOut(1307622438U), "fileTimeLo", 209);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 209);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 209);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 209);
@@ -4255,13 +4255,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs209), "rhs", 209);
   emlrtAddField(*info, emlrtAliasP(lhs209), "lhs", 209);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
-                "context", 210);
-  emlrtAddField(*info, emlrt_marshallOut("mod"), "name", 210);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
+                210);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_abs"), "name", 210);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 210);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "resolved", 210);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 210);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_abs.m"),
+                "resolved", 210);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786312U), "fileTimeLo", 210);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 210);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 210);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 210);
@@ -4270,13 +4271,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs210), "rhs", 210);
   emlrtAddField(*info, emlrtAliasP(lhs210), "lhs", 210);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 211);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 211);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 211);
-  emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m!floatmod"), "context",
                 211);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 211);
+  emlrtAddField(*info, emlrt_marshallOut("eps"), "name", 211);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 211);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eps.m"), "resolved", 211);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 211);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 211);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 211);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 211);
@@ -4285,13 +4286,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs211), "rhs", 211);
   emlrtAddField(*info, emlrtAliasP(lhs211), "lhs", 211);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 212);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 212);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 212);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
+                "context", 212);
+  emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 212);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 212);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "resolved", 212);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 212);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423740143U), "fileTimeLo", 212);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 212);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 212);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 212);
@@ -4300,13 +4302,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs212), "rhs", 212);
   emlrtAddField(*info, emlrtAliasP(lhs212), "lhs", 212);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "context", 213);
-  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 213);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 213);
+  emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 213);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 213);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 213);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 213);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+                "resolved", 213);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423740677U), "fileTimeLo", 213);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 213);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 213);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 213);
@@ -4315,13 +4318,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs213), "rhs", 213);
   emlrtAddField(*info, emlrtAliasP(lhs213), "lhs", 213);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m!posMetric"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m!legRadius"),
                 "context", 214);
-  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 214);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 214);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 214);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 214);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 214);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 214);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 214);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 214);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 214);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 214);
@@ -4330,13 +4333,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs214), "rhs", 214);
   emlrtAddField(*info, emlrtAliasP(lhs214), "lhs", 214);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m!posMetric"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 215);
-  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 215);
+  emlrtAddField(*info, emlrt_marshallOut("angDiff"), "name", 215);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 215);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 215);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 215);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
+                "resolved", 215);
+  emlrtAddField(*info, b_emlrt_marshallOut(1421072834U), "fileTimeLo", 215);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 215);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 215);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 215);
@@ -4345,13 +4349,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs215), "rhs", 215);
   emlrtAddField(*info, emlrtAliasP(lhs215), "lhs", 215);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
                 "context", 216);
-  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 216);
+  emlrtAddField(*info, emlrt_marshallOut("mod"), "name", 216);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 216);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 216);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 216);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "resolved", 216);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 216);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 216);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 216);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 216);
@@ -4360,13 +4364,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs216), "rhs", 216);
   emlrtAddField(*info, emlrtAliasP(lhs216), "lhs", 216);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
-                "context", 217);
-  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 217);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 217);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 217);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 217);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 217);
-  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 217);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                217);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 217);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 217);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 217);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 217);
@@ -4375,28 +4379,28 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs217), "rhs", 217);
   emlrtAddField(*info, emlrtAliasP(lhs217), "lhs", 217);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
-                "context", 218);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 218);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "context", 218);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalexp_alloc"), "name", 218);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 218);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 218);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 218);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalexp_alloc.m"),
+                "resolved", 218);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 218);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 218);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 218);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 218);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 218);
   emlrtAssign(&rhs218, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs218, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs218), "rhs", 218);
   emlrtAddField(*info, emlrtAliasP(lhs218), "lhs", 218);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
                 "context", 219);
-  emlrtAddField(*info, emlrt_marshallOut("min"), "name", 219);
+  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 219);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 219);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/datafun/min.m"), "resolved", 219);
-  emlrtAddField(*info, b_emlrt_marshallOut(1311226518U), "fileTimeLo", 219);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 219);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 219);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 219);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 219);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 219);
@@ -4405,13 +4409,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs219), "rhs", 219);
   emlrtAddField(*info, emlrtAliasP(lhs219), "lhs", 219);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/datafun/min.m"), "context", 220);
-  emlrtAddField(*info, emlrt_marshallOut("eml_min_or_max"), "name", 220);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 220);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m!posMetric"),
+                "context", 220);
+  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 220);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 220);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"),
-                "resolved", 220);
-  emlrtAddField(*info, b_emlrt_marshallOut(1378267184U), "fileTimeLo", 220);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 220);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 220);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 220);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 220);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 220);
@@ -4420,15 +4424,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs220), "rhs", 220);
   emlrtAddField(*info, emlrtAliasP(lhs220), "lhs", 220);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m!posMetric"),
                 "context", 221);
-  emlrtAddField(*info, emlrt_marshallOut("eml_const_nonsingleton_dim"), "name",
-                221);
+  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 221);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 221);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_const_nonsingleton_dim.m"),
-                "resolved", 221);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 221);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 221);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 221);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 221);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 221);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 221);
@@ -4437,15 +4439,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs221), "rhs", 221);
   emlrtAddField(*info, emlrtAliasP(lhs221), "lhs", 221);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_const_nonsingleton_dim.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 222);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.constNonSingletonDim"),
-                "name", 222);
+  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 222);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 222);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/constNonSingletonDim.m"),
-                "resolved", 222);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 222);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 222);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 222);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 222);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 222);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 222);
@@ -4454,14 +4454,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs222), "rhs", 222);
   emlrtAddField(*info, emlrtAliasP(lhs222), "lhs", 222);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 223);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 223);
+  emlrtAddField(*info, emlrt_marshallOut("sqrt"), "name", 223);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 223);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
-                223);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 223);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sqrt.m"), "resolved", 223);
+  emlrtAddField(*info, b_emlrt_marshallOut(1343801586U), "fileTimeLo", 223);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 223);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 223);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 223);
@@ -4470,30 +4469,28 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs223), "rhs", 223);
   emlrtAddField(*info, emlrtAliasP(lhs223), "lhs", 223);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 224);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 224);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 224);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 224);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 224);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
-                "resolved", 224);
-  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 224);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 224);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 224);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 224);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 224);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 224);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 224);
   emlrtAssign(&rhs224, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs224, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs224), "rhs", 224);
   emlrtAddField(*info, emlrtAliasP(lhs224), "lhs", 224);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "context", 225);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 225);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 225);
+  emlrtAddField(*info, emlrt_marshallOut("min"), "name", 225);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 225);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
-                "resolved", 225);
-  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 225);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/datafun/min.m"), "resolved", 225);
+  emlrtAddField(*info, b_emlrt_marshallOut(1311226518U), "fileTimeLo", 225);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 225);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 225);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 225);
@@ -4502,13 +4499,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs225), "rhs", 225);
   emlrtAddField(*info, emlrtAliasP(lhs225), "lhs", 225);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
-                "context", 226);
-  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 226);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 226);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/datafun/min.m"), "context", 226);
+  emlrtAddField(*info, emlrt_marshallOut("eml_min_or_max"), "name", 226);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 226);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 226);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 226);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"),
+                "resolved", 226);
+  emlrtAddField(*info, b_emlrt_marshallOut(1378267184U), "fileTimeLo", 226);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 226);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 226);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 226);
@@ -4517,13 +4514,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs226), "rhs", 226);
   emlrtAddField(*info, emlrtAliasP(lhs226), "lhs", 226);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum"),
                 "context", 227);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_plus"), "name", 227);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
-                "dominantType", 227);
+  emlrtAddField(*info, emlrt_marshallOut("eml_const_nonsingleton_dim"), "name",
+                227);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 227);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_const_nonsingleton_dim.m"),
                 "resolved", 227);
   emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 227);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 227);
@@ -4534,14 +4531,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs227), "rhs", 227);
   emlrtAddField(*info, emlrtAliasP(lhs227), "lhs", 227);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"), "context",
-                228);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexPlus"), "name",
-                228);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
-                "dominantType", 228);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_const_nonsingleton_dim.m"),
+                "context", 228);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.constNonSingletonDim"),
+                "name", 228);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 228);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/constNonSingletonDim.m"),
                 "resolved", 228);
   emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 228);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 228);
@@ -4552,15 +4548,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs228), "rhs", 228);
   emlrtAddField(*info, emlrtAliasP(lhs228), "lhs", 228);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum"),
                 "context", 229);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 229);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 229);
+  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_eg"), "name", 229);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 229);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
-                "resolved", 229);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 229);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_scalar_eg.m"), "resolved",
+                229);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951888U), "fileTimeLo", 229);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 229);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 229);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 229);
@@ -4569,14 +4564,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs229), "rhs", 229);
   emlrtAddField(*info, emlrtAliasP(lhs229), "lhs", 229);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum"),
                 "context", 230);
-  emlrtAddField(*info, emlrt_marshallOut("eml_relop"), "name", 230);
-  emlrtAddField(*info, emlrt_marshallOut("function_handle"), "dominantType", 230);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 230);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 230);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_relop.m"), "resolved",
-                230);
-  emlrtAddField(*info, b_emlrt_marshallOut(1342422382U), "fileTimeLo", 230);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
+                "resolved", 230);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 230);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 230);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 230);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 230);
@@ -4585,14 +4580,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs230), "rhs", 230);
   emlrtAddField(*info, emlrtAliasP(lhs230), "lhs", 230);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
                 "context", 231);
-  emlrtAddField(*info, emlrt_marshallOut("selectInput"), "name", 231);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 231);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 231);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 231);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
                 "resolved", 231);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740421U), "fileTimeLo", 231);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 231);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 231);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 231);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 231);
@@ -4601,28 +4596,30 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs231), "rhs", 231);
   emlrtAddField(*info, emlrtAliasP(lhs231), "lhs", 231);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
                 "context", 232);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 232);
+  emlrtAddField(*info, emlrt_marshallOut("isnan"), "name", 232);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 232);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 232);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 232);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isnan.m"), "resolved", 232);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677858U), "fileTimeLo", 232);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 232);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 232);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 232);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 232);
   emlrtAssign(&rhs232, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs232, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs232), "rhs", 232);
   emlrtAddField(*info, emlrtAliasP(lhs232), "lhs", 232);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
                 "context", 233);
-  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 233);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 233);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_plus"), "name", 233);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
+                "dominantType", 233);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 233);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 233);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"),
+                "resolved", 233);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372553616U), "fileTimeLo", 233);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 233);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 233);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 233);
@@ -4631,15 +4628,16 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs233), "rhs", 233);
   emlrtAddField(*info, emlrtAliasP(lhs233), "lhs", 233);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
-                "context", 234);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 234);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 234);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_plus.m"), "context",
+                234);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexPlus"), "name",
+                234);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
+                "dominantType", 234);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m"),
                 "resolved", 234);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 234);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 234);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 234);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 234);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 234);
@@ -4648,15 +4646,15 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs234), "rhs", 234);
   emlrtAddField(*info, emlrtAliasP(lhs234), "lhs", 234);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
                 "context", 235);
-  emlrtAddField(*info, emlrt_marshallOut("getConstrainedGammaDotDot"), "name",
-                235);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 235);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 235);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 235);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
                 "resolved", 235);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740707U), "fileTimeLo", 235);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 235);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 235);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 235);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 235);
@@ -4665,13 +4663,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs235), "rhs", 235);
   emlrtAddField(*info, emlrtAliasP(lhs235), "lhs", 235);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_min_or_max.m!eml_extremum_sub"),
                 "context", 236);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 236);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 236);
+  emlrtAddField(*info, emlrt_marshallOut("eml_relop"), "name", 236);
+  emlrtAddField(*info, emlrt_marshallOut("function_handle"), "dominantType", 236);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 236);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 236);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_relop.m"), "resolved",
+                236);
+  emlrtAddField(*info, b_emlrt_marshallOut(1342422382U), "fileTimeLo", 236);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 236);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 236);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 236);
@@ -4680,13 +4679,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs236), "rhs", 236);
   emlrtAddField(*info, emlrtAliasP(lhs236), "lhs", 236);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
                 "context", 237);
-  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 237);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 237);
+  emlrtAddField(*info, emlrt_marshallOut("selectInput"), "name", 237);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 237);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 237);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 237);
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+                "resolved", 237);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424177439U), "fileTimeLo", 237);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 237);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 237);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 237);
@@ -4695,30 +4695,30 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs237), "rhs", 237);
   emlrtAddField(*info, emlrtAliasP(lhs237), "lhs", 237);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 238);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 238);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 238);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 238);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 238);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 238);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 238);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 238);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 238);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 238);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 238);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 238);
   emlrtAssign(&rhs238, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs238, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs238), "rhs", 238);
   emlrtAddField(*info, emlrtAliasP(lhs238), "lhs", 238);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 239);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 239);
+  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 239);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 239);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 239);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 239);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 239);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 239);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 239);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 239);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 239);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 239);
   emlrtAssign(&rhs239, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs239, emlrtCreateCellMatrix(0, 1));
@@ -4727,12 +4727,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 240);
-  emlrtAddField(*info, emlrt_marshallOut("rk4"), "name", 240);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 240);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 240);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 240);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
                 "resolved", 240);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423062631U), "fileTimeLo", 240);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 240);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 240);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 240);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 240);
@@ -4741,28 +4742,30 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs240), "rhs", 240);
   emlrtAddField(*info, emlrtAliasP(lhs240), "lhs", 240);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 241);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 241);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 241);
+  emlrtAddField(*info, emlrt_marshallOut("getConstrainedGammaDotDot"), "name",
+                241);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 241);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 241);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 241);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
+                "resolved", 241);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423740707U), "fileTimeLo", 241);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 241);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 241);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 241);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 241);
   emlrtAssign(&rhs241, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs241, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs241), "rhs", 241);
   emlrtAddField(*info, emlrtAliasP(lhs241), "lhs", 241);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
                 "context", 242);
-  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 242);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 242);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 242);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 242);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 242);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 242);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 242);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 242);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 242);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 242);
@@ -4771,13 +4774,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs242), "rhs", 242);
   emlrtAddField(*info, emlrtAliasP(lhs242), "lhs", 242);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
                 "context", 243);
-  emlrtAddField(*info, emlrt_marshallOut("length"), "name", 243);
+  emlrtAddField(*info, emlrt_marshallOut("mpower"), "name", 243);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 243);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/length.m"), "resolved", 243);
-  emlrtAddField(*info, b_emlrt_marshallOut(1303117406U), "fileTimeLo", 243);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mpower.m"), "resolved", 243);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677878U), "fileTimeLo", 243);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 243);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 243);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 243);
@@ -4786,14 +4789,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs243), "rhs", 243);
   emlrtAddField(*info, emlrtAliasP(lhs243), "lhs", 243);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
                 "context", 244);
-  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 244);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 244);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 244);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 244);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
-                "resolved", 244);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 244);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 244);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 244);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 244);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 244);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 244);
@@ -4802,16 +4804,15 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs244), "rhs", 244);
   emlrtAddField(*info, emlrtAliasP(lhs244), "lhs", 244);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getConstrainedGammaDotDot.m"),
                 "context", 245);
-  emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 245);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 245);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 245);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 245);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
-                "resolved", 245);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740677U), "fileTimeLo", 245);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 245);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 245);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 245);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 245);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 245);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 245);
   emlrtAssign(&rhs245, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs245, emlrtCreateCellMatrix(0, 1));
@@ -4820,12 +4821,12 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 246);
-  emlrtAddField(*info, emlrt_marshallOut("calcPhi"), "name", 246);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 246);
+  emlrtAddField(*info, emlrt_marshallOut("rk4"), "name", 246);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 246);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/calcPhi.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "resolved", 246);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740746U), "fileTimeLo", 246);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423062631U), "fileTimeLo", 246);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 246);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 246);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 246);
@@ -4834,28 +4835,28 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs246), "rhs", 246);
   emlrtAddField(*info, emlrtAliasP(lhs246), "lhs", 246);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/calcPhi.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 247);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 247);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 247);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 247);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 247);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 247);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 247);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 247);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 247);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 247);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 247);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 247);
   emlrtAssign(&rhs247, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs247, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs247), "rhs", 247);
   emlrtAddField(*info, emlrtAliasP(lhs247), "lhs", 247);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/calcPhi.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 248);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 248);
+  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 248);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 248);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 248);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 248);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 248);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 248);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 248);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 248);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 248);
@@ -4864,13 +4865,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs248), "rhs", 248);
   emlrtAddField(*info, emlrtAliasP(lhs248), "lhs", 248);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/calcPhi.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 249);
-  emlrtAddField(*info, emlrt_marshallOut("norm"), "name", 249);
+  emlrtAddField(*info, emlrt_marshallOut("length"), "name", 249);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 249);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m"), "resolved", 249);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677868U), "fileTimeLo", 249);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/length.m"), "resolved", 249);
+  emlrtAddField(*info, b_emlrt_marshallOut(1303117406U), "fileTimeLo", 249);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 249);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 249);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 249);
@@ -4879,14 +4880,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs249), "rhs", 249);
   emlrtAddField(*info, emlrtAliasP(lhs249), "lhs", 249);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m!genpnorm"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 250);
-  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 250);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 250);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 250);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
                 "resolved", 250);
-  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 250);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 250);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 250);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 250);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 250);
@@ -4895,15 +4896,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs250), "rhs", 250);
   emlrtAddField(*info, emlrtAliasP(lhs250), "lhs", 250);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m!genpnorm"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 251);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
-                "name", 251);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 251);
+  emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 251);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 251);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "resolved", 251);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 251);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423740677U), "fileTimeLo", 251);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 251);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 251);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 251);
@@ -4912,14 +4912,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs251), "rhs", 251);
   emlrtAddField(*info, emlrtAliasP(lhs251), "lhs", 251);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m!genpnorm"),
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 252);
-  emlrtAddField(*info, emlrt_marshallOut("eml_xnrm2"), "name", 252);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 252);
+  emlrtAddField(*info, emlrt_marshallOut("getPhiAndOmega"), "name", 252);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 252);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
                 "resolved", 252);
-  emlrtAddField(*info, b_emlrt_marshallOut(1375951892U), "fileTimeLo", 252);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424177452U), "fileTimeLo", 252);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 252);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 252);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 252);
@@ -4928,15 +4928,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs252), "rhs", 252);
   emlrtAddField(*info, emlrtAliasP(lhs252), "lhs", 252);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m"), "context",
-                253);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.inline"), "name",
-                253);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 253);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+                "context", 253);
+  emlrtAddField(*info, emlrt_marshallOut("generateTrMatrices"), "name", 253);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 253);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/inline.p"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m"),
                 "resolved", 253);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 253);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424008551U), "fileTimeLo", 253);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 253);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 253);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 253);
@@ -4945,15 +4944,13 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs253), "rhs", 253);
   emlrtAddField(*info, emlrtAliasP(lhs253), "lhs", 253);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m"), "context",
-                254);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.xnrm2"), "name",
-                254);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m"),
+                "context", 254);
+  emlrtAddField(*info, emlrt_marshallOut("eye"), "name", 254);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 254);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p"),
-                "resolved", 254);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 254);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eye.m"), "resolved", 254);
+  emlrtAddField(*info, b_emlrt_marshallOut(1406784348U), "fileTimeLo", 254);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 254);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 254);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 254);
@@ -4962,15 +4959,14 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs254), "rhs", 254);
   emlrtAddField(*info, emlrtAliasP(lhs254), "lhs", 254);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p"),
-                "context", 255);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.use_refblas"),
-                "name", 255);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 255);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eye.m"), "context", 255);
+  emlrtAddField(*info, emlrt_marshallOut("eml_assert_valid_size_arg"), "name",
+                255);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 255);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/use_refblas.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m"),
                 "resolved", 255);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 255);
+  emlrtAddField(*info, b_emlrt_marshallOut(1368154230U), "fileTimeLo", 255);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 255);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 255);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 255);
@@ -5178,16 +5174,62 @@ static void e_info_helper(const mxArray **info)
   const mxArray *lhs286 = NULL;
   const mxArray *rhs287 = NULL;
   const mxArray *lhs287 = NULL;
+  const mxArray *rhs288 = NULL;
+  const mxArray *lhs288 = NULL;
+  const mxArray *rhs289 = NULL;
+  const mxArray *lhs289 = NULL;
+  const mxArray *rhs290 = NULL;
+  const mxArray *lhs290 = NULL;
+  const mxArray *rhs291 = NULL;
+  const mxArray *lhs291 = NULL;
+  const mxArray *rhs292 = NULL;
+  const mxArray *lhs292 = NULL;
+  const mxArray *rhs293 = NULL;
+  const mxArray *lhs293 = NULL;
+  const mxArray *rhs294 = NULL;
+  const mxArray *lhs294 = NULL;
+  const mxArray *rhs295 = NULL;
+  const mxArray *lhs295 = NULL;
+  const mxArray *rhs296 = NULL;
+  const mxArray *lhs296 = NULL;
+  const mxArray *rhs297 = NULL;
+  const mxArray *lhs297 = NULL;
+  const mxArray *rhs298 = NULL;
+  const mxArray *lhs298 = NULL;
+  const mxArray *rhs299 = NULL;
+  const mxArray *lhs299 = NULL;
+  const mxArray *rhs300 = NULL;
+  const mxArray *lhs300 = NULL;
+  const mxArray *rhs301 = NULL;
+  const mxArray *lhs301 = NULL;
+  const mxArray *rhs302 = NULL;
+  const mxArray *lhs302 = NULL;
+  const mxArray *rhs303 = NULL;
+  const mxArray *lhs303 = NULL;
+  const mxArray *rhs304 = NULL;
+  const mxArray *lhs304 = NULL;
+  const mxArray *rhs305 = NULL;
+  const mxArray *lhs305 = NULL;
+  const mxArray *rhs306 = NULL;
+  const mxArray *lhs306 = NULL;
+  const mxArray *rhs307 = NULL;
+  const mxArray *lhs307 = NULL;
+  const mxArray *rhs308 = NULL;
+  const mxArray *lhs308 = NULL;
+  const mxArray *rhs309 = NULL;
+  const mxArray *lhs309 = NULL;
+  const mxArray *rhs310 = NULL;
+  const mxArray *lhs310 = NULL;
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m"),
                 "context", 256);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.refblas.xnrm2"), "name",
-                256);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 256);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 256);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
                 "resolved", 256);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 256);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 256);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 256);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 256);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 256);
@@ -5196,14 +5238,13 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs256), "rhs", 256);
   emlrtAddField(*info, emlrtAliasP(lhs256), "lhs", 256);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m!isintegral"),
                 "context", 257);
-  emlrtAddField(*info, emlrt_marshallOut("realmin"), "name", 257);
-  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 257);
+  emlrtAddField(*info, emlrt_marshallOut("isinf"), "name", 257);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 257);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmin.m"), "resolved",
-                257);
-  emlrtAddField(*info, b_emlrt_marshallOut(1307622442U), "fileTimeLo", 257);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/isinf.m"), "resolved", 257);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677856U), "fileTimeLo", 257);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 257);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 257);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 257);
@@ -5212,13 +5253,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs257), "rhs", 257);
   emlrtAddField(*info, emlrtAliasP(lhs257), "lhs", 257);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmin.m"), "context", 258);
-  emlrtAddField(*info, emlrt_marshallOut("eml_realmin"), "name", 258);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m!isinbounds"),
+                "context", 258);
+  emlrtAddField(*info, emlrt_marshallOut("eml_is_integer_class"), "name", 258);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 258);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmin.m"), "resolved",
-                258);
-  emlrtAddField(*info, b_emlrt_marshallOut(1307622444U), "fileTimeLo", 258);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_is_integer_class.m"),
+                "resolved", 258);
+  emlrtAddField(*info, b_emlrt_marshallOut(1286786382U), "fileTimeLo", 258);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 258);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 258);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 258);
@@ -5227,14 +5269,13 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs258), "rhs", 258);
   emlrtAddField(*info, emlrtAliasP(lhs258), "lhs", 258);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmin.m"), "context",
-                259);
-  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 259);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m!isinbounds"),
+                "context", 259);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 259);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 259);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
-                "resolved", 259);
-  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 259);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 259);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 259);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 259);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 259);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 259);
@@ -5243,15 +5284,13 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs259), "rhs", 259);
   emlrtAddField(*info, emlrtAliasP(lhs259), "lhs", 259);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m!isinbounds"),
                 "context", 260);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexMinus"), "name",
-                260);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 260);
+  emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 260);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 260);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexMinus.m"),
-                "resolved", 260);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 260);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "resolved", 260);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 260);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 260);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 260);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 260);
@@ -5260,16 +5299,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs260), "rhs", 260);
   emlrtAddField(*info, emlrtAliasP(lhs260), "lhs", 260);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m!isinbounds"),
                 "context", 261);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexTimes"), "name",
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexIntRelop"), "name",
                 261);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
-                "dominantType", 261);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 261);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexTimes.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexIntRelop.m"),
                 "resolved", 261);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 261);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326692322U), "fileTimeLo", 261);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 261);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 261);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 261);
@@ -5278,16 +5316,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs261), "rhs", 261);
   emlrtAddField(*info, emlrtAliasP(lhs261), "lhs", 261);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexIntRelop.m!apply_float_relop"),
                 "context", 262);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexPlus"), "name",
-                262);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
-                "dominantType", 262);
+  emlrtAddField(*info, emlrt_marshallOut("eml_switch_helper"), "name", 262);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 262);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_switch_helper.m"),
                 "resolved", 262);
-  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 262);
+  emlrtAddField(*info, b_emlrt_marshallOut(1393294858U), "fileTimeLo", 262);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 262);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 262);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 262);
@@ -5296,15 +5332,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs262), "rhs", 262);
   emlrtAddField(*info, emlrtAliasP(lhs262), "lhs", 262);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexIntRelop.m!float_class_contains_indexIntClass"),
                 "context", 263);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 263);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 263);
+  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 263);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 263);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
                 "resolved", 263);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 263);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 263);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 263);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 263);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 263);
@@ -5313,13 +5348,13 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs263), "rhs", 263);
   emlrtAddField(*info, emlrtAliasP(lhs263), "lhs", 263);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexIntRelop.m!is_signed_indexIntClass"),
                 "context", 264);
-  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 264);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 264);
+  emlrtAddField(*info, emlrt_marshallOut("intmin"), "name", 264);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 264);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 264);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 264);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmin.m"), "resolved", 264);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 264);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 264);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 264);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 264);
@@ -5328,28 +5363,29 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs264), "rhs", 264);
   emlrtAddField(*info, emlrtAliasP(lhs264), "lhs", 264);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/calcPhi.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m"),
                 "context", 265);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 265);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 265);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 265);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 265);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 265);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 265);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
+                "resolved", 265);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 265);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 265);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 265);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 265);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 265);
   emlrtAssign(&rhs265, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs265, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs265), "rhs", 265);
   emlrtAddField(*info, emlrtAliasP(lhs265), "lhs", 265);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/calcPhi.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_assert_valid_size_arg.m"),
                 "context", 266);
-  emlrtAddField(*info, emlrt_marshallOut("atan"), "name", 266);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 266);
+  emlrtAddField(*info, emlrt_marshallOut("intmax"), "name", 266);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 266);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan.m"), "resolved", 266);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 266);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/intmax.m"), "resolved", 266);
+  emlrtAddField(*info, b_emlrt_marshallOut(1362225882U), "fileTimeLo", 266);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 266);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 266);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 266);
@@ -5358,13 +5394,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs266), "rhs", 266);
   emlrtAddField(*info, emlrtAliasP(lhs266), "lhs", 266);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan.m"), "context", 267);
-  emlrtAddField(*info, emlrt_marshallOut("eml_scalar_atan"), "name", 267);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 267);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/eye.m"), "context", 267);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 267);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 267);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
                 "resolved", 267);
-  emlrtAddField(*info, b_emlrt_marshallOut(1286786318U), "fileTimeLo", 267);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 267);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 267);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 267);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 267);
@@ -5373,14 +5410,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs267), "rhs", 267);
   emlrtAddField(*info, emlrtAliasP(lhs267), "lhs", 267);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m"),
                 "context", 268);
-  emlrtAddField(*info, emlrt_marshallOut("angDiff"), "name", 268);
+  emlrtAddField(*info, emlrt_marshallOut("trDH"), "name", 268);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 268);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trDH.m"),
                 "resolved", 268);
-  emlrtAddField(*info, b_emlrt_marshallOut(1421072834U), "fileTimeLo", 268);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423922934U), "fileTimeLo", 268);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 268);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 268);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 268);
@@ -5389,28 +5426,29 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs268), "rhs", 268);
   emlrtAddField(*info, emlrtAliasP(lhs268), "lhs", 268);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m"),
                 "context", 269);
-  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 269);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 269);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 269);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 269);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 269);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 269);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 269);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 269);
-  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 269);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 269);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 269);
   emlrtAssign(&rhs269, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs269, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs269), "rhs", 269);
   emlrtAddField(*info, emlrtAliasP(lhs269), "lhs", 269);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m"),
                 "context", 270);
-  emlrtAddField(*info, emlrt_marshallOut("min"), "name", 270);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 270);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 270);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 270);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/datafun/min.m"), "resolved", 270);
-  emlrtAddField(*info, b_emlrt_marshallOut(1311226518U), "fileTimeLo", 270);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+                "resolved", 270);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 270);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 270);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 270);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 270);
@@ -5419,14 +5457,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs270), "rhs", 270);
   emlrtAddField(*info, emlrtAliasP(lhs270), "lhs", 270);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
                 "context", 271);
-  emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 271);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 271);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 271);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 271);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
                 "resolved", 271);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740677U), "fileTimeLo", 271);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 271);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 271);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 271);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 271);
@@ -5435,14 +5473,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs271), "rhs", 271);
   emlrtAddField(*info, emlrtAliasP(lhs271), "lhs", 271);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
                 "context", 272);
-  emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 272);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 272);
+  emlrtAddField(*info, emlrt_marshallOut("trInv"), "name", 272);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 272);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trInv.m"),
                 "resolved", 272);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423740143U), "fileTimeLo", 272);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423915247U), "fileTimeLo", 272);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 272);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 272);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 272);
@@ -5451,13 +5489,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs272), "rhs", 272);
   emlrtAddField(*info, emlrtAliasP(lhs272), "lhs", 272);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
                 "context", 273);
-  emlrtAddField(*info, emlrt_marshallOut("mod"), "name", 273);
+  emlrtAddField(*info, emlrt_marshallOut("tr2Adj"), "name", 273);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 273);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "resolved", 273);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 273);
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/tr2Adj.m"),
+                "resolved", 273);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424169548U), "fileTimeLo", 273);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 273);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 273);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 273);
@@ -5466,28 +5505,29 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs273), "rhs", 273);
   emlrtAddField(*info, emlrtAliasP(lhs273), "lhs", 273);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/tr2Adj.m"),
                 "context", 274);
-  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 274);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 274);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 274);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 274);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 274);
-  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 274);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+                "resolved", 274);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 274);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 274);
-  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 274);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 274);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 274);
   emlrtAssign(&rhs274, emlrtCreateCellMatrix(0, 1));
   emlrtAssign(&lhs274, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs274), "rhs", 274);
   emlrtAddField(*info, emlrtAliasP(lhs274), "lhs", 274);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
                 "context", 275);
-  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 275);
+  emlrtAddField(*info, emlrt_marshallOut("atan2"), "name", 275);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 275);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 275);
-  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 275);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan2.m"), "resolved", 275);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 275);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 275);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 275);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 275);
@@ -5496,15 +5536,13 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs275), "rhs", 275);
   emlrtAddField(*info, emlrtAliasP(lhs275), "lhs", 275);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
                 "context", 276);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 276);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 276);
+  emlrtAddField(*info, emlrt_marshallOut("norm"), "name", 276);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 276);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
-                "resolved", 276);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 276);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m"), "resolved", 276);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677868U), "fileTimeLo", 276);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 276);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 276);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 276);
@@ -5513,14 +5551,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs276), "rhs", 276);
   emlrtAddField(*info, emlrtAliasP(lhs276), "lhs", 276);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m!genpnorm"),
                 "context", 277);
-  emlrtAddField(*info, emlrt_marshallOut("sherpaTTFK"), "name", 277);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 277);
+  emlrtAddField(*info, emlrt_marshallOut("eml_index_class"), "name", 277);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 277);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_index_class.m"),
                 "resolved", 277);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423757139U), "fileTimeLo", 277);
+  emlrtAddField(*info, b_emlrt_marshallOut(1323134578U), "fileTimeLo", 277);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 277);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 277);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 277);
@@ -5529,13 +5567,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs277), "rhs", 277);
   emlrtAddField(*info, emlrtAliasP(lhs277), "lhs", 277);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m!genpnorm"),
                 "context", 278);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 278);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.isBuiltInNumeric"),
+                "name", 278);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 278);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 278);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 278);
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/isBuiltInNumeric.m"),
+                "resolved", 278);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395895856U), "fileTimeLo", 278);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 278);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 278);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 278);
@@ -5544,13 +5584,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs278), "rhs", 278);
   emlrtAddField(*info, emlrtAliasP(lhs278), "lhs", 278);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/matfun/norm.m!genpnorm"),
                 "context", 279);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 279);
+  emlrtAddField(*info, emlrt_marshallOut("eml_xnrm2"), "name", 279);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 279);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 279);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 279);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m"),
+                "resolved", 279);
+  emlrtAddField(*info, b_emlrt_marshallOut(1375951892U), "fileTimeLo", 279);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 279);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 279);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 279);
@@ -5559,14 +5600,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs279), "rhs", 279);
   emlrtAddField(*info, emlrtAliasP(lhs279), "lhs", 279);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
-                "context", 280);
-  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 280);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m"), "context",
+                280);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.inline"), "name",
+                280);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 280);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/inline.p"),
                 "resolved", 280);
-  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 280);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 280);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 280);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 280);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 280);
@@ -5575,14 +5617,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs280), "rhs", 280);
   emlrtAddField(*info, emlrtAliasP(lhs280), "lhs", 280);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
-                "context", 281);
-  emlrtAddField(*info, emlrt_marshallOut("sherpaTTFKVel"), "name", 281);
-  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 281);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/blas/eml_xnrm2.m"), "context",
+                281);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.xnrm2"), "name",
+                281);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 281);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFKVel.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p"),
                 "resolved", 281);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423747313U), "fileTimeLo", 281);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 281);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 281);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 281);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 281);
@@ -5591,13 +5634,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs281), "rhs", 281);
   emlrtAddField(*info, emlrtAliasP(lhs281), "lhs", 281);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFKVel.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p"),
                 "context", 282);
-  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 282);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 282);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.blas.use_refblas"),
+                "name", 282);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 282);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 282);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 282);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/use_refblas.p"),
+                "resolved", 282);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778970U), "fileTimeLo", 282);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 282);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 282);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 282);
@@ -5606,13 +5651,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs282), "rhs", 282);
   emlrtAddField(*info, emlrtAliasP(lhs282), "lhs", 282);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFKVel.m"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+blas/xnrm2.p"),
                 "context", 283);
-  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 283);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.refblas.xnrm2"), "name",
+                283);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 283);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 283);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 283);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+                "resolved", 283);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778972U), "fileTimeLo", 283);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 283);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 283);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 283);
@@ -5621,13 +5668,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs283), "rhs", 283);
   emlrtAddField(*info, emlrtAliasP(lhs283), "lhs", 283);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
                 "context", 284);
-  emlrtAddField(*info, emlrt_marshallOut("flipud"), "name", 284);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 284);
+  emlrtAddField(*info, emlrt_marshallOut("realmin"), "name", 284);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 284);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "resolved", 284);
-  emlrtAddField(*info, b_emlrt_marshallOut(1395292490U), "fileTimeLo", 284);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmin.m"), "resolved",
+                284);
+  emlrtAddField(*info, b_emlrt_marshallOut(1307622442U), "fileTimeLo", 284);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 284);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 284);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 284);
@@ -5636,13 +5684,13 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs284), "rhs", 284);
   emlrtAddField(*info, emlrtAliasP(lhs284), "lhs", 284);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "context", 285);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 285);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/realmin.m"), "context", 285);
+  emlrtAddField(*info, emlrt_marshallOut("eml_realmin"), "name", 285);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 285);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
-                "resolved", 285);
-  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 285);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmin.m"), "resolved",
+                285);
+  emlrtAddField(*info, b_emlrt_marshallOut(1307622444U), "fileTimeLo", 285);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 285);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 285);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 285);
@@ -5651,13 +5699,14 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs285), "rhs", 285);
   emlrtAddField(*info, emlrtAliasP(lhs285), "lhs", 285);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "context", 286);
-  emlrtAddField(*info, emlrt_marshallOut("coder.internal.prodsize"), "name", 286);
-  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 286);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_realmin.m"), "context",
+                286);
+  emlrtAddField(*info, emlrt_marshallOut("eml_float_model"), "name", 286);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 286);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/prodsize.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_float_model.m"),
                 "resolved", 286);
-  emlrtAddField(*info, b_emlrt_marshallOut(1360246588U), "fileTimeLo", 286);
+  emlrtAddField(*info, b_emlrt_marshallOut(1326691996U), "fileTimeLo", 286);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 286);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 286);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 286);
@@ -5666,14 +5715,15 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs286), "rhs", 286);
   emlrtAddField(*info, emlrtAliasP(lhs286), "lhs", 286);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "context", 287);
-  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
-                "name", 287);
-  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 287);
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+                "context", 287);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexMinus"), "name",
+                287);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 287);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexMinus.m"),
                 "resolved", 287);
-  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 287);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 287);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 287);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 287);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 287);
@@ -5681,6 +5731,368 @@ static void e_info_helper(const mxArray **info)
   emlrtAssign(&lhs287, emlrtCreateCellMatrix(0, 1));
   emlrtAddField(*info, emlrtAliasP(rhs287), "rhs", 287);
   emlrtAddField(*info, emlrtAliasP(lhs287), "lhs", 287);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+                "context", 288);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexTimes"), "name",
+                288);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
+                "dominantType", 288);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexTimes.m"),
+                "resolved", 288);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 288);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 288);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 288);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 288);
+  emlrtAssign(&rhs288, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs288, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs288), "rhs", 288);
+  emlrtAddField(*info, emlrtAliasP(lhs288), "lhs", 288);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+                "context", 289);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexPlus"), "name",
+                289);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.indexInt"),
+                "dominantType", 289);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/indexPlus.m"),
+                "resolved", 289);
+  emlrtAddField(*info, b_emlrt_marshallOut(1372554360U), "fileTimeLo", 289);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 289);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 289);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 289);
+  emlrtAssign(&rhs289, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs289, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs289), "rhs", 289);
+  emlrtAddField(*info, emlrtAliasP(lhs289), "lhs", 289);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+                "context", 290);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 290);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 290);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+                "resolved", 290);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 290);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 290);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 290);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 290);
+  emlrtAssign(&rhs290, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs290, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs290), "rhs", 290);
+  emlrtAddField(*info, emlrtAliasP(lhs290), "lhs", 290);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/coder/coder/+coder/+internal/+refblas/xnrm2.p"),
+                "context", 291);
+  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 291);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 291);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 291);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 291);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 291);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 291);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 291);
+  emlrtAssign(&rhs291, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs291, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs291), "rhs", 291);
+  emlrtAddField(*info, emlrtAliasP(lhs291), "lhs", 291);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/getPhiAndOmega.m"),
+                "context", 292);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 292);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 292);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 292);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 292);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 292);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 292);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 292);
+  emlrtAssign(&rhs292, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs292, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs292), "rhs", 292);
+  emlrtAddField(*info, emlrtAliasP(lhs292), "lhs", 292);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+                "context", 293);
+  emlrtAddField(*info, emlrt_marshallOut("angDiff"), "name", 293);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 293);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/angDiff.m"),
+                "resolved", 293);
+  emlrtAddField(*info, b_emlrt_marshallOut(1421072834U), "fileTimeLo", 293);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 293);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 293);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 293);
+  emlrtAssign(&rhs293, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs293, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs293), "rhs", 293);
+  emlrtAddField(*info, emlrtAliasP(lhs293), "lhs", 293);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+                "context", 294);
+  emlrtAddField(*info, emlrt_marshallOut("abs"), "name", 294);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 294);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/abs.m"), "resolved", 294);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677852U), "fileTimeLo", 294);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 294);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 294);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 294);
+  emlrtAssign(&rhs294, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs294, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs294), "rhs", 294);
+  emlrtAddField(*info, emlrtAliasP(lhs294), "lhs", 294);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+                "context", 295);
+  emlrtAddField(*info, emlrt_marshallOut("min"), "name", 295);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 295);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/datafun/min.m"), "resolved", 295);
+  emlrtAddField(*info, b_emlrt_marshallOut(1311226518U), "fileTimeLo", 295);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 295);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 295);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 295);
+  emlrtAssign(&rhs295, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs295, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs295), "rhs", 295);
+  emlrtAddField(*info, emlrtAliasP(lhs295), "lhs", 295);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m!rrtLoop"),
+                "context", 296);
+  emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 296);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 296);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+                "resolved", 296);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423740677U), "fileTimeLo", 296);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 296);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 296);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 296);
+  emlrtAssign(&rhs296, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs296, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs296), "rhs", 296);
+  emlrtAddField(*info, emlrtAliasP(lhs296), "lhs", 296);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+                "context", 297);
+  emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 297);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 297);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+                "resolved", 297);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423740143U), "fileTimeLo", 297);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 297);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 297);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 297);
+  emlrtAssign(&rhs297, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs297, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs297), "rhs", 297);
+  emlrtAddField(*info, emlrtAliasP(lhs297), "lhs", 297);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"),
+                "context", 298);
+  emlrtAddField(*info, emlrt_marshallOut("mod"), "name", 298);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 298);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/mod.m"), "resolved", 298);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 298);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 298);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 298);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 298);
+  emlrtAssign(&rhs298, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs298, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs298), "rhs", 298);
+  emlrtAddField(*info, emlrtAliasP(lhs298), "lhs", 298);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 299);
+  emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 299);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 299);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved", 299);
+  emlrtAddField(*info, b_emlrt_marshallOut(1410778848U), "fileTimeLo", 299);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 299);
+  emlrtAddField(*info, b_emlrt_marshallOut(1369981086U), "mFileTimeLo", 299);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 299);
+  emlrtAssign(&rhs299, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs299, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs299), "rhs", 299);
+  emlrtAddField(*info, emlrtAliasP(lhs299), "lhs", 299);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 300);
+  emlrtAddField(*info, emlrt_marshallOut("round"), "name", 300);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 300);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/round.m"), "resolved", 300);
+  emlrtAddField(*info, b_emlrt_marshallOut(1363677854U), "fileTimeLo", 300);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 300);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 300);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 300);
+  emlrtAssign(&rhs300, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs300, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs300), "rhs", 300);
+  emlrtAddField(*info, emlrtAliasP(lhs300), "lhs", 300);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 301);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 301);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 301);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+                "resolved", 301);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 301);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 301);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 301);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 301);
+  emlrtAssign(&rhs301, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs301, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs301), "rhs", 301);
+  emlrtAddField(*info, emlrtAliasP(lhs301), "lhs", 301);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 302);
+  emlrtAddField(*info, emlrt_marshallOut("sherpaTTFK"), "name", 302);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 302);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFK.m"),
+                "resolved", 302);
+  emlrtAddField(*info, b_emlrt_marshallOut(1424084107U), "fileTimeLo", 302);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 302);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 302);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 302);
+  emlrtAssign(&rhs302, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs302, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs302), "rhs", 302);
+  emlrtAddField(*info, emlrtAliasP(lhs302), "lhs", 302);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 303);
+  emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 303);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 303);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m"),
+                "resolved", 303);
+  emlrtAddField(*info, b_emlrt_marshallOut(1383841294U), "fileTimeLo", 303);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 303);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 303);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 303);
+  emlrtAssign(&rhs303, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs303, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs303), "rhs", 303);
+  emlrtAddField(*info, emlrtAliasP(lhs303), "lhs", 303);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 304);
+  emlrtAddField(*info, emlrt_marshallOut("sherpaTTFKVel"), "name", 304);
+  emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 304);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFKVel.m"),
+                "resolved", 304);
+  emlrtAddField(*info, b_emlrt_marshallOut(1423747313U), "fileTimeLo", 304);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 304);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 304);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 304);
+  emlrtAssign(&rhs304, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs304, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs304), "rhs", 304);
+  emlrtAddField(*info, emlrtAliasP(lhs304), "lhs", 304);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFKVel.m"),
+                "context", 305);
+  emlrtAddField(*info, emlrt_marshallOut("sin"), "name", 305);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 305);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved", 305);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292504U), "fileTimeLo", 305);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 305);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 305);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 305);
+  emlrtAssign(&rhs305, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs305, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs305), "rhs", 305);
+  emlrtAddField(*info, emlrtAliasP(lhs305), "lhs", 305);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTFKVel.m"),
+                "context", 306);
+  emlrtAddField(*info, emlrt_marshallOut("cos"), "name", 306);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 306);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved", 306);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292496U), "fileTimeLo", 306);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 306);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 306);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 306);
+  emlrtAssign(&rhs306, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs306, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs306), "rhs", 306);
+  emlrtAddField(*info, emlrtAliasP(lhs306), "lhs", 306);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m!transformPath"),
+                "context", 307);
+  emlrtAddField(*info, emlrt_marshallOut("flipud"), "name", 307);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 307);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "resolved", 307);
+  emlrtAddField(*info, b_emlrt_marshallOut(1395292490U), "fileTimeLo", 307);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 307);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 307);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 307);
+  emlrtAssign(&rhs307, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs307, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs307), "rhs", 307);
+  emlrtAddField(*info, emlrtAliasP(lhs307), "lhs", 307);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "context", 308);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.assert"), "name", 308);
+  emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 308);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/assert.m"),
+                "resolved", 308);
+  emlrtAddField(*info, b_emlrt_marshallOut(1389681774U), "fileTimeLo", 308);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 308);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 308);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 308);
+  emlrtAssign(&rhs308, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs308, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs308), "rhs", 308);
+  emlrtAddField(*info, emlrtAliasP(lhs308), "lhs", 308);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "context", 309);
+  emlrtAddField(*info, emlrt_marshallOut("coder.internal.prodsize"), "name", 309);
+  emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 309);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/shared/coder/coder/+coder/+internal/prodsize.m"),
+                "resolved", 309);
+  emlrtAddField(*info, b_emlrt_marshallOut(1360246588U), "fileTimeLo", 309);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 309);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 309);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 309);
+  emlrtAssign(&rhs309, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs309, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs309), "rhs", 309);
+  emlrtAddField(*info, emlrtAliasP(lhs309), "lhs", 309);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elmat/flipud.m"), "context", 310);
+  emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
+                "name", 310);
+  emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 310);
+  emlrtAddField(*info, emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"),
+                "resolved", 310);
+  emlrtAddField(*info, b_emlrt_marshallOut(1397228622U), "fileTimeLo", 310);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 310);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 310);
+  emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 310);
+  emlrtAssign(&rhs310, emlrtCreateCellMatrix(0, 1));
+  emlrtAssign(&lhs310, emlrtCreateCellMatrix(0, 1));
+  emlrtAddField(*info, emlrtAliasP(rhs310), "rhs", 310);
+  emlrtAddField(*info, emlrtAliasP(lhs310), "lhs", 310);
   emlrtDestroyArray(&rhs256);
   emlrtDestroyArray(&lhs256);
   emlrtDestroyArray(&rhs257);
@@ -5745,6 +6157,52 @@ static void e_info_helper(const mxArray **info)
   emlrtDestroyArray(&lhs286);
   emlrtDestroyArray(&rhs287);
   emlrtDestroyArray(&lhs287);
+  emlrtDestroyArray(&rhs288);
+  emlrtDestroyArray(&lhs288);
+  emlrtDestroyArray(&rhs289);
+  emlrtDestroyArray(&lhs289);
+  emlrtDestroyArray(&rhs290);
+  emlrtDestroyArray(&lhs290);
+  emlrtDestroyArray(&rhs291);
+  emlrtDestroyArray(&lhs291);
+  emlrtDestroyArray(&rhs292);
+  emlrtDestroyArray(&lhs292);
+  emlrtDestroyArray(&rhs293);
+  emlrtDestroyArray(&lhs293);
+  emlrtDestroyArray(&rhs294);
+  emlrtDestroyArray(&lhs294);
+  emlrtDestroyArray(&rhs295);
+  emlrtDestroyArray(&lhs295);
+  emlrtDestroyArray(&rhs296);
+  emlrtDestroyArray(&lhs296);
+  emlrtDestroyArray(&rhs297);
+  emlrtDestroyArray(&lhs297);
+  emlrtDestroyArray(&rhs298);
+  emlrtDestroyArray(&lhs298);
+  emlrtDestroyArray(&rhs299);
+  emlrtDestroyArray(&lhs299);
+  emlrtDestroyArray(&rhs300);
+  emlrtDestroyArray(&lhs300);
+  emlrtDestroyArray(&rhs301);
+  emlrtDestroyArray(&lhs301);
+  emlrtDestroyArray(&rhs302);
+  emlrtDestroyArray(&lhs302);
+  emlrtDestroyArray(&rhs303);
+  emlrtDestroyArray(&lhs303);
+  emlrtDestroyArray(&rhs304);
+  emlrtDestroyArray(&lhs304);
+  emlrtDestroyArray(&rhs305);
+  emlrtDestroyArray(&lhs305);
+  emlrtDestroyArray(&rhs306);
+  emlrtDestroyArray(&lhs306);
+  emlrtDestroyArray(&rhs307);
+  emlrtDestroyArray(&lhs307);
+  emlrtDestroyArray(&rhs308);
+  emlrtDestroyArray(&lhs308);
+  emlrtDestroyArray(&rhs309);
+  emlrtDestroyArray(&lhs309);
+  emlrtDestroyArray(&rhs310);
+  emlrtDestroyArray(&lhs310);
 }
 
 MEXFUNCTION_LINKAGE mxArray *emlrtMexFcnProperties(void);
@@ -5766,9 +6224,9 @@ mxArray *emlrtMexFcnProperties()
   mxArray *xResult = mxCreateStructMatrix(1,1,4,mexProperties);
   mxArray *xEntryPoints = mxCreateStructMatrix(1,1,4,epProperties);
   mxArray *xInputs = NULL;
-  xInputs = mxCreateLogicalMatrix(1, 10);
+  xInputs = mxCreateLogicalMatrix(1, 11);
   mxSetFieldByNumber(xEntryPoints, 0, 0, mxCreateString("buildRRTWrapper"));
-  mxSetFieldByNumber(xEntryPoints, 0, 1, mxCreateDoubleScalar(10));
+  mxSetFieldByNumber(xEntryPoints, 0, 1, mxCreateDoubleScalar(11));
   mxSetFieldByNumber(xEntryPoints, 0, 2, mxCreateDoubleScalar(4));
   mxSetFieldByNumber(xEntryPoints, 0, 3, xInputs);
   mxSetFieldByNumber(xResult, 0, 0, mxCreateString("8.4.0.150421 (R2014b)"));

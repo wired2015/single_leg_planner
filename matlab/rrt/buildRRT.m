@@ -2,7 +2,7 @@
 %author: wreid
 %date: 20150107
 
-function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq)
+function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq,uBDot,legNum)
 %buildRRT Icrementally builds a rapidly exploring random tree.
 %   An RRT is build by incrementally selecting a random state from the
 %   available state space as defined by the MIN and MAX vectors. The tree is
@@ -27,7 +27,7 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
     if ~exhaustive
     
         for i = 2:NUM_NODES
-            [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq);
+            [T,nodeIDCount] = rrtLoop(T,jointLimits,cartesianLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq,uBDot,legNum);
         end
         
     else
@@ -35,7 +35,7 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
         dist = 100;
         %TODO: make the threshold distance
         while dist > threshold && nodeIDCount < NUM_NODES 
-            [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq);
+            [T,nodeIDCount] = rrtLoop(T,jointLimits,cartesianLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq,uBDot,legNum);
             [~,~,dist] = nearestNeighbour(nGoal,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE);
             if mod(nodeIDCount,100) == 0
                 %fprintf('PROGRESS STATUS: dist = %.3f\n',dist);
@@ -57,11 +57,11 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,panHeight,HGAINS,
     
 end
 
-function [T,nodeIDCount] = rrtLoop(T,jointRange,jointLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq)
+function [T,nodeIDCount] = rrtLoop(T,jointLimits,cartesianLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq,uBDot,legNum)
     
-    xRand = randomState(jointRange,jointLimits(1,:),kC,panHeight,nGoal,nodeIDCount,goalSeedFreq);
+    xRand = randomState(jointLimits,cartesianLimits,panHeight,nGoal,nodeIDCount,goalSeedFreq,kC);
     [xNear,~,~] = nearestNeighbour(xRand,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE);
-    [xNew,transitionArray]  = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kC,ankleThreshold,jointLimits);
+    [xNew,transitionArray]  = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SIZE,HGAINS,kC,ankleThreshold,jointLimits,uBDot,legNum);
     nodeIDCount = nodeIDCount + 1;
 
     xNew(1) = nodeIDCount;                                  %Node ID

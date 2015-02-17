@@ -13,6 +13,7 @@ SRC_FILES =  \
 	buildRRTWrapper_terminate.c \
 	buildRRTWrapper.c \
 	sin.c \
+	trInv.c \
 	sherpaTTIK.c \
 	eml_error.c \
 	exp.c \
@@ -20,8 +21,9 @@ SRC_FILES =  \
 	asin.c \
 	eml_int_forloop_overflow_check.c \
 	sherpaTTIKVel.c \
+	validJointState.c \
 	buildRRT.c \
-	nearestNeighbour.c \
+	getXStar.c \
 	heuristicSingleLeg.c \
 	selectInput.c \
 	flipud.c \

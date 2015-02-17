@@ -21,6 +21,10 @@
 #include "buildRRTWrapper_types.h"
 
 /* Function Declarations */
+extern void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1,
+  real_T kC_l2, real_T kC_l3, real_T kC_l4, real_T kC_l5, real_T kC_l6, real_T
+  kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r, const real_T jointLimits[12],
+  real_T q[3]);
 extern void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1,
   real_T kC_l2, real_T kC_l3, real_T kC_l4, real_T kC_l5, real_T kC_l6, real_T
   kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r, const real_T jointLimits[12],

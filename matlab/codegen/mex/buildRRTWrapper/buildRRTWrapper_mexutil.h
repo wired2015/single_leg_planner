@@ -21,8 +21,6 @@
 #include "buildRRTWrapper_types.h"
 
 /* Function Declarations */
-extern const mxArray *b_message(const emlrtStack *sp, const mxArray *b,
-  emlrtMCInfo *location);
 extern void error(const emlrtStack *sp, const mxArray *b, emlrtMCInfo *location);
 
 #endif
