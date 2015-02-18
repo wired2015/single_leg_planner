@@ -1,15 +1,11 @@
 %INITIALIZESHERPATTPLOT Initializes a figure that will be used to plot the
 %Sherpa_TT kinematic skeleton.
 %
-%Inputs:
-%-showFrames: A logical that indicates whether or not the frames should be
-%shown at each of the rover's joint coordinate frames.
-%
 %plotIndividualLeg.m
 %author:    wreid
 %date:      20150214
 
-function initializeSherpaTTPlot(showFrames)
+function initializeSherpaTTPlot()
 
     global body fig wheel
     global initPosHandle goalPosHandle
@@ -26,7 +22,8 @@ function initializeSherpaTTPlot(showFrames)
     xlabel('X_G [m]');
     ylabel('Y_G [m]');
     zlabel('Z_G [m]');
-    view(136,40);
+    %view(136,40);
+    view(86,-90);
 
     hold on
     
@@ -38,11 +35,8 @@ function initializeSherpaTTPlot(showFrames)
 
     axesLen = 0.1;
 
-    
-    if showFrames
-        trGround = trplot(eye(4,4),'length',axesLen,'frame','G','rgb');
-        trBody = trplot(eye(4,4),'length',axesLen,'frame','B','rgb');
-    end
+    trGround = trplot(eye(4,4),'length',axesLen,'frame','G','rgb');
+    trBody = trplot(eye(4,4),'length',axesLen,'frame','B','rgb');
     
     for i = 1:4
         
@@ -51,17 +45,15 @@ function initializeSherpaTTPlot(showFrames)
         for j = 1:8
             legLinks(i,j) = line([0 0],[0 0],'LineWidth',3,'Color','k');
         end
-        
-        if showFrames
-            trMats(i,1) = trplot(eye(4,4),'length',axesLen,'frame',['P_' num2str(i)],'rgb');
-            trMats(i,2) = trplot(eye(4,4),'length',axesLen,'frame',['I_' num2str(i)],'rgb');
-            trMats(i,3) = trplot(eye(4,4),'length',axesLen,'frame',['J_' num2str(i)],'rgb');
-            trMats(i,4) = trplot(eye(4,4),'length',axesLen,'frame',['O_' num2str(i)],'rgb');
-            trMats(i,5) = trplot(eye(4,4),'length',axesLen,'frame',['Q_' num2str(i)],'rgb');
-            trMats(i,6) = trplot(eye(4,4),'length',axesLen,'frame',['S_' num2str(i)],'rgb');
-            trMats(i,7) = trplot(eye(4,4),'length',axesLen,'frame',['W_' num2str(i)],'rgb');
-            trMats(i,8) = trplot(eye(4,4),'length',axesLen,'frame',['C_' num2str(i)],'rgb');
-        end
+
+        trMats(i,1) = trplot(eye(4,4),'length',axesLen,'frame',['P_' num2str(i)],'rgb');
+        trMats(i,2) = trplot(eye(4,4),'length',axesLen,'frame',['I_' num2str(i)],'rgb');
+        trMats(i,3) = trplot(eye(4,4),'length',axesLen,'frame',['J_' num2str(i)],'rgb');
+        trMats(i,4) = trplot(eye(4,4),'length',axesLen,'frame',['O_' num2str(i)],'rgb');
+        trMats(i,5) = trplot(eye(4,4),'length',axesLen,'frame',['Q_' num2str(i)],'rgb');
+        trMats(i,6) = trplot(eye(4,4),'length',axesLen,'frame',['S_' num2str(i)],'rgb');
+        trMats(i,7) = trplot(eye(4,4),'length',axesLen,'frame',['W_' num2str(i)],'rgb');
+        trMats(i,8) = trplot(eye(4,4),'length',axesLen,'frame',['C_' num2str(i)],'rgb');
     end
 
 end

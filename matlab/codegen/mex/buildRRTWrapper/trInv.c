@@ -15,34 +15,34 @@
 void trInv(const real_T T[16], real_T TInv[16])
 {
   real_T b_T[9];
-  int32_T i3;
-  int32_T i4;
+  int32_T i1;
+  int32_T i2;
   real_T c_T[3];
   static const int8_T iv1[4] = { 0, 0, 0, 1 };
 
-  for (i3 = 0; i3 < 3; i3++) {
-    for (i4 = 0; i4 < 3; i4++) {
-      b_T[i4 + 3 * i3] = -T[i3 + (i4 << 2)];
+  for (i1 = 0; i1 < 3; i1++) {
+    for (i2 = 0; i2 < 3; i2++) {
+      b_T[i2 + 3 * i1] = -T[i1 + (i2 << 2)];
     }
   }
 
-  for (i3 = 0; i3 < 3; i3++) {
-    c_T[i3] = 0.0;
-    for (i4 = 0; i4 < 3; i4++) {
-      c_T[i3] += b_T[i3 + 3 * i4] * T[12 + i4];
+  for (i1 = 0; i1 < 3; i1++) {
+    c_T[i1] = 0.0;
+    for (i2 = 0; i2 < 3; i2++) {
+      c_T[i1] += b_T[i1 + 3 * i2] * T[12 + i2];
     }
 
-    for (i4 = 0; i4 < 3; i4++) {
-      TInv[i4 + (i3 << 2)] = T[i3 + (i4 << 2)];
+    for (i2 = 0; i2 < 3; i2++) {
+      TInv[i2 + (i1 << 2)] = T[i1 + (i2 << 2)];
     }
   }
 
-  for (i3 = 0; i3 < 3; i3++) {
-    TInv[12 + i3] = c_T[i3];
+  for (i1 = 0; i1 < 3; i1++) {
+    TInv[12 + i1] = c_T[i1];
   }
 
-  for (i3 = 0; i3 < 4; i3++) {
-    TInv[3 + (i3 << 2)] = iv1[i3];
+  for (i1 = 0; i1 < 4; i1++) {
+    TInv[3 + (i1 << 2)] = iv1[i1];
   }
 }
 

@@ -41,9 +41,9 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
         %requires a change of ankle position greater than the allowed ankle
         %movement in a single time step.
         aGain = HGAINS(3);
-        if xNear(1) == 1
-            aGain = 0;
-        end
+%         if xNear(1) == 1
+%             aGain = 0;
+%         end
         
         [candStates(i,10),candStates(i,11)] = getPhiAndOmega(uBDot,[candStates(i,4:6) 0],candStates(i,7:9),kC,legNum);
         
@@ -54,7 +54,6 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
             aDiff = 1;
         else
             aDiff = abs(aDiff/ankleDiffMax);
-            aDiff = 0;
         end
         
         %Calculate a distance metric that includes the heurisitc distance

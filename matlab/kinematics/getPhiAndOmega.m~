@@ -47,14 +47,14 @@ function [phi,omega] = getPhiAndOmega(uBDot,q,qDot,kC,legNum)
     %Calculate the required phi joint angle and the required wheel speed,
     %omega.
     phi = atan2(vS(2),vS(1))-pi/2;   %[rad]
-    phi = mod(phi+pi,2*pi)-pi;
+    phi = mod(phi+pi,2*pi);
     sign = 1;
     if phi > pi/2
         phi = phi - pi;
         sign = -1;
-    elseif phi <= -pi/2
+    elseif phi <= pi/2
         phi = phi + pi;
-        sign = -1;
+        sign = 1;
     end
     omega = sign*norm(vS)/kC.r;      %[rad/s]
     

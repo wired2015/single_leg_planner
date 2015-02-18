@@ -2,11 +2,6 @@ clear
 
 kinematicConstants
 
-betaMin = -1.0385;
-betaMax = 0.2967;
-gammaMin = -0.0873;
-gammaMax = 1.2863;
-
 % zp = -0.5;
 % 
 % for i = 1:100
@@ -49,7 +44,7 @@ hold on
 %vertical cross section. -- BLACK
 for i = 1:length(beta)
     for j = 1:length(gamma)
-        x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
+        x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(kC.zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
         zp = (kC.l1 + kC.l3*sin(-beta(i))-kC.l4*sin(kC.zeta)-kC.l5*sin(gamma(j)+kC.zeta)-kC.l6-(kC.l8+kC.r));
         plot(x,zp,'k.');
     end
@@ -61,7 +56,7 @@ beta = [betaMin betaMax];
 gamma = linspace(gammaMin,gammaMax,500);
 for i = 1:length(beta)
     for j = 1:length(gamma)
-        x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
+        x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(kC.zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
         zp = (kC.l1 + kC.l3*sin(-beta(i))-kC.l4*sin(kC.zeta)-kC.l5*sin(gamma(j)+kC.zeta)-kC.l6-(kC.l8+kC.r));
         if i == 1
             plot(x,zp,'r.');
@@ -77,7 +72,7 @@ beta = linspace(betaMin,betaMax,500);
 gamma = [gammaMin gammaMax];
 for i = 1:length(beta)
     for j = 1:length(gamma)
-        x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
+        x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(kC.zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
         zp = (kC.l1 + kC.l3*sin(-beta(i))-kC.l4*sin(kC.zeta)-kC.l5*sin(gamma(j)+kC.zeta)-kC.l6-(kC.l8+kC.r));
         if j == 1
             plot(x,zp,'b.');
@@ -90,10 +85,10 @@ end
 A = kC.l2+kC.l4*cos(kC.zeta)-kC.l7;
 B = kC.l1-kC.l4*sin(kC.zeta)-kC.l6-kC.l8-kC.r;
 
-zMax = B-kC.l3*sin(betaMin)-L5*sin(gammaMin+kC.zeta);
-zMin = B-kC.l3*sin(betaMax)-L5*sin(gammaMax+kC.zeta);
-zMid1 = B-kC.l3*sin(betaMin)-L5*sin(gammaMax+kC.zeta);
-zMid2 = B-kC.l3*sin(betaMax)-L5*sin(gammaMin+kC.zeta);
+zMax = B-kC.l3*sin(betaMin)-kC.l5*sin(gammaMin+kC.zeta);
+zMin = B-kC.l3*sin(betaMax)-kC.l5*sin(gammaMax+kC.zeta);
+zMid1 = B-kC.l3*sin(betaMin)-kC.l5*sin(gammaMax+kC.zeta);
+zMid2 = B-kC.l3*sin(betaMax)-kC.l5*sin(gammaMin+kC.zeta);
 
 z = -0.5;
 

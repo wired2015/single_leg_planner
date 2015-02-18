@@ -35,7 +35,7 @@ NODE_SIZE = int32(11);
 
 %TODO: Make it so that the HGAINS are normalized.
 %The heuristic gains.
-HGAINS = [1 0 0.5];
+HGAINS = [1 0 0.95];
 
 %The joint angular and rate limits.
 jointLimits = [deg2rad([-135 -59.5 -5 -10 -20 -20]);...     %[rad, rad/s]
@@ -105,6 +105,7 @@ NUM_TRIALS = 1;
 %Calculate the height of the body coordinate frame by taking the average of
 %each of the wheel contact points initial heights relative to the body.
 bodyHeight = -sum(sInitB(:,3))/4;
+uG = [0 0 bodyHeight];
 panHeight = getPanHeight(bodyHeight,kC);
 
 %The number of steps between which the goal state is sampled in stead of a
@@ -112,6 +113,8 @@ panHeight = getPanHeight(bodyHeight,kC);
 goalSeedFreq = int32(20);
 
 uBDot = [0 0 0 0 0 0]';
+
+gains = [1 0 0.5];
 
 
 

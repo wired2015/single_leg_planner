@@ -45,8 +45,8 @@ function [TB2G,TP2B,TI2P,TJ2I,TO2J,TQ2O,TR2Q,TS2R,TW2S,TC2W] = generateTrMatrice
     TO2J = trDH(-beta+kC.zeta,0,kC.l4,0);
     TQ2O = trDH(gamma,0,kC.l5,0);
     TR2Q = trDH(-gamma-kC.zeta,0,-kC.l7,-pi/2);
-    TS2R = trDH(phi,kC.l6,0,0);
-    TW2S = trDH(pi/2,kC.l8,0,pi/2);
+    TS2R = trDH(0,kC.l6,0,0);
+    TW2S = trDH(phi+pi/2,kC.l8,0,pi/2);
     TC2W = trDH(0,0,0,pi/2)*trDH(pi/2,-kC.r,0,0);
 
 end

@@ -27,12 +27,12 @@ extern emlrtRSInfo cb_emlrtRSI;
 extern emlrtRSInfo db_emlrtRSI;
 extern emlrtRSInfo eb_emlrtRSI;
 extern emlrtRSInfo fb_emlrtRSI;
-extern emlrtBCInfo l_emlrtBCI;
-extern emlrtBCInfo m_emlrtBCI;
 extern emlrtBCInfo n_emlrtBCI;
 extern emlrtBCInfo o_emlrtBCI;
 extern emlrtBCInfo p_emlrtBCI;
 extern emlrtBCInfo q_emlrtBCI;
+extern emlrtBCInfo r_emlrtBCI;
+extern emlrtBCInfo s_emlrtBCI;
 
 #endif
 

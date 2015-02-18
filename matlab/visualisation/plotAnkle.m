@@ -1,16 +1,22 @@
-function plotAnkle(path,ankleThreshold,dt)
+function plotAnkle(pathJ,ankleThreshold,dt)
 
-    [pathH,~] = size(path);
+    [pathH,~] = size(pathJ);
     t = dt*(1:pathH);
+    
     subplot(1,2,1);
-    plot(t,fliplr(path(:,10)')','b')
+    
+    plot(t,pathJ(:,8),'b')
     xlabel('Time [s]');
-    ylabel('qA');
+    ylabel('phi [rad]');
+    
     subplot(1,2,2);
     hold on
-    plot(t(1:end-1),diff(fliplr(path(:,10)')'),'g*');
+    
+    plot(t(1:end-1),diff(pathJ(:,8)),'g*');
+    
     plot(t,ankleThreshold*ones(1,pathH),'r--');
     plot(t,-ankleThreshold*ones(1,pathH),'r--');
+    
     hold off
 
 end

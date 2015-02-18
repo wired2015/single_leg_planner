@@ -133,27 +133,27 @@ static emlrtRTEInfo d_emlrtRTEI = { 60, 28, "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"
 };
 
-static emlrtRTEInfo i_emlrtRTEI = { 25, 5, "nearestNeighbour",
+static emlrtRTEInfo j_emlrtRTEI = { 25, 5, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtBCInfo r_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
+static emlrtBCInfo t_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo s_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
+static emlrtBCInfo u_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo t_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
+static emlrtBCInfo v_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo u_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
+static emlrtBCInfo w_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo v_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
+static emlrtBCInfo x_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
@@ -161,11 +161,11 @@ static emlrtECInfo emlrtECI = { -1, 23, 5, "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"
 };
 
-static emlrtBCInfo w_emlrtBCI = { -1, -1, 52, 25, "next", "buildRRT",
+static emlrtBCInfo y_emlrtBCI = { -1, -1, 52, 25, "next", "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   0 };
 
-static emlrtBCInfo x_emlrtBCI = { -1, -1, 53, 18, "next", "buildRRT",
+static emlrtBCInfo ab_emlrtBCI = { -1, -1, 53, 18, "next", "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   0 };
 
@@ -173,7 +173,7 @@ static emlrtDCInfo e_emlrtDCI = { 53, 18, "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   1 };
 
-static emlrtBCInfo y_emlrtBCI = { -1, -1, 53, 18, "T", "buildRRT",
+static emlrtBCInfo bb_emlrtBCI = { -1, -1, 53, 18, "T", "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   0 };
 
@@ -181,7 +181,7 @@ static emlrtECInfo b_emlrtECI = { 2, 54, 16, "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"
 };
 
-static emlrtBCInfo ab_emlrtBCI = { -1, -1, 55, 17, "next", "buildRRT",
+static emlrtBCInfo cb_emlrtBCI = { -1, -1, 55, 17, "next", "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   0 };
 
@@ -197,7 +197,7 @@ static emlrtDCInfo h_emlrtDCI = { 23, 29, "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   4 };
 
-static emlrtBCInfo bb_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
+static emlrtBCInfo db_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
@@ -205,7 +205,7 @@ static emlrtECInfo f_emlrtECI = { -1, 71, 5, "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m"
 };
 
-static emlrtBCInfo fb_emlrtBCI = { -1, -1, 71, 7, "T", "buildRRT",
+static emlrtBCInfo hb_emlrtBCI = { -1, -1, 71, 7, "T", "buildRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRT.m",
   0 };
 
@@ -233,8 +233,9 @@ static int32_T div_s32_floor(const emlrtStack *sp, int32_T numerator, int32_T
 static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
                     jointLimits[12], const real_T b_cartesianLimits[4], const
                     struct0_T *kC, real_T panHeight, const real_T U[10], real_T
-                    Dt, real_T dt, real_T *nodeIDCount, const real_T nGoal[11],
-                    const real_T uBDot[6], int32_T legNum);
+                    Dt, real_T dt, const real_T HGAINS[3], real_T *nodeIDCount,
+                    const real_T nGoal[11], const real_T uBDot[6], int32_T
+                    legNum);
 
 /* Function Definitions */
 static const mxArray *b_message(const emlrtStack *sp, const mxArray *b,
@@ -304,14 +305,15 @@ static int32_T div_s32_floor(const emlrtStack *sp, int32_T numerator, int32_T
 static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
                     jointLimits[12], const real_T b_cartesianLimits[4], const
                     struct0_T *kC, real_T panHeight, const real_T U[10], real_T
-                    Dt, real_T dt, real_T *nodeIDCount, const real_T nGoal[11],
-                    const real_T uBDot[6], int32_T legNum)
+                    Dt, real_T dt, const real_T HGAINS[3], real_T *nodeIDCount,
+                    const real_T nGoal[11], const real_T uBDot[6], int32_T
+                    legNum)
 {
   real_T r;
   real_T xMax;
   real_T xMin;
   const mxArray *y;
-  static const int32_T iv20[2] = { 1, 17 };
+  static const int32_T iv21[2] = { 1, 17 };
 
   const mxArray *m8;
   char_T cv6[17];
@@ -322,7 +324,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   real_T b_r;
   real_T b_xMin[3];
   real_T q[3];
-  real_T dv15[9];
+  real_T dv14[9];
   int32_T ix;
   int32_T xRand_size[2];
   real_T xRand_data[11];
@@ -332,7 +334,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   emxArray_real_T *b_T;
   boolean_T b3;
   const mxArray *b_y;
-  static const int32_T iv21[2] = { 1, 36 };
+  static const int32_T iv22[2] = { 1, 36 };
 
   char_T cv8[36];
   static const char_T cv9[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
@@ -350,7 +352,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   real_T xNew_data[11];
   emxArray_real_T b_xNear_data;
   emxArray_real_T *r4;
-  int32_T iv22[2];
+  int32_T iv23[2];
   emlrtStack st;
   emlrtStack b_st;
   emlrtStack c_st;
@@ -429,7 +431,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
     xMax = 0.0;
     xMin = 0.0;
     y = NULL;
-    m8 = emlrtCreateCharArray(2, iv20);
+    m8 = emlrtCreateCharArray(2, iv21);
     for (i = 0; i < 17; i++) {
       cv6[i] = cv7[i];
     }
@@ -453,19 +455,19 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   /* gammaDotRand = range(5)*rand+MIN(5); */
   /* betaDotRand = -(1.0*(1.827e47*KVel + 2.238e31*kC.l2*alphaDotRand - 2.238e31*kC.l6*alphaDotRand - 1.827e47*kC.l6*gammaDotRand + 2.238e31*kC.l3*alphaDotRand*cos(betaRand) + 1.827e47*kC.l3*gammaDotRand*cos(betaRand) - 2.238e31*kC.l2*alphaDotRand*cos(phi) + 2.238e31*kC.l6*alphaDotRand*cos(phi) - 1.37e15*kC.l6*gammaDotRand*cos(phi) + 2.238e31*kC.l4*alphaDotRand*cos(kC.zeta) + 1.827e47*kC.l4*gammaDotRand*cos(kC.zeta) + 2.74e15*kC.l7*alphaDotRand*sin(phi) + 2.74e15*kC.l8*alphaDotRand*sin(phi) + 2.238e31*kC.l7*gammaDotRand*sin(phi) + 2.238e31*kC.l8*gammaDotRand*sin(phi) - 2.237e31*kC.l3*alphaDotRand*cos(betaRand)*cos(phi) + 2.238e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(kC.zeta) + 1.827e47*kC.l5*gammaDotRand*cos(gammaRand)*cos(kC.zeta) - 2.237e31*kC.l4*alphaDotRand*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l3*gammaDotRand*sin(betaRand)*sin(phi) - 2.238e31*kC.l5*alphaDotRand*sin(gammaRand)*sin(kC.zeta) - 1.827e47*kC.l5*gammaDotRand*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*gammaDotRand*sin(phi)*sin(kC.zeta) - 2.237e31*kC.l5*alphaDotRand*cos(gammaRand)*cos(phi)*cos(kC.zeta) + 2.237e31*kC.l5*alphaDotRand*cos(phi)*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*gammaDotRand*sin(gammaRand)*cos(kC.zeta)*sin(phi)))/(1.827e47*kC.l4*cos(kC.zeta) - 1.37e15*kC.l6*cos(phi) - 1.827e47*kC.l6 + 2.238e31*kC.l7*sin(phi) + 2.238e31*kC.l8*sin(phi) + 1.827e47*kC.l5*cos(gammaRand)*cos(kC.zeta) - 1.827e47*kC.l5*sin(gammaRand)*sin(kC.zeta) + 2.237e31*kC.l4*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*cos(gammaRand)*sin(phi)*sin(kC.zeta) + 2.237e31*kC.l5*sin(gammaRand)*cos(kC.zeta)*sin(phi)); */
   for (ix = 0; ix < 3; ix++) {
-    dv15[ix] = 0.0;
+    dv14[ix] = 0.0;
   }
 
-  dv15[3] = jointLimits[0] + (jointLimits[1] - jointLimits[0]) * r;
-  dv15[4] = q[1];
-  dv15[5] = q[2];
-  dv15[6] = 0.0;
-  dv15[7] = 0.0;
-  dv15[8] = 0.0;
+  dv14[3] = jointLimits[0] + (jointLimits[1] - jointLimits[0]) * r;
+  dv14[4] = q[1];
+  dv14[5] = q[2];
+  dv14[6] = 0.0;
+  dv14[7] = 0.0;
+  dv14[8] = 0.0;
   xRand_size[0] = 1;
   xRand_size[1] = 9;
   for (ix = 0; ix < 9; ix++) {
-    xRand_data[ix] = dv15[ix];
+    xRand_data[ix] = dv14[ix];
   }
 
   r = muDoubleScalarRound(*nodeIDCount);
@@ -541,12 +543,12 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
 
   /* parfor i = 1:nodeIDCount */
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, *nodeIDCount, mxDOUBLE_CLASS, (int32_T)*
-    nodeIDCount, &i_emlrtRTEI, &st);
+    nodeIDCount, &j_emlrtRTEI, &st);
   i = 1;
   emxInit_real_T(&st, &b_T, 2, &d_emlrtRTEI, true);
   while (i - 1 <= (int32_T)*nodeIDCount - 1) {
     n = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(i, 1, 1000, &r_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckFastR2012b(i, 1, 1000, &t_emlrtBCI, &st);
     ix = b_T->size[0] * b_T->size[1];
     b_T->size[0] = 1;
     b_T->size[1] = n;
@@ -558,7 +560,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
 
     ix = d->size[1];
     b_st.site = &bb_emlrtRSI;
-    d->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, ix, &bb_emlrtBCI, &st) - 1] =
+    d->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, ix, &db_emlrtBCI, &st) - 1] =
       heuristicSingleLeg(&b_st, xRand_data, b_T, jointLimits, kC->l2, kC->l3,
                          kC->l4, kC->l5, kC->l7, kC->zeta);
     i++;
@@ -568,7 +570,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   emxFree_real_T(&b_T);
   ix = d->size[1];
   i = (int32_T)*nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(i, 1, ix, &s_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(i, 1, ix, &u_emlrtBCI, &st);
   b_st.site = &ab_emlrtRSI;
   c_st.site = &fb_emlrtRSI;
   d_st.site = &gb_emlrtRSI;
@@ -581,7 +583,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   if (b3) {
   } else {
     b_y = NULL;
-    m8 = emlrtCreateCharArray(2, iv21);
+    m8 = emlrtCreateCharArray(2, iv22);
     for (i = 0; i < 36; i++) {
       cv8[i] = cv9[i];
     }
@@ -652,10 +654,10 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
 
   /* [d,minIndex] = min(d(1:nodeIDCount)); */
   ix = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, ix, &u_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(1, 1, ix, &w_emlrtBCI, &st);
   ix = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(11, 1, ix, &u_emlrtBCI, &st);
-  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &t_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(11, 1, ix, &w_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &v_emlrtBCI, &st);
   xNear_size[0] = 1;
   xNear_size[1] = 11;
   for (ix = 0; ix < 11; ix++) {
@@ -665,15 +667,15 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   if (12 > T->size[1]) {
   } else {
     ix = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(12, 1, ix, &v_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckFastR2012b(12, 1, ix, &x_emlrtBCI, &st);
     ix = T->size[1];
     i = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(i, 1, ix, &v_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckFastR2012b(i, 1, ix, &x_emlrtBCI, &st);
   }
 
   emxInit_int32_T(&st, &r3, 1, &d_emlrtRTEI, true);
   st.site = &l_emlrtRSI;
-  selectInput(&st, xNear_data, xNear_size, xRand_data, xRand_size, U, dt, Dt, kC,
+  selectInput(&st, xNear_data, xRand_data, xRand_size, U, dt, Dt, HGAINS, kC,
               jointLimits, uBDot, legNum, xNew_data, xNew_size, d);
   (*nodeIDCount)++;
   xNew_data[0] = *nodeIDCount;
@@ -693,7 +695,7 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
 
   /* Cost */
   ix = (int32_T)*nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1000, &fb_emlrtBCI, sp);
+  emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1000, &hb_emlrtBCI, sp);
   n = T->size[1];
   ix = r3->size[0];
   r3->size[0] = n;
@@ -719,9 +721,9 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
   }
 
   emxFree_real_T(&d);
-  iv22[0] = 1;
-  iv22[1] = r3->size[0];
-  emlrtSubAssignSizeCheckR2012b(iv22, 2, *(int32_T (*)[2])r4->size, 2,
+  iv23[0] = 1;
+  iv23[1] = r3->size[0];
+  emlrtSubAssignSizeCheckR2012b(iv23, 2, *(int32_T (*)[2])r4->size, 2,
     &f_emlrtECI, sp);
   i = (int32_T)*nodeIDCount;
   n = r4->size[1];
@@ -741,14 +743,15 @@ static void rrtLoop(const emlrtStack *sp, emxArray_real_T *T, const real_T
 
 void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
               [11], const real_T jointLimits[12], const real_T
-              b_cartesianLimits[4], real_T panHeight, const real_T U[10], real_T
-              dt, real_T Dt, const struct0_T *kC, const real_T uBDot[6], int32_T
-              legNum, emxArray_real_T *T, emxArray_real_T *path)
+              b_cartesianLimits[4], real_T panHeight, const real_T HGAINS[3],
+              const real_T U[10], real_T dt, real_T Dt, const struct0_T *kC,
+              const real_T uBDot[6], int32_T legNum, emxArray_real_T *T,
+              emxArray_real_T *path)
 {
   real_T transitionArrayLength;
-  int32_T i5;
+  int32_T i3;
   real_T xStarMin;
-  int32_T i6;
+  int32_T i4;
   int32_T loop_ub;
   emxArray_int32_T *r0;
   emxArray_real_T *d;
@@ -815,40 +818,40 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
   transitionArrayLength = (muDoubleScalarRound(Dt / dt) + 1.0) * 6.0;
 
   /* Variable Initialization */
-  i5 = T->size[0] * T->size[1];
+  i3 = T->size[0] * T->size[1];
   T->size[0] = 1000;
   xStarMin = muDoubleScalarRound(11.0 + transitionArrayLength);
   if (xStarMin < 2.147483648E+9) {
     if (xStarMin >= -2.147483648E+9) {
-      i6 = (int32_T)xStarMin;
+      i4 = (int32_T)xStarMin;
     } else {
-      i6 = MIN_int32_T;
+      i4 = MIN_int32_T;
     }
   } else if (xStarMin >= 2.147483648E+9) {
-    i6 = MAX_int32_T;
+    i4 = MAX_int32_T;
   } else {
-    i6 = 0;
+    i4 = 0;
   }
 
-  T->size[1] = (int32_T)emlrtNonNegativeCheckFastR2012b(i6, &f_emlrtDCI, sp);
-  emxEnsureCapacity(sp, (emxArray__common *)T, i5, (int32_T)sizeof(real_T),
+  T->size[1] = (int32_T)emlrtNonNegativeCheckFastR2012b(i4, &f_emlrtDCI, sp);
+  emxEnsureCapacity(sp, (emxArray__common *)T, i3, (int32_T)sizeof(real_T),
                     &b_emlrtRTEI);
   xStarMin = muDoubleScalarRound(11.0 + transitionArrayLength);
   if (xStarMin < 2.147483648E+9) {
     if (xStarMin >= -2.147483648E+9) {
-      i5 = (int32_T)xStarMin;
+      i3 = (int32_T)xStarMin;
     } else {
-      i5 = MIN_int32_T;
+      i3 = MIN_int32_T;
     }
   } else if (xStarMin >= 2.147483648E+9) {
-    i5 = MAX_int32_T;
+    i3 = MAX_int32_T;
   } else {
-    i5 = 0;
+    i3 = 0;
   }
 
-  loop_ub = 1000 * (int32_T)emlrtNonNegativeCheckFastR2012b(i5, &f_emlrtDCI, sp);
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    T->data[i5] = 0.0;
+  loop_ub = 1000 * (int32_T)emlrtNonNegativeCheckFastR2012b(i3, &f_emlrtDCI, sp);
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    T->data[i3] = 0.0;
   }
 
   emxInit_int32_T(sp, &r0, 1, &b_emlrtRTEI, true);
@@ -868,43 +871,43 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
     loop_ub = 0;
   }
 
-  i5 = r0->size[0];
+  i3 = r0->size[0];
   xStarMin = muDoubleScalarRound(11.0 + transitionArrayLength);
   if (xStarMin < 2.147483648E+9) {
     if (xStarMin >= -2.147483648E+9) {
-      i6 = (int32_T)xStarMin;
+      i4 = (int32_T)xStarMin;
     } else {
-      i6 = MIN_int32_T;
+      i4 = MIN_int32_T;
     }
   } else if (xStarMin >= 2.147483648E+9) {
-    i6 = MAX_int32_T;
+    i4 = MAX_int32_T;
   } else {
-    i6 = 0;
+    i4 = 0;
   }
 
-  r0->size[0] = i6;
-  emxEnsureCapacity(sp, (emxArray__common *)r0, i5, (int32_T)sizeof(int32_T),
+  r0->size[0] = i4;
+  emxEnsureCapacity(sp, (emxArray__common *)r0, i3, (int32_T)sizeof(int32_T),
                     &b_emlrtRTEI);
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    r0->data[i5] = i5;
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    r0->data[i3] = i3;
   }
 
   emxInit_real_T(sp, &d, 2, &c_emlrtRTEI, true);
   xStarMin = emlrtNonNegativeCheckFastR2012b(transitionArrayLength, &h_emlrtDCI,
     sp);
   emlrtIntegerCheckFastR2012b(xStarMin, &g_emlrtDCI, sp);
-  i5 = d->size[0] * d->size[1];
+  i3 = d->size[0] * d->size[1];
   d->size[0] = 1;
   d->size[1] = 11 + (int32_T)transitionArrayLength;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i5, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)d, i3, (int32_T)sizeof(real_T),
                     &b_emlrtRTEI);
-  for (i5 = 0; i5 < 11; i5++) {
-    d->data[d->size[0] * i5] = nInit[i5];
+  for (i3 = 0; i3 < 11; i3++) {
+    d->data[d->size[0] * i3] = nInit[i3];
   }
 
   loop_ub = (int32_T)transitionArrayLength;
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    d->data[d->size[0] * (i5 + 11)] = 0.0;
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    d->data[d->size[0] * (i3 + 11)] = 0.0;
   }
 
   iv2[0] = 1;
@@ -912,8 +915,8 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
   emlrtSubAssignSizeCheckR2012b(iv2, 2, *(int32_T (*)[2])d->size, 2, &emlrtECI,
     sp);
   loop_ub = d->size[1];
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    T->data[T->size[0] * r0->data[i5]] = d->data[d->size[0] * i5];
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    T->data[T->size[0] * r0->data[i3]] = d->data[d->size[0] * i3];
   }
 
   emxFree_int32_T(&r0);
@@ -923,7 +926,7 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
   for (ixstart = 0; ixstart < 999; ixstart++) {
     st.site = &i_emlrtRSI;
     rrtLoop(&st, T, jointLimits, b_cartesianLimits, kC, panHeight, U, Dt, dt,
-            &nodeIDCount, nGoal, uBDot, legNum);
+            HGAINS, &nodeIDCount, nGoal, uBDot, legNum);
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
   }
 
@@ -948,41 +951,41 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
   /*        xNear:  The node in the tree that is closet to x. */
   /* Iterate over the entire tree and apply the distance heuristic function */
   /* to each node. */
-  i5 = d->size[0] * d->size[1];
+  i3 = d->size[0] * d->size[1];
   d->size[0] = 1;
   d->size[1] = (int32_T)nodeIDCount;
-  emxEnsureCapacity(&st, (emxArray__common *)d, i5, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(&st, (emxArray__common *)d, i3, (int32_T)sizeof(real_T),
                     &b_emlrtRTEI);
   loop_ub = (int32_T)nodeIDCount;
-  for (i5 = 0; i5 < loop_ub; i5++) {
-    d->data[i5] = 0.0;
+  for (i3 = 0; i3 < loop_ub; i3++) {
+    d->data[i3] = 0.0;
   }
 
   /* parfor i = 1:nodeIDCount */
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, nodeIDCount, mxDOUBLE_CLASS, (int32_T)
-    nodeIDCount, &i_emlrtRTEI, &st);
+    nodeIDCount, &j_emlrtRTEI, &st);
   ixstart = 0;
   while (ixstart <= (int32_T)nodeIDCount - 1) {
     b_st.site = &bb_emlrtRSI;
-    i5 = ixstart + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i5, 1, 1000, &r_emlrtBCI, &b_st);
+    i3 = ixstart + 1;
+    emlrtDynamicBoundsCheckFastR2012b(i3, 1, 1000, &t_emlrtBCI, &b_st);
 
     /* heuristicSingleLeg.m */
     /* author: wreid */
     /* date: 20150107 */
     /* heuristic Calculates the distance between states x1 and x2. */
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(4, 1, i5, &q_emlrtBCI, &b_st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(5, 1, i5, &p_emlrtBCI, &b_st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(6, 1, i5, &o_emlrtBCI, &b_st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(7, 1, i5, &n_emlrtBCI, &b_st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(8, 1, i5, &m_emlrtBCI, &b_st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(9, 1, i5, &l_emlrtBCI, &b_st);
+    i3 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(4, 1, i3, &s_emlrtBCI, &b_st);
+    i3 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(5, 1, i3, &r_emlrtBCI, &b_st);
+    i3 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(6, 1, i3, &q_emlrtBCI, &b_st);
+    i3 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(7, 1, i3, &p_emlrtBCI, &b_st);
+    i3 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(8, 1, i3, &o_emlrtBCI, &b_st);
+    i3 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(9, 1, i3, &n_emlrtBCI, &b_st);
 
     /* Calculate the distance between angular positions. */
     xStarMin = (((kC->l2 + kC->l3 * muDoubleScalarCos(jointLimits[2])) + kC->l4 *
@@ -1047,16 +1050,16 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
 
     /* Calculate the total distance. */
     /* dPosNorm+dVelNorm  */
-    i5 = d->size[1];
-    d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i5, &bb_emlrtBCI,
+    i3 = d->size[1];
+    d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i3, &db_emlrtBCI,
       &st) - 1] = muDoubleScalarSqrt(transitionArrayLength);
     ixstart++;
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, &st);
   }
 
-  i5 = d->size[1];
-  i6 = (int32_T)nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(i6, 1, i5, &s_emlrtBCI, &st);
+  i3 = d->size[1];
+  i4 = (int32_T)nodeIDCount;
+  emlrtDynamicBoundsCheckFastR2012b(i4, 1, i3, &u_emlrtBCI, &st);
   b_st.site = &ab_emlrtRSI;
   c_st.site = &fb_emlrtRSI;
   d_st.site = &gb_emlrtRSI;
@@ -1138,23 +1141,23 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
   }
 
   /* [d,minIndex] = min(d(1:nodeIDCount)); */
-  i5 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, i5, &u_emlrtBCI, &st);
-  i5 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(11, 1, i5, &u_emlrtBCI, &st);
-  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &t_emlrtBCI, &st);
-  for (i5 = 0; i5 < 11; i5++) {
-    xNearest_data[i5] = T->data[itmp + T->size[0] * i5];
+  i3 = T->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(1, 1, i3, &w_emlrtBCI, &st);
+  i3 = T->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(11, 1, i3, &w_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &v_emlrtBCI, &st);
+  for (i3 = 0; i3 < 11; i3++) {
+    xNearest_data[i3] = T->data[itmp + T->size[0] * i3];
   }
 
   if (12 > T->size[1]) {
-    i5 = -11;
-    i6 = 0;
+    i3 = -11;
+    i4 = 0;
   } else {
-    i5 = 0;
-    i6 = T->size[1];
+    i3 = 0;
+    i4 = T->size[1];
     ixstart = T->size[1];
-    i6 = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, i6, &v_emlrtBCI, &st);
+    i4 = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, i4, &x_emlrtBCI, &st);
   }
 
   transitionArrayLength = T->data[itmp];
@@ -1169,81 +1172,81 @@ void buildRRT(const emlrtStack *sp, const real_T nInit[11], const real_T nGoal
 
   ixstart = path->size[0] * path->size[1];
   path->size[0] = 1;
-  path->size[1] = i6 - i5;
+  path->size[1] = i4 - i3;
   emxEnsureCapacity(sp, (emxArray__common *)path, ixstart, (int32_T)sizeof
                     (real_T), &b_emlrtRTEI);
   for (ixstart = 0; ixstart < 11; ixstart++) {
     path->data[path->size[0] * ixstart] = xNearest_data[ixstart];
   }
 
-  loop_ub = i6 - i5;
-  for (i6 = 0; i6 <= loop_ub - 12; i6++) {
-    path->data[path->size[0] * (i6 + 11)] = T->data[itmp + T->size[0] * ((i5 +
-      i6) + 11)];
+  loop_ub = i4 - i3;
+  for (i4 = 0; i4 <= loop_ub - 12; i4++) {
+    path->data[path->size[0] * (i4 + 11)] = T->data[itmp + T->size[0] * ((i3 +
+      i4) + 11)];
   }
 
   emxInit_real_T(sp, &b_path, 2, &b_emlrtRTEI, true);
   exitg1 = false;
   while ((!exitg1) && (transitionArrayLength != 0.0)) {
-    i5 = d->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(2, 1, i5, &w_emlrtBCI, sp);
+    i3 = d->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(2, 1, i3, &y_emlrtBCI, sp);
     if (d->data[1] != 0.0) {
-      i5 = d->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(2, 1, i5, &x_emlrtBCI, sp);
+      i3 = d->size[1];
+      emlrtDynamicBoundsCheckFastR2012b(2, 1, i3, &ab_emlrtBCI, sp);
       transitionArrayLength = d->data[1];
       loop_ub = T->size[1];
-      i5 = (int32_T)emlrtIntegerCheckFastR2012b(transitionArrayLength,
+      i3 = (int32_T)emlrtIntegerCheckFastR2012b(transitionArrayLength,
         &e_emlrtDCI, sp);
-      emlrtDynamicBoundsCheckFastR2012b(i5, 1, 1000, &y_emlrtBCI, sp);
-      i5 = d->size[0] * d->size[1];
+      emlrtDynamicBoundsCheckFastR2012b(i3, 1, 1000, &bb_emlrtBCI, sp);
+      i3 = d->size[0] * d->size[1];
       d->size[0] = 1;
       d->size[1] = loop_ub;
-      emxEnsureCapacity(sp, (emxArray__common *)d, i5, (int32_T)sizeof(real_T),
+      emxEnsureCapacity(sp, (emxArray__common *)d, i3, (int32_T)sizeof(real_T),
                         &b_emlrtRTEI);
-      for (i5 = 0; i5 < loop_ub; i5++) {
-        d->data[d->size[0] * i5] = T->data[((int32_T)transitionArrayLength +
-          T->size[0] * i5) - 1];
+      for (i3 = 0; i3 < loop_ub; i3++) {
+        d->data[d->size[0] * i3] = T->data[((int32_T)transitionArrayLength +
+          T->size[0] * i3) - 1];
       }
 
-      i5 = path->size[1];
-      i6 = d->size[1];
-      emlrtDimSizeEqCheckFastR2012b(i5, i6, &b_emlrtECI, sp);
-      i5 = b_path->size[0] * b_path->size[1];
+      i3 = path->size[1];
+      i4 = d->size[1];
+      emlrtDimSizeEqCheckFastR2012b(i3, i4, &b_emlrtECI, sp);
+      i3 = b_path->size[0] * b_path->size[1];
       b_path->size[0] = path->size[0] + 1;
       b_path->size[1] = path->size[1];
-      emxEnsureCapacity(sp, (emxArray__common *)b_path, i5, (int32_T)sizeof
+      emxEnsureCapacity(sp, (emxArray__common *)b_path, i3, (int32_T)sizeof
                         (real_T), &b_emlrtRTEI);
       loop_ub = path->size[1];
-      for (i5 = 0; i5 < loop_ub; i5++) {
+      for (i3 = 0; i3 < loop_ub; i3++) {
         ixstart = path->size[0];
-        for (i6 = 0; i6 < ixstart; i6++) {
-          b_path->data[i6 + b_path->size[0] * i5] = path->data[i6 + path->size[0]
-            * i5];
+        for (i4 = 0; i4 < ixstart; i4++) {
+          b_path->data[i4 + b_path->size[0] * i3] = path->data[i4 + path->size[0]
+            * i3];
         }
       }
 
       loop_ub = d->size[1];
-      for (i5 = 0; i5 < loop_ub; i5++) {
-        b_path->data[path->size[0] + b_path->size[0] * i5] = d->data[d->size[0] *
-          i5];
+      for (i3 = 0; i3 < loop_ub; i3++) {
+        b_path->data[path->size[0] + b_path->size[0] * i3] = d->data[d->size[0] *
+          i3];
       }
 
-      i5 = path->size[0] * path->size[1];
+      i3 = path->size[0] * path->size[1];
       path->size[0] = b_path->size[0];
       path->size[1] = b_path->size[1];
-      emxEnsureCapacity(sp, (emxArray__common *)path, i5, (int32_T)sizeof(real_T),
+      emxEnsureCapacity(sp, (emxArray__common *)path, i3, (int32_T)sizeof(real_T),
                         &b_emlrtRTEI);
       loop_ub = b_path->size[1];
-      for (i5 = 0; i5 < loop_ub; i5++) {
+      for (i3 = 0; i3 < loop_ub; i3++) {
         ixstart = b_path->size[0];
-        for (i6 = 0; i6 < ixstart; i6++) {
-          path->data[i6 + path->size[0] * i5] = b_path->data[i6 + b_path->size[0]
-            * i5];
+        for (i4 = 0; i4 < ixstart; i4++) {
+          path->data[i4 + path->size[0] * i3] = b_path->data[i4 + b_path->size[0]
+            * i3];
         }
       }
 
-      i5 = d->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(2, 1, i5, &ab_emlrtBCI, sp);
+      i3 = d->size[1];
+      emlrtDynamicBoundsCheckFastR2012b(2, 1, i3, &cb_emlrtBCI, sp);
       transitionArrayLength = d->data[1];
       emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
     } else {

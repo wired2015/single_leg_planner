@@ -7,8 +7,6 @@
 %-q: The 1x4 vector containing the joint state of the leg.
 %-legNum: The leg number identifier.
 %-kC: A struct containing the kinematic constantants of the leg.
-%-showPath: A logical value that plots the wheel contact point each time
-%this function is called so that the path that the leg follows is shown.
 %
 %Notes:
 %-initializeSherpaTTPlot must be run before this function is called.
@@ -17,14 +15,11 @@
 %author:    wreid
 %date:      20150214
 
-function plotIndividualLeg(uG,q,legNum,kC,showPath)
+function plotIndividualLeg(uG,q,legNum,kC)
     
     global trMats trBody legLinks wheel
 
     [TB2G,TP2B,TI2P,TJ2I,TO2J,TQ2O,TR2Q,TS2R,TW2S,TC2W] = generateTrMatrices(uG,q,kC,legNum);
-
-    %TODO
-    %[xWheelVertices,yWheelVertices,zWheelVertices] = getWheelVertices(r);
 
     TP2G = TB2G*TP2B;
     TI2G = TP2G*TI2P;
@@ -59,9 +54,7 @@ function plotIndividualLeg(uG,q,legNum,kC,showPath)
     uG = getWheelVertices(TW2G,kC);
     set(wheel(legNum),'Vertices',uG,'Faces',1:length(uG));
 
-    if showPath
-        plot3(TC2G(1,4),TC2G(2,4),TC2G(3,4),'b.')
-    end
+    plot3(TC2G(1,4),TC2G(2,4),TC2G(3,4),'b.')
     
 end
 

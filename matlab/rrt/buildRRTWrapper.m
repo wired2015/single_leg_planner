@@ -24,10 +24,9 @@
 %author: wreid
 %date: 20150502
 
-function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot)
+function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot,HGAINS)
 
     persistent NUM_NODES 
-    persistent HGAINS
     persistent NODE_SIZE 
     persistent U_SIZE 
     persistent ankleThreshold 
@@ -37,9 +36,6 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     
     if isempty(NUM_NODES)
         NUM_NODES = int32(1000);
-    end
-    if isempty(HGAINS)
-        HGAINS = [1 0 0.5];
     end
     if isempty(NODE_SIZE)
         NODE_SIZE = int32(11);
@@ -106,7 +102,7 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         %Transform path back to the Cartesian space.
         [pathC,pathJ] = transformPath(pathJ,NODE_SIZE,kC,dt,Dt,TP2B);
         pathC = [0 nInitCartesianB; pathC];
-        pathJ = [0 qInit qDotInit'; pathJ];
+        pathJ = [0 qInit qDotInit' phiInit omegaInit; pathJ];
     else
         success = false;
         pathC = [];
@@ -125,7 +121,7 @@ function [pathC,pathJ] = transformPath(pathOld,NODE_SIZE,kC,dt,Dt,TP2B)
     
     [pathH,pathW] = size(pathOld);
     pathC = zeros(round(Dt/dt)*pathH,7);
-    pathJ = zeros(round(Dt/dt)*pathH,7);
+    pathJ = zeros(round(Dt/dt)*pathH,9);
     count = 1;
     time = round(Dt/dt)*pathH*dt;
     for i = 1:pathH
@@ -135,7 +131,7 @@ function [pathC,pathJ] = transformPath(pathOld,NODE_SIZE,kC,dt,Dt,TP2B)
             uDot = sherpaTTFKVel(pathOld(i,j-2:j)',pathOld(i,j-5:j-3)',kC);
             uBDot = TP2B(1:3,1:3)*uDot;
             pathC(count,:) = [time uB' uBDot'];
-            pathJ(count,:) = [time pathOld(i,j-5:j)];
+            pathJ(count,:) = [time pathOld(i,j-5:j) pathOld(i,10) pathOld(i,11)];
             time = time - dt;
             count = count + 1;
         end
