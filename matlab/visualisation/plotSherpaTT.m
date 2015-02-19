@@ -20,7 +20,7 @@ function plotSherpaTT(uG,q,kC,init)
     global fig
     
     if init
-        initializeSherpaTTPlot();
+        initializeSherpaTTPlot(uG);
         %initPosVec = TP2G(1:3,1:3)*[xInit; yInit; zInit] + TP2G(1:3,4);
         %set(initPosHandle,'XData',initPosVec(1),'YData',initPosVec(2),'ZData',initPosVec(3));
         %goalPosVec = TP2G(1:3,1:3)*[xGoal; yGoal; zGoal] + TP2G(1:3,4);

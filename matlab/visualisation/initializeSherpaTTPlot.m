@@ -5,9 +5,9 @@
 %author:    wreid
 %date:      20150214
 
-function initializeSherpaTTPlot()
+function initializeSherpaTTPlot(uG)
 
-    global body fig wheel
+    global body fig wheel ground
     global initPosHandle goalPosHandle
     global trMats trBody trGround
     global legLinks
@@ -16,14 +16,16 @@ function initializeSherpaTTPlot()
     legLinks = gobjects(4,8);
     wheel = gobjects(1,4);
     
+    workspace = [-1.5 1.5 -1.5 1.5 0 1.5];
+    
     fig = figure('Name','Sherpa_TT Visualization','Position',[100 100 700 700]);
-    axis([-1.5 1.5 -1.5 1.5 -1.5 1.5]);
     axis equal
+    axis(workspace);
     xlabel('X_G [m]');
     ylabel('Y_G [m]');
     zlabel('Z_G [m]');
     %view(136,40);
-    view(86,-90);
+    view(134,28);
 
     hold on
     
@@ -37,6 +39,8 @@ function initializeSherpaTTPlot()
 
     trGround = trplot(eye(4,4),'length',axesLen,'frame','G','rgb');
     trBody = trplot(eye(4,4),'length',axesLen,'frame','B','rgb');
+    
+    ground = plotGround(workspace,0);
     
     for i = 1:4
         
