@@ -422,7 +422,7 @@
       <param.DefaultFixedPointSignedness />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="true" value="${PROJECT_ROOT}/rrt/buildRRTWrapper.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/rrt/buildRRTWrapper.m">
         <Inputs fileName="buildRRTWrapper.m" functionName="buildRRTWrapper">
           <Input Name="nInitCartesianB">
             <Class>double</Class>

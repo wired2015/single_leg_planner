@@ -37,8 +37,8 @@ function planEval(useMex)
     fprintf('Ankle Heuristic Gain: %.2f\n\n',HGAINS(3));
     
     %Print out the body rates.
-    fprintf('Body Velocity: %.2f\n',uBDot(1:3))
-    fprintf('Body Angular Rate: %.2f\n',uBDot(4:6));
+    fprintf('Body Velocity: [%.2f %.2f %.2f]\n',uBDot(1), uBDot(2), uBDot(3))
+    fprintf('Body Angular Rate: [%.2f %.2f %.2f]\n',uBDot(4), uBDot(5), uBDot(6));
 
     %Initialize a struct that will hold the results frome each of the
     %generated plans.
@@ -79,7 +79,7 @@ function planEval(useMex)
             plannerResults(i).pathTime = pathTime;
 
             %Print the results on the command line.
-            fprintf('\nTRIAL %d\n',1);
+            fprintf('\nLeg %d\n',i)
             fprintf('Path Length: %.2f m\n',pathLength);
             fprintf('Path Time: %.2f sec\n',pathTime);
             uFinal = [pathC(end,2) pathC(end,3) pathC(end,4)];
