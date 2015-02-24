@@ -1,60 +1,61 @@
-rock_library(single_leg_planner
-    SOURCES
-	sherpaTTIK.cpp
-	buildRRTWrapper.cpp
-	selectInput.cpp
-	rand.cpp
-	sherpaTTIKVel.cpp
-	rtGetNaN.cpp
-	buildRRT.cpp
-	eml_rand_mt19937ar_stateful.cpp
-	nearestNeighbour.cpp
-	buildRRTWrapper_rtwutil.cpp
-	log.cpp
-	sin.cpp
-	buildRRTWrapper_data.cpp
-	rt_nonfinite.cpp
-	rtGetInf.cpp
-	buildRRTWrapper_initialize.cpp
-	buildRRTWrapper_terminate.cpp
-	exp.cpp
-	heuristicSingleLeg.cpp
-	buildRRTWrapper_emxAPI.cpp
-	buildRRTWrapper_emxutil.cpp
-	asin.cpp
-	inv.cpp
-    HEADERS
-	sherpaTTIK.h
-	asin.h
-	buildRRTWrapper_emxAPI.h
-	heuristicSingleLeg.h
-	sin.h
-	rt_defines.h
-	nearestNeighbour.h
-	exp.h
-	buildRRTWrapper_terminate.h
-	rtGetInf.h
-	buildRRTWrapper.h
-	buildRRTWrapper_rtwutil.h
-	buildRRTWrapper_initialize.h
-	rt_nonfinite.h
-	selectInput.h
-	buildRRTWrapper_types.h
-	rand.h
-	buildRRT.h
-	eml_rand_mt19937ar_stateful.h
-	log.h
-	rtwtypes.h
-	sherpaTTIKVel.h
-	buildRRTWrapper_emxutil.h
-	rtGetNaN.h
-	buildRRTWrapper_data.h
-	inv.h
+rock_library(single_leg_planner)
+SOURCES
+LegPlanner1.cpp
+asin.cpp
+buildRRT.cpp
+buildRRTWrapper.cpp
+buildRRTWrapper_data.cpp
+buildRRTWrapper_emxAPI.cpp
+buildRRTWrapper_emxutil.cpp
+buildRRTWrapper_initialize.cpp
+buildRRTWrapper_rtwutil.cpp
+buildRRTWrapper_terminate.cpp
+eml_rand_mt19937ar_stateful.cpp
+exp.cpp
+generateTrMatrices.cpp
+inv.cpp
+log.cpp
+main.cpp
+nearestNeighbour.cpp
+norm.cpp
+rand.cpp
+rk4.cpp
+rtGetInf.cpp
+rtGetNaN.cpp
+rt_nonfinite.cpp
+sherpaTTIK.cpp
+sherpaTTIKVel.cpp
+sin.cpp
+trInv.cpp
+validJointState.cpp
+LegPlanner1.h
+asin.h
+buildRRT.h
+buildRRTWrapper.h
+buildRRTWrapper_data.h
+buildRRTWrapper_emxAPI.h
+buildRRTWrapper_emxutil.h
+buildRRTWrapper_initialize.h
+buildRRTWrapper_rtwutil.h
+buildRRTWrapper_terminate.h
+buildRRTWrapper_types.h
+eml_rand_mt19937ar_stateful.h
+exp.h
+generateTrMatrices.h
+inv.h
+log.h
+nearestNeighbour.h
+norm.h
+rand.h
+rk4.h
+rtGetInf.h
+rtGetNaN.h
+rt_defines.h
+rt_nonfinite.h
+rtwtypes.h
+sherpaTTIK.h
+sherpaTTIKVel.h
+sin.h
+trInv.h
+validJointState.h
 )
-
-
-rock_executable(single_leg_planner_bin main.cpp
-    SOURCES LegPlanner.cpp
-    HEADERS LegPlanner.h
-    DEPS single_leg_planner)
-
