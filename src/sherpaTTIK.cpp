@@ -2,14 +2,14 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 14:05:36
+// C/C++ source code generated on  : 24-Feb-2015 15:18:00
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "sherpaTTIK.h"
-#include "selectInput.h"
+#include "rk4.h"
 #include "asin.h"
 #include "sin.h"
 #include "log.h"
@@ -34,14 +34,14 @@
 //                double kC_l8
 //                double kC_zeta
 //                double kC_r
-//                const double jointLimits[12]
+//                const double jointLimits[20]
 //                double q[3]
 // Return Type  : void
 //
 void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
                   double kC_l4, double kC_l5, double kC_l6, double kC_l7, double
                   kC_l8, double kC_zeta, double kC_r, const double jointLimits
-                  [12], double q[3])
+                  [20], double q[3])
 {
   double x;
   double a;
@@ -1532,13 +1532,13 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
 //                double kC_l8
 //                double kC_zeta
 //                double kC_r
-//                const double jointLimits[12]
+//                const double jointLimits[20]
 //                double q[3]
 // Return Type  : void
 //
 void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
                 double kC_l4, double kC_l5, double kC_l6, double kC_l7, double
-                kC_l8, double kC_zeta, double kC_r, const double jointLimits[12],
+                kC_l8, double kC_zeta, double kC_r, const double jointLimits[20],
                 double q[3])
 {
   double x;

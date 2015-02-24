@@ -2,7 +2,7 @@
 // File: validJointState.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 14:05:36
+// C/C++ source code generated on  : 24-Feb-2015 15:18:00
 //
 #ifndef __VALIDJOINTSTATE_H__
 #define __VALIDJOINTSTATE_H__
@@ -18,8 +18,8 @@
 #include "buildRRTWrapper_types.h"
 
 // Function Declarations
-extern boolean_T validJointState(const double b_state[6], const double
-  jointLimits[12]);
+extern boolean_T validJointState(const double b_state[10], const double
+  jointLimits[20]);
 
 #endif
 

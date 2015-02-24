@@ -2,7 +2,7 @@
 // File: buildRRTWrapper_types.h 
 //  
 // MATLAB Coder version            : 2.7 
-// C/C++ source code generated on  : 17-Feb-2015 14:05:36 
+// C/C++ source code generated on  : 24-Feb-2015 15:18:00 
 //
 
 #ifndef __BUILDRRTWRAPPER_TYPES_H__
@@ -34,14 +34,22 @@ struct emxArray_real_T
     boolean_T canFreeData;
 };
 #endif /*struct_emxArray_real_T*/
-#ifndef struct_emxArray_real_T_1x11
-#define struct_emxArray_real_T_1x11
-struct emxArray_real_T_1x11
+#ifndef struct_emxArray_real_T_1x10
+#define struct_emxArray_real_T_1x10
+struct emxArray_real_T_1x10
 {
-    double data[11];
+    double data[10];
     int size[2];
 };
-#endif /*struct_emxArray_real_T_1x11*/
+#endif /*struct_emxArray_real_T_1x10*/
+#ifndef struct_emxArray_real_T_1x13
+#define struct_emxArray_real_T_1x13
+struct emxArray_real_T_1x13
+{
+    double data[13];
+    int size[2];
+};
+#endif /*struct_emxArray_real_T_1x13*/
 #ifndef struct_emxArray_real_T_1x16
 #define struct_emxArray_real_T_1x16
 struct emxArray_real_T_1x16
@@ -50,22 +58,22 @@ struct emxArray_real_T_1x16
     int size[2];
 };
 #endif /*struct_emxArray_real_T_1x16*/
-#ifndef struct_emxArray_real_T_1x6
-#define struct_emxArray_real_T_1x6
-struct emxArray_real_T_1x6
+#ifndef struct_emxArray_real_T_1x5
+#define struct_emxArray_real_T_1x5
+struct emxArray_real_T_1x5
 {
-    double data[6];
+    double data[5];
     int size[2];
 };
-#endif /*struct_emxArray_real_T_1x6*/
-#ifndef struct_emxArray_real_T_5x3
-#define struct_emxArray_real_T_5x3
-struct emxArray_real_T_5x3
+#endif /*struct_emxArray_real_T_1x5*/
+#ifndef struct_emxArray_real_T_5x13
+#define struct_emxArray_real_T_5x13
+struct emxArray_real_T_5x13
 {
-    double data[15];
+    double data[65];
     int size[2];
 };
-#endif /*struct_emxArray_real_T_5x3*/
+#endif /*struct_emxArray_real_T_5x13*/
 typedef struct
 {
     double l1;

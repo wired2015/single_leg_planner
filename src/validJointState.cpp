@@ -2,7 +2,7 @@
 // File: validJointState.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 14:05:36
+// C/C++ source code generated on  : 24-Feb-2015 15:18:00
 //
 
 // Include Files
@@ -14,11 +14,11 @@
 // Function Definitions
 
 //
-// Arguments    : const double b_state[6]
-//                const double jointLimits[12]
+// Arguments    : const double b_state[10]
+//                const double jointLimits[20]
 // Return Type  : boolean_T
 //
-boolean_T validJointState(const double b_state[6], const double jointLimits[12])
+boolean_T validJointState(const double b_state[10], const double jointLimits[20])
 {
   boolean_T valid;
 
@@ -38,9 +38,9 @@ boolean_T validJointState(const double b_state[6], const double jointLimits[12])
   if ((b_state[0] < jointLimits[0]) || (b_state[0] > jointLimits[1]) ||
       (b_state[1] < jointLimits[2]) || (b_state[1] > jointLimits[3]) ||
       (b_state[2] < jointLimits[4]) || (b_state[2] > jointLimits[5]) ||
-      (b_state[3] < jointLimits[6]) || (b_state[3] > jointLimits[7]) ||
-      (b_state[4] < jointLimits[8]) || (b_state[4] > jointLimits[9]) ||
-      (b_state[5] < jointLimits[10]) || (b_state[5] > jointLimits[11])) {
+      (b_state[5] < jointLimits[10]) || (b_state[3] > jointLimits[11]) ||
+      (b_state[6] < jointLimits[12]) || (0.0 > jointLimits[13]) || (b_state[7] <
+       jointLimits[14]) || (b_state[5] > jointLimits[15])) {
     valid = false;
   } else {
     valid = true;

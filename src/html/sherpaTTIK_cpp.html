@@ -7,20 +7,20 @@
 <body bgcolor="#eeeeee" text="#1122aa" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};">
 <p>
 <table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
-<h4>File: <a href="../../../../../../PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTIK.cpp" target="rtwreport_document_frame" id="linkToText_plain">sherpaTTIK.cpp</a></h4>
+<h4>File: <a href="../sherpaTTIK.cpp" target="rtwreport_document_frame" id="linkToText_plain">sherpaTTIK.cpp</a></h4>
 <pre id="RTWcode">
 <a name="1"><font color="#888888 "><i>    1   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: sherpaTTIK.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 17-Feb-2015 14:05:36</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 24-Feb-2015 15:18:00</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
 <a name="9"><font color="#888888 "><i>    9   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;rt_nonfinite.h&quot;</font>
 <a name="10"><font color="#888888 "><i>   10   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;buildRRTWrapper.h&quot;</font>
 <a name="11"><font color="#888888 "><i>   11   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;sherpaTTIK.h&quot;</font>
-<a name="12"><font color="#888888 "><i>   12   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;selectInput.h&quot;</font>
+<a name="12"><font color="#888888 "><i>   12   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;rk4.h&quot;</font>
 <a name="13"><font color="#888888 "><i>   13   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;asin.h&quot;</font>
 <a name="14"><font color="#888888 "><i>   14   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;sin.h&quot;</font>
 <a name="15"><font color="#888888 "><i>   15   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;log.h&quot;</font>
@@ -45,14 +45,14 @@
 <a name="34"><font color="#888888 "><i>   34   </i></font></a><font color="#117755"><i>//                double kC_l8</i></font>
 <a name="35"><font color="#888888 "><i>   35   </i></font></a><font color="#117755"><i>//                double kC_zeta</i></font>
 <a name="36"><font color="#888888 "><i>   36   </i></font></a><font color="#117755"><i>//                double kC_r</i></font>
-<a name="37"><font color="#888888 "><i>   37   </i></font></a><font color="#117755"><i>//                const double jointLimits[12]</i></font>
+<a name="37"><font color="#888888 "><i>   37   </i></font></a><font color="#117755"><i>//                const double jointLimits[20]</i></font>
 <a name="38"><font color="#888888 "><i>   38   </i></font></a><font color="#117755"><i>//                double q[3]</i></font>
 <a name="39"><font color="#888888 "><i>   39   </i></font></a><font color="#117755"><i>// Return Type  : void</i></font>
 <a name="40"><font color="#888888 "><i>   40   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="41"><font color="#888888 "><i>   41   </i></font></a><font color="#112266"><b>void</b></font> <a name="fcn_b_sherpaTTIK">b_sherpaTTIK</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> u[3], <font color="#112266"><b>double</b></font> kC_l1, <font color="#112266"><b>double</b></font> kC_l2, <font color="#112266"><b>double</b></font> kC_l3,
 <a name="42"><font color="#888888 "><i>   42   </i></font></a>                  <font color="#112266"><b>double</b></font> kC_l4, <font color="#112266"><b>double</b></font> kC_l5, <font color="#112266"><b>double</b></font> kC_l6, <font color="#112266"><b>double</b></font> kC_l7, <font color="#112266"><b>double</b></font>
 <a name="43"><font color="#888888 "><i>   43   </i></font></a>                  kC_l8, <font color="#112266"><b>double</b></font> kC_zeta, <font color="#112266"><b>double</b></font> kC_r, <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> jointLimits
-<a name="44"><font color="#888888 "><i>   44   </i></font></a>                  [12], <font color="#112266"><b>double</b></font> q[3])
+<a name="44"><font color="#888888 "><i>   44   </i></font></a>                  [20], <font color="#112266"><b>double</b></font> q[3])
 <a name="45"><font color="#888888 "><i>   45   </i></font></a><b>{</b>
 <a name="46"><font color="#888888 "><i>   46   </i></font></a>  <font color="#112266"><b>double</b></font> x;
 <a name="47"><font color="#888888 "><i>   47   </i></font></a>  <font color="#112266"><b>double</b></font> a;
@@ -1543,13 +1543,13 @@
 <a name="1532"><font color="#888888 "><i> 1532   </i></font></a><font color="#117755"><i>//                double kC_l8</i></font>
 <a name="1533"><font color="#888888 "><i> 1533   </i></font></a><font color="#117755"><i>//                double kC_zeta</i></font>
 <a name="1534"><font color="#888888 "><i> 1534   </i></font></a><font color="#117755"><i>//                double kC_r</i></font>
-<a name="1535"><font color="#888888 "><i> 1535   </i></font></a><font color="#117755"><i>//                const double jointLimits[12]</i></font>
+<a name="1535"><font color="#888888 "><i> 1535   </i></font></a><font color="#117755"><i>//                const double jointLimits[20]</i></font>
 <a name="1536"><font color="#888888 "><i> 1536   </i></font></a><font color="#117755"><i>//                double q[3]</i></font>
 <a name="1537"><font color="#888888 "><i> 1537   </i></font></a><font color="#117755"><i>// Return Type  : void</i></font>
 <a name="1538"><font color="#888888 "><i> 1538   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="1539"><font color="#888888 "><i> 1539   </i></font></a><font color="#112266"><b>void</b></font> <a name="fcn_sherpaTTIK">sherpaTTIK</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> u[3], <font color="#112266"><b>double</b></font> kC_l1, <font color="#112266"><b>double</b></font> kC_l2, <font color="#112266"><b>double</b></font> kC_l3,
 <a name="1540"><font color="#888888 "><i> 1540   </i></font></a>                <font color="#112266"><b>double</b></font> kC_l4, <font color="#112266"><b>double</b></font> kC_l5, <font color="#112266"><b>double</b></font> kC_l6, <font color="#112266"><b>double</b></font> kC_l7, <font color="#112266"><b>double</b></font>
-<a name="1541"><font color="#888888 "><i> 1541   </i></font></a>                kC_l8, <font color="#112266"><b>double</b></font> kC_zeta, <font color="#112266"><b>double</b></font> kC_r, <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> jointLimits[12],
+<a name="1541"><font color="#888888 "><i> 1541   </i></font></a>                kC_l8, <font color="#112266"><b>double</b></font> kC_zeta, <font color="#112266"><b>double</b></font> kC_r, <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> jointLimits[20],
 <a name="1542"><font color="#888888 "><i> 1542   </i></font></a>                <font color="#112266"><b>double</b></font> q[3])
 <a name="1543"><font color="#888888 "><i> 1543   </i></font></a><b>{</b>
 <a name="1544"><font color="#888888 "><i> 1544   </i></font></a>  <font color="#112266"><b>double</b></font> x;

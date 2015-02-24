@@ -24,15 +24,16 @@
 %author: wreid
 %date: 20150502
 
-function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot,HGAINS,NUM_NODES)
+function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot)
 
-    %persistent NUM_NODES 
+    persistent NUM_NODES 
     persistent NODE_SIZE 
     persistent U_SIZE 
     persistent ankleThreshold 
     persistent exhaustive 
     persistent goalSeedFreq 
     persistent cartesianLimits
+    persistent HGAINS
     
     %if isempty(NUM_NODES)
     %    NUM_NODES = int32(1000);
@@ -54,6 +55,12 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     end
     if isempty(cartesianLimits)
         cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
+    end
+    if isempty(NUM_NODES)
+        NUM_NODES = 1000;
+    end
+    if isempty(HGAINS)
+        HGAINS = [1 0 0.5];
     end
     
     panHeight  = getPanHeight(bodyHeight,kC);

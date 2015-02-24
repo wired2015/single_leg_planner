@@ -18,12 +18,14 @@ static void buildRRTWrapper_once(void);
 /* Function Definitions */
 static void buildRRTWrapper_once(void)
 {
+  HGAINS_not_empty_init();
   cartesianLimits_not_empty_init();
   goalSeedFreq_not_empty_init();
   exhaustive_not_empty_init();
   ankleThreshold_not_empty_init();
   U_SIZE_not_empty_init();
   NODE_SIZE_not_empty_init();
+  NUM_NODES_not_empty_init();
   buildRRTWrapper_init();
 }
 

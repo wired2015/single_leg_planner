@@ -2,16 +2,15 @@
 // File: nearestNeighbour.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Feb-2015 15:38:22
+// C/C++ source code generated on  : 24-Feb-2015 15:18:00
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
 #include "nearestNeighbour.h"
-#include "heuristicSingleLeg.h"
+#include "norm.h"
 #include "buildRRTWrapper_emxutil.h"
-#include "buildRRTWrapper_rtwutil.h"
 #include <stdio.h>
 
 // Function Definitions
@@ -30,31 +29,43 @@
 //        HGAINS: The gains applied to the heuristic function.
 //    Outputs:
 //        xNear:  The node in the tree that is closet to x.
-// Arguments    : const double x[11]
+// Arguments    : const double x[13]
 //                const emxArray_real_T *T
-//                const double kinematicConst[12]
+//                double kC_l1
+//                double kC_l2
+//                double kC_l3
+//                double kC_l4
+//                double kC_l5
+//                double kC_l6
+//                double kC_l7
+//                double kC_l8
+//                double kC_zeta
+//                double kC_r
 //                double nodeIDCount
-//                int NODE_SIZE
-//                emxArray_real_T *xNear
+//                double xNear_data[]
+//                int xNear_size[2]
 //                emxArray_real_T *transitionArray
 //                double *d
 // Return Type  : void
 //
-void nearestNeighbour(const double x[11], const emxArray_real_T *T, const double
-                      kinematicConst[12], double nodeIDCount, int NODE_SIZE,
-                      emxArray_real_T *xNear, emxArray_real_T *transitionArray,
-                      double *d)
+void nearestNeighbour(const double x[13], const emxArray_real_T *T, double kC_l1,
+                      double kC_l2, double kC_l3, double kC_l4, double kC_l5,
+                      double kC_l6, double kC_l7, double kC_l8, double kC_zeta,
+                      double kC_r, double nodeIDCount, double xNear_data[], int
+                      xNear_size[2], emxArray_real_T *transitionArray, double *d)
 {
   emxArray_real_T *b_d;
-  int ix;
+  int i3;
   int ixstart;
-  double xStarA;
-  double dxStar;
-  double dAlpha;
+  double uA[3];
+  double mtmp;
+  double q_idx_1;
+  double q_idx_2;
+  double uB[3];
+  double b_uB[3];
   int itmp;
+  int ix;
   boolean_T exitg1;
-  long i5;
-  int i6;
   emxInit_real_T(&b_d, 2);
 
   // nearestNeigbour.m
@@ -62,13 +73,13 @@ void nearestNeighbour(const double x[11], const emxArray_real_T *T, const double
   // date: 20150107
   // Iterate over the entire tree and apply the distance heuristic function
   // to each node.
-  ix = b_d->size[0] * b_d->size[1];
+  i3 = b_d->size[0] * b_d->size[1];
   b_d->size[0] = 1;
   b_d->size[1] = (int)nodeIDCount;
-  emxEnsureCapacity((emxArray__common *)b_d, ix, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)b_d, i3, (int)sizeof(double));
   ixstart = (int)nodeIDCount;
-  for (ix = 0; ix < ixstart; ix++) {
-    b_d->data[ix] = 0.0;
+  for (i3 = 0; i3 < ixstart; i3++) {
+    b_d->data[i3] = 0.0;
   }
 
   // parfor i = 1:nodeIDCount
@@ -77,48 +88,77 @@ void nearestNeighbour(const double x[11], const emxArray_real_T *T, const double
     // heuristicSingleLeg.m
     // author: wreid
     // date: 20150107
-    // [x1,y1,z1] = fk(alpha1,beta1,gamma1,kinematicConst);
-    // [x2,y2,z2] = fk(alpha2,beta2,gamma2,kinematicConst);
-    // distMAX = [sqrt(range(1)^2+range(2)+range(3)^2) sqrt(range(4)^2+range(5)^2+range(6)^2)]; 
-    // distMAX = [10 1];
-    // d = HGAINS(1)*cartDist(xA(4:6),xB(4:6))/distMAX(1) +...
-    //     HGAINS(2)*abs(z1-z2);
-    // d = HGAINS(1)*cartDist([x1 y1 z1],[x2 y2 z2])/distMAX(1);
-    //     HGAINS(2)*cartDist(x1(7:9),x2(7:9))/distMAX(2);
-    xStarA = (((kinematicConst[1] + kinematicConst[2] * cos(x[4])) +
-               kinematicConst[3] * cos(kinematicConst[8])) + kinematicConst[4] *
-              cos(kinematicConst[8] + x[5])) - kinematicConst[6];
-    dxStar = ((((kinematicConst[1] + kinematicConst[2] * cos(T->data[ixstart +
-      (T->size[0] << 2)])) + kinematicConst[3] * cos(kinematicConst[8])) +
-               kinematicConst[4] * cos(kinematicConst[8] + T->data[ixstart +
-                T->size[0] * 5])) - kinematicConst[6]) - xStarA;
+    // Calculate the distance between angular positions.
+    // sherpaTTFK Sherpa_TT Forward Kinematics
+    //    Calculates the x,y,z position of the contact point given the alpha,
+    //    beta and gamma joint values.
+    // SHERPATTFK Calcluates the Cartesian position of the wheel contact point
+    // relative to the pan coordinate frame for the SherpaTT Leg.
+    //
+    // Inputs:
+    // -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] 
+    // -kC: A struct containing the kinematic constants of the SherpaTT leg.
+    // Outputs:
+    //
+    // sherpaTTFK.m
+    // author: wreid
+    // date: 20150122
+    uA[0] = ((((kC_l2 + kC_l3 * cos(-x[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 *
+              cos(x[5] + kC_zeta)) - kC_l7) * cos(x[3]);
+    uA[1] = ((((kC_l2 + kC_l3 * cos(-x[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 *
+              cos(x[5] + kC_zeta)) - kC_l7) * sin(x[3]);
+    uA[2] = ((((kC_l1 + kC_l3 * sin(-x[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 *
+              sin(x[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+    mtmp = T->data[ixstart + T->size[0] * 3];
+    q_idx_1 = T->data[ixstart + (T->size[0] << 2)];
+    q_idx_2 = T->data[ixstart + T->size[0] * 5];
 
-    // angDiff Finds the angular difference between th1 and th2.
-    dAlpha = ((x[3] - T->data[ixstart + T->size[0] * 3]) + 3.1415926535897931) /
-      6.2831853071795862;
-    if (fabs(dAlpha - rt_roundd_snf(dAlpha)) <= 2.2204460492503131E-16 * fabs
-        (dAlpha)) {
-      dAlpha = 0.0;
-    } else {
-      dAlpha = (dAlpha - floor(dAlpha)) * 6.2831853071795862;
+    // sherpaTTFK Sherpa_TT Forward Kinematics
+    //    Calculates the x,y,z position of the contact point given the alpha,
+    //    beta and gamma joint values.
+    // SHERPATTFK Calcluates the Cartesian position of the wheel contact point
+    // relative to the pan coordinate frame for the SherpaTT Leg.
+    //
+    // Inputs:
+    // -q: A 1x3 vector containing the joint angular positions [alpha beta gamma] 
+    // -kC: A struct containing the kinematic constants of the SherpaTT leg.
+    // Outputs:
+    //
+    // sherpaTTFK.m
+    // author: wreid
+    // date: 20150122
+    uB[0] = ((((kC_l2 + kC_l3 * cos(-q_idx_1)) + kC_l4 * cos(kC_zeta)) + kC_l5 *
+              cos(q_idx_2 + kC_zeta)) - kC_l7) * cos(mtmp);
+    uB[1] = ((((kC_l2 + kC_l3 * cos(-q_idx_1)) + kC_l4 * cos(kC_zeta)) + kC_l5 *
+              cos(q_idx_2 + kC_zeta)) - kC_l7) * sin(mtmp);
+    uB[2] = ((((kC_l1 + kC_l3 * sin(-q_idx_1)) - kC_l4 * sin(kC_zeta)) - kC_l5 *
+              sin(q_idx_2 + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+
+    // dVel = (alphaDotB - alphaDotA) + (betaDotB - betaDotA) + (gammaDotB - gammaDotA); 
+    // dVelNorm = jointLimits(2,6) - jointLimits(1,6) + jointLimits(2,7) - jointLimits(1,7) + jointLimits(2,8) - jointLimits(1,8); 
+    //     uA = sherpaTTFK(xA(4:6),kC);
+    //     uB = sherpaTTFK(xB(4:6),kC);
+    // dPos = norm(uA-uB);
+    // Calculate the total distance.
+    // d = HGAINS(1)*dPosNorm;%+HGAINS(2)*dVelNorm;
+    for (i3 = 0; i3 < 3; i3++) {
+      b_uB[i3] = uB[i3] - uA[i3];
     }
 
-    dAlpha = fabs(dAlpha - 3.1415926535897931);
-    b_d->data[ixstart] = sqrt(dxStar * dxStar + xStarA * xStarA * (dAlpha *
-      dAlpha));
+    b_d->data[ixstart] = norm(b_uB);
   }
 
   ixstart = 1;
-  dAlpha = b_d->data[0];
+  mtmp = b_d->data[0];
   itmp = 0;
   if ((int)nodeIDCount > 1) {
-    if (rtIsNaN(dAlpha)) {
+    if (rtIsNaN(mtmp)) {
       ix = 2;
       exitg1 = false;
       while ((!exitg1) && (ix <= (int)nodeIDCount)) {
         ixstart = ix;
         if (!rtIsNaN(b_d->data[ix - 1])) {
-          dAlpha = b_d->data[ix - 1];
+          mtmp = b_d->data[ix - 1];
           itmp = ix - 1;
           exitg1 = true;
         } else {
@@ -129,8 +169,8 @@ void nearestNeighbour(const double x[11], const emxArray_real_T *T, const double
 
     if (ixstart < (int)nodeIDCount) {
       while (ixstart + 1 <= (int)nodeIDCount) {
-        if (b_d->data[ixstart] < dAlpha) {
-          dAlpha = b_d->data[ixstart];
+        if (b_d->data[ixstart] < mtmp) {
+          mtmp = b_d->data[ixstart];
           itmp = ixstart;
         }
 
@@ -140,50 +180,32 @@ void nearestNeighbour(const double x[11], const emxArray_real_T *T, const double
   }
 
   emxFree_real_T(&b_d);
-  *d = dAlpha;
+  *d = mtmp;
 
   // [d,minIndex] = min(d(1:nodeIDCount));
-  if (1 > NODE_SIZE) {
-    ixstart = 0;
-  } else {
-    ixstart = NODE_SIZE;
+  xNear_size[0] = 1;
+  xNear_size[1] = 13;
+  for (i3 = 0; i3 < 13; i3++) {
+    xNear_data[xNear_size[0] * i3] = T->data[itmp + T->size[0] * i3];
   }
 
-  ix = xNear->size[0] * xNear->size[1];
-  xNear->size[0] = 1;
-  xNear->size[1] = ixstart;
-  emxEnsureCapacity((emxArray__common *)xNear, ix, (int)sizeof(double));
-  for (ix = 0; ix < ixstart; ix++) {
-    xNear->data[xNear->size[0] * ix] = T->data[itmp + T->size[0] * ix];
-  }
-
-  i5 = NODE_SIZE + 1L;
-  if (i5 > 2147483647L) {
-    i5 = 2147483647L;
-  } else {
-    if (i5 < -2147483648L) {
-      i5 = -2147483648L;
-    }
-  }
-
-  ix = (int)i5;
-  if (ix > T->size[1]) {
+  if (14 > T->size[1]) {
+    i3 = 0;
     ix = 0;
-    i6 = 0;
   } else {
-    ix--;
-    i6 = T->size[1];
+    i3 = 13;
+    ix = T->size[1];
   }
 
   ixstart = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
-  transitionArray->size[1] = i6 - ix;
+  transitionArray->size[1] = ix - i3;
   emxEnsureCapacity((emxArray__common *)transitionArray, ixstart, (int)sizeof
                     (double));
-  ixstart = i6 - ix;
-  for (i6 = 0; i6 < ixstart; i6++) {
-    transitionArray->data[transitionArray->size[0] * i6] = T->data[itmp +
-      T->size[0] * (ix + i6)];
+  ixstart = ix - i3;
+  for (ix = 0; ix < ixstart; ix++) {
+    transitionArray->data[transitionArray->size[0] * ix] = T->data[itmp +
+      T->size[0] * (i3 + ix)];
   }
 }
 

@@ -18,31 +18,35 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo gb_emlrtRSI = { 29, "nearestNeighbour",
+static emlrtRSInfo eb_emlrtRSI = { 29, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtRSInfo hb_emlrtRSI = { 26, "nearestNeighbour",
+static emlrtRSInfo fb_emlrtRSI = { 26, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtRSInfo nb_emlrtRSI = { 96, "eml_min_or_max",
+static emlrtRSInfo lb_emlrtRSI = { 96, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo ob_emlrtRSI = { 229, "eml_min_or_max",
+static emlrtRSInfo mb_emlrtRSI = { 229, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo pb_emlrtRSI = { 202, "eml_min_or_max",
+static emlrtRSInfo nb_emlrtRSI = { 202, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtMCInfo d_emlrtMCI = { 41, 9, "eml_min_or_max",
+static emlrtRSInfo ob_emlrtRSI = { 20, "eml_int_forloop_overflow_check",
+  "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
+};
+
+static emlrtMCInfo b_emlrtMCI = { 41, 9, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtMCInfo e_emlrtMCI = { 38, 19, "eml_min_or_max",
+static emlrtMCInfo c_emlrtMCI = { 38, 19, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
@@ -54,43 +58,43 @@ static emlrtRTEInfo k_emlrtRTEI = { 5, 33, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtBCInfo o_emlrtBCI = { -1, -1, 30, 14, "xB", "heuristicSingleLeg",
+static emlrtBCInfo n_emlrtBCI = { -1, -1, 30, 14, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo p_emlrtBCI = { -1, -1, 29, 15, "xB", "heuristicSingleLeg",
+static emlrtBCInfo o_emlrtBCI = { -1, -1, 29, 15, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo q_emlrtBCI = { -1, -1, 28, 17, "xB", "heuristicSingleLeg",
+static emlrtBCInfo p_emlrtBCI = { -1, -1, 28, 17, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo r_emlrtBCI = { -1, -1, 27, 16, "xB", "heuristicSingleLeg",
+static emlrtBCInfo q_emlrtBCI = { -1, -1, 27, 16, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo s_emlrtBCI = { -1, -1, 26, 17, "xB", "heuristicSingleLeg",
+static emlrtBCInfo r_emlrtBCI = { -1, -1, 26, 17, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo t_emlrtBCI = { -1, -1, 18, 16, "xB", "heuristicSingleLeg",
+static emlrtBCInfo s_emlrtBCI = { -1, -1, 18, 16, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo u_emlrtBCI = { -1, -1, 17, 12, "xB", "heuristicSingleLeg",
+static emlrtBCInfo t_emlrtBCI = { -1, -1, 17, 12, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo v_emlrtBCI = { -1, -1, 16, 14, "xB", "heuristicSingleLeg",
+static emlrtBCInfo u_emlrtBCI = { -1, -1, 16, 14, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo w_emlrtBCI = { -1, -1, 15, 13, "xB", "heuristicSingleLeg",
+static emlrtBCInfo v_emlrtBCI = { -1, -1, 15, 13, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
-static emlrtBCInfo x_emlrtBCI = { -1, -1, 14, 14, "xB", "heuristicSingleLeg",
+static emlrtBCInfo w_emlrtBCI = { -1, -1, 14, 14, "xB", "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
   0 };
 
@@ -98,54 +102,50 @@ static emlrtRTEInfo r_emlrtRTEI = { 25, 5, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtBCInfo y_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
+static emlrtBCInfo x_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo ab_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
+static emlrtBCInfo y_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo bb_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
+static emlrtBCInfo ab_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo cb_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
+static emlrtBCInfo bb_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo db_emlrtBCI = { -1, -1, 32, 25, "T", "nearestNeighbour",
+static emlrtBCInfo cb_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo eb_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
+static emlrtBCInfo db_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo fb_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
-  0 };
-
-static emlrtRSInfo ac_emlrtRSI = { 38, "eml_min_or_max",
+static emlrtRSInfo yb_emlrtRSI = { 38, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo cc_emlrtRSI = { 41, "eml_min_or_max",
+static emlrtRSInfo bc_emlrtRSI = { 41, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
 /* Function Declarations */
-static const mxArray *b_message(const emlrtStack *sp, const mxArray *b,
+static const mxArray *message(const emlrtStack *sp, const mxArray *b,
   emlrtMCInfo *location);
 
 /* Function Definitions */
-static const mxArray *b_message(const emlrtStack *sp, const mxArray *b,
+static const mxArray *message(const emlrtStack *sp, const mxArray *b,
   emlrtMCInfo *location)
 {
   const mxArray *pArray;
-  const mxArray *m8;
+  const mxArray *m6;
   pArray = b;
-  return emlrtCallMATLABR2012b(sp, 1, &m8, 1, &pArray, "message", true, location);
+  return emlrtCallMATLABR2012b(sp, 1, &m6, 1, &pArray, "message", true, location);
 }
 
 void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
@@ -157,27 +157,27 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
                       emxArray_real_T *transitionArray, real_T *d)
 {
   emxArray_real_T *b_d;
-  int32_T i5;
+  int32_T i4;
   int32_T ixstart;
-  int32_T ix;
   real_T xStarMin;
   real_T dxStarMax;
   real_T dAlphaMax;
   real_T uA[3];
   real_T uB[3];
   real_T b_uB[3];
-  boolean_T b1;
+  int32_T ix;
+  boolean_T b0;
   const mxArray *y;
-  static const int32_T iv5[2] = { 1, 36 };
+  static const int32_T iv3[2] = { 1, 36 };
 
-  const mxArray *m1;
-  char_T cv4[36];
-  static const char_T cv5[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
+  const mxArray *m0;
+  char_T cv0[36];
+  static const char_T cv1[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
     'l', 'b', 'o', 'x', ':', 'a', 'u', 't', 'o', 'D', 'i', 'm', 'I', 'n', 'c',
     'o', 'm', 'p', 'a', 't', 'i', 'b', 'i', 'l', 'i', 't', 'y' };
 
   int32_T itmp;
-  boolean_T b2;
+  boolean_T b1;
   boolean_T exitg1;
   boolean_T b_ixstart;
   emlrtStack st;
@@ -222,14 +222,14 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
   /*        xNear:  The node in the tree that is closet to x. */
   /* Iterate over the entire tree and apply the distance heuristic function */
   /* to each node. */
-  i5 = b_d->size[0] * b_d->size[1];
+  i4 = b_d->size[0] * b_d->size[1];
   b_d->size[0] = 1;
   b_d->size[1] = (int32_T)nodeIDCount;
-  emxEnsureCapacity(sp, (emxArray__common *)b_d, i5, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)b_d, i4, (int32_T)sizeof(real_T),
                     &j_emlrtRTEI);
   ixstart = (int32_T)nodeIDCount;
-  for (i5 = 0; i5 < ixstart; i5++) {
-    b_d->data[i5] = 0.0;
+  for (i4 = 0; i4 < ixstart; i4++) {
+    b_d->data[i4] = 0.0;
   }
 
   /* parfor i = 1:nodeIDCount */
@@ -237,35 +237,34 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     nodeIDCount, &r_emlrtRTEI, sp);
   ixstart = 0;
   while (ixstart <= (int32_T)nodeIDCount - 1) {
-    st.site = &hb_emlrtRSI;
-    i5 = T->size[0];
-    ix = ixstart + 1;
-    emlrtDynamicBoundsCheckFastR2012b(ix, 1, i5, &y_emlrtBCI, &st);
+    st.site = &fb_emlrtRSI;
+    i4 = ixstart + 1;
+    emlrtDynamicBoundsCheckFastR2012b(i4, 1, 1000, &x_emlrtBCI, &st);
 
     /* heuristicSingleLeg.m */
     /* author: wreid */
     /* date: 20150107 */
     /* heuristic Calculates the distance between states x1 and x2. */
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(4, 1, i5, &x_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(5, 1, i5, &w_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(6, 1, i5, &v_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(7, 1, i5, &u_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(8, 1, i5, &t_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(9, 1, i5, &s_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(10, 1, i5, &r_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(11, 1, i5, &q_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(12, 1, i5, &p_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(13, 1, i5, &o_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(4, 1, i4, &w_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(5, 1, i4, &v_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(6, 1, i4, &u_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(7, 1, i4, &t_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(8, 1, i4, &s_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(9, 1, i4, &r_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(10, 1, i4, &q_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(11, 1, i4, &p_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(12, 1, i4, &o_emlrtBCI, &st);
+    i4 = T->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(13, 1, i4, &n_emlrtBCI, &st);
 
     /* Calculate the distance between angular positions. */
     xStarMin = (((kC_l2 + kC_l3 * muDoubleScalarCos(jointLimits[2])) + kC_l4 *
@@ -287,8 +286,8 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     }
 
     dAlphaMax = muDoubleScalarAbs(dAlphaMax - 3.1415926535897931);
-    b_st.site = &ib_emlrtRSI;
-    c_st.site = &kb_emlrtRSI;
+    b_st.site = &gb_emlrtRSI;
+    c_st.site = &ib_emlrtRSI;
     if (dxStarMax * dxStarMax + xStarMin * xStarMin * (dAlphaMax * dAlphaMax) <
         0.0) {
       d_st.site = &g_emlrtRSI;
@@ -315,7 +314,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     }
 
     dAlphaMax = muDoubleScalarAbs(dAlphaMax - 3.1415926535897931);
-    b_st.site = &jb_emlrtRSI;
+    b_st.site = &hb_emlrtRSI;
     if (dxStarMax * dxStarMax + xStarMin * xStarMin * (dAlphaMax * dAlphaMax) <
         0.0) {
       c_st.site = &g_emlrtRSI;
@@ -380,60 +379,60 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     /* dPos = norm(uA-uB); */
     /* Calculate the total distance. */
     /* d = HGAINS(1)*dPosNorm;%+HGAINS(2)*dVelNorm;  */
-    for (i5 = 0; i5 < 3; i5++) {
-      b_uB[i5] = uB[i5] - uA[i5];
+    for (i4 = 0; i4 < 3; i4++) {
+      b_uB[i4] = uB[i4] - uA[i4];
     }
 
-    i5 = b_d->size[1];
-    b_d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i5, &fb_emlrtBCI,
+    i4 = b_d->size[1];
+    b_d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i4, &db_emlrtBCI,
       sp) - 1] = norm(b_uB);
     ixstart++;
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
   }
 
-  i5 = b_d->size[1];
+  i4 = b_d->size[1];
   ix = (int32_T)nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(ix, 1, i5, &ab_emlrtBCI, sp);
-  st.site = &gb_emlrtRSI;
-  b_st.site = &lb_emlrtRSI;
-  c_st.site = &mb_emlrtRSI;
+  emlrtDynamicBoundsCheckFastR2012b(ix, 1, i4, &y_emlrtBCI, sp);
+  st.site = &eb_emlrtRSI;
+  b_st.site = &jb_emlrtRSI;
+  c_st.site = &kb_emlrtRSI;
   if (((int32_T)nodeIDCount == 1) || ((int32_T)nodeIDCount != 1)) {
-    b1 = true;
+    b0 = true;
   } else {
-    b1 = false;
+    b0 = false;
   }
 
-  if (b1) {
+  if (b0) {
   } else {
     y = NULL;
-    m1 = emlrtCreateCharArray(2, iv5);
+    m0 = emlrtCreateCharArray(2, iv3);
     for (ixstart = 0; ixstart < 36; ixstart++) {
-      cv4[ixstart] = cv5[ixstart];
+      cv0[ixstart] = cv1[ixstart];
     }
 
-    emlrtInitCharArrayR2013a(&c_st, 36, m1, cv4);
-    emlrtAssign(&y, m1);
-    d_st.site = &ac_emlrtRSI;
-    e_st.site = &cc_emlrtRSI;
-    error(&d_st, b_message(&e_st, y, &d_emlrtMCI), &e_emlrtMCI);
+    emlrtInitCharArrayR2013a(&c_st, 36, m0, cv0);
+    emlrtAssign(&y, m0);
+    d_st.site = &yb_emlrtRSI;
+    e_st.site = &bc_emlrtRSI;
+    error(&d_st, message(&e_st, y, &b_emlrtMCI), &c_emlrtMCI);
   }
 
-  d_st.site = &nb_emlrtRSI;
+  d_st.site = &lb_emlrtRSI;
   ixstart = 1;
   dAlphaMax = b_d->data[0];
-  itmp = 1;
+  itmp = 0;
   if ((int32_T)nodeIDCount > 1) {
     if (muDoubleScalarIsNaN(dAlphaMax)) {
-      f_st.site = &pb_emlrtRSI;
+      f_st.site = &nb_emlrtRSI;
       if (2 > (int32_T)nodeIDCount) {
-        b2 = false;
+        b1 = false;
       } else {
-        b2 = ((int32_T)nodeIDCount > 2147483646);
+        b1 = ((int32_T)nodeIDCount > 2147483646);
       }
 
-      if (b2) {
-        g_st.site = &l_emlrtRSI;
-        b_check_forloop_overflow_error(&g_st);
+      if (b1) {
+        g_st.site = &ob_emlrtRSI;
+        check_forloop_overflow_error(&g_st);
       }
 
       ix = 2;
@@ -442,7 +441,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
         ixstart = ix;
         if (!muDoubleScalarIsNaN(b_d->data[ix - 1])) {
           dAlphaMax = b_d->data[ix - 1];
-          itmp = ix;
+          itmp = ix - 1;
           exitg1 = true;
         } else {
           ix++;
@@ -451,7 +450,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     }
 
     if (ixstart < (int32_T)nodeIDCount) {
-      f_st.site = &ob_emlrtRSI;
+      f_st.site = &mb_emlrtRSI;
       if (ixstart + 1 > (int32_T)nodeIDCount) {
         b_ixstart = false;
       } else {
@@ -459,14 +458,14 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
       }
 
       if (b_ixstart) {
-        g_st.site = &l_emlrtRSI;
-        b_check_forloop_overflow_error(&g_st);
+        g_st.site = &ob_emlrtRSI;
+        check_forloop_overflow_error(&g_st);
       }
 
       while (ixstart + 1 <= (int32_T)nodeIDCount) {
         if (b_d->data[ixstart] < dAlphaMax) {
           dAlphaMax = b_d->data[ixstart];
-          itmp = ixstart + 1;
+          itmp = ixstart;
         }
 
         ixstart++;
@@ -478,39 +477,36 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
   *d = dAlphaMax;
 
   /* [d,minIndex] = min(d(1:nodeIDCount)); */
-  i5 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, i5, &cb_emlrtBCI, sp);
-  i5 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(NODE_SIZE, 1, i5, &cb_emlrtBCI, sp);
-  i5 = T->size[0];
-  ixstart = emlrtDynamicBoundsCheckFastR2012b(itmp, 1, i5, &bb_emlrtBCI, sp);
+  i4 = T->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(1, 1, i4, &bb_emlrtBCI, sp);
+  i4 = T->size[1];
+  emlrtDynamicBoundsCheckFastR2012b(NODE_SIZE, 1, i4, &bb_emlrtBCI, sp);
+  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1000, &ab_emlrtBCI, sp);
   xNear_size[0] = 1;
   xNear_size[1] = 13;
-  for (i5 = 0; i5 < 13; i5++) {
-    xNear_data[xNear_size[0] * i5] = T->data[(ixstart + T->size[0] * i5) - 1];
+  for (i4 = 0; i4 < 13; i4++) {
+    xNear_data[xNear_size[0] * i4] = T->data[itmp + T->size[0] * i4];
   }
 
   if (14 > T->size[1]) {
-    i5 = 0;
+    i4 = 0;
     ix = 0;
   } else {
-    i5 = 13;
+    i4 = 13;
     ix = T->size[1];
     ixstart = T->size[1];
-    ix = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &eb_emlrtBCI, sp);
+    ix = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &cb_emlrtBCI, sp);
   }
 
-  ixstart = T->size[0];
-  itmp = emlrtDynamicBoundsCheckFastR2012b(itmp, 1, ixstart, &db_emlrtBCI, sp);
   ixstart = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
-  transitionArray->size[1] = ix - i5;
+  transitionArray->size[1] = ix - i4;
   emxEnsureCapacity(sp, (emxArray__common *)transitionArray, ixstart, (int32_T)
                     sizeof(real_T), &j_emlrtRTEI);
-  ixstart = ix - i5;
+  ixstart = ix - i4;
   for (ix = 0; ix < ixstart; ix++) {
-    transitionArray->data[transitionArray->size[0] * ix] = T->data[(itmp +
-      T->size[0] * (i5 + ix)) - 1];
+    transitionArray->data[transitionArray->size[0] * ix] = T->data[itmp +
+      T->size[0] * (i4 + ix)];
   }
 
   emlrtHeapReferenceStackLeaveFcnR2012b(sp);

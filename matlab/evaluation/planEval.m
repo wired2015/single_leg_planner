@@ -53,9 +53,9 @@ function planEval(useMex)
         %Generate the RRT and time how long it takes to be generated.
         tic
         if useMex
-            [T,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot,gains,NUM_NODES);
+            [T,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot);
         else
-            [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot,gains,NUM_NODES);
+            [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot);
         end
         planningTime = toc;
 

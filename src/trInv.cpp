@@ -2,7 +2,7 @@
 // File: trInv.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 17-Feb-2015 14:05:36
+// C/C++ source code generated on  : 24-Feb-2015 15:18:00
 //
 
 // Include Files
@@ -21,34 +21,34 @@
 void trInv(const double T[16], double TInv[16])
 {
   double b_T[9];
+  int i1;
   int i2;
-  int i3;
   double c_T[3];
   static const signed char iv1[4] = { 0, 0, 0, 1 };
 
-  for (i2 = 0; i2 < 3; i2++) {
-    for (i3 = 0; i3 < 3; i3++) {
-      b_T[i3 + 3 * i2] = -T[i2 + (i3 << 2)];
+  for (i1 = 0; i1 < 3; i1++) {
+    for (i2 = 0; i2 < 3; i2++) {
+      b_T[i2 + 3 * i1] = -T[i1 + (i2 << 2)];
     }
   }
 
-  for (i2 = 0; i2 < 3; i2++) {
-    c_T[i2] = 0.0;
-    for (i3 = 0; i3 < 3; i3++) {
-      c_T[i2] += b_T[i2 + 3 * i3] * T[12 + i3];
+  for (i1 = 0; i1 < 3; i1++) {
+    c_T[i1] = 0.0;
+    for (i2 = 0; i2 < 3; i2++) {
+      c_T[i1] += b_T[i1 + 3 * i2] * T[12 + i2];
     }
 
-    for (i3 = 0; i3 < 3; i3++) {
-      TInv[i3 + (i2 << 2)] = T[i2 + (i3 << 2)];
+    for (i2 = 0; i2 < 3; i2++) {
+      TInv[i2 + (i1 << 2)] = T[i1 + (i2 << 2)];
     }
   }
 
-  for (i2 = 0; i2 < 3; i2++) {
-    TInv[12 + i2] = c_T[i2];
+  for (i1 = 0; i1 < 3; i1++) {
+    TInv[12 + i1] = c_T[i1];
   }
 
-  for (i2 = 0; i2 < 4; i2++) {
-    TInv[3 + (i2 << 2)] = iv1[i2];
+  for (i1 = 0; i1 < 4; i1++) {
+    TInv[3 + (i1 << 2)] = iv1[i1];
   }
 }
 
