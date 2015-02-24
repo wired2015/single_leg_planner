@@ -33,7 +33,11 @@ function plotSherpaTTMotion(uG,plannerResults,dt,numLegs,kC)
     init = true;
     
     for i = 1:hMax
-        plotSherpaTT(uG,[plannerResults(1).pathJ(i,2:4) plannerResults(1).pathJ(i,8); plannerResults(2).pathJ(i,2:4) plannerResults(2).pathJ(i,8); plannerResults(3).pathJ(i,2:4) plannerResults(3).pathJ(i,8); plannerResults(4).pathJ(i,2:4) plannerResults(4).pathJ(i,8)],kC,init);
+        legs = [];
+        for j = 1:numLegs
+            legs = [legs; plannerResults(j).pathJ(i,2:5)];
+        end
+        plotSherpaTT(uG,legs,kC,init,numLegs);
         pause(dt);
         t = t + dt;
         title(['t = ' num2str(t) 's'])

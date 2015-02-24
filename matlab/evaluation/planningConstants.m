@@ -15,7 +15,7 @@ kinematicConstants
 
 %Number of nodes to be used by the planner.
 NUM_NODES = int32(1000);
-NUM_NODES_MAX = int32(1000);
+%NUM_NODES_MAX = int32(3000);
 
 %The exhaustive boolean indicates if the planner will search for a
 %solution until it has found one, or if it will only use the maximum number
@@ -26,20 +26,20 @@ exhaustive = false;
 %pre-defined performance expectations.
 %The threshold indicates how far away a state can be from the goal state so
 %for a successful plan to be found.
-threshold = 0.04;
+threshold = 0.005;
 
 %TODO: Replace state nodes with a structure. The NODE_SIZE variable will be
 %void after this change has taken place.
 %The number of data entries in a single node.
-NODE_SIZE = int32(11);
+NODE_SIZE = int32(13);
 
 %TODO: Make it so that the HGAINS are normalized.
 %The heuristic gains.
-HGAINS = [1 0 0.95];
+gains = [1 0 0.1];
 
 %The joint angular and rate limits.
-jointLimits = [deg2rad([-135 -59.5 -5 -10 -20 -20]);...     %[rad, rad/s]
-               deg2rad([135 17 73.7 10 20 20])];            %[rad, rad/s]
+jointLimits = [deg2rad([-135 -59.5 -5 -180 0 -10 -10 -10 -45 -180]);...     %[rad, rad/s]
+               deg2rad([135 17 73.7 180 0 10 10 10 45 180])];            %[rad, rad/s]
 
 %The initial state of a leg's wheel contact point relative to the body
 %coordinate frame. Each row in the array is structured as 
@@ -98,6 +98,16 @@ U = eta*[1 0;                   % The control input set:
           0 1;                  % There can only be an acceleration along
           0 -1;                 % the ground plane, or no acceleration.
           0 0]; 
+      
+% U = eta*[1 0;                   % The control input set: 
+%   -1 0;                 % [alphaDot betaDot gammaDot] [m/s^2].
+%   0 1;                  % There can only be an acceleration along
+%   0 -1;                 % the ground plane, or no acceleration.
+%   0.5 0.5;                    
+%   -0.5 0.5;                 
+%   0.5 -0.5;
+%   -0.5 -0.5; 
+%   0 0]; 
 
 %The number of evaluation trials to be performed.
 NUM_TRIALS = 1;
@@ -114,7 +124,18 @@ goalSeedFreq = int32(20);
 
 uBDot = [0 0 0 0 0 0]';
 
-gains = [1 0 0.5];
-
+cartesianLimits = zeros(1,4);
+betaMin = jointLimits(1,2);
+betaMax = jointLimits(2,2);
+gammaMin = jointLimits(1,3);
+gammaMax = jointLimits(2,3);
+u1 = sherpaTTFK([0 betaMin gammaMin],kC);
+u2 = sherpaTTFK([0 betaMax gammaMax],kC);
+u3 = sherpaTTFK([0 betaMin gammaMax],kC);
+u4 = sherpaTTFK([0 betaMax gammaMin],kC);
+cartesianLimits(1) = u1(3);
+cartesianLimits(2) = u2(3);
+cartesianLimits(3) = u3(3);
+cartesianLimits(4) = u4(3);
 
 

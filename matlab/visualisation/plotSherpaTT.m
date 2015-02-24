@@ -15,7 +15,7 @@
 %author: wreid
 %date: 20150217
 
-function plotSherpaTT(uG,q,kC,init)
+function plotSherpaTT(uG,q,kC,init,numLegs)
     
     global fig
     
@@ -32,7 +32,7 @@ function plotSherpaTT(uG,q,kC,init)
     
     plotBody(uG,kC);
     
-    for i = 1:4
+    for i = 1:numLegs
         plotIndividualLeg(uG,q(i,:),i,kC)
     end
     

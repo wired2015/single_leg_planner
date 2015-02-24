@@ -29,10 +29,10 @@ kinematicConstants
 %     end
 % end
 
-betaMin = -1.0385;
-betaMax = 0.2967;
-gammaMin = -0.0873;
-gammaMax = 1.2863;
+betaMin = deg2rad(-59.5);
+betaMax = deg2rad(17);
+gammaMin = deg2rad(-5);
+gammaMax = deg2rad(73.7);
 
 beta = linspace(betaMin,betaMax,30);
 gamma = linspace(gammaMin,gammaMax,30);
@@ -140,5 +140,37 @@ title('Wheel Contact Point Config Space Study - (\alpha=0 rad)')
 % end
 % 
 % line([xMin xMax],[z z],'Color','r')
+
+
+alpha = 0;
+beta = betaMax-0.2;
+gamma = gammaMin+0.2;
+phi = 0;
+[TB2G,TP2B,TI2P,TJ2I,TO2J,TQ2O,TR2Q,TS2R,TW2S,TC2W] = generateTrMatrices([0 0 0],[alpha beta gamma phi],kC,1);
+
+TJ2P = TI2P*TJ2I;
+TO2P = TJ2P*TO2J;
+TQ2P = TO2P*TQ2O;
+TR2P = TQ2P*TR2Q;
+TS2P = TR2P*TS2R;
+TW2P = TS2P*TW2S;
+TC2P = TW2P*TC2W;
+
+dI2P = TI2P(1:3,4);
+dJ2P = TJ2P(1:3,4);
+dO2P = TO2P(1:3,4);
+dQ2P = TQ2P(1:3,4);
+dR2P = TR2P(1:3,4);
+dS2P = TS2P(1:3,4);
+dW2P = TW2P(1:3,4);
+dC2P = TC2P(1:3,4);
+
+line([dI2P(1) dJ2P(1)],[dI2P(3) dJ2P(3)],'Color','k');
+line([dJ2P(1) dO2P(1)],[dJ2P(3) dO2P(3)],'Color','k');
+line([dO2P(1) dQ2P(1)],[dO2P(3) dQ2P(3)],'Color','k');
+line([dQ2P(1) dR2P(1)],[dQ2P(3) dR2P(3)],'Color','k');
+line([dR2P(1) dS2P(1)],[dR2P(3) dS2P(3)],'Color','k');
+line([dS2P(1) dW2P(1)],[dS2P(3) dW2P(3)],'Color','k');
+line([dW2P(1) dC2P(1)],[dW2P(3) dC2P(3)],'Color','k');
 
 

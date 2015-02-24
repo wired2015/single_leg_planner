@@ -22,19 +22,19 @@ function planEval(useMex)
     addpath(genpath('~/Dropbox/PhD/matlab/rvctools'))
     planningConstants
     
-    numLegs = 4;
+    numLegs = 1;
 
     %Print header for planner evaluation.
-    fprintf(['\nSingle Leg Planner Evaluation ####\n\n']);
-    fprintf('Num Trials: %d\n',NUM_TRIALS);
-    if exhaustive
-        fprintf('Exhaustive Search, Max Number of Nodes: %d\n',NUM_NODES_MAX);
-    else
-        fprintf('Finite Search\nNumber of Nodes: %d\n',NUM_NODES);
-    end
-    fprintf('Position Heuristic Gain: %.2f\n',HGAINS(1));
-    fprintf('Velocity Heuristic Gain: %.2f\n',HGAINS(2));
-    fprintf('Ankle Heuristic Gain: %.2f\n\n',HGAINS(3));
+%     fprintf(['\nSingle Leg Planner Evaluation ####\n\n']);
+%     fprintf('Num Trials: %d\n',NUM_TRIALS);
+%     if exhaustive
+%         fprintf('Exhaustive Search, Max Number of Nodes: %d\n',NUM_NODES_MAX);
+%     else
+%         fprintf('Finite Search\nNumber of Nodes: %d\n',NUM_NODES);
+%     end
+%     fprintf('Position Heuristic Gain: %.2f\n',gains(1));
+%     fprintf('Velocity Heuristic Gain: %.2f\n',gains(2));
+%     fprintf('Ankle Heuristic Gain: %.2f\n\n',gains(3));
     
     %Print out the body rates.
     fprintf('Body Velocity: [%.2f %.2f %.2f]\n',uBDot(1), uBDot(2), uBDot(3))
@@ -46,13 +46,16 @@ function planEval(useMex)
 
     %Run the planner on each of the Sherpa_TT legs.
     for i=1:numLegs
+        
+        sInitB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
+        sGoalB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
 
         %Generate the RRT and time how long it takes to be generated.
         tic
         if useMex
-            [T,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot,gains);
+            [T,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot,gains,NUM_NODES);
         else
-            [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot,gains);
+            [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot,gains,NUM_NODES);
         end
         planningTime = toc;
 
@@ -67,10 +70,7 @@ function planEval(useMex)
             
             %Calculate the path length from the generated RRT.
             [pathH,~] = size(pathC);
-            pathLength = 0;
-            for j = 1:pathH-1
-                pathLength = pathLength + cartDist(pathC(j,2:4),pathC(j+1,2:4)); 
-            end
+            pathLength = pathC(end,2);
 
             %Calculate the path time.
             pathTime = dt*pathH;
@@ -82,16 +82,16 @@ function planEval(useMex)
             fprintf('\nLeg %d\n',i)
             fprintf('Path Length: %.2f m\n',pathLength);
             fprintf('Path Time: %.2f sec\n',pathTime);
-            uFinal = [pathC(end,2) pathC(end,3) pathC(end,4)];
+            uFinal = [pathC(end,3) pathC(end,4) pathC(end,5)];
             error = cartDist(uFinal,sGoalB(i,1:3));
-            fprintf('Final Cartesian Position Error: %.2f m\n',error);
+            fprintf('Final Cartesian Position Error: %.3f m\n',error);
             fprintf('Planning Time: %.3f s\n',planningTime);
 
-            %figure(10)
-            %printRRT(T,sGoalB,pathJ,kC,jointLimits,panHeight,NUM_NODES);
+            figure((i-1)*numLegs+1)
+            printRRT(T,sGoalB(i,1:3),pathJ,kC,jointLimits,panHeight,NUM_NODES);
 
-            %figure(2)
-            %plotVelocities(pathJ,Dt);
+            %figure(i)
+            %plotVelocities(pathJ,dt);
 
             %Find the path in an x,y,z representation using a forward kinematic
             %model of the system.
@@ -99,7 +99,7 @@ function planEval(useMex)
             %view(-114,54)
             %plotPath(pathC,kC,nGoalB(i,:),panHeight,jointLimits,true,i);
 
-            figure(i)
+            figure((i-1)*numLegs+2)
             plotAnkle(pathJ,ankleThreshold,Dt);
 
             %figure(5)

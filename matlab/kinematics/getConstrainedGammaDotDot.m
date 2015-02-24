@@ -1,8 +1,7 @@
-function gammaDotDot = getConstrainedGammaDotDot(kC,qDotDot,qDot,q)
-%getConstrainedGammaDotDot Summary of this function goes here
-%   Detailed explanation goes here
+%GETCONSTRAINEDGAMMADOTDOT This function calculates the acceleration of
+%gamma given a pan height constraint and an independent beta angle.
 
-    %[~,~,L3,~,L5,~,~,~,zeta,~,~,~,~,~,~,~] = extractKinematicConstants(kinematicConst);
+function gammaDotDot = getConstrainedGammaDotDot(kC,qDotDot,qDot,q)
 
     betaDotDot = qDotDot(2);
     betaDot = qDot(2);

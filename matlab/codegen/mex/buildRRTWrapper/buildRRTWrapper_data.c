@@ -16,43 +16,30 @@ const volatile char_T *emlrtBreakCheckR2012bFlagVar;
 emlrtRSInfo g_emlrtRSI = { 14, "sqrt",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" };
 
-emlrtRSInfo cb_emlrtRSI = { 31, "heuristicSingleLeg",
+emlrtRSInfo l_emlrtRSI = { 20, "eml_int_forloop_overflow_check",
+  "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
+};
+
+emlrtRSInfo ib_emlrtRSI = { 39, "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"
 };
 
-emlrtRSInfo db_emlrtRSI = { 39, "heuristicSingleLeg",
+emlrtRSInfo jb_emlrtRSI = { 47, "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"
 };
 
-emlrtRSInfo eb_emlrtRSI = { 52, "heuristicSingleLeg",
+emlrtRSInfo kb_emlrtRSI = { 74, "heuristicSingleLeg",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"
 };
 
-emlrtRSInfo fb_emlrtRSI = { 18, "min",
+emlrtRSInfo lb_emlrtRSI = { 18, "min",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/datafun/min.m" };
 
-emlrtBCInfo n_emlrtBCI = { -1, -1, 22, 17, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
+emlrtRSInfo mb_emlrtRSI = { 15, "eml_min_or_max",
+  "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
+};
 
-emlrtBCInfo o_emlrtBCI = { -1, -1, 21, 16, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-emlrtBCInfo p_emlrtBCI = { -1, -1, 20, 17, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-emlrtBCInfo q_emlrtBCI = { -1, -1, 14, 14, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-emlrtBCInfo r_emlrtBCI = { -1, -1, 13, 13, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-emlrtBCInfo s_emlrtBCI = { -1, -1, 12, 14, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
+emlrtRSInfo xb_emlrtRSI = { 283, "colon",
+  "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/colon.m" };
 
 /* End of code generation (buildRRTWrapper_data.c) */

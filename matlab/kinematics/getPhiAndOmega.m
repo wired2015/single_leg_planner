@@ -1,4 +1,4 @@
-function [phi,omega] = getPhiAndOmega(uBDot,q,qDot,kC,legNum)
+function [phi,omega] = getPhiAndOmega(uBDot,qDot,q,phiOld,kC,legNum)
 
     uG = [0 0 0];
 
@@ -48,14 +48,13 @@ function [phi,omega] = getPhiAndOmega(uBDot,q,qDot,kC,legNum)
     %omega.
     phi = atan2(vS(2),vS(1))-pi/2;   %[rad]
     phi = mod(phi+pi,2*pi)-pi;
+    phiDiff = angDiff(phi,phiOld);
     sign = 1;
-    if phi > pi/2
-        phi = phi - pi;
-        sign = -1;
-    elseif phi <= -pi/2
-        phi = phi + pi;
-        sign = -1;
-    end
+%     if phiDiff > pi/2
+%         phi = phi - pi;
+%         phi = mod(phi+pi,2*pi)-pi;
+%         sign = -1;
+%     end
     omega = sign*norm(vS)/kC.r;      %[rad/s]
     
 

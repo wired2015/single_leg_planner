@@ -9,19 +9,17 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
     %Initialize arrays to store the candidate new state data and the
     %distances between each candidate state and the xNear state.
     candStates = zeros(U_SIZE,NODE_SIZE);
-    candTransArrays = zeros(U_SIZE,(round(Dt/dt)+1)*6);
+    candTransArrays = zeros(U_SIZE,(round(Dt/dt)+1)*10);
     distance = zeros(1,U_SIZE);
     
-    qANear = xNear(end);
-    
-    UJoint = zeros(U_SIZE,3);
+    %UJoint = zeros(U_SIZE,3);
     
     %Transform the control inputs to joint space.
-    for i = 1:U_SIZE
+    %for i = 1:U_SIZE
         %gammaDotDot = (-betaDotDot*L3*cos(beta)+betaDot^2*L3*sin(beta)+gammaDot^2*L5*sin(zeta+gamma))/(L5*cos(zeta+gamma));
-        gammaDotDot = getConstrainedGammaDotDot(kC,U(i,:),xNear(7:9),xNear(4:6));
-        UJoint(i,:) = [U(i,:) gammaDotDot];
-    end    
+        %gammaDotDot = getConstrainedGammaDotDot(kC,U(i,:),xNear(7:9),xNear(4:6));
+        %UJoint(i,:) = [U(i,:) gammaDotDot];
+    %end    
 
     %Increment over the control vector. Generate a candidate state for each
     %possible control input.
@@ -29,31 +27,27 @@ function [xNew,transitionArray] = selectInput(xNear,xRand,U,dt,Dt,NODE_SIZE,U_SI
         
         %Generate a candidate state using a fourth order Runge-Kutta 
         %integration technique.
-        [candStates(i,:),candTransArrays(i,:)] = rk4(UJoint(i,:),dt,Dt,xNear,jointLimits);
+        [candStates(i,:),candTransArrays(i,:)] = rk4(U(i,:),uBDot,dt,Dt,xNear,jointLimits,kC,legNum);
         %U_check = sherpaTTFKAcc(U_joint(i,:)',xNear(7:9)',xNear(4:6)',kinematicConst)
         %velCheck = sherpaTTFKVel(candStates(i,7:9)',candStates(i,4:6)',kinematicConst);
        
         %Calculate the distance between the candidate state and the random
         %state.
         hDiff = heuristicSingleLeg(candStates(i,:),xRand,HGAINS,jointLimits,kC);
-
+        
         %Apply the ankle constraint to penalize any candidate state that
         %requires a change of ankle position greater than the allowed ankle
         %movement in a single time step.
         aGain = HGAINS(3);
-%         if xNear(1) == 1
-%             aGain = 0;
-%         end
         
-        [candStates(i,10),candStates(i,11)] = getPhiAndOmega(uBDot,[candStates(i,4:6) 0],candStates(i,7:9),kC,legNum);
-        
-        aDiff = angDiff(qANear,candStates(i,10));
+        aDiff = angDiff(xNear(4),candStates(i,4));
         ankleDiffMax = pi;
         
         if aDiff > ankleThreshold
             aDiff = 1;
         else
-            aDiff = abs(aDiff/ankleDiffMax);
+            %aDiff = abs(aDiff/ankleDiffMax);
+            aDiff = 0;
         end
         
         %Calculate a distance metric that includes the heurisitc distance

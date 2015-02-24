@@ -10,19 +10,15 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,p
 %   been reached. A path is selected if the goal region as defined by xGoal
 %   has been reached by the RRT.
 
-    %%TODO: Make a structure input for nInit and nGoal
-    %%TEMPORARY definition of init and goal nodes.
-    %nInit = makeNode(1,0,0,nInit(4:6),nInit(7:9),)
-
     %Constant Declaration                                                      
-    transitionArrayLength = (round(Dt/dt)+1)*6;    
+    transitionArrayLength = (round(Dt/dt)+1)*10;    
     
     %Variable Initialization
     T = zeros(NUM_NODES,NODE_SIZE+transitionArrayLength);     %Define a zero array that will be used to 
                                             %store data from each tree node.
     T(1,:) = [nInit zeros(1,transitionArrayLength)];                         %Initialize the tree with initial state.
     nodeIDCount = 1;
-    jointRange = jointLimits(2,:) - jointLimits(1,:);
+    
     
     if ~exhaustive
     
@@ -32,7 +28,7 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,p
         
     else
         %TODO: calculate maximum distance given the configuration space.
-        dist = 100;
+        dist = 100; %[m]
         %TODO: make the threshold distance
         while dist > threshold && nodeIDCount < NUM_NODES 
             [T,nodeIDCount] = rrtLoop(T,jointLimits,cartesianLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount,nGoal,goalSeedFreq,uBDot,legNum);
@@ -48,12 +44,27 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,p
         
     check = xNearest(1);
     next = xNearest;
-    path = [next transitionArrayNearest];
-    while check ~= 0 && next(2) ~= 0
+    path = [];
+    transitionArray = transitionArrayNearest;
+    
+    %Iterate over the tree until the initial state has been found.
+    while check ~= 0 && next(2) ~=0
+
+        transitionPath = [];
+        for i = 1:10:length(transitionArray)
+            transitionPath = [transitionPath; transitionArray(i:i+9)];
+        end
+        path = [transitionPath; path];
+        
         next = T(next(2),:);
-        path = [path; next];
         check = next(2);
+        
+        transitionArray = next(14:end);
     end
+    
+    [pathH,~] = size(path);
+    t = dt*(1:pathH)';
+    path = [t path];
     
 end
 
@@ -66,7 +77,7 @@ function [T,nodeIDCount] = rrtLoop(T,jointLimits,cartesianLimits,kC,panHeight,U,
 
     xNew(1) = nodeIDCount;                                  %Node ID
     xNew(2) = xNear(1);                                     %Parent ID
-    xNew(3) = heuristicSingleLeg(xNew,xNear,HGAINS,jointLimits,kC);           %Cost
+    xNew(3) = xNear(3) + heuristicSingleLeg(xNew,xNear,HGAINS,jointLimits,kC);           %Cost
 
     T(nodeIDCount,:) = [xNew transitionArray];                                %Append the new node to the tree.    
     %if mod(nodeIDCount,100) == 0

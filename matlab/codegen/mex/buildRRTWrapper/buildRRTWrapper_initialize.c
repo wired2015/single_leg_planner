@@ -24,7 +24,6 @@ static void buildRRTWrapper_once(void)
   ankleThreshold_not_empty_init();
   U_SIZE_not_empty_init();
   NODE_SIZE_not_empty_init();
-  NUM_NODES_not_empty_init();
   buildRRTWrapper_init();
 }
 
