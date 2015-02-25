@@ -93,6 +93,10 @@ function [xNew,transitionArray] = rk4(uIn,uBDot,dt,Dt,xInit,jointLimits,kC,legNu
            gammaDotDot = 0;
            betaDot = getConstrainedBetaDot(kC,[alphaDot betaDot gammaDot],[alpha beta gamma]);
            betaDotDot = getConstrainedBetaDotDot(kC,[alphaDotDot 0 gammaDotDot],[alphaDot betaDot gammaDot],[alpha beta gamma]);
+           if betaDot > betaDotMax || betaDot < betaDotMin
+                betaDot = xInit(7);
+                betaDotDot = 0;
+           end
         end
         
 %         if betaDot > betaDotMax || betaDot < betaDotMin || gammaDot > gammaDotMax || gammaDot < gammaDotMin

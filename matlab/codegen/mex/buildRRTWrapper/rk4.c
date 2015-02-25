@@ -15,32 +15,32 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo sb_emlrtRSI = { 108, "rk4",
+static emlrtRSInfo ub_emlrtRSI = { 112, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
-static emlrtRSInfo tb_emlrtRSI = { 6, "getPhiAndOmega",
+static emlrtRSInfo vb_emlrtRSI = { 6, "getPhiAndOmega",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"
 };
 
-static emlrtRTEInfo n_emlrtRTEI = { 5, 35, "rk4",
+static emlrtRTEInfo o_emlrtRTEI = { 5, 35, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
-static emlrtBCInfo eb_emlrtBCI = { 1, 4, 42, 17, "kC.legAngleOffset",
+static emlrtBCInfo ib_emlrtBCI = { 1, 4, 42, 17, "kC.legAngleOffset",
   "generateTrMatrices",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/generateTrMatrices.m",
   0 };
 
-static emlrtRTEInfo s_emlrtRTEI = { 18, 5, "rk4",
+static emlrtRTEInfo t_emlrtRTEI = { 18, 5, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
-static emlrtBCInfo fb_emlrtBCI = { -1, -1, 135, 9, "transitionArray", "rk4",
+static emlrtBCInfo jb_emlrtBCI = { -1, -1, 139, 9, "transitionArray", "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   0 };
 
-static emlrtECInfo e_emlrtECI = { -1, 135, 9, "rk4",
+static emlrtECInfo f_emlrtECI = { -1, 139, 9, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
@@ -52,7 +52,7 @@ static emlrtDCInfo h_emlrtDCI = { 15, 31, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   4 };
 
-static emlrtBCInfo gb_emlrtBCI = { -1, -1, 16, 5, "transitionArray", "rk4",
+static emlrtBCInfo kb_emlrtBCI = { -1, -1, 16, 5, "transitionArray", "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m",
   0 };
 
@@ -87,7 +87,7 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
          xNew_size[2], emxArray_real_T *transitionArray)
 {
   real_T u[2];
-  int32_T i6;
+  int32_T i7;
   real_T numIterations;
   real_T b_xInit_data[13];
   int32_T xInit_size_idx_1;
@@ -136,7 +136,7 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
   real_T dv5[16];
   real_T dv6[16];
   real_T dv7[16];
-  int32_T i7;
+  int32_T i8;
   real_T b_TO2S[16];
   real_T c_TO2S[16];
   real_T d_TO2S[16];
@@ -181,80 +181,80 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
   /* date: 20150107 */
   /* rk4 Summary of this function goes here */
   /*    Detailed explanation goes here */
-  for (i6 = 0; i6 < 2; i6++) {
-    u[i6] = uIn[i6];
+  for (i7 = 0; i7 < 2; i7++) {
+    u[i7] = uIn[i7];
   }
 
   numIterations = muDoubleScalarRound(Dt / dt);
   xNew_size[0] = 1;
   xNew_size[1] = 13;
-  for (i6 = 0; i6 < 13; i6++) {
-    xNew_data[i6] = 0.0;
+  for (i7 = 0; i7 < 13; i7++) {
+    xNew_data[i7] = 0.0;
   }
 
-  for (i6 = 0; i6 < 10; i6++) {
-    b_xInit_data[i6] = xInit_data[3 + i6];
+  for (i7 = 0; i7 < 10; i7++) {
+    b_xInit_data[i7] = xInit_data[3 + i7];
   }
 
   xInit_size_idx_1 = 10;
-  for (i6 = 0; i6 < 10; i6++) {
-    xInit_data[i6] = b_xInit_data[i6];
+  for (i7 = 0; i7 < 10; i7++) {
+    xInit_data[i7] = b_xInit_data[i7];
   }
 
-  i6 = transitionArray->size[0] * transitionArray->size[1];
+  i7 = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
   absxk = (numIterations + 1.0) * 10.0;
   absxk = emlrtNonNegativeCheckFastR2012b(absxk, &h_emlrtDCI, sp);
   transitionArray->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(absxk,
     &g_emlrtDCI, sp);
-  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i6, (int32_T)sizeof
-                    (real_T), &n_emlrtRTEI);
+  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i7, (int32_T)sizeof
+                    (real_T), &o_emlrtRTEI);
   absxk = (numIterations + 1.0) * 10.0;
   absxk = emlrtNonNegativeCheckFastR2012b(absxk, &h_emlrtDCI, sp);
   loop_ub = (int32_T)emlrtIntegerCheckFastR2012b(absxk, &g_emlrtDCI, sp);
-  for (i6 = 0; i6 < loop_ub; i6++) {
-    transitionArray->data[i6] = 0.0;
+  for (i7 = 0; i7 < loop_ub; i7++) {
+    transitionArray->data[i7] = 0.0;
   }
 
   unnamed_idx_1 = (int32_T)((numIterations + 1.0) * 10.0);
-  for (i6 = 0; i6 < 10; i6++) {
-    transitionArray->data[emlrtDynamicBoundsCheckFastR2012b(i6 + 1, 1,
-      unnamed_idx_1, &gb_emlrtBCI, sp) - 1] = xInit_data[i6];
+  for (i7 = 0; i7 < 10; i7++) {
+    transitionArray->data[emlrtDynamicBoundsCheckFastR2012b(i7 + 1, 1,
+      unnamed_idx_1, &kb_emlrtBCI, sp) - 1] = xInit_data[i7];
   }
 
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, numIterations, mxDOUBLE_CLASS,
-    (int32_T)numIterations, &s_emlrtRTEI, sp);
+    (int32_T)numIterations, &t_emlrtRTEI, sp);
   i = 0;
   while (i <= (int32_T)numIterations - 1) {
     /* gammaDotDot = (-betaDotDot*kC.l3*cos(beta)+betaDot^2*kC.l3*sin(beta)+gammaDot^2*kC.l5*sin(kC.zeta+gamma))/(kC.l5*cos(kC.zeta+gamma)); */
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      c_xInit_data[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      c_xInit_data[i7] = xInit_data[i7];
     }
 
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      k2[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      k2[i7] = xInit_data[i7];
     }
 
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      k3[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      k3[i7] = xInit_data[i7];
     }
 
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      d_xInit_data[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      d_xInit_data[i7] = xInit_data[i7];
     }
 
     /* GETCONSTRAINEDGAMMADOTDOT This function calculates the acceleration of */
     /* gamma given a pan height constraint and an independent beta angle. */
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      e_xInit_data[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      e_xInit_data[i7] = xInit_data[i7];
     }
 
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      f_xInit_data[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      f_xInit_data[i7] = xInit_data[i7];
     }
 
-    for (i6 = 0; i6 < xInit_size_idx_1; i6++) {
-      g_xInit_data[i6] = xInit_data[i6];
+    for (i7 = 0; i7 < xInit_size_idx_1; i7++) {
+      g_xInit_data[i7] = xInit_data[i7];
     }
 
     k1[0] = e_xInit_data[5];
@@ -271,36 +271,36 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     k1[8] = 0.0;
     k1[9] = 0.0;
     y = dt / 2.0;
-    for (i6 = 0; i6 < 10; i6++) {
-      c_xInit_data[i6] = xInit_data[i6] + y * k1[i6];
+    for (i7 = 0; i7 < 10; i7++) {
+      c_xInit_data[i7] = xInit_data[i7] + y * k1[i7];
     }
 
     f(c_xInit_data, u, kC->l3, kC->l5, kC->zeta, k2);
     y = dt / 2.0;
-    for (i6 = 0; i6 < 10; i6++) {
-      c_xInit_data[i6] = xInit_data[i6] + y * k2[i6];
+    for (i7 = 0; i7 < 10; i7++) {
+      c_xInit_data[i7] = xInit_data[i7] + y * k2[i7];
     }
 
     f(c_xInit_data, u, kC->l3, kC->l5, kC->zeta, k3);
     y = dt / 2.0;
     scale = dt / 6.0;
-    for (i6 = 0; i6 < 10; i6++) {
-      c_xInit_data[i6] = xInit_data[i6] + y * k3[i6];
+    for (i7 = 0; i7 < 10; i7++) {
+      c_xInit_data[i7] = xInit_data[i7] + y * k3[i7];
     }
 
     f(c_xInit_data, u, kC->l3, kC->l5, kC->zeta, d_xInit_data);
-    for (i6 = 0; i6 < 10; i6++) {
-      c_xInit_data[i6] = xInit_data[i6] + y * k3[i6];
-      d_xInit_data[i6] = xInit_data[i6] + scale * (((k1[i6] + 2.0 * k2[i6]) +
-        2.0 * k3[i6]) + d_xInit_data[i6]);
+    for (i7 = 0; i7 < 10; i7++) {
+      c_xInit_data[i7] = xInit_data[i7] + y * k3[i7];
+      d_xInit_data[i7] = xInit_data[i7] + scale * (((k1[i7] + 2.0 * k2[i7]) +
+        2.0 * k3[i7]) + d_xInit_data[i7]);
     }
 
     f(c_xInit_data, u, kC->l3, kC->l5, kC->zeta, e_xInit_data);
     xNew_size[0] = 1;
     xNew_size[1] = 10;
-    for (i6 = 0; i6 < 10; i6++) {
-      xNew_data[i6] = xInit_data[i6] + scale * (((k1[i6] + 2.0 * k2[i6]) + 2.0 *
-        k3[i6]) + e_xInit_data[i6]);
+    for (i7 = 0; i7 < 10; i7++) {
+      xNew_data[i7] = xInit_data[i7] + scale * (((k1[i7] + 2.0 * k2[i7]) + 2.0 *
+        k3[i7]) + e_xInit_data[i7]);
     }
 
     alpha = d_xInit_data[0];
@@ -372,6 +372,10 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
                      xInit_data[7] * xInit_data[7] * kC->l5 * muDoubleScalarSin
                      (kC->zeta + b_gamma)) - betaDot * betaDot * kC->l3 *
                     muDoubleScalarSin(beta)) / (kC->l3 * muDoubleScalarCos(beta));
+      if ((betaDot > jointLimits[13]) || (betaDot < jointLimits[12])) {
+        betaDot = xInit_data[6];
+        betaDotDot = 0.0;
+      }
     }
 
     /*          if betaDot > betaDotMax || betaDot < betaDotMin || gammaDot > gammaDotMax || gammaDot < gammaDotMin */
@@ -382,10 +386,10 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     /*             betaDotDot = uIn(2); */
     /*          end */
     /* Check the outer leg velocity limit. */
-    st.site = &sb_emlrtRSI;
+    st.site = &ub_emlrtRSI;
 
     /* Homogeneous transformation matrices. */
-    b_st.site = &tb_emlrtRSI;
+    b_st.site = &vb_emlrtRSI;
 
     /* GENERATETRMATRICES Generates each of the homogeneous transformation */
     /* matrices that describe the kinematic chain between the Sherpa_TT rover's */
@@ -419,7 +423,7 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     /* date:      20140214 */
     /* TODO: Use a 6-DOF relationship between the ground and body frames by */
     /* including the roll, pitch and yaw of the platform. */
-    emlrtDynamicBoundsCheckFastR2012b(legNum, 1, 4, &eb_emlrtBCI, &b_st);
+    emlrtDynamicBoundsCheckFastR2012b(legNum, 1, 4, &ib_emlrtBCI, &b_st);
 
     /* TRDH Generates the homogeneous transformation matrix A using the  */
     /* Denavit-Hartenberg parameters theta, d, a and alpha. */
@@ -507,16 +511,16 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     TR2Q[5] = muDoubleScalarCos(scale) * 6.123233995736766E-17;
     TR2Q[9] = -(-muDoubleScalarCos(scale));
     TR2Q[13] = -kC->l7 * muDoubleScalarSin(scale);
-    for (i6 = 0; i6 < 4; i6++) {
-      TO2S[3 + (i6 << 2)] = iv8[i6];
-      TI2S[2 + (i6 << 2)] = iv9[i6];
-      TI2S[3 + (i6 << 2)] = iv8[i6];
-      TO2J[2 + (i6 << 2)] = iv9[i6];
-      TO2J[3 + (i6 << 2)] = iv8[i6];
-      TQ2O[2 + (i6 << 2)] = iv9[i6];
-      TQ2O[3 + (i6 << 2)] = iv8[i6];
-      TR2Q[2 + (i6 << 2)] = dv2[i6];
-      TR2Q[3 + (i6 << 2)] = iv8[i6];
+    for (i7 = 0; i7 < 4; i7++) {
+      TO2S[3 + (i7 << 2)] = iv8[i7];
+      TI2S[2 + (i7 << 2)] = iv9[i7];
+      TI2S[3 + (i7 << 2)] = iv8[i7];
+      TO2J[2 + (i7 << 2)] = iv9[i7];
+      TO2J[3 + (i7 << 2)] = iv8[i7];
+      TQ2O[2 + (i7 << 2)] = iv9[i7];
+      TQ2O[3 + (i7 << 2)] = iv8[i7];
+      TR2Q[2 + (i7 << 2)] = dv2[i7];
+      TR2Q[3 + (i7 << 2)] = iv8[i7];
 
       /* TRDH Generates the homogeneous transformation matrix A using the  */
       /* Denavit-Hartenberg parameters theta, d, a and alpha. */
@@ -524,16 +528,16 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
       /* trDH.m */
       /* author:    wreid */
       /* date:      20150214 */
-      TS2R[i6 << 2] = iv10[i6];
-      TS2R[1 + (i6 << 2)] = iv11[i6];
+      TS2R[i7 << 2] = iv10[i7];
+      TS2R[1 + (i7 << 2)] = iv11[i7];
     }
 
     TS2R[2] = 0.0;
     TS2R[6] = 0.0;
     TS2R[10] = 1.0;
     TS2R[14] = kC->l6;
-    for (i6 = 0; i6 < 4; i6++) {
-      TS2R[3 + (i6 << 2)] = iv8[i6];
+    for (i7 = 0; i7 < 4; i7++) {
+      TS2R[3 + (i7 << 2)] = iv8[i7];
     }
 
     /* TRDH Generates the homogeneous transformation matrix A using the  */
@@ -560,138 +564,138 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     TP2S[6] = 0.0;
     TP2S[10] = 1.0;
     TP2S[14] = kC->B2PZOffset;
-    for (i6 = 0; i6 < 4; i6++) {
-      TP2S[3 + (i6 << 2)] = iv8[i6];
+    for (i7 = 0; i7 < 4; i7++) {
+      TP2S[3 + (i7 << 2)] = iv8[i7];
     }
 
-    for (i6 = 0; i6 < 4; i6++) {
-      for (i7 = 0; i7 < 4; i7++) {
-        TB2S[i6 + (i7 << 2)] = 0.0;
+    for (i7 = 0; i7 < 4; i7++) {
+      for (i8 = 0; i8 < 4; i8++) {
+        TB2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          TB2S[i6 + (i7 << 2)] += TP2S[i6 + (unnamed_idx_1 << 2)] *
-            TO2S[unnamed_idx_1 + (i7 << 2)];
+          TB2S[i7 + (i8 << 2)] += TP2S[i7 + (unnamed_idx_1 << 2)] *
+            TO2S[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        dv4[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        dv4[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          dv4[i6 + (i7 << 2)] += TB2S[i6 + (unnamed_idx_1 << 2)] *
-            TI2S[unnamed_idx_1 + (i7 << 2)];
+          dv4[i7 + (i8 << 2)] += TB2S[i7 + (unnamed_idx_1 << 2)] *
+            TI2S[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        dv5[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        dv5[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          dv5[i6 + (i7 << 2)] += dv4[i6 + (unnamed_idx_1 << 2)] *
-            TO2J[unnamed_idx_1 + (i7 << 2)];
+          dv5[i7 + (i8 << 2)] += dv4[i7 + (unnamed_idx_1 << 2)] *
+            TO2J[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        dv6[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        dv6[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          dv6[i6 + (i7 << 2)] += dv5[i6 + (unnamed_idx_1 << 2)] *
-            TQ2O[unnamed_idx_1 + (i7 << 2)];
+          dv6[i7 + (i8 << 2)] += dv5[i7 + (unnamed_idx_1 << 2)] *
+            TQ2O[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        dv7[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        dv7[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          dv7[i6 + (i7 << 2)] += dv6[i6 + (unnamed_idx_1 << 2)] *
-            TR2Q[unnamed_idx_1 + (i7 << 2)];
+          dv7[i7 + (i8 << 2)] += dv6[i7 + (unnamed_idx_1 << 2)] *
+            TR2Q[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        dv3[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        dv3[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          dv3[i6 + (i7 << 2)] += dv7[i6 + (unnamed_idx_1 << 2)] *
-            TS2R[unnamed_idx_1 + (i7 << 2)];
+          dv3[i7 + (i8 << 2)] += dv7[i7 + (unnamed_idx_1 << 2)] *
+            TS2R[unnamed_idx_1 + (i8 << 2)];
         }
 
-        b_TO2S[i6 + (i7 << 2)] = 0.0;
+        b_TO2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          b_TO2S[i6 + (i7 << 2)] += TO2S[i6 + (unnamed_idx_1 << 2)] *
-            TI2S[unnamed_idx_1 + (i7 << 2)];
-        }
-      }
-
-      for (i7 = 0; i7 < 4; i7++) {
-        c_TO2S[i6 + (i7 << 2)] = 0.0;
-        for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          c_TO2S[i6 + (i7 << 2)] += b_TO2S[i6 + (unnamed_idx_1 << 2)] *
-            TO2J[unnamed_idx_1 + (i7 << 2)];
+          b_TO2S[i7 + (i8 << 2)] += TO2S[i7 + (unnamed_idx_1 << 2)] *
+            TI2S[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        d_TO2S[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        c_TO2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          d_TO2S[i6 + (i7 << 2)] += c_TO2S[i6 + (unnamed_idx_1 << 2)] *
-            TQ2O[unnamed_idx_1 + (i7 << 2)];
+          c_TO2S[i7 + (i8 << 2)] += b_TO2S[i7 + (unnamed_idx_1 << 2)] *
+            TO2J[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        e_TO2S[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        d_TO2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          e_TO2S[i6 + (i7 << 2)] += d_TO2S[i6 + (unnamed_idx_1 << 2)] *
-            TR2Q[unnamed_idx_1 + (i7 << 2)];
+          d_TO2S[i7 + (i8 << 2)] += c_TO2S[i7 + (unnamed_idx_1 << 2)] *
+            TQ2O[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        f_TO2S[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        e_TO2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          f_TO2S[i6 + (i7 << 2)] += e_TO2S[i6 + (unnamed_idx_1 << 2)] *
-            TS2R[unnamed_idx_1 + (i7 << 2)];
-        }
-
-        b_TI2S[i6 + (i7 << 2)] = 0.0;
-        for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          b_TI2S[i6 + (i7 << 2)] += TI2S[i6 + (unnamed_idx_1 << 2)] *
-            TO2J[unnamed_idx_1 + (i7 << 2)];
+          e_TO2S[i7 + (i8 << 2)] += d_TO2S[i7 + (unnamed_idx_1 << 2)] *
+            TR2Q[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        c_TI2S[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        f_TO2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          c_TI2S[i6 + (i7 << 2)] += b_TI2S[i6 + (unnamed_idx_1 << 2)] *
-            TQ2O[unnamed_idx_1 + (i7 << 2)];
+          f_TO2S[i7 + (i8 << 2)] += e_TO2S[i7 + (unnamed_idx_1 << 2)] *
+            TS2R[unnamed_idx_1 + (i8 << 2)];
+        }
+
+        b_TI2S[i7 + (i8 << 2)] = 0.0;
+        for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
+          b_TI2S[i7 + (i8 << 2)] += TI2S[i7 + (unnamed_idx_1 << 2)] *
+            TO2J[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        d_TI2S[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        c_TI2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          d_TI2S[i6 + (i7 << 2)] += c_TI2S[i6 + (unnamed_idx_1 << 2)] *
-            TR2Q[unnamed_idx_1 + (i7 << 2)];
+          c_TI2S[i7 + (i8 << 2)] += b_TI2S[i7 + (unnamed_idx_1 << 2)] *
+            TQ2O[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        e_TI2S[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        d_TI2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          e_TI2S[i6 + (i7 << 2)] += d_TI2S[i6 + (unnamed_idx_1 << 2)] *
-            TS2R[unnamed_idx_1 + (i7 << 2)];
-        }
-
-        b_TQ2O[i6 + (i7 << 2)] = 0.0;
-        for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          b_TQ2O[i6 + (i7 << 2)] += TQ2O[i6 + (unnamed_idx_1 << 2)] *
-            TR2Q[unnamed_idx_1 + (i7 << 2)];
+          d_TI2S[i7 + (i8 << 2)] += c_TI2S[i7 + (unnamed_idx_1 << 2)] *
+            TR2Q[unnamed_idx_1 + (i8 << 2)];
         }
       }
 
-      for (i7 = 0; i7 < 4; i7++) {
-        c_TQ2O[i6 + (i7 << 2)] = 0.0;
+      for (i8 = 0; i8 < 4; i8++) {
+        e_TI2S[i7 + (i8 << 2)] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
-          c_TQ2O[i6 + (i7 << 2)] += b_TQ2O[i6 + (unnamed_idx_1 << 2)] *
-            TS2R[unnamed_idx_1 + (i7 << 2)];
+          e_TI2S[i7 + (i8 << 2)] += d_TI2S[i7 + (unnamed_idx_1 << 2)] *
+            TS2R[unnamed_idx_1 + (i8 << 2)];
+        }
+
+        b_TQ2O[i7 + (i8 << 2)] = 0.0;
+        for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
+          b_TQ2O[i7 + (i8 << 2)] += TQ2O[i7 + (unnamed_idx_1 << 2)] *
+            TR2Q[unnamed_idx_1 + (i8 << 2)];
+        }
+      }
+
+      for (i8 = 0; i8 < 4; i8++) {
+        c_TQ2O[i7 + (i8 << 2)] = 0.0;
+        for (unnamed_idx_1 = 0; unnamed_idx_1 < 4; unnamed_idx_1++) {
+          c_TQ2O[i7 + (i8 << 2)] += b_TQ2O[i7 + (unnamed_idx_1 << 2)] *
+            TS2R[unnamed_idx_1 + (i8 << 2)];
         }
       }
     }
@@ -722,27 +726,27 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     dv8[2] = -TB2S[13];
     dv8[5] = TB2S[12];
     dv8[8] = 0.0;
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        dv9[i6 + 3 * i7] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        dv9[i7 + 3 * i8] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 3; unnamed_idx_1++) {
-          dv9[i6 + 3 * i7] += dv8[i6 + 3 * unnamed_idx_1] * TB2S[unnamed_idx_1 +
-            (i7 << 2)];
+          dv9[i7 + 3 * i8] += dv8[i7 + 3 * unnamed_idx_1] * TB2S[unnamed_idx_1 +
+            (i8 << 2)];
         }
 
-        AdB2S[i7 + 6 * i6] = TB2S[i7 + (i6 << 2)];
+        AdB2S[i8 + 6 * i7] = TB2S[i8 + (i7 << 2)];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdB2S[i7 + 6 * (i6 + 3)] = dv9[i7 + 3 * i6];
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdB2S[i8 + 6 * (i7 + 3)] = dv9[i8 + 3 * i7];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdB2S[(i7 + 6 * i6) + 3] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdB2S[(i8 + 6 * i7) + 3] = 0.0;
       }
     }
 
@@ -766,28 +770,28 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     dv10[2] = -TP2S[13];
     dv10[5] = TP2S[12];
     dv10[8] = 0.0;
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdB2S[(i7 + 6 * (i6 + 3)) + 3] = TB2S[i7 + (i6 << 2)];
-        dv9[i6 + 3 * i7] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdB2S[(i8 + 6 * (i7 + 3)) + 3] = TB2S[i8 + (i7 << 2)];
+        dv9[i7 + 3 * i8] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 3; unnamed_idx_1++) {
-          dv9[i6 + 3 * i7] += dv10[i6 + 3 * unnamed_idx_1] * TP2S[unnamed_idx_1
-            + (i7 << 2)];
+          dv9[i7 + 3 * i8] += dv10[i7 + 3 * unnamed_idx_1] * TP2S[unnamed_idx_1
+            + (i8 << 2)];
         }
 
-        AdP2S[i7 + 6 * i6] = TP2S[i7 + (i6 << 2)];
+        AdP2S[i8 + 6 * i7] = TP2S[i8 + (i7 << 2)];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdP2S[i7 + 6 * (i6 + 3)] = dv9[i7 + 3 * i6];
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdP2S[i8 + 6 * (i7 + 3)] = dv9[i8 + 3 * i7];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdP2S[(i7 + 6 * i6) + 3] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdP2S[(i8 + 6 * i7) + 3] = 0.0;
       }
     }
 
@@ -811,28 +815,28 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     dv11[2] = -TI2S[13];
     dv11[5] = TI2S[12];
     dv11[8] = 0.0;
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdP2S[(i7 + 6 * (i6 + 3)) + 3] = TP2S[i7 + (i6 << 2)];
-        dv9[i6 + 3 * i7] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdP2S[(i8 + 6 * (i7 + 3)) + 3] = TP2S[i8 + (i7 << 2)];
+        dv9[i7 + 3 * i8] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 3; unnamed_idx_1++) {
-          dv9[i6 + 3 * i7] += dv11[i6 + 3 * unnamed_idx_1] * TI2S[unnamed_idx_1
-            + (i7 << 2)];
+          dv9[i7 + 3 * i8] += dv11[i7 + 3 * unnamed_idx_1] * TI2S[unnamed_idx_1
+            + (i8 << 2)];
         }
 
-        AdI2S[i7 + 6 * i6] = TI2S[i7 + (i6 << 2)];
+        AdI2S[i8 + 6 * i7] = TI2S[i8 + (i7 << 2)];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdI2S[i7 + 6 * (i6 + 3)] = dv9[i7 + 3 * i6];
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdI2S[i8 + 6 * (i7 + 3)] = dv9[i8 + 3 * i7];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdI2S[(i7 + 6 * i6) + 3] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdI2S[(i8 + 6 * i7) + 3] = 0.0;
       }
     }
 
@@ -856,28 +860,28 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     dv12[2] = -TO2S[13];
     dv12[5] = TO2S[12];
     dv12[8] = 0.0;
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdI2S[(i7 + 6 * (i6 + 3)) + 3] = TI2S[i7 + (i6 << 2)];
-        dv9[i6 + 3 * i7] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdI2S[(i8 + 6 * (i7 + 3)) + 3] = TI2S[i8 + (i7 << 2)];
+        dv9[i7 + 3 * i8] = 0.0;
         for (unnamed_idx_1 = 0; unnamed_idx_1 < 3; unnamed_idx_1++) {
-          dv9[i6 + 3 * i7] += dv12[i6 + 3 * unnamed_idx_1] * TO2S[unnamed_idx_1
-            + (i7 << 2)];
+          dv9[i7 + 3 * i8] += dv12[i7 + 3 * unnamed_idx_1] * TO2S[unnamed_idx_1
+            + (i8 << 2)];
         }
 
-        AdO2S[i7 + 6 * i6] = TO2S[i7 + (i6 << 2)];
+        AdO2S[i8 + 6 * i7] = TO2S[i8 + (i7 << 2)];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdO2S[i7 + 6 * (i6 + 3)] = dv9[i7 + 3 * i6];
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdO2S[i8 + 6 * (i7 + 3)] = dv9[i8 + 3 * i7];
       }
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdO2S[(i7 + 6 * i6) + 3] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdO2S[(i8 + 6 * i7) + 3] = 0.0;
       }
     }
 
@@ -885,42 +889,42 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     /* [rad/s] */
     /* [m/s] */
     /* [rad/s] */
-    for (i6 = 0; i6 < 3; i6++) {
-      for (i7 = 0; i7 < 3; i7++) {
-        AdO2S[(i7 + 6 * (i6 + 3)) + 3] = TO2S[i7 + (i6 << 2)];
+    for (i7 = 0; i7 < 3; i7++) {
+      for (i8 = 0; i8 < 3; i8++) {
+        AdO2S[(i8 + 6 * (i7 + 3)) + 3] = TO2S[i8 + (i7 << 2)];
       }
 
-      b_AdB2S[i6] = 0.0;
+      b_AdB2S[i7] = 0.0;
     }
 
     b_AdB2S[3] = 0.0;
     b_AdB2S[4] = 0.0;
     b_AdB2S[5] = alphaDot;
-    for (i6 = 0; i6 < 6; i6++) {
-      uPDot[i6] = b_AdB2S[i6];
+    for (i7 = 0; i7 < 6; i7++) {
+      uPDot[i7] = b_AdB2S[i7];
     }
 
     /* Beta joint rate */
     /* [rad/s] */
     /* [m/s] */
     /* [rad/s] */
-    for (i6 = 0; i6 < 3; i6++) {
-      b_AdB2S[i6] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      b_AdB2S[i7] = 0.0;
     }
 
     b_AdB2S[3] = 0.0;
     b_AdB2S[4] = 0.0;
     b_AdB2S[5] = betaDot;
-    for (i6 = 0; i6 < 6; i6++) {
-      uIDot[i6] = b_AdB2S[i6];
+    for (i7 = 0; i7 < 6; i7++) {
+      uIDot[i7] = b_AdB2S[i7];
     }
 
     /* Gamma joint rate */
     /* [rad/s] */
     /* [m/s] */
     /* [rad/s] */
-    for (i6 = 0; i6 < 3; i6++) {
-      b_AdB2S[i6] = 0.0;
+    for (i7 = 0; i7 < 3; i7++) {
+      b_AdB2S[i7] = 0.0;
     }
 
     b_AdB2S[3] = 0.0;
@@ -928,66 +932,66 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     b_AdB2S[5] = gammaDot;
 
     /* Velocity vector for the ankle frame. */
-    for (i6 = 0; i6 < 6; i6++) {
-      uODot[i6] = b_AdB2S[i6];
-      c_AdB2S[i6] = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        c_AdB2S[i6] += AdB2S[i6 + 6 * i7] * uBDot[i7];
+    for (i7 = 0; i7 < 6; i7++) {
+      uODot[i7] = b_AdB2S[i7];
+      c_AdB2S[i7] = 0.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        c_AdB2S[i7] += AdB2S[i7 + 6 * i8] * uBDot[i8];
       }
 
-      b_AdP2S[i6] = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        b_AdP2S[i6] += AdP2S[i6 + 6 * i7] * uPDot[i7];
+      b_AdP2S[i7] = 0.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        b_AdP2S[i7] += AdP2S[i7 + 6 * i8] * uPDot[i8];
       }
     }
 
-    for (i6 = 0; i6 < 6; i6++) {
+    for (i7 = 0; i7 < 6; i7++) {
       absxk = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        absxk += AdI2S[i6 + 6 * i7] * uIDot[i7];
+      for (i8 = 0; i8 < 6; i8++) {
+        absxk += AdI2S[i7 + 6 * i8] * uIDot[i8];
       }
 
-      b_AdB2S[i6] = (c_AdB2S[i6] + b_AdP2S[i6]) + absxk;
+      b_AdB2S[i7] = (c_AdB2S[i7] + b_AdP2S[i7]) + absxk;
     }
 
-    for (i6 = 0; i6 < 6; i6++) {
-      b_AdO2S[i6] = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        b_AdO2S[i6] += AdO2S[i6 + 6 * i7] * uODot[i7];
+    for (i7 = 0; i7 < 6; i7++) {
+      b_AdO2S[i7] = 0.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        b_AdO2S[i7] += AdO2S[i7 + 6 * i8] * uODot[i8];
       }
 
-      uSDot[i6] = b_AdB2S[i6] + b_AdO2S[i6];
-      c_AdB2S[i6] = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        c_AdB2S[i6] += AdB2S[i6 + 6 * i7] * uBDot[i7];
+      uSDot[i7] = b_AdB2S[i7] + b_AdO2S[i7];
+      c_AdB2S[i7] = 0.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        c_AdB2S[i7] += AdB2S[i7 + 6 * i8] * uBDot[i8];
       }
 
-      b_AdP2S[i6] = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        b_AdP2S[i6] += AdP2S[i6 + 6 * i7] * uPDot[i7];
+      b_AdP2S[i7] = 0.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        b_AdP2S[i7] += AdP2S[i7 + 6 * i8] * uPDot[i8];
       }
     }
 
-    for (i6 = 0; i6 < 6; i6++) {
+    for (i7 = 0; i7 < 6; i7++) {
       absxk = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        absxk += AdI2S[i6 + 6 * i7] * uIDot[i7];
+      for (i8 = 0; i8 < 6; i8++) {
+        absxk += AdI2S[i7 + 6 * i8] * uIDot[i8];
       }
 
-      b_AdB2S[i6] = (c_AdB2S[i6] + b_AdP2S[i6]) + absxk;
+      b_AdB2S[i7] = (c_AdB2S[i7] + b_AdP2S[i7]) + absxk;
     }
 
-    for (i6 = 0; i6 < 6; i6++) {
-      b_AdO2S[i6] = 0.0;
-      for (i7 = 0; i7 < 6; i7++) {
-        b_AdO2S[i6] += AdO2S[i6 + 6 * i7] * uODot[i7];
+    for (i7 = 0; i7 < 6; i7++) {
+      b_AdO2S[i7] = 0.0;
+      for (i8 = 0; i8 < 6; i8++) {
+        b_AdO2S[i7] += AdO2S[i7 + 6 * i8] * uODot[i8];
       }
 
-      c_AdB2S[i6] = b_AdB2S[i6] + b_AdO2S[i6];
+      c_AdB2S[i7] = b_AdB2S[i7] + b_AdO2S[i7];
     }
 
-    for (i6 = 0; i6 < 3; i6++) {
-      vS[i6] = c_AdB2S[i6];
+    for (i7 = 0; i7 < 3; i7++) {
+      vS[i7] = c_AdB2S[i7];
     }
 
     /* [m/s] */
@@ -1061,36 +1065,36 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
     b_alpha[9] = t;
     xNew_size[0] = 1;
     xNew_size[1] = 10;
-    for (i6 = 0; i6 < 10; i6++) {
-      xNew_data[xNew_size[0] * i6] = b_alpha[i6];
+    for (i7 = 0; i7 < 10; i7++) {
+      xNew_data[xNew_size[0] * i7] = b_alpha[i7];
     }
 
     xInit_size_idx_1 = xNew_size[1];
     loop_ub = xNew_size[0] * xNew_size[1];
-    for (i6 = 0; i6 < loop_ub; i6++) {
-      xInit_data[i6] = xNew_data[i6];
+    for (i7 = 0; i7 < loop_ub; i7++) {
+      xInit_data[i7] = xNew_data[i7];
     }
 
     absxk = 10.0 * (1.0 + (real_T)i) + 1.0;
     scale = 10.0 * ((1.0 + (real_T)i) + 1.0);
     if (absxk > scale) {
-      i6 = 1;
       i7 = 1;
+      i8 = 1;
     } else {
-      i6 = transitionArray->size[1];
-      i7 = (int32_T)absxk;
-      i6 = emlrtDynamicBoundsCheckFastR2012b(i7, 1, i6, &fb_emlrtBCI, sp);
       i7 = transitionArray->size[1];
+      i8 = (int32_T)absxk;
+      i7 = emlrtDynamicBoundsCheckFastR2012b(i8, 1, i7, &jb_emlrtBCI, sp);
+      i8 = transitionArray->size[1];
       unnamed_idx_1 = (int32_T)scale;
-      i7 = emlrtDynamicBoundsCheckFastR2012b(unnamed_idx_1, 1, i7, &fb_emlrtBCI,
+      i8 = emlrtDynamicBoundsCheckFastR2012b(unnamed_idx_1, 1, i8, &jb_emlrtBCI,
         sp) + 1;
     }
 
-    i7 -= i6;
-    emlrtSizeEqCheck1DFastR2012b(i7, 10, &e_emlrtECI, sp);
+    i8 -= i7;
+    emlrtSizeEqCheck1DFastR2012b(i8, 10, &f_emlrtECI, sp);
     loop_ub = xNew_size[1];
-    for (i7 = 0; i7 < loop_ub; i7++) {
-      transitionArray->data[(i6 + i7) - 1] = xNew_data[xNew_size[0] * i7];
+    for (i8 = 0; i8 < loop_ub; i8++) {
+      transitionArray->data[(i7 + i8) - 1] = xNew_data[xNew_size[0] * i8];
     }
 
     i++;
@@ -1098,19 +1102,19 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6],
   }
 
   unnamed_idx_1 = 3 + xNew_size[1];
-  for (i6 = 0; i6 < 3; i6++) {
-    TP2S[i6] = 0.0;
+  for (i7 = 0; i7 < 3; i7++) {
+    TP2S[i7] = 0.0;
   }
 
   loop_ub = xNew_size[1];
-  for (i6 = 0; i6 < loop_ub; i6++) {
-    TP2S[i6 + 3] = xNew_data[xNew_size[0] * i6];
+  for (i7 = 0; i7 < loop_ub; i7++) {
+    TP2S[i7 + 3] = xNew_data[xNew_size[0] * i7];
   }
 
   xNew_size[0] = 1;
   xNew_size[1] = unnamed_idx_1;
-  for (i6 = 0; i6 < unnamed_idx_1; i6++) {
-    xNew_data[xNew_size[0] * i6] = TP2S[i6];
+  for (i7 = 0; i7 < unnamed_idx_1; i7++) {
+    xNew_data[xNew_size[0] * i7] = TP2S[i7];
   }
 }
 

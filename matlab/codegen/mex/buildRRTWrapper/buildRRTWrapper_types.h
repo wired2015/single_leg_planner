@@ -105,6 +105,18 @@ struct emxArray_real_T_1x5
 #define typedef_emxArray_real_T_1x5
 typedef struct emxArray_real_T_1x5 emxArray_real_T_1x5;
 #endif /*typedef_emxArray_real_T_1x5*/
+#ifndef struct_emxArray_real_T_1x9
+#define struct_emxArray_real_T_1x9
+struct emxArray_real_T_1x9
+{
+    real_T data[9];
+    int32_T size[2];
+};
+#endif /*struct_emxArray_real_T_1x9*/
+#ifndef typedef_emxArray_real_T_1x9
+#define typedef_emxArray_real_T_1x9
+typedef struct emxArray_real_T_1x9 emxArray_real_T_1x9;
+#endif /*typedef_emxArray_real_T_1x9*/
 #ifndef struct_emxArray_real_T_5x13
 #define struct_emxArray_real_T_5x13
 struct emxArray_real_T_5x13

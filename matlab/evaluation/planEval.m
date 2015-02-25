@@ -90,8 +90,11 @@ function planEval(useMex)
             figure((i-1)*numLegs+1)
             printRRT(T,sGoalB(i,1:3),pathJ,kC,jointLimits,panHeight,NUM_NODES);
 
-            %figure(i)
-            %plotVelocities(pathJ,dt);
+            figure((i-1)*numLegs+2)
+            plotVelocities(pathC);
+            
+            figure((i-1)*numLegs+3)
+            plotJointVelocities(pathJ);
 
             %Find the path in an x,y,z representation using a forward kinematic
             %model of the system.
@@ -99,7 +102,7 @@ function planEval(useMex)
             %view(-114,54)
             %plotPath(pathC,kC,nGoalB(i,:),panHeight,jointLimits,true,i);
 
-            figure((i-1)*numLegs+2)
+            figure((i-1)*numLegs+4)
             plotAnkle(pathJ,ankleThreshold,Dt);
 
             %figure(5)

@@ -18,7 +18,7 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo f_emlrtRSI = { 14, "sherpaTTIK",
+static emlrtRSInfo h_emlrtRSI = { 22, "sherpaTTIK",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
 };
 
@@ -28,7 +28,6 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
                   real_T kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r, const
                   real_T jointLimits[20], real_T q[3])
 {
-  real_T r;
   real_T x;
   real_T a;
   real_T b_a;
@@ -66,6 +65,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   real_T kC_l8_re;
   real_T kC_l8_im;
   real_T re;
+  real_T r;
   real_T kC_l4_re;
   real_T kC_l4_im;
   real_T beta;
@@ -131,20 +131,27 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   b_st.prev = &st;
   b_st.tls = st.tls;
 
+  /* SHERPATTIK Calculates the joint values for a g1iven contact point. */
+  /*    Calculates the joint values for a g1iven contact point for the Sherpa TT */
+  /*    leg. All coord1inates are in the pan joint coord1inate frame. */
+  /*  */
+  /* Inputs: */
+  /* -u: A 1x3 Cartesian vector in the pan frame containing [xP yP zP]. */
+  /* -kC: A struct containing the kinematic constants of the Sherpa TT Rover. */
+  /* -jointLimits: The joint limits of each of the rover's joints. */
+  /* Outputs: */
+  /* -q: A 1x3 joint vector containing [alpha beta gamma]. */
   /* sherpaTTIK.m */
   /* author: wreid */
   /* date: 20150122 */
-  /* sherpaTTIK Calculates the joint values for a g1iven contact point. */
-  /*    Calculates the joint values for a g1iven contact point for the Sherpa TT */
-  /*    leg. All coord1inates are in the pan joint coord1inate frame. */
-  r = u[0] * u[0];
-  st.site = &f_emlrtRSI;
-  if (r < 0.0) {
-    b_st.site = &g_emlrtRSI;
+  st.site = &h_emlrtRSI;
+  x = u[0] * u[0] + u[1] * u[1];
+  if (x < 0.0) {
+    b_st.site = &i_emlrtRSI;
     eml_error(&b_st);
   }
 
-  x = muDoubleScalarSqrt(r);
+  x = muDoubleScalarSqrt(x);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
   b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * muDoubleScalarSin(kC_zeta)
@@ -1514,7 +1521,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   }
 
   b_asin(&dc26);
-  alpha = muDoubleScalarAtan2(0.0, u[0]);
+  alpha = muDoubleScalarAtan2(u[1], u[0]);
 
   /* beta = betaRaw(1); */
   /* gamma = gammaRaw(1); */
@@ -1643,16 +1650,23 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   b_st.prev = &st;
   b_st.tls = st.tls;
 
+  /* SHERPATTIK Calculates the joint values for a g1iven contact point. */
+  /*    Calculates the joint values for a g1iven contact point for the Sherpa TT */
+  /*    leg. All coord1inates are in the pan joint coord1inate frame. */
+  /*  */
+  /* Inputs: */
+  /* -u: A 1x3 Cartesian vector in the pan frame containing [xP yP zP]. */
+  /* -kC: A struct containing the kinematic constants of the Sherpa TT Rover. */
+  /* -jointLimits: The joint limits of each of the rover's joints. */
+  /* Outputs: */
+  /* -q: A 1x3 joint vector containing [alpha beta gamma]. */
   /* sherpaTTIK.m */
   /* author: wreid */
   /* date: 20150122 */
-  /* sherpaTTIK Calculates the joint values for a g1iven contact point. */
-  /*    Calculates the joint values for a g1iven contact point for the Sherpa TT */
-  /*    leg. All coord1inates are in the pan joint coord1inate frame. */
-  st.site = &f_emlrtRSI;
+  st.site = &h_emlrtRSI;
   x = u[0] * u[0] + u[1] * u[1];
   if (x < 0.0) {
-    b_st.site = &g_emlrtRSI;
+    b_st.site = &i_emlrtRSI;
     eml_error(&b_st);
   }
 

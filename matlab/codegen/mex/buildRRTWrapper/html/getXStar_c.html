@@ -24,15 +24,15 @@
 <a name="13"><font color="#888888 "><i>   13   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&lt;stdio.h&gt;</font>
 <a name="14"><font color="#888888 "><i>   14   </i></font></a>
 <a name="15"><font color="#888888 "><i>   15   </i></font></a><font color="#117755"><i>/* Variable Definitions */</i></font>
-<a name="16"><font color="#888888 "><i>   16   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_bb_emlrtRSI">bb_emlrtRSI</a> = <b>{</b> 28, <font color="#1122ff">&quot;getXStar&quot;</font>,
+<a name="16"><font color="#888888 "><i>   16   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_db_emlrtRSI">db_emlrtRSI</a> = <b>{</b> 28, <font color="#1122ff">&quot;getXStar&quot;</font>,
 <a name="17"><font color="#888888 "><i>   17   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m&quot;</font>
 <a name="18"><font color="#888888 "><i>   18   </i></font></a><b>}</b>;
 <a name="19"><font color="#888888 "><i>   19   </i></font></a>
-<a name="20"><font color="#888888 "><i>   20   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_cb_emlrtRSI">cb_emlrtRSI</a> = <b>{</b> 30, <font color="#1122ff">&quot;getXStar&quot;</font>,
+<a name="20"><font color="#888888 "><i>   20   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_eb_emlrtRSI">eb_emlrtRSI</a> = <b>{</b> 30, <font color="#1122ff">&quot;getXStar&quot;</font>,
 <a name="21"><font color="#888888 "><i>   21   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m&quot;</font>
 <a name="22"><font color="#888888 "><i>   22   </i></font></a><b>}</b>;
 <a name="23"><font color="#888888 "><i>   23   </i></font></a>
-<a name="24"><font color="#888888 "><i>   24   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_db_emlrtRSI">db_emlrtRSI</a> = <b>{</b> 15, <font color="#1122ff">&quot;asin&quot;</font>,
+<a name="24"><font color="#888888 "><i>   24   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_fb_emlrtRSI">fb_emlrtRSI</a> = <b>{</b> 15, <font color="#1122ff">&quot;asin&quot;</font>,
 <a name="25"><font color="#888888 "><i>   25   </i></font></a>  <font color="#1122ff">&quot;/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/asin.m&quot;</font> <b>}</b>;
 <a name="26"><font color="#888888 "><i>   26   </i></font></a>
 <a name="27"><font color="#888888 "><i>   27   </i></font></a><font color="#117755"><i>/* Function Definitions */</i></font>
@@ -75,9 +75,9 @@
 <a name="64"><font color="#888888 "><i>   64   </i></font></a>  B = (((kC_l1 - kC_l4 * muDoubleScalarSin(kC_zeta)) - kC_l6) - kC_l8) - kC_r;
 <a name="65"><font color="#888888 "><i>   65   </i></font></a>  <font color="#112266"><b>if</b></font> (!selector) <b>{</b>
 <a name="66"><font color="#888888 "><i>   66   </i></font></a>    B = ((-z + B) - kC_l5 * muDoubleScalarSin(kC_zeta + angle)) / kC_l3;
-<a name="67"><font color="#888888 "><i>   67   </i></font></a>    st.site = &amp;<a href="#var_bb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bb_emlrtRSI');" target="_self"><font color="#1122aa">bb_emlrtRSI</font></a>;
+<a name="67"><font color="#888888 "><i>   67   </i></font></a>    st.site = &amp;<a href="#var_db_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_db_emlrtRSI');" target="_self"><font color="#1122aa">db_emlrtRSI</font></a>;
 <a name="68"><font color="#888888 "><i>   68   </i></font></a>    <font color="#112266"><b>if</b></font> ((B &lt; -1.0) || (1.0 &lt; B)) <b>{</b>
-<a name="69"><font color="#888888 "><i>   69   </i></font></a>      b_st.site = &amp;<a href="#var_db_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_db_emlrtRSI');" target="_self"><font color="#1122aa">db_emlrtRSI</font></a>;
+<a name="69"><font color="#888888 "><i>   69   </i></font></a>      b_st.site = &amp;<a href="#var_fb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_fb_emlrtRSI');" target="_self"><font color="#1122aa">fb_emlrtRSI</font></a>;
 <a name="70"><font color="#888888 "><i>   70   </i></font></a>      <a href="eml_error_c.html#fcn_b_eml_error" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_b_eml_error');" target="_self"><font color="#1122aa">b_eml_error</font></a>(&amp;b_st);
 <a name="71"><font color="#888888 "><i>   71   </i></font></a>    <b>}</b>
 <a name="72"><font color="#888888 "><i>   72   </i></font></a>
@@ -85,9 +85,9 @@
 <a name="74"><font color="#888888 "><i>   74   </i></font></a>      muDoubleScalarCos(kC_zeta + angle);
 <a name="75"><font color="#888888 "><i>   75   </i></font></a>  <b>}</b> <font color="#112266"><b>else</b></font> <b>{</b>
 <a name="76"><font color="#888888 "><i>   76   </i></font></a>    B = ((B - kC_l3 * muDoubleScalarSin(angle)) - z) / kC_l5;
-<a name="77"><font color="#888888 "><i>   77   </i></font></a>    st.site = &amp;<a href="#var_cb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_cb_emlrtRSI');" target="_self"><font color="#1122aa">cb_emlrtRSI</font></a>;
+<a name="77"><font color="#888888 "><i>   77   </i></font></a>    st.site = &amp;<a href="#var_eb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_eb_emlrtRSI');" target="_self"><font color="#1122aa">eb_emlrtRSI</font></a>;
 <a name="78"><font color="#888888 "><i>   78   </i></font></a>    <font color="#112266"><b>if</b></font> ((B &lt; -1.0) || (1.0 &lt; B)) <b>{</b>
-<a name="79"><font color="#888888 "><i>   79   </i></font></a>      b_st.site = &amp;<a href="#var_db_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_db_emlrtRSI');" target="_self"><font color="#1122aa">db_emlrtRSI</font></a>;
+<a name="79"><font color="#888888 "><i>   79   </i></font></a>      b_st.site = &amp;<a href="#var_fb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_fb_emlrtRSI');" target="_self"><font color="#1122aa">fb_emlrtRSI</font></a>;
 <a name="80"><font color="#888888 "><i>   80   </i></font></a>      <a href="eml_error_c.html#fcn_b_eml_error" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_b_eml_error');" target="_self"><font color="#1122aa">b_eml_error</font></a>(&amp;b_st);
 <a name="81"><font color="#888888 "><i>   81   </i></font></a>    <b>}</b>
 <a name="82"><font color="#888888 "><i>   82   </i></font></a>

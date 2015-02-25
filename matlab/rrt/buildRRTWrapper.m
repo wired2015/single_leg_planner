@@ -99,13 +99,25 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         pathC = [];
         pathJ = [];
         T = [];
-    end 
+    end
+    
+    %Linearly interpolate to the goal state from the final state.
+    sFinalC = pathC(end,:);
+    sGoalC = [0 0 nGoalCartesianB true];
+    pathCorrection = linInterp(sFinalC,sGoalC,10);
+    pathC = [pathC; pathCorrection];
+    [h,~] = size(pathCorrection);
+    for i = 1:h
+        uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
+        q = sherpaTTIK(uB',kC,jointLimits);
+        pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
+    end
 
 end
 
 function pathC = transformPath(pathJ,kC,TP2B)
     [pathH,~] = size(pathJ);
-    pathC = zeros(pathH,8);
+    pathC = zeros(pathH,9);
     dist2Go = 0;
     for i = 1:pathH
         uP = sherpaTTFK(pathJ(i,2:4),kC);
@@ -115,6 +127,6 @@ function pathC = transformPath(pathJ,kC,TP2B)
         if i ~= 1
             dist2Go = dist2Go + norm(uB'-pathC(i-1,3:5));
         end
-        pathC(i,:) = [pathJ(i,1) dist2Go uB' uBDot'];
+        pathC(i,:) = [pathJ(i,1) dist2Go uB' uBDot' false];
     end
 end

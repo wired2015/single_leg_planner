@@ -1,11 +1,19 @@
+%SHERPATTIK Calculates the joint values for a g1iven contact point.
+%   Calculates the joint values for a g1iven contact point for the Sherpa TT
+%   leg. All coord1inates are in the pan joint coord1inate frame.
+%
+%Inputs:
+%-u: A 1x3 Cartesian vector in the pan frame containing [xP yP zP].
+%-kC: A struct containing the kinematic constants of the Sherpa TT Rover.
+%-jointLimits: The joint limits of each of the rover's joints.
+%Outputs:
+%-q: A 1x3 joint vector containing [alpha beta gamma].
 %sherpaTTIK.m
 %author: wreid
 %date: 20150122
 
 function q = sherpaTTIK(u,kC,jointLimits)
-%sherpaTTIK Calculates the joint values for a g1iven contact point.
-%   Calculates the joint values for a g1iven contact point for the Sherpa TT
-%   leg. All coord1inates are in the pan joint coord1inate frame.
+
 
     xC = u(1);
     yC = u(2);

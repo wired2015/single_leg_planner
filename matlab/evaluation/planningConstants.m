@@ -14,7 +14,7 @@ ankleThreshold = pi/8;      %[rad]
 kinematicConstants
 
 %Number of nodes to be used by the planner.
-NUM_NODES = int32(1000);
+NUM_NODES = int32(100);
 %NUM_NODES_MAX = int32(3000);
 
 %The exhaustive boolean indicates if the planner will search for a
