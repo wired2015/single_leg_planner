@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'buildRRTWrapper'. 
 ## 
 ## Makefile     : buildRRTWrapper_rtw.mk
-## Generated on : Tue Feb 24 15:18:24 2015
+## Generated on : Wed Feb 25 11:23:07 2015
 ## MATLAB Coder version: 2.7 (R2014b)
 ## 
 ## Build Info:
@@ -28,7 +28,7 @@ MATLAB_ROOT               = /Applications/MATLAB_R2014b.app
 MATLAB_BIN                = /Applications/MATLAB_R2014b.app/bin
 MATLAB_ARCH_BIN           = /Applications/MATLAB_R2014b.app/bin/maci64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab
+START_DIR                 = /Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner
 ARCH                      = maci64
 RELATIVE_PATH_TO_ANCHOR   = .
 
@@ -170,7 +170,7 @@ BUILD_TYPE = "Static Library"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src -I$(START_DIR)/rrt -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -280,14 +280,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 #---------------------
 # SOURCE-TO-OBJECT
 #---------------------
-
-%.o : %.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : %.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
 
 %.o : $(RELATIVE_PATH_TO_ANCHOR)/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
