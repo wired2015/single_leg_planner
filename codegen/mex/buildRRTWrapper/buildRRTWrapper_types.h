@@ -93,18 +93,6 @@ struct emxArray_real_T_1x16
 #define typedef_emxArray_real_T_1x16
 typedef struct emxArray_real_T_1x16 emxArray_real_T_1x16;
 #endif /*typedef_emxArray_real_T_1x16*/
-#ifndef struct_emxArray_real_T_1x5
-#define struct_emxArray_real_T_1x5
-struct emxArray_real_T_1x5
-{
-    real_T data[5];
-    int32_T size[2];
-};
-#endif /*struct_emxArray_real_T_1x5*/
-#ifndef typedef_emxArray_real_T_1x5
-#define typedef_emxArray_real_T_1x5
-typedef struct emxArray_real_T_1x5 emxArray_real_T_1x5;
-#endif /*typedef_emxArray_real_T_1x5*/
 #ifndef struct_emxArray_real_T_1x9
 #define struct_emxArray_real_T_1x9
 struct emxArray_real_T_1x9
@@ -117,18 +105,18 @@ struct emxArray_real_T_1x9
 #define typedef_emxArray_real_T_1x9
 typedef struct emxArray_real_T_1x9 emxArray_real_T_1x9;
 #endif /*typedef_emxArray_real_T_1x9*/
-#ifndef struct_emxArray_real_T_5x13
-#define struct_emxArray_real_T_5x13
-struct emxArray_real_T_5x13
+#ifndef struct_emxArray_real_T_9x13
+#define struct_emxArray_real_T_9x13
+struct emxArray_real_T_9x13
 {
-    real_T data[65];
+    real_T data[117];
     int32_T size[2];
 };
-#endif /*struct_emxArray_real_T_5x13*/
-#ifndef typedef_emxArray_real_T_5x13
-#define typedef_emxArray_real_T_5x13
-typedef struct emxArray_real_T_5x13 emxArray_real_T_5x13;
-#endif /*typedef_emxArray_real_T_5x13*/
+#endif /*struct_emxArray_real_T_9x13*/
+#ifndef typedef_emxArray_real_T_9x13
+#define typedef_emxArray_real_T_9x13
+typedef struct emxArray_real_T_9x13 emxArray_real_T_9x13;
+#endif /*typedef_emxArray_real_T_9x13*/
 #ifndef typedef_struct0_T
 #define typedef_struct0_T
 typedef struct

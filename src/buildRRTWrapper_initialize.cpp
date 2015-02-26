@@ -2,12 +2,13 @@
 // File: buildRRTWrapper_initialize.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 17:06:16
+// C/C++ source code generated on  : 26-Feb-2015 11:03:31
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
+#include "randomStateGenerator.h"
 #include "buildRRTWrapper_initialize.h"
 #include "eml_rand_mt19937ar_stateful.h"
 #include <stdio.h>

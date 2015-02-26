@@ -2,12 +2,13 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 17:06:16
+// C/C++ source code generated on  : 26-Feb-2015 11:03:31
 //
 
 // Include Files
 #include "rt_nonfinite.h"
 #include "buildRRTWrapper.h"
+#include "randomStateGenerator.h"
 #include "buildRRT.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "norm.h"
@@ -103,6 +104,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   // -kC:
   // -threshold:
   // -legNum:
+  // -uBDot:
   //
   // Outputs:
   // -T:
@@ -274,7 +276,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 
     // Variable Initialization
     i0 = b_T->size[0] * b_T->size[1];
-    b_T->size[0] = 1000;
+    b_T->size[0] = 2000;
     d0 = rt_roundd_snf(13.0 + transitionArrayLength);
     if (d0 < 2.147483648E+9) {
       if (d0 >= -2.147483648E+9) {
@@ -303,7 +305,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       i0 = 0;
     }
 
-    cdiff = 1000 * i0;
+    cdiff = 2000 * i0;
     for (i0 = 0; i0 < cdiff; i0++) {
       b_T->data[i0] = 0.0;
     }
@@ -324,7 +326,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 
     // Initialize the tree with initial state.
     transitionArrayLength = 1.0;
-    for (absb = 0; absb < 999; absb++) {
+    for (absb = 0; absb < 1999; absb++) {
       rrtLoop(b_T, jointLimits, kC, panHeight, U, Dt, dt, &transitionArrayLength,
               uBDot, legNum);
     }
@@ -529,7 +531,7 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     }
 
     i0 = T->size[0] * T->size[1];
-    T->size[0] = 1000;
+    T->size[0] = 2000;
     T->size[1] = b_T->size[1];
     emxEnsureCapacity((emxArray__common *)T, i0, (int)sizeof(double));
     cdiff = b_T->size[0] * b_T->size[1];
@@ -693,17 +695,17 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
 //
 void buildRRTWrapper_init()
 {
-  int i8;
-  static const double dv12[4] = { -0.293, -1.1326, -0.671, -0.7546 };
+  int i11;
+  static const double dv14[4] = { -0.293, -1.1326, -0.671, -0.7546 };
 
-  static const double dv13[3] = { 1.0, 0.0, 0.5 };
+  static const double dv15[3] = { 1.0, 0.0, 0.5 };
 
-  for (i8 = 0; i8 < 4; i8++) {
-    cartesianLimits[i8] = dv12[i8];
+  for (i11 = 0; i11 < 4; i11++) {
+    cartesianLimits[i11] = dv14[i11];
   }
 
-  for (i8 = 0; i8 < 3; i8++) {
-    HGAINS[i8] = dv13[i8];
+  for (i11 = 0; i11 < 3; i11++) {
+    HGAINS[i11] = dv15[i11];
   }
 }
 

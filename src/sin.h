@@ -2,7 +2,7 @@
 // File: sin.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 17:06:16
+// C/C++ source code generated on  : 26-Feb-2015 11:03:31
 //
 #ifndef __SIN_H__
 #define __SIN_H__

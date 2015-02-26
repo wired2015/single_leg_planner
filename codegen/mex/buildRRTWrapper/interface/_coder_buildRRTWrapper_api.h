@@ -21,7 +21,7 @@
 #include "buildRRTWrapper_types.h"
 
 /* Function Declarations */
-extern void buildRRTWrapper_api(const mxArray * const prhs[13], const mxArray
+extern void buildRRTWrapper_api(const mxArray * const prhs[12], const mxArray
   *plhs[4]);
 
 #endif

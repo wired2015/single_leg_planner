@@ -14,13 +14,15 @@
 #include "sin.h"
 #include "log.h"
 #include "exp.h"
-#include "buildRRTWrapper_data.h"
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo h_emlrtRSI = { 22, "sherpaTTIK",
-  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
+static emlrtRSInfo f_emlrtRSI = { 22, "sherpaTTIK",
+  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
 };
+
+static emlrtRSInfo g_emlrtRSI = { 14, "sqrt",
+  "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" };
 
 /* Function Definitions */
 void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
@@ -28,6 +30,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
                   real_T kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r, const
                   real_T jointLimits[20], real_T q[3])
 {
+  real_T r;
   real_T x;
   real_T a;
   real_T b_a;
@@ -65,7 +68,6 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   real_T kC_l8_re;
   real_T kC_l8_im;
   real_T re;
-  real_T r;
   real_T kC_l4_re;
   real_T kC_l4_im;
   real_T beta;
@@ -144,14 +146,14 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   /* sherpaTTIK.m */
   /* author: wreid */
   /* date: 20150122 */
-  st.site = &h_emlrtRSI;
-  x = u[0] * u[0] + u[1] * u[1];
-  if (x < 0.0) {
-    b_st.site = &i_emlrtRSI;
+  r = u[0] * u[0];
+  st.site = &f_emlrtRSI;
+  if (r < 0.0) {
+    b_st.site = &g_emlrtRSI;
     eml_error(&b_st);
   }
 
-  x = muDoubleScalarSqrt(x);
+  x = muDoubleScalarSqrt(r);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
   b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * muDoubleScalarSin(kC_zeta)
@@ -1521,7 +1523,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   }
 
   b_asin(&dc26);
-  alpha = muDoubleScalarAtan2(u[1], u[0]);
+  alpha = muDoubleScalarAtan2(0.0, u[0]);
 
   /* beta = betaRaw(1); */
   /* gamma = gammaRaw(1); */
@@ -1663,10 +1665,10 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   /* sherpaTTIK.m */
   /* author: wreid */
   /* date: 20150122 */
-  st.site = &h_emlrtRSI;
+  st.site = &f_emlrtRSI;
   x = u[0] * u[0] + u[1] * u[1];
   if (x < 0.0) {
-    b_st.site = &i_emlrtRSI;
+    b_st.site = &g_emlrtRSI;
     eml_error(&b_st);
   }
 

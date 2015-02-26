@@ -2,7 +2,7 @@
  * File: _coder_buildRRTWrapper_api.h 
  *  
  * MATLAB Coder version            : 2.7 
- * C/C++ source code generated on  : 25-Feb-2015 17:06:16 
+ * C/C++ source code generated on  : 26-Feb-2015 11:03:31 
  */
 
 #ifndef ___CODER_BUILDRRTWRAPPER_API_H__
@@ -58,6 +58,8 @@ extern void buildRRTWrapper_terminate(void);
 extern void buildRRTWrapper_atexit(void);
 extern void buildRRTWrapper_api(const mxArray *prhs[12], const mxArray *plhs[4]);
 extern void buildRRTWrapper(real_T nInitCartesianB[6], real_T nGoalCartesianB[6], real_T phiInit, real_T omegaInit, real_T jointLimits[20], real_T bodyHeight, real_T U[18], real_T dt, real_T Dt, struct0_T *kC, int32_T legNum, real_T uBDot[6], emxArray_real_T *T, emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
+extern void randomStateGenerator_api(const mxArray *prhs[5], const mxArray *plhs[1]);
+extern void randomStateGenerator(int32_T NUM_POINTS, real_T jointLimits[20], struct0_T *kC, real_T panHeight, int32_T legNum, emxArray_real_T *states);
 extern void buildRRTWrapper_xil_terminate(void);
 
 #endif

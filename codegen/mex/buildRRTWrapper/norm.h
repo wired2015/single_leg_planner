@@ -21,6 +21,14 @@
 #include "buildRRTWrapper_types.h"
 
 /* Function Declarations */
+extern real_T b_norm(const real_T x[3]);
+
+#ifdef __WATCOMC__
+
+#pragma aux b_norm value [8087];
+
+#endif
+
 extern real_T norm(const real_T x[3]);
 
 #ifdef __WATCOMC__
