@@ -2,7 +2,7 @@
 // File: buildRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 11:22:41
+// C/C++ source code generated on  : 25-Feb-2015 17:06:16
 //
 
 // Include Files
@@ -25,7 +25,7 @@
 //                const double jointLimits[20]
 //                const struct0_T *kC
 //                double panHeight
-//                const double U[10]
+//                const double U[18]
 //                double Dt
 //                double dt
 //                double *nodeIDCount
@@ -34,7 +34,7 @@
 // Return Type  : void
 //
 void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
-             *kC, double panHeight, const double U[10], double Dt, double dt,
+             *kC, double panHeight, const double U[18], double Dt, double dt,
              double *nodeIDCount, const double uBDot[6], int legNum)
 {
   double alphaRand;
@@ -51,8 +51,8 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   double xNear_data[13];
   emxArray_real_T *candTransArrays;
   int loop_ub;
-  double candStates_data[65];
-  double distance_data[5];
+  double candStates_data[117];
+  double distance_data[9];
   int i;
   double b_U[2];
   double b_xNear_data[13];
@@ -283,10 +283,10 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   emxInit_real_T(&candTransArrays, 2);
   xMax = rt_roundd_snf(Dt / dt);
   i9 = candTransArrays->size[0] * candTransArrays->size[1];
-  candTransArrays->size[0] = 5;
+  candTransArrays->size[0] = 9;
   candTransArrays->size[1] = (int)((xMax + 1.0) * 10.0);
   emxEnsureCapacity((emxArray__common *)candTransArrays, i9, (int)sizeof(double));
-  loop_ub = 5 * (int)((xMax + 1.0) * 10.0);
+  loop_ub = 9 * (int)((xMax + 1.0) * 10.0);
   for (i9 = 0; i9 < loop_ub; i9++) {
     candTransArrays->data[i9] = 0.0;
   }
@@ -300,11 +300,11 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   // end
   // Increment over the control vector. Generate a candidate state for each
   // possible control input.
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < 9; i++) {
     // Generate a candidate state using a fourth order Runge-Kutta
     // integration technique.
     for (i9 = 0; i9 < 2; i9++) {
-      b_U[i9] = U[i + 5 * i9];
+      b_U[i9] = U[i + 9 * i9];
     }
 
     memcpy(&b_xNear_data[0], &xNear_data[0], 13U * sizeof(double));
@@ -312,7 +312,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
         tmp_size, unusedU4);
     loop_ub = tmp_size[1];
     for (i9 = 0; i9 < loop_ub; i9++) {
-      candStates_data[i + 5 * i9] = tmp_data[tmp_size[0] * i9];
+      candStates_data[i + 9 * i9] = tmp_data[tmp_size[0] * i9];
     }
 
     loop_ub = unusedU4->size[1];
@@ -344,14 +344,14 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     // sherpaTTFK.m
     // author: wreid
     // date: 20150122
-    uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 20])) + kC->l4 * cos
-               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 25] + kC->zeta)) -
-             kC->l7) * cos(candStates_data[i + 15]);
-    uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 20])) + kC->l4 * cos
-               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 25] + kC->zeta)) -
-             kC->l7) * sin(candStates_data[i + 15]);
-    uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[i + 20])) - kC->l4 * sin
-               (kC->zeta)) - kC->l5 * sin(candStates_data[i + 25] + kC->zeta)) -
+    uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 36])) + kC->l4 * cos
+               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 45] + kC->zeta)) -
+             kC->l7) * cos(candStates_data[i + 27]);
+    uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 36])) + kC->l4 * cos
+               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 45] + kC->zeta)) -
+             kC->l7) * sin(candStates_data[i + 27]);
+    uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[i + 36])) - kC->l4 * sin
+               (kC->zeta)) - kC->l5 * sin(candStates_data[i + 45] + kC->zeta)) -
              kC->l6) - (kC->l8 + kC->r);
 
     // sherpaTTFK Sherpa_TT Forward Kinematics
@@ -386,7 +386,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     // requires a change of ankle position greater than the allowed ankle
     // movement in a single time step.
     // angDiff Finds the angular difference between th1 and th2.
-    xMax = ((xNear_data[3] - candStates_data[i + 15]) + 3.1415926535897931) /
+    xMax = ((xNear_data[3] - candStates_data[i + 27]) + 3.1415926535897931) /
       6.2831853071795862;
     if (fabs(xMax - rt_roundd_snf(xMax)) <= 2.2204460492503131E-16 * fabs(xMax))
     {
@@ -395,7 +395,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
       xMax = (xMax - floor(xMax)) * 6.2831853071795862;
     }
 
-    if (fabs(xMax - 3.1415926535897931) > 0.39269908169872414) {
+    if (fabs(xMax - 3.1415926535897931) > 0.087266462599716474) {
       ixstart = 1;
     } else {
       // aDiff = abs(aDiff/ankleDiffMax);
@@ -420,7 +420,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   if (rtIsNaN(distance_data[0])) {
     i = 1;
     exitg1 = false;
-    while ((!exitg1) && (i + 1 <= 5)) {
+    while ((!exitg1) && (i + 1 <= 9)) {
       ixstart = i + 1;
       if (!rtIsNaN(distance_data[i])) {
         xMax = distance_data[i];
@@ -432,8 +432,8 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     }
   }
 
-  if (ixstart < 5) {
-    while (ixstart + 1 <= 5) {
+  if (ixstart < 9) {
+    while (ixstart + 1 <= 9) {
       if (distance_data[ixstart] < xMax) {
         xMax = distance_data[ixstart];
         itmp = ixstart;
@@ -445,7 +445,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
 
   // velCheck = sherpaTTFKVel(xNew(7:9)',xNew(4:6)',kinematicConst)
   for (i9 = 0; i9 < 13; i9++) {
-    xNew_data[i9] = candStates_data[itmp + 5 * i9];
+    xNew_data[i9] = candStates_data[itmp + 9 * i9];
   }
 
   (*nodeIDCount)++;
@@ -474,14 +474,14 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  b_uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 20])) + kC->l4 *
-               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 25] +
-    kC->zeta)) - kC->l7) * cos(candStates_data[itmp + 15]);
-  b_uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 20])) + kC->l4 *
-               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 25] +
-    kC->zeta)) - kC->l7) * sin(candStates_data[itmp + 15]);
-  b_uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[itmp + 20])) - kC->l4 *
-               sin(kC->zeta)) - kC->l5 * sin(candStates_data[itmp + 25] +
+  b_uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 36])) + kC->l4 *
+               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 45] +
+    kC->zeta)) - kC->l7) * cos(candStates_data[itmp + 27]);
+  b_uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 36])) + kC->l4 *
+               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 45] +
+    kC->zeta)) - kC->l7) * sin(candStates_data[itmp + 27]);
+  b_uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[itmp + 36])) - kC->l4 *
+               sin(kC->zeta)) - kC->l5 * sin(candStates_data[itmp + 45] +
     kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
 
   // sherpaTTFK Sherpa_TT Forward Kinematics

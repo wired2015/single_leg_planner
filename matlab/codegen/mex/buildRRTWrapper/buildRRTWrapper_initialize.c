@@ -18,6 +18,7 @@ static void buildRRTWrapper_once(void);
 /* Function Definitions */
 static void buildRRTWrapper_once(void)
 {
+  threshold_not_empty_init();
   HGAINS_not_empty_init();
   cartesianLimits_not_empty_init();
   goalSeedFreq_not_empty_init();

@@ -7,14 +7,14 @@
 
 %The threshold at which the entire rover body has to stop moving to
 %accomodate an ankle moving between time steps.
-ankleThreshold = pi/8;      %[rad]
+ankleThreshold = deg2rad(5);      %[rad]
 
 %Run the kinematicConstants script to load all of the constants that
 %describe the geometry of the leg being planned for.
 kinematicConstants
 
 %Number of nodes to be used by the planner.
-NUM_NODES = int32(100);
+NUM_NODES = int32(1000);
 %NUM_NODES_MAX = int32(3000);
 
 %The exhaustive boolean indicates if the planner will search for a
@@ -99,15 +99,15 @@ U = eta*[1 0;                   % The control input set:
           0 -1;                 % the ground plane, or no acceleration.
           0 0]; 
       
-% U = eta*[1 0;                   % The control input set: 
-%   -1 0;                 % [alphaDot betaDot gammaDot] [m/s^2].
-%   0 1;                  % There can only be an acceleration along
-%   0 -1;                 % the ground plane, or no acceleration.
-%   0.5 0.5;                    
-%   -0.5 0.5;                 
-%   0.5 -0.5;
-%   -0.5 -0.5; 
-%   0 0]; 
+U = eta*[1 0;                   % The control input set: 
+  -1 0;                 % [alphaDot betaDot gammaDot] [m/s^2].
+  0 0.5;                  % There can only be an acceleration along
+  0 -0.5;                 % the ground plane, or no acceleration.
+  0.5 0.25;                    
+  -0.5 0.25;                 
+  0.5 -0.25;
+  -0.5 -0.25; 
+  0 0]; 
 
 %The number of evaluation trials to be performed.
 NUM_TRIALS = 1;

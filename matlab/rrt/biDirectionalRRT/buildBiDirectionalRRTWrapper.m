@@ -35,9 +35,6 @@ function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesi
     persistent cartesianLimits
     persistent HGAINS
     
-    %if isempty(NUM_NODES)
-    %    NUM_NODES = int32(1000);
-    %end
     if isempty(NODE_SIZE)
         NODE_SIZE = int32(13);
     end
@@ -57,7 +54,7 @@ function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesi
         cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
     end
     if isempty(NUM_NODES)
-        NUM_NODES = int32(100);
+        NUM_NODES = int32(2000);
     end
     if isempty(HGAINS)
         HGAINS = [1 0 0.5];
@@ -83,7 +80,7 @@ function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesi
     
     nInitJoint = [qInit phiInit 0 qDotInit' 0 omegaInit];
     nGoalJoint = [qGoal 0 0 qDotGoal' 0 0];
-    
+        
     %Check that the initial and final positions are valid. If they are not
     %return failure and an empty path.
     if (validJointState(nInitJoint,jointLimits) && validJointState(nGoalJoint,jointLimits))
@@ -91,42 +88,57 @@ function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesi
         %Run buildRRT.
         nInit = [1 0 0 nInitJoint];
         nGoal = [1 0 0 nGoalJoint];
-        [T1,T2,pathJ] = buildBiDirectionalRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq,uBDot,legNum);
+        [T1,T2,pathJ,pathC] = buildBiDirectionalRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq,uBDot,legNum,TP2B);
         %Transform path back to the Cartesian space.
-        pathC = transformPath(pathJ,kC,TP2B);
+%         for i = 1:length(pathsJ)
+%             pathC = transformPath(pathsJ(i).path,kC,TP2B);
+%             pathLength = pathC(end,2);
+%             if i <= 1
+%                 pathLengthMin = pathLength;
+%                 pathCMin = pathC;
+%                 pathIndexMin = i;
+%             elseif pathLength < pathLengthMin
+%                 pathLengthMin = pathLength;
+%                 pathCMin = pathC;
+%                 pathIndexMin = i;
+%             end
+%         end
+%         pathC = pathCMin;
+%         pathJ = pathsJ(pathIndexMin).path;
     else
         success = false;
         pathC = [];
         pathJ = [];
-        T = [];
+        T1 = [];
+        T2 = [];
     end
     
     %Linearly interpolate to the goal state from the final state.
-    sFinalC = pathC(end,:);
-    sGoalC = [0 0 nGoalCartesianB true];
-    pathCorrection = linInterp(sFinalC,sGoalC,10);
-    pathC = [pathC; pathCorrection];
-    [h,~] = size(pathCorrection);
-    for i = 1:h
-        uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
-        q = sherpaTTIK(uB',kC,jointLimits);
-        pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
-    end
+%     sFinalC = pathC(end,:);
+%     sGoalC = [0 0 nGoalCartesianB true];
+%     pathCorrection = linInterp(sFinalC,sGoalC,10);
+%     pathC = [pathC; pathCorrection];
+%     [h,~] = size(pathCorrection);
+%     for i = 1:h
+%         uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
+%         q = sherpaTTIK(uB',kC,jointLimits);
+%         pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
+%     end
 
 end
 
-function pathC = transformPath(pathJ,kC,TP2B)
-    [pathH,~] = size(pathJ);
-    pathC = zeros(pathH,9);
-    dist2Go = 0;
-    for i = 1:pathH
-        uP = sherpaTTFK(pathJ(i,2:4),kC);
-        uPDot = sherpaTTFKVel(pathJ(i,7:9),pathJ(i,2:4),kC);
-        uB = TP2B(1:3,1:3)*uP' + TP2B(1:3,4);
-        uBDot = TP2B(1:3,1:3)*uPDot;
-        if i ~= 1
-            dist2Go = dist2Go + norm(uB'-pathC(i-1,3:5));
-        end
-        pathC(i,:) = [pathJ(i,1) dist2Go uB' uBDot' false];
-    end
-end
+% function pathC = transformPath(pathJ,kC,TP2B)
+%     [pathH,~] = size(pathJ);
+%     pathC = zeros(pathH,9);
+%     dist2Go = 0;
+%     for i = 1:pathH
+%         uP = sherpaTTFK(pathJ(i,2:4),kC);
+%         uPDot = sherpaTTFKVel(pathJ(i,7:9),pathJ(i,2:4),kC);
+%         uB = TP2B(1:3,1:3)*uP' + TP2B(1:3,4);
+%         uBDot = TP2B(1:3,1:3)*uPDot;
+%         if i ~= 1
+%             dist2Go = dist2Go + norm(uB'-pathC(i-1,3:5));
+%         end
+%         pathC(i,:) = [pathJ(i,1) dist2Go uB' uBDot' false];
+%     end
+% end

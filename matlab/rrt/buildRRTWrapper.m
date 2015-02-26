@@ -24,7 +24,7 @@
 %author: wreid
 %date: 20150502
 
-function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot)
+function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,legNum,uBDot)
 
     persistent NUM_NODES 
     persistent NODE_SIZE 
@@ -34,18 +34,19 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     persistent goalSeedFreq 
     persistent cartesianLimits
     persistent HGAINS
+    persistent threshold
     
-    %if isempty(NUM_NODES)
-    %    NUM_NODES = int32(1000);
-    %end
+    if isempty(NUM_NODES)
+        NUM_NODES = int32(2000);
+    end
     if isempty(NODE_SIZE)
         NODE_SIZE = int32(13);
     end
     if isempty(U_SIZE)
-        U_SIZE = int32(5);
+        U_SIZE = int32(9);
     end
     if isempty(ankleThreshold)
-        ankleThreshold = pi/8;
+        ankleThreshold = 5*pi/180;
     end
     if isempty(exhaustive)
         exhaustive = false;
@@ -56,11 +57,11 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     if isempty(cartesianLimits)
         cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
     end
-    if isempty(NUM_NODES)
-        NUM_NODES = 1000;
-    end
     if isempty(HGAINS)
         HGAINS = [1 0 0.5];
+    end
+    if isempty(threshold)
+        threshold = 0.005;
     end
     
     panHeight  = getPanHeight(bodyHeight,kC);
@@ -102,16 +103,16 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     end
     
     %Linearly interpolate to the goal state from the final state.
-    sFinalC = pathC(end,:);
-    sGoalC = [0 0 nGoalCartesianB true];
-    pathCorrection = linInterp(sFinalC,sGoalC,10);
-    pathC = [pathC; pathCorrection];
-    [h,~] = size(pathCorrection);
-    for i = 1:h
-        uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
-        q = sherpaTTIK(uB',kC,jointLimits);
-        pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
-    end
+%     sFinalC = pathC(end,:);
+%     sGoalC = [0 0 nGoalCartesianB true];
+%     pathCorrection = linInterp(sFinalC,sGoalC,10);
+%     pathC = [pathC; pathCorrection];
+%     [h,~] = size(pathCorrection);
+%     for i = 1:h
+%         uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
+%         q = sherpaTTIK(uB',kC,jointLimits);
+%         pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
+%     end
 
 end
 

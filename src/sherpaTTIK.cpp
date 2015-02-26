@@ -2,7 +2,7 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 11:22:41
+// C/C++ source code generated on  : 25-Feb-2015 17:06:16
 //
 
 // Include Files
@@ -150,7 +150,7 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   // sherpaTTIK.m
   // author: wreid
   // date: 20150122
-  x = sqrt(u[0] * u[0] + u[1] * u[1]);
+  x = sqrt(u[0] * u[0]);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
   b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
@@ -1503,7 +1503,7 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   }
 
   b_asin(&dc26);
-  alpha = rt_atan2d_snf(u[1], u[0]);
+  alpha = rt_atan2d_snf(0.0, u[0]);
 
   // beta = betaRaw(1);
   // gamma = gammaRaw(1);

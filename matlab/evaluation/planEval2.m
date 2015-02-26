@@ -53,7 +53,7 @@ function planEval(useMex)
         %Generate the RRT and time how long it takes to be generated.
         tic
         if useMex
-            [T1,T2,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot);
+            [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot);
         else
             [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot);
         end
@@ -114,7 +114,7 @@ function planEval(useMex)
     end
     
     %SHERPA TT VISUALISATION
-    %plotSherpaTTMotion(uG,plannerResults,dt,numLegs,kC);
+    plotSherpaTTMotion(uG,plannerResults,dt,numLegs,kC);
 
     %If only one tree is being generated, then plot the tree, the trajectory
     %generated and the velocities over time.

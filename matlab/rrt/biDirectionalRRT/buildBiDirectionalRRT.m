@@ -2,7 +2,7 @@
 %author: wreid
 %date: 20150107
 
-function [T1,T2,path] = buildBiDirectionalRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq,uBDot,legNum)
+function [T1,T2,pathJ,pathC] = buildBiDirectionalRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,panHeight,HGAINS,NODE_SIZE,U,U_SIZE,dt,Dt,kC,ankleThreshold,exhaustive,threshold,goalSeedFreq,uBDot,legNum,TP2B)
 %buildRRT Icrementally builds a rapidly exploring random tree.
 %   An RRT is build by incrementally selecting a random state from the
 %   available state space as defined by the MIN and MAX vectors. The tree is
@@ -13,76 +13,76 @@ function [T1,T2,path] = buildBiDirectionalRRT(nInit,nGoal,NUM_NODES,jointLimits,
     %Constant Declaration                                                      
     transitionArrayLength = (round(Dt/dt)+1)*10;    
     
-    T1 = zeros(NUM_NODES/2,NODE_SIZE+transitionArrayLength);     
-    T2 = zeros(NUM_NODES/2,NODE_SIZE+transitionArrayLength);
+    T1 = zeros(round(NUM_NODES/2),NODE_SIZE+transitionArrayLength);     
+    T2 = zeros(round(NUM_NODES/2),NODE_SIZE+transitionArrayLength);
     
     T1(1,:) = [nInit zeros(1,transitionArrayLength)];           
     T2(1,:) = [nGoal zeros(1,transitionArrayLength)];
     
     nMid1 = [];
     nMid2 = [];
+    dMin = 100;
     
-    nodeID1Count = 1;
-    nodeID2Count = 1;
+    nodeIDCount1 = 1;
+    nodeIDCount2 = 1;
+    
+    path = [];
+    pathCount = 1;
+    
+    pathLengthMin = 100;
+    pathCMin = [];
+    pathJ = [];
+    pathC = [];
 
-    for i = 2:NUM_NODES
+    for i = 3:NUM_NODES
         
-        [T1,nodeID1Count,nNew] = rrtLoop(T1,jointLimits,cartesianLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeID1Count,nGoal,goalSeedFreq,uBDot,legNum);
-        [nConnect,~,d] = nearestNeighbour(nNew,T2,HGAINS,jointLimits,kC,nodeID2Count,NODE_SIZE);
-        if i <= 2
-            dMin = d;
-            nMid1 = [nNew nMid1];
-            nMid2 = [nConnect nMid2];
-        elseif d < dMin
-            dMin = d;
-            nMid1 = [nNew nMid1];
-            nMid2 = [nConnect nMid2];
-        end
-        
+        [T1,~,~] = rrtLoop(T1,jointLimits,cartesianLimits,kC,panHeight,U,Dt,dt,NODE_SIZE,U_SIZE,HGAINS,ankleThreshold,nodeIDCount1,nGoal,goalSeedFreq,uBDot,legNum);
+        nodeIDCount1 = nodeIDCount1 + 1;
+
         %Swap the trees.
         TTemp = T1;
         T1 = T2;
         T2 = TTemp;
-        nodeIDTempCount = nodeID1Count;
-        nodeID1Count = nodeID2Count;
-        nodeID2Count = nodeIDTempCount;
-        nMidTemp = nMid1;
-        nMid1 = nMid2;
-        nMid2 = nMidTemp;
-    
-    end
-    
-    for i = length(nMid1)
-    
-        pathT1 = traceBranch(T1,nMid1,NODE_SIZE);
-        pathT2 = traceBranch(T2,nMid2,NODE_SIZE);
-    
-        if T1(1,1:NODE_SIZE) == nInit
-            path = [pathT1;flipud(pathT2)];
-        else
-            path = [pathT2;flipud(pathT1)];
-            TTemp = T1;
-            T1 = T2;
-            T2 = TTemp;
-        end
-       
-        pathLength = getPathLength(path);
         
-        if i <= 1
-            pathLengthMin = pathLength;
-        elseif pathLength < pathLengthMin
-            pathLengthMin = pathLength;
-        end
+        %Swap the trees.
+        nodeIDCountTemp = nodeIDCount1;
+        nodeIDCount1 = nodeIDCount2;
+        nodeIDCount2 = nodeIDCountTemp;
         
     end
     
-    [pathH,~] = size(path);
-    t = dt*(1:pathH)';
-    path = [t path];
+    [T1H,~] = size(T1);
+    [T2H,~] = size(T2);
     
-end
+    for i = 1:T1H
+        
+        nMid1 = T1(i,1:NODE_SIZE);
+        [nMid2,~,d] = nearestNeighbour(nMid1,T2,[0.9 0.1 0],jointLimits,kC,T2H,NODE_SIZE);
+        
+        if d < 0.04
+            pathT1 = traceBranch(T1,nMid1,NODE_SIZE);
+            pathT2 = traceBranch(T2,nMid2,NODE_SIZE);
+            if T1(1,4) == nInit(1,4) && T1(1,5) == nInit(1,5) && T1(1,6) == nInit(1,6)
+                path = [pathT1;flipud(pathT2)];
+            else
+                path = [pathT2;flipud(pathT1)];
+            end
+            
+            [pathH,~] = size(path);
+            t = dt*(1:pathH)';
+            path = [t path];
 
-function getPathLength(path)
+            pathC = transformPath(path,kC,TP2B);
+            pathLength = pathC(end,2);
+
+            if (pathLength < pathLengthMin)
+                pathLengthMin = pathLength;
+                pathCMin = pathC;
+                pathJ = path;
+            end
+        end
+    end
+    pathC = pathCMin;
 end
 
 function path = traceBranch(T,midPoint,NODE_SIZE)
@@ -124,5 +124,21 @@ function [T,nodeIDCount,xNew] = rrtLoop(T,jointLimits,cartesianLimits,kC,panHeig
     %if mod(nodeIDCount,100) == 0
         %fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount);
     %end
+end
+
+function pathC = transformPath(pathJ,kC,TP2B)
+    [pathH,~] = size(pathJ);
+    pathC = zeros(pathH,9);
+    dist2Go = 0;
+    for i = 1:pathH
+        uP = sherpaTTFK(pathJ(i,2:4),kC);
+        uPDot = sherpaTTFKVel(pathJ(i,7:9),pathJ(i,2:4),kC);
+        uB = TP2B(1:3,1:3)*uP' + TP2B(1:3,4);
+        uBDot = TP2B(1:3,1:3)*uPDot;
+        if i ~= 1
+            dist2Go = dist2Go + norm(uB'-pathC(i-1,3:5));
+        end
+        pathC(i,:) = [pathJ(i,1) dist2Go uB' uBDot' false];
+    end
 end
 

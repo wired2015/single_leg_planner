@@ -2,7 +2,7 @@
 // File: sherpaTTIKVel.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 11:22:41
+// C/C++ source code generated on  : 25-Feb-2015 17:06:16
 //
 
 // Include Files
@@ -24,17 +24,17 @@ static double rt_powd_snf(double u0, double u1);
 static double rt_powd_snf(double u0, double u1)
 {
   double y;
-  double d0;
   double d1;
+  double d2;
   if (rtIsNaN(u0) || rtIsNaN(u1)) {
     y = rtNaN;
   } else {
-    d0 = fabs(u0);
-    d1 = fabs(u1);
+    d1 = fabs(u0);
+    d2 = fabs(u1);
     if (rtIsInf(u1)) {
-      if (d0 == 1.0) {
+      if (d1 == 1.0) {
         y = rtNaN;
-      } else if (d0 > 1.0) {
+      } else if (d1 > 1.0) {
         if (u1 > 0.0) {
           y = rtInf;
         } else {
@@ -45,9 +45,9 @@ static double rt_powd_snf(double u0, double u1)
       } else {
         y = rtInf;
       }
-    } else if (d1 == 0.0) {
+    } else if (d2 == 0.0) {
       y = 1.0;
-    } else if (d1 == 1.0) {
+    } else if (d2 == 1.0) {
       if (u1 > 0.0) {
         y = u0;
       } else {

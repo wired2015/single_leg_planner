@@ -2,7 +2,7 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 11:22:41
+// C/C++ source code generated on  : 25-Feb-2015 17:06:16
 //
 
 // Include Files
@@ -11,10 +11,10 @@
 #include "buildRRT.h"
 #include "buildRRTWrapper_emxutil.h"
 #include "norm.h"
-#include "sherpaTTIK.h"
 #include "nearestNeighbour.h"
 #include "validJointState.h"
 #include "sherpaTTIKVel.h"
+#include "sherpaTTIK.h"
 #include "buildRRTWrapper_rtwutil.h"
 #include <stdio.h>
 
@@ -31,11 +31,10 @@ static double HGAINS[3];
 //                double omegaInit
 //                const double jointLimits[20]
 //                double bodyHeight
-//                const double U[10]
+//                const double U[18]
 //                double dt
 //                double Dt
 //                const struct0_T *kC
-//                double threshold
 //                int legNum
 //                const double uBDot[6]
 //                emxArray_real_T *T
@@ -47,10 +46,9 @@ static double HGAINS[3];
 void buildRRTWrapper(const double nInitCartesianB[6], const double
                      nGoalCartesianB[6], double phiInit, double omegaInit, const
                      double jointLimits[20], double bodyHeight, const double U
-                     [10], double dt, double Dt, const struct0_T *kC, double,
-                     int legNum, const double uBDot[6], emxArray_real_T *T,
-                     emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T
-                     *success)
+                     [18], double dt, double Dt, const struct0_T *kC, int legNum,
+                     const double uBDot[6], emxArray_real_T *T, emxArray_real_T *
+                     pathC, emxArray_real_T *pathJ, boolean_T *success)
 {
   double panHeight;
   double TP2B[16];
@@ -58,11 +56,11 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   static const signed char iv0[4] = { 0, 0, 0, 1 };
 
   double b_TP2B[9];
-  int cdiff;
+  int ndbl;
   double c_TP2B[3];
   double TB2P[16];
   double b_TB2P[3];
-  double newState;
+  double d0;
   double qInit[3];
   double qGoal[3];
   double nInitJoint[10];
@@ -79,19 +77,16 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   emxArray_real_T *b_transitionPath;
   emxArray_real_T *c_transitionPath;
   double transitionArrayLength;
-  int apnd;
+  int cdiff;
   int absb;
   double dv0[13];
   double unusedU2;
   int xNearest_size[2];
   double xNearest_data[13];
   unsigned int i;
-  int ndbl;
-  double b_newState[3];
+  int apnd;
+  double uP[3];
   double b_pathJ[3];
-  double sGoalC[9];
-  double pathCorrection[90];
-  emxArray_real_T *c_pathJ;
 
   // BUILDRRTWRAPPER This function acts as a wrapper for the buildRRT function.
   // Code generation for the singleLegPlanner is performed using this function
@@ -118,9 +113,6 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   // buildRRTWrapper.m
   // author: wreid
   // date: 20150502
-  // if isempty(NUM_NODES)
-  //     NUM_NODES = int32(1000);
-  // end
   // GETPANHEIGHT Summary of this function goes here
   //    Detailed explanation goes here
   panHeight = -(bodyHeight + kC->B2PZOffset);
@@ -165,19 +157,19 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   }
 
   for (i0 = 0; i0 < 3; i0++) {
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      b_TP2B[cdiff + 3 * i0] = -TP2B[i0 + (cdiff << 2)];
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      b_TP2B[ndbl + 3 * i0] = -TP2B[i0 + (ndbl << 2)];
     }
   }
 
   for (i0 = 0; i0 < 3; i0++) {
     c_TP2B[i0] = 0.0;
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      c_TP2B[i0] += b_TP2B[i0 + 3 * cdiff] * TP2B[12 + cdiff];
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      c_TP2B[i0] += b_TP2B[i0 + 3 * ndbl] * TP2B[12 + ndbl];
     }
 
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      TB2P[cdiff + (i0 << 2)] = TP2B[i0 + (cdiff << 2)];
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      TB2P[ndbl + (i0 << 2)] = TP2B[i0 + (ndbl << 2)];
     }
   }
 
@@ -193,31 +185,31 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   // Transform the Cartesian goal and final positions in the pan coordinate
   // frame to the joint space.
   for (i0 = 0; i0 < 3; i0++) {
-    newState = 0.0;
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      newState += TB2P[i0 + (cdiff << 2)] * nInitCartesianB[cdiff];
+    d0 = 0.0;
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      d0 += TB2P[i0 + (ndbl << 2)] * nInitCartesianB[ndbl];
     }
 
-    b_TB2P[i0] = newState + TB2P[12 + i0];
+    b_TB2P[i0] = d0 + TB2P[12 + i0];
   }
 
   sherpaTTIK(b_TB2P, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
              kC->l8, kC->zeta, kC->r, jointLimits, qInit);
   for (i0 = 0; i0 < 3; i0++) {
-    newState = 0.0;
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      newState += TB2P[i0 + (cdiff << 2)] * nGoalCartesianB[cdiff];
+    d0 = 0.0;
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      d0 += TB2P[i0 + (ndbl << 2)] * nGoalCartesianB[ndbl];
     }
 
-    b_TB2P[i0] = newState + TB2P[12 + i0];
+    b_TB2P[i0] = d0 + TB2P[12 + i0];
   }
 
   sherpaTTIK(b_TB2P, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
              kC->l8, kC->zeta, kC->r, jointLimits, qGoal);
   for (i0 = 0; i0 < 3; i0++) {
     c_TP2B[i0] = 0.0;
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      c_TP2B[i0] += TB2P[i0 + (cdiff << 2)] * nInitCartesianB[3 + cdiff];
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      c_TP2B[i0] += TB2P[i0 + (ndbl << 2)] * nInitCartesianB[3 + ndbl];
     }
 
     b_TB2P[i0] = c_TP2B[i0];
@@ -231,8 +223,8 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   for (i0 = 0; i0 < 3; i0++) {
     nInitJoint[i0 + 5] = uB[i0];
     c_TB2P[i0] = 0.0;
-    for (cdiff = 0; cdiff < 3; cdiff++) {
-      c_TB2P[i0] += TB2P[i0 + (cdiff << 2)] * nGoalCartesianB[3 + cdiff];
+    for (ndbl = 0; ndbl < 3; ndbl++) {
+      c_TB2P[i0] += TB2P[i0 + (ndbl << 2)] * nGoalCartesianB[3 + ndbl];
     }
 
     b_TB2P[i0] = c_TB2P[i0];
@@ -283,36 +275,36 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     // Variable Initialization
     i0 = b_T->size[0] * b_T->size[1];
     b_T->size[0] = 1000;
-    newState = rt_roundd_snf(13.0 + transitionArrayLength);
-    if (newState < 2.147483648E+9) {
-      if (newState >= -2.147483648E+9) {
-        cdiff = (int)newState;
+    d0 = rt_roundd_snf(13.0 + transitionArrayLength);
+    if (d0 < 2.147483648E+9) {
+      if (d0 >= -2.147483648E+9) {
+        ndbl = (int)d0;
       } else {
-        cdiff = MIN_int32_T;
+        ndbl = MIN_int32_T;
       }
-    } else if (newState >= 2.147483648E+9) {
-      cdiff = MAX_int32_T;
+    } else if (d0 >= 2.147483648E+9) {
+      ndbl = MAX_int32_T;
     } else {
-      cdiff = 0;
+      ndbl = 0;
     }
 
-    b_T->size[1] = cdiff;
+    b_T->size[1] = ndbl;
     emxEnsureCapacity((emxArray__common *)b_T, i0, (int)sizeof(double));
-    newState = rt_roundd_snf(13.0 + transitionArrayLength);
-    if (newState < 2.147483648E+9) {
-      if (newState >= -2.147483648E+9) {
-        i0 = (int)newState;
+    d0 = rt_roundd_snf(13.0 + transitionArrayLength);
+    if (d0 < 2.147483648E+9) {
+      if (d0 >= -2.147483648E+9) {
+        i0 = (int)d0;
       } else {
         i0 = MIN_int32_T;
       }
-    } else if (newState >= 2.147483648E+9) {
+    } else if (d0 >= 2.147483648E+9) {
       i0 = MAX_int32_T;
     } else {
       i0 = 0;
     }
 
-    apnd = 1000 * i0;
-    for (i0 = 0; i0 < apnd; i0++) {
+    cdiff = 1000 * i0;
+    for (i0 = 0; i0 < cdiff; i0++) {
       b_T->data[i0] = 0.0;
     }
 
@@ -325,8 +317,8 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       b_T->data[b_T->size[0] * (i0 + 3)] = nInitJoint[i0];
     }
 
-    apnd = (int)transitionArrayLength;
-    for (i0 = 0; i0 < apnd; i0++) {
+    cdiff = (int)transitionArrayLength;
+    for (i0 = 0; i0 < cdiff; i0++) {
       b_T->data[b_T->size[0] * (i0 + 13)] = 0.0;
     }
 
@@ -369,35 +361,35 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       i0 = (int)(((double)transitionArray->size[1] + 9.0) / 10.0);
       for (absb = 0; absb < i0; absb++) {
         i = absb * 10U + 1U;
-        cdiff = c_transitionPath->size[0] * c_transitionPath->size[1];
+        ndbl = c_transitionPath->size[0] * c_transitionPath->size[1];
         c_transitionPath->size[0] = transitionPath->size[0] + 1;
         c_transitionPath->size[1] = 10;
-        emxEnsureCapacity((emxArray__common *)c_transitionPath, cdiff, (int)
+        emxEnsureCapacity((emxArray__common *)c_transitionPath, ndbl, (int)
                           sizeof(double));
-        for (cdiff = 0; cdiff < 10; cdiff++) {
-          apnd = transitionPath->size[0];
-          for (ndbl = 0; ndbl < apnd; ndbl++) {
-            c_transitionPath->data[ndbl + c_transitionPath->size[0] * cdiff] =
-              transitionPath->data[ndbl + transitionPath->size[0] * cdiff];
+        for (ndbl = 0; ndbl < 10; ndbl++) {
+          cdiff = transitionPath->size[0];
+          for (apnd = 0; apnd < cdiff; apnd++) {
+            c_transitionPath->data[apnd + c_transitionPath->size[0] * ndbl] =
+              transitionPath->data[apnd + transitionPath->size[0] * ndbl];
           }
         }
 
-        for (cdiff = 0; cdiff < 10; cdiff++) {
+        for (ndbl = 0; ndbl < 10; ndbl++) {
           c_transitionPath->data[transitionPath->size[0] +
-            c_transitionPath->size[0] * cdiff] = transitionArray->data[(int)
-            (cdiff + i) - 1];
+            c_transitionPath->size[0] * ndbl] = transitionArray->data[(int)(ndbl
+            + i) - 1];
         }
 
-        cdiff = transitionPath->size[0] * transitionPath->size[1];
+        ndbl = transitionPath->size[0] * transitionPath->size[1];
         transitionPath->size[0] = c_transitionPath->size[0];
         transitionPath->size[1] = 10;
-        emxEnsureCapacity((emxArray__common *)transitionPath, cdiff, (int)sizeof
+        emxEnsureCapacity((emxArray__common *)transitionPath, ndbl, (int)sizeof
                           (double));
-        for (cdiff = 0; cdiff < 10; cdiff++) {
-          apnd = c_transitionPath->size[0];
-          for (ndbl = 0; ndbl < apnd; ndbl++) {
-            transitionPath->data[ndbl + transitionPath->size[0] * cdiff] =
-              c_transitionPath->data[ndbl + c_transitionPath->size[0] * cdiff];
+        for (ndbl = 0; ndbl < 10; ndbl++) {
+          cdiff = c_transitionPath->size[0];
+          for (apnd = 0; apnd < cdiff; apnd++) {
+            transitionPath->data[apnd + transitionPath->size[0] * ndbl] =
+              c_transitionPath->data[apnd + c_transitionPath->size[0] * ndbl];
           }
         }
       }
@@ -408,18 +400,18 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       emxEnsureCapacity((emxArray__common *)b_transitionPath, i0, (int)sizeof
                         (double));
       for (i0 = 0; i0 < 10; i0++) {
-        apnd = transitionPath->size[0];
-        for (cdiff = 0; cdiff < apnd; cdiff++) {
-          b_transitionPath->data[cdiff + b_transitionPath->size[0] * i0] =
-            transitionPath->data[cdiff + transitionPath->size[0] * i0];
+        cdiff = transitionPath->size[0];
+        for (ndbl = 0; ndbl < cdiff; ndbl++) {
+          b_transitionPath->data[ndbl + b_transitionPath->size[0] * i0] =
+            transitionPath->data[ndbl + transitionPath->size[0] * i0];
         }
       }
 
       for (i0 = 0; i0 < 10; i0++) {
-        apnd = path->size[0];
-        for (cdiff = 0; cdiff < apnd; cdiff++) {
-          b_transitionPath->data[(cdiff + transitionPath->size[0]) +
-            b_transitionPath->size[0] * i0] = path->data[cdiff + path->size[0] *
+        cdiff = path->size[0];
+        for (ndbl = 0; ndbl < cdiff; ndbl++) {
+          b_transitionPath->data[(ndbl + transitionPath->size[0]) +
+            b_transitionPath->size[0] * i0] = path->data[ndbl + path->size[0] *
             i0];
         }
       }
@@ -429,20 +421,20 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       path->size[1] = 10;
       emxEnsureCapacity((emxArray__common *)path, i0, (int)sizeof(double));
       for (i0 = 0; i0 < 10; i0++) {
-        apnd = b_transitionPath->size[0];
-        for (cdiff = 0; cdiff < apnd; cdiff++) {
-          path->data[cdiff + path->size[0] * i0] = b_transitionPath->data[cdiff
-            + b_transitionPath->size[0] * i0];
+        cdiff = b_transitionPath->size[0];
+        for (ndbl = 0; ndbl < cdiff; ndbl++) {
+          path->data[ndbl + path->size[0] * i0] = b_transitionPath->data[ndbl +
+            b_transitionPath->size[0] * i0];
         }
       }
 
       transitionArrayLength = next->data[1];
-      apnd = b_T->size[1];
+      cdiff = b_T->size[1];
       i0 = next->size[0] * next->size[1];
       next->size[0] = 1;
-      next->size[1] = apnd;
+      next->size[1] = cdiff;
       emxEnsureCapacity((emxArray__common *)next, i0, (int)sizeof(double));
-      for (i0 = 0; i0 < apnd; i0++) {
+      for (i0 = 0; i0 < cdiff; i0++) {
         next->data[next->size[0] * i0] = b_T->data[((int)transitionArrayLength +
           b_T->size[0] * i0) - 1];
       }
@@ -450,21 +442,21 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       transitionArrayLength = next->data[1];
       if (14 > next->size[1]) {
         i0 = 0;
-        cdiff = 0;
+        ndbl = 0;
       } else {
         i0 = 13;
-        cdiff = next->size[1];
+        ndbl = next->size[1];
       }
 
-      ndbl = transitionArray->size[0] * transitionArray->size[1];
+      apnd = transitionArray->size[0] * transitionArray->size[1];
       transitionArray->size[0] = 1;
-      transitionArray->size[1] = cdiff - i0;
-      emxEnsureCapacity((emxArray__common *)transitionArray, ndbl, (int)sizeof
+      transitionArray->size[1] = ndbl - i0;
+      emxEnsureCapacity((emxArray__common *)transitionArray, apnd, (int)sizeof
                         (double));
-      apnd = cdiff - i0;
-      for (cdiff = 0; cdiff < apnd; cdiff++) {
-        transitionArray->data[transitionArray->size[0] * cdiff] = next->data[i0
-          + cdiff];
+      cdiff = ndbl - i0;
+      for (ndbl = 0; ndbl < cdiff; ndbl++) {
+        transitionArray->data[transitionArray->size[0] * ndbl] = next->data[i0 +
+          ndbl];
       }
     }
 
@@ -514,8 +506,8 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     i0 = t->size[0];
     t->size[0] = next->size[1];
     emxEnsureCapacity((emxArray__common *)t, i0, (int)sizeof(double));
-    apnd = next->size[1];
-    for (i0 = 0; i0 < apnd; i0++) {
+    cdiff = next->size[1];
+    for (i0 = 0; i0 < cdiff; i0++) {
       t->data[i0] = dt * next->data[next->size[0] * i0];
     }
 
@@ -529,9 +521,9 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     }
 
     for (i0 = 0; i0 < 10; i0++) {
-      apnd = path->size[0];
-      for (cdiff = 0; cdiff < apnd; cdiff++) {
-        pathJ->data[cdiff + pathJ->size[0] * (i0 + 1)] = path->data[cdiff +
+      cdiff = path->size[0];
+      for (ndbl = 0; ndbl < cdiff; ndbl++) {
+        pathJ->data[ndbl + pathJ->size[0] * (i0 + 1)] = path->data[ndbl +
           path->size[0] * i0];
       }
     }
@@ -540,20 +532,20 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
     T->size[0] = 1000;
     T->size[1] = b_T->size[1];
     emxEnsureCapacity((emxArray__common *)T, i0, (int)sizeof(double));
-    apnd = b_T->size[0] * b_T->size[1];
-    for (i0 = 0; i0 < apnd; i0++) {
+    cdiff = b_T->size[0] * b_T->size[1];
+    for (i0 = 0; i0 < cdiff; i0++) {
       T->data[i0] = b_T->data[i0];
     }
 
     // Transform path back to the Cartesian space.
     ndbl = pathJ->size[0];
-    i0 = pathC->size[0] * pathC->size[1];
-    pathC->size[0] = ndbl;
-    pathC->size[1] = 9;
-    emxEnsureCapacity((emxArray__common *)pathC, i0, (int)sizeof(double));
-    apnd = pathJ->size[0] * 9;
-    for (i0 = 0; i0 < apnd; i0++) {
-      pathC->data[i0] = 0.0;
+    i0 = b_pathC->size[0] * b_pathC->size[1];
+    b_pathC->size[0] = ndbl;
+    b_pathC->size[1] = 9;
+    emxEnsureCapacity((emxArray__common *)b_pathC, i0, (int)sizeof(double));
+    cdiff = pathJ->size[0] * 9;
+    for (i0 = 0; i0 < cdiff; i0++) {
+      b_pathC->data[i0] = 0.0;
     }
 
     transitionArrayLength = 0.0;
@@ -572,35 +564,35 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       // sherpaTTFK.m
       // author: wreid
       // date: 20150122
-      b_newState[0] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[absb + (pathJ->
-        size[0] << 1)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos(pathJ->
-        data[absb + pathJ->size[0] * 3] + kC->zeta)) - kC->l7) * cos(pathJ->
+      uP[0] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[absb + (pathJ->size[0] << 1)]))
+                 + kC->l4 * cos(kC->zeta)) + kC->l5 * cos(pathJ->data[absb +
+                 pathJ->size[0] * 3] + kC->zeta)) - kC->l7) * cos(pathJ->
         data[absb + pathJ->size[0]]);
-      b_newState[1] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[absb + (pathJ->
-        size[0] << 1)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos(pathJ->
-        data[absb + pathJ->size[0] * 3] + kC->zeta)) - kC->l7) * sin(pathJ->
+      uP[1] = ((((kC->l2 + kC->l3 * cos(-pathJ->data[absb + (pathJ->size[0] << 1)]))
+                 + kC->l4 * cos(kC->zeta)) + kC->l5 * cos(pathJ->data[absb +
+                 pathJ->size[0] * 3] + kC->zeta)) - kC->l7) * sin(pathJ->
         data[absb + pathJ->size[0]]);
-      b_newState[2] = ((((kC->l1 + kC->l3 * sin(-pathJ->data[absb + (pathJ->
-        size[0] << 1)])) - kC->l4 * sin(kC->zeta)) - kC->l5 * sin(pathJ->
-        data[absb + pathJ->size[0] * 3] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+      uP[2] = ((((kC->l1 + kC->l3 * sin(-pathJ->data[absb + (pathJ->size[0] << 1)]))
+                 - kC->l4 * sin(kC->zeta)) - kC->l5 * sin(pathJ->data[absb +
+                 pathJ->size[0] * 3] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
 
       // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
       // sherpaTTFKVel.m
       // author: wreid
       // date: 20150122
       for (i0 = 0; i0 < 3; i0++) {
-        newState = 0.0;
-        for (cdiff = 0; cdiff < 3; cdiff++) {
-          newState += TP2B[i0 + (cdiff << 2)] * b_newState[cdiff];
+        d0 = 0.0;
+        for (ndbl = 0; ndbl < 3; ndbl++) {
+          d0 += TP2B[i0 + (ndbl << 2)] * uP[ndbl];
         }
 
-        uB[i0] = newState + TP2B[12 + i0];
+        uB[i0] = d0 + TP2B[12 + i0];
       }
 
       if (1 + absb != 1) {
         for (i0 = 0; i0 < 3; i0++) {
-          c_TP2B[i0] = uB[i0] - pathC->data[(absb + pathC->size[0] * (2 + i0)) -
-            1];
+          c_TP2B[i0] = uB[i0] - b_pathC->data[(absb + b_pathC->size[0] * (2 + i0))
+            - 1];
         }
 
         transitionArrayLength += norm(c_TP2B);
@@ -630,38 +622,38 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
         size[0] * 3]);
       for (i0 = 0; i0 < 3; i0++) {
         c_TP2B[i0] = 0.0;
-        for (cdiff = 0; cdiff < 3; cdiff++) {
-          c_TP2B[i0] += TP2B[i0 + (cdiff << 2)] * b_pathJ[cdiff];
+        for (ndbl = 0; ndbl < 3; ndbl++) {
+          c_TP2B[i0] += TP2B[i0 + (ndbl << 2)] * b_pathJ[ndbl];
         }
       }
 
-      pathC->data[absb] = pathJ->data[absb];
-      pathC->data[absb + pathC->size[0]] = transitionArrayLength;
+      b_pathC->data[absb] = pathJ->data[absb];
+      b_pathC->data[absb + b_pathC->size[0]] = transitionArrayLength;
       for (i0 = 0; i0 < 3; i0++) {
-        pathC->data[absb + pathC->size[0] * (i0 + 2)] = uB[i0];
+        b_pathC->data[absb + b_pathC->size[0] * (i0 + 2)] = uB[i0];
       }
 
       for (i0 = 0; i0 < 3; i0++) {
-        pathC->data[absb + pathC->size[0] * (i0 + 5)] = c_TP2B[i0];
+        b_pathC->data[absb + b_pathC->size[0] * (i0 + 5)] = c_TP2B[i0];
       }
 
-      pathC->data[absb + (pathC->size[0] << 3)] = 0.0;
+      b_pathC->data[absb + (b_pathC->size[0] << 3)] = 0.0;
     }
 
-    i0 = b_pathC->size[0] * b_pathC->size[1];
-    b_pathC->size[0] = pathC->size[0];
-    b_pathC->size[1] = 9;
-    emxEnsureCapacity((emxArray__common *)b_pathC, i0, (int)sizeof(double));
-    apnd = pathC->size[0] * pathC->size[1];
-    for (i0 = 0; i0 < apnd; i0++) {
-      b_pathC->data[i0] = pathC->data[i0];
+    i0 = pathC->size[0] * pathC->size[1];
+    pathC->size[0] = b_pathC->size[0];
+    pathC->size[1] = 9;
+    emxEnsureCapacity((emxArray__common *)pathC, i0, (int)sizeof(double));
+    cdiff = b_pathC->size[0] * b_pathC->size[1];
+    for (i0 = 0; i0 < cdiff; i0++) {
+      pathC->data[i0] = b_pathC->data[i0];
     }
   } else {
     *success = false;
-    i0 = b_pathC->size[0] * b_pathC->size[1];
-    b_pathC->size[0] = 0;
-    b_pathC->size[1] = 0;
-    emxEnsureCapacity((emxArray__common *)b_pathC, i0, (int)sizeof(double));
+    i0 = pathC->size[0] * pathC->size[1];
+    pathC->size[0] = 0;
+    pathC->size[1] = 0;
+    emxEnsureCapacity((emxArray__common *)pathC, i0, (int)sizeof(double));
     i0 = pathJ->size[0] * pathJ->size[1];
     pathJ->size[0] = 0;
     pathJ->size[1] = 11;
@@ -679,146 +671,20 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
   emxFree_real_T(&transitionPath);
   emxFree_real_T(&transitionArray);
   emxFree_real_T(&next);
+  emxFree_real_T(&b_pathC);
   emxFree_real_T(&b_T);
 
   // Linearly interpolate to the goal state from the final state.
-  sGoalC[0] = 0.0;
-  sGoalC[1] = 0.0;
-  for (i0 = 0; i0 < 6; i0++) {
-    sGoalC[i0 + 2] = nGoalCartesianB[i0];
-  }
-
-  sGoalC[8] = 1.0;
-
-  // LININTERP Returns a Cartesian path that is linearly interpolated between
-  // two points.
-  //
-  // Inputs:
-  // s1: The initial state that is represented by a 1x8 vector. The vector has
-  // the form [t x y z xDot yDot zDot interpBoolean]
-  // s2: The goal state that is represented by a 1x8 vector. The vector has
-  // the form [t x y z xDot yDot zDot interpBoolean]
-  // N: The number of waypoints to be placed in the path.
-  //
-  // Outputs:
-  // path: A 8xN matrix that returns a path from s2 to s1.
-  //
-  // linInterp.m
-  // author: wreid
-  // date: 20150224
-  ndbl = b_pathC->size[0];
-  transitionArrayLength = b_pathC->data[(ndbl + b_pathC->size[0]) - 1];
-  apnd = b_pathC->size[1];
-  ndbl = b_pathC->size[0];
-  for (i0 = 0; i0 < apnd; i0++) {
-    b_TP2B[i0] = b_pathC->data[(ndbl + b_pathC->size[0] * i0) - 1];
-  }
-
-  for (i0 = 0; i0 < 3; i0++) {
-    qGoal[i0] = b_TP2B[i0 + 2];
-    qInit[i0] = b_TP2B[i0 + 2];
-  }
-
-  for (absb = 0; absb < 10; absb++) {
-    panHeight = (1.0 + (double)absb) / 10.0;
-    for (i0 = 0; i0 < 3; i0++) {
-      newState = qInit[i0] + panHeight * (sGoalC[2 + i0] - qInit[i0]);
-      c_TP2B[i0] = newState - qGoal[i0];
-      b_newState[i0] = newState;
-    }
-
-    transitionArrayLength += norm(c_TP2B);
-    ndbl = b_pathC->size[0];
-    pathCorrection[absb] = b_pathC->data[ndbl - 1] + (1.0 + (double)absb) / 10.0;
-    pathCorrection[10 + absb] = transitionArrayLength;
-    for (i0 = 0; i0 < 3; i0++) {
-      pathCorrection[absb + 10 * (i0 + 2)] = b_newState[i0];
-      qGoal[i0] = b_newState[i0];
-    }
-
-    pathCorrection[50 + absb] = 0.0;
-    pathCorrection[60 + absb] = 0.0;
-    pathCorrection[70 + absb] = 0.0;
-    pathCorrection[80 + absb] = 1.0;
-  }
-
-  i0 = pathC->size[0] * pathC->size[1];
-  pathC->size[0] = b_pathC->size[0] + 10;
-  pathC->size[1] = b_pathC->size[1];
-  emxEnsureCapacity((emxArray__common *)pathC, i0, (int)sizeof(double));
-  apnd = b_pathC->size[1];
-  for (i0 = 0; i0 < apnd; i0++) {
-    ndbl = b_pathC->size[0];
-    for (cdiff = 0; cdiff < ndbl; cdiff++) {
-      pathC->data[cdiff + pathC->size[0] * i0] = b_pathC->data[cdiff +
-        b_pathC->size[0] * i0];
-    }
-  }
-
-  for (i0 = 0; i0 < 9; i0++) {
-    for (cdiff = 0; cdiff < 10; cdiff++) {
-      pathC->data[(cdiff + b_pathC->size[0]) + pathC->size[0] * i0] =
-        pathCorrection[cdiff + 10 * i0];
-    }
-  }
-
-  emxFree_real_T(&b_pathC);
-  emxInit_real_T(&c_pathJ, 2);
-  for (absb = 0; absb < 10; absb++) {
-    for (i0 = 0; i0 < 3; i0++) {
-      newState = 0.0;
-      for (cdiff = 0; cdiff < 3; cdiff++) {
-        newState += TB2P[i0 + (cdiff << 2)] * pathCorrection[absb + 10 * (2 +
-          cdiff)];
-      }
-
-      b_TB2P[i0] = newState + TB2P[12 + i0];
-    }
-
-    for (i0 = 0; i0 < 3; i0++) {
-      c_TP2B[i0] = b_TB2P[i0];
-    }
-
-    b_sherpaTTIK(c_TP2B, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7,
-                 kC->l8, kC->zeta, kC->r, jointLimits, qInit);
-    i0 = c_pathJ->size[0] * c_pathJ->size[1];
-    c_pathJ->size[0] = pathJ->size[0] + 1;
-    c_pathJ->size[1] = 11;
-    emxEnsureCapacity((emxArray__common *)c_pathJ, i0, (int)sizeof(double));
-    for (i0 = 0; i0 < 11; i0++) {
-      apnd = pathJ->size[0];
-      for (cdiff = 0; cdiff < apnd; cdiff++) {
-        c_pathJ->data[cdiff + c_pathJ->size[0] * i0] = pathJ->data[cdiff +
-          pathJ->size[0] * i0];
-      }
-    }
-
-    c_pathJ->data[pathJ->size[0]] = pathCorrection[absb];
-    for (i0 = 0; i0 < 3; i0++) {
-      c_pathJ->data[pathJ->size[0] + c_pathJ->size[0] * (i0 + 1)] = qInit[i0];
-    }
-
-    c_pathJ->data[pathJ->size[0] + (c_pathJ->size[0] << 2)] = 0.0;
-    c_pathJ->data[pathJ->size[0] + c_pathJ->size[0] * 5] = 0.0;
-    c_pathJ->data[pathJ->size[0] + c_pathJ->size[0] * 6] = 0.0;
-    c_pathJ->data[pathJ->size[0] + c_pathJ->size[0] * 7] = 0.0;
-    c_pathJ->data[pathJ->size[0] + (c_pathJ->size[0] << 3)] = 0.0;
-    c_pathJ->data[pathJ->size[0] + c_pathJ->size[0] * 9] = 0.0;
-    c_pathJ->data[pathJ->size[0] + c_pathJ->size[0] * 10] = 0.0;
-    i0 = pathJ->size[0] * pathJ->size[1];
-    pathJ->size[0] = c_pathJ->size[0];
-    pathJ->size[1] = 11;
-    emxEnsureCapacity((emxArray__common *)pathJ, i0, (int)sizeof(double));
-    for (i0 = 0; i0 < 11; i0++) {
-      apnd = c_pathJ->size[0];
-      for (cdiff = 0; cdiff < apnd; cdiff++) {
-        pathJ->data[cdiff + pathJ->size[0] * i0] = c_pathJ->data[cdiff +
-          c_pathJ->size[0] * i0];
-      }
-    }
-  }
-
-  emxFree_real_T(&c_pathJ);
+  //      sFinalC = pathC(end,:);
+  //      sGoalC = [0 0 nGoalCartesianB true];
+  //      pathCorrection = linInterp(sFinalC,sGoalC,10);
+  //      pathC = [pathC; pathCorrection];
+  //      [h,~] = size(pathCorrection);
+  //      for i = 1:h
+  //          uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
+  //          q = sherpaTTIK(uB',kC,jointLimits);
+  //          pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];
+  //      end
 }
 
 //

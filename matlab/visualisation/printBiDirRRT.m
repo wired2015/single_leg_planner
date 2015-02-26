@@ -34,13 +34,13 @@ function printBiDirRRT(T1,T2,pathJ,kC,jointLimits)%,panHeight,nodeCount)
         line([current(4) parent(4)], [current(5) parent(5)], [current(6) parent(6)],'Color','k');
     end
     
-    plot3(T1(1,4),T1(1,5),T1(1,6),'g*');
-    plot3(T2(1,4),T2(1,5),T2(1,6),'r*');
+    plot3(T1(1,4),T1(1,5),T1(1,6),'g*','MarkerSize',20);
+    plot3(T2(1,4),T2(1,5),T2(1,6),'r*','MarkerSize',20);
     
     [pathLength,~] = size(pathJ);
     if pathLength >=2
         for i = 1:pathLength-1
-           line([pathJ(i,2) pathJ(i+1,2)], [pathJ(i,3) pathJ(i+1,3)],[pathJ(i,4) pathJ(i+1,4)],'Color','r') 
+           line([pathJ(i,2) pathJ(i+1,2)], [pathJ(i,3) pathJ(i+1,3)],[pathJ(i,4) pathJ(i+1,4)],'Color','r','LineWidth',5) 
         end
     end
     

@@ -30,28 +30,31 @@ function d = heuristicSingleLeg(xA,xB,HGAINS,jointLimits,kC)
     omegaB = xB(13);
     
     %Calculate the distance between angular positions.
-    xStarMin = legRadius(jointLimits(1,2),jointLimits(1,3),kC);
-    xStarMax = legRadius(jointLimits(2,2),jointLimits(2,3),kC);
-    
-    dxStarMax = xStarMax-xStarMin;
-    dAlphaMax = angDiff(jointLimits(1,1),jointLimits(1,2));
-    
-    dPosMax = posMetric(xStarMin,dxStarMax,dAlphaMax);
-    
-    xStarA = legRadius(betaA,gammaA,kC);
-    xStarB = legRadius(betaB,gammaB,kC);
-    
-    dxStar = xStarB-xStarA;
-    dAlpha = angDiff(alphaA,alphaB);
-    
-    dPos = sqrt(dxStar^2+xStarA^2*dAlpha^2);
-    
-    dPosNorm = dPos/dPosMax;
+%     xStarMin = legRadius(jointLimits(1,2),jointLimits(1,3),kC);
+%     xStarMax = legRadius(jointLimits(2,2),jointLimits(2,3),kC);
+%     
+%     dxStarMax = xStarMax-xStarMin;
+%     dAlphaMax = angDiff(jointLimits(1,1),jointLimits(1,2));
+%     
+%     dPosMax = posMetric(xStarMin,dxStarMax,dAlphaMax);
+%     
+%     xStarA = legRadius(betaA,gammaA,kC);
+%     xStarB = legRadius(betaB,gammaB,kC);
+%     
+%     dxStar = xStarB-xStarA;
+%     dAlpha = angDiff(alphaA,alphaB);
+%     
+%     dPos = sqrt(dxStar^2+xStarA^2*dAlpha^2);
+%     
+%     dPosNorm = dPos/dPosMax;
     
     uA = sherpaTTFK([alphaA betaA gammaA],kC);
     uB = sherpaTTFK([alphaB betaB gammaB],kC);
     
-    d = norm(uB-uA);
+    uADot = sherpaTTFKVel([alphaDotA betaDotA gammaDotA],[alphaA betaA gammaA],kC);
+    uBDot = sherpaTTFKVel([alphaDotB betaDotB gammaDotB],[alphaB betaB gammaB],kC);
+    
+    d = HGAINS(1)*norm(uB-uA) + HGAINS(2)*norm(uBDot-uADot);
     
     
     %dVel = (alphaDotB - alphaDotA) + (betaDotB - betaDotA) + (gammaDotB - gammaDotA);

@@ -2,7 +2,7 @@
 // File: nearestNeighbour.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 25-Feb-2015 11:22:41
+// C/C++ source code generated on  : 25-Feb-2015 17:06:16
 //
 #ifndef __NEARESTNEIGHBOUR_H__
 #define __NEARESTNEIGHBOUR_H__

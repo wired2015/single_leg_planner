@@ -14,35 +14,35 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtMCInfo d_emlrtMCI = { 87, 9, "eml_int_forloop_overflow_check",
+static emlrtMCInfo emlrtMCI = { 87, 9, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
-static emlrtMCInfo e_emlrtMCI = { 86, 15, "eml_int_forloop_overflow_check",
+static emlrtMCInfo b_emlrtMCI = { 86, 15, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo ac_emlrtRSI = { 86, "eml_int_forloop_overflow_check",
+static emlrtRSInfo xb_emlrtRSI = { 86, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo cc_emlrtRSI = { 87, "eml_int_forloop_overflow_check",
+static emlrtRSInfo ac_emlrtRSI = { 87, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
 /* Function Declarations */
-static const mxArray *b_message(const emlrtStack *sp, const mxArray *b, const
+static const mxArray *message(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location);
 
 /* Function Definitions */
-static const mxArray *b_message(const emlrtStack *sp, const mxArray *b, const
+static const mxArray *message(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location)
 {
   const mxArray *pArrays[2];
-  const mxArray *m7;
+  const mxArray *m6;
   pArrays[0] = b;
   pArrays[1] = c;
-  return emlrtCallMATLABR2012b(sp, 1, &m7, 2, pArrays, "message", true, location);
+  return emlrtCallMATLABR2012b(sp, 1, &m6, 2, pArrays, "message", true, location);
 }
 
 void check_forloop_overflow_error(const emlrtStack *sp)
@@ -85,9 +85,9 @@ void check_forloop_overflow_error(const emlrtStack *sp)
 
   emlrtInitCharArrayR2013a(sp, 5, m1, cv4);
   emlrtAssign(&b_y, m1);
-  st.site = &ac_emlrtRSI;
-  b_st.site = &cc_emlrtRSI;
-  error(&st, b_message(&b_st, y, b_y, &d_emlrtMCI), &e_emlrtMCI);
+  st.site = &xb_emlrtRSI;
+  b_st.site = &ac_emlrtRSI;
+  error(&st, message(&b_st, y, b_y, &emlrtMCI), &b_emlrtMCI);
 }
 
 /* End of code generation (eml_int_forloop_overflow_check.c) */

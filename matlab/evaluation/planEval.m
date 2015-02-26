@@ -42,78 +42,137 @@ function planEval(useMex)
 
     %Initialize a struct that will hold the results frome each of the
     %generated plans.
-    plannerResults = struct('T',{},'pathC',{},'pathJ',{},'success',{},'pathLength',{},'pathTime',{});
+    plannerResults = struct('T',{},'pathC',{},'pathJ',{},'success',{},'pathLength',{},'pathTime',{},'error',{},'planningTime',{},'numAnkleViolations',{});
 
+    legNum = 1;
+    NUM_TRIALS = 1;
+    %nodes = [100 1000 2500 5000 10000];
+    NUM_NODE_TRIALS = 1;
+    
     %Run the planner on each of the Sherpa_TT legs.
-    for i=1:numLegs
-        
-        sInitB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
-        sGoalB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
+    for h = 1:NUM_NODE_TRIALS
+        for i=1:NUM_TRIALS
 
-        %Generate the RRT and time how long it takes to be generated.
-        tic
-        if useMex
-            [T,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot);
-        else
-            [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot);
-        end
-        planningTime = toc;
+            fprintf('TRIAL %d\n',i);
 
-        %Store the planner results in the plannerResults array of
-        %structures.
-        plannerResults(i).T = T;
-        plannerResults(i).pathC = pathC;
-        plannerResults(i).pathJ = pathJ;
-        plannerResults(i).success= success;
+            %sInitB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
+            %sGoalB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
 
-        if success
-            
-            %Calculate the path length from the generated RRT.
-            [pathH,~] = size(pathC);
-            pathLength = pathC(end,2);
+            %Generate the RRT and time how long it takes to be generated.
+            tic
+            if useMex
+                [T,pathC,pathJ,success] = buildRRTWrapper_mex(sInitB(legNum,:),sGoalB(legNum,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,int32(legNum),uBDot);%,int32(nodes(h)));
+            else
+                [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(legNum,:),sGoalB(legNum,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,legNum,uBDot);%,int32(nodes(h)));
+            end
+            planningTime = toc;
 
-            %Calculate the path time.
-            pathTime = dt*pathH;
+            %Store the planner results in the plannerResults array of
+            %structures.
+            plannerResults(h,i).T = T;
+            plannerResults(h,i).pathC = pathC;
+            plannerResults(h,i).pathJ = pathJ;
+            plannerResults(h,i).success= success;
+            plannerResults(h,i).planningTime = planningTime;
 
-            plannerResults(i).pathLength = pathLength;
-            plannerResults(i).pathTime = pathTime;
+            numAnkleViolations = 0;
+            for j = 1:length(pathJ)-1
+                if angDiff(pathJ(j,5),pathJ(j+1,5)) > ankleThreshold
+                    numAnkleViolations = numAnkleViolations + 1;
+                end
+            end
+            plannerResults(h,i).numAnkleViolations = numAnkleViolations;
 
-            %Print the results on the command line.
-            fprintf('\nLeg %d\n',i)
-            fprintf('Path Length: %.2f m\n',pathLength);
-            fprintf('Path Time: %.2f sec\n',pathTime);
-            uFinal = [pathC(end,3) pathC(end,4) pathC(end,5)];
-            error = cartDist(uFinal,sGoalB(i,1:3));
-            fprintf('Final Cartesian Position Error: %.3f m\n',error);
-            fprintf('Planning Time: %.3f s\n',planningTime);
+            if success
 
-            figure((i-1)*numLegs+1)
-            printRRT(T,sGoalB(i,1:3),pathJ,kC,jointLimits,panHeight,NUM_NODES);
+                [pathH,~] = size(pathC);
+                pathLength = pathC(end,2);
 
-            figure((i-1)*numLegs+2)
-            plotVelocities(pathC);
-            
-            figure((i-1)*numLegs+3)
-            plotJointVelocities(pathJ);
+                %Calculate the path time.
+                pathTime = dt*pathH;
 
-            %Find the path in an x,y,z representation using a forward kinematic
-            %model of the system.
-            %figure(3)
-            %view(-114,54)
-            %plotPath(pathC,kC,nGoalB(i,:),panHeight,jointLimits,true,i);
-
-            figure((i-1)*numLegs+4)
-            plotAnkle(pathJ,ankleThreshold,Dt);
-
-            %figure(5)
-            %plotWheelSpeed(pathJ,Dt);
-        else
-            fprintf('Planning Failed\n');
+                plannerResults(h,i).pathLength = pathLength;
+                plannerResults(h,i).pathTime = pathTime;
+                error = cartDist(pathC(end,3:5),sGoalB(legNum,1:3));
+                plannerResults(h,i).error = error;
+            else
+                fprintf('Planning Failed\n');
+            end
         end
     end
     
-    %SHERPA TT VISUALISATION
-    plotSherpaTTMotion(uG,plannerResults,dt,numLegs,kC);
+    if NUM_TRIALS == 1               
+
+        %Print the results on the command line.
+        fprintf('\nLeg %d\n',i)
+        fprintf('Path Length: %.2f m\n',pathLength);
+        fprintf('Path Time: %.2f sec\n',pathTime);
+        fprintf('Final Cartesian Position Error: %.3f m\n',error);
+        fprintf('Planning Time: %.3f s\n',planningTime);
+
+        figure((i-1)*numLegs+1)
+        printRRT(T,sGoalB(i,1:3),pathJ,kC,jointLimits,panHeight,NUM_NODES);
+
+        figure((i-1)*numLegs+2)
+        plotVelocities(pathC);
+
+        figure((i-1)*numLegs+3)
+        plotJointVelocities(pathJ);
+
+        %Find the path in an x,y,z representation using a forward kinematic
+        %model of the system.
+        %figure(3)
+        %view(-114,54)
+        %plotPath(pathC,kC,nGoalB(i,:),panHeight,jointLimits,true,i);
+
+        figure((i-1)*numLegs+4)
+        plotAnkle(pathJ,ankleThreshold,Dt);
+
+        %figure(5)
+        %plotWheelSpeed(pathJ,Dt);
+
+        %SHERPA TT VISUALISATION
+        plotSherpaTTMotion(uG,plannerResults,dt,numLegs,kC);
+    else
+        figure(1)
+        colors = cell(1,5);
+        colors = {'r*','b*','g*','y*','k*'};
+        for h = 1:NUM_NODE_TRIALS
+            for i = 1:NUM_TRIALS
+                subplot(3,2,1);
+                hold on
+                plot(i,plannerResults(h,i).pathLength,colors{h});
+                xlabel('Trial Number');
+                ylabel('Path Length [m]');
+                hold off
+                subplot(3,2,2);
+                hold on
+                plot(i,plannerResults(h,i).pathTime,colors{h});
+                xlabel('Trial Number');
+                ylabel('Path Time [s]');
+                hold off
+                subplot(3,2,3);
+                hold on
+                plot(i,plannerResults(h,i).planningTime,colors{h});
+                xlabel('Trial Number');
+                ylabel('Planning Time [s]');
+                hold off
+                subplot(3,2,4);
+                hold on
+                plot(i,plannerResults(h,i).error,colors{h});
+                xlabel('Trial Number');
+                ylabel('Final Position Error [m]');
+                hold off
+                subplot(3,2,5);
+                hold on
+                plot(i,plannerResults(h,i).numAnkleViolations,colors{h});
+                xlabel('Trial Number');
+                ylabel('Num Ankle Violations');
+                hold off
+            end
+        end
+    end
+    
 
     %If only one tree is being generated, then plot the tree, the trajectory
     %generated and the velocities over time.
