@@ -104,16 +104,16 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     end
     
     %Linearly interpolate to the goal state from the final state.
-%     sFinalC = pathC(end,:);
-%     sGoalC = [0 0 nGoalCartesianB true];
-%     pathCorrection = linInterp(sFinalC,sGoalC,10);
-%     pathC = [pathC; pathCorrection];
-%     [h,~] = size(pathCorrection);
-%     for i = 1:h
-%         uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
-%         q = sherpaTTIK(uB',kC,jointLimits);
-%         pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
-%     end
+    sFinalC = pathC(end,:);
+    sGoalC = [0 0 nGoalCartesianB true];
+    pathCorrection = linInterp(sFinalC,sGoalC,10);
+    pathC = [pathC; pathCorrection];
+    [h,~] = size(pathCorrection);
+    for i = 1:h
+        uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
+        q = sherpaTTIK(uB',kC,jointLimits);
+        pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
+    end
 
 end
 
