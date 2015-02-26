@@ -13,6 +13,7 @@
 %-kC:
 %-threshold:
 %-legNum:
+%-uBDot:
 %
 %Outputs:
 %-T:
