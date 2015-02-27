@@ -2,7 +2,7 @@
 // File: buildRRTWrapper.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 26-Feb-2015 11:03:31
+// C/C++ source code generated on  : 27-Feb-2015 15:48:27
 //
 #ifndef __BUILDRRTWRAPPER_H__
 #define __BUILDRRTWRAPPER_H__
@@ -20,7 +20,7 @@
 // Function Declarations
 extern void buildRRTWrapper(const double nInitCartesianB[6], const double
   nGoalCartesianB[6], double phiInit, double omegaInit, const double
-  jointLimits[20], double bodyHeight, const double U[18], double dt, double Dt,
+  jointLimits[20], double bodyHeight, const double U[10], double dt, double Dt,
   const struct0_T *kC, int legNum, const double uBDot[6], emxArray_real_T *T,
   emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
 extern void buildRRTWrapper_init();

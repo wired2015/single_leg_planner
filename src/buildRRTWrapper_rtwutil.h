@@ -2,7 +2,7 @@
 // File: buildRRTWrapper_rtwutil.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 26-Feb-2015 11:03:31
+// C/C++ source code generated on  : 27-Feb-2015 15:48:27
 //
 #ifndef __BUILDRRTWRAPPER_RTWUTIL_H__
 #define __BUILDRRTWRAPPER_RTWUTIL_H__

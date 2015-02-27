@@ -156,6 +156,7 @@ TS2P = TR2P*TS2R;
 TW2P = TS2P*TW2S;
 TC2P = TW2P*TC2W;
 
+%dB2I = TB2P(1:3,4);
 dI2P = TI2P(1:3,4);
 dJ2P = TJ2P(1:3,4);
 dO2P = TO2P(1:3,4);
@@ -165,6 +166,7 @@ dS2P = TS2P(1:3,4);
 dW2P = TW2P(1:3,4);
 dC2P = TC2P(1:3,4);
 
+line([dI2P(1) dJ2P(1)],[dI2P(3) dJ2P(3)],'Color','k');
 line([dI2P(1) dJ2P(1)],[dI2P(3) dJ2P(3)],'Color','k');
 line([dJ2P(1) dO2P(1)],[dJ2P(3) dO2P(3)],'Color','k');
 line([dO2P(1) dQ2P(1)],[dO2P(3) dQ2P(3)],'Color','k');

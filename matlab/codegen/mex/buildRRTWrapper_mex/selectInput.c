@@ -17,23 +17,23 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo mb_emlrtRSI = { 30, "selectInput",
+static emlrtRSInfo ob_emlrtRSI = { 30, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtRTEInfo k_emlrtRTEI = { 1, 35, "selectInput",
+static emlrtRTEInfo l_emlrtRTEI = { 1, 35, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtRTEInfo l_emlrtRTEI = { 12, 5, "selectInput",
+static emlrtRTEInfo m_emlrtRTEI = { 12, 5, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtECInfo d_emlrtECI = { -1, 30, 26, "selectInput",
+static emlrtECInfo e_emlrtECI = { -1, 30, 26, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
-static emlrtECInfo e_emlrtECI = { -1, 30, 10, "selectInput",
+static emlrtECInfo f_emlrtECI = { -1, 30, 10, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
@@ -55,8 +55,8 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const real_T
   boolean_T b2;
   emxArray_real_T *candTransArrays;
   real_T x;
-  int32_T i5;
-  real_T d1;
+  int32_T i6;
+  real_T d0;
   int32_T ixstart;
   emxArray_int32_T *r1;
   real_T candStates_data[117];
@@ -91,24 +91,24 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const real_T
   /*    x1 is returned as u. */
   /* Initialize arrays to store the candidate new state data and the */
   /* distances between each candidate state and the xNear state. */
-  emxInit_real_T(sp, &candTransArrays, 2, &l_emlrtRTEI, true);
+  emxInit_real_T(sp, &candTransArrays, 2, &m_emlrtRTEI, true);
   x = muDoubleScalarRound(Dt / dt);
-  i5 = candTransArrays->size[0] * candTransArrays->size[1];
+  i6 = candTransArrays->size[0] * candTransArrays->size[1];
   candTransArrays->size[0] = 9;
-  d1 = (x + 1.0) * 10.0;
-  d1 = emlrtNonNegativeCheckFastR2012b(d1, &f_emlrtDCI, sp);
-  candTransArrays->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(d1,
+  d0 = (x + 1.0) * 10.0;
+  d0 = emlrtNonNegativeCheckFastR2012b(d0, &f_emlrtDCI, sp);
+  candTransArrays->size[1] = (int32_T)emlrtIntegerCheckFastR2012b(d0,
     &e_emlrtDCI, sp);
-  emxEnsureCapacity(sp, (emxArray__common *)candTransArrays, i5, (int32_T)sizeof
-                    (real_T), &k_emlrtRTEI);
-  d1 = (x + 1.0) * 10.0;
-  d1 = emlrtNonNegativeCheckFastR2012b(d1, &f_emlrtDCI, sp);
-  ixstart = 9 * (int32_T)emlrtIntegerCheckFastR2012b(d1, &e_emlrtDCI, sp);
-  for (i5 = 0; i5 < ixstart; i5++) {
-    candTransArrays->data[i5] = 0.0;
+  emxEnsureCapacity(sp, (emxArray__common *)candTransArrays, i6, (int32_T)sizeof
+                    (real_T), &l_emlrtRTEI);
+  d0 = (x + 1.0) * 10.0;
+  d0 = emlrtNonNegativeCheckFastR2012b(d0, &f_emlrtDCI, sp);
+  ixstart = 9 * (int32_T)emlrtIntegerCheckFastR2012b(d0, &e_emlrtDCI, sp);
+  for (i6 = 0; i6 < ixstart; i6++) {
+    candTransArrays->data[i6] = 0.0;
   }
 
-  emxInit_int32_T(sp, &r1, 1, &k_emlrtRTEI, true);
+  emxInit_int32_T(sp, &r1, 1, &l_emlrtRTEI, true);
 
   /* UJoint = zeros(U_SIZE,3); */
   /* Transform the control inputs to joint space. */
@@ -119,49 +119,49 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const real_T
   /* end     */
   /* Increment over the control vector. Generate a candidate state for each */
   /* possible control input. */
-  emxInit_real_T(sp, &r2, 2, &k_emlrtRTEI, true);
+  emxInit_real_T(sp, &r2, 2, &l_emlrtRTEI, true);
   for (i = 0; i < 9; i++) {
     /* Generate a candidate state using a fourth order Runge-Kutta  */
     /* integration technique. */
-    for (i5 = 0; i5 < 2; i5++) {
-      b_U[i5] = U[i + 9 * i5];
+    for (i6 = 0; i6 < 2; i6++) {
+      b_U[i6] = U[i + 9 * i6];
     }
 
     memcpy(&b_xNear_data[0], &xNear_data[0], 13U * sizeof(real_T));
-    st.site = &mb_emlrtRSI;
+    st.site = &ob_emlrtRSI;
     rk4(&st, b_U, uBDot, dt, Dt, b_xNear_data, jointLimits, kC, legNum, tmp_data,
         tmp_size, r2);
     if (!b2) {
-      for (i5 = 0; i5 < 2; i5++) {
-        iv10[i5] = 1 + 12 * i5;
+      for (i6 = 0; i6 < 2; i6++) {
+        iv10[i6] = 1 + 12 * i6;
       }
 
       b2 = true;
     }
 
-    emlrtSubAssignSizeCheckR2012b(iv10, 2, tmp_size, 2, &e_emlrtECI, sp);
+    emlrtSubAssignSizeCheckR2012b(iv10, 2, tmp_size, 2, &f_emlrtECI, sp);
     ixstart = tmp_size[1];
-    for (i5 = 0; i5 < ixstart; i5++) {
-      candStates_data[i + 9 * i5] = tmp_data[tmp_size[0] * i5];
+    for (i6 = 0; i6 < ixstart; i6++) {
+      candStates_data[i + 9 * i6] = tmp_data[tmp_size[0] * i6];
     }
 
     ixstart = candTransArrays->size[1];
-    i5 = r1->size[0];
+    i6 = r1->size[0];
     r1->size[0] = ixstart;
-    emxEnsureCapacity(sp, (emxArray__common *)r1, i5, (int32_T)sizeof(int32_T),
-                      &k_emlrtRTEI);
-    for (i5 = 0; i5 < ixstart; i5++) {
-      r1->data[i5] = i5;
+    emxEnsureCapacity(sp, (emxArray__common *)r1, i6, (int32_T)sizeof(int32_T),
+                      &l_emlrtRTEI);
+    for (i6 = 0; i6 < ixstart; i6++) {
+      r1->data[i6] = i6;
     }
 
     iv11[0] = 1;
     iv11[1] = r1->size[0];
     emlrtSubAssignSizeCheckR2012b(iv11, 2, *(int32_T (*)[2])r2->size, 2,
-      &d_emlrtECI, sp);
+      &e_emlrtECI, sp);
     ixstart = r2->size[1];
-    for (i5 = 0; i5 < ixstart; i5++) {
-      candTransArrays->data[i + candTransArrays->size[0] * r1->data[i5]] =
-        r2->data[r2->size[0] * i5];
+    for (i6 = 0; i6 < ixstart; i6++) {
+      candTransArrays->data[i + candTransArrays->size[0] * r1->data[i6]] =
+        r2->data[r2->size[0] * i6];
     }
 
     /* U_check = sherpaTTFKAcc(U_joint(i,:)',xNear(7:9)',xNear(4:6)',kinematicConst) */
@@ -312,9 +312,9 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const real_T
     b_qDot[2] = -candStates_data[i + 81] * kC->l3 * muDoubleScalarCos
       (candStates_data[i + 36]) - kC->l5 * candStates_data[i + 90] *
       muDoubleScalarCos(kC->zeta + candStates_data[i + 45]);
-    for (i5 = 0; i5 < 3; i5++) {
-      b_uB[i5] = uB[i5] - uA[i5];
-      c_qDot[i5] = qDot[i5] - b_qDot[i5];
+    for (i6 = 0; i6 < 3; i6++) {
+      b_uB[i6] = uB[i6] - uA[i6];
+      c_qDot[i6] = qDot[i6] - b_qDot[i6];
     }
 
     distance_data[i] = 0.5 * (norm(b_uB) + 0.0 * b_norm(c_qDot)) + 0.5 * (real_T)
@@ -357,19 +357,19 @@ void selectInput(const emlrtStack *sp, const real_T xNear_data[], const real_T
 
   xNew_size[0] = 1;
   xNew_size[1] = 13;
-  for (i5 = 0; i5 < 13; i5++) {
-    xNew_data[xNew_size[0] * i5] = candStates_data[itmp + 9 * i5];
+  for (i6 = 0; i6 < 13; i6++) {
+    xNew_data[xNew_size[0] * i6] = candStates_data[itmp + 9 * i6];
   }
 
   ixstart = candTransArrays->size[1];
-  i5 = transitionArray->size[0] * transitionArray->size[1];
+  i6 = transitionArray->size[0] * transitionArray->size[1];
   transitionArray->size[0] = 1;
   transitionArray->size[1] = ixstart;
-  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i5, (int32_T)sizeof
-                    (real_T), &k_emlrtRTEI);
-  for (i5 = 0; i5 < ixstart; i5++) {
-    transitionArray->data[transitionArray->size[0] * i5] = candTransArrays->
-      data[itmp + candTransArrays->size[0] * i5];
+  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, i6, (int32_T)sizeof
+                    (real_T), &l_emlrtRTEI);
+  for (i6 = 0; i6 < ixstart; i6++) {
+    transitionArray->data[transitionArray->size[0] * i6] = candTransArrays->
+      data[itmp + candTransArrays->size[0] * i6];
   }
 
   emxFree_real_T(&candTransArrays);

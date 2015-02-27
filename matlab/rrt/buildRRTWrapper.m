@@ -44,7 +44,7 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         NODE_SIZE = int32(13);
     end
     if isempty(U_SIZE)
-        U_SIZE = int32(9);
+        U_SIZE = int32(5);
     end
     if isempty(ankleThreshold)
         ankleThreshold = 5*pi/180;

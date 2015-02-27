@@ -16,7 +16,7 @@
 % author: wreid
 % date: 20150107
 
-function planEval(useMex)
+function pathC = planEval(useMex)
     
     clc
     addpath(genpath('~/Dropbox/PhD/matlab/rvctools'))

@@ -1,4 +1,5 @@
-%GETXSTAR Returns the xStar value given either the height of the wheel contact
+%GETXSTAR Returns the xStar value given either the height of the wheel
+%contact              
 %point relative to the pan coordinate frame and either the beta or gamma
 %joint value. It is assumed that the angle input represents the beta joint
 %angle if selector = false, and the angle input is the gamma joint angle if
@@ -10,6 +11,7 @@
 %selector input.
 %-selector: A logical that indicates that the angle value represents beta
 %-kC: A struct containing the kinematic constants of the Sherpa TT leg.
+%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 %if selector=true, or gamma if selector=false.
 %Outputs:
 %-xStar: The radius in a cylindrical coordinate representation that

@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.matlabcoder" plugin-version="R2014a_nu">
-  <configuration build-checksum="2662135947" file="/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrtSherpa.prj" location="/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab" name="rrtSherpa" preferred-package-location="/Users/fuji/Desktop" preferred-package-type="package.type.zip" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
+  <configuration build-checksum="1178830044" file="/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrtSherpa.prj" location="/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab" name="rrtSherpa" preferred-package-location="/Users/fuji/Desktop" preferred-package-type="package.type.zip" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
     <profile key="profile.mex">
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
@@ -313,7 +313,7 @@
     <param.outputfile>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildRRTWrapper.a</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
-    <param.mex.mainhtml>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper_mex/html/index.html</param.mex.mainhtml>
+    <param.mex.mainhtml>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/sandbox/codegen/mex/buildRRTWrapper_mex/html/index.html</param.mex.mainhtml>
     <param.grt.mainhtml>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/html/index.html</param.grt.mainhtml>
     <param.CallGeneratedCodeFromTest>false</param.CallGeneratedCodeFromTest>
     <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
@@ -323,7 +323,7 @@
     <param.AutoInferUseUnboundedSize>false</param.AutoInferUseUnboundedSize>
     <param.AutoInferVariableSizeThreshold>1024</param.AutoInferVariableSizeThreshold>
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
-    <param.AnnotationChecksum>2208744841</param.AnnotationChecksum>
+    <param.AnnotationChecksum>3072645544</param.AnnotationChecksum>
     <param.mex.outputfile>buildRRTWrapper_mex</param.mex.outputfile>
     <param.grt.outputfile>buildRRTWrapper</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
@@ -569,7 +569,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}/rrt/buildRRTWrapper.m">
+      <file custom-data-expanded="true" value="${PROJECT_ROOT}/rrt/buildRRTWrapper.m">
         <Inputs fileName="buildRRTWrapper.m" functionName="buildRRTWrapper">
           <Input Name="nInitCartesianB">
             <Class>double</Class>
@@ -621,7 +621,7 @@
           </Input>
           <Input Name="U">
             <Class>double</Class>
-            <Size>9 x 2</Size>
+            <Size>5 x 2</Size>
             <Value />
             <InitialValue />
             <UserDefined>true</UserDefined>

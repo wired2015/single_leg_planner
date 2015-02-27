@@ -2,7 +2,7 @@
 // File: randomStateGenerator.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 26-Feb-2015 11:03:31
+// C/C++ source code generated on  : 27-Feb-2015 15:48:27
 //
 
 // Include Files
@@ -143,7 +143,8 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
     alphaRand = jointLimits[0] + (jointLimits[1] - jointLimits[0]) * b_rand();
     if ((panHeight <= cartesianLimits_idx_0) && (panHeight >=
          cartesianLimits_idx_2)) {
-      // GETXSTAR Returns the xStar value given either the height of the wheel contact 
+      // GETXSTAR Returns the xStar value given either the height of the wheel
+      // contact
       // point relative to the pan coordinate frame and either the beta or gamma 
       // joint value. It is assumed that the angle input represents the beta joint 
       // angle if selector = false, and the angle input is the gamma joint angle if 
@@ -155,6 +156,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // selector input.
       // -selector: A logical that indicates that the angle value represents beta 
       // -kC: A struct containing the kinematic constants of the Sherpa TT leg.
+      //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       // if selector=true, or gamma if selector=false.
       // Outputs:
       // -xStar: The radius in a cylindrical coordinate representation that
@@ -168,7 +170,8 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
         kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[4])) / kC->l3)))
         + kC->l5 * cos(kC->zeta + jointLimits[4]);
 
-      // GETXSTAR Returns the xStar value given either the height of the wheel contact 
+      // GETXSTAR Returns the xStar value given either the height of the wheel
+      // contact
       // point relative to the pan coordinate frame and either the beta or gamma 
       // joint value. It is assumed that the angle input represents the beta joint 
       // angle if selector = false, and the angle input is the gamma joint angle if 
@@ -180,6 +183,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // selector input.
       // -selector: A logical that indicates that the angle value represents beta 
       // -kC: A struct containing the kinematic constants of the Sherpa TT leg.
+      //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       // if selector=true, or gamma if selector=false.
       // Outputs:
       // -xStar: The radius in a cylindrical coordinate representation that
@@ -194,7 +198,8 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
         - panHeight) / kC->l5));
     } else if ((panHeight < cartesianLimits_idx_2) && (panHeight >=
                 cartesianLimits_idx_3)) {
-      // GETXSTAR Returns the xStar value given either the height of the wheel contact 
+      // GETXSTAR Returns the xStar value given either the height of the wheel
+      // contact
       // point relative to the pan coordinate frame and either the beta or gamma 
       // joint value. It is assumed that the angle input represents the beta joint 
       // angle if selector = false, and the angle input is the gamma joint angle if 
@@ -206,6 +211,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // selector input.
       // -selector: A logical that indicates that the angle value represents beta 
       // -kC: A struct containing the kinematic constants of the Sherpa TT leg.
+      //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       // if selector=true, or gamma if selector=false.
       // Outputs:
       // -xStar: The radius in a cylindrical coordinate representation that
@@ -219,7 +225,8 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
         kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[4])) / kC->l3)))
         + kC->l5 * cos(kC->zeta + jointLimits[4]);
 
-      // GETXSTAR Returns the xStar value given either the height of the wheel contact 
+      // GETXSTAR Returns the xStar value given either the height of the wheel
+      // contact
       // point relative to the pan coordinate frame and either the beta or gamma 
       // joint value. It is assumed that the angle input represents the beta joint 
       // angle if selector = false, and the angle input is the gamma joint angle if 
@@ -231,6 +238,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // selector input.
       // -selector: A logical that indicates that the angle value represents beta 
       // -kC: A struct containing the kinematic constants of the Sherpa TT leg.
+      //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       // if selector=true, or gamma if selector=false.
       // Outputs:
       // -xStar: The radius in a cylindrical coordinate representation that
@@ -244,7 +252,8 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
         kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[5])) / kC->l3)))
         + kC->l5 * cos(kC->zeta + jointLimits[5]);
     } else if ((panHeight < cartesianLimits_idx_3) && (panHeight >= u2_idx_2)) {
-      // GETXSTAR Returns the xStar value given either the height of the wheel contact 
+      // GETXSTAR Returns the xStar value given either the height of the wheel
+      // contact
       // point relative to the pan coordinate frame and either the beta or gamma 
       // joint value. It is assumed that the angle input represents the beta joint 
       // angle if selector = false, and the angle input is the gamma joint angle if 
@@ -256,6 +265,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // selector input.
       // -selector: A logical that indicates that the angle value represents beta 
       // -kC: A struct containing the kinematic constants of the Sherpa TT leg.
+      //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       // if selector=true, or gamma if selector=false.
       // Outputs:
       // -xStar: The radius in a cylindrical coordinate representation that
@@ -269,7 +279,8 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
         (kC->zeta)) - kC->l6) - kC->l8) - kC->r) - kC->l3 * sin(jointLimits[3]))
         - panHeight) / kC->l5));
 
-      // GETXSTAR Returns the xStar value given either the height of the wheel contact 
+      // GETXSTAR Returns the xStar value given either the height of the wheel
+      // contact
       // point relative to the pan coordinate frame and either the beta or gamma 
       // joint value. It is assumed that the angle input represents the beta joint 
       // angle if selector = false, and the angle input is the gamma joint angle if 
@@ -281,6 +292,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // selector input.
       // -selector: A logical that indicates that the angle value represents beta 
       // -kC: A struct containing the kinematic constants of the Sherpa TT leg.
+      //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       // if selector=true, or gamma if selector=false.
       // Outputs:
       // -xStar: The radius in a cylindrical coordinate representation that

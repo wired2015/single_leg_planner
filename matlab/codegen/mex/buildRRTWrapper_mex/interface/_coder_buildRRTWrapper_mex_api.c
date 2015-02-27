@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRTEInfo o_emlrtRTEI = { 1, 1, "_coder_buildRRTWrapper_mex_api", "" };
+static emlrtRTEInfo p_emlrtRTEI = { 1, 1, "_coder_buildRRTWrapper_mex_api", "" };
 
 /* Function Declarations */
 static real_T b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
@@ -337,9 +337,9 @@ static real_T (*q_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[6];
   int32_T iv22[2];
-  int32_T i10;
-  for (i10 = 0; i10 < 2; i10++) {
-    iv22[i10] = 1 + 5 * i10;
+  int32_T i11;
+  for (i11 = 0; i11 < 2; i11++) {
+    iv22[i11] = 1 + 5 * i11;
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv22);
@@ -352,9 +352,9 @@ static real_T (*q_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[20];
   int32_T iv23[2];
-  int32_T i11;
-  for (i11 = 0; i11 < 2; i11++) {
-    iv23[i11] = 2 + (i11 << 3);
+  int32_T i12;
+  for (i12 = 0; i12 < 2; i12++) {
+    iv23[i12] = 2 + (i12 << 3);
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv23);
@@ -368,9 +368,9 @@ static real_T (*s_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   real_T (*ret)[18];
   int32_T iv24[2];
-  int32_T i12;
-  for (i12 = 0; i12 < 2; i12++) {
-    iv24[i12] = 9 + -7 * i12;
+  int32_T i13;
+  for (i13 = 0; i13 < 2; i13++) {
+    iv24[i13] = 9 + -7 * i13;
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv24);
@@ -382,14 +382,14 @@ static real_T (*s_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   emlrtMsgIdentifier *msgId, real_T ret[4])
 {
   int32_T iv25[2];
-  int32_T i13;
-  for (i13 = 0; i13 < 2; i13++) {
-    iv25[i13] = 1 + 3 * i13;
+  int32_T i14;
+  for (i14 = 0; i14 < 2; i14++) {
+    iv25[i14] = 1 + 3 * i14;
   }
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv25);
-  for (i13 = 0; i13 < 4; i13++) {
-    ret[i13] = (*(real_T (*)[4])mxGetData(src))[i13];
+  for (i14 = 0; i14 < 4; i14++) {
+    ret[i14] = (*(real_T (*)[4])mxGetData(src))[i14];
   }
 
   emlrtDestroyArray(&src);
@@ -438,9 +438,9 @@ static real_T (*v_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &T, 2, &o_emlrtRTEI, true);
-  emxInit_real_T(&st, &pathC, 2, &o_emlrtRTEI, true);
-  emxInit_real_T(&st, &pathJ, 2, &o_emlrtRTEI, true);
+  emxInit_real_T(&st, &T, 2, &p_emlrtRTEI, true);
+  emxInit_real_T(&st, &pathC, 2, &p_emlrtRTEI, true);
+  emxInit_real_T(&st, &pathJ, 2, &p_emlrtRTEI, true);
 
   /* Marshall function inputs */
   nInitCartesianB = c_emlrt_marshallIn(&st, emlrtAlias(prhs[0]),
@@ -490,7 +490,7 @@ void randomStateGenerator_api(const mxArray * const prhs[5], const mxArray *
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &states, 2, &o_emlrtRTEI, true);
+  emxInit_real_T(&st, &states, 2, &p_emlrtRTEI, true);
 
   /* Marshall function inputs */
   NUM_POINTS = l_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "NUM_POINTS");

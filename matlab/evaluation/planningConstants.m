@@ -44,7 +44,7 @@ jointLimits = [deg2rad([-135 -59.5 -5 -180 0 -10 -10 -10 -45 -180]);...     %[ra
 %The initial state of a leg's wheel contact point relative to the body
 %coordinate frame. Each row in the array is structured as 
 %[x y z xDot yDot zDot].
-sInitB = [0.996 0.996 -1 0 0 0;
+sInitB = [0.18 1.05 -1 0 0 0;
             0.996 -0.996 -1 0 0 0;
             -0.996 0.996 -1 0 0 0;
             -0.996 -0.996 -1 0 0 0];
@@ -52,7 +52,7 @@ sInitB = [0.996 0.996 -1 0 0 0;
 %The goal state of a leg's wheel contact point relative to the body
 %coordinate frame. Each row in the array is structured as 
 %[x y z xDot yDot zDot].      
-sGoalB = [1.257 0.3278 -1 0 0 0;
+sGoalB = [1.02 0.19 -1 0 0 0;
           1.257 -0.3278 -1 0 0 0;
           -1.257 0.3278 -1 0 0 0;
           -1.257 -0.3278 -1 0 0 0];
@@ -99,15 +99,15 @@ U = eta*[1 0;                   % The control input set:
           0 -1;                 % the ground plane, or no acceleration.
           0 0]; 
       
-U = eta*[1 0;                   % The control input set: 
-  -1 0;                 % [alphaDot betaDot gammaDot] [m/s^2].
-  0 0.5;                  % There can only be an acceleration along
-  0 -0.5;                 % the ground plane, or no acceleration.
-  0.5 0.25;                    
-  -0.5 0.25;                 
-  0.5 -0.25;
-  -0.5 -0.25; 
-  0 0]; 
+% U = eta*[1 0;                   % The control input set: 
+%   -1 0;                 % [alphaDot betaDot gammaDot] [m/s^2].
+%   0 0.5;                  % There can only be an acceleration along
+%   0 -0.5;                 % the ground plane, or no acceleration.
+%   0.5 0.25;                    
+%   -0.5 0.25;                 
+%   0.5 -0.25;
+%   -0.5 -0.25; 
+%   0 0]; 
 
 %The number of evaluation trials to be performed.
 NUM_TRIALS = 1;

@@ -2,7 +2,7 @@
 // File: buildRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 26-Feb-2015 11:03:31
+// C/C++ source code generated on  : 27-Feb-2015 15:48:27
 //
 
 // Include Files
@@ -25,7 +25,7 @@
 //                const double jointLimits[20]
 //                const struct0_T *kC
 //                double panHeight
-//                const double U[18]
+//                const double U[10]
 //                double Dt
 //                double dt
 //                double *nodeIDCount
@@ -34,7 +34,7 @@
 // Return Type  : void
 //
 void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
-             *kC, double panHeight, const double U[18], double Dt, double dt,
+             *kC, double panHeight, const double U[10], double Dt, double dt,
              double *nodeIDCount, const double uBDot[6], int legNum)
 {
   emxArray_real_T *unusedU4;
@@ -45,8 +45,8 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   emxArray_real_T *candTransArrays;
   int i12;
   int loop_ub;
-  double candStates_data[117];
-  double distance_data[9];
+  double candStates_data[65];
+  double distance_data[5];
   int i;
   double b_U[2];
   double b_xNear_data[13];
@@ -84,10 +84,10 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   emxInit_real_T(&candTransArrays, 2);
   unusedU5 = rt_roundd_snf(Dt / dt);
   i12 = candTransArrays->size[0] * candTransArrays->size[1];
-  candTransArrays->size[0] = 9;
+  candTransArrays->size[0] = 5;
   candTransArrays->size[1] = (int)((unusedU5 + 1.0) * 10.0);
   emxEnsureCapacity((emxArray__common *)candTransArrays, i12, (int)sizeof(double));
-  loop_ub = 9 * (int)((unusedU5 + 1.0) * 10.0);
+  loop_ub = 5 * (int)((unusedU5 + 1.0) * 10.0);
   for (i12 = 0; i12 < loop_ub; i12++) {
     candTransArrays->data[i12] = 0.0;
   }
@@ -101,11 +101,11 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   // end
   // Increment over the control vector. Generate a candidate state for each
   // possible control input.
-  for (i = 0; i < 9; i++) {
+  for (i = 0; i < 5; i++) {
     // Generate a candidate state using a fourth order Runge-Kutta
     // integration technique.
     for (i12 = 0; i12 < 2; i12++) {
-      b_U[i12] = U[i + 9 * i12];
+      b_U[i12] = U[i + 5 * i12];
     }
 
     memcpy(&b_xNear_data[0], &xNear_data[0], 13U * sizeof(double));
@@ -113,7 +113,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
         tmp_size, unusedU4);
     loop_ub = tmp_size[1];
     for (i12 = 0; i12 < loop_ub; i12++) {
-      candStates_data[i + 9 * i12] = tmp_data[tmp_size[0] * i12];
+      candStates_data[i + 5 * i12] = tmp_data[tmp_size[0] * i12];
     }
 
     loop_ub = unusedU4->size[1];
@@ -162,14 +162,14 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     // sherpaTTFK.m
     // author: wreid
     // date: 20150122
-    uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 36])) + kC->l4 * cos
-               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 45] + kC->zeta)) -
-             kC->l7) * cos(candStates_data[i + 27]);
-    uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 36])) + kC->l4 * cos
-               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 45] + kC->zeta)) -
-             kC->l7) * sin(candStates_data[i + 27]);
-    uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[i + 36])) - kC->l4 * sin
-               (kC->zeta)) - kC->l5 * sin(candStates_data[i + 45] + kC->zeta)) -
+    uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 20])) + kC->l4 * cos
+               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 25] + kC->zeta)) -
+             kC->l7) * cos(candStates_data[i + 15]);
+    uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[i + 20])) + kC->l4 * cos
+               (kC->zeta)) + kC->l5 * cos(candStates_data[i + 25] + kC->zeta)) -
+             kC->l7) * sin(candStates_data[i + 15]);
+    uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[i + 20])) - kC->l4 * sin
+               (kC->zeta)) - kC->l5 * sin(candStates_data[i + 25] + kC->zeta)) -
              kC->l6) - (kC->l8 + kC->r);
 
     // sherpaTTFK Sherpa_TT Forward Kinematics
@@ -212,7 +212,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     // requires a change of ankle position greater than the allowed ankle
     // movement in a single time step.
     // angDiff Finds the angular difference between th1 and th2.
-    unusedU5 = ((xNear_data[3] - candStates_data[i + 27]) + 3.1415926535897931) /
+    unusedU5 = ((xNear_data[3] - candStates_data[i + 15]) + 3.1415926535897931) /
       6.2831853071795862;
     if (fabs(unusedU5 - rt_roundd_snf(unusedU5)) <= 2.2204460492503131E-16 *
         fabs(unusedU5)) {
@@ -240,22 +240,22 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
       - xRand[9] * kC->l3 * sin(xRand[3]) * sin(xRand[4]);
     qDot[2] = -xRand[9] * kC->l3 * cos(xRand[4]) - kC->l5 * xRand[10] * cos
       (kC->zeta + xRand[5]);
-    b_qDot[0] = (-candStates_data[i + 72] * sin(candStates_data[i + 27]) *
-                 ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[i + 45] +
-      kC->zeta)) + kC->l3 * cos(candStates_data[i + 36])) + kC->l4 * cos
-                  (kC->zeta)) - candStates_data[i + 81] * kC->l3 * cos
-                 (candStates_data[i + 27]) * sin(candStates_data[i + 36])) -
-      candStates_data[i + 90] * kC->l5 * sin(candStates_data[i + 45] + kC->zeta)
-      * cos(candStates_data[i + 27]);
-    b_qDot[1] = (candStates_data[i + 72] * cos(candStates_data[i + 27]) *
-                 ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[i + 45] +
-      kC->zeta)) + kC->l3 * cos(candStates_data[i + 36])) + kC->l4 * cos
-                  (kC->zeta)) - candStates_data[i + 90] * kC->l5 * sin
-                 (candStates_data[i + 45] + kC->zeta) * sin(candStates_data[i +
-      27])) - candStates_data[i + 81] * kC->l3 * sin(candStates_data[i + 27]) *
-      sin(candStates_data[i + 36]);
-    b_qDot[2] = -candStates_data[i + 81] * kC->l3 * cos(candStates_data[i + 36])
-      - kC->l5 * candStates_data[i + 90] * cos(kC->zeta + candStates_data[i + 45]);
+    b_qDot[0] = (-candStates_data[i + 40] * sin(candStates_data[i + 15]) *
+                 ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[i + 25] +
+      kC->zeta)) + kC->l3 * cos(candStates_data[i + 20])) + kC->l4 * cos
+                  (kC->zeta)) - candStates_data[i + 45] * kC->l3 * cos
+                 (candStates_data[i + 15]) * sin(candStates_data[i + 20])) -
+      candStates_data[i + 50] * kC->l5 * sin(candStates_data[i + 25] + kC->zeta)
+      * cos(candStates_data[i + 15]);
+    b_qDot[1] = (candStates_data[i + 40] * cos(candStates_data[i + 15]) *
+                 ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[i + 25] +
+      kC->zeta)) + kC->l3 * cos(candStates_data[i + 20])) + kC->l4 * cos
+                  (kC->zeta)) - candStates_data[i + 50] * kC->l5 * sin
+                 (candStates_data[i + 25] + kC->zeta) * sin(candStates_data[i +
+      15])) - candStates_data[i + 45] * kC->l3 * sin(candStates_data[i + 15]) *
+      sin(candStates_data[i + 20]);
+    b_qDot[2] = -candStates_data[i + 45] * kC->l3 * cos(candStates_data[i + 20])
+      - kC->l5 * candStates_data[i + 50] * cos(kC->zeta + candStates_data[i + 25]);
     for (i12 = 0; i12 < 3; i12++) {
       b_uB[i12] = uB[i12] - uA[i12];
       c_qDot[i12] = qDot[i12] - b_qDot[i12];
@@ -274,7 +274,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   if (rtIsNaN(distance_data[0])) {
     i = 1;
     exitg1 = false;
-    while ((!exitg1) && (i + 1 <= 9)) {
+    while ((!exitg1) && (i + 1 <= 5)) {
       ixstart = i + 1;
       if (!rtIsNaN(distance_data[i])) {
         unusedU5 = distance_data[i];
@@ -286,8 +286,8 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     }
   }
 
-  if (ixstart < 9) {
-    while (ixstart + 1 <= 9) {
+  if (ixstart < 5) {
+    while (ixstart + 1 <= 5) {
       if (distance_data[ixstart] < unusedU5) {
         unusedU5 = distance_data[ixstart];
         itmp = ixstart;
@@ -299,7 +299,7 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
 
   // velCheck = sherpaTTFKVel(xNew(7:9)',xNew(4:6)',kinematicConst)
   for (i12 = 0; i12 < 13; i12++) {
-    xNew_data[i12] = candStates_data[itmp + 9 * i12];
+    xNew_data[i12] = candStates_data[itmp + 5 * i12];
   }
 
   (*nodeIDCount)++;
@@ -345,14 +345,14 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  b_uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 36])) + kC->l4 *
-               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 45] +
-    kC->zeta)) - kC->l7) * cos(candStates_data[itmp + 27]);
-  b_uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 36])) + kC->l4 *
-               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 45] +
-    kC->zeta)) - kC->l7) * sin(candStates_data[itmp + 27]);
-  b_uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[itmp + 36])) - kC->l4 *
-               sin(kC->zeta)) - kC->l5 * sin(candStates_data[itmp + 45] +
+  b_uA[0] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 20])) + kC->l4 *
+               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 25] +
+    kC->zeta)) - kC->l7) * cos(candStates_data[itmp + 15]);
+  b_uA[1] = ((((kC->l2 + kC->l3 * cos(-candStates_data[itmp + 20])) + kC->l4 *
+               cos(kC->zeta)) + kC->l5 * cos(candStates_data[itmp + 25] +
+    kC->zeta)) - kC->l7) * sin(candStates_data[itmp + 15]);
+  b_uA[2] = ((((kC->l1 + kC->l3 * sin(-candStates_data[itmp + 20])) - kC->l4 *
+               sin(kC->zeta)) - kC->l5 * sin(candStates_data[itmp + 25] +
     kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
 
   // sherpaTTFK Sherpa_TT Forward Kinematics
@@ -406,23 +406,23 @@ void rrtLoop(emxArray_real_T *T, const double jointLimits[20], const struct0_T
     * sin(xNear_data[4]);
   d_qDot[2] = -xNear_data[9] * kC->l3 * cos(xNear_data[4]) - kC->l5 *
     xNear_data[10] * cos(kC->zeta + xNear_data[5]);
-  e_qDot[0] = (-candStates_data[itmp + 72] * sin(candStates_data[itmp + 27]) *
-               ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[itmp + 45] +
-    kC->zeta)) + kC->l3 * cos(candStates_data[itmp + 36])) + kC->l4 * cos
-                (kC->zeta)) - candStates_data[itmp + 81] * kC->l3 * cos
-               (candStates_data[itmp + 27]) * sin(candStates_data[itmp + 36])) -
-    candStates_data[itmp + 90] * kC->l5 * sin(candStates_data[itmp + 45] +
-    kC->zeta) * cos(candStates_data[itmp + 27]);
-  e_qDot[1] = (candStates_data[itmp + 72] * cos(candStates_data[itmp + 27]) *
-               ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[itmp + 45] +
-    kC->zeta)) + kC->l3 * cos(candStates_data[itmp + 36])) + kC->l4 * cos
-                (kC->zeta)) - candStates_data[itmp + 90] * kC->l5 * sin
-               (candStates_data[itmp + 45] + kC->zeta) * sin
-               (candStates_data[itmp + 27])) - candStates_data[itmp + 81] *
-    kC->l3 * sin(candStates_data[itmp + 27]) * sin(candStates_data[itmp + 36]);
-  e_qDot[2] = -candStates_data[itmp + 81] * kC->l3 * cos(candStates_data[itmp +
-    36]) - kC->l5 * candStates_data[itmp + 90] * cos(kC->zeta +
-    candStates_data[itmp + 45]);
+  e_qDot[0] = (-candStates_data[itmp + 40] * sin(candStates_data[itmp + 15]) *
+               ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[itmp + 25] +
+    kC->zeta)) + kC->l3 * cos(candStates_data[itmp + 20])) + kC->l4 * cos
+                (kC->zeta)) - candStates_data[itmp + 45] * kC->l3 * cos
+               (candStates_data[itmp + 15]) * sin(candStates_data[itmp + 20])) -
+    candStates_data[itmp + 50] * kC->l5 * sin(candStates_data[itmp + 25] +
+    kC->zeta) * cos(candStates_data[itmp + 15]);
+  e_qDot[1] = (candStates_data[itmp + 40] * cos(candStates_data[itmp + 15]) *
+               ((((kC->l2 - kC->l7) + kC->l5 * cos(candStates_data[itmp + 25] +
+    kC->zeta)) + kC->l3 * cos(candStates_data[itmp + 20])) + kC->l4 * cos
+                (kC->zeta)) - candStates_data[itmp + 50] * kC->l5 * sin
+               (candStates_data[itmp + 25] + kC->zeta) * sin
+               (candStates_data[itmp + 15])) - candStates_data[itmp + 45] *
+    kC->l3 * sin(candStates_data[itmp + 15]) * sin(candStates_data[itmp + 20]);
+  e_qDot[2] = -candStates_data[itmp + 45] * kC->l3 * cos(candStates_data[itmp +
+    20]) - kC->l5 * candStates_data[itmp + 50] * cos(kC->zeta +
+    candStates_data[itmp + 25]);
   for (i12 = 0; i12 < 3; i12++) {
     uB[i12] = c_uB[i12] - b_uA[i12];
     qDot[i12] = d_qDot[i12] - e_qDot[i12];

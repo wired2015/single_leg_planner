@@ -30,4 +30,6 @@ function plotCartesianConfigSpace(kC,jointLimits,panHeight,legNum,color)
         end
     end
     
+    xlabel('X'); ylabel('Y'); zlabel('Z');
+    
 end
