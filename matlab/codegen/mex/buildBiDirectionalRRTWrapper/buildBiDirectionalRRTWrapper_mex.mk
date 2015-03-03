@@ -24,11 +24,12 @@ SRC_FILES =  \
 	validJointState.c \
 	buildBiDirectionalRRT.c \
 	getXStar.c \
-	nearestNeighbour.c \
 	heuristicSingleLeg.c \
 	norm.c \
 	selectInput.c \
 	rk4.c \
+	getPhiAndOmega.c \
+	angDiff.c \
 	flipud.c \
 	_coder_buildBiDirectionalRRTWrapper_api.c \
 	buildBiDirectionalRRTWrapper_emxutil.c \
@@ -66,7 +67,7 @@ SYS_INCLUDE = $(ML_INCLUDES)
 SYS_INCLUDE += -I "$(START_DIR)"
 SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildBiDirectionalRRTWrapper"
 SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildBiDirectionalRRTWrapper/interface"
-SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT"
+SYS_INCLUDE += -I "$(START_DIR)/rrt/biDirectionalRRT"
 SYS_INCLUDE += -I "$(MATLAB_ROOT)/extern/include"
 SYS_INCLUDE += -I "."
 

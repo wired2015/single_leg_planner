@@ -2,15 +2,15 @@
 %author: wreid
 %date: 20150107
 
-function [xNew,transitionArray] = rk4(uIn,uBDot,dt,Dt,xInit,jointLimits,kC,legNum)
+function [xNewFull,transitionArray] = rk4(uIn,uBDot,dt,Dt,xInit,jointLimits,kC,legNum)
 %rk4 Summary of this function goes here
 %   Detailed explanation goes here
 
     u = uIn;
 
     numIterations = round(Dt/dt);
-    xNew = zeros(1,length(xInit));
     xInit = xInit(4:end);
+    xNew = zeros(1,length(xInit));
     xInitOrig = xInit;
     transitionArray = zeros(1,(numIterations+1)*10);
     transitionArray(1:10) = xInit;
@@ -138,7 +138,7 @@ function [xNew,transitionArray] = rk4(uIn,uBDot,dt,Dt,xInit,jointLimits,kC,legNu
         xInit = xNew;
         transitionArray((10*i)+1:(10*(i+1))) = xNew;
     end
-    xNew = [zeros(1,3) xNew];
+    xNewFull = [zeros(1,3) xNew];
      
 end
 

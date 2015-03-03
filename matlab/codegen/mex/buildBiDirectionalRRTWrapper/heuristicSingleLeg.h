@@ -21,10 +21,19 @@
 #include "buildBiDirectionalRRTWrapper_types.h"
 
 /* Function Declarations */
-extern real_T heuristicSingleLeg(const emlrtStack *sp, const real_T xA_data[],
-  const emxArray_real_T *xB, real_T kC_l1, real_T kC_l2, real_T kC_l3, real_T
-  kC_l4, real_T kC_l5, real_T kC_l6, real_T kC_l7, real_T kC_l8, real_T kC_zeta,
-  real_T kC_r);
+extern real_T b_heuristicSingleLeg(const real_T xA_data[], const real_T xB[93],
+  real_T kC_l1, real_T kC_l2, real_T kC_l3, real_T kC_l4, real_T kC_l5, real_T
+  kC_l6, real_T kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r);
+
+#ifdef __WATCOMC__
+
+#pragma aux b_heuristicSingleLeg value [8087];
+
+#endif
+
+extern real_T heuristicSingleLeg(const real_T xA[13], const real_T xB[13],
+  real_T kC_l1, real_T kC_l2, real_T kC_l3, real_T kC_l4, real_T kC_l5, real_T
+  kC_l6, real_T kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r);
 
 #ifdef __WATCOMC__
 

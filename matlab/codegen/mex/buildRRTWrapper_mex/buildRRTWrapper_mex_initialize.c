@@ -13,24 +13,7 @@
 #include "buildRRTWrapper_mex_data.h"
 #include <stdio.h>
 
-/* Function Declarations */
-static void buildRRTWrapper_mex_once(void);
-
 /* Function Definitions */
-static void buildRRTWrapper_mex_once(void)
-{
-  threshold_not_empty_init();
-  HGAINS_not_empty_init();
-  cartesianLimits_not_empty_init();
-  goalSeedFreq_not_empty_init();
-  exhaustive_not_empty_init();
-  ankleThreshold_not_empty_init();
-  U_SIZE_not_empty_init();
-  NODE_SIZE_not_empty_init();
-  NUM_NODES_not_empty_init();
-  buildRRTWrapper_init();
-}
-
 void buildRRTWrapper_mex_initialize(emlrtContext *aContext)
 {
   emlrtStack st = { NULL, NULL, NULL };
@@ -40,9 +23,7 @@ void buildRRTWrapper_mex_initialize(emlrtContext *aContext)
   st.tls = emlrtRootTLSGlobal;
   emlrtClearAllocCountR2012b(&st, false, 0U, 0);
   emlrtEnterRtStackR2012b(&st);
-  if (emlrtFirstTimeR2012b(emlrtRootTLSGlobal)) {
-    buildRRTWrapper_mex_once();
-  }
+  emlrtFirstTimeR2012b(emlrtRootTLSGlobal);
 }
 
 /* End of code generation (buildRRTWrapper_mex_initialize.c) */

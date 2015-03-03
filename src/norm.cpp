@@ -2,11 +2,12 @@
 // File: norm.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 27-Feb-2015 15:48:27
+// C/C++ source code generated on  : 03-Mar-2015 11:19:40
 //
 
 // Include Files
 #include "rt_nonfinite.h"
+#include "buildBiDirectionalRRTWrapper.h"
 #include "buildRRTWrapper.h"
 #include "randomStateGenerator.h"
 #include "norm.h"

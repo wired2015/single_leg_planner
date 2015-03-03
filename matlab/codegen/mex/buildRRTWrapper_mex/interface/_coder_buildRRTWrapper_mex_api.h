@@ -21,8 +21,8 @@
 #include "buildRRTWrapper_mex_types.h"
 
 /* Function Declarations */
-extern void buildRRTWrapper_api(const mxArray * const prhs[12], const mxArray
-  *plhs[4]);
+extern void buildRRTWrapper_api(buildRRTWrapper_mexStackData *SD, const mxArray *
+  const prhs[9], const mxArray *plhs[4]);
 extern void randomStateGenerator_api(const mxArray * const prhs[5], const
   mxArray *plhs[1]);
 

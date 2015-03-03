@@ -21,8 +21,8 @@
 #include "buildBiDirectionalRRTWrapper_types.h"
 
 /* Function Declarations */
-extern void buildBiDirectionalRRTWrapper_api(const mxArray * const prhs[13],
-  const mxArray *plhs[5]);
+extern void buildBiDirectionalRRTWrapper_api(c_buildBiDirectionalRRTWrapperS *SD,
+  const mxArray * const prhs[9], const mxArray *plhs[5]);
 
 #endif
 

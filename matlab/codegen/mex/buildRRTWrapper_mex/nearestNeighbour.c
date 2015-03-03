@@ -19,175 +19,114 @@
 
 /* Variable Definitions */
 static emlrtRSInfo fb_emlrtRSI = { 29, "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtRSInfo gb_emlrtRSI = { 26, "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
-};
-
-static emlrtRSInfo hb_emlrtRSI = { 18, "min",
+static emlrtRSInfo gb_emlrtRSI = { 18, "min",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/datafun/min.m" };
 
-static emlrtRSInfo ib_emlrtRSI = { 15, "eml_min_or_max",
+static emlrtRSInfo hb_emlrtRSI = { 15, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo jb_emlrtRSI = { 96, "eml_min_or_max",
+static emlrtRSInfo ib_emlrtRSI = { 96, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo kb_emlrtRSI = { 229, "eml_min_or_max",
+static emlrtRSInfo jb_emlrtRSI = { 229, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo lb_emlrtRSI = { 202, "eml_min_or_max",
+static emlrtRSInfo kb_emlrtRSI = { 202, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtMCInfo d_emlrtMCI = { 41, 9, "eml_min_or_max",
+static emlrtMCInfo b_emlrtMCI = { 41, 9, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtMCInfo e_emlrtMCI = { 38, 19, "eml_min_or_max",
+static emlrtMCInfo c_emlrtMCI = { 38, 19, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRTEInfo j_emlrtRTEI = { 5, 38, "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
+static emlrtRTEInfo h_emlrtRTEI = { 5, 38, "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtRTEInfo k_emlrtRTEI = { 5, 33, "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
+static emlrtRTEInfo i_emlrtRTEI = { 5, 33, "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtBCInfo s_emlrtBCI = { -1, -1, 32, 34, "T", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
+static emlrtBCInfo m_emlrtBCI = { 1, 1500, 31, 15, "T", "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo t_emlrtBCI = { -1, -1, 31, 24, "T", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
+static emlrtBCInfo n_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo u_emlrtBCI = { -1, -1, 31, 15, "T", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
+static emlrtBCInfo o_emlrtBCI = { 1, 1500, 26, 39, "T", "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo v_emlrtBCI = { -1, -1, 29, 24, "d", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
-  0 };
-
-static emlrtBCInfo w_emlrtBCI = { -1, -1, 26, 39, "T", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
-  0 };
-
-static emlrtRTEInfo s_emlrtRTEI = { 25, 5, "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
+static emlrtRTEInfo n_emlrtRTEI = { 25, 5, "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-static emlrtBCInfo x_emlrtBCI = { -1, -1, 14, 14, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
+static emlrtBCInfo p_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo y_emlrtBCI = { -1, -1, 15, 13, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo ab_emlrtBCI = { -1, -1, 16, 14, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo bb_emlrtBCI = { -1, -1, 17, 12, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo cb_emlrtBCI = { -1, -1, 18, 16, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo db_emlrtBCI = { -1, -1, 26, 17, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo eb_emlrtBCI = { -1, -1, 27, 16, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo fb_emlrtBCI = { -1, -1, 28, 17, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo gb_emlrtBCI = { -1, -1, 29, 15, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo hb_emlrtBCI = { -1, -1, 30, 14, "xB", "heuristicSingleLeg",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m",
-  0 };
-
-static emlrtBCInfo ib_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
-  0 };
-
-static emlrtRSInfo cc_emlrtRSI = { 38, "eml_min_or_max",
+static emlrtRSInfo yb_emlrtRSI = { 38, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-static emlrtRSInfo ec_emlrtRSI = { 41, "eml_min_or_max",
+static emlrtRSInfo bc_emlrtRSI = { 41, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
 /* Function Declarations */
-static const mxArray *b_message(const emlrtStack *sp, const mxArray *b,
+static const mxArray *message(const emlrtStack *sp, const mxArray *b,
   emlrtMCInfo *location);
 
 /* Function Definitions */
-static const mxArray *b_message(const emlrtStack *sp, const mxArray *b,
+static const mxArray *message(const emlrtStack *sp, const mxArray *b,
   emlrtMCInfo *location)
 {
   const mxArray *pArray;
-  const mxArray *m11;
+  const mxArray *m10;
   pArray = b;
-  return emlrtCallMATLABR2012b(sp, 1, &m11, 1, &pArray, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m10, 1, &pArray, "message", true,
     location);
 }
 
-void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
-                      emxArray_real_T *T, real_T kC_l1, real_T kC_l2, real_T
-                      kC_l3, real_T kC_l4, real_T kC_l5, real_T kC_l6, real_T
-                      kC_l7, real_T kC_l8, real_T kC_zeta, real_T kC_r, real_T
-                      nodeIDCount, int32_T NODE_SIZE, real_T xNear_data[],
-                      int32_T xNear_size[2], emxArray_real_T *transitionArray,
-                      real_T *d)
+void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
+                      [139500], real_T kC_l1, real_T kC_l2, real_T kC_l3, real_T
+                      kC_l4, real_T kC_l5, real_T kC_l6, real_T kC_l7, real_T
+                      kC_l8, real_T kC_zeta, real_T kC_r, real_T nodeIDCount,
+                      real_T xNear[13], real_T transitionArray[80], real_T *d)
 {
   emxArray_real_T *b_d;
-  int32_T i5;
+  int32_T ix;
   int32_T ixstart;
   real_T uA[3];
-  real_T mtmp;
-  real_T q_idx_1;
-  real_T q_idx_2;
   real_T uB[3];
-  real_T qDot_idx_0;
-  real_T qDot_idx_1;
-  real_T qDot_idx_2;
   real_T qDot[3];
   real_T b_qDot[3];
   real_T b_uB[3];
   real_T c_qDot[3];
-  int32_T ix;
-  boolean_T b0;
+  boolean_T b1;
   const mxArray *y;
-  static const int32_T iv7[2] = { 1, 36 };
+  static const int32_T iv4[2] = { 1, 36 };
 
-  const mxArray *m2;
-  char_T cv6[36];
-  static const char_T cv7[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
+  const mxArray *m1;
+  char_T cv2[36];
+  static const char_T cv3[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
     'l', 'b', 'o', 'x', ':', 'a', 'u', 't', 'o', 'D', 'i', 'm', 'I', 'n', 'c',
     'o', 'm', 'p', 'a', 't', 'i', 'b', 'i', 'l', 'i', 't', 'y' };
 
   int32_T itmp;
-  boolean_T b1;
+  boolean_T b2;
   boolean_T exitg1;
   boolean_T b_ixstart;
   emlrtStack st;
@@ -212,7 +151,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
   g_st.prev = &f_st;
   g_st.tls = f_st.tls;
   emlrtHeapReferenceStackEnterFcnR2012b(sp);
-  emxInit_real_T(sp, &b_d, 2, &k_emlrtRTEI, true);
+  emxInit_real_T(sp, &b_d, 2, &i_emlrtRTEI, true);
 
   /* nearestNeigbour.m */
   /* author: wreid */
@@ -232,50 +171,28 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
   /*        xNear:  The node in the tree that is closet to x. */
   /* Iterate over the entire tree and apply the distance heuristic function */
   /* to each node. */
-  i5 = b_d->size[0] * b_d->size[1];
+  ix = b_d->size[0] * b_d->size[1];
   b_d->size[0] = 1;
   b_d->size[1] = (int32_T)nodeIDCount;
-  emxEnsureCapacity(sp, (emxArray__common *)b_d, i5, (int32_T)sizeof(real_T),
-                    &j_emlrtRTEI);
+  emxEnsureCapacity(sp, (emxArray__common *)b_d, ix, (int32_T)sizeof(real_T),
+                    &h_emlrtRTEI);
   ixstart = (int32_T)nodeIDCount;
-  for (i5 = 0; i5 < ixstart; i5++) {
-    b_d->data[i5] = 0.0;
+  for (ix = 0; ix < ixstart; ix++) {
+    b_d->data[ix] = 0.0;
   }
 
   /* parfor i = 1:nodeIDCount */
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, nodeIDCount, mxDOUBLE_CLASS, (int32_T)
-    nodeIDCount, &s_emlrtRTEI, sp);
+    nodeIDCount, &n_emlrtRTEI, sp);
   ixstart = 0;
   while (ixstart <= (int32_T)nodeIDCount - 1) {
-    st.site = &gb_emlrtRSI;
-    i5 = ixstart + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i5, 1, 2000, &w_emlrtBCI, &st);
+    ix = ixstart + 1;
+    emlrtDynamicBoundsCheckFastR2012b(ix, 1, 1500, &o_emlrtBCI, sp);
 
     /* heuristicSingleLeg.m */
     /* author: wreid */
     /* date: 20150107 */
     /* heuristic Calculates the distance between states x1 and x2. */
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(4, 1, i5, &x_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(5, 1, i5, &y_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(6, 1, i5, &ab_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(7, 1, i5, &bb_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(8, 1, i5, &cb_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(9, 1, i5, &db_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(10, 1, i5, &eb_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(11, 1, i5, &fb_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(12, 1, i5, &gb_emlrtBCI, &st);
-    i5 = T->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(13, 1, i5, &hb_emlrtBCI, &st);
-
     /* Calculate the distance between angular positions. */
     /*      xStarMin = legRadius(jointLimits(1,2),jointLimits(1,3),kC); */
     /*      xStarMax = legRadius(jointLimits(2,2),jointLimits(2,3),kC); */
@@ -317,9 +234,6 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     uA[2] = ((((kC_l1 + kC_l3 * muDoubleScalarSin(-x[4])) - kC_l4 *
                muDoubleScalarSin(kC_zeta)) - kC_l5 * muDoubleScalarSin(x[5] +
                kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
-    mtmp = T->data[ixstart + T->size[0] * 3];
-    q_idx_1 = T->data[ixstart + (T->size[0] << 2)];
-    q_idx_2 = T->data[ixstart + T->size[0] * 5];
 
     /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
     /* relative to the pan coordinate frame for the SherpaTT Leg. */
@@ -335,27 +249,22 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     /* sherpaTTFK Sherpa_TT Forward Kinematics */
     /*    Calculates the x,y,z position of the contact point given the alpha, */
     /*    beta and gamma joint values. */
-    uB[0] = ((((kC_l2 + kC_l3 * muDoubleScalarCos(-q_idx_1)) + kC_l4 *
-               muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(q_idx_2 +
-               kC_zeta)) - kC_l7) * muDoubleScalarCos(mtmp);
-    uB[1] = ((((kC_l2 + kC_l3 * muDoubleScalarCos(-q_idx_1)) + kC_l4 *
-               muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(q_idx_2 +
-               kC_zeta)) - kC_l7) * muDoubleScalarSin(mtmp);
-    uB[2] = ((((kC_l1 + kC_l3 * muDoubleScalarSin(-q_idx_1)) - kC_l4 *
-               muDoubleScalarSin(kC_zeta)) - kC_l5 * muDoubleScalarSin(q_idx_2 +
-               kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+    uB[0] = ((((kC_l2 + kC_l3 * muDoubleScalarCos(-T[6000 + ixstart])) + kC_l4 *
+               muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(T[7500 +
+               ixstart] + kC_zeta)) - kC_l7) * muDoubleScalarCos(T[4500 +
+      ixstart]);
+    uB[1] = ((((kC_l2 + kC_l3 * muDoubleScalarCos(-T[6000 + ixstart])) + kC_l4 *
+               muDoubleScalarCos(kC_zeta)) + kC_l5 * muDoubleScalarCos(T[7500 +
+               ixstart] + kC_zeta)) - kC_l7) * muDoubleScalarSin(T[4500 +
+      ixstart]);
+    uB[2] = ((((kC_l1 + kC_l3 * muDoubleScalarSin(-T[6000 + ixstart])) - kC_l4 *
+               muDoubleScalarSin(kC_zeta)) - kC_l5 * muDoubleScalarSin(T[7500 +
+               ixstart] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
     /* sherpaTTFKVel.m */
     /* author: wreid */
     /* date: 20150122 */
     /* sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics. */
-    qDot_idx_0 = T->data[ixstart + (T->size[0] << 3)];
-    qDot_idx_1 = T->data[ixstart + T->size[0] * 9];
-    qDot_idx_2 = T->data[ixstart + T->size[0] * 10];
-    mtmp = T->data[ixstart + T->size[0] * 3];
-    q_idx_1 = T->data[ixstart + (T->size[0] << 2)];
-    q_idx_2 = T->data[ixstart + T->size[0] * 5];
-
     /* sherpaTTFKVel.m */
     /* author: wreid */
     /* date: 20150122 */
@@ -367,19 +276,24 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     /* dPos = norm(uA-uB); */
     /* Calculate the total distance. */
     /* d = HGAINS(1)*dPosNorm;%+HGAINS(2)*dVelNorm;  */
-    qDot[0] = (-qDot_idx_0 * muDoubleScalarSin(mtmp) * ((((kC_l2 - kC_l7) +
-      kC_l5 * muDoubleScalarCos(q_idx_2 + kC_zeta)) + kC_l3 * muDoubleScalarCos
-      (q_idx_1)) + kC_l4 * muDoubleScalarCos(kC_zeta)) - qDot_idx_1 * kC_l3 *
-               muDoubleScalarCos(mtmp) * muDoubleScalarSin(q_idx_1)) -
-      qDot_idx_2 * kC_l5 * muDoubleScalarSin(q_idx_2 + kC_zeta) *
-      muDoubleScalarCos(mtmp);
-    qDot[1] = (qDot_idx_0 * muDoubleScalarCos(mtmp) * ((((kC_l2 - kC_l7) + kC_l5
-      * muDoubleScalarCos(q_idx_2 + kC_zeta)) + kC_l3 * muDoubleScalarCos
-      (q_idx_1)) + kC_l4 * muDoubleScalarCos(kC_zeta)) - qDot_idx_2 * kC_l5 *
-               muDoubleScalarSin(q_idx_2 + kC_zeta) * muDoubleScalarSin(mtmp)) -
-      qDot_idx_1 * kC_l3 * muDoubleScalarSin(mtmp) * muDoubleScalarSin(q_idx_1);
-    qDot[2] = -qDot_idx_1 * kC_l3 * muDoubleScalarCos(q_idx_1) - kC_l5 *
-      qDot_idx_2 * muDoubleScalarCos(kC_zeta + q_idx_2);
+    qDot[0] = (-T[12000 + ixstart] * muDoubleScalarSin(T[4500 + ixstart]) *
+               ((((kC_l2 - kC_l7) + kC_l5 * muDoubleScalarCos(T[7500 + ixstart]
+      + kC_zeta)) + kC_l3 * muDoubleScalarCos(T[6000 + ixstart])) + kC_l4 *
+                muDoubleScalarCos(kC_zeta)) - T[13500 + ixstart] * kC_l3 *
+               muDoubleScalarCos(T[4500 + ixstart]) * muDoubleScalarSin(T[6000 +
+                ixstart])) - T[15000 + ixstart] * kC_l5 * muDoubleScalarSin(T
+      [7500 + ixstart] + kC_zeta) * muDoubleScalarCos(T[4500 + ixstart]);
+    qDot[1] = (T[12000 + ixstart] * muDoubleScalarCos(T[4500 + ixstart]) *
+               ((((kC_l2 - kC_l7) + kC_l5 * muDoubleScalarCos(T[7500 + ixstart]
+      + kC_zeta)) + kC_l3 * muDoubleScalarCos(T[6000 + ixstart])) + kC_l4 *
+                muDoubleScalarCos(kC_zeta)) - T[15000 + ixstart] * kC_l5 *
+               muDoubleScalarSin(T[7500 + ixstart] + kC_zeta) *
+               muDoubleScalarSin(T[4500 + ixstart])) - T[13500 + ixstart] *
+      kC_l3 * muDoubleScalarSin(T[4500 + ixstart]) * muDoubleScalarSin(T[6000 +
+      ixstart]);
+    qDot[2] = -T[13500 + ixstart] * kC_l3 * muDoubleScalarCos(T[6000 + ixstart])
+      - kC_l5 * T[15000 + ixstart] * muDoubleScalarCos(kC_zeta + T[7500 +
+      ixstart]);
     b_qDot[0] = (-x[8] * muDoubleScalarSin(x[3]) * ((((kC_l2 - kC_l7) + kC_l5 *
       muDoubleScalarCos(x[5] + kC_zeta)) + kC_l3 * muDoubleScalarCos(x[4])) +
       kC_l4 * muDoubleScalarCos(kC_zeta)) - x[9] * kC_l3 * muDoubleScalarCos(x[3])
@@ -392,61 +306,61 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
       muDoubleScalarSin(x[3]) * muDoubleScalarSin(x[4]);
     b_qDot[2] = -x[9] * kC_l3 * muDoubleScalarCos(x[4]) - kC_l5 * x[10] *
       muDoubleScalarCos(kC_zeta + x[5]);
-    for (i5 = 0; i5 < 3; i5++) {
-      b_uB[i5] = uB[i5] - uA[i5];
-      c_qDot[i5] = qDot[i5] - b_qDot[i5];
+    for (ix = 0; ix < 3; ix++) {
+      b_uB[ix] = uB[ix] - uA[ix];
+      c_qDot[ix] = qDot[ix] - b_qDot[ix];
     }
 
-    i5 = b_d->size[1];
-    b_d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, i5, &ib_emlrtBCI,
+    ix = b_d->size[1];
+    b_d->data[emlrtDynamicBoundsCheckFastR2012b(ixstart + 1, 1, ix, &p_emlrtBCI,
       sp) - 1] = norm(b_uB) + 0.0 * b_norm(c_qDot);
     ixstart++;
     emlrtBreakCheckFastR2012b(emlrtBreakCheckR2012bFlagVar, sp);
   }
 
-  i5 = b_d->size[1];
-  ix = (int32_T)nodeIDCount;
-  emlrtDynamicBoundsCheckFastR2012b(ix, 1, i5, &v_emlrtBCI, sp);
+  ix = b_d->size[1];
+  ixstart = (int32_T)nodeIDCount;
+  emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &n_emlrtBCI, sp);
   st.site = &fb_emlrtRSI;
-  b_st.site = &hb_emlrtRSI;
-  c_st.site = &ib_emlrtRSI;
+  b_st.site = &gb_emlrtRSI;
+  c_st.site = &hb_emlrtRSI;
   if (((int32_T)nodeIDCount == 1) || ((int32_T)nodeIDCount != 1)) {
-    b0 = true;
+    b1 = true;
   } else {
-    b0 = false;
+    b1 = false;
   }
 
-  if (b0) {
+  if (b1) {
   } else {
     y = NULL;
-    m2 = emlrtCreateCharArray(2, iv7);
+    m1 = emlrtCreateCharArray(2, iv4);
     for (ixstart = 0; ixstart < 36; ixstart++) {
-      cv6[ixstart] = cv7[ixstart];
+      cv2[ixstart] = cv3[ixstart];
     }
 
-    emlrtInitCharArrayR2013a(&c_st, 36, m2, cv6);
-    emlrtAssign(&y, m2);
-    d_st.site = &cc_emlrtRSI;
-    e_st.site = &ec_emlrtRSI;
-    error(&d_st, b_message(&e_st, y, &d_emlrtMCI), &e_emlrtMCI);
+    emlrtInitCharArrayR2013a(&c_st, 36, m1, cv2);
+    emlrtAssign(&y, m1);
+    d_st.site = &yb_emlrtRSI;
+    e_st.site = &bc_emlrtRSI;
+    error(&d_st, message(&e_st, y, &b_emlrtMCI), &c_emlrtMCI);
   }
 
-  d_st.site = &jb_emlrtRSI;
+  d_st.site = &ib_emlrtRSI;
   ixstart = 1;
-  mtmp = b_d->data[0];
+  *d = b_d->data[0];
   itmp = 0;
   if ((int32_T)nodeIDCount > 1) {
-    if (muDoubleScalarIsNaN(mtmp)) {
-      f_st.site = &lb_emlrtRSI;
+    if (muDoubleScalarIsNaN(*d)) {
+      f_st.site = &kb_emlrtRSI;
       if (2 > (int32_T)nodeIDCount) {
-        b1 = false;
+        b2 = false;
       } else {
-        b1 = ((int32_T)nodeIDCount > 2147483646);
+        b2 = ((int32_T)nodeIDCount > 2147483646);
       }
 
-      if (b1) {
-        g_st.site = &mb_emlrtRSI;
-        b_check_forloop_overflow_error(&g_st);
+      if (b2) {
+        g_st.site = &lb_emlrtRSI;
+        check_forloop_overflow_error(&g_st);
       }
 
       ix = 2;
@@ -454,7 +368,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
       while ((!exitg1) && (ix <= (int32_T)nodeIDCount)) {
         ixstart = ix;
         if (!muDoubleScalarIsNaN(b_d->data[ix - 1])) {
-          mtmp = b_d->data[ix - 1];
+          *d = b_d->data[ix - 1];
           itmp = ix - 1;
           exitg1 = true;
         } else {
@@ -464,7 +378,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
     }
 
     if (ixstart < (int32_T)nodeIDCount) {
-      f_st.site = &kb_emlrtRSI;
+      f_st.site = &jb_emlrtRSI;
       if (ixstart + 1 > (int32_T)nodeIDCount) {
         b_ixstart = false;
       } else {
@@ -472,13 +386,13 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
       }
 
       if (b_ixstart) {
-        g_st.site = &mb_emlrtRSI;
-        b_check_forloop_overflow_error(&g_st);
+        g_st.site = &lb_emlrtRSI;
+        check_forloop_overflow_error(&g_st);
       }
 
       while (ixstart + 1 <= (int32_T)nodeIDCount) {
-        if (b_d->data[ixstart] < mtmp) {
-          mtmp = b_d->data[ixstart];
+        if (b_d->data[ixstart] < *d) {
+          *d = b_d->data[ixstart];
           itmp = ixstart;
         }
 
@@ -488,39 +402,15 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const
   }
 
   emxFree_real_T(&b_d);
-  *d = mtmp;
 
   /* [d,minIndex] = min(d(1:nodeIDCount)); */
-  i5 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, i5, &t_emlrtBCI, sp);
-  i5 = T->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(NODE_SIZE, 1, i5, &t_emlrtBCI, sp);
-  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 2000, &u_emlrtBCI, sp);
-  xNear_size[0] = 1;
-  xNear_size[1] = 13;
-  for (i5 = 0; i5 < 13; i5++) {
-    xNear_data[xNear_size[0] * i5] = T->data[itmp + T->size[0] * i5];
+  emlrtDynamicBoundsCheckFastR2012b(itmp + 1, 1, 1500, &m_emlrtBCI, sp);
+  for (ix = 0; ix < 13; ix++) {
+    xNear[ix] = T[itmp + 1500 * ix];
   }
 
-  if (14 > T->size[1]) {
-    i5 = 0;
-    ix = 0;
-  } else {
-    i5 = 13;
-    ix = T->size[1];
-    ixstart = T->size[1];
-    ix = emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &s_emlrtBCI, sp);
-  }
-
-  ixstart = transitionArray->size[0] * transitionArray->size[1];
-  transitionArray->size[0] = 1;
-  transitionArray->size[1] = ix - i5;
-  emxEnsureCapacity(sp, (emxArray__common *)transitionArray, ixstart, (int32_T)
-                    sizeof(real_T), &j_emlrtRTEI);
-  ixstart = ix - i5;
-  for (ix = 0; ix < ixstart; ix++) {
-    transitionArray->data[transitionArray->size[0] * ix] = T->data[itmp +
-      T->size[0] * (i5 + ix)];
+  for (ix = 0; ix < 80; ix++) {
+    transitionArray[ix] = T[itmp + 1500 * (13 + ix)];
   }
 
   emlrtHeapReferenceStackLeaveFcnR2012b(sp);

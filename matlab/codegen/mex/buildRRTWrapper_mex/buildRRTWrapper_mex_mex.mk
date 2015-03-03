@@ -1,4 +1,4 @@
-START_DIR = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab
+START_DIR = /Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab
 
 MATLAB_ROOT = /Applications/MATLAB_R2014b.app
 MAKEFILE = buildRRTWrapper_mex_mex.mk
@@ -26,9 +26,12 @@ SRC_FILES =  \
 	buildRRT.c \
 	getXStar.c \
 	nearestNeighbour.c \
+	heuristicSingleLeg.c \
 	norm.c \
 	selectInput.c \
 	rk4.c \
+	getPhiAndOmega.c \
+	angDiff.c \
 	_coder_buildRRTWrapper_mex_api.c \
 	buildRRTWrapper_mex_emxutil.c \
 	_coder_buildRRTWrapper_mex_mex.c \
@@ -63,8 +66,8 @@ SYS_INCLUDE = $(ML_INCLUDES)
 # Additional includes
 
 SYS_INCLUDE += -I "$(START_DIR)"
-SYS_INCLUDE += -I "$(START_DIR)/codegen/mex/buildRRTWrapper_mex"
-SYS_INCLUDE += -I "$(START_DIR)/codegen/mex/buildRRTWrapper_mex/interface"
+SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper_mex"
+SYS_INCLUDE += -I "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper_mex/interface"
 SYS_INCLUDE += -I "$(START_DIR)/evaluation"
 SYS_INCLUDE += -I "$(START_DIR)/rrt"
 SYS_INCLUDE += -I "$(MATLAB_ROOT)/extern/include"
@@ -126,7 +129,7 @@ CPPFLAGS =   $(CXX_FLAGS) $(USER_INCLUDE) $(SYS_INCLUDE)
 %.$(OBJEXT) : $(START_DIR)/%.c
 	$(CC) $(CCFLAGS) "$<"
 
-%.$(OBJEXT) : $(START_DIR)/codegen/mex/buildRRTWrapper_mex/%.c
+%.$(OBJEXT) : /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper_mex/%.c
 	$(CC) $(CCFLAGS) "$<"
 
 %.$(OBJEXT) : interface/%.c
@@ -137,7 +140,7 @@ CPPFLAGS =   $(CXX_FLAGS) $(USER_INCLUDE) $(SYS_INCLUDE)
 %.$(OBJEXT) : $(START_DIR)/%.cu
 	$(CC) $(CCFLAGS) "$<"
 
-%.$(OBJEXT) : $(START_DIR)/codegen/mex/buildRRTWrapper_mex/%.cu
+%.$(OBJEXT) : /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper_mex/%.cu
 	$(CC) $(CCFLAGS) "$<"
 
 %.$(OBJEXT) : interface/%.cu
@@ -148,7 +151,7 @@ CPPFLAGS =   $(CXX_FLAGS) $(USER_INCLUDE) $(SYS_INCLUDE)
 %.$(OBJEXT) : $(START_DIR)/%.cpp
 	$(CXX) $(CPPFLAGS) "$<"
 
-%.$(OBJEXT) : $(START_DIR)/codegen/mex/buildRRTWrapper_mex/%.cpp
+%.$(OBJEXT) : /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/buildRRTWrapper_mex/%.cpp
 	$(CXX) $(CPPFLAGS) "$<"
 
 %.$(OBJEXT) : interface/%.cpp

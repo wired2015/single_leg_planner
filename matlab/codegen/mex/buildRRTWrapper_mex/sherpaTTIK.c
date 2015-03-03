@@ -19,7 +19,7 @@
 
 /* Variable Definitions */
 static emlrtRSInfo h_emlrtRSI = { 22, "sherpaTTIK",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
 };
 
 static emlrtRSInfo i_emlrtRSI = { 14, "sqrt",

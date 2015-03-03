@@ -16,7 +16,7 @@
 % author: wreid
 % date: 20150107
 
-function planEval(useMex)
+function planEval2(useMex)
     
     clc
     addpath(genpath('~/Dropbox/PhD/matlab/rvctools'))
@@ -53,9 +53,9 @@ function planEval(useMex)
         %Generate the RRT and time how long it takes to be generated.
         tic
         if useMex
-            [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper_mex(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,int32(i),uBDot);
+            [T1,T2,pathC,pathJ,success] = sherpaTTPlanner_mex('buildBiDirectionalRRTWrapper',sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,kC,int32(i),uBDot);
         else
-            [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,i,uBDot);
+            [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,kC,i,uBDot);
         end
         planningTime = toc;
 

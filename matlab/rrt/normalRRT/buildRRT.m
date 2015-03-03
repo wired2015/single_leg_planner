@@ -43,8 +43,10 @@ function [T,path] = buildRRT(nInit,nGoal,NUM_NODES,jointLimits,cartesianLimits,p
     [xNearest,transitionArrayNearest,~] = nearestNeighbour(nGoal,T,HGAINS,jointLimits,kC,nodeIDCount,NODE_SIZE);
         
     check = xNearest(1);
+    next = [];
     next = xNearest;
     path = [];
+    transitionArray = [];
     transitionArray = transitionArrayNearest;
     
     %Iterate over the tree until the initial state has been found.

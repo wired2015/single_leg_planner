@@ -8,7 +8,7 @@
 %uNew:  The new position vector.
 %thetaNew: The roll, pitch and yaw angles.
 
-function [uNew,thetaNew] = tr(u,T)
+function [uNew] = tr(u,T)
     uNew = T(1:3,1:3)*u+T(1:3,4);
-    thetaNew = tr2rpy(T);
+    %thetaNew = tr2rpy(T);
 end

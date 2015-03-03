@@ -1,4 +1,4 @@
-figure
+figure(1)
 hold on
 view(-35,22)
 axis equal
@@ -40,7 +40,7 @@ zPMid2 = cartesianLimits(4);
 
 rMid1 = 0.8232;
 
-n = 20;
+n = 30;
 
 alpha = linspace(alphaMin,alphaMax,n);
 
@@ -114,5 +114,16 @@ Z = k*X.*exp(-X.^2 - Y.^2) +...
 h = mesh(X,Y,Z,'FaceAlpha',1,'LineWidth',1);
 
 %% Find the intersections between the two.
+% contour = [];
+% for i = 1:n
+%     for j = 1:n
+%         zContour = interp2(X,Y,Z,xG1(i,j),yG1(i,j));
+%         contour = [contour [xG1(i,j);yG1(i,j);zContour]];
+%     end
+% end
+% 
+% plot3(contour(1,:),contour(2,:),contour(3,:),'k*');
+% hold off
 
+        
 

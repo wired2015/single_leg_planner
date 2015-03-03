@@ -27,17 +27,18 @@ emlrtEntryPoint emlrtEntryPoints[2] = {
 static void buildRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[4];
-  const mxArray *inputs[12];
+  const mxArray *inputs[9];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
   int nInputs = nrhs;
   emlrtStack st = { NULL, NULL, NULL };
+  buildRRTWrapper_mexStackData* c_buildRRTWrapper_mexStackDataL = (buildRRTWrapper_mexStackData*)mxCalloc(1,sizeof(buildRRTWrapper_mexStackData));
   /* Module initialization. */
   buildRRTWrapper_mex_initialize(&emlrtContextGlobal);
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 12) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 12, mxCHAR_CLASS, 15, "buildRRTWrapper");
+  if (nrhs != 9) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 9, mxCHAR_CLASS, 15, "buildRRTWrapper");
   } else if (nlhs > 4) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 15, "buildRRTWrapper");
   }
@@ -46,13 +47,14 @@ static void buildRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], int nrhs, con
     inputs[n] = prhs[n];
   }
   /* Call the function. */
-  buildRRTWrapper_api(inputs, outputs);
+  buildRRTWrapper_api(c_buildRRTWrapper_mexStackDataL, inputs, outputs);
   /* Copy over outputs to the caller. */
   for (n = 0; n < nOutputs; ++n) {
     plhs[n] = emlrtReturnArrayR2009a(outputs[n]);
   }
   /* Module finalization. */
   buildRRTWrapper_mex_terminate();
+  mxFree(c_buildRRTWrapper_mexStackDataL);
 }
 static void randomStateGenerator_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {

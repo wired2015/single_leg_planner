@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.matlabcoder" plugin-version="R2014a_nu">
-  <configuration build-checksum="938641763" file="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/biDirRRT.prj" location="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab" name="biDirRRT" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
+  <configuration build-checksum="2453253448" file="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/biDirRRT.prj" location="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab" name="biDirRRT" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
     <profile key="profile.mex">
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
@@ -298,9 +298,7 @@
         <param.HardwareSizeFloat.Target />
         <param.HardwareSizeDouble.Target />
         <param.HardwareEndianness.Target />
-        <param.HardwareAtomicIntegerSize.Target />
         <param.HardwareAtomicFloatSize.Target />
-        <param.Toolchain />
         <param.BuildConfiguration />
         <param.CustomToolchainOptions />
         <param.CastingMode />
@@ -344,7 +342,7 @@
     <param.AutoInferUseUnboundedSize>false</param.AutoInferUseUnboundedSize>
     <param.AutoInferVariableSizeThreshold>1024</param.AutoInferVariableSizeThreshold>
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
-    <param.AnnotationChecksum>3166736721</param.AnnotationChecksum>
+    <param.AnnotationChecksum>2868889562</param.AnnotationChecksum>
     <param.mex.outputfile>buildBiDirectionalRRTWrapper_mex</param.mex.outputfile>
     <param.grt.outputfile>buildBiDirectionalRRTWrapper</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
@@ -443,7 +441,7 @@
       <param.DefaultFixedPointSignedness />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m">
+      <file custom-data-expanded="true" value="${PROJECT_ROOT}/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m">
         <Inputs fileName="buildBiDirectionalRRTWrapper.m" functionName="buildBiDirectionalRRTWrapper">
           <Input Name="nInitCartesianB">
             <Class>double</Class>
@@ -486,30 +484,6 @@
             <Complex>false</Complex>
           </Input>
           <Input Name="bodyHeight">
-            <Class>double</Class>
-            <Size>1 x 1</Size>
-            <Value />
-            <InitialValue />
-            <UserDefined>true</UserDefined>
-            <Complex>false</Complex>
-          </Input>
-          <Input Name="U">
-            <Class>double</Class>
-            <Size>9 x 2</Size>
-            <Value />
-            <InitialValue />
-            <UserDefined>true</UserDefined>
-            <Complex>false</Complex>
-          </Input>
-          <Input Name="dt">
-            <Class>double</Class>
-            <Size>1 x 1</Size>
-            <Value />
-            <InitialValue />
-            <UserDefined>true</UserDefined>
-            <Complex>false</Complex>
-          </Input>
-          <Input Name="Dt">
             <Class>double</Class>
             <Size>1 x 1</Size>
             <Value />
@@ -631,14 +605,6 @@
               <UserDefined>true</UserDefined>
               <Complex>false</Complex>
             </Field>
-          </Input>
-          <Input Name="threshold">
-            <Class>double</Class>
-            <Size>1 x 1</Size>
-            <Value />
-            <InitialValue />
-            <UserDefined>true</UserDefined>
-            <Complex>false</Complex>
           </Input>
           <Input Name="legNum">
             <Class>int32</Class>

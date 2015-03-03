@@ -19,5 +19,7 @@ function states = randomStateGenerator(NUM_POINTS,jointLimits,kC,panHeight,legNu
     for i = 1:NUM_POINTS
         states(i,:) = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,legNum) 0 0 0];
     end
+    
+    %save('experimentStates','states')
 
 end

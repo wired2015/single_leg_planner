@@ -2,7 +2,7 @@
 // File: rk4.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 27-Feb-2015 15:48:27
+// C/C++ source code generated on  : 03-Mar-2015 11:19:40
 //
 #ifndef __RK4_H__
 #define __RK4_H__
@@ -15,13 +15,12 @@
 #include "rt_defines.h"
 #include "rt_nonfinite.h"
 #include "rtwtypes.h"
-#include "buildRRTWrapper_types.h"
+#include "sherpaTTPlanner_types.h"
 
 // Function Declarations
-extern void rk4(const double uIn[2], const double uBDot[6], double dt, double Dt,
-                double xInit_data[], const double jointLimits[20], const
-                struct0_T *kC, int legNum, double xNew_data[], int xNew_size[2],
-                emxArray_real_T *transitionArray);
+extern void rk4(const double uIn[2], const double uBDot[6], const double xInit
+                [13], const double jointLimits[20], const struct0_T *kC, int
+                legNum, double xNewFull[13], double transitionArray[80]);
 
 #endif
 

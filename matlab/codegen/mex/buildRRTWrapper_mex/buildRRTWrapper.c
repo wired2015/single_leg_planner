@@ -19,115 +19,89 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static real_T cartesianLimits[4];
-static real_T HGAINS[3];
-static emlrtRSInfo emlrtRSI = { 72, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo emlrtRSI = { 44, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo b_emlrtRSI = { 81, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo b_emlrtRSI = { 53, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo c_emlrtRSI = { 82, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo c_emlrtRSI = { 54, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo d_emlrtRSI = { 96, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo d_emlrtRSI = { 68, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo e_emlrtRSI = { 98, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo e_emlrtRSI = { 70, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo f_emlrtRSI = { 109, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo f_emlrtRSI = { 85, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRSInfo g_emlrtRSI = { 114, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRSInfo g_emlrtRSI = { 90, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRTEInfo emlrtRTEI = { 28, 36, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRTEInfo emlrtRTEI = { 24, 36, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtRTEInfo b_emlrtRTEI = { 28, 13, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtRTEInfo b_emlrtRTEI = { 24, 13, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
 static emlrtBCInfo emlrtBCI = { -1, -1, 21, 15, "s1", "linInterp",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/linearInterpolator/linInterp.m",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/linearInterpolator/linInterp.m",
   0 };
 
-static emlrtBCInfo b_emlrtBCI = { -1, -1, 20, 14, "s1", "linInterp",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/linearInterpolator/linInterp.m",
+static emlrtBCInfo b_emlrtBCI = { -1, -1, 108, 15, "pathC", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo c_emlrtBCI = { -1, -1, 132, 15, "pathC", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
+static emlrtBCInfo c_emlrtBCI = { -1, -1, 106, 48, "pathC", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo d_emlrtBCI = { -1, -1, 130, 48, "pathC", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
+static emlrtBCInfo d_emlrtBCI = { -1, -1, 102, 50, "pathJ", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo e_emlrtBCI = { -1, -1, 126, 50, "pathJ", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
+static emlrtBCInfo e_emlrtBCI = { -1, -1, 102, 37, "pathJ", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo f_emlrtBCI = { -1, -1, 126, 37, "pathJ", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
+static emlrtBCInfo f_emlrtBCI = { -1, -1, 101, 31, "pathJ", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo g_emlrtBCI = { -1, -1, 125, 31, "pathJ", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
-  0 };
-
-static emlrtECInfo emlrtECI = { 2, 110, 13, "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
+static emlrtECInfo emlrtECI = { 2, 86, 13, "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m"
 };
 
-static emlrtBCInfo i_emlrtBCI = { -1, -1, 107, 21, "pathC", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
+static emlrtBCInfo h_emlrtBCI = { -1, -1, 82, 25, "pathC", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
-static emlrtBCInfo j_emlrtBCI = { -1, -1, 22, 10, "s1", "linInterp",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/linearInterpolator/linInterp.m",
+static emlrtBCInfo i_emlrtBCI = { -1, -1, 22, 10, "s1", "linInterp",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/linearInterpolator/linInterp.m",
   0 };
 
-static emlrtBCInfo k_emlrtBCI = { -1, -1, 132, 29, "pathJ", "buildRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
+static emlrtBCInfo j_emlrtBCI = { -1, -1, 108, 29, "pathJ", "buildRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/buildRRTWrapper.m",
   0 };
 
 /* Function Definitions */
-void HGAINS_not_empty_init(void)
-{
-}
-
-void NODE_SIZE_not_empty_init(void)
-{
-}
-
-void NUM_NODES_not_empty_init(void)
-{
-}
-
-void U_SIZE_not_empty_init(void)
-{
-}
-
-void ankleThreshold_not_empty_init(void)
-{
-}
-
-void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
-                     const real_T nGoalCartesianB[6], real_T phiInit, real_T
-                     omegaInit, const real_T jointLimits[20], real_T bodyHeight,
-                     const real_T U[18], real_T dt, real_T Dt, const struct0_T
-                     *kC, int32_T legNum, const real_T uBDot[6], emxArray_real_T
-                     *T, emxArray_real_T *pathC, emxArray_real_T *pathJ,
+void buildRRTWrapper(buildRRTWrapper_mexStackData *SD, const emlrtStack *sp,
+                     const real_T nInitCartesianB[6], const real_T
+                     nGoalCartesianB[6], real_T phiInit, real_T omegaInit, const
+                     real_T jointLimits[20], real_T bodyHeight, const struct0_T *
+                     kC, int32_T legNum, const real_T uBDot[6], emxArray_real_T *
+                     T, emxArray_real_T *pathC, emxArray_real_T *pathJ,
                      boolean_T *success)
 {
   real_T TP2B[16];
@@ -146,16 +120,16 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   real_T uB[3];
   real_T c_TB2P[3];
   real_T nGoalJoint[10];
-  emxArray_real_T *b_T;
   emxArray_real_T *b_pathC;
   real_T dv0[13];
   real_T dv1[13];
-  int32_T loop_ub;
   int32_T pathJ_idx_0;
+  int32_T loop_ub;
   real_T dist2Go;
   int32_T i;
   real_T newState[3];
   real_T b_pathJ[3];
+  real_T sFinalC_data[9];
   real_T sGoalC[9];
   real_T pathCorrection[90];
   real_T b_newState;
@@ -174,11 +148,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   /* -nGoalCartesianB: */
   /* -jointLimits: */
   /* -bodyHeight: */
-  /* -U: */
-  /* -dt: */
-  /* -Dt: */
   /* -kC: */
-  /* -threshold: */
   /* -legNum: */
   /* -uBDot: */
   /*  */
@@ -212,7 +182,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   /* trP2B.m */
   /* author:    wreid */
   /* date:      20150214 */
-  emlrtDynamicBoundsCheckFastR2012b(legNum, 1, 4, &h_emlrtBCI, &st);
+  emlrtDynamicBoundsCheckFastR2012b(legNum, 1, 4, &g_emlrtBCI, &st);
 
   /* TRDH Generates the homogeneous transformation matrix A using the  */
   /* Denavit-Hartenberg parameters theta, d, a and alpha. */
@@ -328,7 +298,6 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 
   /* Check that the initial and final positions are valid. If they are not */
   /* return failure and an empty path. */
-  emxInit_real_T(sp, &b_T, 2, &emlrtRTEI, true);
   emxInit_real_T(sp, &b_pathC, 2, &b_emlrtRTEI, true);
   if (validJointState(nInitJoint, jointLimits) && validJointState(nGoalJoint,
        jointLimits)) {
@@ -347,16 +316,15 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
     }
 
     st.site = &d_emlrtRSI;
-    buildRRT(&st, dv0, dv1, jointLimits, -(bodyHeight + kC->B2PZOffset), U, dt,
-             Dt, kC, uBDot, legNum, b_T, pathJ);
+    buildRRT(&st, dv0, dv1, jointLimits, -(bodyHeight + kC->B2PZOffset), kC,
+             uBDot, legNum, SD->f0.T, pathJ);
     i0 = T->size[0] * T->size[1];
-    T->size[0] = 2000;
-    T->size[1] = b_T->size[1];
+    T->size[0] = 1500;
+    T->size[1] = 93;
     emxEnsureCapacity(sp, (emxArray__common *)T, i0, (int32_T)sizeof(real_T),
                       &emlrtRTEI);
-    loop_ub = b_T->size[0] * b_T->size[1];
-    for (i0 = 0; i0 < loop_ub; i0++) {
-      T->data[i0] = b_T->data[i0];
+    for (i0 = 0; i0 < 139500; i0++) {
+      T->data[i0] = SD->f0.T[i0];
     }
 
     /* Transform path back to the Cartesian space. */
@@ -377,7 +345,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
     while (i <= pathJ->size[0] - 1) {
       i0 = pathJ->size[0];
       i1 = i + 1;
-      emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &g_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &f_emlrtBCI, &st);
 
       /* SHERPATTFK Calcluates the Cartesian position of the wheel contact point */
       /* relative to the pan coordinate frame for the SherpaTT Leg. */
@@ -409,10 +377,10 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
         3] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
       i0 = pathJ->size[0];
       i1 = i + 1;
-      emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &f_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &e_emlrtBCI, &st);
       i0 = pathJ->size[0];
       i1 = i + 1;
-      emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &e_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &d_emlrtBCI, &st);
 
       /* sherpaTTFKVel.m */
       /* author: wreid */
@@ -429,7 +397,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 
       if (1 + i != 1) {
         i0 = pathC->size[0];
-        pathJ_idx_0 = emlrtDynamicBoundsCheckFastR2012b(i, 1, i0, &d_emlrtBCI,
+        pathJ_idx_0 = emlrtDynamicBoundsCheckFastR2012b(i, 1, i0, &c_emlrtBCI,
           &st);
         for (i0 = 0; i0 < 3; i0++) {
           c_TP2B[i0] = uB[i0] - pathC->data[(pathJ_idx_0 + pathC->size[0] * (2 +
@@ -441,7 +409,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 
       pathJ_idx_0 = pathC->size[0];
       i0 = 1 + i;
-      emlrtDynamicBoundsCheckFastR2012b(i0, 1, pathJ_idx_0, &c_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckFastR2012b(i0, 1, pathJ_idx_0, &b_emlrtBCI, &st);
       b_pathJ[0] = (-pathJ->data[i + pathJ->size[0] * 6] * muDoubleScalarSin
                     (pathJ->data[i + pathJ->size[0]]) * ((((kC->l2 - kC->l7) +
         kC->l5 * muDoubleScalarCos(pathJ->data[i + pathJ->size[0] * 3] +
@@ -477,7 +445,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
       i0 = pathJ->size[0];
       i1 = 1 + i;
       pathC->data[i] = pathJ->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0,
-        &k_emlrtBCI, &st) - 1];
+        &j_emlrtBCI, &st) - 1];
       pathC->data[i + pathC->size[0]] = dist2Go;
       for (i0 = 0; i0 < 3; i0++) {
         pathC->data[i + pathC->size[0] * (i0 + 2)] = uB[i0];
@@ -520,12 +488,29 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
                       &emlrtRTEI);
   }
 
-  emxFree_real_T(&b_T);
-
   /* Linearly interpolate to the goal state from the final state. */
-  i0 = b_pathC->size[0];
-  i1 = b_pathC->size[0];
-  emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &i_emlrtBCI, sp);
+  if ((b_pathC->size[0] == 0) || (b_pathC->size[1] == 0)) {
+    b_TP2B[0] = 0.0;
+    b_TP2B[1] = 0.0;
+    for (i0 = 0; i0 < 6; i0++) {
+      b_TP2B[i0 + 2] = nInitCartesianB[i0];
+    }
+
+    b_TP2B[8] = 1.0;
+    loop_ub = 9;
+    for (i0 = 0; i0 < 9; i0++) {
+      sFinalC_data[i0] = b_TP2B[i0];
+    }
+  } else {
+    loop_ub = b_pathC->size[1];
+    i0 = b_pathC->size[0];
+    i1 = b_pathC->size[0];
+    pathJ_idx_0 = emlrtDynamicBoundsCheckFastR2012b(i1, 1, i0, &h_emlrtBCI, sp);
+    for (i0 = 0; i0 < loop_ub; i0++) {
+      sFinalC_data[i0] = b_pathC->data[(pathJ_idx_0 + b_pathC->size[0] * i0) - 1];
+    }
+  }
+
   sGoalC[0] = 0.0;
   sGoalC[1] = 0.0;
   for (i0 = 0; i0 < 6; i0++) {
@@ -551,23 +536,12 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
   /* linInterp.m */
   /* author: wreid */
   /* date: 20150224 */
-  i0 = b_pathC->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(1, 1, i0, &b_emlrtBCI, &st);
-  i0 = b_pathC->size[1];
-  emlrtDynamicBoundsCheckFastR2012b(2, 1, i0, &emlrtBCI, &st);
-  pathJ_idx_0 = b_pathC->size[0];
-  dist2Go = b_pathC->data[(pathJ_idx_0 + b_pathC->size[0]) - 1];
-  i0 = b_pathC->size[1];
-  loop_ub = b_pathC->size[1];
-  pathJ_idx_0 = b_pathC->size[0];
-  for (i1 = 0; i1 < loop_ub; i1++) {
-    b_TP2B[i1] = b_pathC->data[(pathJ_idx_0 + b_pathC->size[0] * i1) - 1];
-  }
-
-  for (i1 = 0; i1 < 3; i1++) {
-    pathJ_idx_0 = 3 + i1;
-    qInit[i1] = b_TP2B[emlrtDynamicBoundsCheckFastR2012b(pathJ_idx_0, 1, i0,
-      &j_emlrtBCI, &st) - 1];
+  emlrtDynamicBoundsCheckFastR2012b(2, 1, loop_ub, &emlrtBCI, &st);
+  dist2Go = sFinalC_data[1];
+  for (i0 = 0; i0 < 3; i0++) {
+    i1 = 3 + i0;
+    qInit[i0] = sFinalC_data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, loop_ub,
+      &i_emlrtBCI, &st) - 1];
   }
 
   for (i0 = 0; i0 < 3; i0++) {
@@ -583,9 +557,7 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
     }
 
     dist2Go += norm(c_TP2B);
-    pathJ_idx_0 = b_pathC->size[0];
-    pathCorrection[i] = b_pathC->data[pathJ_idx_0 - 1] + (1.0 + (real_T)i) /
-      10.0;
+    pathCorrection[i] = sFinalC_data[0] + (1.0 + (real_T)i) / 10.0;
     pathCorrection[10 + i] = dist2Go;
     for (i0 = 0; i0 < 3; i0++) {
       pathCorrection[i + 10 * (i0 + 2)] = newState[i0];
@@ -684,38 +656,6 @@ void buildRRTWrapper(const emlrtStack *sp, const real_T nInitCartesianB[6],
 
   emxFree_real_T(&c_pathJ);
   emlrtHeapReferenceStackLeaveFcnR2012b(sp);
-}
-
-void buildRRTWrapper_init(void)
-{
-  int32_T i10;
-  static const real_T dv15[4] = { -0.293, -1.1326, -0.671, -0.7546 };
-
-  static const real_T dv16[3] = { 1.0, 0.0, 0.5 };
-
-  for (i10 = 0; i10 < 4; i10++) {
-    cartesianLimits[i10] = dv15[i10];
-  }
-
-  for (i10 = 0; i10 < 3; i10++) {
-    HGAINS[i10] = dv16[i10];
-  }
-}
-
-void cartesianLimits_not_empty_init(void)
-{
-}
-
-void exhaustive_not_empty_init(void)
-{
-}
-
-void goalSeedFreq_not_empty_init(void)
-{
-}
-
-void threshold_not_empty_init(void)
-{
 }
 
 /* End of code generation (buildRRTWrapper.c) */

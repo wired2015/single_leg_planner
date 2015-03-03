@@ -24,41 +24,22 @@
 %author: wreid
 %date: 20150502
 
-function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,threshold,legNum,uBDot)
-
-    persistent NUM_NODES 
-    persistent NODE_SIZE 
-    persistent U_SIZE 
-    persistent ankleThreshold 
-    persistent exhaustive 
-    persistent goalSeedFreq 
-    persistent cartesianLimits
-    persistent HGAINS
+function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,kC,legNum,uBDot)
     
-    if isempty(NODE_SIZE)
-        NODE_SIZE = int32(13);
-    end
-    if isempty(U_SIZE)
-        U_SIZE = int32(5);
-    end
-    if isempty(ankleThreshold)
-        ankleThreshold = pi/8;
-    end
-    if isempty(exhaustive)
-        exhaustive = false;
-    end
-    if isempty(goalSeedFreq)
-        goalSeedFreq = int32(20);
-    end
-    if isempty(cartesianLimits)
-        cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
-    end
-    if isempty(NUM_NODES)
-        NUM_NODES = int32(2000);
-    end
-    if isempty(HGAINS)
-        HGAINS = [1 0 0.5];
-    end
+    NODE_SIZE = int32(13);
+    U_SIZE = int32(5);
+    ankleThreshold = pi/8;
+    exhaustive = false;
+    goalSeedFreq = int32(20);
+    cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
+    dt = 0.1;
+    Dt = 0.7;
+    HGAINS = [1 0 0.5];
+    threshold = 0.005;
+    stepAccRatio = 14;
+    eta = Dt/stepAccRatio;
+    U = eta*[1 0; -1 0; 0 1; 0 -1; 0 0]; 
+    NUM_NODES = int32(1500);
     
     panHeight  = getPanHeight(bodyHeight,kC);
 

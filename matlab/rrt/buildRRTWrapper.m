@@ -7,11 +7,7 @@
 %-nGoalCartesianB:
 %-jointLimits:
 %-bodyHeight:
-%-U:
-%-dt:
-%-Dt:
 %-kC:
-%-threshold:
 %-legNum:
 %-uBDot:
 %
@@ -25,46 +21,22 @@
 %author: wreid
 %date: 20150502
 
-function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,U,dt,Dt,kC,legNum,uBDot)
+function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,kC,legNum,uBDot)
 
-    persistent NUM_NODES 
-    persistent NODE_SIZE 
-    persistent U_SIZE 
-    persistent ankleThreshold 
-    persistent exhaustive 
-    persistent goalSeedFreq 
-    persistent cartesianLimits
-    persistent HGAINS
-    persistent threshold
-    
-    if isempty(NUM_NODES)
-        NUM_NODES = int32(2000);
-    end
-    if isempty(NODE_SIZE)
-        NODE_SIZE = int32(13);
-    end
-    if isempty(U_SIZE)
-        U_SIZE = int32(5);
-    end
-    if isempty(ankleThreshold)
-        ankleThreshold = 5*pi/180;
-    end
-    if isempty(exhaustive)
-        exhaustive = false;
-    end
-    if isempty(goalSeedFreq)
-        goalSeedFreq = int32(20);
-    end
-    if isempty(cartesianLimits)
-        cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
-    end
-    if isempty(HGAINS)
-        HGAINS = [1 0 0.5];
-    end
-    if isempty(threshold)
-        threshold = 0.005;
-    end
-    
+    NUM_NODES = int32(1500);
+    NODE_SIZE = int32(13);
+    U_SIZE = int32(5);
+    ankleThreshold = 5*pi/180;
+    exhaustive = false;
+    goalSeedFreq = int32(20);
+    cartesianLimits = [-0.2930   -1.1326   -0.6710   -0.7546];
+    dt = 0.1;
+    Dt = 0.7;
+    HGAINS = [1 0 0.5];
+    threshold = 0.005;
+    stepAccRatio = 14;
+    eta = Dt/stepAccRatio;
+    U = eta*[1 0; -1 0; 0 1; 0 -1; 0 0];     
     panHeight  = getPanHeight(bodyHeight,kC);
 
     %Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame
@@ -104,7 +76,11 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     end
     
     %Linearly interpolate to the goal state from the final state.
-    sFinalC = pathC(end,:);
+    if isempty(pathC)
+        sFinalC = [0 0 nInitCartesianB true];
+    else
+        sFinalC = pathC(end,:);
+    end
     sGoalC = [0 0 nGoalCartesianB true];
     pathCorrection = linInterp(sFinalC,sGoalC,10);
     pathC = [pathC; pathCorrection];

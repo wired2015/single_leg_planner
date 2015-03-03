@@ -2,11 +2,12 @@
 // File: generateTrMatrices.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 27-Feb-2015 15:48:27
+// C/C++ source code generated on  : 03-Mar-2015 11:19:40
 //
 
 // Include Files
 #include "rt_nonfinite.h"
+#include "buildBiDirectionalRRTWrapper.h"
 #include "buildRRTWrapper.h"
 #include "randomStateGenerator.h"
 #include "generateTrMatrices.h"
@@ -50,31 +51,31 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   TR2Q[16], double TS2R[16], double TW2S[16], double TC2W[16])
 {
   signed char I[9];
-  int i7;
+  int i10;
   int k;
   double theta;
   static const signed char iv2[4] = { 0, 0, 0, 1 };
 
   static const signed char iv3[4] = { 0, 0, 1, 0 };
 
-  static const double dv7[4] = { 0.0, -1.0, 6.123233995736766E-17, 0.0 };
+  static const double dv8[4] = { 0.0, -1.0, 6.123233995736766E-17, 0.0 };
 
   static const signed char iv4[4] = { 1, 0, 0, 0 };
 
   static const signed char iv5[4] = { 0, 1, 0, 0 };
 
-  static const double dv8[4] = { 6.123233995736766E-17, -6.123233995736766E-17,
+  static const double dv9[4] = { 6.123233995736766E-17, -6.123233995736766E-17,
     1.0, 0.0 };
 
-  static const double dv9[4] = { 1.0, 3.749399456654644E-33,
+  static const double dv10[4] = { 1.0, 3.749399456654644E-33,
     -6.123233995736766E-17, 0.0 };
 
-  double dv10[16];
-  static const double dv11[4] = { 6.123233995736766E-17, -1.0, 0.0, 0.0 };
+  double dv11[16];
+  static const double dv12[4] = { 6.123233995736766E-17, -1.0, 0.0, 0.0 };
 
-  static const double dv12[4] = { 1.0, 6.123233995736766E-17, -0.0, 0.0 };
+  static const double dv13[4] = { 1.0, 6.123233995736766E-17, -0.0, 0.0 };
 
-  int i8;
+  int i11;
   static const double a[16] = { 1.0, 0.0, 0.0, 0.0, -0.0, 6.123233995736766E-17,
     1.0, 0.0, 0.0, -1.0, 6.123233995736766E-17, 0.0, 0.0, 0.0, 0.0, 1.0 };
 
@@ -110,19 +111,19 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // date:      20140214
   // TODO: Use a 6-DOF relationship between the ground and body frames by
   // including the roll, pitch and yaw of the platform.
-  for (i7 = 0; i7 < 9; i7++) {
-    I[i7] = 0;
+  for (i10 = 0; i10 < 9; i10++) {
+    I[i10] = 0;
   }
 
   for (k = 0; k < 3; k++) {
     I[k + 3 * k] = 1;
-    for (i7 = 0; i7 < 3; i7++) {
-      TB2G[i7 + (k << 2)] = I[i7 + 3 * k];
+    for (i10 = 0; i10 < 3; i10++) {
+      TB2G[i10 + (k << 2)] = I[i10 + 3 * k];
     }
   }
 
-  for (i7 = 0; i7 < 3; i7++) {
-    TB2G[12 + i7] = 0.0;
+  for (i10 = 0; i10 < 3; i10++) {
+    TB2G[12 + i10] = 0.0;
   }
 
   // TRDH Generates the homogeneous transformation matrix A using the
@@ -224,18 +225,18 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   TR2Q[5] = cos(theta) * 6.123233995736766E-17;
   TR2Q[9] = -(double)-cos(theta);
   TR2Q[13] = -kC_l7 * sin(theta);
-  for (i7 = 0; i7 < 4; i7++) {
-    TB2G[3 + (i7 << 2)] = iv2[i7];
-    TP2B[3 + (i7 << 2)] = iv2[i7];
-    TI2P[3 + (i7 << 2)] = iv2[i7];
-    TJ2I[2 + (i7 << 2)] = iv3[i7];
-    TJ2I[3 + (i7 << 2)] = iv2[i7];
-    TO2J[2 + (i7 << 2)] = iv3[i7];
-    TO2J[3 + (i7 << 2)] = iv2[i7];
-    TQ2O[2 + (i7 << 2)] = iv3[i7];
-    TQ2O[3 + (i7 << 2)] = iv2[i7];
-    TR2Q[2 + (i7 << 2)] = dv7[i7];
-    TR2Q[3 + (i7 << 2)] = iv2[i7];
+  for (i10 = 0; i10 < 4; i10++) {
+    TB2G[3 + (i10 << 2)] = iv2[i10];
+    TP2B[3 + (i10 << 2)] = iv2[i10];
+    TI2P[3 + (i10 << 2)] = iv2[i10];
+    TJ2I[2 + (i10 << 2)] = iv3[i10];
+    TJ2I[3 + (i10 << 2)] = iv2[i10];
+    TO2J[2 + (i10 << 2)] = iv3[i10];
+    TO2J[3 + (i10 << 2)] = iv2[i10];
+    TQ2O[2 + (i10 << 2)] = iv3[i10];
+    TQ2O[3 + (i10 << 2)] = iv2[i10];
+    TR2Q[2 + (i10 << 2)] = dv8[i10];
+    TR2Q[3 + (i10 << 2)] = iv2[i10];
 
     // TRDH Generates the homogeneous transformation matrix A using the
     // Denavit-Hartenberg parameters theta, d, a and alpha.
@@ -243,16 +244,16 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
     // trDH.m
     // author:    wreid
     // date:      20150214
-    TS2R[i7 << 2] = iv4[i7];
-    TS2R[1 + (i7 << 2)] = iv5[i7];
+    TS2R[i10 << 2] = iv4[i10];
+    TS2R[1 + (i10 << 2)] = iv5[i10];
   }
 
   TS2R[2] = 0.0;
   TS2R[6] = 0.0;
   TS2R[10] = 1.0;
   TS2R[14] = kC_l6;
-  for (i7 = 0; i7 < 4; i7++) {
-    TS2R[3 + (i7 << 2)] = iv2[i7];
+  for (i10 = 0; i10 < 4; i10++) {
+    TS2R[3 + (i10 << 2)] = iv2[i10];
 
     // TRDH Generates the homogeneous transformation matrix A using the
     // Denavit-Hartenberg parameters theta, d, a and alpha.
@@ -260,8 +261,8 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
     // trDH.m
     // author:    wreid
     // date:      20150214
-    TW2S[i7 << 2] = dv8[i7];
-    TW2S[1 + (i7 << 2)] = dv9[i7];
+    TW2S[i10 << 2] = dv9[i10];
+    TW2S[1 + (i10 << 2)] = dv10[i10];
   }
 
   TW2S[2] = 0.0;
@@ -275,25 +276,25 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  for (i7 = 0; i7 < 4; i7++) {
-    TW2S[3 + (i7 << 2)] = iv2[i7];
-    dv10[i7 << 2] = dv11[i7];
-    dv10[1 + (i7 << 2)] = dv12[i7];
+  for (i10 = 0; i10 < 4; i10++) {
+    TW2S[3 + (i10 << 2)] = iv2[i10];
+    dv11[i10 << 2] = dv12[i10];
+    dv11[1 + (i10 << 2)] = dv13[i10];
   }
 
-  dv10[2] = 0.0;
-  dv10[6] = 0.0;
-  dv10[10] = 1.0;
-  dv10[14] = -kC_r;
-  for (i7 = 0; i7 < 4; i7++) {
-    dv10[3 + (i7 << 2)] = iv2[i7];
+  dv11[2] = 0.0;
+  dv11[6] = 0.0;
+  dv11[10] = 1.0;
+  dv11[14] = -kC_r;
+  for (i10 = 0; i10 < 4; i10++) {
+    dv11[3 + (i10 << 2)] = iv2[i10];
   }
 
-  for (i7 = 0; i7 < 4; i7++) {
+  for (i10 = 0; i10 < 4; i10++) {
     for (k = 0; k < 4; k++) {
-      TC2W[i7 + (k << 2)] = 0.0;
-      for (i8 = 0; i8 < 4; i8++) {
-        TC2W[i7 + (k << 2)] += a[i7 + (i8 << 2)] * dv10[i8 + (k << 2)];
+      TC2W[i10 + (k << 2)] = 0.0;
+      for (i11 = 0; i11 < 4; i11++) {
+        TC2W[i10 + (k << 2)] += a[i10 + (i11 << 2)] * dv11[i11 + (k << 2)];
       }
     }
   }

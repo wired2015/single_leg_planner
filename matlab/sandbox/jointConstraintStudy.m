@@ -34,8 +34,8 @@ betaMax = deg2rad(17);
 gammaMin = deg2rad(-5);
 gammaMax = deg2rad(73.7);
 
-beta = linspace(betaMin,betaMax,30);
-gamma = linspace(gammaMin,gammaMax,30);
+beta = linspace(-pi,pi,100);
+gamma = linspace(-pi,pi,100);
 figure(1)
 axis equal
 hold on
@@ -46,7 +46,11 @@ for i = 1:length(beta)
     for j = 1:length(gamma)
         x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(kC.zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
         zp = (kC.l1 + kC.l3*sin(-beta(i))-kC.l4*sin(kC.zeta)-kC.l5*sin(gamma(j)+kC.zeta)-kC.l6-(kC.l8+kC.r));
-        plot(x,zp,'k.');
+        if gamma(j) < gammaMin || gamma(j) > gammaMax || beta(i) < betaMin || beta(i) > betaMax
+            plot(x,zp,'k.');
+        else
+            plot(x,zp,'c.');
+        end
     end
 end
 
@@ -107,7 +111,7 @@ else
     disp('z is out of range');
 end
 
-line([xMin xMax],[z z],'Color','c')
+%line([xMin xMax],[z z],'Color','c')
 ylabel('z_P [m]')
 xlabel('r_P [m]')
 title('Wheel Contact Point Config Space Study - (\alpha=0 rad)')

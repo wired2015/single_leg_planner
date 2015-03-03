@@ -12,23 +12,7 @@
 #include "buildBiDirectionalRRTWrapper_data.h"
 #include <stdio.h>
 
-/* Function Declarations */
-static void c_buildBiDirectionalRRTWrapper_(void);
-
 /* Function Definitions */
-static void c_buildBiDirectionalRRTWrapper_(void)
-{
-  HGAINS_not_empty_init();
-  cartesianLimits_not_empty_init();
-  goalSeedFreq_not_empty_init();
-  exhaustive_not_empty_init();
-  ankleThreshold_not_empty_init();
-  U_SIZE_not_empty_init();
-  NODE_SIZE_not_empty_init();
-  NUM_NODES_not_empty_init();
-  d_buildBiDirectionalRRTWrapper_();
-}
-
 void buildBiDirectionalRRTWrapper_initialize(emlrtContext *aContext)
 {
   emlrtStack st = { NULL, NULL, NULL };
@@ -38,9 +22,7 @@ void buildBiDirectionalRRTWrapper_initialize(emlrtContext *aContext)
   st.tls = emlrtRootTLSGlobal;
   emlrtClearAllocCountR2012b(&st, false, 0U, 0);
   emlrtEnterRtStackR2012b(&st);
-  if (emlrtFirstTimeR2012b(emlrtRootTLSGlobal)) {
-    c_buildBiDirectionalRRTWrapper_();
-  }
+  emlrtFirstTimeR2012b(emlrtRootTLSGlobal);
 }
 
 /* End of code generation (buildBiDirectionalRRTWrapper_initialize.c) */

@@ -16,66 +16,44 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static real_T cartesianLimits[4];
-static real_T HGAINS[3];
-static emlrtRSInfo emlrtRSI = { 67, "buildBiDirectionalRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
+static emlrtRSInfo emlrtRSI = { 48, "buildBiDirectionalRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
 };
 
-static emlrtRSInfo b_emlrtRSI = { 76, "buildBiDirectionalRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
+static emlrtRSInfo b_emlrtRSI = { 57, "buildBiDirectionalRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
 };
 
-static emlrtRSInfo c_emlrtRSI = { 77, "buildBiDirectionalRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
+static emlrtRSInfo c_emlrtRSI = { 58, "buildBiDirectionalRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
 };
 
-static emlrtRSInfo d_emlrtRSI = { 91, "buildBiDirectionalRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
+static emlrtRSInfo d_emlrtRSI = { 72, "buildBiDirectionalRRTWrapper",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
 };
 
 static emlrtRTEInfo emlrtRTEI = { 27, 40, "buildBiDirectionalRRTWrapper",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRTWrapper.m"
 };
 
 static emlrtBCInfo emlrtBCI = { 1, 4, 18, 17, "kC.legAngleOffset", "trP2B",
-  "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m",
   0 };
 
 /* Function Definitions */
-void HGAINS_not_empty_init(void)
-{
-}
-
-void NODE_SIZE_not_empty_init(void)
-{
-}
-
-void NUM_NODES_not_empty_init(void)
-{
-}
-
-void U_SIZE_not_empty_init(void)
-{
-}
-
-void ankleThreshold_not_empty_init(void)
-{
-}
-
-void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
-  nInitCartesianB[6], const real_T nGoalCartesianB[6], real_T phiInit, real_T
-  omegaInit, const real_T jointLimits[20], real_T bodyHeight, const real_T U[18],
-  real_T dt, real_T Dt, const struct0_T *kC, real_T threshold, int32_T legNum,
-  const real_T uBDot[6], emxArray_real_T *T1, emxArray_real_T *T2,
-  emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success)
+void buildBiDirectionalRRTWrapper(c_buildBiDirectionalRRTWrapperS *SD, const
+  emlrtStack *sp, const real_T nInitCartesianB[6], const real_T nGoalCartesianB
+  [6], real_T phiInit, real_T omegaInit, const real_T jointLimits[20], real_T
+  bodyHeight, const struct0_T *kC, int32_T legNum, const real_T uBDot[6],
+  emxArray_real_T *T1, emxArray_real_T *T2, emxArray_real_T *pathC,
+  emxArray_real_T *pathJ, boolean_T *success)
 {
   real_T TP2B[16];
   int32_T i0;
   static const int8_T iv0[4] = { 0, 0, 0, 1 };
 
   real_T b_TP2B[9];
-  int32_T loop_ub;
+  int32_T i1;
   real_T c_TP2B[3];
   real_T TB2P[16];
   real_T b_TB2P[3];
@@ -85,15 +63,11 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
   real_T nInitJoint[10];
   real_T c_TB2P[3];
   real_T nGoalJoint[10];
-  emxArray_real_T *b_T1;
-  emxArray_real_T *b_T2;
   real_T dv0[13];
   real_T dv1[13];
   emlrtStack st;
-  (void)threshold;
   st.prev = sp;
   st.tls = sp->tls;
-  emlrtHeapReferenceStackEnterFcnR2012b(sp);
 
   /* BUILDRRTWRAPPER This function acts as a wrapper for the buildRRT function. */
   /* Code generation for the singleLegPlanner is performed using this function */
@@ -166,19 +140,19 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
   }
 
   for (i0 = 0; i0 < 3; i0++) {
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      b_TP2B[loop_ub + 3 * i0] = -TP2B[i0 + (loop_ub << 2)];
+    for (i1 = 0; i1 < 3; i1++) {
+      b_TP2B[i1 + 3 * i0] = -TP2B[i0 + (i1 << 2)];
     }
   }
 
   for (i0 = 0; i0 < 3; i0++) {
     c_TP2B[i0] = 0.0;
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      c_TP2B[i0] += b_TP2B[i0 + 3 * loop_ub] * TP2B[12 + loop_ub];
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += b_TP2B[i0 + 3 * i1] * TP2B[12 + i1];
     }
 
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      TB2P[loop_ub + (i0 << 2)] = TP2B[i0 + (loop_ub << 2)];
+    for (i1 = 0; i1 < 3; i1++) {
+      TB2P[i1 + (i0 << 2)] = TP2B[i0 + (i1 << 2)];
     }
   }
 
@@ -195,8 +169,8 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
   /* frame to the joint space. */
   for (i0 = 0; i0 < 3; i0++) {
     d0 = 0.0;
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      d0 += TB2P[i0 + (loop_ub << 2)] * nInitCartesianB[loop_ub];
+    for (i1 = 0; i1 < 3; i1++) {
+      d0 += TB2P[i0 + (i1 << 2)] * nInitCartesianB[i1];
     }
 
     b_TB2P[i0] = d0 + TB2P[12 + i0];
@@ -207,8 +181,8 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
              kC->l8, kC->zeta, kC->r, jointLimits, qInit);
   for (i0 = 0; i0 < 3; i0++) {
     d0 = 0.0;
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      d0 += TB2P[i0 + (loop_ub << 2)] * nGoalCartesianB[loop_ub];
+    for (i1 = 0; i1 < 3; i1++) {
+      d0 += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[i1];
     }
 
     b_TB2P[i0] = d0 + TB2P[12 + i0];
@@ -219,8 +193,8 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
              kC->l8, kC->zeta, kC->r, jointLimits, qGoal);
   for (i0 = 0; i0 < 3; i0++) {
     c_TP2B[i0] = 0.0;
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      c_TP2B[i0] += TB2P[i0 + (loop_ub << 2)] * nInitCartesianB[3 + loop_ub];
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TP2B[i0] += TB2P[i0 + (i1 << 2)] * nInitCartesianB[3 + i1];
     }
 
     b_TB2P[i0] = c_TP2B[i0];
@@ -234,8 +208,8 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
   for (i0 = 0; i0 < 3; i0++) {
     nInitJoint[i0 + 5] = c_TP2B[i0];
     c_TB2P[i0] = 0.0;
-    for (loop_ub = 0; loop_ub < 3; loop_ub++) {
-      c_TB2P[i0] += TB2P[i0 + (loop_ub << 2)] * nGoalCartesianB[3 + loop_ub];
+    for (i1 = 0; i1 < 3; i1++) {
+      c_TB2P[i0] += TB2P[i0 + (i1 << 2)] * nGoalCartesianB[3 + i1];
     }
 
     b_TB2P[i0] = c_TB2P[i0];
@@ -257,8 +231,6 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
 
   /* Check that the initial and final positions are valid. If they are not */
   /* return failure and an empty path. */
-  emxInit_real_T(sp, &b_T1, 2, &emlrtRTEI, true);
-  emxInit_real_T(sp, &b_T2, 2, &emlrtRTEI, true);
   if (validJointState(nInitJoint, jointLimits) && validJointState(nGoalJoint,
        jointLimits)) {
     *success = true;
@@ -276,27 +248,25 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
     }
 
     st.site = &d_emlrtRSI;
-    buildBiDirectionalRRT(&st, dv0, dv1, jointLimits, -(bodyHeight +
-      kC->B2PZOffset), 13, U, dt, Dt, kC, uBDot, legNum, TP2B, b_T1, b_T2, pathJ,
+    buildBiDirectionalRRT(SD, &st, dv0, dv1, jointLimits, -(bodyHeight +
+      kC->B2PZOffset), kC, uBDot, legNum, TP2B, SD->f1.T1, SD->f1.T2, pathJ,
                           pathC);
     i0 = T1->size[0] * T1->size[1];
-    T1->size[0] = 1000;
-    T1->size[1] = b_T1->size[1];
+    T1->size[0] = 750;
+    T1->size[1] = 93;
     emxEnsureCapacity(sp, (emxArray__common *)T1, i0, (int32_T)sizeof(real_T),
                       &emlrtRTEI);
-    loop_ub = b_T1->size[0] * b_T1->size[1];
-    for (i0 = 0; i0 < loop_ub; i0++) {
-      T1->data[i0] = b_T1->data[i0];
+    for (i0 = 0; i0 < 69750; i0++) {
+      T1->data[i0] = SD->f1.T1[i0];
     }
 
     i0 = T2->size[0] * T2->size[1];
-    T2->size[0] = 1000;
-    T2->size[1] = b_T2->size[1];
+    T2->size[0] = 750;
+    T2->size[1] = 93;
     emxEnsureCapacity(sp, (emxArray__common *)T2, i0, (int32_T)sizeof(real_T),
                       &emlrtRTEI);
-    loop_ub = b_T2->size[0] * b_T2->size[1];
-    for (i0 = 0; i0 < loop_ub; i0++) {
-      T2->data[i0] = b_T2->data[i0];
+    for (i0 = 0; i0 < 69750; i0++) {
+      T2->data[i0] = SD->f1.T2[i0];
     }
 
     /* Transform path back to the Cartesian space. */
@@ -339,9 +309,6 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
                       &emlrtRTEI);
   }
 
-  emxFree_real_T(&b_T2);
-  emxFree_real_T(&b_T1);
-
   /* Linearly interpolate to the goal state from the final state. */
   /*      sFinalC = pathC(end,:); */
   /*      sGoalC = [0 0 nGoalCartesianB true]; */
@@ -368,35 +335,6 @@ void buildBiDirectionalRRTWrapper(const emlrtStack *sp, const real_T
   /*          pathC(i,:) = [pathJ(i,1) dist2Go uB' uBDot' false]; */
   /*      end */
   /*  end */
-  emlrtHeapReferenceStackLeaveFcnR2012b(sp);
-}
-
-void cartesianLimits_not_empty_init(void)
-{
-}
-
-void d_buildBiDirectionalRRTWrapper_(void)
-{
-  int32_T i14;
-  static const real_T dv14[4] = { -0.293, -1.1326, -0.671, -0.7546 };
-
-  static const real_T dv15[3] = { 1.0, 0.0, 0.5 };
-
-  for (i14 = 0; i14 < 4; i14++) {
-    cartesianLimits[i14] = dv14[i14];
-  }
-
-  for (i14 = 0; i14 < 3; i14++) {
-    HGAINS[i14] = dv15[i14];
-  }
-}
-
-void exhaustive_not_empty_init(void)
-{
-}
-
-void goalSeedFreq_not_empty_init(void)
-{
 }
 
 /* End of code generation (buildBiDirectionalRRTWrapper.c) */

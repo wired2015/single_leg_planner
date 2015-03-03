@@ -2,7 +2,7 @@
 // File: randomStateGenerator.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 27-Feb-2015 15:48:27
+// C/C++ source code generated on  : 03-Mar-2015 11:19:40
 //
 #ifndef __RANDOMSTATEGENERATOR_H__
 #define __RANDOMSTATEGENERATOR_H__
@@ -15,7 +15,7 @@
 #include "rt_defines.h"
 #include "rt_nonfinite.h"
 #include "rtwtypes.h"
-#include "buildRRTWrapper_types.h"
+#include "sherpaTTPlanner_types.h"
 
 // Function Declarations
 extern void randomStateGenerator(int NUM_POINTS, const double jointLimits[20],

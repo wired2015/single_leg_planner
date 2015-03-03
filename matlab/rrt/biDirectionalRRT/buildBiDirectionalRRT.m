@@ -91,6 +91,7 @@ function path = traceBranch(T,midPoint,NODE_SIZE)
     check = midPoint(1);
     next = midPoint;
     path = [];
+    transitionArray = [];
     transitionArray = T(midPoint(1),(NODE_SIZE+1):end);
     
     %Iterate over the tree until the initial state has been found.
