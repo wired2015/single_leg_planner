@@ -251,20 +251,20 @@ void buildBiDirectionalRRTWrapper(sherpaTTPlanner_mexStackData *SD, const
       + kC->B2PZOffset), kC, uBDot, legNum, TP2B, SD->f2.T1, SD->f2.T2, pathJ,
                           pathC);
     i0 = T1->size[0] * T1->size[1];
-    T1->size[0] = 750;
+    T1->size[0] = 500;
     T1->size[1] = 93;
     emxEnsureCapacity(sp, (emxArray__common *)T1, i0, (int32_T)sizeof(real_T),
                       &emlrtRTEI);
-    for (i0 = 0; i0 < 69750; i0++) {
+    for (i0 = 0; i0 < 46500; i0++) {
       T1->data[i0] = SD->f2.T1[i0];
     }
 
     i0 = T2->size[0] * T2->size[1];
-    T2->size[0] = 750;
+    T2->size[0] = 500;
     T2->size[1] = 93;
     emxEnsureCapacity(sp, (emxArray__common *)T2, i0, (int32_T)sizeof(real_T),
                       &emlrtRTEI);
-    for (i0 = 0; i0 < 69750; i0++) {
+    for (i0 = 0; i0 < 46500; i0++) {
       T2->data[i0] = SD->f2.T2[i0];
     }
 

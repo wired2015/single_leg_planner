@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: buildBiDirectionalRRT.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:16:20</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:32:33</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -31,19 +31,19 @@
 <a name="20"><font color="#888888 "><i>   20   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&lt;stdio.h&gt;</font>
 <a name="21"><font color="#888888 "><i>   21   </i></font></a>
 <a name="22"><font color="#888888 "><i>   22   </i></font></a><font color="#117755"><i>// Function Declarations</i></font>
-<a name="23"><font color="#888888 "><i>   23   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a href="#fcn_traceBranch" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_traceBranch');" target="_self"><font color="#1122aa">traceBranch</font></a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> T[69750], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> midPoint_data[],
+<a name="23"><font color="#888888 "><i>   23   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a href="#fcn_traceBranch" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_traceBranch');" target="_self"><font color="#1122aa">traceBranch</font></a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> T[46500], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> midPoint_data[],
 <a name="24"><font color="#888888 "><i>   24   </i></font></a>  emxArray_real_T *path);
 <a name="25"><font color="#888888 "><i>   25   </i></font></a>
 <a name="26"><font color="#888888 "><i>   26   </i></font></a><font color="#117755"><i>// Function Definitions</i></font>
 <a name="27"><font color="#888888 "><i>   27   </i></font></a>
 <a name="28"><font color="#888888 "><i>   28   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="29"><font color="#888888 "><i>   29   </i></font></a><font color="#117755"><i>// Assignn the</i></font>
-<a name="30"><font color="#888888 "><i>   30   </i></font></a><font color="#117755"><i>// Arguments    : const double T[69750]</i></font>
+<a name="30"><font color="#888888 "><i>   30   </i></font></a><font color="#117755"><i>// Arguments    : const double T[46500]</i></font>
 <a name="31"><font color="#888888 "><i>   31   </i></font></a><font color="#117755"><i>//                const double midPoint_data[]</i></font>
 <a name="32"><font color="#888888 "><i>   32   </i></font></a><font color="#117755"><i>//                emxArray_real_T *path</i></font>
 <a name="33"><font color="#888888 "><i>   33   </i></font></a><font color="#117755"><i>// Return Type  : void</i></font>
 <a name="34"><font color="#888888 "><i>   34   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="35"><font color="#888888 "><i>   35   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a name="fcn_traceBranch">traceBranch</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> T[69750], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> midPoint_data[],
+<a name="35"><font color="#888888 "><i>   35   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a name="fcn_traceBranch">traceBranch</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> T[46500], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> midPoint_data[],
 <a name="36"><font color="#888888 "><i>   36   </i></font></a>  emxArray_real_T *path)
 <a name="37"><font color="#888888 "><i>   37   </i></font></a><b>{</b>
 <a name="38"><font color="#888888 "><i>   38   </i></font></a>  <font color="#112266"><b>double</b></font> check;
@@ -64,7 +64,7 @@
 <a name="53"><font color="#888888 "><i>   53   </i></font></a>  path-&gt;size[1] = 10;
 <a name="54"><font color="#888888 "><i>   54   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)path, i18, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
 <a name="55"><font color="#888888 "><i>   55   </i></font></a>  <font color="#112266"><b>for</b></font> (i18 = 0; i18 &lt; 80; i18++) <b>{</b>
-<a name="56"><font color="#888888 "><i>   56   </i></font></a>    transitionArray_data[i18] = T[((<font color="#112266"><b>int</b></font>)midPoint_data[0] + 750 * (13 + i18)) - 1];
+<a name="56"><font color="#888888 "><i>   56   </i></font></a>    transitionArray_data[i18] = T[((<font color="#112266"><b>int</b></font>)midPoint_data[0] + 500 * (13 + i18)) - 1];
 <a name="57"><font color="#888888 "><i>   57   </i></font></a>  <b>}</b>
 <a name="58"><font color="#888888 "><i>   58   </i></font></a>
 <a name="59"><font color="#888888 "><i>   59   </i></font></a>  <font color="#117755"><i>// Iterate over the tree until the initial state has been found.</i></font>
@@ -147,7 +147,7 @@
 <a name="136"><font color="#888888 "><i>  136   </i></font></a>
 <a name="137"><font color="#888888 "><i>  137   </i></font></a>    check = next_data[1];
 <a name="138"><font color="#888888 "><i>  138   </i></font></a>    <font color="#112266"><b>for</b></font> (i18 = 0; i18 &lt; 93; i18++) <b>{</b>
-<a name="139"><font color="#888888 "><i>  139   </i></font></a>      next_data[i18] = T[((<font color="#112266"><b>int</b></font>)check + 750 * i18) - 1];
+<a name="139"><font color="#888888 "><i>  139   </i></font></a>      next_data[i18] = T[((<font color="#112266"><b>int</b></font>)check + 500 * i18) - 1];
 <a name="140"><font color="#888888 "><i>  140   </i></font></a>    <b>}</b>
 <a name="141"><font color="#888888 "><i>  141   </i></font></a>
 <a name="142"><font color="#888888 "><i>  142   </i></font></a>    check = next_data[1];
@@ -176,15 +176,15 @@
 <a name="165"><font color="#888888 "><i>  165   </i></font></a><font color="#117755"><i>//                const double uBDot[6]</i></font>
 <a name="166"><font color="#888888 "><i>  166   </i></font></a><font color="#117755"><i>//                int legNum</i></font>
 <a name="167"><font color="#888888 "><i>  167   </i></font></a><font color="#117755"><i>//                const double TP2B[16]</i></font>
-<a name="168"><font color="#888888 "><i>  168   </i></font></a><font color="#117755"><i>//                double T1[69750]</i></font>
-<a name="169"><font color="#888888 "><i>  169   </i></font></a><font color="#117755"><i>//                double T2[69750]</i></font>
+<a name="168"><font color="#888888 "><i>  168   </i></font></a><font color="#117755"><i>//                double T1[46500]</i></font>
+<a name="169"><font color="#888888 "><i>  169   </i></font></a><font color="#117755"><i>//                double T2[46500]</i></font>
 <a name="170"><font color="#888888 "><i>  170   </i></font></a><font color="#117755"><i>//                emxArray_real_T *pathJ</i></font>
 <a name="171"><font color="#888888 "><i>  171   </i></font></a><font color="#117755"><i>//                emxArray_real_T *pathC</i></font>
 <a name="172"><font color="#888888 "><i>  172   </i></font></a><font color="#117755"><i>// Return Type  : void</i></font>
 <a name="173"><font color="#888888 "><i>  173   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="174"><font color="#888888 "><i>  174   </i></font></a><font color="#112266"><b>void</b></font> <a name="fcn_buildBiDirectionalRRT">buildBiDirectionalRRT</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> nInit[13], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> nGoal[13], <font color="#112266"><b>const</b></font>
 <a name="175"><font color="#888888 "><i>  175   </i></font></a>  <font color="#112266"><b>double</b></font> jointLimits[20], <font color="#112266"><b>double</b></font> panHeight, <font color="#112266"><b>const</b></font> <a href="sherpaTTPlanner_types_h.html#type_struct0_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_struct0_T');" target="_self"><font color="#1122aa">struct0_T</font></a> *kC, <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font>
-<a name="176"><font color="#888888 "><i>  176   </i></font></a>  uBDot[6], <font color="#112266"><b>int</b></font> legNum, <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> TP2B[16], <font color="#112266"><b>double</b></font> T1[69750], <font color="#112266"><b>double</b></font> T2[69750],
+<a name="176"><font color="#888888 "><i>  176   </i></font></a>  uBDot[6], <font color="#112266"><b>int</b></font> legNum, <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> TP2B[16], <font color="#112266"><b>double</b></font> T1[46500], <font color="#112266"><b>double</b></font> T2[46500],
 <a name="177"><font color="#888888 "><i>  177   </i></font></a>  emxArray_real_T *pathJ, emxArray_real_T *pathC)
 <a name="178"><font color="#888888 "><i>  178   </i></font></a><b>{</b>
 <a name="179"><font color="#888888 "><i>  179   </i></font></a>  <font color="#112266"><b>int</b></font> i5;
@@ -193,7 +193,7 @@
 <a name="182"><font color="#888888 "><i>  182   </i></font></a>  <font color="#112266"><b>double</b></font> pathLengthMin;
 <a name="183"><font color="#888888 "><i>  183   </i></font></a>  emxArray_real_T *d;
 <a name="184"><font color="#888888 "><i>  184   </i></font></a>  <font color="#112266"><b>int</b></font> i;
-<a name="185"><font color="#888888 "><i>  185   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>double</b></font> b_T1[69750];
+<a name="185"><font color="#888888 "><i>  185   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>double</b></font> b_T1[46500];
 <a name="186"><font color="#888888 "><i>  186   </i></font></a>  <font color="#112266"><b>double</b></font> xRand[13];
 <a name="187"><font color="#888888 "><i>  187   </i></font></a>  <font color="#112266"><b>int</b></font> ixstart;
 <a name="188"><font color="#888888 "><i>  188   </i></font></a>  <font color="#112266"><b>double</b></font> b_T2[93];
@@ -211,7 +211,7 @@
 <a name="200"><font color="#888888 "><i>  200   </i></font></a>  emxArray_real_T *path;
 <a name="201"><font color="#888888 "><i>  201   </i></font></a>  emxArray_real_T *b_pathC;
 <a name="202"><font color="#888888 "><i>  202   </i></font></a>  emxArray_real_T *b_t;
-<a name="203"><font color="#888888 "><i>  203   </i></font></a>  <font color="#112266"><b>double</b></font> b_d[750];
+<a name="203"><font color="#888888 "><i>  203   </i></font></a>  <font color="#112266"><b>double</b></font> b_d[500];
 <a name="204"><font color="#888888 "><i>  204   </i></font></a>  <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> exitg1;
 <a name="205"><font color="#888888 "><i>  205   </i></font></a>  <font color="#112266"><b>int</b></font> apnd;
 <a name="206"><font color="#888888 "><i>  206   </i></font></a>  <font color="#112266"><b>double</b></font> uP[3];
@@ -224,28 +224,28 @@
 <a name="213"><font color="#888888 "><i>  213   </i></font></a>  <font color="#117755"><i>// author: wreid</i></font>
 <a name="214"><font color="#888888 "><i>  214   </i></font></a>  <font color="#117755"><i>// date: 20150107</i></font>
 <a name="215"><font color="#888888 "><i>  215   </i></font></a>  <font color="#117755"><i>// Constant Declaration</i></font>
-<a name="216"><font color="#888888 "><i>  216   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 69750; i5++) <b>{</b>
+<a name="216"><font color="#888888 "><i>  216   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 46500; i5++) <b>{</b>
 <a name="217"><font color="#888888 "><i>  217   </i></font></a>    T1[i5] = 0.0;
 <a name="218"><font color="#888888 "><i>  218   </i></font></a>  <b>}</b>
 <a name="219"><font color="#888888 "><i>  219   </i></font></a>
-<a name="220"><font color="#888888 "><i>  220   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 69750; i5++) <b>{</b>
+<a name="220"><font color="#888888 "><i>  220   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 46500; i5++) <b>{</b>
 <a name="221"><font color="#888888 "><i>  221   </i></font></a>    T2[i5] = 0.0;
 <a name="222"><font color="#888888 "><i>  222   </i></font></a>  <b>}</b>
 <a name="223"><font color="#888888 "><i>  223   </i></font></a>
 <a name="224"><font color="#888888 "><i>  224   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="225"><font color="#888888 "><i>  225   </i></font></a>    T1[750 * i5] = nInit[i5];
+<a name="225"><font color="#888888 "><i>  225   </i></font></a>    T1[500 * i5] = nInit[i5];
 <a name="226"><font color="#888888 "><i>  226   </i></font></a>  <b>}</b>
 <a name="227"><font color="#888888 "><i>  227   </i></font></a>
 <a name="228"><font color="#888888 "><i>  228   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 80; i5++) <b>{</b>
-<a name="229"><font color="#888888 "><i>  229   </i></font></a>    T1[750 * (i5 + 13)] = 0.0;
+<a name="229"><font color="#888888 "><i>  229   </i></font></a>    T1[500 * (i5 + 13)] = 0.0;
 <a name="230"><font color="#888888 "><i>  230   </i></font></a>  <b>}</b>
 <a name="231"><font color="#888888 "><i>  231   </i></font></a>
 <a name="232"><font color="#888888 "><i>  232   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="233"><font color="#888888 "><i>  233   </i></font></a>    T2[750 * i5] = nGoal[i5];
+<a name="233"><font color="#888888 "><i>  233   </i></font></a>    T2[500 * i5] = nGoal[i5];
 <a name="234"><font color="#888888 "><i>  234   </i></font></a>  <b>}</b>
 <a name="235"><font color="#888888 "><i>  235   </i></font></a>
 <a name="236"><font color="#888888 "><i>  236   </i></font></a>  <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 80; i5++) <b>{</b>
-<a name="237"><font color="#888888 "><i>  237   </i></font></a>    T2[750 * (i5 + 13)] = 0.0;
+<a name="237"><font color="#888888 "><i>  237   </i></font></a>    T2[500 * (i5 + 13)] = 0.0;
 <a name="238"><font color="#888888 "><i>  238   </i></font></a>  <b>}</b>
 <a name="239"><font color="#888888 "><i>  239   </i></font></a>
 <a name="240"><font color="#888888 "><i>  240   </i></font></a>  nodeIDCount1 = 1U;
@@ -260,8 +260,8 @@
 <a name="249"><font color="#888888 "><i>  249   </i></font></a>  pathJ-&gt;size[1] = 0;
 <a name="250"><font color="#888888 "><i>  250   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)pathJ, i5, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
 <a name="251"><font color="#888888 "><i>  251   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxInit_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxInit_real_T');" target="_self"><font color="#1122aa">emxInit_real_T</font></a>(&amp;d, 2);
-<a name="252"><font color="#888888 "><i>  252   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 1498; i++) <b>{</b>
-<a name="253"><font color="#888888 "><i>  253   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 69750; i5++) <b>{</b>
+<a name="252"><font color="#888888 "><i>  252   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 998; i++) <b>{</b>
+<a name="253"><font color="#888888 "><i>  253   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 46500; i5++) <b>{</b>
 <a name="254"><font color="#888888 "><i>  254   </i></font></a>      b_T1[i5] = T1[i5];
 <a name="255"><font color="#888888 "><i>  255   </i></font></a>    <b>}</b>
 <a name="256"><font color="#888888 "><i>  256   </i></font></a>
@@ -298,7 +298,7 @@
 <a name="287"><font color="#888888 "><i>  287   </i></font></a>    <font color="#117755"><i>// parfor i = 1:nodeIDCount</i></font>
 <a name="288"><font color="#888888 "><i>  288   </i></font></a>    <font color="#112266"><b>for</b></font> (ixstart = 0; ixstart &lt; (<font color="#112266"><b>int</b></font>)nodeIDCount1; ixstart++) <b>{</b>
 <a name="289"><font color="#888888 "><i>  289   </i></font></a>      <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 93; i5++) <b>{</b>
-<a name="290"><font color="#888888 "><i>  290   </i></font></a>        b_T2[i5] = T1[ixstart + 750 * i5];
+<a name="290"><font color="#888888 "><i>  290   </i></font></a>        b_T2[i5] = T1[ixstart + 500 * i5];
 <a name="291"><font color="#888888 "><i>  291   </i></font></a>      <b>}</b>
 <a name="292"><font color="#888888 "><i>  292   </i></font></a>
 <a name="293"><font color="#888888 "><i>  293   </i></font></a>      d-&gt;data[ixstart] = <a href="heuristicSingleLeg_cpp.html#fcn_heuristicSingleLeg" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_heuristicSingleLeg');" target="_self"><font color="#1122aa">heuristicSingleLeg</font></a>(xRand, b_T2, kC-&gt;l1, kC-&gt;l2, kC-&gt;l3,
@@ -336,7 +336,7 @@
 <a name="325"><font color="#888888 "><i>  325   </i></font></a>
 <a name="326"><font color="#888888 "><i>  326   </i></font></a>    <font color="#117755"><i>// [d,minIndex] = min(d(1:nodeIDCount));</i></font>
 <a name="327"><font color="#888888 "><i>  327   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="328"><font color="#888888 "><i>  328   </i></font></a>      c_T1[i5] = T1[absb + 750 * i5];
+<a name="328"><font color="#888888 "><i>  328   </i></font></a>      c_T1[i5] = T1[absb + 500 * i5];
 <a name="329"><font color="#888888 "><i>  329   </i></font></a>    <b>}</b>
 <a name="330"><font color="#888888 "><i>  330   </i></font></a>
 <a name="331"><font color="#888888 "><i>  331   </i></font></a>    <a href="selectInput_cpp.html#fcn_selectInput" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_selectInput');" target="_self"><font color="#1122aa">selectInput</font></a>(c_T1, xRand, kC, 0.39269908169872414, jointLimits, uBDot, legNum,
@@ -348,20 +348,20 @@
 <a name="337"><font color="#888888 "><i>  337   </i></font></a>
 <a name="338"><font color="#888888 "><i>  338   </i></font></a>    <font color="#117755"><i>// Parent ID</i></font>
 <a name="339"><font color="#888888 "><i>  339   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="340"><font color="#888888 "><i>  340   </i></font></a>      c_T1[i5] = T1[absb + 750 * i5];
+<a name="340"><font color="#888888 "><i>  340   </i></font></a>      c_T1[i5] = T1[absb + 500 * i5];
 <a name="341"><font color="#888888 "><i>  341   </i></font></a>    <b>}</b>
 <a name="342"><font color="#888888 "><i>  342   </i></font></a>
-<a name="343"><font color="#888888 "><i>  343   </i></font></a>    unusedU1[2] = T1[1500 + absb] + <a href="heuristicSingleLeg_cpp.html#fcn_b_heuristicSingleLeg" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_b_heuristicSingleLeg');" target="_self"><font color="#1122aa">b_heuristicSingleLeg</font></a>(unusedU1, c_T1, kC-&gt;l1,
+<a name="343"><font color="#888888 "><i>  343   </i></font></a>    unusedU1[2] = T1[1000 + absb] + <a href="heuristicSingleLeg_cpp.html#fcn_b_heuristicSingleLeg" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_b_heuristicSingleLeg');" target="_self"><font color="#1122aa">b_heuristicSingleLeg</font></a>(unusedU1, c_T1, kC-&gt;l1,
 <a name="344"><font color="#888888 "><i>  344   </i></font></a>      kC-&gt;l2, kC-&gt;l3, kC-&gt;l4, kC-&gt;l5, kC-&gt;l6, kC-&gt;l7, kC-&gt;l8, kC-&gt;zeta, kC-&gt;r);
 <a name="345"><font color="#888888 "><i>  345   </i></font></a>
 <a name="346"><font color="#888888 "><i>  346   </i></font></a>    <font color="#117755"><i>// Cost</i></font>
 <a name="347"><font color="#888888 "><i>  347   </i></font></a>    ixstart = (<font color="#112266"><b>int</b></font>)nodeIDCount1;
 <a name="348"><font color="#888888 "><i>  348   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="349"><font color="#888888 "><i>  349   </i></font></a>      b_T1[ixstart + 750 * i5] = unusedU1[i5];
+<a name="349"><font color="#888888 "><i>  349   </i></font></a>      b_T1[ixstart + 500 * i5] = unusedU1[i5];
 <a name="350"><font color="#888888 "><i>  350   </i></font></a>    <b>}</b>
 <a name="351"><font color="#888888 "><i>  351   </i></font></a>
 <a name="352"><font color="#888888 "><i>  352   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 80; i5++) <b>{</b>
-<a name="353"><font color="#888888 "><i>  353   </i></font></a>      b_T1[ixstart + 750 * (i5 + 13)] = transitionArray[i5];
+<a name="353"><font color="#888888 "><i>  353   </i></font></a>      b_T1[ixstart + 500 * (i5 + 13)] = transitionArray[i5];
 <a name="354"><font color="#888888 "><i>  354   </i></font></a>    <b>}</b>
 <a name="355"><font color="#888888 "><i>  355   </i></font></a>
 <a name="356"><font color="#888888 "><i>  356   </i></font></a>    <font color="#117755"><i>// Append the new node to the tree.</i></font>
@@ -369,11 +369,11 @@
 <a name="358"><font color="#888888 "><i>  358   </i></font></a>    <font color="#117755"><i>// fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount);</i></font>
 <a name="359"><font color="#888888 "><i>  359   </i></font></a>    <font color="#117755"><i>// end</i></font>
 <a name="360"><font color="#888888 "><i>  360   </i></font></a>    <font color="#117755"><i>// Swap the trees.</i></font>
-<a name="361"><font color="#888888 "><i>  361   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 69750; i5++) <b>{</b>
+<a name="361"><font color="#888888 "><i>  361   </i></font></a>    <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 46500; i5++) <b>{</b>
 <a name="362"><font color="#888888 "><i>  362   </i></font></a>      T1[i5] = T2[i5];
 <a name="363"><font color="#888888 "><i>  363   </i></font></a>    <b>}</b>
 <a name="364"><font color="#888888 "><i>  364   </i></font></a>
-<a name="365"><font color="#888888 "><i>  365   </i></font></a>    memcpy(&amp;T2[0], &amp;b_T1[0], 69750U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="365"><font color="#888888 "><i>  365   </i></font></a>    memcpy(&amp;T2[0], &amp;b_T1[0], 46500U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
 <a name="366"><font color="#888888 "><i>  366   </i></font></a>
 <a name="367"><font color="#888888 "><i>  367   </i></font></a>    <font color="#117755"><i>// Swap the trees.</i></font>
 <a name="368"><font color="#888888 "><i>  368   </i></font></a>    nodeIDCountTemp = nodeIDCount1;
@@ -387,7 +387,7 @@
 <a name="376"><font color="#888888 "><i>  376   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxInit_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxInit_real_T');" target="_self"><font color="#1122aa">emxInit_real_T</font></a>(&amp;path, 2);
 <a name="377"><font color="#888888 "><i>  377   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxInit_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxInit_real_T');" target="_self"><font color="#1122aa">emxInit_real_T</font></a>(&amp;b_pathC, 2);
 <a name="378"><font color="#888888 "><i>  378   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxInit_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxInit_real_T');" target="_self"><font color="#1122aa">emxInit_real_T</font></a>(&amp;b_t, 2);
-<a name="379"><font color="#888888 "><i>  379   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 750; i++) <b>{</b>
+<a name="379"><font color="#888888 "><i>  379   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 500; i++) <b>{</b>
 <a name="380"><font color="#888888 "><i>  380   </i></font></a>    <font color="#117755"><i>// nearestNeigbour Finds the node in the tree closest to x.</i></font>
 <a name="381"><font color="#888888 "><i>  381   </i></font></a>    <font color="#117755"><i>//    This function scans each node within the tree and finds the node that</i></font>
 <a name="382"><font color="#888888 "><i>  382   </i></font></a>    <font color="#117755"><i>//    is closest to the xRand node. The nearest node is returned by the</i></font>
@@ -407,13 +407,13 @@
 <a name="396"><font color="#888888 "><i>  396   </i></font></a>    <font color="#117755"><i>// Iterate over the entire tree and apply the distance heuristic function</i></font>
 <a name="397"><font color="#888888 "><i>  397   </i></font></a>    <font color="#117755"><i>// to each node.</i></font>
 <a name="398"><font color="#888888 "><i>  398   </i></font></a>    <font color="#117755"><i>// parfor i = 1:nodeIDCount</i></font>
-<a name="399"><font color="#888888 "><i>  399   </i></font></a>    <font color="#112266"><b>for</b></font> (ixstart = 0; ixstart &lt; 750; ixstart++) <b>{</b>
+<a name="399"><font color="#888888 "><i>  399   </i></font></a>    <font color="#112266"><b>for</b></font> (ixstart = 0; ixstart &lt; 500; ixstart++) <b>{</b>
 <a name="400"><font color="#888888 "><i>  400   </i></font></a>      <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="401"><font color="#888888 "><i>  401   </i></font></a>        xRand[i5] = T1[i + 750 * i5];
+<a name="401"><font color="#888888 "><i>  401   </i></font></a>        xRand[i5] = T1[i + 500 * i5];
 <a name="402"><font color="#888888 "><i>  402   </i></font></a>      <b>}</b>
 <a name="403"><font color="#888888 "><i>  403   </i></font></a>
 <a name="404"><font color="#888888 "><i>  404   </i></font></a>      <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 93; i5++) <b>{</b>
-<a name="405"><font color="#888888 "><i>  405   </i></font></a>        b_T2[i5] = T2[ixstart + 750 * i5];
+<a name="405"><font color="#888888 "><i>  405   </i></font></a>        b_T2[i5] = T2[ixstart + 500 * i5];
 <a name="406"><font color="#888888 "><i>  406   </i></font></a>      <b>}</b>
 <a name="407"><font color="#888888 "><i>  407   </i></font></a>
 <a name="408"><font color="#888888 "><i>  408   </i></font></a>      b_d[ixstart] = <a href="heuristicSingleLeg_cpp.html#fcn_c_heuristicSingleLeg" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_heuristicSingleLeg');" target="_self"><font color="#1122aa">c_heuristicSingleLeg</font></a>(xRand, b_T2, kC-&gt;l1, kC-&gt;l2, kC-&gt;l3,
@@ -426,7 +426,7 @@
 <a name="415"><font color="#888888 "><i>  415   </i></font></a>    <font color="#112266"><b>if</b></font> (<a href="rt_nonfinite_cpp.html#fcn_rtIsNaN" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rtIsNaN');" target="_self"><font color="#1122aa">rtIsNaN</font></a>(b_d[0])) <b>{</b>
 <a name="416"><font color="#888888 "><i>  416   </i></font></a>      cdiff = 2;
 <a name="417"><font color="#888888 "><i>  417   </i></font></a>      exitg1 = false;
-<a name="418"><font color="#888888 "><i>  418   </i></font></a>      <font color="#112266"><b>while</b></font> ((!exitg1) &amp;&amp; (cdiff &lt; 751)) <b>{</b>
+<a name="418"><font color="#888888 "><i>  418   </i></font></a>      <font color="#112266"><b>while</b></font> ((!exitg1) &amp;&amp; (cdiff &lt; 501)) <b>{</b>
 <a name="419"><font color="#888888 "><i>  419   </i></font></a>        ixstart = cdiff;
 <a name="420"><font color="#888888 "><i>  420   </i></font></a>        <font color="#112266"><b>if</b></font> (!<a href="rt_nonfinite_cpp.html#fcn_rtIsNaN" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rtIsNaN');" target="_self"><font color="#1122aa">rtIsNaN</font></a>(b_d[cdiff - 1])) <b>{</b>
 <a name="421"><font color="#888888 "><i>  421   </i></font></a>          dist2Go = b_d[cdiff - 1];
@@ -438,8 +438,8 @@
 <a name="427"><font color="#888888 "><i>  427   </i></font></a>      <b>}</b>
 <a name="428"><font color="#888888 "><i>  428   </i></font></a>    <b>}</b>
 <a name="429"><font color="#888888 "><i>  429   </i></font></a>
-<a name="430"><font color="#888888 "><i>  430   </i></font></a>    <font color="#112266"><b>if</b></font> (ixstart &lt; 750) <b>{</b>
-<a name="431"><font color="#888888 "><i>  431   </i></font></a>      <font color="#112266"><b>while</b></font> (ixstart + 1 &lt; 751) <b>{</b>
+<a name="430"><font color="#888888 "><i>  430   </i></font></a>    <font color="#112266"><b>if</b></font> (ixstart &lt; 500) <b>{</b>
+<a name="431"><font color="#888888 "><i>  431   </i></font></a>      <font color="#112266"><b>while</b></font> (ixstart + 1 &lt; 501) <b>{</b>
 <a name="432"><font color="#888888 "><i>  432   </i></font></a>        <font color="#112266"><b>if</b></font> (b_d[ixstart] &lt; dist2Go) <b>{</b>
 <a name="433"><font color="#888888 "><i>  433   </i></font></a>          dist2Go = b_d[ixstart];
 <a name="434"><font color="#888888 "><i>  434   </i></font></a>          absb = ixstart;
@@ -452,16 +452,16 @@
 <a name="441"><font color="#888888 "><i>  441   </i></font></a>    <font color="#117755"><i>// [d,minIndex] = min(d(1:nodeIDCount));</i></font>
 <a name="442"><font color="#888888 "><i>  442   </i></font></a>    <font color="#112266"><b>if</b></font> (dist2Go &lt; 0.04) <b>{</b>
 <a name="443"><font color="#888888 "><i>  443   </i></font></a>      <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="444"><font color="#888888 "><i>  444   </i></font></a>        xRand[i5] = T1[i + 750 * i5];
+<a name="444"><font color="#888888 "><i>  444   </i></font></a>        xRand[i5] = T1[i + 500 * i5];
 <a name="445"><font color="#888888 "><i>  445   </i></font></a>      <b>}</b>
 <a name="446"><font color="#888888 "><i>  446   </i></font></a>
 <a name="447"><font color="#888888 "><i>  447   </i></font></a>      <a href="#fcn_traceBranch" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_traceBranch');" target="_self"><font color="#1122aa">traceBranch</font></a>(T1, xRand, pathT1);
 <a name="448"><font color="#888888 "><i>  448   </i></font></a>      <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 13; i5++) <b>{</b>
-<a name="449"><font color="#888888 "><i>  449   </i></font></a>        xRand[i5] = T2[absb + 750 * i5];
+<a name="449"><font color="#888888 "><i>  449   </i></font></a>        xRand[i5] = T2[absb + 500 * i5];
 <a name="450"><font color="#888888 "><i>  450   </i></font></a>      <b>}</b>
 <a name="451"><font color="#888888 "><i>  451   </i></font></a>
 <a name="452"><font color="#888888 "><i>  452   </i></font></a>      <a href="#fcn_traceBranch" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_traceBranch');" target="_self"><font color="#1122aa">traceBranch</font></a>(T2, xRand, pathT2);
-<a name="453"><font color="#888888 "><i>  453   </i></font></a>      <font color="#112266"><b>if</b></font> ((T1[2250] == nInit[3]) &amp;&amp; (T1[3000] == nInit[4]) &amp;&amp; (T1[3750] ==
+<a name="453"><font color="#888888 "><i>  453   </i></font></a>      <font color="#112266"><b>if</b></font> ((T1[1500] == nInit[3]) &amp;&amp; (T1[2000] == nInit[4]) &amp;&amp; (T1[2500] ==
 <a name="454"><font color="#888888 "><i>  454   </i></font></a>           nInit[5])) <b>{</b>
 <a name="455"><font color="#888888 "><i>  455   </i></font></a>        <a href="flipud_cpp.html#fcn_flipud" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_flipud');" target="_self"><font color="#1122aa">flipud</font></a>(pathT2);
 <a name="456"><font color="#888888 "><i>  456   </i></font></a>        i5 = path-&gt;size[0] * path-&gt;size[1];

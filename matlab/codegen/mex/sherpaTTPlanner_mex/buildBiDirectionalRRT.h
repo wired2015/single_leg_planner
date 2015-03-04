@@ -24,7 +24,7 @@
 extern void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const
   emlrtStack *sp, const real_T nInit[13], const real_T nGoal[13], const real_T
   jointLimits[20], real_T panHeight, const struct0_T *kC, const real_T uBDot[6],
-  int32_T legNum, const real_T TP2B[16], real_T T1[69750], real_T T2[69750],
+  int32_T legNum, const real_T TP2B[16], real_T T1[46500], real_T T2[46500],
   emxArray_real_T *pathJ, emxArray_real_T *pathC);
 
 #endif

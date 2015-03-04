@@ -2,7 +2,7 @@
 // File: buildBiDirectionalRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 04-Mar-2015 14:16:20
+// C/C++ source code generated on  : 04-Mar-2015 14:32:33
 //
 
 // Include Files
@@ -20,19 +20,19 @@
 #include <stdio.h>
 
 // Function Declarations
-static void traceBranch(const double T[69750], const double midPoint_data[],
+static void traceBranch(const double T[46500], const double midPoint_data[],
   emxArray_real_T *path);
 
 // Function Definitions
 
 //
 // Assignn the
-// Arguments    : const double T[69750]
+// Arguments    : const double T[46500]
 //                const double midPoint_data[]
 //                emxArray_real_T *path
 // Return Type  : void
 //
-static void traceBranch(const double T[69750], const double midPoint_data[],
+static void traceBranch(const double T[46500], const double midPoint_data[],
   emxArray_real_T *path)
 {
   double check;
@@ -53,7 +53,7 @@ static void traceBranch(const double T[69750], const double midPoint_data[],
   path->size[1] = 10;
   emxEnsureCapacity((emxArray__common *)path, i18, (int)sizeof(double));
   for (i18 = 0; i18 < 80; i18++) {
-    transitionArray_data[i18] = T[((int)midPoint_data[0] + 750 * (13 + i18)) - 1];
+    transitionArray_data[i18] = T[((int)midPoint_data[0] + 500 * (13 + i18)) - 1];
   }
 
   // Iterate over the tree until the initial state has been found.
@@ -136,7 +136,7 @@ static void traceBranch(const double T[69750], const double midPoint_data[],
 
     check = next_data[1];
     for (i18 = 0; i18 < 93; i18++) {
-      next_data[i18] = T[((int)check + 750 * i18) - 1];
+      next_data[i18] = T[((int)check + 500 * i18) - 1];
     }
 
     check = next_data[1];
@@ -165,15 +165,15 @@ static void traceBranch(const double T[69750], const double midPoint_data[],
 //                const double uBDot[6]
 //                int legNum
 //                const double TP2B[16]
-//                double T1[69750]
-//                double T2[69750]
+//                double T1[46500]
+//                double T2[46500]
 //                emxArray_real_T *pathJ
 //                emxArray_real_T *pathC
 // Return Type  : void
 //
 void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
   double jointLimits[20], double panHeight, const struct0_T *kC, const double
-  uBDot[6], int legNum, const double TP2B[16], double T1[69750], double T2[69750],
+  uBDot[6], int legNum, const double TP2B[16], double T1[46500], double T2[46500],
   emxArray_real_T *pathJ, emxArray_real_T *pathC)
 {
   int i5;
@@ -182,7 +182,7 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
   double pathLengthMin;
   emxArray_real_T *d;
   int i;
-  static double b_T1[69750];
+  static double b_T1[46500];
   double xRand[13];
   int ixstart;
   double b_T2[93];
@@ -200,7 +200,7 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
   emxArray_real_T *path;
   emxArray_real_T *b_pathC;
   emxArray_real_T *b_t;
-  double b_d[750];
+  double b_d[500];
   boolean_T exitg1;
   int apnd;
   double uP[3];
@@ -213,28 +213,28 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
   // author: wreid
   // date: 20150107
   // Constant Declaration
-  for (i5 = 0; i5 < 69750; i5++) {
+  for (i5 = 0; i5 < 46500; i5++) {
     T1[i5] = 0.0;
   }
 
-  for (i5 = 0; i5 < 69750; i5++) {
+  for (i5 = 0; i5 < 46500; i5++) {
     T2[i5] = 0.0;
   }
 
   for (i5 = 0; i5 < 13; i5++) {
-    T1[750 * i5] = nInit[i5];
+    T1[500 * i5] = nInit[i5];
   }
 
   for (i5 = 0; i5 < 80; i5++) {
-    T1[750 * (i5 + 13)] = 0.0;
+    T1[500 * (i5 + 13)] = 0.0;
   }
 
   for (i5 = 0; i5 < 13; i5++) {
-    T2[750 * i5] = nGoal[i5];
+    T2[500 * i5] = nGoal[i5];
   }
 
   for (i5 = 0; i5 < 80; i5++) {
-    T2[750 * (i5 + 13)] = 0.0;
+    T2[500 * (i5 + 13)] = 0.0;
   }
 
   nodeIDCount1 = 1U;
@@ -249,8 +249,8 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
   pathJ->size[1] = 0;
   emxEnsureCapacity((emxArray__common *)pathJ, i5, (int)sizeof(double));
   emxInit_real_T(&d, 2);
-  for (i = 0; i < 1498; i++) {
-    for (i5 = 0; i5 < 69750; i5++) {
+  for (i = 0; i < 998; i++) {
+    for (i5 = 0; i5 < 46500; i5++) {
       b_T1[i5] = T1[i5];
     }
 
@@ -287,7 +287,7 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
     // parfor i = 1:nodeIDCount
     for (ixstart = 0; ixstart < (int)nodeIDCount1; ixstart++) {
       for (i5 = 0; i5 < 93; i5++) {
-        b_T2[i5] = T1[ixstart + 750 * i5];
+        b_T2[i5] = T1[ixstart + 500 * i5];
       }
 
       d->data[ixstart] = heuristicSingleLeg(xRand, b_T2, kC->l1, kC->l2, kC->l3,
@@ -325,7 +325,7 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
 
     // [d,minIndex] = min(d(1:nodeIDCount));
     for (i5 = 0; i5 < 13; i5++) {
-      c_T1[i5] = T1[absb + 750 * i5];
+      c_T1[i5] = T1[absb + 500 * i5];
     }
 
     selectInput(c_T1, xRand, kC, 0.39269908169872414, jointLimits, uBDot, legNum,
@@ -337,20 +337,20 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
 
     // Parent ID
     for (i5 = 0; i5 < 13; i5++) {
-      c_T1[i5] = T1[absb + 750 * i5];
+      c_T1[i5] = T1[absb + 500 * i5];
     }
 
-    unusedU1[2] = T1[1500 + absb] + b_heuristicSingleLeg(unusedU1, c_T1, kC->l1,
+    unusedU1[2] = T1[1000 + absb] + b_heuristicSingleLeg(unusedU1, c_T1, kC->l1,
       kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7, kC->l8, kC->zeta, kC->r);
 
     // Cost
     ixstart = (int)nodeIDCount1;
     for (i5 = 0; i5 < 13; i5++) {
-      b_T1[ixstart + 750 * i5] = unusedU1[i5];
+      b_T1[ixstart + 500 * i5] = unusedU1[i5];
     }
 
     for (i5 = 0; i5 < 80; i5++) {
-      b_T1[ixstart + 750 * (i5 + 13)] = transitionArray[i5];
+      b_T1[ixstart + 500 * (i5 + 13)] = transitionArray[i5];
     }
 
     // Append the new node to the tree.
@@ -358,11 +358,11 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
     // fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount);
     // end
     // Swap the trees.
-    for (i5 = 0; i5 < 69750; i5++) {
+    for (i5 = 0; i5 < 46500; i5++) {
       T1[i5] = T2[i5];
     }
 
-    memcpy(&T2[0], &b_T1[0], 69750U * sizeof(double));
+    memcpy(&T2[0], &b_T1[0], 46500U * sizeof(double));
 
     // Swap the trees.
     nodeIDCountTemp = nodeIDCount1;
@@ -376,7 +376,7 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
   emxInit_real_T(&path, 2);
   emxInit_real_T(&b_pathC, 2);
   emxInit_real_T(&b_t, 2);
-  for (i = 0; i < 750; i++) {
+  for (i = 0; i < 500; i++) {
     // nearestNeigbour Finds the node in the tree closest to x.
     //    This function scans each node within the tree and finds the node that
     //    is closest to the xRand node. The nearest node is returned by the
@@ -396,13 +396,13 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
     // Iterate over the entire tree and apply the distance heuristic function
     // to each node.
     // parfor i = 1:nodeIDCount
-    for (ixstart = 0; ixstart < 750; ixstart++) {
+    for (ixstart = 0; ixstart < 500; ixstart++) {
       for (i5 = 0; i5 < 13; i5++) {
-        xRand[i5] = T1[i + 750 * i5];
+        xRand[i5] = T1[i + 500 * i5];
       }
 
       for (i5 = 0; i5 < 93; i5++) {
-        b_T2[i5] = T2[ixstart + 750 * i5];
+        b_T2[i5] = T2[ixstart + 500 * i5];
       }
 
       b_d[ixstart] = c_heuristicSingleLeg(xRand, b_T2, kC->l1, kC->l2, kC->l3,
@@ -415,7 +415,7 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
     if (rtIsNaN(b_d[0])) {
       cdiff = 2;
       exitg1 = false;
-      while ((!exitg1) && (cdiff < 751)) {
+      while ((!exitg1) && (cdiff < 501)) {
         ixstart = cdiff;
         if (!rtIsNaN(b_d[cdiff - 1])) {
           dist2Go = b_d[cdiff - 1];
@@ -427,8 +427,8 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
       }
     }
 
-    if (ixstart < 750) {
-      while (ixstart + 1 < 751) {
+    if (ixstart < 500) {
+      while (ixstart + 1 < 501) {
         if (b_d[ixstart] < dist2Go) {
           dist2Go = b_d[ixstart];
           absb = ixstart;
@@ -441,16 +441,16 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
     // [d,minIndex] = min(d(1:nodeIDCount));
     if (dist2Go < 0.04) {
       for (i5 = 0; i5 < 13; i5++) {
-        xRand[i5] = T1[i + 750 * i5];
+        xRand[i5] = T1[i + 500 * i5];
       }
 
       traceBranch(T1, xRand, pathT1);
       for (i5 = 0; i5 < 13; i5++) {
-        xRand[i5] = T2[absb + 750 * i5];
+        xRand[i5] = T2[absb + 500 * i5];
       }
 
       traceBranch(T2, xRand, pathT2);
-      if ((T1[2250] == nInit[3]) && (T1[3000] == nInit[4]) && (T1[3750] ==
+      if ((T1[1500] == nInit[3]) && (T1[2000] == nInit[4]) && (T1[2500] ==
            nInit[5])) {
         flipud(pathT2);
         i5 = path->size[0] * path->size[1];

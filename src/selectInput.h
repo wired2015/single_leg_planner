@@ -2,7 +2,7 @@
 // File: selectInput.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 04-Mar-2015 14:16:20
+// C/C++ source code generated on  : 04-Mar-2015 14:32:33
 //
 #ifndef __SELECTINPUT_H__
 #define __SELECTINPUT_H__

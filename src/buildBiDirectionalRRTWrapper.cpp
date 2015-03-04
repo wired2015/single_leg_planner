@@ -2,7 +2,7 @@
 // File: buildBiDirectionalRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 04-Mar-2015 14:16:20
+// C/C++ source code generated on  : 04-Mar-2015 14:32:33
 //
 
 // Include Files
@@ -58,8 +58,8 @@ void buildBiDirectionalRRTWrapper(const double nInitCartesianB[6], const double
   double nGoalJoint[10];
   double dv0[13];
   double dv1[13];
-  static double b_T2[69750];
-  static double b_T1[69750];
+  static double b_T2[46500];
+  static double b_T1[46500];
 
   // BUILDRRTWRAPPER This function acts as a wrapper for the buildRRT function.
   // Code generation for the singleLegPlanner is performed using this function
@@ -236,18 +236,18 @@ void buildBiDirectionalRRTWrapper(const double nInitCartesianB[6], const double
     buildBiDirectionalRRT(dv0, dv1, jointLimits, -(-nInitCartesianB[2] +
       kC->B2PZOffset), kC, uBDot, legNum, TP2B, b_T1, b_T2, pathJ, pathC);
     i0 = T1->size[0] * T1->size[1];
-    T1->size[0] = 750;
+    T1->size[0] = 500;
     T1->size[1] = 93;
     emxEnsureCapacity((emxArray__common *)T1, i0, (int)sizeof(double));
-    for (i0 = 0; i0 < 69750; i0++) {
+    for (i0 = 0; i0 < 46500; i0++) {
       T1->data[i0] = b_T1[i0];
     }
 
     i0 = T2->size[0] * T2->size[1];
-    T2->size[0] = 750;
+    T2->size[0] = 500;
     T2->size[1] = 93;
     emxEnsureCapacity((emxArray__common *)T2, i0, (int)sizeof(double));
-    for (i0 = 0; i0 < 69750; i0++) {
+    for (i0 = 0; i0 < 46500; i0++) {
       T2->data[i0] = b_T2[i0];
     }
 

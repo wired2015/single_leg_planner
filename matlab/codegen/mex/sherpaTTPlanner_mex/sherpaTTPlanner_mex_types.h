@@ -86,7 +86,7 @@ typedef struct
     {
         struct
         {
-            real_T T1[69750];
+            real_T T1[46500];
         } f0;
         struct
         {
@@ -95,8 +95,8 @@ typedef struct
     } u1;
     struct
     {
-        real_T T2[69750];
-        real_T T1[69750];
+        real_T T2[46500];
+        real_T T1[46500];
     } f2;
 } sherpaTTPlanner_mexStackData;
 #endif /*typedef_sherpaTTPlanner_mexStackData*/

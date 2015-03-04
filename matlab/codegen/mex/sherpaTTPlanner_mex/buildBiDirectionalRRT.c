@@ -86,15 +86,15 @@ static emlrtRTEInfo j_emlrtRTEI = { 100, 9, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtBCInfo b_emlrtBCI = { 1, 750, 26, 39, "T", "nearestNeighbour",
+static emlrtBCInfo b_emlrtBCI = { 1, 500, 26, 39, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo d_emlrtBCI = { 1, 750, 31, 15, "T", "nearestNeighbour",
+static emlrtBCInfo d_emlrtBCI = { 1, 500, 31, 15, "T", "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m",
   0 };
 
-static emlrtBCInfo e_emlrtBCI = { 1, 750, 124, 7, "T", "buildBiDirectionalRRT",
+static emlrtBCInfo e_emlrtBCI = { 1, 500, 124, 7, "T", "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m",
   0 };
 
@@ -141,7 +141,7 @@ static emlrtECInfo c_emlrtECI = { -1, 109, 27, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtBCInfo o_emlrtBCI = { 1, 750, 106, 18, "T", "buildBiDirectionalRRT",
+static emlrtBCInfo o_emlrtBCI = { 1, 500, 106, 18, "T", "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m",
   0 };
 
@@ -157,7 +157,7 @@ static emlrtRTEInfo t_emlrtRTEI = { 101, 9, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtBCInfo p_emlrtBCI = { 1, 750, 95, 25, "T", "buildBiDirectionalRRT",
+static emlrtBCInfo p_emlrtBCI = { 1, 500, 95, 25, "T", "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m",
   0 };
 
@@ -166,11 +166,11 @@ static emlrtDCInfo b_emlrtDCI = { 95, 25, "buildBiDirectionalRRT",
   1 };
 
 /* Function Declarations */
-static void traceBranch(const emlrtStack *sp, const real_T T[69750], const
+static void traceBranch(const emlrtStack *sp, const real_T T[46500], const
   real_T midPoint_data[], emxArray_real_T *path);
 
 /* Function Definitions */
-static void traceBranch(const emlrtStack *sp, const real_T T[69750], const
+static void traceBranch(const emlrtStack *sp, const real_T T[46500], const
   real_T midPoint_data[], emxArray_real_T *path)
 {
   boolean_T b2;
@@ -202,11 +202,11 @@ static void traceBranch(const emlrtStack *sp, const real_T T[69750], const
   emxEnsureCapacity(sp, (emxArray__common *)path, i15, (int32_T)sizeof(real_T),
                     &i_emlrtRTEI);
   i15 = (int32_T)emlrtIntegerCheckFastR2012b(midPoint_data[0], &b_emlrtDCI, sp);
-  emlrtDynamicBoundsCheckFastR2012b(i15, 1, 750, &p_emlrtBCI, sp);
+  emlrtDynamicBoundsCheckFastR2012b(i15, 1, 500, &p_emlrtBCI, sp);
   transitionArray_size[0] = 1;
   transitionArray_size[1] = 80;
   for (i15 = 0; i15 < 80; i15++) {
-    transitionArray_data[i15] = T[((int32_T)midPoint_data[0] + 750 * (13 + i15))
+    transitionArray_data[i15] = T[((int32_T)midPoint_data[0] + 500 * (13 + i15))
       - 1];
   }
 
@@ -305,11 +305,11 @@ static void traceBranch(const emlrtStack *sp, const real_T T[69750], const
 
     check = next_data[1];
     i15 = (int32_T)emlrtIntegerCheckFastR2012b(next_data[1], &emlrtDCI, sp);
-    emlrtDynamicBoundsCheckFastR2012b(i15, 1, 750, &o_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i15, 1, 500, &o_emlrtBCI, sp);
     next_size[0] = 1;
     next_size[1] = 93;
     for (i15 = 0; i15 < 93; i15++) {
-      next_data[i15] = T[((int32_T)check + 750 * i15) - 1];
+      next_data[i15] = T[((int32_T)check + 500 * i15) - 1];
     }
 
     check = next_data[1];
@@ -338,7 +338,7 @@ static void traceBranch(const emlrtStack *sp, const real_T T[69750], const
 void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   *sp, const real_T nInit[13], const real_T nGoal[13], const real_T jointLimits
   [20], real_T panHeight, const struct0_T *kC, const real_T uBDot[6], int32_T
-  legNum, const real_T TP2B[16], real_T T1[69750], real_T T2[69750],
+  legNum, const real_T TP2B[16], real_T T1[46500], real_T T2[46500],
   emxArray_real_T *pathJ, emxArray_real_T *pathC)
 {
   int32_T i4;
@@ -376,7 +376,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   emxArray_real_T *path;
   emxArray_real_T *b_pathC;
   emxArray_real_T *b_t;
-  real_T b_d[750];
+  real_T b_d[500];
   boolean_T exitg1;
   int32_T apnd;
   real_T uP[3];
@@ -423,28 +423,28 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   /*    been reached. A path is selected if the goal region as defined by xGoal */
   /*    has been reached by the RRT. */
   /* Constant Declaration                                                       */
-  for (i4 = 0; i4 < 69750; i4++) {
+  for (i4 = 0; i4 < 46500; i4++) {
     T1[i4] = 0.0;
   }
 
-  for (i4 = 0; i4 < 69750; i4++) {
+  for (i4 = 0; i4 < 46500; i4++) {
     T2[i4] = 0.0;
   }
 
   for (i4 = 0; i4 < 13; i4++) {
-    T1[750 * i4] = nInit[i4];
+    T1[500 * i4] = nInit[i4];
   }
 
   for (i4 = 0; i4 < 80; i4++) {
-    T1[750 * (i4 + 13)] = 0.0;
+    T1[500 * (i4 + 13)] = 0.0;
   }
 
   for (i4 = 0; i4 < 13; i4++) {
-    T2[750 * i4] = nGoal[i4];
+    T2[500 * i4] = nGoal[i4];
   }
 
   for (i4 = 0; i4 < 80; i4++) {
-    T2[750 * (i4 + 13)] = 0.0;
+    T2[500 * (i4 + 13)] = 0.0;
   }
 
   nodeIDCount1 = 1U;
@@ -461,9 +461,9 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   emxEnsureCapacity(sp, (emxArray__common *)pathJ, i4, (int32_T)sizeof(real_T),
                     &b_emlrtRTEI);
   emxInit_real_T(sp, &d, 2, &h_emlrtRTEI, true);
-  for (i = 0; i < 1498; i++) {
+  for (i = 0; i < 998; i++) {
     st.site = &v_emlrtRSI;
-    for (i4 = 0; i4 < 69750; i4++) {
+    for (i4 = 0; i4 < 46500; i4++) {
       SD->u1.f0.T1[i4] = T1[i4];
     }
 
@@ -505,9 +505,9 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
       (int32_T)nodeIDCount1, &s_emlrtRTEI, &b_st);
     cdiff = 1;
     while (cdiff - 1 <= (int32_T)nodeIDCount1 - 1) {
-      emlrtDynamicBoundsCheckFastR2012b(cdiff, 1, 750, &b_emlrtBCI, &b_st);
+      emlrtDynamicBoundsCheckFastR2012b(cdiff, 1, 500, &b_emlrtBCI, &b_st);
       for (i4 = 0; i4 < 93; i4++) {
-        b_T2[i4] = T1[(cdiff + 750 * i4) - 1];
+        b_T2[i4] = T1[(cdiff + 500 * i4) - 1];
       }
 
       i4 = d->size[1];
@@ -601,9 +601,9 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
 
     /* [d,minIndex] = min(d(1:nodeIDCount)); */
     i4 = absb + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i4, 1, 750, &d_emlrtBCI, &b_st);
+    emlrtDynamicBoundsCheckFastR2012b(i4, 1, 500, &d_emlrtBCI, &b_st);
     for (i4 = 0; i4 < 13; i4++) {
-      b_T1[i4] = T1[absb + 750 * i4];
+      b_T1[i4] = T1[absb + 500 * i4];
     }
 
     b_st.site = &db_emlrtRSI;
@@ -616,22 +616,22 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
 
     /* Parent ID */
     for (i4 = 0; i4 < 13; i4++) {
-      b_T1[i4] = T1[absb + 750 * i4];
+      b_T1[i4] = T1[absb + 500 * i4];
     }
 
-    unusedU1[2] = T1[1500 + absb] + b_heuristicSingleLeg(unusedU1, b_T1, kC->l1,
+    unusedU1[2] = T1[1000 + absb] + b_heuristicSingleLeg(unusedU1, b_T1, kC->l1,
       kC->l2, kC->l3, kC->l4, kC->l5, kC->l6, kC->l7, kC->l8, kC->zeta, kC->r);
 
     /* Cost */
     i4 = (int32_T)(nodeIDCount1 + 1U);
-    ixstart = emlrtDynamicBoundsCheckFastR2012b(i4, 1, 750, &e_emlrtBCI, &st) -
+    ixstart = emlrtDynamicBoundsCheckFastR2012b(i4, 1, 500, &e_emlrtBCI, &st) -
       1;
     for (i4 = 0; i4 < 13; i4++) {
-      SD->u1.f0.T1[ixstart + 750 * i4] = unusedU1[i4];
+      SD->u1.f0.T1[ixstart + 500 * i4] = unusedU1[i4];
     }
 
     for (i4 = 0; i4 < 80; i4++) {
-      SD->u1.f0.T1[ixstart + 750 * (i4 + 13)] = transitionArray[i4];
+      SD->u1.f0.T1[ixstart + 500 * (i4 + 13)] = transitionArray[i4];
     }
 
     /* Append the new node to the tree.     */
@@ -639,11 +639,11 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
     /* fprintf('PROGRESS STATUS: %.0f NODES USED\n',nodeIDCount); */
     /* end */
     /* Swap the trees. */
-    for (i4 = 0; i4 < 69750; i4++) {
+    for (i4 = 0; i4 < 46500; i4++) {
       T1[i4] = T2[i4];
     }
 
-    memcpy(&T2[0], &SD->u1.f0.T1[0], 69750U * sizeof(real_T));
+    memcpy(&T2[0], &SD->u1.f0.T1[0], 46500U * sizeof(real_T));
 
     /* Swap the trees. */
     nodeIDCountTemp = nodeIDCount1;
@@ -658,7 +658,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   emxInit_real_T(sp, &path, 2, &g_emlrtRTEI, true);
   emxInit_real_T(sp, &b_pathC, 2, &b_emlrtRTEI, true);
   emxInit_real_T(sp, &b_t, 2, &b_emlrtRTEI, true);
-  for (i = 0; i < 750; i++) {
+  for (i = 0; i < 500; i++) {
     /* nearestNeigbour.m */
     /* author: wreid */
     /* date: 20150107 */
@@ -678,13 +678,13 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
     /* Iterate over the entire tree and apply the distance heuristic function */
     /* to each node. */
     /* parfor i = 1:nodeIDCount */
-    for (cdiff = 0; cdiff < 750; cdiff++) {
+    for (cdiff = 0; cdiff < 500; cdiff++) {
       for (i4 = 0; i4 < 13; i4++) {
-        xRand[i4] = T1[i + 750 * i4];
+        xRand[i4] = T1[i + 500 * i4];
       }
 
       for (i4 = 0; i4 < 93; i4++) {
-        b_T2[i4] = T2[cdiff + 750 * i4];
+        b_T2[i4] = T2[cdiff + 500 * i4];
       }
 
       b_d[cdiff] = c_heuristicSingleLeg(xRand, b_T2, kC->l1, kC->l2, kC->l3,
@@ -698,7 +698,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
     if (muDoubleScalarIsNaN(b_d[0])) {
       cdiff = 2;
       exitg1 = false;
-      while ((!exitg1) && (cdiff < 751)) {
+      while ((!exitg1) && (cdiff < 501)) {
         ixstart = cdiff;
         if (!muDoubleScalarIsNaN(b_d[cdiff - 1])) {
           dist2Go = b_d[cdiff - 1];
@@ -710,8 +710,8 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
       }
     }
 
-    if (ixstart < 750) {
-      while (ixstart + 1 < 751) {
+    if (ixstart < 500) {
+      while (ixstart + 1 < 501) {
         if (b_d[ixstart] < dist2Go) {
           dist2Go = b_d[ixstart];
           absb = ixstart;
@@ -724,18 +724,18 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
     /* [d,minIndex] = min(d(1:nodeIDCount)); */
     if (dist2Go < 0.04) {
       for (i4 = 0; i4 < 13; i4++) {
-        xRand[i4] = T1[i + 750 * i4];
+        xRand[i4] = T1[i + 500 * i4];
       }
 
       st.site = &w_emlrtRSI;
       traceBranch(&st, T1, xRand, pathT1);
       for (i4 = 0; i4 < 13; i4++) {
-        xRand[i4] = T2[absb + 750 * i4];
+        xRand[i4] = T2[absb + 500 * i4];
       }
 
       st.site = &x_emlrtRSI;
       traceBranch(&st, T2, xRand, pathT2);
-      if ((T1[2250] == nInit[3]) && (T1[3000] == nInit[4]) && (T1[3750] ==
+      if ((T1[1500] == nInit[3]) && (T1[2000] == nInit[4]) && (T1[2500] ==
            nInit[5])) {
         flipud(pathT2);
         i4 = path->size[0] * path->size[1];

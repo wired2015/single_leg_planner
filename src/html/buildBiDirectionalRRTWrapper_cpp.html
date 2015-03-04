@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: buildBiDirectionalRRTWrapper.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:16:20</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:32:33</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -69,8 +69,8 @@
 <a name="58"><font color="#888888 "><i>   58   </i></font></a>  <font color="#112266"><b>double</b></font> nGoalJoint[10];
 <a name="59"><font color="#888888 "><i>   59   </i></font></a>  <font color="#112266"><b>double</b></font> dv0[13];
 <a name="60"><font color="#888888 "><i>   60   </i></font></a>  <font color="#112266"><b>double</b></font> dv1[13];
-<a name="61"><font color="#888888 "><i>   61   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>double</b></font> b_T2[69750];
-<a name="62"><font color="#888888 "><i>   62   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>double</b></font> b_T1[69750];
+<a name="61"><font color="#888888 "><i>   61   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>double</b></font> b_T2[46500];
+<a name="62"><font color="#888888 "><i>   62   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>double</b></font> b_T1[46500];
 <a name="63"><font color="#888888 "><i>   63   </i></font></a>
 <a name="64"><font color="#888888 "><i>   64   </i></font></a>  <font color="#117755"><i>// BUILDRRTWRAPPER This function acts as a wrapper for the buildRRT function.</i></font>
 <a name="65"><font color="#888888 "><i>   65   </i></font></a>  <font color="#117755"><i>// Code generation for the singleLegPlanner is performed using this function</i></font>
@@ -247,18 +247,18 @@
 <a name="236"><font color="#888888 "><i>  236   </i></font></a>    <a href="buildBiDirectionalRRT_cpp.html#fcn_buildBiDirectionalRRT" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_buildBiDirectionalRRT');" target="_self"><font color="#1122aa">buildBiDirectionalRRT</font></a>(dv0, dv1, jointLimits, -(-nInitCartesianB[2] +
 <a name="237"><font color="#888888 "><i>  237   </i></font></a>      kC-&gt;B2PZOffset), kC, uBDot, legNum, TP2B, b_T1, b_T2, pathJ, pathC);
 <a name="238"><font color="#888888 "><i>  238   </i></font></a>    i0 = T1-&gt;size[0] * T1-&gt;size[1];
-<a name="239"><font color="#888888 "><i>  239   </i></font></a>    T1-&gt;size[0] = 750;
+<a name="239"><font color="#888888 "><i>  239   </i></font></a>    T1-&gt;size[0] = 500;
 <a name="240"><font color="#888888 "><i>  240   </i></font></a>    T1-&gt;size[1] = 93;
 <a name="241"><font color="#888888 "><i>  241   </i></font></a>    <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)T1, i0, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="242"><font color="#888888 "><i>  242   </i></font></a>    <font color="#112266"><b>for</b></font> (i0 = 0; i0 &lt; 69750; i0++) <b>{</b>
+<a name="242"><font color="#888888 "><i>  242   </i></font></a>    <font color="#112266"><b>for</b></font> (i0 = 0; i0 &lt; 46500; i0++) <b>{</b>
 <a name="243"><font color="#888888 "><i>  243   </i></font></a>      T1-&gt;data[i0] = b_T1[i0];
 <a name="244"><font color="#888888 "><i>  244   </i></font></a>    <b>}</b>
 <a name="245"><font color="#888888 "><i>  245   </i></font></a>
 <a name="246"><font color="#888888 "><i>  246   </i></font></a>    i0 = T2-&gt;size[0] * T2-&gt;size[1];
-<a name="247"><font color="#888888 "><i>  247   </i></font></a>    T2-&gt;size[0] = 750;
+<a name="247"><font color="#888888 "><i>  247   </i></font></a>    T2-&gt;size[0] = 500;
 <a name="248"><font color="#888888 "><i>  248   </i></font></a>    T2-&gt;size[1] = 93;
 <a name="249"><font color="#888888 "><i>  249   </i></font></a>    <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)T2, i0, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="250"><font color="#888888 "><i>  250   </i></font></a>    <font color="#112266"><b>for</b></font> (i0 = 0; i0 &lt; 69750; i0++) <b>{</b>
+<a name="250"><font color="#888888 "><i>  250   </i></font></a>    <font color="#112266"><b>for</b></font> (i0 = 0; i0 &lt; 46500; i0++) <b>{</b>
 <a name="251"><font color="#888888 "><i>  251   </i></font></a>      T2-&gt;data[i0] = b_T2[i0];
 <a name="252"><font color="#888888 "><i>  252   </i></font></a>    <b>}</b>
 <a name="253"><font color="#888888 "><i>  253   </i></font></a>

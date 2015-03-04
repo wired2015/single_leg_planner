@@ -176,8 +176,8 @@ bool LegPlanner::plan(int legNum){
     cout << "uBDot[5] = " << this->uBDot[5]  << endl;
     */
 
-    //buildBiDirectionalRRTWrapper(this->sInitB, this->sGoalB, this->phiInit, this->omegaInit, this->jointLimits, &(this->kC), legNum, this->uBDot, this->emxT, this->emxT2,this->emxPathC,this->emxPathJ,&(this->success)); 
-    buildRRTWrapper(this->sInitB, this->sGoalB, this->phiInit, this->omegaInit, this->jointLimits, &(this->kC), legNum, this->uBDot, this->emxT,this->emxPathC,this->emxPathJ,&(this->success)); 
+    buildBiDirectionalRRTWrapper(this->sInitB, this->sGoalB, this->phiInit, this->omegaInit, this->jointLimits, &(this->kC), legNum, this->uBDot, this->emxT, this->emxT2,this->emxPathC,this->emxPathJ,&(this->success)); 
+    //buildRRTWrapper(this->sInitB, this->sGoalB, this->phiInit, this->omegaInit, this->jointLimits, &(this->kC), legNum, this->uBDot, this->emxT,this->emxPathC,this->emxPathJ,&(this->success)); 
 
     cout << "hello world !!!" << endl;
 

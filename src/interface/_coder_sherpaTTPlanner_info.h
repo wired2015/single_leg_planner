@@ -2,7 +2,7 @@
  * File: _coder_sherpaTTPlanner_info.h 
  *  
  * MATLAB Coder version            : 2.7 
- * C/C++ source code generated on  : 04-Mar-2015 14:16:20 
+ * C/C++ source code generated on  : 04-Mar-2015 14:32:33 
  */
 
 #ifndef ___CODER_SHERPATTPLANNER_INFO_H__

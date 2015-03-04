@@ -39,7 +39,7 @@ function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesi
     stepAccRatio = 14;
     eta = Dt/stepAccRatio;
     U = eta*[1 0; -1 0; 0 1; 0 -1; 0 0]; 
-    NUM_NODES = int32(1500);
+    NUM_NODES = int32(1000);
     bodyHeight = -nInitCartesianB(3);
     panHeight  = getPanHeight(bodyHeight,kC);
 
