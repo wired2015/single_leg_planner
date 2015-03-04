@@ -40,7 +40,7 @@ function xRand = randomState(jointLimits,cartesianLimits,panHeight,nGoal,nodeIDC
     zPMin = cartesianLimits(2);
     zPMid1 = cartesianLimits(3);
     zPMid2 = cartesianLimits(4);
-    
+        
     if panHeight <= zPMax && panHeight >= zPMid1
         xMax = getXStar(panHeight,gammaMin,false,kC);
         xMin = getXStar(panHeight,betaMin,true,kC);
@@ -55,7 +55,7 @@ function xRand = randomState(jointLimits,cartesianLimits,panHeight,nGoal,nodeIDC
         xMin = 0;
         disp('z is out of range');
     end
-    
+       
     xRand = xMin + (xMax-xMin)*rand;
     
     u  = [xRand 0 panHeight];

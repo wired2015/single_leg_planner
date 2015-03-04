@@ -31,7 +31,7 @@
 <a name="20"><font color="#888888 "><i>   20   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&lt;stdio.h&gt;</font>
 <a name="21"><font color="#888888 "><i>   21   </i></font></a>
 <a name="22"><font color="#888888 "><i>   22   </i></font></a><font color="#117755"><i>/* Variable Definitions */</i></font>
-<a name="23"><font color="#888888 "><i>   23   </i></font></a><font color="#112266"><b>static</b></font> emlrtRTEInfo <a name="var_p_emlrtRTEI">p_emlrtRTEI</a> = <b>{</b> 5, 38, <font color="#1122ff">&quot;nearestNeighbour&quot;</font>,
+<a name="23"><font color="#888888 "><i>   23   </i></font></a><font color="#112266"><b>static</b></font> emlrtRTEInfo <a name="var_o_emlrtRTEI">o_emlrtRTEI</a> = <b>{</b> 5, 38, <font color="#1122ff">&quot;nearestNeighbour&quot;</font>,
 <a name="24"><font color="#888888 "><i>   24   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m&quot;</font>
 <a name="25"><font color="#888888 "><i>   25   </i></font></a><b>}</b>;
 <a name="26"><font color="#888888 "><i>   26   </i></font></a>
@@ -114,7 +114,7 @@
 <a name="103"><font color="#888888 "><i>  103   </i></font></a>  b_d-&gt;size[0] = 1;
 <a name="104"><font color="#888888 "><i>  104   </i></font></a>  b_d-&gt;size[1] = (int32_T)nodeIDCount;
 <a name="105"><font color="#888888 "><i>  105   </i></font></a>  <a href="sherpaTTPlanner_mex_emxutil_c.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>(sp, (<a href="sherpaTTPlanner_mex_types_h.html#type_emxArray__common" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_emxArray__common');" target="_self"><font color="#1122aa">emxArray__common</font></a> *)b_d, ix, (int32_T)<font color="#112266"><b>sizeof</b></font>(real_T),
-<a name="106"><font color="#888888 "><i>  106   </i></font></a>                    &amp;<a href="#var_p_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_p_emlrtRTEI');" target="_self"><font color="#1122aa">p_emlrtRTEI</font></a>);
+<a name="106"><font color="#888888 "><i>  106   </i></font></a>                    &amp;<a href="#var_o_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_o_emlrtRTEI');" target="_self"><font color="#1122aa">o_emlrtRTEI</font></a>);
 <a name="107"><font color="#888888 "><i>  107   </i></font></a>  ixstart = (int32_T)nodeIDCount;
 <a name="108"><font color="#888888 "><i>  108   </i></font></a>  <font color="#112266"><b>for</b></font> (ix = 0; ix &lt; ixstart; ix++) <b>{</b>
 <a name="109"><font color="#888888 "><i>  109   </i></font></a>    b_d-&gt;data[ix] = 0.0;
@@ -122,7 +122,7 @@
 <a name="111"><font color="#888888 "><i>  111   </i></font></a>
 <a name="112"><font color="#888888 "><i>  112   </i></font></a>  <font color="#117755"><i>/* parfor i = 1:nodeIDCount */</i></font>
 <a name="113"><font color="#888888 "><i>  113   </i></font></a>  emlrtForLoopVectorCheckR2012b(1.0, 1.0, nodeIDCount, mxDOUBLE_CLASS, (int32_T)
-<a name="114"><font color="#888888 "><i>  114   </i></font></a>    nodeIDCount, &amp;<a href="sherpaTTPlanner_mex_data_c.html#var_t_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_t_emlrtRTEI');" target="_self"><font color="#1122aa">t_emlrtRTEI</font></a>, sp);
+<a name="114"><font color="#888888 "><i>  114   </i></font></a>    nodeIDCount, &amp;<a href="sherpaTTPlanner_mex_data_c.html#var_s_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_s_emlrtRTEI');" target="_self"><font color="#1122aa">s_emlrtRTEI</font></a>, sp);
 <a name="115"><font color="#888888 "><i>  115   </i></font></a>  ixstart = 1;
 <a name="116"><font color="#888888 "><i>  116   </i></font></a>  <font color="#112266"><b>while</b></font> (ixstart - 1 &lt;= (int32_T)nodeIDCount - 1) <b>{</b>
 <a name="117"><font color="#888888 "><i>  117   </i></font></a>    emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, 1500, &amp;<a href="#var_db_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_db_emlrtBCI');" target="_self"><font color="#1122aa">db_emlrtBCI</font></a>, sp);

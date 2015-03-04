@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'sherpaTTPlanner'. 
 ## 
 ## Makefile     : sherpaTTPlanner_rtw.mk
-## Generated on : Tue Mar 03 11:20:08 2015
+## Generated on : Tue Mar 03 12:00:19 2015
 ## MATLAB Coder version: 2.7 (R2014b)
 ## 
 ## Build Info:
@@ -28,7 +28,7 @@ MATLAB_ROOT               = /Applications/MATLAB_R2014b.app
 MATLAB_BIN                = /Applications/MATLAB_R2014b.app/bin
 MATLAB_ARCH_BIN           = /Applications/MATLAB_R2014b.app/bin/maci64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = /Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner
+START_DIR                 = /Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab
 ARCH                      = maci64
 RELATIVE_PATH_TO_ANCHOR   = .
 
@@ -170,7 +170,7 @@ BUILD_TYPE = "Static Library"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT -I$(START_DIR)/matlab/evaluation -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT -I$(START_DIR)/evaluation -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 

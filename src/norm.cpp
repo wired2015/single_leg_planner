@@ -2,7 +2,7 @@
 // File: norm.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -29,7 +29,7 @@ double b_norm(const double x[3])
   y = 0.0;
   scale = 2.2250738585072014E-308;
   for (k = 0; k < 3; k++) {
-    absxk = fabs(x[k]);
+    absxk = std::abs(x[k]);
     if (absxk > scale) {
       t = scale / absxk;
       y = 1.0 + y * t * t;
@@ -40,7 +40,7 @@ double b_norm(const double x[3])
     }
   }
 
-  return scale * sqrt(y);
+  return scale * std::sqrt(y);
 }
 
 //
@@ -57,7 +57,7 @@ double norm(const double x[3])
   y = 0.0;
   scale = 2.2250738585072014E-308;
   for (k = 0; k < 3; k++) {
-    absxk = fabs(x[k]);
+    absxk = std::abs(x[k]);
     if (absxk > scale) {
       t = scale / absxk;
       y = 1.0 + y * t * t;
@@ -68,7 +68,7 @@ double norm(const double x[3])
     }
   }
 
-  return scale * sqrt(y);
+  return scale * std::sqrt(y);
 }
 
 //

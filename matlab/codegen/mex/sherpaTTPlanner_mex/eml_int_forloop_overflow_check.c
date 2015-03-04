@@ -41,10 +41,10 @@ static const mxArray *b_message(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location)
 {
   const mxArray *pArrays[2];
-  const mxArray *m15;
+  const mxArray *m14;
   pArrays[0] = b;
   pArrays[1] = c;
-  return emlrtCallMATLABR2012b(sp, 1, &m15, 2, pArrays, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m14, 2, pArrays, "message", true,
     location);
 }
 

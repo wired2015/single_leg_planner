@@ -309,7 +309,7 @@ static void info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPanHeight.m"),
                 "resolved", 9);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423746331U), "fileTimeLo", 9);
+  emlrtAddField(*info, b_emlrt_marshallOut(1425379955U), "fileTimeLo", 9);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 9);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 9);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 9);
@@ -3409,7 +3409,7 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 174);
-  emlrtAddField(*info, b_emlrt_marshallOut(1424820163U), "fileTimeLo", 174);
+  emlrtAddField(*info, b_emlrt_marshallOut(1425468656U), "fileTimeLo", 174);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 174);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 174);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 174);
@@ -6695,7 +6695,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPanHeight.m"),
                 "resolved", 335);
-  emlrtAddField(*info, b_emlrt_marshallOut(1423746331U), "fileTimeLo", 335);
+  emlrtAddField(*info, b_emlrt_marshallOut(1425379955U), "fileTimeLo", 335);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 335);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 335);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 335);
@@ -6854,7 +6854,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 345);
-  emlrtAddField(*info, b_emlrt_marshallOut(1424820163U), "fileTimeLo", 345);
+  emlrtAddField(*info, b_emlrt_marshallOut(1425468656U), "fileTimeLo", 345);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 345);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 345);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 345);
@@ -7154,7 +7154,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut(
     "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 364);
-  emlrtAddField(*info, b_emlrt_marshallOut(1424820163U), "fileTimeLo", 364);
+  emlrtAddField(*info, b_emlrt_marshallOut(1425468656U), "fileTimeLo", 364);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 364);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeLo", 364);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "mFileTimeHi", 364);
@@ -7327,15 +7327,15 @@ mxArray *emlrtMexFcnProperties()
   mxArray *xResult = mxCreateStructMatrix(1,1,4,mexProperties);
   mxArray *xEntryPoints = mxCreateStructMatrix(1,3,4,epProperties);
   mxArray *xInputs = NULL;
-  xInputs = mxCreateLogicalMatrix(1, 9);
+  xInputs = mxCreateLogicalMatrix(1, 8);
   mxSetFieldByNumber(xEntryPoints, 0, 0, mxCreateString(
     "buildBiDirectionalRRTWrapper"));
-  mxSetFieldByNumber(xEntryPoints, 0, 1, mxCreateDoubleScalar(9));
+  mxSetFieldByNumber(xEntryPoints, 0, 1, mxCreateDoubleScalar(8));
   mxSetFieldByNumber(xEntryPoints, 0, 2, mxCreateDoubleScalar(5));
   mxSetFieldByNumber(xEntryPoints, 0, 3, xInputs);
-  xInputs = mxCreateLogicalMatrix(1, 9);
+  xInputs = mxCreateLogicalMatrix(1, 8);
   mxSetFieldByNumber(xEntryPoints, 1, 0, mxCreateString("buildRRTWrapper"));
-  mxSetFieldByNumber(xEntryPoints, 1, 1, mxCreateDoubleScalar(9));
+  mxSetFieldByNumber(xEntryPoints, 1, 1, mxCreateDoubleScalar(8));
   mxSetFieldByNumber(xEntryPoints, 1, 2, mxCreateDoubleScalar(4));
   mxSetFieldByNumber(xEntryPoints, 1, 3, xInputs);
   xInputs = mxCreateLogicalMatrix(1, 5);

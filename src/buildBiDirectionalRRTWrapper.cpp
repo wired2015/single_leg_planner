@@ -2,7 +2,7 @@
 // File: buildBiDirectionalRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -25,7 +25,6 @@
 //                double phiInit
 //                double omegaInit
 //                const double jointLimits[20]
-//                double bodyHeight
 //                const struct0_T *kC
 //                int legNum
 //                const double uBDot[6]
@@ -38,9 +37,9 @@
 //
 void buildBiDirectionalRRTWrapper(const double nInitCartesianB[6], const double
   nGoalCartesianB[6], double phiInit, double omegaInit, const double
-  jointLimits[20], double bodyHeight, const struct0_T *kC, int legNum, const
-  double uBDot[6], emxArray_real_T *T1, emxArray_real_T *T2, emxArray_real_T
-  *pathC, emxArray_real_T *pathJ, boolean_T *success)
+  jointLimits[20], const struct0_T *kC, int legNum, const double uBDot[6],
+  emxArray_real_T *T1, emxArray_real_T *T2, emxArray_real_T *pathC,
+  emxArray_real_T *pathJ, boolean_T *success)
 {
   double TP2B[16];
   int i0;
@@ -112,14 +111,14 @@ void buildBiDirectionalRRTWrapper(const double nInitCartesianB[6], const double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TP2B[0] = cos(kC->legAngleOffset[legNum - 1]);
-  TP2B[4] = -sin(kC->legAngleOffset[legNum - 1]);
-  TP2B[8] = sin(kC->legAngleOffset[legNum - 1]) * 0.0;
-  TP2B[12] = kC->B2PXOffset * cos(kC->legAngleOffset[legNum - 1]);
-  TP2B[1] = sin(kC->legAngleOffset[legNum - 1]);
-  TP2B[5] = cos(kC->legAngleOffset[legNum - 1]);
-  TP2B[9] = -cos(kC->legAngleOffset[legNum - 1]) * 0.0;
-  TP2B[13] = kC->B2PXOffset * sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[0] = std::cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[4] = -std::sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[8] = std::sin(kC->legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[12] = kC->B2PXOffset * std::cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[1] = std::sin(kC->legAngleOffset[legNum - 1]);
+  TP2B[5] = std::cos(kC->legAngleOffset[legNum - 1]);
+  TP2B[9] = -std::cos(kC->legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[13] = kC->B2PXOffset * std::sin(kC->legAngleOffset[legNum - 1]);
   TP2B[2] = 0.0;
   TP2B[6] = 0.0;
   TP2B[10] = 1.0;
@@ -234,8 +233,8 @@ void buildBiDirectionalRRTWrapper(const double nInitCartesianB[6], const double
       dv1[i0 + 3] = nGoalJoint[i0];
     }
 
-    buildBiDirectionalRRT(dv0, dv1, jointLimits, -(bodyHeight + kC->B2PZOffset),
-                          kC, uBDot, legNum, TP2B, b_T1, b_T2, pathJ, pathC);
+    buildBiDirectionalRRT(dv0, dv1, jointLimits, -(-nInitCartesianB[2] +
+      kC->B2PZOffset), kC, uBDot, legNum, TP2B, b_T1, b_T2, pathJ, pathC);
     i0 = T1->size[0] * T1->size[1];
     T1->size[0] = 750;
     T1->size[1] = 93;

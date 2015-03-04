@@ -153,7 +153,7 @@ static emlrtECInfo d_emlrtECI = { -1, 102, 47, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRTEInfo u_emlrtRTEI = { 101, 9, "buildBiDirectionalRRT",
+static emlrtRTEInfo t_emlrtRTEI = { 101, 9, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
@@ -221,7 +221,7 @@ static void traceBranch(const emlrtStack *sp, const real_T T[69750], const
     emxEnsureCapacity(sp, (emxArray__common *)transitionPath, i15, (int32_T)
                       sizeof(real_T), &i_emlrtRTEI);
     emlrtForLoopVectorCheckR2012b(1.0, 10.0, 80.0, mxDOUBLE_CLASS, 8,
-      &u_emlrtRTEI, sp);
+      &t_emlrtRTEI, sp);
     for (i = 0; i < 8; i++) {
       b_i = i * 10;
       if (!b2) {
@@ -502,7 +502,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
 
     /* parfor i = 1:nodeIDCount */
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, nodeIDCount1, mxDOUBLE_CLASS,
-      (int32_T)nodeIDCount1, &t_emlrtRTEI, &b_st);
+      (int32_T)nodeIDCount1, &s_emlrtRTEI, &b_st);
     cdiff = 1;
     while (cdiff - 1 <= (int32_T)nodeIDCount1 - 1) {
       emlrtDynamicBoundsCheckFastR2012b(cdiff, 1, 750, &b_emlrtBCI, &b_st);

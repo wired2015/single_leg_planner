@@ -2,12 +2,13 @@
 // File: sherpaTTPlanner_emxutil.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 #ifndef __SHERPATTPLANNER_EMXUTIL_H__
 #define __SHERPATTPLANNER_EMXUTIL_H__
 
 // Include Files
+#include <cmath>
 #include <math.h>
 #include <stddef.h>
 #include <stdlib.h>

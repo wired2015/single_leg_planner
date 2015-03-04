@@ -2,7 +2,7 @@
 // File: randomStateGenerator.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -84,9 +84,9 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  u2_idx_2 = ((((kC->l1 + kC->l3 * sin(-jointLimits[3])) - kC->l4 * sin(kC->zeta))
-               - kC->l5 * sin(jointLimits[5] + kC->zeta)) - kC->l6) - (kC->l8 +
-    kC->r);
+  u2_idx_2 = ((((kC->l1 + kC->l3 * std::sin(-jointLimits[3])) - kC->l4 * std::
+                sin(kC->zeta)) - kC->l5 * std::sin(jointLimits[5] + kC->zeta)) -
+              kC->l6) - (kC->l8 + kC->r);
 
   // sherpaTTFK Sherpa_TT Forward Kinematics
   //    Calculates the x,y,z position of the contact point given the alpha,
@@ -116,15 +116,15 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  cartesianLimits_idx_0 = ((((kC->l1 + kC->l3 * sin(-jointLimits[2])) - kC->l4 *
-    sin(kC->zeta)) - kC->l5 * sin(jointLimits[4] + kC->zeta)) - kC->l6) -
-    (kC->l8 + kC->r);
-  cartesianLimits_idx_2 = ((((kC->l1 + kC->l3 * sin(-jointLimits[2])) - kC->l4 *
-    sin(kC->zeta)) - kC->l5 * sin(jointLimits[5] + kC->zeta)) - kC->l6) -
-    (kC->l8 + kC->r);
-  cartesianLimits_idx_3 = ((((kC->l1 + kC->l3 * sin(-jointLimits[3])) - kC->l4 *
-    sin(kC->zeta)) - kC->l5 * sin(jointLimits[4] + kC->zeta)) - kC->l6) -
-    (kC->l8 + kC->r);
+  cartesianLimits_idx_0 = ((((kC->l1 + kC->l3 * std::sin(-jointLimits[2])) -
+    kC->l4 * std::sin(kC->zeta)) - kC->l5 * std::sin(jointLimits[4] + kC->zeta))
+    - kC->l6) - (kC->l8 + kC->r);
+  cartesianLimits_idx_2 = ((((kC->l1 + kC->l3 * std::sin(-jointLimits[2])) -
+    kC->l4 * std::sin(kC->zeta)) - kC->l5 * std::sin(jointLimits[5] + kC->zeta))
+    - kC->l6) - (kC->l8 + kC->r);
+  cartesianLimits_idx_3 = ((((kC->l1 + kC->l3 * std::sin(-jointLimits[3])) -
+    kC->l4 * std::sin(kC->zeta)) - kC->l5 * std::sin(jointLimits[4] + kC->zeta))
+    - kC->l6) - (kC->l8 + kC->r);
   for (loop_ub = 0; loop_ub + 1 <= NUM_POINTS; loop_ub++) {
     // randomState Picks a random state from the state space.
     //    A random state is selected from the state space within the boundaries of 
@@ -166,10 +166,11 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // sherpaTTFK.m
       // author: wreid
       // date: 20150216
-      xMax = (((kC->l2 + kC->l4 * cos(kC->zeta)) - kC->l7) + kC->l3 * cos(asin
-               (((-panHeight + ((((kC->l1 - kC->l4 * sin(kC->zeta)) - kC->l6) -
-        kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[4])) / kC->l3)))
-        + kC->l5 * cos(kC->zeta + jointLimits[4]);
+      xMax = (((kC->l2 + kC->l4 * std::cos(kC->zeta)) - kC->l7) + kC->l3 * std::
+              cos(std::asin(((-panHeight + ((((kC->l1 - kC->l4 * std::sin
+        (kC->zeta)) - kC->l6) - kC->l8) - kC->r)) - kC->l5 * std::sin(kC->zeta +
+                  jointLimits[4])) / kC->l3))) + kC->l5 * std::cos(kC->zeta +
+        jointLimits[4]);
 
       // GETXSTAR Returns the xStar value given either the height of the wheel
       // contact
@@ -193,10 +194,10 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // sherpaTTFK.m
       // author: wreid
       // date: 20150216
-      xMin = (((kC->l2 + kC->l4 * cos(kC->zeta)) - kC->l7) + kC->l3 * cos
-              (jointLimits[2])) + kC->l5 * cos(asin(((((((kC->l1 - kC->l4 * sin
-        (kC->zeta)) - kC->l6) - kC->l8) - kC->r) - kC->l3 * sin(jointLimits[2]))
-        - panHeight) / kC->l5));
+      xMin = (((kC->l2 + kC->l4 * std::cos(kC->zeta)) - kC->l7) + kC->l3 * std::
+              cos(jointLimits[2])) + kC->l5 * std::cos(std::asin(((((((kC->l1 -
+        kC->l4 * std::sin(kC->zeta)) - kC->l6) - kC->l8) - kC->r) - kC->l3 * std::
+        sin(jointLimits[2])) - panHeight) / kC->l5));
     } else if ((panHeight < cartesianLimits_idx_2) && (panHeight >=
                 cartesianLimits_idx_3)) {
       // GETXSTAR Returns the xStar value given either the height of the wheel
@@ -221,10 +222,11 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // sherpaTTFK.m
       // author: wreid
       // date: 20150216
-      xMax = (((kC->l2 + kC->l4 * cos(kC->zeta)) - kC->l7) + kC->l3 * cos(asin
-               (((-panHeight + ((((kC->l1 - kC->l4 * sin(kC->zeta)) - kC->l6) -
-        kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[4])) / kC->l3)))
-        + kC->l5 * cos(kC->zeta + jointLimits[4]);
+      xMax = (((kC->l2 + kC->l4 * std::cos(kC->zeta)) - kC->l7) + kC->l3 * std::
+              cos(std::asin(((-panHeight + ((((kC->l1 - kC->l4 * std::sin
+        (kC->zeta)) - kC->l6) - kC->l8) - kC->r)) - kC->l5 * std::sin(kC->zeta +
+                  jointLimits[4])) / kC->l3))) + kC->l5 * std::cos(kC->zeta +
+        jointLimits[4]);
 
       // GETXSTAR Returns the xStar value given either the height of the wheel
       // contact
@@ -248,10 +250,11 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // sherpaTTFK.m
       // author: wreid
       // date: 20150216
-      xMin = (((kC->l2 + kC->l4 * cos(kC->zeta)) - kC->l7) + kC->l3 * cos(asin
-               (((-panHeight + ((((kC->l1 - kC->l4 * sin(kC->zeta)) - kC->l6) -
-        kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[5])) / kC->l3)))
-        + kC->l5 * cos(kC->zeta + jointLimits[5]);
+      xMin = (((kC->l2 + kC->l4 * std::cos(kC->zeta)) - kC->l7) + kC->l3 * std::
+              cos(std::asin(((-panHeight + ((((kC->l1 - kC->l4 * std::sin
+        (kC->zeta)) - kC->l6) - kC->l8) - kC->r)) - kC->l5 * std::sin(kC->zeta +
+                  jointLimits[5])) / kC->l3))) + kC->l5 * std::cos(kC->zeta +
+        jointLimits[5]);
     } else if ((panHeight < cartesianLimits_idx_3) && (panHeight >= u2_idx_2)) {
       // GETXSTAR Returns the xStar value given either the height of the wheel
       // contact
@@ -275,10 +278,10 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // sherpaTTFK.m
       // author: wreid
       // date: 20150216
-      xMax = (((kC->l2 + kC->l4 * cos(kC->zeta)) - kC->l7) + kC->l3 * cos
-              (jointLimits[3])) + kC->l5 * cos(asin(((((((kC->l1 - kC->l4 * sin
-        (kC->zeta)) - kC->l6) - kC->l8) - kC->r) - kC->l3 * sin(jointLimits[3]))
-        - panHeight) / kC->l5));
+      xMax = (((kC->l2 + kC->l4 * std::cos(kC->zeta)) - kC->l7) + kC->l3 * std::
+              cos(jointLimits[3])) + kC->l5 * std::cos(std::asin(((((((kC->l1 -
+        kC->l4 * std::sin(kC->zeta)) - kC->l6) - kC->l8) - kC->r) - kC->l3 * std::
+        sin(jointLimits[3])) - panHeight) / kC->l5));
 
       // GETXSTAR Returns the xStar value given either the height of the wheel
       // contact
@@ -302,10 +305,11 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
       // sherpaTTFK.m
       // author: wreid
       // date: 20150216
-      xMin = (((kC->l2 + kC->l4 * cos(kC->zeta)) - kC->l7) + kC->l3 * cos(asin
-               (((-panHeight + ((((kC->l1 - kC->l4 * sin(kC->zeta)) - kC->l6) -
-        kC->l8) - kC->r)) - kC->l5 * sin(kC->zeta + jointLimits[5])) / kC->l3)))
-        + kC->l5 * cos(kC->zeta + jointLimits[5]);
+      xMin = (((kC->l2 + kC->l4 * std::cos(kC->zeta)) - kC->l7) + kC->l3 * std::
+              cos(std::asin(((-panHeight + ((((kC->l1 - kC->l4 * std::sin
+        (kC->zeta)) - kC->l6) - kC->l8) - kC->r)) - kC->l5 * std::sin(kC->zeta +
+                  jointLimits[5])) / kC->l3))) + kC->l5 * std::cos(kC->zeta +
+        jointLimits[5]);
     } else {
       xMax = 0.0;
       xMin = 0.0;
@@ -358,12 +362,14 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
     // sherpaTTFK.m
     // author: wreid
     // date: 20150122
-    uP[0] = ((((kC->l2 + kC->l3 * cos(-u1[1])) + kC->l4 * cos(kC->zeta)) +
-              kC->l5 * cos(u1[2] + kC->zeta)) - kC->l7) * cos(alphaRand);
-    uP[1] = ((((kC->l2 + kC->l3 * cos(-u1[1])) + kC->l4 * cos(kC->zeta)) +
-              kC->l5 * cos(u1[2] + kC->zeta)) - kC->l7) * sin(alphaRand);
-    uP[2] = ((((kC->l1 + kC->l3 * sin(-u1[1])) - kC->l4 * sin(kC->zeta)) -
-              kC->l5 * sin(u1[2] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+    uP[0] = ((((kC->l2 + kC->l3 * std::cos(-u1[1])) + kC->l4 * std::cos(kC->zeta))
+              + kC->l5 * std::cos(u1[2] + kC->zeta)) - kC->l7) * std::cos
+      (alphaRand);
+    uP[1] = ((((kC->l2 + kC->l3 * std::cos(-u1[1])) + kC->l4 * std::cos(kC->zeta))
+              + kC->l5 * std::cos(u1[2] + kC->zeta)) - kC->l7) * std::sin
+      (alphaRand);
+    uP[2] = ((((kC->l1 + kC->l3 * std::sin(-u1[1])) - kC->l4 * std::sin(kC->zeta))
+              - kC->l5 * std::sin(u1[2] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
 
     // TRP2B Generates the homogeneous transformation matrix between the body
     // and pan coordinate frames. kC is a struct containing the kinematic
@@ -386,14 +392,14 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
     // trDH.m
     // author:    wreid
     // date:      20150214
-    TP2B[0] = cos(kC->legAngleOffset[legNum - 1]);
-    TP2B[4] = -sin(kC->legAngleOffset[legNum - 1]);
-    TP2B[8] = sin(kC->legAngleOffset[legNum - 1]) * 0.0;
-    TP2B[12] = kC->B2PXOffset * cos(kC->legAngleOffset[legNum - 1]);
-    TP2B[1] = sin(kC->legAngleOffset[legNum - 1]);
-    TP2B[5] = cos(kC->legAngleOffset[legNum - 1]);
-    TP2B[9] = -cos(kC->legAngleOffset[legNum - 1]) * 0.0;
-    TP2B[13] = kC->B2PXOffset * sin(kC->legAngleOffset[legNum - 1]);
+    TP2B[0] = std::cos(kC->legAngleOffset[legNum - 1]);
+    TP2B[4] = -std::sin(kC->legAngleOffset[legNum - 1]);
+    TP2B[8] = std::sin(kC->legAngleOffset[legNum - 1]) * 0.0;
+    TP2B[12] = kC->B2PXOffset * std::cos(kC->legAngleOffset[legNum - 1]);
+    TP2B[1] = std::sin(kC->legAngleOffset[legNum - 1]);
+    TP2B[5] = std::cos(kC->legAngleOffset[legNum - 1]);
+    TP2B[9] = -std::cos(kC->legAngleOffset[legNum - 1]) * 0.0;
+    TP2B[13] = kC->B2PXOffset * std::sin(kC->legAngleOffset[legNum - 1]);
     TP2B[2] = 0.0;
     TP2B[6] = 0.0;
     TP2B[10] = 1.0;

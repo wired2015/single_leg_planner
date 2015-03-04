@@ -53,9 +53,9 @@ function planEval2(useMex)
         %Generate the RRT and time how long it takes to be generated.
         tic
         if useMex
-            [T1,T2,pathC,pathJ,success] = sherpaTTPlanner_mex('buildBiDirectionalRRTWrapper',sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,kC,int32(i),uBDot);
+            [T1,T2,pathC,pathJ,success] = sherpaTTPlanner_mex('buildBiDirectionalRRTWrapper',sInitB(i,:),sGoalB(i,:),0,0,jointLimits,kC,int32(i),uBDot);
         else
-            [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,bodyHeight,kC,i,uBDot);
+            [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(sInitB(i,:),sGoalB(i,:),0,0,jointLimits,kC,i,uBDot);
         end
         planningTime = toc;
 

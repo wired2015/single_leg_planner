@@ -2,7 +2,7 @@
 // File: buildBiDirectionalRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -499,11 +499,11 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
         absb = -1;
         apnd = 0;
       } else {
-        ixstart = (int)floor(((double)path->size[0] - 1.0) + 0.5);
+        ixstart = (int)std::floor(((double)path->size[0] - 1.0) + 0.5);
         apnd = ixstart + 1;
         cdiff = (ixstart - path->size[0]) + 1;
         absb = path->size[0];
-        if (fabs((double)cdiff) < 4.4408920985006262E-16 * (double)absb) {
+        if (std::abs((double)cdiff) < 4.4408920985006262E-16 * (double)absb) {
           ixstart++;
           apnd = path->size[0];
         } else if (cdiff > 0) {
@@ -603,17 +603,18 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
         // sherpaTTFK.m
         // author: wreid
         // date: 20150122
-        uP[0] = ((((kC->l2 + kC->l3 * cos(-path->data[ixstart + (path->size[0] <<
-          1)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos(path->data[ixstart +
-                   path->size[0] * 3] + kC->zeta)) - kC->l7) * cos(path->
-          data[ixstart + path->size[0]]);
-        uP[1] = ((((kC->l2 + kC->l3 * cos(-path->data[ixstart + (path->size[0] <<
-          1)])) + kC->l4 * cos(kC->zeta)) + kC->l5 * cos(path->data[ixstart +
-                   path->size[0] * 3] + kC->zeta)) - kC->l7) * sin(path->
-          data[ixstart + path->size[0]]);
-        uP[2] = ((((kC->l1 + kC->l3 * sin(-path->data[ixstart + (path->size[0] <<
-          1)])) - kC->l4 * sin(kC->zeta)) - kC->l5 * sin(path->data[ixstart +
-                   path->size[0] * 3] + kC->zeta)) - kC->l6) - (kC->l8 + kC->r);
+        uP[0] = ((((kC->l2 + kC->l3 * std::cos(-path->data[ixstart + (path->
+          size[0] << 1)])) + kC->l4 * std::cos(kC->zeta)) + kC->l5 * std::cos
+                  (path->data[ixstart + path->size[0] * 3] + kC->zeta)) - kC->l7)
+          * std::cos(path->data[ixstart + path->size[0]]);
+        uP[1] = ((((kC->l2 + kC->l3 * std::cos(-path->data[ixstart + (path->
+          size[0] << 1)])) + kC->l4 * std::cos(kC->zeta)) + kC->l5 * std::cos
+                  (path->data[ixstart + path->size[0] * 3] + kC->zeta)) - kC->l7)
+          * std::sin(path->data[ixstart + path->size[0]]);
+        uP[2] = ((((kC->l1 + kC->l3 * std::sin(-path->data[ixstart + (path->
+          size[0] << 1)])) - kC->l4 * std::sin(kC->zeta)) - kC->l5 * std::sin
+                  (path->data[ixstart + path->size[0] * 3] + kC->zeta)) - kC->l6)
+          - (kC->l8 + kC->r);
 
         // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
         // sherpaTTFKVel.m
@@ -637,27 +638,29 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
           dist2Go += norm(b_uB);
         }
 
-        b_path[0] = (-path->data[ixstart + path->size[0] * 6] * sin(path->
-          data[ixstart + path->size[0]]) * ((((kC->l2 - kC->l7) + kC->l5 * cos
-          (path->data[ixstart + path->size[0] * 3] + kC->zeta)) + kC->l3 * cos
-          (path->data[ixstart + (path->size[0] << 1)])) + kC->l4 * cos(kC->zeta))
-                     - path->data[ixstart + path->size[0] * 7] * kC->l3 * cos
-                     (path->data[ixstart + path->size[0]]) * sin(path->
-          data[ixstart + (path->size[0] << 1)])) - path->data[ixstart +
-          (path->size[0] << 3)] * kC->l5 * sin(path->data[ixstart + path->size[0]
-          * 3] + kC->zeta) * cos(path->data[ixstart + path->size[0]]);
-        b_path[1] = (path->data[ixstart + path->size[0] * 6] * cos(path->
-          data[ixstart + path->size[0]]) * ((((kC->l2 - kC->l7) + kC->l5 * cos
-          (path->data[ixstart + path->size[0] * 3] + kC->zeta)) + kC->l3 * cos
-          (path->data[ixstart + (path->size[0] << 1)])) + kC->l4 * cos(kC->zeta))
-                     - path->data[ixstart + (path->size[0] << 3)] * kC->l5 * sin
-                     (path->data[ixstart + path->size[0] * 3] + kC->zeta) * sin
-                     (path->data[ixstart + path->size[0]])) - path->data[ixstart
-          + path->size[0] * 7] * kC->l3 * sin(path->data[ixstart + path->size[0]])
-          * sin(path->data[ixstart + (path->size[0] << 1)]);
-        b_path[2] = -path->data[ixstart + path->size[0] * 7] * kC->l3 * cos
+        b_path[0] = (-path->data[ixstart + path->size[0] * 6] * std::sin
+                     (path->data[ixstart + path->size[0]]) * ((((kC->l2 - kC->l7)
+          + kC->l5 * std::cos(path->data[ixstart + path->size[0] * 3] + kC->zeta))
+          + kC->l3 * std::cos(path->data[ixstart + (path->size[0] << 1)])) +
+          kC->l4 * std::cos(kC->zeta)) - path->data[ixstart + path->size[0] * 7]
+                     * kC->l3 * std::cos(path->data[ixstart + path->size[0]]) *
+                     std::sin(path->data[ixstart + (path->size[0] << 1)])) -
+          path->data[ixstart + (path->size[0] << 3)] * kC->l5 * std::sin
+          (path->data[ixstart + path->size[0] * 3] + kC->zeta) * std::cos
+          (path->data[ixstart + path->size[0]]);
+        b_path[1] = (path->data[ixstart + path->size[0] * 6] * std::cos
+                     (path->data[ixstart + path->size[0]]) * ((((kC->l2 - kC->l7)
+          + kC->l5 * std::cos(path->data[ixstart + path->size[0] * 3] + kC->zeta))
+          + kC->l3 * std::cos(path->data[ixstart + (path->size[0] << 1)])) +
+          kC->l4 * std::cos(kC->zeta)) - path->data[ixstart + (path->size[0] <<
+          3)] * kC->l5 * std::sin(path->data[ixstart + path->size[0] * 3] +
+          kC->zeta) * std::sin(path->data[ixstart + path->size[0]])) -
+          path->data[ixstart + path->size[0] * 7] * kC->l3 * std::sin(path->
+          data[ixstart + path->size[0]]) * std::sin(path->data[ixstart +
+          (path->size[0] << 1)]);
+        b_path[2] = -path->data[ixstart + path->size[0] * 7] * kC->l3 * std::cos
           (path->data[ixstart + (path->size[0] << 1)]) - kC->l5 * path->
-          data[ixstart + (path->size[0] << 3)] * cos(kC->zeta + path->
+          data[ixstart + (path->size[0] << 3)] * std::cos(kC->zeta + path->
           data[ixstart + path->size[0] * 3]);
         for (i5 = 0; i5 < 3; i5++) {
           b_uB[i5] = 0.0;

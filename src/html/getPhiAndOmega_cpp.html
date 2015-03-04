@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: getPhiAndOmega.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 03-Mar-2015 11:19:40</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:16:20</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -462,10 +462,10 @@
 <a name="451"><font color="#888888 "><i>  451   </i></font></a>  <font color="#117755"><i>// [rad]</i></font>
 <a name="452"><font color="#888888 "><i>  452   </i></font></a>  r = ((<a href="sherpaTTPlanner_rtwutil_cpp.html#fcn_rt_atan2d_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_atan2d_snf');" target="_self"><font color="#1122aa">rt_atan2d_snf</font></a>(uSDot[1], uSDot[0]) - 1.5707963267948966) +
 <a name="453"><font color="#888888 "><i>  453   </i></font></a>       3.1415926535897931) / 6.2831853071795862;
-<a name="454"><font color="#888888 "><i>  454   </i></font></a>  <font color="#112266"><b>if</b></font> (fabs(r - <a href="sherpaTTPlanner_rtwutil_cpp.html#fcn_rt_roundd_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_roundd_snf');" target="_self"><font color="#1122aa">rt_roundd_snf</font></a>(r)) &lt;= 2.2204460492503131E-16 * fabs(r)) <b>{</b>
+<a name="454"><font color="#888888 "><i>  454   </i></font></a>  <font color="#112266"><b>if</b></font> (std::abs(r - <a href="sherpaTTPlanner_rtwutil_cpp.html#fcn_rt_roundd_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_roundd_snf');" target="_self"><font color="#1122aa">rt_roundd_snf</font></a>(r)) &lt;= 2.2204460492503131E-16 * std::abs(r)) <b>{</b>
 <a name="455"><font color="#888888 "><i>  455   </i></font></a>    r = 0.0;
 <a name="456"><font color="#888888 "><i>  456   </i></font></a>  <b>}</b> <font color="#112266"><b>else</b></font> <b>{</b>
-<a name="457"><font color="#888888 "><i>  457   </i></font></a>    r = (r - floor(r)) * 6.2831853071795862;
+<a name="457"><font color="#888888 "><i>  457   </i></font></a>    r = (r - std::floor(r)) * 6.2831853071795862;
 <a name="458"><font color="#888888 "><i>  458   </i></font></a>  <b>}</b>
 <a name="459"><font color="#888888 "><i>  459   </i></font></a>
 <a name="460"><font color="#888888 "><i>  460   </i></font></a>  *phi = r - 3.1415926535897931;

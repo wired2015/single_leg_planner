@@ -22,9 +22,9 @@
 
 /* Function Declarations */
 extern void buildBiDirectionalRRTWrapper_api(sherpaTTPlanner_mexStackData *SD,
-  const mxArray * const prhs[9], const mxArray *plhs[5]);
+  const mxArray * const prhs[8], const mxArray *plhs[5]);
 extern void buildRRTWrapper_api(sherpaTTPlanner_mexStackData *SD, const mxArray *
-  const prhs[9], const mxArray *plhs[4]);
+  const prhs[8], const mxArray *plhs[4]);
 extern void randomStateGenerator_api(const mxArray * const prhs[5], const
   mxArray *plhs[1]);
 

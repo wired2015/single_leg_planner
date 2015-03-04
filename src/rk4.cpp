@@ -2,7 +2,7 @@
 // File: rk4.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -42,8 +42,9 @@ static void f(const double x[10], const double u[2], double kC_l3, double kC_l5,
   xDot[4] = 0.0;
   xDot[5] = u[0];
   xDot[6] = u[1];
-  xDot[7] = ((-u[1] * kC_l3 * cos(x[1]) + x[6] * x[6] * kC_l3 * sin(x[1])) + x[7]
-             * x[7] * kC_l5 * sin(kC_zeta + x[2])) / (kC_l5 * cos(kC_zeta + x[2]));
+  xDot[7] = ((-u[1] * kC_l3 * std::cos(x[1]) + x[6] * x[6] * kC_l3 * std::sin(x
+    [1])) + x[7] * x[7] * kC_l5 * std::sin(kC_zeta + x[2])) / (kC_l5 * std::cos
+    (kC_zeta + x[2]));
   xDot[8] = 0.0;
   xDot[9] = 0.0;
 }
@@ -169,8 +170,8 @@ void rk4(const double uIn[2], const double uBDot[6], const double xInit[13],
       // getConstrainedGammaDot.m
       // author: wreid
       // date: 20150224
-      gammaDot = -b_xInit[6] * kC->l3 * cos(beta) / (kC->l5 * cos(kC->zeta +
-        b_gamma));
+      gammaDot = -b_xInit[6] * kC->l3 * std::cos(beta) / (kC->l5 * std::cos
+        (kC->zeta + b_gamma));
     }
 
     // Check the outer leg velocity limit.
@@ -183,14 +184,15 @@ void rk4(const double uIn[2], const double uBDot[6], const double xInit[13],
       // getConstrainedBetaDot.m
       // author: wreid
       // date: 20150224
-      betaDot = -b_xInit[7] * kC->l5 * cos(kC->zeta + b_gamma) / (kC->l3 * cos
-        (beta));
+      betaDot = -b_xInit[7] * kC->l5 * std::cos(kC->zeta + b_gamma) / (kC->l3 *
+        std::cos(beta));
 
       // GETCONSTRAINEDBETADOTDOT This function calculates the acceleration of
       // beta given a pan height constraint and an indpendent gamma angle.
-      betaDotDot = ((-0.0 * kC->l5 * cos(kC->zeta + b_gamma) + b_xInit[7] *
-                     b_xInit[7] * kC->l5 * sin(kC->zeta + b_gamma)) - betaDot *
-                    betaDot * kC->l3 * sin(beta)) / (kC->l3 * cos(beta));
+      betaDotDot = ((-0.0 * kC->l5 * std::cos(kC->zeta + b_gamma) + b_xInit[7] *
+                     b_xInit[7] * kC->l5 * std::sin(kC->zeta + b_gamma)) -
+                    betaDot * betaDot * kC->l3 * std::sin(beta)) / (kC->l3 * std::
+        cos(beta));
       if ((betaDot > jointLimits[13]) || (betaDot < jointLimits[12])) {
         betaDot = b_xInit[6];
         betaDotDot = 0.0;

@@ -24,7 +24,7 @@
 %author: wreid
 %date: 20150502
 
-function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,kC,legNum,uBDot)
+function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,kC,legNum,uBDot)
     
     NODE_SIZE = int32(13);
     U_SIZE = int32(5);
@@ -40,7 +40,7 @@ function [T1,T2,pathC,pathJ,success] = buildBiDirectionalRRTWrapper(nInitCartesi
     eta = Dt/stepAccRatio;
     U = eta*[1 0; -1 0; 0 1; 0 -1; 0 0]; 
     NUM_NODES = int32(1500);
-    
+    bodyHeight = -nInitCartesianB(3);
     panHeight  = getPanHeight(bodyHeight,kC);
 
     %Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame

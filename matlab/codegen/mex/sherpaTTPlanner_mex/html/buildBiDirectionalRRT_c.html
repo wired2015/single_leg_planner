@@ -164,7 +164,7 @@
 <a name="153"><font color="#888888 "><i>  153   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m&quot;</font>
 <a name="154"><font color="#888888 "><i>  154   </i></font></a><b>}</b>;
 <a name="155"><font color="#888888 "><i>  155   </i></font></a>
-<a name="156"><font color="#888888 "><i>  156   </i></font></a><font color="#112266"><b>static</b></font> emlrtRTEInfo <a name="var_u_emlrtRTEI">u_emlrtRTEI</a> = <b>{</b> 101, 9, <font color="#1122ff">&quot;buildBiDirectionalRRT&quot;</font>,
+<a name="156"><font color="#888888 "><i>  156   </i></font></a><font color="#112266"><b>static</b></font> emlrtRTEInfo <a name="var_t_emlrtRTEI">t_emlrtRTEI</a> = <b>{</b> 101, 9, <font color="#1122ff">&quot;buildBiDirectionalRRT&quot;</font>,
 <a name="157"><font color="#888888 "><i>  157   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m&quot;</font>
 <a name="158"><font color="#888888 "><i>  158   </i></font></a><b>}</b>;
 <a name="159"><font color="#888888 "><i>  159   </i></font></a>
@@ -232,7 +232,7 @@
 <a name="221"><font color="#888888 "><i>  221   </i></font></a>    <a href="sherpaTTPlanner_mex_emxutil_c.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>(sp, (<a href="sherpaTTPlanner_mex_types_h.html#type_emxArray__common" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_emxArray__common');" target="_self"><font color="#1122aa">emxArray__common</font></a> *)transitionPath, i15, (int32_T)
 <a name="222"><font color="#888888 "><i>  222   </i></font></a>                      <font color="#112266"><b>sizeof</b></font>(real_T), &amp;<a href="#var_i_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_i_emlrtRTEI');" target="_self"><font color="#1122aa">i_emlrtRTEI</font></a>);
 <a name="223"><font color="#888888 "><i>  223   </i></font></a>    emlrtForLoopVectorCheckR2012b(1.0, 10.0, 80.0, mxDOUBLE_CLASS, 8,
-<a name="224"><font color="#888888 "><i>  224   </i></font></a>      &amp;<a href="#var_u_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_u_emlrtRTEI');" target="_self"><font color="#1122aa">u_emlrtRTEI</font></a>, sp);
+<a name="224"><font color="#888888 "><i>  224   </i></font></a>      &amp;<a href="#var_t_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_t_emlrtRTEI');" target="_self"><font color="#1122aa">t_emlrtRTEI</font></a>, sp);
 <a name="225"><font color="#888888 "><i>  225   </i></font></a>    <font color="#112266"><b>for</b></font> (i = 0; i &lt; 8; i++) <b>{</b>
 <a name="226"><font color="#888888 "><i>  226   </i></font></a>      b_i = i * 10;
 <a name="227"><font color="#888888 "><i>  227   </i></font></a>      <font color="#112266"><b>if</b></font> (!b2) <b>{</b>
@@ -513,7 +513,7 @@
 <a name="502"><font color="#888888 "><i>  502   </i></font></a>
 <a name="503"><font color="#888888 "><i>  503   </i></font></a>    <font color="#117755"><i>/* parfor i = 1:nodeIDCount */</i></font>
 <a name="504"><font color="#888888 "><i>  504   </i></font></a>    emlrtForLoopVectorCheckR2012b(1.0, 1.0, nodeIDCount1, mxDOUBLE_CLASS,
-<a name="505"><font color="#888888 "><i>  505   </i></font></a>      (int32_T)nodeIDCount1, &amp;<a href="sherpaTTPlanner_mex_data_c.html#var_t_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_t_emlrtRTEI');" target="_self"><font color="#1122aa">t_emlrtRTEI</font></a>, &amp;b_st);
+<a name="505"><font color="#888888 "><i>  505   </i></font></a>      (int32_T)nodeIDCount1, &amp;<a href="sherpaTTPlanner_mex_data_c.html#var_s_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_s_emlrtRTEI');" target="_self"><font color="#1122aa">s_emlrtRTEI</font></a>, &amp;b_st);
 <a name="506"><font color="#888888 "><i>  506   </i></font></a>    cdiff = 1;
 <a name="507"><font color="#888888 "><i>  507   </i></font></a>    <font color="#112266"><b>while</b></font> (cdiff - 1 &lt;= (int32_T)nodeIDCount1 - 1) <b>{</b>
 <a name="508"><font color="#888888 "><i>  508   </i></font></a>      emlrtDynamicBoundsCheckFastR2012b(cdiff, 1, 750, &amp;<a href="#var_b_emlrtBCI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_b_emlrtBCI');" target="_self"><font color="#1122aa">b_emlrtBCI</font></a>, &amp;b_st);

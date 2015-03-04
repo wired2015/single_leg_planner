@@ -36,7 +36,7 @@ static emlrtRSInfo ic_emlrtRSI = { 8, "randomPoint",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/evaluation/randomPoint.m"
 };
 
-static emlrtRTEInfo q_emlrtRTEI = { 1, 19, "randomStateGenerator",
+static emlrtRTEInfo p_emlrtRTEI = { 1, 19, "randomStateGenerator",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/evaluation/randomStateGenerator.m"
 };
 
@@ -96,7 +96,7 @@ void randomStateGenerator(const emlrtStack *sp, int32_T NUM_POINTS, const real_T
     &d_emlrtDCI, sp);
   states->size[1] = 6;
   emxEnsureCapacity(sp, (emxArray__common *)states, i18, (int32_T)sizeof(real_T),
-                    &q_emlrtRTEI);
+                    &p_emlrtRTEI);
   i = (int32_T)emlrtNonNegativeCheckFastR2012b(NUM_POINTS, &d_emlrtDCI, sp) * 6;
   for (i18 = 0; i18 < i; i18++) {
     states->data[i18] = 0.0;

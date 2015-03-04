@@ -2,7 +2,7 @@
 // File: sherpaTTPlanner_types.h 
 //  
 // MATLAB Coder version            : 2.7 
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40 
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20 
 //
 
 #ifndef __SHERPATTPLANNER_TYPES_H__
@@ -50,6 +50,14 @@ struct emxArray_real_T_1x13
     int size[2];
 };
 #endif /*struct_emxArray_real_T_1x13*/
+#ifndef struct_emxArray_real_T_1x9
+#define struct_emxArray_real_T_1x9
+struct emxArray_real_T_1x9
+{
+    double data[9];
+    int size[2];
+};
+#endif /*struct_emxArray_real_T_1x9*/
 typedef struct
 {
     double l1;

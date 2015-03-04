@@ -20,7 +20,7 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRTEInfo p_emlrtRTEI = { 5, 38, "nearestNeighbour",
+static emlrtRTEInfo o_emlrtRTEI = { 5, 38, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
@@ -103,7 +103,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
   b_d->size[0] = 1;
   b_d->size[1] = (int32_T)nodeIDCount;
   emxEnsureCapacity(sp, (emxArray__common *)b_d, ix, (int32_T)sizeof(real_T),
-                    &p_emlrtRTEI);
+                    &o_emlrtRTEI);
   ixstart = (int32_T)nodeIDCount;
   for (ix = 0; ix < ixstart; ix++) {
     b_d->data[ix] = 0.0;
@@ -111,7 +111,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
 
   /* parfor i = 1:nodeIDCount */
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, nodeIDCount, mxDOUBLE_CLASS, (int32_T)
-    nodeIDCount, &t_emlrtRTEI, sp);
+    nodeIDCount, &s_emlrtRTEI, sp);
   ixstart = 1;
   while (ixstart - 1 <= (int32_T)nodeIDCount - 1) {
     emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, 1500, &db_emlrtBCI, sp);

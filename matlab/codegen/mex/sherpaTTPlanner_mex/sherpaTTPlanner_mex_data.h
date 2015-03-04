@@ -49,7 +49,7 @@ extern emlrtMCInfo c_emlrtMCI;
 extern emlrtRTEInfo c_emlrtRTEI;
 extern emlrtRTEInfo h_emlrtRTEI;
 extern emlrtBCInfo emlrtBCI;
-extern emlrtRTEInfo t_emlrtRTEI;
+extern emlrtRTEInfo s_emlrtRTEI;
 extern emlrtBCInfo c_emlrtBCI;
 extern emlrtBCInfo m_emlrtBCI;
 extern sherpaTTPlanner_mexStackData *c_sherpaTTPlanner_mexStackDataL;

@@ -27,7 +27,7 @@ emlrtEntryPoint emlrtEntryPoints[3] = {
 static void buildBiDirectionalRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[5];
-  const mxArray *inputs[9];
+  const mxArray *inputs[8];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
   int nInputs = nrhs;
@@ -36,8 +36,8 @@ static void buildBiDirectionalRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], 
   sherpaTTPlanner_initialize(&emlrtContextGlobal);
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 9) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 9, mxCHAR_CLASS, 28, "buildBiDirectionalRRTWrapper");
+  if (nrhs != 8) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 8, mxCHAR_CLASS, 28, "buildBiDirectionalRRTWrapper");
   } else if (nlhs > 5) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 28, "buildBiDirectionalRRTWrapper");
   }
@@ -57,7 +57,7 @@ static void buildBiDirectionalRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], 
 static void buildRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[4];
-  const mxArray *inputs[9];
+  const mxArray *inputs[8];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
   int nInputs = nrhs;
@@ -66,8 +66,8 @@ static void buildRRTWrapper_mexFunction(int nlhs, mxArray *plhs[], int nrhs, con
   sherpaTTPlanner_initialize(&emlrtContextGlobal);
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 9) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 9, mxCHAR_CLASS, 15, "buildRRTWrapper");
+  if (nrhs != 8) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 8, mxCHAR_CLASS, 15, "buildRRTWrapper");
   } else if (nlhs > 4) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 15, "buildRRTWrapper");
   }

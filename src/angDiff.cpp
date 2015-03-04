@@ -2,7 +2,7 @@
 // File: angDiff.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -26,13 +26,13 @@ double angDiff(double th1, double th2)
 {
   double r;
   r = ((th1 - th2) + 3.1415926535897931) / 6.2831853071795862;
-  if (fabs(r - rt_roundd_snf(r)) <= 2.2204460492503131E-16 * fabs(r)) {
+  if (std::abs(r - rt_roundd_snf(r)) <= 2.2204460492503131E-16 * std::abs(r)) {
     r = 0.0;
   } else {
-    r = (r - floor(r)) * 6.2831853071795862;
+    r = (r - std::floor(r)) * 6.2831853071795862;
   }
 
-  return fabs(r - 3.1415926535897931);
+  return std::abs(r - 3.1415926535897931);
 }
 
 //

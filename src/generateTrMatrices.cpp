@@ -2,7 +2,7 @@
 // File: generateTrMatrices.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -132,14 +132,14 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TP2B[0] = cos(kC_legAngleOffset[legNum - 1]);
-  TP2B[4] = -sin(kC_legAngleOffset[legNum - 1]);
-  TP2B[8] = sin(kC_legAngleOffset[legNum - 1]) * 0.0;
-  TP2B[12] = kC_B2PXOffset * cos(kC_legAngleOffset[legNum - 1]);
-  TP2B[1] = sin(kC_legAngleOffset[legNum - 1]);
-  TP2B[5] = cos(kC_legAngleOffset[legNum - 1]);
-  TP2B[9] = -cos(kC_legAngleOffset[legNum - 1]) * 0.0;
-  TP2B[13] = kC_B2PXOffset * sin(kC_legAngleOffset[legNum - 1]);
+  TP2B[0] = std::cos(kC_legAngleOffset[legNum - 1]);
+  TP2B[4] = -std::sin(kC_legAngleOffset[legNum - 1]);
+  TP2B[8] = std::sin(kC_legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[12] = kC_B2PXOffset * std::cos(kC_legAngleOffset[legNum - 1]);
+  TP2B[1] = std::sin(kC_legAngleOffset[legNum - 1]);
+  TP2B[5] = std::cos(kC_legAngleOffset[legNum - 1]);
+  TP2B[9] = -std::cos(kC_legAngleOffset[legNum - 1]) * 0.0;
+  TP2B[13] = kC_B2PXOffset * std::sin(kC_legAngleOffset[legNum - 1]);
   TP2B[2] = 0.0;
   TP2B[6] = 0.0;
   TP2B[10] = 1.0;
@@ -151,14 +151,14 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TI2P[0] = cos(q[0]);
-  TI2P[4] = -sin(q[0]) * 6.123233995736766E-17;
-  TI2P[8] = -sin(q[0]);
-  TI2P[12] = kC_l2 * cos(q[0]);
-  TI2P[1] = sin(q[0]);
-  TI2P[5] = cos(q[0]) * 6.123233995736766E-17;
-  TI2P[9] = -(double)-cos(q[0]);
-  TI2P[13] = kC_l2 * sin(q[0]);
+  TI2P[0] = std::cos(q[0]);
+  TI2P[4] = -std::sin(q[0]) * 6.123233995736766E-17;
+  TI2P[8] = -std::sin(q[0]);
+  TI2P[12] = kC_l2 * std::cos(q[0]);
+  TI2P[1] = std::sin(q[0]);
+  TI2P[5] = std::cos(q[0]) * 6.123233995736766E-17;
+  TI2P[9] = -(double)-std::cos(q[0]);
+  TI2P[13] = kC_l2 * std::sin(q[0]);
   TI2P[2] = 0.0;
   TI2P[6] = -1.0;
   TI2P[10] = 6.123233995736766E-17;
@@ -170,14 +170,14 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TJ2I[0] = cos(q[1]);
-  TJ2I[4] = -sin(q[1]);
-  TJ2I[8] = sin(q[1]) * 0.0;
-  TJ2I[12] = kC_l3 * cos(q[1]);
-  TJ2I[1] = sin(q[1]);
-  TJ2I[5] = cos(q[1]);
-  TJ2I[9] = -cos(q[1]) * 0.0;
-  TJ2I[13] = kC_l3 * sin(q[1]);
+  TJ2I[0] = std::cos(q[1]);
+  TJ2I[4] = -std::sin(q[1]);
+  TJ2I[8] = std::sin(q[1]) * 0.0;
+  TJ2I[12] = kC_l3 * std::cos(q[1]);
+  TJ2I[1] = std::sin(q[1]);
+  TJ2I[5] = std::cos(q[1]);
+  TJ2I[9] = -std::cos(q[1]) * 0.0;
+  TJ2I[13] = kC_l3 * std::sin(q[1]);
   theta = -q[1] + kC_zeta;
 
   // TRDH Generates the homogeneous transformation matrix A using the
@@ -186,14 +186,14 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TO2J[0] = cos(theta);
-  TO2J[4] = -sin(theta);
-  TO2J[8] = sin(theta) * 0.0;
-  TO2J[12] = kC_l4 * cos(theta);
-  TO2J[1] = sin(theta);
-  TO2J[5] = cos(theta);
-  TO2J[9] = -cos(theta) * 0.0;
-  TO2J[13] = kC_l4 * sin(theta);
+  TO2J[0] = std::cos(theta);
+  TO2J[4] = -std::sin(theta);
+  TO2J[8] = std::sin(theta) * 0.0;
+  TO2J[12] = kC_l4 * std::cos(theta);
+  TO2J[1] = std::sin(theta);
+  TO2J[5] = std::cos(theta);
+  TO2J[9] = -std::cos(theta) * 0.0;
+  TO2J[13] = kC_l4 * std::sin(theta);
 
   // TRDH Generates the homogeneous transformation matrix A using the
   // Denavit-Hartenberg parameters theta, d, a and alpha.
@@ -201,14 +201,14 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TQ2O[0] = cos(q[2]);
-  TQ2O[4] = -sin(q[2]);
-  TQ2O[8] = sin(q[2]) * 0.0;
-  TQ2O[12] = kC_l5 * cos(q[2]);
-  TQ2O[1] = sin(q[2]);
-  TQ2O[5] = cos(q[2]);
-  TQ2O[9] = -cos(q[2]) * 0.0;
-  TQ2O[13] = kC_l5 * sin(q[2]);
+  TQ2O[0] = std::cos(q[2]);
+  TQ2O[4] = -std::sin(q[2]);
+  TQ2O[8] = std::sin(q[2]) * 0.0;
+  TQ2O[12] = kC_l5 * std::cos(q[2]);
+  TQ2O[1] = std::sin(q[2]);
+  TQ2O[5] = std::cos(q[2]);
+  TQ2O[9] = -std::cos(q[2]) * 0.0;
+  TQ2O[13] = kC_l5 * std::sin(q[2]);
   theta = -q[2] - kC_zeta;
 
   // TRDH Generates the homogeneous transformation matrix A using the
@@ -217,14 +217,14 @@ void generateTrMatrices(const double q[4], double kC_l1, double kC_l2, double
   // trDH.m
   // author:    wreid
   // date:      20150214
-  TR2Q[0] = cos(theta);
-  TR2Q[4] = -sin(theta) * 6.123233995736766E-17;
-  TR2Q[8] = -sin(theta);
-  TR2Q[12] = -kC_l7 * cos(theta);
-  TR2Q[1] = sin(theta);
-  TR2Q[5] = cos(theta) * 6.123233995736766E-17;
-  TR2Q[9] = -(double)-cos(theta);
-  TR2Q[13] = -kC_l7 * sin(theta);
+  TR2Q[0] = std::cos(theta);
+  TR2Q[4] = -std::sin(theta) * 6.123233995736766E-17;
+  TR2Q[8] = -std::sin(theta);
+  TR2Q[12] = -kC_l7 * std::cos(theta);
+  TR2Q[1] = std::sin(theta);
+  TR2Q[5] = std::cos(theta) * 6.123233995736766E-17;
+  TR2Q[9] = -(double)-std::cos(theta);
+  TR2Q[13] = -kC_l7 * std::sin(theta);
   for (i10 = 0; i10 < 4; i10++) {
     TB2G[3 + (i10 << 2)] = iv2[i10];
     TP2B[3 + (i10 << 2)] = iv2[i10];

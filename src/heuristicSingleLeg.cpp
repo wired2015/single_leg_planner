@@ -2,7 +2,7 @@
 // File: heuristicSingleLeg.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -80,12 +80,12 @@ double b_heuristicSingleLeg(const double xA[13], const double xB[13], double
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  uA[0] = ((((kC_l2 + kC_l3 * cos(-xA[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xA[5] + kC_zeta)) - kC_l7) * cos(xA[3]);
-  uA[1] = ((((kC_l2 + kC_l3 * cos(-xA[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xA[5] + kC_zeta)) - kC_l7) * sin(xA[3]);
-  uA[2] = ((((kC_l1 + kC_l3 * sin(-xA[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 * sin
-            (xA[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+  uA[0] = ((((kC_l2 + kC_l3 * std::cos(-xA[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xA[5] + kC_zeta)) - kC_l7) * std::cos(xA[3]);
+  uA[1] = ((((kC_l2 + kC_l3 * std::cos(-xA[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xA[5] + kC_zeta)) - kC_l7) * std::sin(xA[3]);
+  uA[2] = ((((kC_l1 + kC_l3 * std::sin(-xA[4])) - kC_l4 * std::sin(kC_zeta)) -
+            kC_l5 * std::sin(xA[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
   // sherpaTTFK Sherpa_TT Forward Kinematics
   //    Calculates the x,y,z position of the contact point given the alpha,
@@ -101,12 +101,12 @@ double b_heuristicSingleLeg(const double xA[13], const double xB[13], double
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  uB[0] = ((((kC_l2 + kC_l3 * cos(-xB[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xB[5] + kC_zeta)) - kC_l7) * cos(xB[3]);
-  uB[1] = ((((kC_l2 + kC_l3 * cos(-xB[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xB[5] + kC_zeta)) - kC_l7) * sin(xB[3]);
-  uB[2] = ((((kC_l1 + kC_l3 * sin(-xB[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 * sin
-            (xB[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+  uB[0] = ((((kC_l2 + kC_l3 * std::cos(-xB[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xB[5] + kC_zeta)) - kC_l7) * std::cos(xB[3]);
+  uB[1] = ((((kC_l2 + kC_l3 * std::cos(-xB[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xB[5] + kC_zeta)) - kC_l7) * std::sin(xB[3]);
+  uB[2] = ((((kC_l1 + kC_l3 * std::sin(-xB[4])) - kC_l4 * std::sin(kC_zeta)) -
+            kC_l5 * std::sin(xB[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
   // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
   // sherpaTTFKVel.m
@@ -116,24 +116,26 @@ double b_heuristicSingleLeg(const double xA[13], const double xB[13], double
   // sherpaTTFKVel.m
   // author: wreid
   // date: 20150122
-  qDot[0] = (-xB[8] * sin(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xB[5] +
-    kC_zeta)) + kC_l3 * cos(xB[4])) + kC_l4 * cos(kC_zeta)) - xB[9] * kC_l3 *
-             cos(xB[3]) * sin(xB[4])) - xB[10] * kC_l5 * sin(xB[5] + kC_zeta) *
-    cos(xB[3]);
-  qDot[1] = (xB[8] * cos(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xB[5] +
-    kC_zeta)) + kC_l3 * cos(xB[4])) + kC_l4 * cos(kC_zeta)) - xB[10] * kC_l5 *
-             sin(xB[5] + kC_zeta) * sin(xB[3])) - xB[9] * kC_l3 * sin(xB[3]) *
-    sin(xB[4]);
-  qDot[2] = -xB[9] * kC_l3 * cos(xB[4]) - kC_l5 * xB[10] * cos(kC_zeta + xB[5]);
-  b_qDot[0] = (-xA[8] * sin(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xA[5] +
-    kC_zeta)) + kC_l3 * cos(xA[4])) + kC_l4 * cos(kC_zeta)) - xA[9] * kC_l3 *
-               cos(xA[3]) * sin(xA[4])) - xA[10] * kC_l5 * sin(xA[5] + kC_zeta) *
-    cos(xA[3]);
-  b_qDot[1] = (xA[8] * cos(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xA[5] +
-    kC_zeta)) + kC_l3 * cos(xA[4])) + kC_l4 * cos(kC_zeta)) - xA[10] * kC_l5 *
-               sin(xA[5] + kC_zeta) * sin(xA[3])) - xA[9] * kC_l3 * sin(xA[3]) *
-    sin(xA[4]);
-  b_qDot[2] = -xA[9] * kC_l3 * cos(xA[4]) - kC_l5 * xA[10] * cos(kC_zeta + xA[5]);
+  qDot[0] = (-xB[8] * std::sin(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xB[5] + kC_zeta)) + kC_l3 * std::cos(xB[4])) + kC_l4 * std::cos(kC_zeta)) -
+             xB[9] * kC_l3 * std::cos(xB[3]) * std::sin(xB[4])) - xB[10] * kC_l5
+    * std::sin(xB[5] + kC_zeta) * std::cos(xB[3]);
+  qDot[1] = (xB[8] * std::cos(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos(xB
+    [5] + kC_zeta)) + kC_l3 * std::cos(xB[4])) + kC_l4 * std::cos(kC_zeta)) -
+             xB[10] * kC_l5 * std::sin(xB[5] + kC_zeta) * std::sin(xB[3])) - xB
+    [9] * kC_l3 * std::sin(xB[3]) * std::sin(xB[4]);
+  qDot[2] = -xB[9] * kC_l3 * std::cos(xB[4]) - kC_l5 * xB[10] * std::cos(kC_zeta
+    + xB[5]);
+  b_qDot[0] = (-xA[8] * std::sin(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xA[5] + kC_zeta)) + kC_l3 * std::cos(xA[4])) + kC_l4 * std::cos(kC_zeta)) -
+               xA[9] * kC_l3 * std::cos(xA[3]) * std::sin(xA[4])) - xA[10] *
+    kC_l5 * std::sin(xA[5] + kC_zeta) * std::cos(xA[3]);
+  b_qDot[1] = (xA[8] * std::cos(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xA[5] + kC_zeta)) + kC_l3 * std::cos(xA[4])) + kC_l4 * std::cos(kC_zeta)) -
+               xA[10] * kC_l5 * std::sin(xA[5] + kC_zeta) * std::sin(xA[3])) -
+    xA[9] * kC_l3 * std::sin(xA[3]) * std::sin(xA[4]);
+  b_qDot[2] = -xA[9] * kC_l3 * std::cos(xA[4]) - kC_l5 * xA[10] * std::cos
+    (kC_zeta + xA[5]);
   for (i16 = 0; i16 < 3; i16++) {
     b_uB[i16] = uB[i16] - uA[i16];
     c_qDot[i16] = qDot[i16] - b_qDot[i16];
@@ -215,12 +217,14 @@ double c_heuristicSingleLeg(const double xA_data[], const double xB[93], double
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  uA[0] = ((((kC_l2 + kC_l3 * cos(-xA_data[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 *
-            cos(xA_data[5] + kC_zeta)) - kC_l7) * cos(xA_data[3]);
-  uA[1] = ((((kC_l2 + kC_l3 * cos(-xA_data[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 *
-            cos(xA_data[5] + kC_zeta)) - kC_l7) * sin(xA_data[3]);
-  uA[2] = ((((kC_l1 + kC_l3 * sin(-xA_data[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 *
-            sin(xA_data[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+  uA[0] = ((((kC_l2 + kC_l3 * std::cos(-xA_data[4])) + kC_l4 * std::cos(kC_zeta))
+            + kC_l5 * std::cos(xA_data[5] + kC_zeta)) - kC_l7) * std::cos
+    (xA_data[3]);
+  uA[1] = ((((kC_l2 + kC_l3 * std::cos(-xA_data[4])) + kC_l4 * std::cos(kC_zeta))
+            + kC_l5 * std::cos(xA_data[5] + kC_zeta)) - kC_l7) * std::sin
+    (xA_data[3]);
+  uA[2] = ((((kC_l1 + kC_l3 * std::sin(-xA_data[4])) - kC_l4 * std::sin(kC_zeta))
+            - kC_l5 * std::sin(xA_data[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
   // sherpaTTFK Sherpa_TT Forward Kinematics
   //    Calculates the x,y,z position of the contact point given the alpha,
@@ -236,12 +240,12 @@ double c_heuristicSingleLeg(const double xA_data[], const double xB[93], double
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  uB[0] = ((((kC_l2 + kC_l3 * cos(-xB[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xB[5] + kC_zeta)) - kC_l7) * cos(xB[3]);
-  uB[1] = ((((kC_l2 + kC_l3 * cos(-xB[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xB[5] + kC_zeta)) - kC_l7) * sin(xB[3]);
-  uB[2] = ((((kC_l1 + kC_l3 * sin(-xB[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 * sin
-            (xB[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+  uB[0] = ((((kC_l2 + kC_l3 * std::cos(-xB[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xB[5] + kC_zeta)) - kC_l7) * std::cos(xB[3]);
+  uB[1] = ((((kC_l2 + kC_l3 * std::cos(-xB[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xB[5] + kC_zeta)) - kC_l7) * std::sin(xB[3]);
+  uB[2] = ((((kC_l1 + kC_l3 * std::sin(-xB[4])) - kC_l4 * std::sin(kC_zeta)) -
+            kC_l5 * std::sin(xB[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
   // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
   // sherpaTTFKVel.m
@@ -251,25 +255,28 @@ double c_heuristicSingleLeg(const double xA_data[], const double xB[93], double
   // sherpaTTFKVel.m
   // author: wreid
   // date: 20150122
-  qDot[0] = (-xB[8] * sin(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xB[5] +
-    kC_zeta)) + kC_l3 * cos(xB[4])) + kC_l4 * cos(kC_zeta)) - xB[9] * kC_l3 *
-             cos(xB[3]) * sin(xB[4])) - xB[10] * kC_l5 * sin(xB[5] + kC_zeta) *
-    cos(xB[3]);
-  qDot[1] = (xB[8] * cos(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xB[5] +
-    kC_zeta)) + kC_l3 * cos(xB[4])) + kC_l4 * cos(kC_zeta)) - xB[10] * kC_l5 *
-             sin(xB[5] + kC_zeta) * sin(xB[3])) - xB[9] * kC_l3 * sin(xB[3]) *
-    sin(xB[4]);
-  qDot[2] = -xB[9] * kC_l3 * cos(xB[4]) - kC_l5 * xB[10] * cos(kC_zeta + xB[5]);
-  b_qDot[0] = (-xA_data[8] * sin(xA_data[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos
-    (xA_data[5] + kC_zeta)) + kC_l3 * cos(xA_data[4])) + kC_l4 * cos(kC_zeta)) -
-               xA_data[9] * kC_l3 * cos(xA_data[3]) * sin(xA_data[4])) -
-    xA_data[10] * kC_l5 * sin(xA_data[5] + kC_zeta) * cos(xA_data[3]);
-  b_qDot[1] = (xA_data[8] * cos(xA_data[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos
-    (xA_data[5] + kC_zeta)) + kC_l3 * cos(xA_data[4])) + kC_l4 * cos(kC_zeta)) -
-               xA_data[10] * kC_l5 * sin(xA_data[5] + kC_zeta) * sin(xA_data[3]))
-    - xA_data[9] * kC_l3 * sin(xA_data[3]) * sin(xA_data[4]);
-  b_qDot[2] = -xA_data[9] * kC_l3 * cos(xA_data[4]) - kC_l5 * xA_data[10] * cos
-    (kC_zeta + xA_data[5]);
+  qDot[0] = (-xB[8] * std::sin(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xB[5] + kC_zeta)) + kC_l3 * std::cos(xB[4])) + kC_l4 * std::cos(kC_zeta)) -
+             xB[9] * kC_l3 * std::cos(xB[3]) * std::sin(xB[4])) - xB[10] * kC_l5
+    * std::sin(xB[5] + kC_zeta) * std::cos(xB[3]);
+  qDot[1] = (xB[8] * std::cos(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos(xB
+    [5] + kC_zeta)) + kC_l3 * std::cos(xB[4])) + kC_l4 * std::cos(kC_zeta)) -
+             xB[10] * kC_l5 * std::sin(xB[5] + kC_zeta) * std::sin(xB[3])) - xB
+    [9] * kC_l3 * std::sin(xB[3]) * std::sin(xB[4]);
+  qDot[2] = -xB[9] * kC_l3 * std::cos(xB[4]) - kC_l5 * xB[10] * std::cos(kC_zeta
+    + xB[5]);
+  b_qDot[0] = (-xA_data[8] * std::sin(xA_data[3]) * ((((kC_l2 - kC_l7) + kC_l5 *
+    std::cos(xA_data[5] + kC_zeta)) + kC_l3 * std::cos(xA_data[4])) + kC_l4 *
+    std::cos(kC_zeta)) - xA_data[9] * kC_l3 * std::cos(xA_data[3]) * std::sin
+               (xA_data[4])) - xA_data[10] * kC_l5 * std::sin(xA_data[5] +
+    kC_zeta) * std::cos(xA_data[3]);
+  b_qDot[1] = (xA_data[8] * std::cos(xA_data[3]) * ((((kC_l2 - kC_l7) + kC_l5 *
+    std::cos(xA_data[5] + kC_zeta)) + kC_l3 * std::cos(xA_data[4])) + kC_l4 *
+    std::cos(kC_zeta)) - xA_data[10] * kC_l5 * std::sin(xA_data[5] + kC_zeta) *
+               std::sin(xA_data[3])) - xA_data[9] * kC_l3 * std::sin(xA_data[3])
+    * std::sin(xA_data[4]);
+  b_qDot[2] = -xA_data[9] * kC_l3 * std::cos(xA_data[4]) - kC_l5 * xA_data[10] *
+    std::cos(kC_zeta + xA_data[5]);
   for (i17 = 0; i17 < 3; i17++) {
     b_uB[i17] = uB[i17] - uA[i17];
     c_qDot[i17] = qDot[i17] - b_qDot[i17];
@@ -351,12 +358,12 @@ double heuristicSingleLeg(const double xA[13], const double xB[93], double kC_l1
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  uA[0] = ((((kC_l2 + kC_l3 * cos(-xA[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xA[5] + kC_zeta)) - kC_l7) * cos(xA[3]);
-  uA[1] = ((((kC_l2 + kC_l3 * cos(-xA[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xA[5] + kC_zeta)) - kC_l7) * sin(xA[3]);
-  uA[2] = ((((kC_l1 + kC_l3 * sin(-xA[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 * sin
-            (xA[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+  uA[0] = ((((kC_l2 + kC_l3 * std::cos(-xA[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xA[5] + kC_zeta)) - kC_l7) * std::cos(xA[3]);
+  uA[1] = ((((kC_l2 + kC_l3 * std::cos(-xA[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xA[5] + kC_zeta)) - kC_l7) * std::sin(xA[3]);
+  uA[2] = ((((kC_l1 + kC_l3 * std::sin(-xA[4])) - kC_l4 * std::sin(kC_zeta)) -
+            kC_l5 * std::sin(xA[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
   // sherpaTTFK Sherpa_TT Forward Kinematics
   //    Calculates the x,y,z position of the contact point given the alpha,
@@ -372,12 +379,12 @@ double heuristicSingleLeg(const double xA[13], const double xB[93], double kC_l1
   // sherpaTTFK.m
   // author: wreid
   // date: 20150122
-  uB[0] = ((((kC_l2 + kC_l3 * cos(-xB[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xB[5] + kC_zeta)) - kC_l7) * cos(xB[3]);
-  uB[1] = ((((kC_l2 + kC_l3 * cos(-xB[4])) + kC_l4 * cos(kC_zeta)) + kC_l5 * cos
-            (xB[5] + kC_zeta)) - kC_l7) * sin(xB[3]);
-  uB[2] = ((((kC_l1 + kC_l3 * sin(-xB[4])) - kC_l4 * sin(kC_zeta)) - kC_l5 * sin
-            (xB[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
+  uB[0] = ((((kC_l2 + kC_l3 * std::cos(-xB[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xB[5] + kC_zeta)) - kC_l7) * std::cos(xB[3]);
+  uB[1] = ((((kC_l2 + kC_l3 * std::cos(-xB[4])) + kC_l4 * std::cos(kC_zeta)) +
+            kC_l5 * std::cos(xB[5] + kC_zeta)) - kC_l7) * std::sin(xB[3]);
+  uB[2] = ((((kC_l1 + kC_l3 * std::sin(-xB[4])) - kC_l4 * std::sin(kC_zeta)) -
+            kC_l5 * std::sin(xB[5] + kC_zeta)) - kC_l6) - (kC_l8 + kC_r);
 
   // sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.
   // sherpaTTFKVel.m
@@ -387,24 +394,26 @@ double heuristicSingleLeg(const double xA[13], const double xB[93], double kC_l1
   // sherpaTTFKVel.m
   // author: wreid
   // date: 20150122
-  qDot[0] = (-xB[8] * sin(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xB[5] +
-    kC_zeta)) + kC_l3 * cos(xB[4])) + kC_l4 * cos(kC_zeta)) - xB[9] * kC_l3 *
-             cos(xB[3]) * sin(xB[4])) - xB[10] * kC_l5 * sin(xB[5] + kC_zeta) *
-    cos(xB[3]);
-  qDot[1] = (xB[8] * cos(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xB[5] +
-    kC_zeta)) + kC_l3 * cos(xB[4])) + kC_l4 * cos(kC_zeta)) - xB[10] * kC_l5 *
-             sin(xB[5] + kC_zeta) * sin(xB[3])) - xB[9] * kC_l3 * sin(xB[3]) *
-    sin(xB[4]);
-  qDot[2] = -xB[9] * kC_l3 * cos(xB[4]) - kC_l5 * xB[10] * cos(kC_zeta + xB[5]);
-  b_qDot[0] = (-xA[8] * sin(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xA[5] +
-    kC_zeta)) + kC_l3 * cos(xA[4])) + kC_l4 * cos(kC_zeta)) - xA[9] * kC_l3 *
-               cos(xA[3]) * sin(xA[4])) - xA[10] * kC_l5 * sin(xA[5] + kC_zeta) *
-    cos(xA[3]);
-  b_qDot[1] = (xA[8] * cos(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * cos(xA[5] +
-    kC_zeta)) + kC_l3 * cos(xA[4])) + kC_l4 * cos(kC_zeta)) - xA[10] * kC_l5 *
-               sin(xA[5] + kC_zeta) * sin(xA[3])) - xA[9] * kC_l3 * sin(xA[3]) *
-    sin(xA[4]);
-  b_qDot[2] = -xA[9] * kC_l3 * cos(xA[4]) - kC_l5 * xA[10] * cos(kC_zeta + xA[5]);
+  qDot[0] = (-xB[8] * std::sin(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xB[5] + kC_zeta)) + kC_l3 * std::cos(xB[4])) + kC_l4 * std::cos(kC_zeta)) -
+             xB[9] * kC_l3 * std::cos(xB[3]) * std::sin(xB[4])) - xB[10] * kC_l5
+    * std::sin(xB[5] + kC_zeta) * std::cos(xB[3]);
+  qDot[1] = (xB[8] * std::cos(xB[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos(xB
+    [5] + kC_zeta)) + kC_l3 * std::cos(xB[4])) + kC_l4 * std::cos(kC_zeta)) -
+             xB[10] * kC_l5 * std::sin(xB[5] + kC_zeta) * std::sin(xB[3])) - xB
+    [9] * kC_l3 * std::sin(xB[3]) * std::sin(xB[4]);
+  qDot[2] = -xB[9] * kC_l3 * std::cos(xB[4]) - kC_l5 * xB[10] * std::cos(kC_zeta
+    + xB[5]);
+  b_qDot[0] = (-xA[8] * std::sin(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xA[5] + kC_zeta)) + kC_l3 * std::cos(xA[4])) + kC_l4 * std::cos(kC_zeta)) -
+               xA[9] * kC_l3 * std::cos(xA[3]) * std::sin(xA[4])) - xA[10] *
+    kC_l5 * std::sin(xA[5] + kC_zeta) * std::cos(xA[3]);
+  b_qDot[1] = (xA[8] * std::cos(xA[3]) * ((((kC_l2 - kC_l7) + kC_l5 * std::cos
+    (xA[5] + kC_zeta)) + kC_l3 * std::cos(xA[4])) + kC_l4 * std::cos(kC_zeta)) -
+               xA[10] * kC_l5 * std::sin(xA[5] + kC_zeta) * std::sin(xA[3])) -
+    xA[9] * kC_l3 * std::sin(xA[3]) * std::sin(xA[4]);
+  b_qDot[2] = -xA[9] * kC_l3 * std::cos(xA[4]) - kC_l5 * xA[10] * std::cos
+    (kC_zeta + xA[5]);
   for (i6 = 0; i6 < 3; i6++) {
     b_uB[i6] = uB[i6] - uA[i6];
     c_qDot[i6] = qDot[i6] - b_qDot[i6];

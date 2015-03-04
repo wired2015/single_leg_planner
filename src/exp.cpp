@@ -2,7 +2,7 @@
 // File: exp.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -27,10 +27,10 @@ void b_exp(creal_T *x)
     x->re = 0.0;
     x->im = 0.0;
   } else {
-    r = exp(x->re / 2.0);
+    r = std::exp(x->re / 2.0);
     x_im = x->im;
-    x->re = r * (r * cos(x->im));
-    x->im = r * (r * sin(x_im));
+    x->re = r * (r * std::cos(x->im));
+    x->im = r * (r * std::sin(x_im));
   }
 }
 

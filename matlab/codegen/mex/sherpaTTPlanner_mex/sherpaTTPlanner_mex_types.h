@@ -66,6 +66,18 @@ struct emxArray_real_T_1x13
 #define typedef_emxArray_real_T_1x13
 typedef struct emxArray_real_T_1x13 emxArray_real_T_1x13;
 #endif /*typedef_emxArray_real_T_1x13*/
+#ifndef struct_emxArray_real_T_1x9
+#define struct_emxArray_real_T_1x9
+struct emxArray_real_T_1x9
+{
+    real_T data[9];
+    int32_T size[2];
+};
+#endif /*struct_emxArray_real_T_1x9*/
+#ifndef typedef_emxArray_real_T_1x9
+#define typedef_emxArray_real_T_1x9
+typedef struct emxArray_real_T_1x9 emxArray_real_T_1x9;
+#endif /*typedef_emxArray_real_T_1x9*/
 #ifndef typedef_sherpaTTPlanner_mexStackData
 #define typedef_sherpaTTPlanner_mexStackData
 typedef struct

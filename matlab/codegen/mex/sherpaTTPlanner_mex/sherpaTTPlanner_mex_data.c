@@ -119,7 +119,7 @@ emlrtBCInfo emlrtBCI = { 1, 4, 18, 17, "kC.legAngleOffset", "trP2B",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/trP2B.m",
   0 };
 
-emlrtRTEInfo t_emlrtRTEI = { 25, 5, "nearestNeighbour",
+emlrtRTEInfo s_emlrtRTEI = { 25, 5, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 

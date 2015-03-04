@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: norm.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 03-Mar-2015 11:19:40</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:16:20</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -40,7 +40,7 @@
 <a name="29"><font color="#888888 "><i>   29   </i></font></a>  y = 0.0;
 <a name="30"><font color="#888888 "><i>   30   </i></font></a>  scale = 2.2250738585072014E-308;
 <a name="31"><font color="#888888 "><i>   31   </i></font></a>  <font color="#112266"><b>for</b></font> (k = 0; k &lt; 3; k++) <b>{</b>
-<a name="32"><font color="#888888 "><i>   32   </i></font></a>    absxk = fabs(x[k]);
+<a name="32"><font color="#888888 "><i>   32   </i></font></a>    absxk = std::abs(x[k]);
 <a name="33"><font color="#888888 "><i>   33   </i></font></a>    <font color="#112266"><b>if</b></font> (absxk &gt; scale) <b>{</b>
 <a name="34"><font color="#888888 "><i>   34   </i></font></a>      t = scale / absxk;
 <a name="35"><font color="#888888 "><i>   35   </i></font></a>      y = 1.0 + y * t * t;
@@ -51,7 +51,7 @@
 <a name="40"><font color="#888888 "><i>   40   </i></font></a>    <b>}</b>
 <a name="41"><font color="#888888 "><i>   41   </i></font></a>  <b>}</b>
 <a name="42"><font color="#888888 "><i>   42   </i></font></a>
-<a name="43"><font color="#888888 "><i>   43   </i></font></a>  <font color="#112266"><b>return</b></font> scale * sqrt(y);
+<a name="43"><font color="#888888 "><i>   43   </i></font></a>  <font color="#112266"><b>return</b></font> scale * std::sqrt(y);
 <a name="44"><font color="#888888 "><i>   44   </i></font></a><b>}</b>
 <a name="45"><font color="#888888 "><i>   45   </i></font></a>
 <a name="46"><font color="#888888 "><i>   46   </i></font></a><font color="#117755"><i>//</i></font>
@@ -68,7 +68,7 @@
 <a name="57"><font color="#888888 "><i>   57   </i></font></a>  y = 0.0;
 <a name="58"><font color="#888888 "><i>   58   </i></font></a>  scale = 2.2250738585072014E-308;
 <a name="59"><font color="#888888 "><i>   59   </i></font></a>  <font color="#112266"><b>for</b></font> (k = 0; k &lt; 3; k++) <b>{</b>
-<a name="60"><font color="#888888 "><i>   60   </i></font></a>    absxk = fabs(x[k]);
+<a name="60"><font color="#888888 "><i>   60   </i></font></a>    absxk = std::abs(x[k]);
 <a name="61"><font color="#888888 "><i>   61   </i></font></a>    <font color="#112266"><b>if</b></font> (absxk &gt; scale) <b>{</b>
 <a name="62"><font color="#888888 "><i>   62   </i></font></a>      t = scale / absxk;
 <a name="63"><font color="#888888 "><i>   63   </i></font></a>      y = 1.0 + y * t * t;
@@ -79,7 +79,7 @@
 <a name="68"><font color="#888888 "><i>   68   </i></font></a>    <b>}</b>
 <a name="69"><font color="#888888 "><i>   69   </i></font></a>  <b>}</b>
 <a name="70"><font color="#888888 "><i>   70   </i></font></a>
-<a name="71"><font color="#888888 "><i>   71   </i></font></a>  <font color="#112266"><b>return</b></font> scale * sqrt(y);
+<a name="71"><font color="#888888 "><i>   71   </i></font></a>  <font color="#112266"><b>return</b></font> scale * std::sqrt(y);
 <a name="72"><font color="#888888 "><i>   72   </i></font></a><b>}</b>
 <a name="73"><font color="#888888 "><i>   73   </i></font></a>
 <a name="74"><font color="#888888 "><i>   74   </i></font></a><font color="#117755"><i>//</i></font>

@@ -23,9 +23,9 @@
 /* Function Declarations */
 extern void buildRRTWrapper(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   *sp, const real_T nInitCartesianB[6], const real_T nGoalCartesianB[6], real_T
-  phiInit, real_T omegaInit, const real_T jointLimits[20], real_T bodyHeight,
-  const struct0_T *kC, int32_T legNum, const real_T uBDot[6], emxArray_real_T *T,
-  emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
+  phiInit, real_T omegaInit, const real_T jointLimits[20], const struct0_T *kC,
+  int32_T legNum, const real_T uBDot[6], emxArray_real_T *T, emxArray_real_T
+  *pathC, emxArray_real_T *pathJ, boolean_T *success);
 
 #endif
 

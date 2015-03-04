@@ -2,7 +2,7 @@
 // File: randomState.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -85,10 +85,10 @@ void randomState(const double jointLimits[20], double panHeight, double kC_l1,
     // sherpaTTFK.m
     // author: wreid
     // date: 20150216
-    xMax = (((kC_l2 + kC_l4 * cos(kC_zeta)) - kC_l7) + kC_l3 * cos(asin
-             (((-panHeight + ((((kC_l1 - kC_l4 * sin(kC_zeta)) - kC_l6) - kC_l8)
-      - kC_r)) - kC_l5 * sin(kC_zeta + jointLimits[4])) / kC_l3))) + kC_l5 * cos
-      (kC_zeta + jointLimits[4]);
+    xMax = (((kC_l2 + kC_l4 * std::cos(kC_zeta)) - kC_l7) + kC_l3 * std::cos(std::
+             asin(((-panHeight + ((((kC_l1 - kC_l4 * std::sin(kC_zeta)) - kC_l6)
+      - kC_l8) - kC_r)) - kC_l5 * std::sin(kC_zeta + jointLimits[4])) / kC_l3)))
+      + kC_l5 * std::cos(kC_zeta + jointLimits[4]);
 
     // GETXSTAR Returns the xStar value given either the height of the wheel
     // contact
@@ -112,9 +112,10 @@ void randomState(const double jointLimits[20], double panHeight, double kC_l1,
     // sherpaTTFK.m
     // author: wreid
     // date: 20150216
-    xMin = (((kC_l2 + kC_l4 * cos(kC_zeta)) - kC_l7) + kC_l3 * cos(jointLimits[2]))
-      + kC_l5 * cos(asin(((((((kC_l1 - kC_l4 * sin(kC_zeta)) - kC_l6) - kC_l8) -
-      kC_r) - kC_l3 * sin(jointLimits[2])) - panHeight) / kC_l5));
+    xMin = (((kC_l2 + kC_l4 * std::cos(kC_zeta)) - kC_l7) + kC_l3 * std::cos
+            (jointLimits[2])) + kC_l5 * std::cos(std::asin(((((((kC_l1 - kC_l4 *
+      std::sin(kC_zeta)) - kC_l6) - kC_l8) - kC_r) - kC_l3 * std::sin
+      (jointLimits[2])) - panHeight) / kC_l5));
   } else if ((panHeight < -0.671) && (panHeight >= -0.7546)) {
     // GETXSTAR Returns the xStar value given either the height of the wheel
     // contact
@@ -138,10 +139,10 @@ void randomState(const double jointLimits[20], double panHeight, double kC_l1,
     // sherpaTTFK.m
     // author: wreid
     // date: 20150216
-    xMax = (((kC_l2 + kC_l4 * cos(kC_zeta)) - kC_l7) + kC_l3 * cos(asin
-             (((-panHeight + ((((kC_l1 - kC_l4 * sin(kC_zeta)) - kC_l6) - kC_l8)
-      - kC_r)) - kC_l5 * sin(kC_zeta + jointLimits[4])) / kC_l3))) + kC_l5 * cos
-      (kC_zeta + jointLimits[4]);
+    xMax = (((kC_l2 + kC_l4 * std::cos(kC_zeta)) - kC_l7) + kC_l3 * std::cos(std::
+             asin(((-panHeight + ((((kC_l1 - kC_l4 * std::sin(kC_zeta)) - kC_l6)
+      - kC_l8) - kC_r)) - kC_l5 * std::sin(kC_zeta + jointLimits[4])) / kC_l3)))
+      + kC_l5 * std::cos(kC_zeta + jointLimits[4]);
 
     // GETXSTAR Returns the xStar value given either the height of the wheel
     // contact
@@ -165,10 +166,10 @@ void randomState(const double jointLimits[20], double panHeight, double kC_l1,
     // sherpaTTFK.m
     // author: wreid
     // date: 20150216
-    xMin = (((kC_l2 + kC_l4 * cos(kC_zeta)) - kC_l7) + kC_l3 * cos(asin
-             (((-panHeight + ((((kC_l1 - kC_l4 * sin(kC_zeta)) - kC_l6) - kC_l8)
-      - kC_r)) - kC_l5 * sin(kC_zeta + jointLimits[5])) / kC_l3))) + kC_l5 * cos
-      (kC_zeta + jointLimits[5]);
+    xMin = (((kC_l2 + kC_l4 * std::cos(kC_zeta)) - kC_l7) + kC_l3 * std::cos(std::
+             asin(((-panHeight + ((((kC_l1 - kC_l4 * std::sin(kC_zeta)) - kC_l6)
+      - kC_l8) - kC_r)) - kC_l5 * std::sin(kC_zeta + jointLimits[5])) / kC_l3)))
+      + kC_l5 * std::cos(kC_zeta + jointLimits[5]);
   } else if ((panHeight < -0.7546) && (panHeight >= -1.1326)) {
     // GETXSTAR Returns the xStar value given either the height of the wheel
     // contact
@@ -192,9 +193,10 @@ void randomState(const double jointLimits[20], double panHeight, double kC_l1,
     // sherpaTTFK.m
     // author: wreid
     // date: 20150216
-    xMax = (((kC_l2 + kC_l4 * cos(kC_zeta)) - kC_l7) + kC_l3 * cos(jointLimits[3]))
-      + kC_l5 * cos(asin(((((((kC_l1 - kC_l4 * sin(kC_zeta)) - kC_l6) - kC_l8) -
-      kC_r) - kC_l3 * sin(jointLimits[3])) - panHeight) / kC_l5));
+    xMax = (((kC_l2 + kC_l4 * std::cos(kC_zeta)) - kC_l7) + kC_l3 * std::cos
+            (jointLimits[3])) + kC_l5 * std::cos(std::asin(((((((kC_l1 - kC_l4 *
+      std::sin(kC_zeta)) - kC_l6) - kC_l8) - kC_r) - kC_l3 * std::sin
+      (jointLimits[3])) - panHeight) / kC_l5));
 
     // GETXSTAR Returns the xStar value given either the height of the wheel
     // contact
@@ -218,10 +220,10 @@ void randomState(const double jointLimits[20], double panHeight, double kC_l1,
     // sherpaTTFK.m
     // author: wreid
     // date: 20150216
-    xMin = (((kC_l2 + kC_l4 * cos(kC_zeta)) - kC_l7) + kC_l3 * cos(asin
-             (((-panHeight + ((((kC_l1 - kC_l4 * sin(kC_zeta)) - kC_l6) - kC_l8)
-      - kC_r)) - kC_l5 * sin(kC_zeta + jointLimits[5])) / kC_l3))) + kC_l5 * cos
-      (kC_zeta + jointLimits[5]);
+    xMin = (((kC_l2 + kC_l4 * std::cos(kC_zeta)) - kC_l7) + kC_l3 * std::cos(std::
+             asin(((-panHeight + ((((kC_l1 - kC_l4 * std::sin(kC_zeta)) - kC_l6)
+      - kC_l8) - kC_r)) - kC_l5 * std::sin(kC_zeta + jointLimits[5])) / kC_l3)))
+      + kC_l5 * std::cos(kC_zeta + jointLimits[5]);
   } else {
     xMax = 0.0;
     xMin = 0.0;

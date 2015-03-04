@@ -2,7 +2,7 @@
 // File: sin.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -24,13 +24,13 @@ void b_sin(creal_T *x)
   double x_re;
   double x_im;
   if (x->im == 0.0) {
-    x->re = sin(x->re);
+    x->re = std::sin(x->re);
     x->im = 0.0;
   } else {
     x_re = x->re;
     x_im = x->im;
-    x->re = sin(x->re) * cosh(x->im);
-    x->im = cos(x_re) * sinh(x_im);
+    x->re = std::sin(x->re) * std::cosh(x->im);
+    x->im = std::cos(x_re) * std::sinh(x_im);
   }
 }
 

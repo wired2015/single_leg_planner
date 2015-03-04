@@ -42,10 +42,10 @@ static emlrtRTEInfo emlrtRTEI = { 27, 40, "buildBiDirectionalRRTWrapper",
 /* Function Definitions */
 void buildBiDirectionalRRTWrapper(sherpaTTPlanner_mexStackData *SD, const
   emlrtStack *sp, const real_T nInitCartesianB[6], const real_T nGoalCartesianB
-  [6], real_T phiInit, real_T omegaInit, const real_T jointLimits[20], real_T
-  bodyHeight, const struct0_T *kC, int32_T legNum, const real_T uBDot[6],
-  emxArray_real_T *T1, emxArray_real_T *T2, emxArray_real_T *pathC,
-  emxArray_real_T *pathJ, boolean_T *success)
+  [6], real_T phiInit, real_T omegaInit, const real_T jointLimits[20], const
+  struct0_T *kC, int32_T legNum, const real_T uBDot[6], emxArray_real_T *T1,
+  emxArray_real_T *T2, emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T
+  *success)
 {
   real_T TP2B[16];
   int32_T i0;
@@ -247,8 +247,8 @@ void buildBiDirectionalRRTWrapper(sherpaTTPlanner_mexStackData *SD, const
     }
 
     st.site = &d_emlrtRSI;
-    buildBiDirectionalRRT(SD, &st, dv0, dv1, jointLimits, -(bodyHeight +
-      kC->B2PZOffset), kC, uBDot, legNum, TP2B, SD->f2.T1, SD->f2.T2, pathJ,
+    buildBiDirectionalRRT(SD, &st, dv0, dv1, jointLimits, -(-nInitCartesianB[2]
+      + kC->B2PZOffset), kC, uBDot, legNum, TP2B, SD->f2.T1, SD->f2.T2, pathJ,
                           pathC);
     i0 = T1->size[0] * T1->size[1];
     T1->size[0] = 750;

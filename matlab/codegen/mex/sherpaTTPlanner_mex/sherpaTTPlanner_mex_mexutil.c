@@ -32,9 +32,9 @@ const mxArray *message(const emlrtStack *sp, const mxArray *b, emlrtMCInfo
   *location)
 {
   const mxArray *pArray;
-  const mxArray *m14;
+  const mxArray *m13;
   pArray = b;
-  return emlrtCallMATLABR2012b(sp, 1, &m14, 1, &pArray, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m13, 1, &pArray, "message", true,
     location);
 }
 

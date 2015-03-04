@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: rk4.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 03-Mar-2015 11:19:40</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:16:20</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -53,245 +53,247 @@
 <a name="42"><font color="#888888 "><i>   42   </i></font></a>  xDot[4] = 0.0;
 <a name="43"><font color="#888888 "><i>   43   </i></font></a>  xDot[5] = u[0];
 <a name="44"><font color="#888888 "><i>   44   </i></font></a>  xDot[6] = u[1];
-<a name="45"><font color="#888888 "><i>   45   </i></font></a>  xDot[7] = ((-u[1] * kC_l3 * cos(x[1]) + x[6] * x[6] * kC_l3 * sin(x[1])) + x[7]
-<a name="46"><font color="#888888 "><i>   46   </i></font></a>             * x[7] * kC_l5 * sin(kC_zeta + x[2])) / (kC_l5 * cos(kC_zeta + x[2]));
-<a name="47"><font color="#888888 "><i>   47   </i></font></a>  xDot[8] = 0.0;
-<a name="48"><font color="#888888 "><i>   48   </i></font></a>  xDot[9] = 0.0;
-<a name="49"><font color="#888888 "><i>   49   </i></font></a><b>}</b>
-<a name="50"><font color="#888888 "><i>   50   </i></font></a>
-<a name="51"><font color="#888888 "><i>   51   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="52"><font color="#888888 "><i>   52   </i></font></a><font color="#117755"><i>// rk4 Summary of this function goes here</i></font>
-<a name="53"><font color="#888888 "><i>   53   </i></font></a><font color="#117755"><i>//    Detailed explanation goes here</i></font>
-<a name="54"><font color="#888888 "><i>   54   </i></font></a><font color="#117755"><i>// Arguments    : const double uIn[2]</i></font>
-<a name="55"><font color="#888888 "><i>   55   </i></font></a><font color="#117755"><i>//                const double uBDot[6]</i></font>
-<a name="56"><font color="#888888 "><i>   56   </i></font></a><font color="#117755"><i>//                const double xInit[13]</i></font>
-<a name="57"><font color="#888888 "><i>   57   </i></font></a><font color="#117755"><i>//                const double jointLimits[20]</i></font>
-<a name="58"><font color="#888888 "><i>   58   </i></font></a><font color="#117755"><i>//                const struct0_T *kC</i></font>
-<a name="59"><font color="#888888 "><i>   59   </i></font></a><font color="#117755"><i>//                int legNum</i></font>
-<a name="60"><font color="#888888 "><i>   60   </i></font></a><font color="#117755"><i>//                double xNewFull[13]</i></font>
-<a name="61"><font color="#888888 "><i>   61   </i></font></a><font color="#117755"><i>//                double transitionArray[80]</i></font>
-<a name="62"><font color="#888888 "><i>   62   </i></font></a><font color="#117755"><i>// Return Type  : void</i></font>
-<a name="63"><font color="#888888 "><i>   63   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="64"><font color="#888888 "><i>   64   </i></font></a><font color="#112266"><b>void</b></font> <a name="fcn_rk4">rk4</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> uIn[2], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> uBDot[6], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> xInit[13],
-<a name="65"><font color="#888888 "><i>   65   </i></font></a>         <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> jointLimits[20], <font color="#112266"><b>const</b></font> <a href="sherpaTTPlanner_types_h.html#type_struct0_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_struct0_T');" target="_self"><font color="#1122aa">struct0_T</font></a> *kC, <font color="#112266"><b>int</b></font> legNum, <font color="#112266"><b>double</b></font>
-<a name="66"><font color="#888888 "><i>   66   </i></font></a>         xNewFull[13], <font color="#112266"><b>double</b></font> transitionArray[80])
-<a name="67"><font color="#888888 "><i>   67   </i></font></a><b>{</b>
-<a name="68"><font color="#888888 "><i>   68   </i></font></a>  <font color="#112266"><b>double</b></font> u[2];
-<a name="69"><font color="#888888 "><i>   69   </i></font></a>  <font color="#112266"><b>int</b></font> i13;
-<a name="70"><font color="#888888 "><i>   70   </i></font></a>  <font color="#112266"><b>double</b></font> b_xInit[10];
-<a name="71"><font color="#888888 "><i>   71   </i></font></a>  <font color="#112266"><b>double</b></font> k1[10];
-<a name="72"><font color="#888888 "><i>   72   </i></font></a>  <font color="#112266"><b>unsigned</b></font> <font color="#112266"><b>char</b></font> tmp_data[80];
-<a name="73"><font color="#888888 "><i>   73   </i></font></a>  <font color="#112266"><b>int</b></font> i;
-<a name="74"><font color="#888888 "><i>   74   </i></font></a>  <font color="#112266"><b>double</b></font> c_xInit[10];
-<a name="75"><font color="#888888 "><i>   75   </i></font></a>  <font color="#112266"><b>double</b></font> k2[10];
-<a name="76"><font color="#888888 "><i>   76   </i></font></a>  <font color="#112266"><b>double</b></font> k3[10];
-<a name="77"><font color="#888888 "><i>   77   </i></font></a>  <font color="#112266"><b>double</b></font> dv15[10];
-<a name="78"><font color="#888888 "><i>   78   </i></font></a>  <font color="#112266"><b>double</b></font> alpha;
-<a name="79"><font color="#888888 "><i>   79   </i></font></a>  <font color="#112266"><b>double</b></font> beta;
-<a name="80"><font color="#888888 "><i>   80   </i></font></a>  <font color="#112266"><b>double</b></font> b_gamma;
-<a name="81"><font color="#888888 "><i>   81   </i></font></a>  <font color="#112266"><b>double</b></font> alphaDot;
-<a name="82"><font color="#888888 "><i>   82   </i></font></a>  <font color="#112266"><b>double</b></font> betaDot;
-<a name="83"><font color="#888888 "><i>   83   </i></font></a>  <font color="#112266"><b>double</b></font> gammaDot;
-<a name="84"><font color="#888888 "><i>   84   </i></font></a>  <font color="#112266"><b>double</b></font> alphaDotDot;
-<a name="85"><font color="#888888 "><i>   85   </i></font></a>  <font color="#112266"><b>double</b></font> betaDotDot;
-<a name="86"><font color="#888888 "><i>   86   </i></font></a>  <font color="#112266"><b>double</b></font> b_alphaDot[4];
-<a name="87"><font color="#888888 "><i>   87   </i></font></a>  <font color="#112266"><b>double</b></font> b_alpha[4];
-<a name="88"><font color="#888888 "><i>   88   </i></font></a>  <font color="#112266"><b>double</b></font> omega;
-<a name="89"><font color="#888888 "><i>   89   </i></font></a>  <font color="#112266"><b>double</b></font> phi;
-<a name="90"><font color="#888888 "><i>   90   </i></font></a>  <font color="#112266"><b>int</b></font> i14;
-<a name="91"><font color="#888888 "><i>   91   </i></font></a>  <font color="#112266"><b>int</b></font> loop_ub;
-<a name="92"><font color="#888888 "><i>   92   </i></font></a>  <font color="#112266"><b>int</b></font> i15;
-<a name="93"><font color="#888888 "><i>   93   </i></font></a>
-<a name="94"><font color="#888888 "><i>   94   </i></font></a>  <font color="#117755"><i>// rk4.m</i></font>
-<a name="95"><font color="#888888 "><i>   95   </i></font></a>  <font color="#117755"><i>// author: wreid</i></font>
-<a name="96"><font color="#888888 "><i>   96   </i></font></a>  <font color="#117755"><i>// date: 20150107</i></font>
-<a name="97"><font color="#888888 "><i>   97   </i></font></a>  <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 2; i13++) <b>{</b>
-<a name="98"><font color="#888888 "><i>   98   </i></font></a>    u[i13] = uIn[i13];
-<a name="99"><font color="#888888 "><i>   99   </i></font></a>  <b>}</b>
-<a name="100"><font color="#888888 "><i>  100   </i></font></a>
-<a name="101"><font color="#888888 "><i>  101   </i></font></a>  memcpy(&amp;b_xInit[0], &amp;xInit[3], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="102"><font color="#888888 "><i>  102   </i></font></a>  memset(&amp;transitionArray[0], 0, 80U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="103"><font color="#888888 "><i>  103   </i></font></a>  memcpy(&amp;transitionArray[0], &amp;xInit[3], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="104"><font color="#888888 "><i>  104   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 7; i++) <b>{</b>
-<a name="105"><font color="#888888 "><i>  105   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(b_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, k1);
-<a name="106"><font color="#888888 "><i>  106   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
-<a name="107"><font color="#888888 "><i>  107   </i></font></a>      c_xInit[i13] = b_xInit[i13] + 0.05 * k1[i13];
-<a name="108"><font color="#888888 "><i>  108   </i></font></a>    <b>}</b>
-<a name="109"><font color="#888888 "><i>  109   </i></font></a>
-<a name="110"><font color="#888888 "><i>  110   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(c_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, k2);
-<a name="111"><font color="#888888 "><i>  111   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
-<a name="112"><font color="#888888 "><i>  112   </i></font></a>      c_xInit[i13] = b_xInit[i13] + 0.05 * k2[i13];
-<a name="113"><font color="#888888 "><i>  113   </i></font></a>    <b>}</b>
-<a name="114"><font color="#888888 "><i>  114   </i></font></a>
-<a name="115"><font color="#888888 "><i>  115   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(c_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, k3);
-<a name="116"><font color="#888888 "><i>  116   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
-<a name="117"><font color="#888888 "><i>  117   </i></font></a>      c_xInit[i13] = b_xInit[i13] + 0.05 * k3[i13];
-<a name="118"><font color="#888888 "><i>  118   </i></font></a>    <b>}</b>
-<a name="119"><font color="#888888 "><i>  119   </i></font></a>
-<a name="120"><font color="#888888 "><i>  120   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(c_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, dv15);
-<a name="121"><font color="#888888 "><i>  121   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
-<a name="122"><font color="#888888 "><i>  122   </i></font></a>      k1[i13] = b_xInit[i13] + 0.016666666666666666 * (((k1[i13] + 2.0 * k2[i13])
-<a name="123"><font color="#888888 "><i>  123   </i></font></a>        + 2.0 * k3[i13]) + dv15[i13]);
-<a name="124"><font color="#888888 "><i>  124   </i></font></a>    <b>}</b>
-<a name="125"><font color="#888888 "><i>  125   </i></font></a>
-<a name="126"><font color="#888888 "><i>  126   </i></font></a>    alpha = k1[0];
-<a name="127"><font color="#888888 "><i>  127   </i></font></a>    beta = k1[1];
-<a name="128"><font color="#888888 "><i>  128   </i></font></a>    b_gamma = k1[2];
-<a name="129"><font color="#888888 "><i>  129   </i></font></a>    alphaDot = k1[5];
-<a name="130"><font color="#888888 "><i>  130   </i></font></a>    betaDot = k1[6];
-<a name="131"><font color="#888888 "><i>  131   </i></font></a>    gammaDot = k1[7];
-<a name="132"><font color="#888888 "><i>  132   </i></font></a>    alphaDotDot = u[0];
-<a name="133"><font color="#888888 "><i>  133   </i></font></a>    betaDotDot = u[1];
-<a name="134"><font color="#888888 "><i>  134   </i></font></a>
-<a name="135"><font color="#888888 "><i>  135   </i></font></a>    <font color="#117755"><i>// Check pan angular position limits</i></font>
-<a name="136"><font color="#888888 "><i>  136   </i></font></a>    <font color="#112266"><b>if</b></font> ((k1[0] &gt; jointLimits[1]) || (k1[0] &lt; jointLimits[0])) <b>{</b>
-<a name="137"><font color="#888888 "><i>  137   </i></font></a>      alpha = b_xInit[0];
-<a name="138"><font color="#888888 "><i>  138   </i></font></a>      alphaDot = 0.0;
-<a name="139"><font color="#888888 "><i>  139   </i></font></a>      alphaDotDot = 0.0;
-<a name="140"><font color="#888888 "><i>  140   </i></font></a>    <b>}</b>
-<a name="141"><font color="#888888 "><i>  141   </i></font></a>
-<a name="142"><font color="#888888 "><i>  142   </i></font></a>    <font color="#117755"><i>// Check inner and outer leg angular position limits</i></font>
-<a name="143"><font color="#888888 "><i>  143   </i></font></a>    <font color="#112266"><b>if</b></font> ((k1[1] &gt; jointLimits[3]) || (k1[1] &lt; jointLimits[2]) || (k1[2] &gt;
-<a name="144"><font color="#888888 "><i>  144   </i></font></a>         jointLimits[5]) || (k1[2] &lt; jointLimits[4])) <b>{</b>
-<a name="145"><font color="#888888 "><i>  145   </i></font></a>      beta = b_xInit[1];
-<a name="146"><font color="#888888 "><i>  146   </i></font></a>      b_gamma = b_xInit[2];
-<a name="147"><font color="#888888 "><i>  147   </i></font></a>      betaDot = 0.0;
-<a name="148"><font color="#888888 "><i>  148   </i></font></a>      gammaDot = 0.0;
-<a name="149"><font color="#888888 "><i>  149   </i></font></a>      betaDotDot = 0.0;
-<a name="150"><font color="#888888 "><i>  150   </i></font></a>    <b>}</b>
-<a name="151"><font color="#888888 "><i>  151   </i></font></a>
-<a name="152"><font color="#888888 "><i>  152   </i></font></a>    <font color="#117755"><i>// Check pan angular velocity limits</i></font>
-<a name="153"><font color="#888888 "><i>  153   </i></font></a>    <font color="#112266"><b>if</b></font> ((alphaDot &gt; jointLimits[11]) || (alphaDot &lt; jointLimits[10])) <b>{</b>
-<a name="154"><font color="#888888 "><i>  154   </i></font></a>      alphaDot = b_xInit[5];
-<a name="155"><font color="#888888 "><i>  155   </i></font></a>      alphaDotDot = 0.0;
-<a name="156"><font color="#888888 "><i>  156   </i></font></a>
-<a name="157"><font color="#888888 "><i>  157   </i></font></a>      <font color="#117755"><i>// else</i></font>
-<a name="158"><font color="#888888 "><i>  158   </i></font></a>      <font color="#117755"><i>//     alphaDotDot = uIn(1);</i></font>
-<a name="159"><font color="#888888 "><i>  159   </i></font></a>    <b>}</b>
-<a name="160"><font color="#888888 "><i>  160   </i></font></a>
-<a name="161"><font color="#888888 "><i>  161   </i></font></a>    <font color="#117755"><i>// Check the inner leg velocity limit.</i></font>
-<a name="162"><font color="#888888 "><i>  162   </i></font></a>    <font color="#112266"><b>if</b></font> ((betaDot &gt; jointLimits[13]) || (betaDot &lt; jointLimits[12])) <b>{</b>
-<a name="163"><font color="#888888 "><i>  163   </i></font></a>      betaDot = b_xInit[6];
-<a name="164"><font color="#888888 "><i>  164   </i></font></a>      betaDotDot = 0.0;
-<a name="165"><font color="#888888 "><i>  165   </i></font></a>
-<a name="166"><font color="#888888 "><i>  166   </i></font></a>      <font color="#117755"><i>// GETCONSTRAINEDGAMMADOT This function calculates the velocity of</i></font>
-<a name="167"><font color="#888888 "><i>  167   </i></font></a>      <font color="#117755"><i>// gamma given a pan height constraint and an independent beta angle.</i></font>
-<a name="168"><font color="#888888 "><i>  168   </i></font></a>      <font color="#117755"><i>//</i></font>
-<a name="169"><font color="#888888 "><i>  169   </i></font></a>      <font color="#117755"><i>// getConstrainedGammaDot.m</i></font>
-<a name="170"><font color="#888888 "><i>  170   </i></font></a>      <font color="#117755"><i>// author: wreid</i></font>
-<a name="171"><font color="#888888 "><i>  171   </i></font></a>      <font color="#117755"><i>// date: 20150224</i></font>
-<a name="172"><font color="#888888 "><i>  172   </i></font></a>      gammaDot = -b_xInit[6] * kC-&gt;l3 * cos(beta) / (kC-&gt;l5 * cos(kC-&gt;zeta +
-<a name="173"><font color="#888888 "><i>  173   </i></font></a>        b_gamma));
-<a name="174"><font color="#888888 "><i>  174   </i></font></a>    <b>}</b>
-<a name="175"><font color="#888888 "><i>  175   </i></font></a>
-<a name="176"><font color="#888888 "><i>  176   </i></font></a>    <font color="#117755"><i>// Check the outer leg velocity limit.</i></font>
-<a name="177"><font color="#888888 "><i>  177   </i></font></a>    <font color="#112266"><b>if</b></font> ((gammaDot &gt; jointLimits[15]) || (gammaDot &lt; jointLimits[14])) <b>{</b>
-<a name="178"><font color="#888888 "><i>  178   </i></font></a>      gammaDot = b_xInit[7];
-<a name="179"><font color="#888888 "><i>  179   </i></font></a>
-<a name="180"><font color="#888888 "><i>  180   </i></font></a>      <font color="#117755"><i>// GETCONSTRAINEDBETAADOT This function calculates the velocity of</i></font>
-<a name="181"><font color="#888888 "><i>  181   </i></font></a>      <font color="#117755"><i>// gamma given a pan height constraint and an independent beta angle.</i></font>
-<a name="182"><font color="#888888 "><i>  182   </i></font></a>      <font color="#117755"><i>//</i></font>
-<a name="183"><font color="#888888 "><i>  183   </i></font></a>      <font color="#117755"><i>// getConstrainedBetaDot.m</i></font>
-<a name="184"><font color="#888888 "><i>  184   </i></font></a>      <font color="#117755"><i>// author: wreid</i></font>
-<a name="185"><font color="#888888 "><i>  185   </i></font></a>      <font color="#117755"><i>// date: 20150224</i></font>
-<a name="186"><font color="#888888 "><i>  186   </i></font></a>      betaDot = -b_xInit[7] * kC-&gt;l5 * cos(kC-&gt;zeta + b_gamma) / (kC-&gt;l3 * cos
-<a name="187"><font color="#888888 "><i>  187   </i></font></a>        (beta));
-<a name="188"><font color="#888888 "><i>  188   </i></font></a>
-<a name="189"><font color="#888888 "><i>  189   </i></font></a>      <font color="#117755"><i>// GETCONSTRAINEDBETADOTDOT This function calculates the acceleration of</i></font>
-<a name="190"><font color="#888888 "><i>  190   </i></font></a>      <font color="#117755"><i>// beta given a pan height constraint and an indpendent gamma angle.</i></font>
-<a name="191"><font color="#888888 "><i>  191   </i></font></a>      betaDotDot = ((-0.0 * kC-&gt;l5 * cos(kC-&gt;zeta + b_gamma) + b_xInit[7] *
-<a name="192"><font color="#888888 "><i>  192   </i></font></a>                     b_xInit[7] * kC-&gt;l5 * sin(kC-&gt;zeta + b_gamma)) - betaDot *
-<a name="193"><font color="#888888 "><i>  193   </i></font></a>                    betaDot * kC-&gt;l3 * sin(beta)) / (kC-&gt;l3 * cos(beta));
-<a name="194"><font color="#888888 "><i>  194   </i></font></a>      <font color="#112266"><b>if</b></font> ((betaDot &gt; jointLimits[13]) || (betaDot &lt; jointLimits[12])) <b>{</b>
-<a name="195"><font color="#888888 "><i>  195   </i></font></a>        betaDot = b_xInit[6];
-<a name="196"><font color="#888888 "><i>  196   </i></font></a>        betaDotDot = 0.0;
-<a name="197"><font color="#888888 "><i>  197   </i></font></a>      <b>}</b>
-<a name="198"><font color="#888888 "><i>  198   </i></font></a>    <b>}</b>
-<a name="199"><font color="#888888 "><i>  199   </i></font></a>
-<a name="200"><font color="#888888 "><i>  200   </i></font></a>    <font color="#117755"><i>//          if betaDot &gt; betaDotMax || betaDot &lt; betaDotMin || gammaDot &gt; gammaDotMax || gammaDot &lt; gammaDotMin </i></font>
-<a name="201"><font color="#888888 "><i>  201   </i></font></a>    <font color="#117755"><i>//              betaDot = xInit(7);</i></font>
-<a name="202"><font color="#888888 "><i>  202   </i></font></a>    <font color="#117755"><i>//              gammaDot = xInit(8);</i></font>
-<a name="203"><font color="#888888 "><i>  203   </i></font></a>    <font color="#117755"><i>//              betaDotDot = 0;</i></font>
-<a name="204"><font color="#888888 "><i>  204   </i></font></a>    <font color="#117755"><i>//          else</i></font>
-<a name="205"><font color="#888888 "><i>  205   </i></font></a>    <font color="#117755"><i>//             betaDotDot = uIn(2);</i></font>
-<a name="206"><font color="#888888 "><i>  206   </i></font></a>    <font color="#117755"><i>//          end</i></font>
-<a name="207"><font color="#888888 "><i>  207   </i></font></a>    <font color="#117755"><i>// Check the outer leg velocity limit.</i></font>
-<a name="208"><font color="#888888 "><i>  208   </i></font></a>    b_alphaDot[0] = alphaDot;
-<a name="209"><font color="#888888 "><i>  209   </i></font></a>    b_alphaDot[1] = betaDot;
-<a name="210"><font color="#888888 "><i>  210   </i></font></a>    b_alphaDot[2] = gammaDot;
-<a name="211"><font color="#888888 "><i>  211   </i></font></a>    b_alphaDot[3] = 0.0;
-<a name="212"><font color="#888888 "><i>  212   </i></font></a>    b_alpha[0] = alpha;
-<a name="213"><font color="#888888 "><i>  213   </i></font></a>    b_alpha[1] = beta;
-<a name="214"><font color="#888888 "><i>  214   </i></font></a>    b_alpha[2] = b_gamma;
-<a name="215"><font color="#888888 "><i>  215   </i></font></a>    b_alpha[3] = 0.0;
-<a name="216"><font color="#888888 "><i>  216   </i></font></a>    <a href="getPhiAndOmega_cpp.html#fcn_getPhiAndOmega" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_getPhiAndOmega');" target="_self"><font color="#1122aa">getPhiAndOmega</font></a>(uBDot, b_alphaDot, b_alpha, kC, legNum, &amp;phi, &amp;omega);
-<a name="217"><font color="#888888 "><i>  217   </i></font></a>
-<a name="218"><font color="#888888 "><i>  218   </i></font></a>    <font color="#117755"><i>//          %Check if phi is above threshold, if so then stop the leg and drive </i></font>
-<a name="219"><font color="#888888 "><i>  219   </i></font></a>    <font color="#117755"><i>//          %the steering joint until it is in the correct orientation.</i></font>
-<a name="220"><font color="#888888 "><i>  220   </i></font></a>    <font color="#117755"><i>//          if abs(phi-phiInit)/dt &gt; phiDotMax</i></font>
-<a name="221"><font color="#888888 "><i>  221   </i></font></a>    <font color="#117755"><i>//            if phi &gt; phiInit</i></font>
-<a name="222"><font color="#888888 "><i>  222   </i></font></a>    <font color="#117755"><i>//              phiDot = phiDotMax;</i></font>
-<a name="223"><font color="#888888 "><i>  223   </i></font></a>    <font color="#117755"><i>//            else</i></font>
-<a name="224"><font color="#888888 "><i>  224   </i></font></a>    <font color="#117755"><i>//              phiDot = phiDotMin;</i></font>
-<a name="225"><font color="#888888 "><i>  225   </i></font></a>    <font color="#117755"><i>//            end</i></font>
-<a name="226"><font color="#888888 "><i>  226   </i></font></a>    <font color="#117755"><i>//            alphaDotDot = 0;</i></font>
-<a name="227"><font color="#888888 "><i>  227   </i></font></a>    <font color="#117755"><i>//            betaDotDot = 0;</i></font>
-<a name="228"><font color="#888888 "><i>  228   </i></font></a>    <font color="#117755"><i>//            alphaDot = 0;</i></font>
-<a name="229"><font color="#888888 "><i>  229   </i></font></a>    <font color="#117755"><i>//            betaDot = 0;</i></font>
-<a name="230"><font color="#888888 "><i>  230   </i></font></a>    <font color="#117755"><i>//            gammaDot = 0;</i></font>
-<a name="231"><font color="#888888 "><i>  231   </i></font></a>    <font color="#117755"><i>//            omega = 0;</i></font>
-<a name="232"><font color="#888888 "><i>  232   </i></font></a>    <font color="#117755"><i>//            alpha = xInitOrig(1);</i></font>
-<a name="233"><font color="#888888 "><i>  233   </i></font></a>    <font color="#117755"><i>//            beta = xInitOrig(2);</i></font>
-<a name="234"><font color="#888888 "><i>  234   </i></font></a>    <font color="#117755"><i>//            gamma = xInitOrig(3);</i></font>
-<a name="235"><font color="#888888 "><i>  235   </i></font></a>    <font color="#117755"><i>//          end</i></font>
-<a name="236"><font color="#888888 "><i>  236   </i></font></a>    u[0] = alphaDotDot;
-<a name="237"><font color="#888888 "><i>  237   </i></font></a>    u[1] = betaDotDot;
-<a name="238"><font color="#888888 "><i>  238   </i></font></a>    alphaDotDot = k1[4];
-<a name="239"><font color="#888888 "><i>  239   </i></font></a>    betaDotDot = k1[8];
-<a name="240"><font color="#888888 "><i>  240   </i></font></a>    k1[0] = alpha;
-<a name="241"><font color="#888888 "><i>  241   </i></font></a>    k1[1] = beta;
-<a name="242"><font color="#888888 "><i>  242   </i></font></a>    k1[2] = b_gamma;
-<a name="243"><font color="#888888 "><i>  243   </i></font></a>    k1[3] = phi;
-<a name="244"><font color="#888888 "><i>  244   </i></font></a>    k1[4] = alphaDotDot + 0.1 * omega;
-<a name="245"><font color="#888888 "><i>  245   </i></font></a>    k1[5] = alphaDot;
-<a name="246"><font color="#888888 "><i>  246   </i></font></a>    k1[6] = betaDot;
-<a name="247"><font color="#888888 "><i>  247   </i></font></a>    k1[7] = gammaDot;
-<a name="248"><font color="#888888 "><i>  248   </i></font></a>    k1[8] = betaDotDot;
-<a name="249"><font color="#888888 "><i>  249   </i></font></a>    k1[9] = omega;
-<a name="250"><font color="#888888 "><i>  250   </i></font></a>    memcpy(&amp;b_xInit[0], &amp;k1[0], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="251"><font color="#888888 "><i>  251   </i></font></a>    i13 = 10 * (1 + i) + 1;
-<a name="252"><font color="#888888 "><i>  252   </i></font></a>    i14 = 10 * (2 + i);
-<a name="253"><font color="#888888 "><i>  253   </i></font></a>    <font color="#112266"><b>if</b></font> (i13 &gt; i14) <b>{</b>
-<a name="254"><font color="#888888 "><i>  254   </i></font></a>      i13 = 0;
-<a name="255"><font color="#888888 "><i>  255   </i></font></a>      i14 = 0;
-<a name="256"><font color="#888888 "><i>  256   </i></font></a>    <b>}</b> <font color="#112266"><b>else</b></font> <b>{</b>
-<a name="257"><font color="#888888 "><i>  257   </i></font></a>      i13--;
-<a name="258"><font color="#888888 "><i>  258   </i></font></a>    <b>}</b>
-<a name="259"><font color="#888888 "><i>  259   </i></font></a>
-<a name="260"><font color="#888888 "><i>  260   </i></font></a>    loop_ub = i14 - i13;
-<a name="261"><font color="#888888 "><i>  261   </i></font></a>    <font color="#112266"><b>for</b></font> (i15 = 0; i15 &lt; loop_ub; i15++) <b>{</b>
-<a name="262"><font color="#888888 "><i>  262   </i></font></a>      tmp_data[i15] = (<font color="#112266"><b>unsigned</b></font> <font color="#112266"><b>char</b></font>)(i13 + i15);
-<a name="263"><font color="#888888 "><i>  263   </i></font></a>    <b>}</b>
-<a name="264"><font color="#888888 "><i>  264   </i></font></a>
-<a name="265"><font color="#888888 "><i>  265   </i></font></a>    loop_ub = i14 - i13;
-<a name="266"><font color="#888888 "><i>  266   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; loop_ub; i13++) <b>{</b>
-<a name="267"><font color="#888888 "><i>  267   </i></font></a>      transitionArray[tmp_data[i13]] = k1[i13];
-<a name="268"><font color="#888888 "><i>  268   </i></font></a>    <b>}</b>
-<a name="269"><font color="#888888 "><i>  269   </i></font></a>  <b>}</b>
-<a name="270"><font color="#888888 "><i>  270   </i></font></a>
-<a name="271"><font color="#888888 "><i>  271   </i></font></a>  <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 3; i13++) <b>{</b>
-<a name="272"><font color="#888888 "><i>  272   </i></font></a>    xNewFull[i13] = 0.0;
-<a name="273"><font color="#888888 "><i>  273   </i></font></a>  <b>}</b>
-<a name="274"><font color="#888888 "><i>  274   </i></font></a>
-<a name="275"><font color="#888888 "><i>  275   </i></font></a>  memcpy(&amp;xNewFull[3], &amp;k1[0], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="276"><font color="#888888 "><i>  276   </i></font></a><b>}</b>
-<a name="277"><font color="#888888 "><i>  277   </i></font></a>
-<a name="278"><font color="#888888 "><i>  278   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="279"><font color="#888888 "><i>  279   </i></font></a><font color="#117755"><i>// File trailer for rk4.cpp</i></font>
+<a name="45"><font color="#888888 "><i>   45   </i></font></a>  xDot[7] = ((-u[1] * kC_l3 * std::cos(x[1]) + x[6] * x[6] * kC_l3 * std::sin(x
+<a name="46"><font color="#888888 "><i>   46   </i></font></a>    [1])) + x[7] * x[7] * kC_l5 * std::sin(kC_zeta + x[2])) / (kC_l5 * std::cos
+<a name="47"><font color="#888888 "><i>   47   </i></font></a>    (kC_zeta + x[2]));
+<a name="48"><font color="#888888 "><i>   48   </i></font></a>  xDot[8] = 0.0;
+<a name="49"><font color="#888888 "><i>   49   </i></font></a>  xDot[9] = 0.0;
+<a name="50"><font color="#888888 "><i>   50   </i></font></a><b>}</b>
+<a name="51"><font color="#888888 "><i>   51   </i></font></a>
+<a name="52"><font color="#888888 "><i>   52   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="53"><font color="#888888 "><i>   53   </i></font></a><font color="#117755"><i>// rk4 Summary of this function goes here</i></font>
+<a name="54"><font color="#888888 "><i>   54   </i></font></a><font color="#117755"><i>//    Detailed explanation goes here</i></font>
+<a name="55"><font color="#888888 "><i>   55   </i></font></a><font color="#117755"><i>// Arguments    : const double uIn[2]</i></font>
+<a name="56"><font color="#888888 "><i>   56   </i></font></a><font color="#117755"><i>//                const double uBDot[6]</i></font>
+<a name="57"><font color="#888888 "><i>   57   </i></font></a><font color="#117755"><i>//                const double xInit[13]</i></font>
+<a name="58"><font color="#888888 "><i>   58   </i></font></a><font color="#117755"><i>//                const double jointLimits[20]</i></font>
+<a name="59"><font color="#888888 "><i>   59   </i></font></a><font color="#117755"><i>//                const struct0_T *kC</i></font>
+<a name="60"><font color="#888888 "><i>   60   </i></font></a><font color="#117755"><i>//                int legNum</i></font>
+<a name="61"><font color="#888888 "><i>   61   </i></font></a><font color="#117755"><i>//                double xNewFull[13]</i></font>
+<a name="62"><font color="#888888 "><i>   62   </i></font></a><font color="#117755"><i>//                double transitionArray[80]</i></font>
+<a name="63"><font color="#888888 "><i>   63   </i></font></a><font color="#117755"><i>// Return Type  : void</i></font>
+<a name="64"><font color="#888888 "><i>   64   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="65"><font color="#888888 "><i>   65   </i></font></a><font color="#112266"><b>void</b></font> <a name="fcn_rk4">rk4</a>(<font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> uIn[2], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> uBDot[6], <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> xInit[13],
+<a name="66"><font color="#888888 "><i>   66   </i></font></a>         <font color="#112266"><b>const</b></font> <font color="#112266"><b>double</b></font> jointLimits[20], <font color="#112266"><b>const</b></font> <a href="sherpaTTPlanner_types_h.html#type_struct0_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_struct0_T');" target="_self"><font color="#1122aa">struct0_T</font></a> *kC, <font color="#112266"><b>int</b></font> legNum, <font color="#112266"><b>double</b></font>
+<a name="67"><font color="#888888 "><i>   67   </i></font></a>         xNewFull[13], <font color="#112266"><b>double</b></font> transitionArray[80])
+<a name="68"><font color="#888888 "><i>   68   </i></font></a><b>{</b>
+<a name="69"><font color="#888888 "><i>   69   </i></font></a>  <font color="#112266"><b>double</b></font> u[2];
+<a name="70"><font color="#888888 "><i>   70   </i></font></a>  <font color="#112266"><b>int</b></font> i13;
+<a name="71"><font color="#888888 "><i>   71   </i></font></a>  <font color="#112266"><b>double</b></font> b_xInit[10];
+<a name="72"><font color="#888888 "><i>   72   </i></font></a>  <font color="#112266"><b>double</b></font> k1[10];
+<a name="73"><font color="#888888 "><i>   73   </i></font></a>  <font color="#112266"><b>unsigned</b></font> <font color="#112266"><b>char</b></font> tmp_data[80];
+<a name="74"><font color="#888888 "><i>   74   </i></font></a>  <font color="#112266"><b>int</b></font> i;
+<a name="75"><font color="#888888 "><i>   75   </i></font></a>  <font color="#112266"><b>double</b></font> c_xInit[10];
+<a name="76"><font color="#888888 "><i>   76   </i></font></a>  <font color="#112266"><b>double</b></font> k2[10];
+<a name="77"><font color="#888888 "><i>   77   </i></font></a>  <font color="#112266"><b>double</b></font> k3[10];
+<a name="78"><font color="#888888 "><i>   78   </i></font></a>  <font color="#112266"><b>double</b></font> dv15[10];
+<a name="79"><font color="#888888 "><i>   79   </i></font></a>  <font color="#112266"><b>double</b></font> alpha;
+<a name="80"><font color="#888888 "><i>   80   </i></font></a>  <font color="#112266"><b>double</b></font> beta;
+<a name="81"><font color="#888888 "><i>   81   </i></font></a>  <font color="#112266"><b>double</b></font> b_gamma;
+<a name="82"><font color="#888888 "><i>   82   </i></font></a>  <font color="#112266"><b>double</b></font> alphaDot;
+<a name="83"><font color="#888888 "><i>   83   </i></font></a>  <font color="#112266"><b>double</b></font> betaDot;
+<a name="84"><font color="#888888 "><i>   84   </i></font></a>  <font color="#112266"><b>double</b></font> gammaDot;
+<a name="85"><font color="#888888 "><i>   85   </i></font></a>  <font color="#112266"><b>double</b></font> alphaDotDot;
+<a name="86"><font color="#888888 "><i>   86   </i></font></a>  <font color="#112266"><b>double</b></font> betaDotDot;
+<a name="87"><font color="#888888 "><i>   87   </i></font></a>  <font color="#112266"><b>double</b></font> b_alphaDot[4];
+<a name="88"><font color="#888888 "><i>   88   </i></font></a>  <font color="#112266"><b>double</b></font> b_alpha[4];
+<a name="89"><font color="#888888 "><i>   89   </i></font></a>  <font color="#112266"><b>double</b></font> omega;
+<a name="90"><font color="#888888 "><i>   90   </i></font></a>  <font color="#112266"><b>double</b></font> phi;
+<a name="91"><font color="#888888 "><i>   91   </i></font></a>  <font color="#112266"><b>int</b></font> i14;
+<a name="92"><font color="#888888 "><i>   92   </i></font></a>  <font color="#112266"><b>int</b></font> loop_ub;
+<a name="93"><font color="#888888 "><i>   93   </i></font></a>  <font color="#112266"><b>int</b></font> i15;
+<a name="94"><font color="#888888 "><i>   94   </i></font></a>
+<a name="95"><font color="#888888 "><i>   95   </i></font></a>  <font color="#117755"><i>// rk4.m</i></font>
+<a name="96"><font color="#888888 "><i>   96   </i></font></a>  <font color="#117755"><i>// author: wreid</i></font>
+<a name="97"><font color="#888888 "><i>   97   </i></font></a>  <font color="#117755"><i>// date: 20150107</i></font>
+<a name="98"><font color="#888888 "><i>   98   </i></font></a>  <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 2; i13++) <b>{</b>
+<a name="99"><font color="#888888 "><i>   99   </i></font></a>    u[i13] = uIn[i13];
+<a name="100"><font color="#888888 "><i>  100   </i></font></a>  <b>}</b>
+<a name="101"><font color="#888888 "><i>  101   </i></font></a>
+<a name="102"><font color="#888888 "><i>  102   </i></font></a>  memcpy(&amp;b_xInit[0], &amp;xInit[3], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="103"><font color="#888888 "><i>  103   </i></font></a>  memset(&amp;transitionArray[0], 0, 80U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="104"><font color="#888888 "><i>  104   </i></font></a>  memcpy(&amp;transitionArray[0], &amp;xInit[3], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="105"><font color="#888888 "><i>  105   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 7; i++) <b>{</b>
+<a name="106"><font color="#888888 "><i>  106   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(b_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, k1);
+<a name="107"><font color="#888888 "><i>  107   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
+<a name="108"><font color="#888888 "><i>  108   </i></font></a>      c_xInit[i13] = b_xInit[i13] + 0.05 * k1[i13];
+<a name="109"><font color="#888888 "><i>  109   </i></font></a>    <b>}</b>
+<a name="110"><font color="#888888 "><i>  110   </i></font></a>
+<a name="111"><font color="#888888 "><i>  111   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(c_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, k2);
+<a name="112"><font color="#888888 "><i>  112   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
+<a name="113"><font color="#888888 "><i>  113   </i></font></a>      c_xInit[i13] = b_xInit[i13] + 0.05 * k2[i13];
+<a name="114"><font color="#888888 "><i>  114   </i></font></a>    <b>}</b>
+<a name="115"><font color="#888888 "><i>  115   </i></font></a>
+<a name="116"><font color="#888888 "><i>  116   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(c_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, k3);
+<a name="117"><font color="#888888 "><i>  117   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
+<a name="118"><font color="#888888 "><i>  118   </i></font></a>      c_xInit[i13] = b_xInit[i13] + 0.05 * k3[i13];
+<a name="119"><font color="#888888 "><i>  119   </i></font></a>    <b>}</b>
+<a name="120"><font color="#888888 "><i>  120   </i></font></a>
+<a name="121"><font color="#888888 "><i>  121   </i></font></a>    <a href="#fcn_f" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_f');" target="_self"><font color="#1122aa">f</font></a>(c_xInit, u, kC-&gt;l3, kC-&gt;l5, kC-&gt;zeta, dv15);
+<a name="122"><font color="#888888 "><i>  122   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 10; i13++) <b>{</b>
+<a name="123"><font color="#888888 "><i>  123   </i></font></a>      k1[i13] = b_xInit[i13] + 0.016666666666666666 * (((k1[i13] + 2.0 * k2[i13])
+<a name="124"><font color="#888888 "><i>  124   </i></font></a>        + 2.0 * k3[i13]) + dv15[i13]);
+<a name="125"><font color="#888888 "><i>  125   </i></font></a>    <b>}</b>
+<a name="126"><font color="#888888 "><i>  126   </i></font></a>
+<a name="127"><font color="#888888 "><i>  127   </i></font></a>    alpha = k1[0];
+<a name="128"><font color="#888888 "><i>  128   </i></font></a>    beta = k1[1];
+<a name="129"><font color="#888888 "><i>  129   </i></font></a>    b_gamma = k1[2];
+<a name="130"><font color="#888888 "><i>  130   </i></font></a>    alphaDot = k1[5];
+<a name="131"><font color="#888888 "><i>  131   </i></font></a>    betaDot = k1[6];
+<a name="132"><font color="#888888 "><i>  132   </i></font></a>    gammaDot = k1[7];
+<a name="133"><font color="#888888 "><i>  133   </i></font></a>    alphaDotDot = u[0];
+<a name="134"><font color="#888888 "><i>  134   </i></font></a>    betaDotDot = u[1];
+<a name="135"><font color="#888888 "><i>  135   </i></font></a>
+<a name="136"><font color="#888888 "><i>  136   </i></font></a>    <font color="#117755"><i>// Check pan angular position limits</i></font>
+<a name="137"><font color="#888888 "><i>  137   </i></font></a>    <font color="#112266"><b>if</b></font> ((k1[0] &gt; jointLimits[1]) || (k1[0] &lt; jointLimits[0])) <b>{</b>
+<a name="138"><font color="#888888 "><i>  138   </i></font></a>      alpha = b_xInit[0];
+<a name="139"><font color="#888888 "><i>  139   </i></font></a>      alphaDot = 0.0;
+<a name="140"><font color="#888888 "><i>  140   </i></font></a>      alphaDotDot = 0.0;
+<a name="141"><font color="#888888 "><i>  141   </i></font></a>    <b>}</b>
+<a name="142"><font color="#888888 "><i>  142   </i></font></a>
+<a name="143"><font color="#888888 "><i>  143   </i></font></a>    <font color="#117755"><i>// Check inner and outer leg angular position limits</i></font>
+<a name="144"><font color="#888888 "><i>  144   </i></font></a>    <font color="#112266"><b>if</b></font> ((k1[1] &gt; jointLimits[3]) || (k1[1] &lt; jointLimits[2]) || (k1[2] &gt;
+<a name="145"><font color="#888888 "><i>  145   </i></font></a>         jointLimits[5]) || (k1[2] &lt; jointLimits[4])) <b>{</b>
+<a name="146"><font color="#888888 "><i>  146   </i></font></a>      beta = b_xInit[1];
+<a name="147"><font color="#888888 "><i>  147   </i></font></a>      b_gamma = b_xInit[2];
+<a name="148"><font color="#888888 "><i>  148   </i></font></a>      betaDot = 0.0;
+<a name="149"><font color="#888888 "><i>  149   </i></font></a>      gammaDot = 0.0;
+<a name="150"><font color="#888888 "><i>  150   </i></font></a>      betaDotDot = 0.0;
+<a name="151"><font color="#888888 "><i>  151   </i></font></a>    <b>}</b>
+<a name="152"><font color="#888888 "><i>  152   </i></font></a>
+<a name="153"><font color="#888888 "><i>  153   </i></font></a>    <font color="#117755"><i>// Check pan angular velocity limits</i></font>
+<a name="154"><font color="#888888 "><i>  154   </i></font></a>    <font color="#112266"><b>if</b></font> ((alphaDot &gt; jointLimits[11]) || (alphaDot &lt; jointLimits[10])) <b>{</b>
+<a name="155"><font color="#888888 "><i>  155   </i></font></a>      alphaDot = b_xInit[5];
+<a name="156"><font color="#888888 "><i>  156   </i></font></a>      alphaDotDot = 0.0;
+<a name="157"><font color="#888888 "><i>  157   </i></font></a>
+<a name="158"><font color="#888888 "><i>  158   </i></font></a>      <font color="#117755"><i>// else</i></font>
+<a name="159"><font color="#888888 "><i>  159   </i></font></a>      <font color="#117755"><i>//     alphaDotDot = uIn(1);</i></font>
+<a name="160"><font color="#888888 "><i>  160   </i></font></a>    <b>}</b>
+<a name="161"><font color="#888888 "><i>  161   </i></font></a>
+<a name="162"><font color="#888888 "><i>  162   </i></font></a>    <font color="#117755"><i>// Check the inner leg velocity limit.</i></font>
+<a name="163"><font color="#888888 "><i>  163   </i></font></a>    <font color="#112266"><b>if</b></font> ((betaDot &gt; jointLimits[13]) || (betaDot &lt; jointLimits[12])) <b>{</b>
+<a name="164"><font color="#888888 "><i>  164   </i></font></a>      betaDot = b_xInit[6];
+<a name="165"><font color="#888888 "><i>  165   </i></font></a>      betaDotDot = 0.0;
+<a name="166"><font color="#888888 "><i>  166   </i></font></a>
+<a name="167"><font color="#888888 "><i>  167   </i></font></a>      <font color="#117755"><i>// GETCONSTRAINEDGAMMADOT This function calculates the velocity of</i></font>
+<a name="168"><font color="#888888 "><i>  168   </i></font></a>      <font color="#117755"><i>// gamma given a pan height constraint and an independent beta angle.</i></font>
+<a name="169"><font color="#888888 "><i>  169   </i></font></a>      <font color="#117755"><i>//</i></font>
+<a name="170"><font color="#888888 "><i>  170   </i></font></a>      <font color="#117755"><i>// getConstrainedGammaDot.m</i></font>
+<a name="171"><font color="#888888 "><i>  171   </i></font></a>      <font color="#117755"><i>// author: wreid</i></font>
+<a name="172"><font color="#888888 "><i>  172   </i></font></a>      <font color="#117755"><i>// date: 20150224</i></font>
+<a name="173"><font color="#888888 "><i>  173   </i></font></a>      gammaDot = -b_xInit[6] * kC-&gt;l3 * std::cos(beta) / (kC-&gt;l5 * std::cos
+<a name="174"><font color="#888888 "><i>  174   </i></font></a>        (kC-&gt;zeta + b_gamma));
+<a name="175"><font color="#888888 "><i>  175   </i></font></a>    <b>}</b>
+<a name="176"><font color="#888888 "><i>  176   </i></font></a>
+<a name="177"><font color="#888888 "><i>  177   </i></font></a>    <font color="#117755"><i>// Check the outer leg velocity limit.</i></font>
+<a name="178"><font color="#888888 "><i>  178   </i></font></a>    <font color="#112266"><b>if</b></font> ((gammaDot &gt; jointLimits[15]) || (gammaDot &lt; jointLimits[14])) <b>{</b>
+<a name="179"><font color="#888888 "><i>  179   </i></font></a>      gammaDot = b_xInit[7];
+<a name="180"><font color="#888888 "><i>  180   </i></font></a>
+<a name="181"><font color="#888888 "><i>  181   </i></font></a>      <font color="#117755"><i>// GETCONSTRAINEDBETAADOT This function calculates the velocity of</i></font>
+<a name="182"><font color="#888888 "><i>  182   </i></font></a>      <font color="#117755"><i>// gamma given a pan height constraint and an independent beta angle.</i></font>
+<a name="183"><font color="#888888 "><i>  183   </i></font></a>      <font color="#117755"><i>//</i></font>
+<a name="184"><font color="#888888 "><i>  184   </i></font></a>      <font color="#117755"><i>// getConstrainedBetaDot.m</i></font>
+<a name="185"><font color="#888888 "><i>  185   </i></font></a>      <font color="#117755"><i>// author: wreid</i></font>
+<a name="186"><font color="#888888 "><i>  186   </i></font></a>      <font color="#117755"><i>// date: 20150224</i></font>
+<a name="187"><font color="#888888 "><i>  187   </i></font></a>      betaDot = -b_xInit[7] * kC-&gt;l5 * std::cos(kC-&gt;zeta + b_gamma) / (kC-&gt;l3 *
+<a name="188"><font color="#888888 "><i>  188   </i></font></a>        std::cos(beta));
+<a name="189"><font color="#888888 "><i>  189   </i></font></a>
+<a name="190"><font color="#888888 "><i>  190   </i></font></a>      <font color="#117755"><i>// GETCONSTRAINEDBETADOTDOT This function calculates the acceleration of</i></font>
+<a name="191"><font color="#888888 "><i>  191   </i></font></a>      <font color="#117755"><i>// beta given a pan height constraint and an indpendent gamma angle.</i></font>
+<a name="192"><font color="#888888 "><i>  192   </i></font></a>      betaDotDot = ((-0.0 * kC-&gt;l5 * std::cos(kC-&gt;zeta + b_gamma) + b_xInit[7] *
+<a name="193"><font color="#888888 "><i>  193   </i></font></a>                     b_xInit[7] * kC-&gt;l5 * std::sin(kC-&gt;zeta + b_gamma)) -
+<a name="194"><font color="#888888 "><i>  194   </i></font></a>                    betaDot * betaDot * kC-&gt;l3 * std::sin(beta)) / (kC-&gt;l3 * std::
+<a name="195"><font color="#888888 "><i>  195   </i></font></a>        cos(beta));
+<a name="196"><font color="#888888 "><i>  196   </i></font></a>      <font color="#112266"><b>if</b></font> ((betaDot &gt; jointLimits[13]) || (betaDot &lt; jointLimits[12])) <b>{</b>
+<a name="197"><font color="#888888 "><i>  197   </i></font></a>        betaDot = b_xInit[6];
+<a name="198"><font color="#888888 "><i>  198   </i></font></a>        betaDotDot = 0.0;
+<a name="199"><font color="#888888 "><i>  199   </i></font></a>      <b>}</b>
+<a name="200"><font color="#888888 "><i>  200   </i></font></a>    <b>}</b>
+<a name="201"><font color="#888888 "><i>  201   </i></font></a>
+<a name="202"><font color="#888888 "><i>  202   </i></font></a>    <font color="#117755"><i>//          if betaDot &gt; betaDotMax || betaDot &lt; betaDotMin || gammaDot &gt; gammaDotMax || gammaDot &lt; gammaDotMin </i></font>
+<a name="203"><font color="#888888 "><i>  203   </i></font></a>    <font color="#117755"><i>//              betaDot = xInit(7);</i></font>
+<a name="204"><font color="#888888 "><i>  204   </i></font></a>    <font color="#117755"><i>//              gammaDot = xInit(8);</i></font>
+<a name="205"><font color="#888888 "><i>  205   </i></font></a>    <font color="#117755"><i>//              betaDotDot = 0;</i></font>
+<a name="206"><font color="#888888 "><i>  206   </i></font></a>    <font color="#117755"><i>//          else</i></font>
+<a name="207"><font color="#888888 "><i>  207   </i></font></a>    <font color="#117755"><i>//             betaDotDot = uIn(2);</i></font>
+<a name="208"><font color="#888888 "><i>  208   </i></font></a>    <font color="#117755"><i>//          end</i></font>
+<a name="209"><font color="#888888 "><i>  209   </i></font></a>    <font color="#117755"><i>// Check the outer leg velocity limit.</i></font>
+<a name="210"><font color="#888888 "><i>  210   </i></font></a>    b_alphaDot[0] = alphaDot;
+<a name="211"><font color="#888888 "><i>  211   </i></font></a>    b_alphaDot[1] = betaDot;
+<a name="212"><font color="#888888 "><i>  212   </i></font></a>    b_alphaDot[2] = gammaDot;
+<a name="213"><font color="#888888 "><i>  213   </i></font></a>    b_alphaDot[3] = 0.0;
+<a name="214"><font color="#888888 "><i>  214   </i></font></a>    b_alpha[0] = alpha;
+<a name="215"><font color="#888888 "><i>  215   </i></font></a>    b_alpha[1] = beta;
+<a name="216"><font color="#888888 "><i>  216   </i></font></a>    b_alpha[2] = b_gamma;
+<a name="217"><font color="#888888 "><i>  217   </i></font></a>    b_alpha[3] = 0.0;
+<a name="218"><font color="#888888 "><i>  218   </i></font></a>    <a href="getPhiAndOmega_cpp.html#fcn_getPhiAndOmega" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_getPhiAndOmega');" target="_self"><font color="#1122aa">getPhiAndOmega</font></a>(uBDot, b_alphaDot, b_alpha, kC, legNum, &amp;phi, &amp;omega);
+<a name="219"><font color="#888888 "><i>  219   </i></font></a>
+<a name="220"><font color="#888888 "><i>  220   </i></font></a>    <font color="#117755"><i>//          %Check if phi is above threshold, if so then stop the leg and drive </i></font>
+<a name="221"><font color="#888888 "><i>  221   </i></font></a>    <font color="#117755"><i>//          %the steering joint until it is in the correct orientation.</i></font>
+<a name="222"><font color="#888888 "><i>  222   </i></font></a>    <font color="#117755"><i>//          if abs(phi-phiInit)/dt &gt; phiDotMax</i></font>
+<a name="223"><font color="#888888 "><i>  223   </i></font></a>    <font color="#117755"><i>//            if phi &gt; phiInit</i></font>
+<a name="224"><font color="#888888 "><i>  224   </i></font></a>    <font color="#117755"><i>//              phiDot = phiDotMax;</i></font>
+<a name="225"><font color="#888888 "><i>  225   </i></font></a>    <font color="#117755"><i>//            else</i></font>
+<a name="226"><font color="#888888 "><i>  226   </i></font></a>    <font color="#117755"><i>//              phiDot = phiDotMin;</i></font>
+<a name="227"><font color="#888888 "><i>  227   </i></font></a>    <font color="#117755"><i>//            end</i></font>
+<a name="228"><font color="#888888 "><i>  228   </i></font></a>    <font color="#117755"><i>//            alphaDotDot = 0;</i></font>
+<a name="229"><font color="#888888 "><i>  229   </i></font></a>    <font color="#117755"><i>//            betaDotDot = 0;</i></font>
+<a name="230"><font color="#888888 "><i>  230   </i></font></a>    <font color="#117755"><i>//            alphaDot = 0;</i></font>
+<a name="231"><font color="#888888 "><i>  231   </i></font></a>    <font color="#117755"><i>//            betaDot = 0;</i></font>
+<a name="232"><font color="#888888 "><i>  232   </i></font></a>    <font color="#117755"><i>//            gammaDot = 0;</i></font>
+<a name="233"><font color="#888888 "><i>  233   </i></font></a>    <font color="#117755"><i>//            omega = 0;</i></font>
+<a name="234"><font color="#888888 "><i>  234   </i></font></a>    <font color="#117755"><i>//            alpha = xInitOrig(1);</i></font>
+<a name="235"><font color="#888888 "><i>  235   </i></font></a>    <font color="#117755"><i>//            beta = xInitOrig(2);</i></font>
+<a name="236"><font color="#888888 "><i>  236   </i></font></a>    <font color="#117755"><i>//            gamma = xInitOrig(3);</i></font>
+<a name="237"><font color="#888888 "><i>  237   </i></font></a>    <font color="#117755"><i>//          end</i></font>
+<a name="238"><font color="#888888 "><i>  238   </i></font></a>    u[0] = alphaDotDot;
+<a name="239"><font color="#888888 "><i>  239   </i></font></a>    u[1] = betaDotDot;
+<a name="240"><font color="#888888 "><i>  240   </i></font></a>    alphaDotDot = k1[4];
+<a name="241"><font color="#888888 "><i>  241   </i></font></a>    betaDotDot = k1[8];
+<a name="242"><font color="#888888 "><i>  242   </i></font></a>    k1[0] = alpha;
+<a name="243"><font color="#888888 "><i>  243   </i></font></a>    k1[1] = beta;
+<a name="244"><font color="#888888 "><i>  244   </i></font></a>    k1[2] = b_gamma;
+<a name="245"><font color="#888888 "><i>  245   </i></font></a>    k1[3] = phi;
+<a name="246"><font color="#888888 "><i>  246   </i></font></a>    k1[4] = alphaDotDot + 0.1 * omega;
+<a name="247"><font color="#888888 "><i>  247   </i></font></a>    k1[5] = alphaDot;
+<a name="248"><font color="#888888 "><i>  248   </i></font></a>    k1[6] = betaDot;
+<a name="249"><font color="#888888 "><i>  249   </i></font></a>    k1[7] = gammaDot;
+<a name="250"><font color="#888888 "><i>  250   </i></font></a>    k1[8] = betaDotDot;
+<a name="251"><font color="#888888 "><i>  251   </i></font></a>    k1[9] = omega;
+<a name="252"><font color="#888888 "><i>  252   </i></font></a>    memcpy(&amp;b_xInit[0], &amp;k1[0], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="253"><font color="#888888 "><i>  253   </i></font></a>    i13 = 10 * (1 + i) + 1;
+<a name="254"><font color="#888888 "><i>  254   </i></font></a>    i14 = 10 * (2 + i);
+<a name="255"><font color="#888888 "><i>  255   </i></font></a>    <font color="#112266"><b>if</b></font> (i13 &gt; i14) <b>{</b>
+<a name="256"><font color="#888888 "><i>  256   </i></font></a>      i13 = 0;
+<a name="257"><font color="#888888 "><i>  257   </i></font></a>      i14 = 0;
+<a name="258"><font color="#888888 "><i>  258   </i></font></a>    <b>}</b> <font color="#112266"><b>else</b></font> <b>{</b>
+<a name="259"><font color="#888888 "><i>  259   </i></font></a>      i13--;
+<a name="260"><font color="#888888 "><i>  260   </i></font></a>    <b>}</b>
+<a name="261"><font color="#888888 "><i>  261   </i></font></a>
+<a name="262"><font color="#888888 "><i>  262   </i></font></a>    loop_ub = i14 - i13;
+<a name="263"><font color="#888888 "><i>  263   </i></font></a>    <font color="#112266"><b>for</b></font> (i15 = 0; i15 &lt; loop_ub; i15++) <b>{</b>
+<a name="264"><font color="#888888 "><i>  264   </i></font></a>      tmp_data[i15] = (<font color="#112266"><b>unsigned</b></font> <font color="#112266"><b>char</b></font>)(i13 + i15);
+<a name="265"><font color="#888888 "><i>  265   </i></font></a>    <b>}</b>
+<a name="266"><font color="#888888 "><i>  266   </i></font></a>
+<a name="267"><font color="#888888 "><i>  267   </i></font></a>    loop_ub = i14 - i13;
+<a name="268"><font color="#888888 "><i>  268   </i></font></a>    <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; loop_ub; i13++) <b>{</b>
+<a name="269"><font color="#888888 "><i>  269   </i></font></a>      transitionArray[tmp_data[i13]] = k1[i13];
+<a name="270"><font color="#888888 "><i>  270   </i></font></a>    <b>}</b>
+<a name="271"><font color="#888888 "><i>  271   </i></font></a>  <b>}</b>
+<a name="272"><font color="#888888 "><i>  272   </i></font></a>
+<a name="273"><font color="#888888 "><i>  273   </i></font></a>  <font color="#112266"><b>for</b></font> (i13 = 0; i13 &lt; 3; i13++) <b>{</b>
+<a name="274"><font color="#888888 "><i>  274   </i></font></a>    xNewFull[i13] = 0.0;
+<a name="275"><font color="#888888 "><i>  275   </i></font></a>  <b>}</b>
+<a name="276"><font color="#888888 "><i>  276   </i></font></a>
+<a name="277"><font color="#888888 "><i>  277   </i></font></a>  memcpy(&amp;xNewFull[3], &amp;k1[0], 10U * <font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="278"><font color="#888888 "><i>  278   </i></font></a><b>}</b>
+<a name="279"><font color="#888888 "><i>  279   </i></font></a>
 <a name="280"><font color="#888888 "><i>  280   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="281"><font color="#888888 "><i>  281   </i></font></a><font color="#117755"><i>// [EOF]</i></font>
+<a name="281"><font color="#888888 "><i>  281   </i></font></a><font color="#117755"><i>// File trailer for rk4.cpp</i></font>
 <a name="282"><font color="#888888 "><i>  282   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="283"><font color="#888888 "><i>  283   </i></font></a></pre>
+<a name="283"><font color="#888888 "><i>  283   </i></font></a><font color="#117755"><i>// [EOF]</i></font>
+<a name="284"><font color="#888888 "><i>  284   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="285"><font color="#888888 "><i>  285   </i></font></a></pre>
 </td></tr></table>
 </p>
 </body>

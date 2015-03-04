@@ -2,7 +2,7 @@
  * File: _coder_sherpaTTPlanner_api.h 
  *  
  * MATLAB Coder version            : 2.7 
- * C/C++ source code generated on  : 03-Mar-2015 11:19:40 
+ * C/C++ source code generated on  : 04-Mar-2015 14:16:20 
  */
 
 #ifndef ___CODER_SHERPATTPLANNER_API_H__
@@ -56,10 +56,10 @@ typedef struct
 extern void sherpaTTPlanner_initialize(emlrtContext *aContext);
 extern void sherpaTTPlanner_terminate(void);
 extern void sherpaTTPlanner_atexit(void);
-extern void buildBiDirectionalRRTWrapper_api(const mxArray *prhs[9], const mxArray *plhs[5]);
-extern void buildBiDirectionalRRTWrapper(real_T nInitCartesianB[6], real_T nGoalCartesianB[6], real_T phiInit, real_T omegaInit, real_T jointLimits[20], real_T bodyHeight, struct0_T *kC, int32_T legNum, real_T uBDot[6], emxArray_real_T *T1, emxArray_real_T *T2, emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
-extern void buildRRTWrapper_api(const mxArray *prhs[9], const mxArray *plhs[4]);
-extern void buildRRTWrapper(real_T nInitCartesianB[6], real_T nGoalCartesianB[6], real_T phiInit, real_T omegaInit, real_T jointLimits[20], real_T bodyHeight, struct0_T *kC, int32_T legNum, real_T uBDot[6], emxArray_real_T *T, emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
+extern void buildBiDirectionalRRTWrapper_api(const mxArray *prhs[8], const mxArray *plhs[5]);
+extern void buildBiDirectionalRRTWrapper(real_T nInitCartesianB[6], real_T nGoalCartesianB[6], real_T phiInit, real_T omegaInit, real_T jointLimits[20], struct0_T *kC, int32_T legNum, real_T uBDot[6], emxArray_real_T *T1, emxArray_real_T *T2, emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
+extern void buildRRTWrapper_api(const mxArray *prhs[8], const mxArray *plhs[4]);
+extern void buildRRTWrapper(real_T nInitCartesianB[6], real_T nGoalCartesianB[6], real_T phiInit, real_T omegaInit, real_T jointLimits[20], struct0_T *kC, int32_T legNum, real_T uBDot[6], emxArray_real_T *T, emxArray_real_T *pathC, emxArray_real_T *pathJ, boolean_T *success);
 extern void randomStateGenerator_api(const mxArray *prhs[5], const mxArray *plhs[1]);
 extern void randomStateGenerator(int32_T NUM_POINTS, real_T jointLimits[20], struct0_T *kC, real_T panHeight, int32_T legNum, emxArray_real_T *states);
 extern void sherpaTTPlanner_xil_terminate(void);

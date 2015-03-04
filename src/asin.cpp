@@ -2,7 +2,7 @@
 // File: asin.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -29,8 +29,8 @@ void b_asin(creal_T *x)
   double yr;
   double yi;
   boolean_T xneg;
-  if ((x->im == 0.0) && (!(fabs(x->re) > 1.0))) {
-    x->re = asin(x->re);
+  if ((x->im == 0.0) && (!(std::abs(x->re) > 1.0))) {
+    x->re = std::asin(x->re);
     x->im = 0.0;
   } else {
     v.re = 1.0 + x->re;
@@ -47,7 +47,7 @@ void b_asin(creal_T *x)
     }
 
     uvr = u.re * v.re - u.im * v.im;
-    yr = rt_atan2d_snf(fabs(x->re), fabs(uvr));
+    yr = rt_atan2d_snf(std::abs(x->re), std::abs(uvr));
     if ((x->re < 0.0) != (uvr < 0.0)) {
       yr = -yr;
     }
@@ -59,19 +59,19 @@ void b_asin(creal_T *x)
     }
 
     if (yi >= 2.68435456E+8) {
-      yi = log(yi) + 0.69314718055994529;
+      yi = std::log(yi) + 0.69314718055994529;
     } else if (yi > 2.0) {
-      yi = log(2.0 * yi + 1.0 / (sqrt(yi * yi + 1.0) + yi));
+      yi = std::log(2.0 * yi + 1.0 / (std::sqrt(yi * yi + 1.0) + yi));
     } else {
       uvr = yi * yi;
-      yi += uvr / (1.0 + sqrt(1.0 + uvr));
-      uvr = fabs(yi);
+      yi += uvr / (1.0 + std::sqrt(1.0 + uvr));
+      uvr = std::abs(yi);
       if ((uvr > 4.503599627370496E+15) || (!((!rtIsInf(yi)) && (!rtIsNaN(yi)))))
       {
-        yi = log(1.0 + yi);
+        yi = std::log(1.0 + yi);
       } else if (uvr < 2.2204460492503131E-16) {
       } else {
-        yi = log(1.0 + yi) * (yi / ((1.0 + yi) - 1.0));
+        yi = std::log(1.0 + yi) * (yi / ((1.0 + yi) - 1.0));
       }
     }
 
@@ -95,17 +95,17 @@ void eml_scalar_sqrt(creal_T *x)
   if (x->im == 0.0) {
     if (x->re < 0.0) {
       absxi = 0.0;
-      absxr = sqrt(fabs(x->re));
+      absxr = std::sqrt(std::abs(x->re));
     } else {
-      absxi = sqrt(x->re);
+      absxi = std::sqrt(x->re);
       absxr = 0.0;
     }
   } else if (x->re == 0.0) {
     if (x->im < 0.0) {
-      absxi = sqrt(-x->im / 2.0);
+      absxi = std::sqrt(-x->im / 2.0);
       absxr = -absxi;
     } else {
-      absxi = sqrt(x->im / 2.0);
+      absxi = std::sqrt(x->im / 2.0);
       absxr = absxi;
     }
   } else if (rtIsNaN(x->re) || rtIsNaN(x->im)) {
@@ -123,20 +123,20 @@ void eml_scalar_sqrt(creal_T *x)
       absxr = 0.0;
     }
   } else {
-    absxr = fabs(x->re);
-    absxi = fabs(x->im);
+    absxr = std::abs(x->re);
+    absxi = std::abs(x->im);
     if ((absxr > 4.4942328371557893E+307) || (absxi > 4.4942328371557893E+307))
     {
       absxr *= 0.5;
       absxi *= 0.5;
-      absxi = rt_hypotd_snf(absxr, absxi);
+      absxi = hypot(absxr, absxi);
       if (absxi > absxr) {
-        absxi = sqrt(absxi) * sqrt(1.0 + absxr / absxi);
+        absxi = std::sqrt(absxi) * std::sqrt(1.0 + absxr / absxi);
       } else {
-        absxi = sqrt(absxi) * 1.4142135623730951;
+        absxi = std::sqrt(absxi) * 1.4142135623730951;
       }
     } else {
-      absxi = sqrt((rt_hypotd_snf(absxr, absxi) + absxr) * 0.5);
+      absxi = std::sqrt((hypot(absxr, absxi) + absxr) * 0.5);
     }
 
     if (x->re > 0.0) {

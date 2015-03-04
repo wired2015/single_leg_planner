@@ -44,7 +44,7 @@ function pathC = planEval(useMex)
     %generated plans.
     plannerResults = struct('T',{},'pathC',{},'pathJ',{},'success',{},'pathLength',{},'pathTime',{},'error',{},'planningTime',{},'numAnkleViolations',{});
 
-    legNum = 1;
+    legNum = 4;
     NUM_TRIALS = 1;
     %nodes = [100 1000 2500 5000 10000];
     NUM_NODE_TRIALS = 1;
@@ -61,9 +61,9 @@ function pathC = planEval(useMex)
             %Generate the RRT and time how long it takes to be generated.
             tic
             if useMex
-                [T,pathC,pathJ,success] = sherpaTTPlanner_mex('buildRRTWrapper',sInitB(legNum,:),sGoalB(legNum,:),0,0,jointLimits,bodyHeight,kC,int32(legNum),uBDot);%,int32(nodes(h)));
+                [T,pathC,pathJ,success] = sherpaTTPlanner_mex('buildRRTWrapper',sInitB(legNum,:),sGoalB(legNum,:),0,0,jointLimits,kC,int32(legNum),uBDot);%,int32(nodes(h)));
             else
-                [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(legNum,:),sGoalB(legNum,:),0,0,jointLimits,bodyHeight,kC,legNum,uBDot);%,int32(nodes(h)));
+                [T,pathC,pathJ,success] = buildRRTWrapper(sInitB(legNum,:),sGoalB(legNum,:),0,0,jointLimits,kC,legNum,uBDot);%,int32(nodes(h)));
             end
             planningTime = toc;
 

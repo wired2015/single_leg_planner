@@ -2,7 +2,7 @@
 // File: sherpaTTIK.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -152,35 +152,37 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   // sherpaTTIK.m
   // author: wreid
   // date: 20150122
-  x = sqrt(u[0] * u[0] + u[1] * u[1]);
+  x = std::sqrt(u[0] * u[0] + u[1] * u[1]);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
-  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
-           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  b_x = cos(kC_zeta);
-  c_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a * b_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = std::cos(kC_zeta);
+  c_x = std::sin(kC_zeta);
   c_a = kC_l8 + kC_r;
   d_a = kC_l8 + kC_r;
-  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
-           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  d_x = cos(kC_zeta);
-  e_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a * d_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = std::cos(kC_zeta);
+  e_x = std::sin(kC_zeta);
   dc25.re = kC_zeta * 0.0;
   dc25.im = kC_zeta;
   b_exp(&dc25);
@@ -404,28 +406,29 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) - (dc34.re * 0.0 -
     dc34.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
                         - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (f_x.re *
+          0.0 - f_x.im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc34.re + dc34.im *
     0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
     (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
-                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
     h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc49.re);
@@ -456,8 +459,8 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       dc25.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -710,28 +713,29 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) + (dc35.re * 0.0 -
     dc35.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
                         - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (g_x.re * 0.0 - g_x.im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (g_x.re *
+          0.0 - g_x.im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc35.re + dc35.im *
     0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
     (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
-                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((g_x.re + g_x.im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((g_x.re + g_x.im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
     i_x.re) - kC_l1 * j_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     dc48.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
@@ -761,8 +765,8 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       dc26.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -796,72 +800,74 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   re = dc26.re * 0.0 - dc26.im;
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
-  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
-           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  b_x = cos(kC_zeta);
-  c_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a * b_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = std::cos(kC_zeta);
+  c_x = std::sin(kC_zeta);
   c_a = kC_l8 + kC_r;
   d_a = kC_l8 + kC_r;
-  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
-           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  d_x = cos(kC_zeta);
-  e_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a * d_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = std::cos(kC_zeta);
+  e_x = std::sin(kC_zeta);
   y.re = kC_zeta * 2.0 * 0.0;
   y.im = kC_zeta * 2.0;
-  r = exp(y.re / 2.0);
-  x_re = r * (r * cos(y.im));
-  x_im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  x_re = r * (r * std::cos(y.im));
+  x_im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  f_x.re = r * (r * cos(y.im));
-  f_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  f_x.re = r * (r * std::cos(y.im));
+  f_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  g_x.re = r * (r * cos(y.im));
-  g_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  g_x.re = r * (r * std::cos(y.im));
+  g_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  h_x.re = r * (r * cos(y.im));
-  h_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  h_x.re = r * (r * std::cos(y.im));
+  h_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  i_x.re = r * (r * cos(y.im));
-  i_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  i_x.re = r * (r * std::cos(y.im));
+  i_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  j_x.re = r * (r * cos(y.im));
-  j_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  j_x.re = r * (r * std::cos(y.im));
+  j_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  k_x.re = r * (r * cos(y.im));
-  k_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  k_x.re = r * (r * std::cos(y.im));
+  k_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  y.re = r * (r * cos(y.im));
-  y.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  y.re = r * (r * std::cos(y.im));
+  y.im = r * (r * std::sin(y.im));
   dc25.re = kC_zeta * 0.0;
   dc25.im = kC_zeta;
   b_exp(&dc25);
@@ -1061,28 +1067,29 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) + (dc34.re * 0.0 -
     dc34.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
                         - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (x_re * 0.0 - x_im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (x_re * 0.0
+          - x_im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc34.re +
     dc34.im * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im *
     0.0)) - (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0))
-                        + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+                        + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((x_re + x_im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((x_re + x_im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
     g_x.re) - kC_l1 * h_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     j_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
@@ -1112,8 +1119,8 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       y.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -1143,26 +1150,26 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   }
 
   if ((y.im == 0.0) && rtIsNaN(y.re)) {
-  } else if ((fabs(y.re) > 8.9884656743115785E+307) || (fabs(y.im) >
+  } else if ((std::abs(y.re) > 8.9884656743115785E+307) || (std::abs(y.im) >
               8.9884656743115785E+307)) {
     r = y.re;
-    y.re = log(rt_hypotd_snf(y.re / 2.0, y.im / 2.0)) + 0.69314718055994529;
+    y.re = std::log(hypot(y.re / 2.0, y.im / 2.0)) + 0.69314718055994529;
     y.im = rt_atan2d_snf(y.im, r);
   } else {
     r = y.re;
-    y.re = log(rt_hypotd_snf(y.re, y.im));
+    y.re = std::log(hypot(y.re, y.im));
     y.im = rt_atan2d_snf(y.im, r);
   }
 
   x_re = y.re * 0.0 - y.im;
   x_im = y.re + y.im * 0.0;
   if (x_im == 0.0) {
-    x_re = sin(x_re);
+    x_re = std::sin(x_re);
     x_im = 0.0;
   } else {
     b_x_re = x_re;
-    x_re = sin(x_re) * cosh(x_im);
-    x_im = cos(b_x_re) * sinh(x_im);
+    x_re = std::sin(x_re) * std::cosh(x_im);
+    x_im = std::cos(b_x_re) * std::sinh(x_im);
   }
 
   dc25.re = kC_zeta * 0.0;
@@ -1388,28 +1395,29 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) - (dc34.re * 0.0 -
     dc34.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
                         - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (f_x.re *
+          0.0 - f_x.im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc34.re +
     dc34.im * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im *
     0.0)) - (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0))
-                        + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+                        + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
     h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc49.re);
@@ -1440,8 +1448,8 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       dc25.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -1475,8 +1483,8 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   dc25.re = dc25.re * 0.0 - dc25.im;
   dc25.im = beta + dc25.im * 0.0;
   b_sin(&dc25);
-  kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta))
-    - kC_l5 * dc25.re;
+  kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * std::sin
+              (kC_zeta)) - kC_l5 * dc25.re;
   kC_l6_im = 0.0 - kC_l5 * dc25.im;
   if (kC_l6_im == 0.0) {
     dc25.re = kC_l6_re / kC_l3;
@@ -1490,8 +1498,8 @@ void b_sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   }
 
   b_asin(&dc25);
-  ar = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta)) -
-    kC_l5 * x_re;
+  ar = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * std::sin(kC_zeta))
+    - kC_l5 * x_re;
   u_im = 0.0 - kC_l5 * x_im;
   if (u_im == 0.0) {
     dc26.re = ar / kC_l3;
@@ -1657,35 +1665,37 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   // sherpaTTIK.m
   // author: wreid
   // date: 20150122
-  x = sqrt(u[0] * u[0] + u[1] * u[1]);
+  x = std::sqrt(u[0] * u[0] + u[1] * u[1]);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
-  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
-           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  b_x = cos(kC_zeta);
-  c_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a * b_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = std::cos(kC_zeta);
+  c_x = std::sin(kC_zeta);
   c_a = kC_l8 + kC_r;
   d_a = kC_l8 + kC_r;
-  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
-           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  d_x = cos(kC_zeta);
-  e_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a * d_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = std::cos(kC_zeta);
+  e_x = std::sin(kC_zeta);
   dc0.re = kC_zeta * 0.0;
   dc0.im = kC_zeta;
   b_exp(&dc0);
@@ -1909,28 +1919,29 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) - (dc9.re * 0.0 -
     dc9.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im)) -
                         (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (f_x.re *
+          0.0 - f_x.im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc9.re + dc9.im *
     0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
     (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
-                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
     h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc24.re);
@@ -1961,8 +1972,8 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       dc0.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -2215,28 +2226,29 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (x_re * 0.0 - x_im)) + (u_re * 0.0 - u_im)) + (dc10.re * 0.0 -
     dc10.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im))
                         - (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (g_x.re * 0.0 - g_x.im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (g_x.re *
+          0.0 - g_x.im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (x_re + x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc10.re + dc10.im *
     0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
     (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re + b_kC_l2_im * 0.0)) +
-                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+                        (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((g_x.re + g_x.im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((g_x.re + g_x.im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (b_x_re * 0.0 - b_x_im)) + u[2] *
     i_x.re) - kC_l1 * j_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     dc23.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
@@ -2266,8 +2278,8 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       dc1.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -2301,72 +2313,74 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   re = dc1.re * 0.0 - dc1.im;
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
-  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a *
-           b_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  b_x = cos(kC_zeta);
-  c_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + b_a * b_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  b_x = std::cos(kC_zeta);
+  c_x = std::sin(kC_zeta);
   c_a = kC_l8 + kC_r;
   d_a = kC_l8 + kC_r;
-  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * sin(kC_zeta) * kC_l1 *
+  d_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * std::sin(kC_zeta) * kC_l1 *
     kC_l4) - 2.0 * kC_l1 * kC_l6) - 2.0 * kC_l1 * (kC_l8 + kC_r)) - 2.0 * kC_l1 *
-    u[2]) + kC_l2 * kC_l2) + 2.0 * cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 * kC_l2 *
-    kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 * sin
-                      (kC_zeta) * kC_l4 * kC_l6) - 2.0 * cos(kC_zeta) * kC_l4 *
-                     kC_l7) + 2.0 * sin(kC_zeta) * kC_l4 * (kC_l8 + kC_r)) - 2.0
-                   * cos(kC_zeta) * kC_l4 * x) + 2.0 * sin(kC_zeta) * kC_l4 * u
-                  [2]) + kC_l5 * kC_l5) + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8
-    + kC_r)) + 2.0 * kC_l6 * u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a *
-           d_a) + 2.0 * (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
-  d_x = cos(kC_zeta);
-  e_x = sin(kC_zeta);
+    u[2]) + kC_l2 * kC_l2) + 2.0 * std::cos(kC_zeta) * kC_l2 * kC_l4) - 2.0 *
+    kC_l2 * kC_l7) - 2.0 * kC_l2 * x) - kC_l3 * kC_l3) + kC_l4 * kC_l4) + 2.0 *
+                      std::sin(kC_zeta) * kC_l4 * kC_l6) - 2.0 * std::cos
+                     (kC_zeta) * kC_l4 * kC_l7) + 2.0 * std::sin(kC_zeta) *
+                    kC_l4 * (kC_l8 + kC_r)) - 2.0 * std::cos(kC_zeta) * kC_l4 *
+                   x) + 2.0 * std::sin(kC_zeta) * kC_l4 * u[2]) + kC_l5 * kC_l5)
+                + kC_l6 * kC_l6) + 2.0 * kC_l6 * (kC_l8 + kC_r)) + 2.0 * kC_l6 *
+              u[2]) + kC_l7 * kC_l7) + 2.0 * kC_l7 * x) + d_a * d_a) + 2.0 *
+          (kC_l8 + kC_r) * u[2]) + x * x) + u[2] * u[2];
+  d_x = std::cos(kC_zeta);
+  e_x = std::sin(kC_zeta);
   y.re = kC_zeta * 2.0 * 0.0;
   y.im = kC_zeta * 2.0;
-  r = exp(y.re / 2.0);
-  x_re = r * (r * cos(y.im));
-  x_im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  x_re = r * (r * std::cos(y.im));
+  x_im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  f_x.re = r * (r * cos(y.im));
-  f_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  f_x.re = r * (r * std::cos(y.im));
+  f_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  g_x.re = r * (r * cos(y.im));
-  g_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  g_x.re = r * (r * std::cos(y.im));
+  g_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  h_x.re = r * (r * cos(y.im));
-  h_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  h_x.re = r * (r * std::cos(y.im));
+  h_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  i_x.re = r * (r * cos(y.im));
-  i_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  i_x.re = r * (r * std::cos(y.im));
+  i_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  j_x.re = r * (r * cos(y.im));
-  j_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  j_x.re = r * (r * std::cos(y.im));
+  j_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  k_x.re = r * (r * cos(y.im));
-  k_x.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  k_x.re = r * (r * std::cos(y.im));
+  k_x.im = r * (r * std::sin(y.im));
   y.re = kC_zeta * 0.0;
   y.im = kC_zeta;
-  r = exp(y.re / 2.0);
-  y.re = r * (r * cos(y.im));
-  y.im = r * (r * sin(y.im));
+  r = std::exp(y.re / 2.0);
+  y.re = r * (r * std::cos(y.im));
+  y.im = r * (r * std::sin(y.im));
   dc0.re = kC_zeta * 0.0;
   dc0.im = kC_zeta;
   b_exp(&dc0);
@@ -2566,28 +2580,29 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) + (dc9.re * 0.0 -
     dc9.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im)) -
                         (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (x_re * 0.0 - x_im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (x_re * 0.0
+          - x_im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) + (dc9.re + dc9.im
     * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
                           (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re +
-    b_kC_l2_im * 0.0)) + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    b_kC_l2_im * 0.0)) + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((x_re + x_im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((x_re + x_im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
     g_x.re) - kC_l1 * h_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     j_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
@@ -2617,8 +2632,8 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       y.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -2648,26 +2663,26 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   }
 
   if ((y.im == 0.0) && rtIsNaN(y.re)) {
-  } else if ((fabs(y.re) > 8.9884656743115785E+307) || (fabs(y.im) >
+  } else if ((std::abs(y.re) > 8.9884656743115785E+307) || (std::abs(y.im) >
               8.9884656743115785E+307)) {
     r = y.re;
-    y.re = log(rt_hypotd_snf(y.re / 2.0, y.im / 2.0)) + 0.69314718055994529;
+    y.re = std::log(hypot(y.re / 2.0, y.im / 2.0)) + 0.69314718055994529;
     y.im = rt_atan2d_snf(y.im, r);
   } else {
     r = y.re;
-    y.re = log(rt_hypotd_snf(y.re, y.im));
+    y.re = std::log(hypot(y.re, y.im));
     y.im = rt_atan2d_snf(y.im, r);
   }
 
   x_re = y.re * 0.0 - y.im;
   x_im = y.re + y.im * 0.0;
   if (x_im == 0.0) {
-    x_re = sin(x_re);
+    x_re = std::sin(x_re);
     x_im = 0.0;
   } else {
     b_x_re = x_re;
-    x_re = sin(x_re) * cosh(x_im);
-    x_im = cos(b_x_re) * sinh(x_im);
+    x_re = std::sin(x_re) * std::cosh(x_im);
+    x_im = std::cos(b_x_re) * std::sinh(x_im);
   }
 
   dc0.re = kC_zeta * 0.0;
@@ -2893,28 +2908,29 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
     a_im)) + (b_x_re * 0.0 - b_x_im)) + (u_re * 0.0 - u_im)) - (dc9.re * 0.0 -
     dc9.im)) - (kC_l4_re * 0.0 - kC_l4_im)) - (b_kC_l1_re * 0.0 - b_kC_l1_im)) -
                         (c_kC_l1_re * 0.0 - c_kC_l1_im)) - (b_kC_l2_re * 0.0 -
-    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (cos(2.0 *
-    kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (cos(2.0 * kC_zeta) - 1.0)) + kC_l4 *
-                   (kC_l8 + kC_r) * (cos(2.0 * kC_zeta) - 1.0)) - (c_kC_l2_re *
-    0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 - b_kC_l7_im)) - (d_kC_l1_re * 0.0 -
-    d_kC_l1_im)) + (c_kC_l6_re * 0.0 - c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im))
-             + kC_l4 * u[2] * (cos(2.0 * kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 -
-             b_kC_l4_im)) + (c_kC_l4_re * 0.0 - c_kC_l4_im)) - (d_kC_l4_re * 0.0
-           - r)) + kC_l2 * kC_l4 * (f_x.re * 0.0 - f_x.im));
+    b_kC_l2_im)) + (b_kC_l6_re * 0.0 - b_kC_l6_im)) - kC_l1 * kC_l4 * (std::cos
+    (2.0 * kC_zeta) - 1.0)) + kC_l4 * kC_l6 * (std::cos(2.0 * kC_zeta) - 1.0)) +
+                   kC_l4 * (kC_l8 + kC_r) * (std::cos(2.0 * kC_zeta) - 1.0)) -
+                  (c_kC_l2_re * 0.0 - c_kC_l2_im)) + (b_kC_l7_re * 0.0 -
+    b_kC_l7_im)) - (d_kC_l1_re * 0.0 - d_kC_l1_im)) + (c_kC_l6_re * 0.0 -
+    c_kC_l6_im)) + (kC_l8_re * 0.0 - kC_l8_im)) + kC_l4 * u[2] * (std::cos(2.0 *
+    kC_zeta) - 1.0)) + (b_kC_l4_re * 0.0 - b_kC_l4_im)) + (c_kC_l4_re * 0.0 -
+            c_kC_l4_im)) - (d_kC_l4_re * 0.0 - r)) + kC_l2 * kC_l4 * (f_x.re *
+          0.0 - f_x.im));
   u_im = -((((((((((((((((((((((((((((kC_l1_re + kC_l1_im * 0.0) + (kC_l2_re +
     kC_l2_im * 0.0)) - (kC_l3_re + kC_l3_im * 0.0)) + (kC_l5_re + kC_l5_im * 0.0))
     + (kC_l6_re + kC_l6_im * 0.0)) + (kC_l7_re + kC_l7_im * 0.0)) + (a_re + a_im
     * 0.0)) + (b_x_re + b_x_im * 0.0)) + (u_re + u_im * 0.0)) - (dc9.re + dc9.im
     * 0.0)) - (kC_l4_re + kC_l4_im * 0.0)) - (b_kC_l1_re + b_kC_l1_im * 0.0)) -
                           (c_kC_l1_re + c_kC_l1_im * 0.0)) - (b_kC_l2_re +
-    b_kC_l2_im * 0.0)) + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * sin
-                       (2.0 * kC_zeta)) + kC_l4 * kC_l6 * sin(2.0 * kC_zeta)) +
-                     kC_l4 * (kC_l8 + kC_r) * sin(2.0 * kC_zeta)) - (c_kC_l2_re
+    b_kC_l2_im * 0.0)) + (b_kC_l6_re + b_kC_l6_im * 0.0)) - kC_l1 * kC_l4 * std::
+                       sin(2.0 * kC_zeta)) + kC_l4 * kC_l6 * std::sin(2.0 *
+    kC_zeta)) + kC_l4 * (kC_l8 + kC_r) * std::sin(2.0 * kC_zeta)) - (c_kC_l2_re
     + c_kC_l2_im * 0.0)) + (b_kC_l7_re + b_kC_l7_im * 0.0)) - (d_kC_l1_re +
     d_kC_l1_im * 0.0)) + (c_kC_l6_re + c_kC_l6_im * 0.0)) + (kC_l8_re + kC_l8_im
-    * 0.0)) + kC_l4 * u[2] * sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im *
-    0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2 *
-           kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
+    * 0.0)) + kC_l4 * u[2] * std::sin(2.0 * kC_zeta)) + (b_kC_l4_re + b_kC_l4_im
+    * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r * 0.0)) + kC_l2
+           * kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
   u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
     h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc24.re);
@@ -2945,8 +2961,8 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
       dc0.im = -(ar / r);
     }
   } else {
-    d_kC_l4_re = fabs(u_re);
-    alpha = fabs(r);
+    d_kC_l4_re = std::abs(u_re);
+    alpha = std::abs(r);
     if (d_kC_l4_re > alpha) {
       beta = r / u_re;
       alpha = u_re + beta * r;
@@ -2980,8 +2996,8 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   dc0.re = dc0.re * 0.0 - dc0.im;
   dc0.im = beta + dc0.im * 0.0;
   b_sin(&dc0);
-  kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta))
-    - kC_l5 * dc0.re;
+  kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * std::sin
+              (kC_zeta)) - kC_l5 * dc0.re;
   kC_l6_im = 0.0 - kC_l5 * dc0.im;
   if (kC_l6_im == 0.0) {
     dc0.re = kC_l6_re / kC_l3;
@@ -2995,8 +3011,8 @@ void sherpaTTIK(const double u[3], double kC_l1, double kC_l2, double kC_l3,
   }
 
   b_asin(&dc0);
-  ar = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * sin(kC_zeta)) -
-    kC_l5 * x_re;
+  ar = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 * std::sin(kC_zeta))
+    - kC_l5 * x_re;
   u_im = 0.0 - kC_l5 * x_im;
   if (u_im == 0.0) {
     dc1.re = ar / kC_l3;

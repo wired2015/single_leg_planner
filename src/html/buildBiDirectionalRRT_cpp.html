@@ -13,7 +13,7 @@
 <a name="2"><font color="#888888 "><i>    2   </i></font></a><font color="#117755"><i>// File: buildBiDirectionalRRT.cpp</i></font>
 <a name="3"><font color="#888888 "><i>    3   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="4"><font color="#888888 "><i>    4   </i></font></a><font color="#117755"><i>// MATLAB Coder version            : 2.7</i></font>
-<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 03-Mar-2015 11:19:40</i></font>
+<a name="5"><font color="#888888 "><i>    5   </i></font></a><font color="#117755"><i>// C/C++ source code generated on  : 04-Mar-2015 14:16:20</i></font>
 <a name="6"><font color="#888888 "><i>    6   </i></font></a><font color="#117755"><i>//</i></font>
 <a name="7"><font color="#888888 "><i>    7   </i></font></a>
 <a name="8"><font color="#888888 "><i>    8   </i></font></a><font color="#117755"><i>// Include Files</i></font>
@@ -510,11 +510,11 @@
 <a name="499"><font color="#888888 "><i>  499   </i></font></a>        absb = -1;
 <a name="500"><font color="#888888 "><i>  500   </i></font></a>        apnd = 0;
 <a name="501"><font color="#888888 "><i>  501   </i></font></a>      <b>}</b> <font color="#112266"><b>else</b></font> <b>{</b>
-<a name="502"><font color="#888888 "><i>  502   </i></font></a>        ixstart = (<font color="#112266"><b>int</b></font>)floor(((<font color="#112266"><b>double</b></font>)path-&gt;size[0] - 1.0) + 0.5);
+<a name="502"><font color="#888888 "><i>  502   </i></font></a>        ixstart = (<font color="#112266"><b>int</b></font>)std::floor(((<font color="#112266"><b>double</b></font>)path-&gt;size[0] - 1.0) + 0.5);
 <a name="503"><font color="#888888 "><i>  503   </i></font></a>        apnd = ixstart + 1;
 <a name="504"><font color="#888888 "><i>  504   </i></font></a>        cdiff = (ixstart - path-&gt;size[0]) + 1;
 <a name="505"><font color="#888888 "><i>  505   </i></font></a>        absb = path-&gt;size[0];
-<a name="506"><font color="#888888 "><i>  506   </i></font></a>        <font color="#112266"><b>if</b></font> (fabs((<font color="#112266"><b>double</b></font>)cdiff) &lt; 4.4408920985006262E-16 * (<font color="#112266"><b>double</b></font>)absb) <b>{</b>
+<a name="506"><font color="#888888 "><i>  506   </i></font></a>        <font color="#112266"><b>if</b></font> (std::abs((<font color="#112266"><b>double</b></font>)cdiff) &lt; 4.4408920985006262E-16 * (<font color="#112266"><b>double</b></font>)absb) <b>{</b>
 <a name="507"><font color="#888888 "><i>  507   </i></font></a>          ixstart++;
 <a name="508"><font color="#888888 "><i>  508   </i></font></a>          apnd = path-&gt;size[0];
 <a name="509"><font color="#888888 "><i>  509   </i></font></a>        <b>}</b> <font color="#112266"><b>else</b></font> <font color="#112266"><b>if</b></font> (cdiff &gt; 0) <b>{</b>
@@ -614,121 +614,124 @@
 <a name="603"><font color="#888888 "><i>  603   </i></font></a>        <font color="#117755"><i>// sherpaTTFK.m</i></font>
 <a name="604"><font color="#888888 "><i>  604   </i></font></a>        <font color="#117755"><i>// author: wreid</i></font>
 <a name="605"><font color="#888888 "><i>  605   </i></font></a>        <font color="#117755"><i>// date: 20150122</i></font>
-<a name="606"><font color="#888888 "><i>  606   </i></font></a>        uP[0] = ((((kC-&gt;l2 + kC-&gt;l3 * cos(-path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt;
-<a name="607"><font color="#888888 "><i>  607   </i></font></a>          1)])) + kC-&gt;l4 * cos(kC-&gt;zeta)) + kC-&gt;l5 * cos(path-&gt;data[ixstart +
-<a name="608"><font color="#888888 "><i>  608   </i></font></a>                   path-&gt;size[0] * 3] + kC-&gt;zeta)) - kC-&gt;l7) * cos(path-&gt;
-<a name="609"><font color="#888888 "><i>  609   </i></font></a>          data[ixstart + path-&gt;size[0]]);
-<a name="610"><font color="#888888 "><i>  610   </i></font></a>        uP[1] = ((((kC-&gt;l2 + kC-&gt;l3 * cos(-path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt;
-<a name="611"><font color="#888888 "><i>  611   </i></font></a>          1)])) + kC-&gt;l4 * cos(kC-&gt;zeta)) + kC-&gt;l5 * cos(path-&gt;data[ixstart +
-<a name="612"><font color="#888888 "><i>  612   </i></font></a>                   path-&gt;size[0] * 3] + kC-&gt;zeta)) - kC-&gt;l7) * sin(path-&gt;
-<a name="613"><font color="#888888 "><i>  613   </i></font></a>          data[ixstart + path-&gt;size[0]]);
-<a name="614"><font color="#888888 "><i>  614   </i></font></a>        uP[2] = ((((kC-&gt;l1 + kC-&gt;l3 * sin(-path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt;
-<a name="615"><font color="#888888 "><i>  615   </i></font></a>          1)])) - kC-&gt;l4 * sin(kC-&gt;zeta)) - kC-&gt;l5 * sin(path-&gt;data[ixstart +
-<a name="616"><font color="#888888 "><i>  616   </i></font></a>                   path-&gt;size[0] * 3] + kC-&gt;zeta)) - kC-&gt;l6) - (kC-&gt;l8 + kC-&gt;r);
-<a name="617"><font color="#888888 "><i>  617   </i></font></a>
-<a name="618"><font color="#888888 "><i>  618   </i></font></a>        <font color="#117755"><i>// sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.</i></font>
-<a name="619"><font color="#888888 "><i>  619   </i></font></a>        <font color="#117755"><i>// sherpaTTFKVel.m</i></font>
-<a name="620"><font color="#888888 "><i>  620   </i></font></a>        <font color="#117755"><i>// author: wreid</i></font>
-<a name="621"><font color="#888888 "><i>  621   </i></font></a>        <font color="#117755"><i>// date: 20150122</i></font>
-<a name="622"><font color="#888888 "><i>  622   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
-<a name="623"><font color="#888888 "><i>  623   </i></font></a>          d1 = 0.0;
-<a name="624"><font color="#888888 "><i>  624   </i></font></a>          <font color="#112266"><b>for</b></font> (absb = 0; absb &lt; 3; absb++) <b>{</b>
-<a name="625"><font color="#888888 "><i>  625   </i></font></a>            d1 += TP2B[i5 + (absb &lt;&lt; 2)] * uP[absb];
-<a name="626"><font color="#888888 "><i>  626   </i></font></a>          <b>}</b>
-<a name="627"><font color="#888888 "><i>  627   </i></font></a>
-<a name="628"><font color="#888888 "><i>  628   </i></font></a>          uB[i5] = d1 + TP2B[12 + i5];
-<a name="629"><font color="#888888 "><i>  629   </i></font></a>        <b>}</b>
-<a name="630"><font color="#888888 "><i>  630   </i></font></a>
-<a name="631"><font color="#888888 "><i>  631   </i></font></a>        <font color="#112266"><b>if</b></font> (1 + ixstart != 1) <b>{</b>
-<a name="632"><font color="#888888 "><i>  632   </i></font></a>          <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
-<a name="633"><font color="#888888 "><i>  633   </i></font></a>            b_uB[i5] = uB[i5] - b_pathC-&gt;data[(ixstart + b_pathC-&gt;size[0] * (2 +
-<a name="634"><font color="#888888 "><i>  634   </i></font></a>              i5)) - 1];
-<a name="635"><font color="#888888 "><i>  635   </i></font></a>          <b>}</b>
-<a name="636"><font color="#888888 "><i>  636   </i></font></a>
-<a name="637"><font color="#888888 "><i>  637   </i></font></a>          dist2Go += <a href="norm_cpp.html#fcn_norm" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_norm');" target="_self"><font color="#1122aa">norm</font></a>(b_uB);
-<a name="638"><font color="#888888 "><i>  638   </i></font></a>        <b>}</b>
-<a name="639"><font color="#888888 "><i>  639   </i></font></a>
-<a name="640"><font color="#888888 "><i>  640   </i></font></a>        b_path[0] = (-path-&gt;data[ixstart + path-&gt;size[0] * 6] * sin(path-&gt;
-<a name="641"><font color="#888888 "><i>  641   </i></font></a>          data[ixstart + path-&gt;size[0]]) * ((((kC-&gt;l2 - kC-&gt;l7) + kC-&gt;l5 * cos
-<a name="642"><font color="#888888 "><i>  642   </i></font></a>          (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta)) + kC-&gt;l3 * cos
-<a name="643"><font color="#888888 "><i>  643   </i></font></a>          (path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)])) + kC-&gt;l4 * cos(kC-&gt;zeta))
-<a name="644"><font color="#888888 "><i>  644   </i></font></a>                     - path-&gt;data[ixstart + path-&gt;size[0] * 7] * kC-&gt;l3 * cos
-<a name="645"><font color="#888888 "><i>  645   </i></font></a>                     (path-&gt;data[ixstart + path-&gt;size[0]]) * sin(path-&gt;
-<a name="646"><font color="#888888 "><i>  646   </i></font></a>          data[ixstart + (path-&gt;size[0] &lt;&lt; 1)])) - path-&gt;data[ixstart +
-<a name="647"><font color="#888888 "><i>  647   </i></font></a>          (path-&gt;size[0] &lt;&lt; 3)] * kC-&gt;l5 * sin(path-&gt;data[ixstart + path-&gt;size[0]
-<a name="648"><font color="#888888 "><i>  648   </i></font></a>          * 3] + kC-&gt;zeta) * cos(path-&gt;data[ixstart + path-&gt;size[0]]);
-<a name="649"><font color="#888888 "><i>  649   </i></font></a>        b_path[1] = (path-&gt;data[ixstart + path-&gt;size[0] * 6] * cos(path-&gt;
-<a name="650"><font color="#888888 "><i>  650   </i></font></a>          data[ixstart + path-&gt;size[0]]) * ((((kC-&gt;l2 - kC-&gt;l7) + kC-&gt;l5 * cos
-<a name="651"><font color="#888888 "><i>  651   </i></font></a>          (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta)) + kC-&gt;l3 * cos
-<a name="652"><font color="#888888 "><i>  652   </i></font></a>          (path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)])) + kC-&gt;l4 * cos(kC-&gt;zeta))
-<a name="653"><font color="#888888 "><i>  653   </i></font></a>                     - path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 3)] * kC-&gt;l5 * sin
-<a name="654"><font color="#888888 "><i>  654   </i></font></a>                     (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta) * sin
-<a name="655"><font color="#888888 "><i>  655   </i></font></a>                     (path-&gt;data[ixstart + path-&gt;size[0]])) - path-&gt;data[ixstart
-<a name="656"><font color="#888888 "><i>  656   </i></font></a>          + path-&gt;size[0] * 7] * kC-&gt;l3 * sin(path-&gt;data[ixstart + path-&gt;size[0]])
-<a name="657"><font color="#888888 "><i>  657   </i></font></a>          * sin(path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)]);
-<a name="658"><font color="#888888 "><i>  658   </i></font></a>        b_path[2] = -path-&gt;data[ixstart + path-&gt;size[0] * 7] * kC-&gt;l3 * cos
-<a name="659"><font color="#888888 "><i>  659   </i></font></a>          (path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)]) - kC-&gt;l5 * path-&gt;
-<a name="660"><font color="#888888 "><i>  660   </i></font></a>          data[ixstart + (path-&gt;size[0] &lt;&lt; 3)] * cos(kC-&gt;zeta + path-&gt;
-<a name="661"><font color="#888888 "><i>  661   </i></font></a>          data[ixstart + path-&gt;size[0] * 3]);
-<a name="662"><font color="#888888 "><i>  662   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
-<a name="663"><font color="#888888 "><i>  663   </i></font></a>          b_uB[i5] = 0.0;
-<a name="664"><font color="#888888 "><i>  664   </i></font></a>          <font color="#112266"><b>for</b></font> (absb = 0; absb &lt; 3; absb++) <b>{</b>
-<a name="665"><font color="#888888 "><i>  665   </i></font></a>            b_uB[i5] += TP2B[i5 + (absb &lt;&lt; 2)] * b_path[absb];
-<a name="666"><font color="#888888 "><i>  666   </i></font></a>          <b>}</b>
-<a name="667"><font color="#888888 "><i>  667   </i></font></a>        <b>}</b>
-<a name="668"><font color="#888888 "><i>  668   </i></font></a>
-<a name="669"><font color="#888888 "><i>  669   </i></font></a>        b_pathC-&gt;data[ixstart] = path-&gt;data[ixstart];
-<a name="670"><font color="#888888 "><i>  670   </i></font></a>        b_pathC-&gt;data[ixstart + b_pathC-&gt;size[0]] = dist2Go;
-<a name="671"><font color="#888888 "><i>  671   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
-<a name="672"><font color="#888888 "><i>  672   </i></font></a>          b_pathC-&gt;data[ixstart + b_pathC-&gt;size[0] * (i5 + 2)] = uB[i5];
-<a name="673"><font color="#888888 "><i>  673   </i></font></a>        <b>}</b>
-<a name="674"><font color="#888888 "><i>  674   </i></font></a>
-<a name="675"><font color="#888888 "><i>  675   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
-<a name="676"><font color="#888888 "><i>  676   </i></font></a>          b_pathC-&gt;data[ixstart + b_pathC-&gt;size[0] * (i5 + 5)] = b_uB[i5];
-<a name="677"><font color="#888888 "><i>  677   </i></font></a>        <b>}</b>
-<a name="678"><font color="#888888 "><i>  678   </i></font></a>
-<a name="679"><font color="#888888 "><i>  679   </i></font></a>        b_pathC-&gt;data[ixstart + (b_pathC-&gt;size[0] &lt;&lt; 3)] = 0.0;
-<a name="680"><font color="#888888 "><i>  680   </i></font></a>      <b>}</b>
+<a name="606"><font color="#888888 "><i>  606   </i></font></a>        uP[0] = ((((kC-&gt;l2 + kC-&gt;l3 * std::cos(-path-&gt;data[ixstart + (path-&gt;
+<a name="607"><font color="#888888 "><i>  607   </i></font></a>          size[0] &lt;&lt; 1)])) + kC-&gt;l4 * std::cos(kC-&gt;zeta)) + kC-&gt;l5 * std::cos
+<a name="608"><font color="#888888 "><i>  608   </i></font></a>                  (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta)) - kC-&gt;l7)
+<a name="609"><font color="#888888 "><i>  609   </i></font></a>          * std::cos(path-&gt;data[ixstart + path-&gt;size[0]]);
+<a name="610"><font color="#888888 "><i>  610   </i></font></a>        uP[1] = ((((kC-&gt;l2 + kC-&gt;l3 * std::cos(-path-&gt;data[ixstart + (path-&gt;
+<a name="611"><font color="#888888 "><i>  611   </i></font></a>          size[0] &lt;&lt; 1)])) + kC-&gt;l4 * std::cos(kC-&gt;zeta)) + kC-&gt;l5 * std::cos
+<a name="612"><font color="#888888 "><i>  612   </i></font></a>                  (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta)) - kC-&gt;l7)
+<a name="613"><font color="#888888 "><i>  613   </i></font></a>          * std::sin(path-&gt;data[ixstart + path-&gt;size[0]]);
+<a name="614"><font color="#888888 "><i>  614   </i></font></a>        uP[2] = ((((kC-&gt;l1 + kC-&gt;l3 * std::sin(-path-&gt;data[ixstart + (path-&gt;
+<a name="615"><font color="#888888 "><i>  615   </i></font></a>          size[0] &lt;&lt; 1)])) - kC-&gt;l4 * std::sin(kC-&gt;zeta)) - kC-&gt;l5 * std::sin
+<a name="616"><font color="#888888 "><i>  616   </i></font></a>                  (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta)) - kC-&gt;l6)
+<a name="617"><font color="#888888 "><i>  617   </i></font></a>          - (kC-&gt;l8 + kC-&gt;r);
+<a name="618"><font color="#888888 "><i>  618   </i></font></a>
+<a name="619"><font color="#888888 "><i>  619   </i></font></a>        <font color="#117755"><i>// sherpaTTFKVel Sherpa_TT single leg forward velocity kinematics.</i></font>
+<a name="620"><font color="#888888 "><i>  620   </i></font></a>        <font color="#117755"><i>// sherpaTTFKVel.m</i></font>
+<a name="621"><font color="#888888 "><i>  621   </i></font></a>        <font color="#117755"><i>// author: wreid</i></font>
+<a name="622"><font color="#888888 "><i>  622   </i></font></a>        <font color="#117755"><i>// date: 20150122</i></font>
+<a name="623"><font color="#888888 "><i>  623   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
+<a name="624"><font color="#888888 "><i>  624   </i></font></a>          d1 = 0.0;
+<a name="625"><font color="#888888 "><i>  625   </i></font></a>          <font color="#112266"><b>for</b></font> (absb = 0; absb &lt; 3; absb++) <b>{</b>
+<a name="626"><font color="#888888 "><i>  626   </i></font></a>            d1 += TP2B[i5 + (absb &lt;&lt; 2)] * uP[absb];
+<a name="627"><font color="#888888 "><i>  627   </i></font></a>          <b>}</b>
+<a name="628"><font color="#888888 "><i>  628   </i></font></a>
+<a name="629"><font color="#888888 "><i>  629   </i></font></a>          uB[i5] = d1 + TP2B[12 + i5];
+<a name="630"><font color="#888888 "><i>  630   </i></font></a>        <b>}</b>
+<a name="631"><font color="#888888 "><i>  631   </i></font></a>
+<a name="632"><font color="#888888 "><i>  632   </i></font></a>        <font color="#112266"><b>if</b></font> (1 + ixstart != 1) <b>{</b>
+<a name="633"><font color="#888888 "><i>  633   </i></font></a>          <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
+<a name="634"><font color="#888888 "><i>  634   </i></font></a>            b_uB[i5] = uB[i5] - b_pathC-&gt;data[(ixstart + b_pathC-&gt;size[0] * (2 +
+<a name="635"><font color="#888888 "><i>  635   </i></font></a>              i5)) - 1];
+<a name="636"><font color="#888888 "><i>  636   </i></font></a>          <b>}</b>
+<a name="637"><font color="#888888 "><i>  637   </i></font></a>
+<a name="638"><font color="#888888 "><i>  638   </i></font></a>          dist2Go += <a href="norm_cpp.html#fcn_norm" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_norm');" target="_self"><font color="#1122aa">norm</font></a>(b_uB);
+<a name="639"><font color="#888888 "><i>  639   </i></font></a>        <b>}</b>
+<a name="640"><font color="#888888 "><i>  640   </i></font></a>
+<a name="641"><font color="#888888 "><i>  641   </i></font></a>        b_path[0] = (-path-&gt;data[ixstart + path-&gt;size[0] * 6] * std::sin
+<a name="642"><font color="#888888 "><i>  642   </i></font></a>                     (path-&gt;data[ixstart + path-&gt;size[0]]) * ((((kC-&gt;l2 - kC-&gt;l7)
+<a name="643"><font color="#888888 "><i>  643   </i></font></a>          + kC-&gt;l5 * std::cos(path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta))
+<a name="644"><font color="#888888 "><i>  644   </i></font></a>          + kC-&gt;l3 * std::cos(path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)])) +
+<a name="645"><font color="#888888 "><i>  645   </i></font></a>          kC-&gt;l4 * std::cos(kC-&gt;zeta)) - path-&gt;data[ixstart + path-&gt;size[0] * 7]
+<a name="646"><font color="#888888 "><i>  646   </i></font></a>                     * kC-&gt;l3 * std::cos(path-&gt;data[ixstart + path-&gt;size[0]]) *
+<a name="647"><font color="#888888 "><i>  647   </i></font></a>                     std::sin(path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)])) -
+<a name="648"><font color="#888888 "><i>  648   </i></font></a>          path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 3)] * kC-&gt;l5 * std::sin
+<a name="649"><font color="#888888 "><i>  649   </i></font></a>          (path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta) * std::cos
+<a name="650"><font color="#888888 "><i>  650   </i></font></a>          (path-&gt;data[ixstart + path-&gt;size[0]]);
+<a name="651"><font color="#888888 "><i>  651   </i></font></a>        b_path[1] = (path-&gt;data[ixstart + path-&gt;size[0] * 6] * std::cos
+<a name="652"><font color="#888888 "><i>  652   </i></font></a>                     (path-&gt;data[ixstart + path-&gt;size[0]]) * ((((kC-&gt;l2 - kC-&gt;l7)
+<a name="653"><font color="#888888 "><i>  653   </i></font></a>          + kC-&gt;l5 * std::cos(path-&gt;data[ixstart + path-&gt;size[0] * 3] + kC-&gt;zeta))
+<a name="654"><font color="#888888 "><i>  654   </i></font></a>          + kC-&gt;l3 * std::cos(path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)])) +
+<a name="655"><font color="#888888 "><i>  655   </i></font></a>          kC-&gt;l4 * std::cos(kC-&gt;zeta)) - path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt;
+<a name="656"><font color="#888888 "><i>  656   </i></font></a>          3)] * kC-&gt;l5 * std::sin(path-&gt;data[ixstart + path-&gt;size[0] * 3] +
+<a name="657"><font color="#888888 "><i>  657   </i></font></a>          kC-&gt;zeta) * std::sin(path-&gt;data[ixstart + path-&gt;size[0]])) -
+<a name="658"><font color="#888888 "><i>  658   </i></font></a>          path-&gt;data[ixstart + path-&gt;size[0] * 7] * kC-&gt;l3 * std::sin(path-&gt;
+<a name="659"><font color="#888888 "><i>  659   </i></font></a>          data[ixstart + path-&gt;size[0]]) * std::sin(path-&gt;data[ixstart +
+<a name="660"><font color="#888888 "><i>  660   </i></font></a>          (path-&gt;size[0] &lt;&lt; 1)]);
+<a name="661"><font color="#888888 "><i>  661   </i></font></a>        b_path[2] = -path-&gt;data[ixstart + path-&gt;size[0] * 7] * kC-&gt;l3 * std::cos
+<a name="662"><font color="#888888 "><i>  662   </i></font></a>          (path-&gt;data[ixstart + (path-&gt;size[0] &lt;&lt; 1)]) - kC-&gt;l5 * path-&gt;
+<a name="663"><font color="#888888 "><i>  663   </i></font></a>          data[ixstart + (path-&gt;size[0] &lt;&lt; 3)] * std::cos(kC-&gt;zeta + path-&gt;
+<a name="664"><font color="#888888 "><i>  664   </i></font></a>          data[ixstart + path-&gt;size[0] * 3]);
+<a name="665"><font color="#888888 "><i>  665   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
+<a name="666"><font color="#888888 "><i>  666   </i></font></a>          b_uB[i5] = 0.0;
+<a name="667"><font color="#888888 "><i>  667   </i></font></a>          <font color="#112266"><b>for</b></font> (absb = 0; absb &lt; 3; absb++) <b>{</b>
+<a name="668"><font color="#888888 "><i>  668   </i></font></a>            b_uB[i5] += TP2B[i5 + (absb &lt;&lt; 2)] * b_path[absb];
+<a name="669"><font color="#888888 "><i>  669   </i></font></a>          <b>}</b>
+<a name="670"><font color="#888888 "><i>  670   </i></font></a>        <b>}</b>
+<a name="671"><font color="#888888 "><i>  671   </i></font></a>
+<a name="672"><font color="#888888 "><i>  672   </i></font></a>        b_pathC-&gt;data[ixstart] = path-&gt;data[ixstart];
+<a name="673"><font color="#888888 "><i>  673   </i></font></a>        b_pathC-&gt;data[ixstart + b_pathC-&gt;size[0]] = dist2Go;
+<a name="674"><font color="#888888 "><i>  674   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
+<a name="675"><font color="#888888 "><i>  675   </i></font></a>          b_pathC-&gt;data[ixstart + b_pathC-&gt;size[0] * (i5 + 2)] = uB[i5];
+<a name="676"><font color="#888888 "><i>  676   </i></font></a>        <b>}</b>
+<a name="677"><font color="#888888 "><i>  677   </i></font></a>
+<a name="678"><font color="#888888 "><i>  678   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; 3; i5++) <b>{</b>
+<a name="679"><font color="#888888 "><i>  679   </i></font></a>          b_pathC-&gt;data[ixstart + b_pathC-&gt;size[0] * (i5 + 5)] = b_uB[i5];
+<a name="680"><font color="#888888 "><i>  680   </i></font></a>        <b>}</b>
 <a name="681"><font color="#888888 "><i>  681   </i></font></a>
-<a name="682"><font color="#888888 "><i>  682   </i></font></a>      <font color="#112266"><b>if</b></font> (b_pathC-&gt;data[(b_pathC-&gt;size[0] + b_pathC-&gt;size[0]) - 1] &lt;
-<a name="683"><font color="#888888 "><i>  683   </i></font></a>          pathLengthMin) <b>{</b>
-<a name="684"><font color="#888888 "><i>  684   </i></font></a>        pathLengthMin = b_pathC-&gt;data[(b_pathC-&gt;size[0] + b_pathC-&gt;size[0]) - 1];
-<a name="685"><font color="#888888 "><i>  685   </i></font></a>        i5 = pathC-&gt;size[0] * pathC-&gt;size[1];
-<a name="686"><font color="#888888 "><i>  686   </i></font></a>        pathC-&gt;size[0] = b_pathC-&gt;size[0];
-<a name="687"><font color="#888888 "><i>  687   </i></font></a>        pathC-&gt;size[1] = 9;
-<a name="688"><font color="#888888 "><i>  688   </i></font></a>        <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)pathC, i5, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="689"><font color="#888888 "><i>  689   </i></font></a>        ixstart = b_pathC-&gt;size[0] * b_pathC-&gt;size[1];
-<a name="690"><font color="#888888 "><i>  690   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; ixstart; i5++) <b>{</b>
-<a name="691"><font color="#888888 "><i>  691   </i></font></a>          pathC-&gt;data[i5] = b_pathC-&gt;data[i5];
-<a name="692"><font color="#888888 "><i>  692   </i></font></a>        <b>}</b>
-<a name="693"><font color="#888888 "><i>  693   </i></font></a>
-<a name="694"><font color="#888888 "><i>  694   </i></font></a>        i5 = pathJ-&gt;size[0] * pathJ-&gt;size[1];
-<a name="695"><font color="#888888 "><i>  695   </i></font></a>        pathJ-&gt;size[0] = path-&gt;size[0];
-<a name="696"><font color="#888888 "><i>  696   </i></font></a>        pathJ-&gt;size[1] = path-&gt;size[1];
-<a name="697"><font color="#888888 "><i>  697   </i></font></a>        <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)pathJ, i5, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
-<a name="698"><font color="#888888 "><i>  698   </i></font></a>        ixstart = path-&gt;size[0] * path-&gt;size[1];
-<a name="699"><font color="#888888 "><i>  699   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; ixstart; i5++) <b>{</b>
-<a name="700"><font color="#888888 "><i>  700   </i></font></a>          pathJ-&gt;data[i5] = path-&gt;data[i5];
-<a name="701"><font color="#888888 "><i>  701   </i></font></a>        <b>}</b>
-<a name="702"><font color="#888888 "><i>  702   </i></font></a>      <b>}</b>
-<a name="703"><font color="#888888 "><i>  703   </i></font></a>    <b>}</b>
-<a name="704"><font color="#888888 "><i>  704   </i></font></a>  <b>}</b>
-<a name="705"><font color="#888888 "><i>  705   </i></font></a>
-<a name="706"><font color="#888888 "><i>  706   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;b_t);
-<a name="707"><font color="#888888 "><i>  707   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;d);
-<a name="708"><font color="#888888 "><i>  708   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;b_pathC);
-<a name="709"><font color="#888888 "><i>  709   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;path);
-<a name="710"><font color="#888888 "><i>  710   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;t);
-<a name="711"><font color="#888888 "><i>  711   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;pathT2);
-<a name="712"><font color="#888888 "><i>  712   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;pathT1);
-<a name="713"><font color="#888888 "><i>  713   </i></font></a><b>}</b>
-<a name="714"><font color="#888888 "><i>  714   </i></font></a>
-<a name="715"><font color="#888888 "><i>  715   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="716"><font color="#888888 "><i>  716   </i></font></a><font color="#117755"><i>// File trailer for buildBiDirectionalRRT.cpp</i></font>
-<a name="717"><font color="#888888 "><i>  717   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="718"><font color="#888888 "><i>  718   </i></font></a><font color="#117755"><i>// [EOF]</i></font>
-<a name="719"><font color="#888888 "><i>  719   </i></font></a><font color="#117755"><i>//</i></font>
-<a name="720"><font color="#888888 "><i>  720   </i></font></a></pre>
+<a name="682"><font color="#888888 "><i>  682   </i></font></a>        b_pathC-&gt;data[ixstart + (b_pathC-&gt;size[0] &lt;&lt; 3)] = 0.0;
+<a name="683"><font color="#888888 "><i>  683   </i></font></a>      <b>}</b>
+<a name="684"><font color="#888888 "><i>  684   </i></font></a>
+<a name="685"><font color="#888888 "><i>  685   </i></font></a>      <font color="#112266"><b>if</b></font> (b_pathC-&gt;data[(b_pathC-&gt;size[0] + b_pathC-&gt;size[0]) - 1] &lt;
+<a name="686"><font color="#888888 "><i>  686   </i></font></a>          pathLengthMin) <b>{</b>
+<a name="687"><font color="#888888 "><i>  687   </i></font></a>        pathLengthMin = b_pathC-&gt;data[(b_pathC-&gt;size[0] + b_pathC-&gt;size[0]) - 1];
+<a name="688"><font color="#888888 "><i>  688   </i></font></a>        i5 = pathC-&gt;size[0] * pathC-&gt;size[1];
+<a name="689"><font color="#888888 "><i>  689   </i></font></a>        pathC-&gt;size[0] = b_pathC-&gt;size[0];
+<a name="690"><font color="#888888 "><i>  690   </i></font></a>        pathC-&gt;size[1] = 9;
+<a name="691"><font color="#888888 "><i>  691   </i></font></a>        <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)pathC, i5, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="692"><font color="#888888 "><i>  692   </i></font></a>        ixstart = b_pathC-&gt;size[0] * b_pathC-&gt;size[1];
+<a name="693"><font color="#888888 "><i>  693   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; ixstart; i5++) <b>{</b>
+<a name="694"><font color="#888888 "><i>  694   </i></font></a>          pathC-&gt;data[i5] = b_pathC-&gt;data[i5];
+<a name="695"><font color="#888888 "><i>  695   </i></font></a>        <b>}</b>
+<a name="696"><font color="#888888 "><i>  696   </i></font></a>
+<a name="697"><font color="#888888 "><i>  697   </i></font></a>        i5 = pathJ-&gt;size[0] * pathJ-&gt;size[1];
+<a name="698"><font color="#888888 "><i>  698   </i></font></a>        pathJ-&gt;size[0] = path-&gt;size[0];
+<a name="699"><font color="#888888 "><i>  699   </i></font></a>        pathJ-&gt;size[1] = path-&gt;size[1];
+<a name="700"><font color="#888888 "><i>  700   </i></font></a>        <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxEnsureCapacity" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxEnsureCapacity');" target="_self"><font color="#1122aa">emxEnsureCapacity</font></a>((emxArray__common *)pathJ, i5, (<font color="#112266"><b>int</b></font>)<font color="#112266"><b>sizeof</b></font>(<font color="#112266"><b>double</b></font>));
+<a name="701"><font color="#888888 "><i>  701   </i></font></a>        ixstart = path-&gt;size[0] * path-&gt;size[1];
+<a name="702"><font color="#888888 "><i>  702   </i></font></a>        <font color="#112266"><b>for</b></font> (i5 = 0; i5 &lt; ixstart; i5++) <b>{</b>
+<a name="703"><font color="#888888 "><i>  703   </i></font></a>          pathJ-&gt;data[i5] = path-&gt;data[i5];
+<a name="704"><font color="#888888 "><i>  704   </i></font></a>        <b>}</b>
+<a name="705"><font color="#888888 "><i>  705   </i></font></a>      <b>}</b>
+<a name="706"><font color="#888888 "><i>  706   </i></font></a>    <b>}</b>
+<a name="707"><font color="#888888 "><i>  707   </i></font></a>  <b>}</b>
+<a name="708"><font color="#888888 "><i>  708   </i></font></a>
+<a name="709"><font color="#888888 "><i>  709   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;b_t);
+<a name="710"><font color="#888888 "><i>  710   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;d);
+<a name="711"><font color="#888888 "><i>  711   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;b_pathC);
+<a name="712"><font color="#888888 "><i>  712   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;path);
+<a name="713"><font color="#888888 "><i>  713   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;t);
+<a name="714"><font color="#888888 "><i>  714   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;pathT2);
+<a name="715"><font color="#888888 "><i>  715   </i></font></a>  <a href="sherpaTTPlanner_emxutil_cpp.html#fcn_emxFree_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_emxFree_real_T');" target="_self"><font color="#1122aa">emxFree_real_T</font></a>(&amp;pathT1);
+<a name="716"><font color="#888888 "><i>  716   </i></font></a><b>}</b>
+<a name="717"><font color="#888888 "><i>  717   </i></font></a>
+<a name="718"><font color="#888888 "><i>  718   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="719"><font color="#888888 "><i>  719   </i></font></a><font color="#117755"><i>// File trailer for buildBiDirectionalRRT.cpp</i></font>
+<a name="720"><font color="#888888 "><i>  720   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="721"><font color="#888888 "><i>  721   </i></font></a><font color="#117755"><i>// [EOF]</i></font>
+<a name="722"><font color="#888888 "><i>  722   </i></font></a><font color="#117755"><i>//</i></font>
+<a name="723"><font color="#888888 "><i>  723   </i></font></a></pre>
 </td></tr></table>
 </p>
 </body>

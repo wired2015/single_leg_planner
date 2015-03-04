@@ -21,7 +21,7 @@
 %author: wreid
 %date: 20150502
 
-function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,bodyHeight,kC,legNum,uBDot)
+function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesianB,phiInit,omegaInit,jointLimits,kC,legNum,uBDot)
 
     NUM_NODES = int32(1500);
     NODE_SIZE = int32(13);
@@ -37,7 +37,9 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
     stepAccRatio = 14;
     eta = Dt/stepAccRatio;
     U = eta*[1 0; -1 0; 0 1; 0 -1; 0 0];     
+    bodyHeight = -nInitCartesianB(3);
     panHeight  = getPanHeight(bodyHeight,kC);
+    
 
     %Transform the nInitCartesianB and nGoalCartesianB variables from the body coordinate frame
     %to the pan coordinate frame.
@@ -80,16 +82,17 @@ function [T,pathC,pathJ,success] = buildRRTWrapper(nInitCartesianB,nGoalCartesia
         sFinalC = [0 0 nInitCartesianB true];
     else
         sFinalC = pathC(end,:);
+        sGoalC = [0 0 nGoalCartesianB true];
+        pathCorrection = linInterp(sFinalC,sGoalC,10);
+        pathC = [pathC; pathCorrection];
+        [h,~] = size(pathCorrection);
+        for i = 1:h
+            uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
+            q = sherpaTTIK(uB',kC,jointLimits);
+            pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
+        end
     end
-    sGoalC = [0 0 nGoalCartesianB true];
-    pathCorrection = linInterp(sFinalC,sGoalC,10);
-    pathC = [pathC; pathCorrection];
-    [h,~] = size(pathCorrection);
-    for i = 1:h
-        uB = TB2P(1:3,1:3)*pathCorrection(i,3:5)' + TB2P(1:3,4);
-        q = sherpaTTIK(uB',kC,jointLimits);
-        pathJ = [pathJ; [pathCorrection(i,1) q 0 0 0 0 0 0 0]];  
-    end
+    
 
 end
 

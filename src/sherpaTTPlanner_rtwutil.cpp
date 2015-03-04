@@ -2,7 +2,7 @@
 // File: sherpaTTPlanner_rtwutil.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 03-Mar-2015 11:19:40
+// C/C++ source code generated on  : 04-Mar-2015 14:16:20
 //
 
 // Include Files
@@ -57,46 +57,19 @@ double rt_atan2d_snf(double u0, double u1)
 }
 
 //
-// Arguments    : double u0
-//                double u1
-// Return Type  : double
-//
-double rt_hypotd_snf(double u0, double u1)
-{
-  double y;
-  double a;
-  double b;
-  a = fabs(u0);
-  b = fabs(u1);
-  if (a < b) {
-    a /= b;
-    y = b * sqrt(a * a + 1.0);
-  } else if (a > b) {
-    b /= a;
-    y = a * sqrt(b * b + 1.0);
-  } else if (rtIsNaN(b)) {
-    y = b;
-  } else {
-    y = a * 1.4142135623730951;
-  }
-
-  return y;
-}
-
-//
 // Arguments    : double u
 // Return Type  : double
 //
 double rt_roundd_snf(double u)
 {
   double y;
-  if (fabs(u) < 4.503599627370496E+15) {
+  if (std::abs(u) < 4.503599627370496E+15) {
     if (u >= 0.5) {
-      y = floor(u + 0.5);
+      y = std::floor(u + 0.5);
     } else if (u > -0.5) {
       y = u * 0.0;
     } else {
-      y = ceil(u - 0.5);
+      y = std::ceil(u - 0.5);
     }
   } else {
     y = u;
