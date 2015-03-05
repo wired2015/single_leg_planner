@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'sherpaTTPlanner'. 
 ## 
 ## Makefile     : sherpaTTPlanner_rtw.mk
-## Generated on : Thu Mar 05 11:17:50 2015
+## Generated on : Thu Mar 05 15:01:47 2015
 ## MATLAB Coder version: 2.7 (R2014b)
 ## 
 ## Build Info:
@@ -28,7 +28,7 @@ MATLAB_ROOT               = /Applications/MATLAB_R2014b.app
 MATLAB_BIN                = /Applications/MATLAB_R2014b.app/bin
 MATLAB_ARCH_BIN           = /Applications/MATLAB_R2014b.app/bin/maci64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = /Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt
+START_DIR                 = /Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/evaluation
 ARCH                      = maci64
 RELATIVE_PATH_TO_ANCHOR   = .
 
@@ -170,7 +170,7 @@ BUILD_TYPE = "Static Library"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT -I/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/evaluation -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt -I/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -186,7 +186,7 @@ DEFINES = $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_rtwutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_data.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_initialize.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_terminate.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildBiDirectionalRRTWrapper.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildRRTWrapper.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/randomStateGenerator.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/trInv.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTIK.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/exp.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/log.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/asin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/fprintf.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/fileManager.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTIKVel.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/validJointState.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildBiDirectionalRRT.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/randomState.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rand.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/eml_rand_mt19937ar_stateful.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/nearestNeighbour.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/heuristicSingleLeg.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/norm.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/selectInput.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rk4.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/getPhiAndOmega.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/generateTrMatrices.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/angDiff.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/flipud.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_emxutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_emxAPI.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rt_nonfinite.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rtGetNaN.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rtGetInf.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/test/CMakeLists.txt
+SRCS = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_rtwutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_data.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_initialize.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_terminate.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildBiDirectionalRRTWrapper.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildRRTWrapper.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/randomStateGenerator.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/trInv.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTIK.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/exp.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/log.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/asin.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/fprintf.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/fileManager.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTIKVel.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/validJointState.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/buildBiDirectionalRRT.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/randomState.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rand.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/eml_rand_mt19937ar_stateful.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/nearestNeighbour.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/heuristicSingleLeg.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/norm.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/selectInput.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rk4.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/getPhiAndOmega.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/generateTrMatrices.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/angDiff.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/flipud.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_emxutil.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner_emxAPI.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rt_nonfinite.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rtGetNaN.cpp /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/rtGetInf.cpp
 
 ALL_SRCS = $(SRCS)
 
@@ -194,7 +194,7 @@ ALL_SRCS = $(SRCS)
 ## OBJECTS
 ###########################################################################
 
-OBJS = sherpaTTPlanner_rtwutil.o sherpaTTPlanner_data.o sherpaTTPlanner_initialize.o sherpaTTPlanner_terminate.o buildBiDirectionalRRTWrapper.o buildRRTWrapper.o randomStateGenerator.o sin.o trInv.o sherpaTTIK.o exp.o log.o asin.o fprintf.o fileManager.o sherpaTTIKVel.o validJointState.o buildBiDirectionalRRT.o randomState.o rand.o eml_rand_mt19937ar_stateful.o nearestNeighbour.o heuristicSingleLeg.o norm.o selectInput.o rk4.o getPhiAndOmega.o generateTrMatrices.o angDiff.o flipud.o sherpaTTPlanner_emxutil.o sherpaTTPlanner_emxAPI.o rt_nonfinite.o rtGetNaN.o rtGetInf.o CMakeLists.txt
+OBJS = sherpaTTPlanner_rtwutil.o sherpaTTPlanner_data.o sherpaTTPlanner_initialize.o sherpaTTPlanner_terminate.o buildBiDirectionalRRTWrapper.o buildRRTWrapper.o randomStateGenerator.o sin.o trInv.o sherpaTTIK.o exp.o log.o asin.o fprintf.o fileManager.o sherpaTTIKVel.o validJointState.o buildBiDirectionalRRT.o randomState.o rand.o eml_rand_mt19937ar_stateful.o nearestNeighbour.o heuristicSingleLeg.o norm.o selectInput.o rk4.o getPhiAndOmega.o generateTrMatrices.o angDiff.o flipud.o sherpaTTPlanner_emxutil.o sherpaTTPlanner_emxAPI.o rt_nonfinite.o rtGetNaN.o rtGetInf.o
 
 ALL_OBJS = $(OBJS)
 
@@ -208,7 +208,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-LIBS = 
+LIBS = /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/codegentest/CMakeLists.txt
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -267,7 +267,7 @@ execute : download
 # Create a static library         
 #---------------------------------
 
-$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
+$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS)
 	@echo "### Creating static library "$(PRODUCT)" ..."
 	$(AR) $(ARFLAGS)  $(PRODUCT) $(OBJS)
 	@echo "### Created: $(PRODUCT)"
@@ -310,14 +310,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 
 
 %.o : /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/test/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : /Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/test/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 

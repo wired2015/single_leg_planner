@@ -20,7 +20,6 @@
 
 function states = randomStateGenerator(N,jointLimits,kC,panHeight,legNum)
 
-    legNum = legNum + 1;
     if legNum > 4
         legNum = int32(4);
     elseif legNum < 1

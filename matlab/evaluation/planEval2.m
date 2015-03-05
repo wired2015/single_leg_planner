@@ -54,6 +54,8 @@ function planEval2(useMex)
         %sInitB = [0.431789 1.03073  -0.933 0 0 0];
         sInitB = [-0.219034 1.13673  -0.933 0 0 0];
         sGoalB = [0.720622 -0.249976    -0.933 0 0 0];
+        sInitB = [1.13673 0.21903  -0.933 0 0 0];
+        sGoalB = [-0.249979 -0.720621    -0.933 0 0 0];
 
         %Generate the RRT and time how long it takes to be generated.
         tic

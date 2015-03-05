@@ -2,7 +2,7 @@
 // File: sherpaTTIKVel.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Mar-2015 11:17:25
+// C/C++ source code generated on  : 05-Mar-2015 15:01:21
 //
 #ifndef __SHERPATTIKVEL_H__
 #define __SHERPATTIKVEL_H__
