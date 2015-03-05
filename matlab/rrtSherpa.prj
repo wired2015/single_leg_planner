@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.matlabcoder" plugin-version="R2014a_nu">
-  <configuration build-checksum="3429316984" file="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrtSherpa.prj" location="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab" name="rrtSherpa" preferred-package-location="/Users/fuji/Desktop" preferred-package-type="package.type.zip" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
+  <configuration build-checksum="1692706867" file="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrtSherpa.prj" location="/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab" name="rrtSherpa" preferred-package-location="/Users/fuji/Desktop" preferred-package-type="package.type.zip" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
     <profile key="profile.mex">
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
@@ -139,7 +139,9 @@
       <param.CustomInitializer />
       <param.CustomTerminator />
       <param.CustomInclude />
-      <param.CustomSource />
+      <param.CustomSource>
+        <item>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/test/CMakeLists.txt</item>
+      </param.CustomSource>
       <param.CustomLibrary />
       <param.PostCodeGenCommand />
       <param.TargetLangStandard>C++03 (ISO)</param.TargetLangStandard>
@@ -251,7 +253,6 @@
         <param.HighlightPotentialDataTypeIssues />
         <param.LaunchReport />
         <param.CustomInclude />
-        <param.CustomSource />
         <param.CustomLibrary />
         <param.CodeReplacementLibrary />
         <param.DeprecatedCRLFlag />
@@ -312,7 +313,7 @@
     <param.outputfile>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/sherpaTTPlanner.a</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
-    <param.mex.mainhtml>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/codegen/mex/sherpaTTPlanner_mex/html/index.html</param.mex.mainhtml>
+    <param.mex.mainhtml>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/codegen/mex/sherpaTTPlanner_mex/html/index.html</param.mex.mainhtml>
     <param.grt.mainhtml>/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/src/html/index.html</param.grt.mainhtml>
     <param.CallGeneratedCodeFromTest>false</param.CallGeneratedCodeFromTest>
     <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
@@ -767,7 +768,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="true" value="${PROJECT_ROOT}/evaluation/randomStateGenerator.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/evaluation/randomStateGenerator.m">
         <Inputs fileName="randomStateGenerator.m" functionName="randomStateGenerator">
           <Input Name="N">
             <Class>int32</Class>

@@ -2,7 +2,7 @@
 // File: selectInput.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Mar-2015 10:13:51
+// C/C++ source code generated on  : 05-Mar-2015 11:17:25
 //
 #ifndef __SELECTINPUT_H__
 #define __SELECTINPUT_H__
@@ -19,9 +19,12 @@
 #include "sherpaTTPlanner_types.h"
 
 // Function Declarations
+extern void b_selectInput(const double xNear[13], const double xRand[13], const
+  struct0_T *kC, const double jointLimits[20], const double uBDot[6], int legNum,
+  double xNew[13], double transitionArray[80]);
 extern void selectInput(const double xNear[13], const double xRand[13], const
-  struct0_T *kC, double ankleThreshold, const double jointLimits[20], const
-  double uBDot[6], int legNum, double xNew[13], double transitionArray[80]);
+  struct0_T *kC, const double jointLimits[20], const double uBDot[6], int legNum,
+  double xNew[13], double transitionArray[80]);
 
 #endif
 

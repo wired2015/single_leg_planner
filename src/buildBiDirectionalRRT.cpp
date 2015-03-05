@@ -2,7 +2,7 @@
 // File: buildBiDirectionalRRT.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Mar-2015 10:13:51
+// C/C++ source code generated on  : 05-Mar-2015 11:17:25
 //
 
 // Include Files
@@ -328,8 +328,8 @@ void buildBiDirectionalRRT(const double nInit[13], const double nGoal[13], const
       c_T1[i5] = T1[absb + 500 * i5];
     }
 
-    selectInput(c_T1, xRand, kC, 0.39269908169872414, jointLimits, uBDot, legNum,
-                unusedU1, transitionArray);
+    selectInput(c_T1, xRand, kC, jointLimits, uBDot, legNum, unusedU1,
+                transitionArray);
     unusedU1[0] = (double)nodeIDCount1 + 1.0;
 
     // Node ID

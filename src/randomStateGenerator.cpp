@@ -2,7 +2,7 @@
 // File: randomStateGenerator.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Mar-2015 10:13:51
+// C/C++ source code generated on  : 05-Mar-2015 11:17:25
 //
 
 // Include Files
@@ -29,7 +29,8 @@
 void randomStateGenerator(int N, const double jointLimits[20], const struct0_T
   *kC, double panHeight, int legNum, emxArray_real_T *states)
 {
-  int i21;
+  long i22;
+  int i23;
   int loop_ub;
   double u2_idx_2;
   double cartesianLimits_idx_0;
@@ -41,12 +42,12 @@ void randomStateGenerator(int N, const double jointLimits[20], const struct0_T
   double xRand[3];
   double u1[3];
   double gammaDotRand;
-  double dv17[13];
+  double dv18[13];
   double uP[3];
   double TP2B[16];
   static const signed char iv7[4] = { 0, 0, 0, 1 };
 
-  int i22;
+  int i24;
 
   // RANDOMSTATEGENERATOR Generates N number of random states that are valid in
   // the Sherpa_TT leg's configuration space.
@@ -67,13 +68,31 @@ void randomStateGenerator(int N, const double jointLimits[20], const struct0_T
   // randomStateGenerator.m
   // author: wreid
   // date: 20150305
-  i21 = states->size[0] * states->size[1];
+  i22 = legNum + 1L;
+  if (i22 > 2147483647L) {
+    i22 = 2147483647L;
+  } else {
+    if (i22 < -2147483648L) {
+      i22 = -2147483648L;
+    }
+  }
+
+  legNum = (int)i22;
+  if (legNum > 4) {
+    legNum = 4;
+  } else {
+    if (legNum < 1) {
+      legNum = 1;
+    }
+  }
+
+  i23 = states->size[0] * states->size[1];
   states->size[0] = N;
   states->size[1] = 6;
-  emxEnsureCapacity((emxArray__common *)states, i21, (int)sizeof(double));
+  emxEnsureCapacity((emxArray__common *)states, i23, (int)sizeof(double));
   loop_ub = N * 6;
-  for (i21 = 0; i21 < loop_ub; i21++) {
-    states->data[i21] = 0.0;
+  for (i23 = 0; i23 < loop_ub; i23++) {
+    states->data[i23] = 0.0;
   }
 
   // sherpaTTFK Sherpa_TT Forward Kinematics
@@ -350,22 +369,22 @@ void randomStateGenerator(int N, const double jointLimits[20], const struct0_T
     // if mod(nodeIDCount,goalSeedFreq) == 0
     //     xRand = nGoal;
     // end
-    for (i21 = 0; i21 < 3; i21++) {
-      dv17[i21] = 0.0;
+    for (i23 = 0; i23 < 3; i23++) {
+      dv18[i23] = 0.0;
     }
 
-    dv17[3] = alphaRand;
-    dv17[4] = u1[1];
-    dv17[5] = u1[2];
-    dv17[6] = 0.0;
-    dv17[7] = 0.0;
-    dv17[8] = xMax;
-    dv17[9] = xMin;
-    dv17[10] = gammaDotRand;
-    dv17[11] = 0.0;
-    dv17[12] = 0.0;
-    for (i21 = 0; i21 < 3; i21++) {
-      u1[i21] = dv17[3 + i21];
+    dv18[3] = alphaRand;
+    dv18[4] = u1[1];
+    dv18[5] = u1[2];
+    dv18[6] = 0.0;
+    dv18[7] = 0.0;
+    dv18[8] = xMax;
+    dv18[9] = xMin;
+    dv18[10] = gammaDotRand;
+    dv18[11] = 0.0;
+    dv18[12] = 0.0;
+    for (i23 = 0; i23 < 3; i23++) {
+      u1[i23] = dv18[3 + i23];
     }
 
     // sherpaTTFK Sherpa_TT Forward Kinematics
@@ -424,21 +443,21 @@ void randomStateGenerator(int N, const double jointLimits[20], const struct0_T
     TP2B[6] = 0.0;
     TP2B[10] = 1.0;
     TP2B[14] = kC->B2PZOffset;
-    for (i21 = 0; i21 < 4; i21++) {
-      TP2B[3 + (i21 << 2)] = iv7[i21];
+    for (i23 = 0; i23 < 4; i23++) {
+      TP2B[3 + (i23 << 2)] = iv7[i23];
     }
 
-    for (i21 = 0; i21 < 3; i21++) {
+    for (i23 = 0; i23 < 3; i23++) {
       xMax = 0.0;
-      for (i22 = 0; i22 < 3; i22++) {
-        xMax += TP2B[i21 + (i22 << 2)] * uP[i22];
+      for (i24 = 0; i24 < 3; i24++) {
+        xMax += TP2B[i23 + (i24 << 2)] * uP[i24];
       }
 
-      u1[i21] = xMax + TP2B[12 + i21];
+      u1[i23] = xMax + TP2B[12 + i23];
     }
 
-    for (i21 = 0; i21 < 3; i21++) {
-      states->data[loop_ub + states->size[0] * i21] = u1[i21];
+    for (i23 = 0; i23 < 3; i23++) {
+      states->data[loop_ub + states->size[0] * i23] = u1[i23];
     }
 
     states->data[loop_ub + states->size[0] * 3] = 0.0;

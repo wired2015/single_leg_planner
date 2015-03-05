@@ -2,7 +2,7 @@
  * File: _coder_sherpaTTPlanner_info.c
  *
  * MATLAB Coder version            : 2.7
- * C/C++ source code generated on  : 05-Mar-2015 10:13:51
+ * C/C++ source code generated on  : 05-Mar-2015 11:17:25
  */
 
 /* Include Files */
@@ -3495,7 +3495,7 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("randomState"), "name", 178);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 178);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 178);
   emlrtAddField(*info, b_emlrt_marshallOut(1425468656U), "fileTimeLo", 178);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 178);
@@ -3506,7 +3506,7 @@ static void c_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs178), "rhs", 178);
   emlrtAddField(*info, emlrtAliasP(lhs178), "lhs", 178);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "context", 179);
   emlrtAddField(*info, emlrt_marshallOut("rand"), "name", 179);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 179);
@@ -4103,7 +4103,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs199), "rhs", 199);
   emlrtAddField(*info, emlrtAliasP(lhs199), "lhs", 199);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "context", 200);
   emlrtAddField(*info, emlrt_marshallOut("getXStar"), "name", 200);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 200);
@@ -4194,7 +4194,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs205), "rhs", 205);
   emlrtAddField(*info, emlrtAliasP(lhs205), "lhs", 205);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "context", 206);
   emlrtAddField(*info, emlrt_marshallOut("disp"), "name", 206);
   emlrtAddField(*info, emlrt_marshallOut("char"), "dominantType", 206);
@@ -4209,7 +4209,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs206), "rhs", 206);
   emlrtAddField(*info, emlrtAliasP(lhs206), "lhs", 206);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "context", 207);
   emlrtAddField(*info, emlrt_marshallOut("sherpaTTIK"), "name", 207);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 207);
@@ -4230,7 +4230,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 208);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 208);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "resolved", 208);
   emlrtAddField(*info, b_emlrt_marshallOut(1424285716U), "fileTimeLo", 208);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 208);
@@ -4241,12 +4241,12 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs208), "rhs", 208);
   emlrtAddField(*info, emlrtAliasP(lhs208), "lhs", 208);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "context", 209);
   emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 209);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 209);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "resolved", 209);
   emlrtAddField(*info, b_emlrt_marshallOut(1425290848U), "fileTimeLo", 209);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 209);
@@ -4257,7 +4257,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs209), "rhs", 209);
   emlrtAddField(*info, emlrtAliasP(lhs209), "lhs", 209);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 210);
   emlrtAddField(*info, emlrt_marshallOut("sherpaTTFK"), "name", 210);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 210);
@@ -4303,7 +4303,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs212), "rhs", 212);
   emlrtAddField(*info, emlrtAliasP(lhs212), "lhs", 212);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 213);
   emlrtAddField(*info, emlrt_marshallOut("sherpaTTFKVel"), "name", 213);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 213);
@@ -4349,7 +4349,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs215), "rhs", 215);
   emlrtAddField(*info, emlrtAliasP(lhs215), "lhs", 215);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "context", 216);
   emlrtAddField(*info, emlrt_marshallOut("norm"), "name", 216);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 216);
@@ -4613,7 +4613,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs231), "rhs", 231);
   emlrtAddField(*info, emlrtAliasP(lhs231), "lhs", 231);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "context", 232);
   emlrtAddField(*info, emlrt_marshallOut("min"), "name", 232);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 232);
@@ -4813,7 +4813,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("selectInput"), "name", 244);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 244);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "resolved", 244);
   emlrtAddField(*info, b_emlrt_marshallOut(1424771871U), "fileTimeLo", 244);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 244);
@@ -4824,7 +4824,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs244), "rhs", 244);
   emlrtAddField(*info, emlrtAliasP(lhs244), "lhs", 244);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 245);
   emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 245);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 245);
@@ -4839,7 +4839,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs245), "rhs", 245);
   emlrtAddField(*info, emlrtAliasP(lhs245), "lhs", 245);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 246);
   emlrtAddField(*info, emlrt_marshallOut("round"), "name", 246);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 246);
@@ -4854,7 +4854,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs246), "rhs", 246);
   emlrtAddField(*info, emlrtAliasP(lhs246), "lhs", 246);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 247);
   emlrtAddField(*info, emlrt_marshallOut("eml_int_forloop_overflow_check"),
                 "name", 247);
@@ -4871,12 +4871,12 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs247), "rhs", 247);
   emlrtAddField(*info, emlrtAliasP(lhs247), "lhs", 247);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 248);
   emlrtAddField(*info, emlrt_marshallOut("rk4"), "name", 248);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 248);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "resolved", 248);
   emlrtAddField(*info, b_emlrt_marshallOut(1425373904U), "fileTimeLo", 248);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 248);
@@ -4887,7 +4887,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs248), "rhs", 248);
   emlrtAddField(*info, emlrtAliasP(lhs248), "lhs", 248);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 249);
   emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 249);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 249);
@@ -4902,7 +4902,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs249), "rhs", 249);
   emlrtAddField(*info, emlrtAliasP(lhs249), "lhs", 249);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 250);
   emlrtAddField(*info, emlrt_marshallOut("round"), "name", 250);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 250);
@@ -4917,7 +4917,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs250), "rhs", 250);
   emlrtAddField(*info, emlrtAliasP(lhs250), "lhs", 250);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 251);
   emlrtAddField(*info, emlrt_marshallOut("length"), "name", 251);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 251);
@@ -4932,7 +4932,7 @@ static void d_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs251), "rhs", 251);
   emlrtAddField(*info, emlrtAliasP(lhs251), "lhs", 251);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m!f"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m!f"),
                 "context", 252);
   emlrtAddField(*info, emlrt_marshallOut("getConstrainedGammaDotDot"), "name",
                 252);
@@ -5273,7 +5273,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs256), "rhs", 256);
   emlrtAddField(*info, emlrtAliasP(lhs256), "lhs", 256);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m!numIntegrate"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m!numIntegrate"),
                 "context", 257);
   emlrtAddField(*info, emlrt_marshallOut("mrdivide"), "name", 257);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 257);
@@ -5288,7 +5288,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs257), "rhs", 257);
   emlrtAddField(*info, emlrtAliasP(lhs257), "lhs", 257);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m!numIntegrate"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m!numIntegrate"),
                 "context", 258);
   emlrtAddField(*info, emlrt_marshallOut("eml_mtimes_helper"), "name", 258);
   emlrtAddField(*info, emlrt_marshallOut(""), "dominantType", 258);
@@ -5304,7 +5304,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs258), "rhs", 258);
   emlrtAddField(*info, emlrtAliasP(lhs258), "lhs", 258);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 259);
   emlrtAddField(*info, emlrt_marshallOut("getConstrainedGammaDot"), "name", 259);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 259);
@@ -5350,7 +5350,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs261), "rhs", 261);
   emlrtAddField(*info, emlrtAliasP(lhs261), "lhs", 261);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 262);
   emlrtAddField(*info, emlrt_marshallOut("getConstrainedGammaDotDot"), "name",
                 262);
@@ -5367,7 +5367,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs262), "rhs", 262);
   emlrtAddField(*info, emlrtAliasP(lhs262), "lhs", 262);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 263);
   emlrtAddField(*info, emlrt_marshallOut("getConstrainedBetaDot"), "name", 263);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 263);
@@ -5413,7 +5413,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs265), "rhs", 265);
   emlrtAddField(*info, emlrtAliasP(lhs265), "lhs", 265);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 266);
   emlrtAddField(*info, emlrt_marshallOut("getConstrainedBetaDotDot"), "name",
                 266);
@@ -5490,7 +5490,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs270), "rhs", 270);
   emlrtAddField(*info, emlrtAliasP(lhs270), "lhs", 270);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"),
                 "context", 271);
   emlrtAddField(*info, emlrt_marshallOut("getPhiAndOmega"), "name", 271);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 271);
@@ -6084,12 +6084,12 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs308), "rhs", 308);
   emlrtAddField(*info, emlrtAliasP(lhs308), "lhs", 308);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 309);
   emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 309);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 309);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "resolved", 309);
   emlrtAddField(*info, b_emlrt_marshallOut(1425290848U), "fileTimeLo", 309);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 309);
@@ -6100,7 +6100,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs309), "rhs", 309);
   emlrtAddField(*info, emlrtAliasP(lhs309), "lhs", 309);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 310);
   emlrtAddField(*info, emlrt_marshallOut("angDiff"), "name", 310);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 310);
@@ -6116,7 +6116,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrtAliasP(rhs310), "rhs", 310);
   emlrtAddField(*info, emlrtAliasP(lhs310), "lhs", 310);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "context", 311);
   emlrtAddField(*info, emlrt_marshallOut("min"), "name", 311);
   emlrtAddField(*info, emlrt_marshallOut("double"), "dominantType", 311);
@@ -6136,7 +6136,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 312);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 312);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "resolved", 312);
   emlrtAddField(*info, b_emlrt_marshallOut(1425290848U), "fileTimeLo", 312);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 312);
@@ -6152,7 +6152,7 @@ static void e_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 313);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 313);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "resolved", 313);
   emlrtAddField(*info, b_emlrt_marshallOut(1424285716U), "fileTimeLo", 313);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 313);
@@ -7270,7 +7270,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("randomState"), "name", 367);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 367);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 367);
   emlrtAddField(*info, b_emlrt_marshallOut(1425468656U), "fileTimeLo", 367);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 367);
@@ -7286,7 +7286,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 368);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 368);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "resolved", 368);
   emlrtAddField(*info, b_emlrt_marshallOut(1424285716U), "fileTimeLo", 368);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 368);
@@ -7302,7 +7302,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("selectInput"), "name", 369);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 369);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"),
                 "resolved", 369);
   emlrtAddField(*info, b_emlrt_marshallOut(1424771871U), "fileTimeLo", 369);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 369);
@@ -7318,7 +7318,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("heuristicSingleLeg"), "name", 370);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 370);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/heuristicSingleLeg.m"),
                 "resolved", 370);
   emlrtAddField(*info, b_emlrt_marshallOut(1425290848U), "fileTimeLo", 370);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 370);
@@ -7334,7 +7334,7 @@ static void f_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("nearestNeighbour"), "name", 371);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 371);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"),
                 "resolved", 371);
   emlrtAddField(*info, b_emlrt_marshallOut(1424285716U), "fileTimeLo", 371);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 371);
@@ -7718,7 +7718,7 @@ static void g_info_helper(const mxArray **info)
   emlrtAddField(*info, emlrt_marshallOut("randomState"), "name", 386);
   emlrtAddField(*info, emlrt_marshallOut("struct"), "dominantType", 386);
   emlrtAddField(*info, emlrt_marshallOut(
-    "[E]/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
+    "[E]/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"),
                 "resolved", 386);
   emlrtAddField(*info, b_emlrt_marshallOut(1425468656U), "fileTimeLo", 386);
   emlrtAddField(*info, b_emlrt_marshallOut(0U), "fileTimeHi", 386);

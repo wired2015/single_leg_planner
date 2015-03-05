@@ -2,7 +2,7 @@
 // File: buildRRTWrapper.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Mar-2015 10:13:51
+// C/C++ source code generated on  : 05-Mar-2015 11:17:25
 //
 
 // Include Files
@@ -288,8 +288,8 @@ void buildRRTWrapper(const double nInitCartesianB[6], const double
       nearestNeighbour(xRand, b_T, kC->l1, kC->l2, kC->l3, kC->l4, kC->l5,
                        kC->l6, kC->l7, kC->l8, kC->zeta, kC->r, nodeIDCount,
                        xNear, transitionArrayNearest, &check);
-      selectInput(xNear, xRand, kC, 0.087266462599716474, jointLimits, uBDot,
-                  legNum, xNew, transitionArrayNearest);
+      b_selectInput(xNear, xRand, kC, jointLimits, uBDot, legNum, xNew,
+                    transitionArrayNearest);
       xNew[0] = nodeIDCount + 1.0;
 
       // Node ID

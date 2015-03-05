@@ -47,8 +47,13 @@ function planEval2(useMex)
     %Run the planner on each of the Sherpa_TT legs.
     for i=1:numLegs
         
-        sInitB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
-        sGoalB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
+        %sInitB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
+        %sGoalB = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,i) 0 0 0];
+
+        
+        %sInitB = [0.431789 1.03073  -0.933 0 0 0];
+        sInitB = [-0.219034 1.13673  -0.933 0 0 0];
+        sGoalB = [0.720622 -0.249976    -0.933 0 0 0];
 
         %Generate the RRT and time how long it takes to be generated.
         tic

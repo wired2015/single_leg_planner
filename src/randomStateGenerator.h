@@ -2,7 +2,7 @@
 // File: randomStateGenerator.h
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 05-Mar-2015 10:13:51
+// C/C++ source code generated on  : 05-Mar-2015 11:17:25
 //
 #ifndef __RANDOMSTATEGENERATOR_H__
 #define __RANDOMSTATEGENERATOR_H__
