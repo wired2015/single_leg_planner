@@ -29,7 +29,7 @@
 <a name="18"><font color="#888888 "><i>   18   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&lt;stdio.h&gt;</font>
 <a name="19"><font color="#888888 "><i>   19   </i></font></a>
 <a name="20"><font color="#888888 "><i>   20   </i></font></a><font color="#117755"><i>/* Variable Definitions */</i></font>
-<a name="21"><font color="#888888 "><i>   21   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_mb_emlrtRSI">mb_emlrtRSI</a> = <b>{</b> 30, <font color="#1122ff">&quot;selectInput&quot;</font>,
+<a name="21"><font color="#888888 "><i>   21   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_ob_emlrtRSI">ob_emlrtRSI</a> = <b>{</b> 30, <font color="#1122ff">&quot;selectInput&quot;</font>,
 <a name="22"><font color="#888888 "><i>   22   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m&quot;</font>
 <a name="23"><font color="#888888 "><i>   23   </i></font></a><b>}</b>;
 <a name="24"><font color="#888888 "><i>   24   </i></font></a>
@@ -84,7 +84,7 @@
 <a name="73"><font color="#888888 "><i>   73   </i></font></a>      U[i9] = b_U[ixstart + 5 * i9];
 <a name="74"><font color="#888888 "><i>   74   </i></font></a>    <b>}</b>
 <a name="75"><font color="#888888 "><i>   75   </i></font></a>
-<a name="76"><font color="#888888 "><i>   76   </i></font></a>    st.site = &amp;<a href="#var_mb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_mb_emlrtRSI');" target="_self"><font color="#1122aa">mb_emlrtRSI</font></a>;
+<a name="76"><font color="#888888 "><i>   76   </i></font></a>    st.site = &amp;<a href="#var_ob_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ob_emlrtRSI');" target="_self"><font color="#1122aa">ob_emlrtRSI</font></a>;
 <a name="77"><font color="#888888 "><i>   77   </i></font></a>    <a href="rk4_c.html#fcn_rk4" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rk4');" target="_self"><font color="#1122aa">rk4</font></a>(&amp;st, U, uBDot, xNear, jointLimits, kC, legNum, b_candStates, dv16);
 <a name="78"><font color="#888888 "><i>   78   </i></font></a>    <font color="#112266"><b>for</b></font> (i9 = 0; i9 &lt; 80; i9++) <b>{</b>
 <a name="79"><font color="#888888 "><i>   79   </i></font></a>      candTransArrays[ixstart + 5 * i9] = dv16[i9];

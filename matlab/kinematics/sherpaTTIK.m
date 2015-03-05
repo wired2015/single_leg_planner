@@ -46,11 +46,15 @@ function q = sherpaTTIK(u,kC,jointLimits)
             alpha = alpha(1);
             beta = real(betaRaw(1));
             gamma = real(gammaRaw(1));
-        %elseif alpha >= alphaMin && alpha <= alphaMax && betaRaw(2) >= betaMin && betaRaw(2) <= betaMax && gammaRaw(2) >= gammaMin && gammaRaw(2) <= gammaMax
-        else
+        elseif alpha >= alphaMin && alpha <= alphaMax && betaRaw(2) >= betaMin && betaRaw(2) <= betaMax && gammaRaw(2) >= gammaMin && gammaRaw(2) <= gammaMax
             alpha = alpha(1);
             beta = real(betaRaw(2));
             gamma = real(gammaRaw(2));
+        else
+            fprintf('Solution out of angular limit range.');
+            alpha = alpha(1);
+            beta = real(betaRaw(1));
+            gamma = real(gammaRaw(1));
         end
     else
         fprintf('No Real Solution Found');

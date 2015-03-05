@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo lb_emlrtRSI = { 6, "getPhiAndOmega",
+static emlrtRSInfo nb_emlrtRSI = { 6, "getPhiAndOmega",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getPhiAndOmega.m"
 };
 
@@ -37,16 +37,16 @@ void getPhiAndOmega(const emlrtStack *sp, const real_T uBDot[6], const real_T
   real_T TB2S[16];
   real_T TR2Q[16];
   int32_T i6;
-  static const int8_T iv6[4] = { 0, 0, 0, 1 };
+  static const int8_T iv8[4] = { 0, 0, 0, 1 };
 
-  static const int8_T iv7[4] = { 0, 0, 1, 0 };
+  static const int8_T iv9[4] = { 0, 0, 1, 0 };
 
   static const real_T dv2[4] = { 0.0, -1.0, 6.123233995736766E-17, 0.0 };
 
-  static const int8_T iv8[4] = { 1, 0, 0, 0 };
+  static const int8_T iv10[4] = { 1, 0, 0, 0 };
 
   real_T TS2R[16];
-  static const int8_T iv9[4] = { 0, 1, 0, 0 };
+  static const int8_T iv11[4] = { 0, 1, 0, 0 };
 
   real_T dv3[16];
   real_T dv4[16];
@@ -87,7 +87,7 @@ void getPhiAndOmega(const emlrtStack *sp, const real_T uBDot[6], const real_T
   st.tls = sp->tls;
 
   /* Homogeneous transformation matrices. */
-  st.site = &lb_emlrtRSI;
+  st.site = &nb_emlrtRSI;
 
   /* GENERATETRMATRICES Generates each of the homogeneous transformation */
   /* matrices that describe the kinematic chain between the Sherpa_TT rover's */
@@ -210,15 +210,15 @@ void getPhiAndOmega(const emlrtStack *sp, const real_T uBDot[6], const real_T
   TR2Q[9] = -(-muDoubleScalarCos(theta));
   TR2Q[13] = -kC->l7 * muDoubleScalarSin(theta);
   for (i6 = 0; i6 < 4; i6++) {
-    TO2S[3 + (i6 << 2)] = iv6[i6];
-    TI2S[2 + (i6 << 2)] = iv7[i6];
-    TI2S[3 + (i6 << 2)] = iv6[i6];
-    TP2S[2 + (i6 << 2)] = iv7[i6];
-    TP2S[3 + (i6 << 2)] = iv6[i6];
-    TB2S[2 + (i6 << 2)] = iv7[i6];
-    TB2S[3 + (i6 << 2)] = iv6[i6];
+    TO2S[3 + (i6 << 2)] = iv8[i6];
+    TI2S[2 + (i6 << 2)] = iv9[i6];
+    TI2S[3 + (i6 << 2)] = iv8[i6];
+    TP2S[2 + (i6 << 2)] = iv9[i6];
+    TP2S[3 + (i6 << 2)] = iv8[i6];
+    TB2S[2 + (i6 << 2)] = iv9[i6];
+    TB2S[3 + (i6 << 2)] = iv8[i6];
     TR2Q[2 + (i6 << 2)] = dv2[i6];
-    TR2Q[3 + (i6 << 2)] = iv6[i6];
+    TR2Q[3 + (i6 << 2)] = iv8[i6];
 
     /* TRDH Generates the homogeneous transformation matrix A using the  */
     /* Denavit-Hartenberg parameters theta, d, a and alpha. */
@@ -226,8 +226,8 @@ void getPhiAndOmega(const emlrtStack *sp, const real_T uBDot[6], const real_T
     /* trDH.m */
     /* author:    wreid */
     /* date:      20150214 */
-    TS2R[i6 << 2] = iv8[i6];
-    TS2R[1 + (i6 << 2)] = iv9[i6];
+    TS2R[i6 << 2] = iv10[i6];
+    TS2R[1 + (i6 << 2)] = iv11[i6];
   }
 
   TS2R[2] = 0.0;
@@ -235,7 +235,7 @@ void getPhiAndOmega(const emlrtStack *sp, const real_T uBDot[6], const real_T
   TS2R[10] = 1.0;
   TS2R[14] = kC->l6;
   for (i6 = 0; i6 < 4; i6++) {
-    TS2R[3 + (i6 << 2)] = iv6[i6];
+    TS2R[3 + (i6 << 2)] = iv8[i6];
   }
 
   /* TRDH Generates the homogeneous transformation matrix A using the  */
@@ -263,7 +263,7 @@ void getPhiAndOmega(const emlrtStack *sp, const real_T uBDot[6], const real_T
   dv4[10] = 1.0;
   dv4[14] = kC->B2PZOffset;
   for (i6 = 0; i6 < 4; i6++) {
-    dv4[3 + (i6 << 2)] = iv6[i6];
+    dv4[3 + (i6 << 2)] = iv8[i6];
   }
 
   for (i6 = 0; i6 < 4; i6++) {

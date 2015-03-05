@@ -34,8 +34,10 @@ betaMax = deg2rad(17);
 gammaMin = deg2rad(-5);
 gammaMax = deg2rad(73.7);
 
-beta = linspace(-pi,pi,100);
-gamma = linspace(-pi,pi,100);
+N = 40;
+
+beta = linspace(-pi,pi,N);
+gamma = linspace(-pi,pi,N);
 figure(1)
 axis equal
 hold on
@@ -54,10 +56,11 @@ for i = 1:length(beta)
     end
 end
 
+
 %Plot the extremum of the configuration space that is attributed to a
 %maximum beta joint angle. - Red = betaMin, Green = betaMax
 beta = [betaMin betaMax];
-gamma = linspace(gammaMin,gammaMax,500);
+gamma = linspace(gammaMin,gammaMax,N);
 for i = 1:length(beta)
     for j = 1:length(gamma)
         x = kC.l2+kC.l3*cos(-beta(i))+kC.l4*cos(kC.zeta)+kC.l5*cos(kC.zeta+gamma(j))-kC.l7;        
@@ -72,7 +75,7 @@ end
 
 %Plot the extremum of the configuration space that is attributed to a
 %maximum gamma joint angle. - Blue = gammaMin, Yellow = gammaMax
-beta = linspace(betaMin,betaMax,500);
+beta = linspace(betaMin,betaMax,N);
 gamma = [gammaMin gammaMax];
 for i = 1:length(beta)
     for j = 1:length(gamma)
@@ -146,9 +149,9 @@ title('Wheel Contact Point Config Space Study - (\alpha=0 rad)')
 % line([xMin xMax],[z z],'Color','r')
 
 
-alpha = 0;
-beta = betaMax-0.2;
-gamma = gammaMin+0.2;
+alpha = 0.118;
+beta = -0.5875;
+gamma = 1.3367;
 phi = 0;
 [TB2G,TP2B,TI2P,TJ2I,TO2J,TQ2O,TR2Q,TS2R,TW2S,TC2W] = generateTrMatrices([0 0 0],[alpha beta gamma phi],kC,1);
 

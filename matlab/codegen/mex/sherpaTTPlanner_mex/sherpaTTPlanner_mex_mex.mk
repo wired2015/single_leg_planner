@@ -21,6 +21,7 @@ SRC_FILES =  \
 	exp.c \
 	log.c \
 	asin.c \
+	fprintf.c \
 	eml_int_forloop_overflow_check.c \
 	sherpaTTIKVel.c \
 	validJointState.c \

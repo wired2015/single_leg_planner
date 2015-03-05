@@ -27,7 +27,7 @@
 <a name="16"><font color="#888888 "><i>   16   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&lt;stdio.h&gt;</font>
 <a name="17"><font color="#888888 "><i>   17   </i></font></a>
 <a name="18"><font color="#888888 "><i>   18   </i></font></a><font color="#117755"><i>/* Variable Definitions */</i></font>
-<a name="19"><font color="#888888 "><i>   19   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_nb_emlrtRSI">nb_emlrtRSI</a> = <b>{</b> 112, <font color="#1122ff">&quot;rk4&quot;</font>,
+<a name="19"><font color="#888888 "><i>   19   </i></font></a><font color="#112266"><b>static</b></font> emlrtRSInfo <a name="var_pb_emlrtRSI">pb_emlrtRSI</a> = <b>{</b> 112, <font color="#1122ff">&quot;rk4&quot;</font>,
 <a name="20"><font color="#888888 "><i>   20   </i></font></a>  <font color="#1122ff">&quot;/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m&quot;</font>
 <a name="21"><font color="#888888 "><i>   21   </i></font></a><b>}</b>;
 <a name="22"><font color="#888888 "><i>   22   </i></font></a>
@@ -218,7 +218,7 @@
 <a name="207"><font color="#888888 "><i>  207   </i></font></a>    b_alpha[1] = beta;
 <a name="208"><font color="#888888 "><i>  208   </i></font></a>    b_alpha[2] = b_gamma;
 <a name="209"><font color="#888888 "><i>  209   </i></font></a>    b_alpha[3] = 0.0;
-<a name="210"><font color="#888888 "><i>  210   </i></font></a>    st.site = &amp;<a href="#var_nb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_nb_emlrtRSI');" target="_self"><font color="#1122aa">nb_emlrtRSI</font></a>;
+<a name="210"><font color="#888888 "><i>  210   </i></font></a>    st.site = &amp;<a href="#var_pb_emlrtRSI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_pb_emlrtRSI');" target="_self"><font color="#1122aa">pb_emlrtRSI</font></a>;
 <a name="211"><font color="#888888 "><i>  211   </i></font></a>    <a href="getPhiAndOmega_c.html#fcn_getPhiAndOmega" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_getPhiAndOmega');" target="_self"><font color="#1122aa">getPhiAndOmega</font></a>(&amp;st, uBDot, b_alphaDot, b_alpha, kC, legNum, &amp;phi, &amp;omega);
 <a name="212"><font color="#888888 "><i>  212   </i></font></a>
 <a name="213"><font color="#888888 "><i>  213   </i></font></a>    <font color="#117755"><i>/*          %Check if phi is above threshold, if so then stop the leg and drive */</i></font>

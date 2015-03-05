@@ -18,7 +18,7 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo mb_emlrtRSI = { 30, "selectInput",
+static emlrtRSInfo ob_emlrtRSI = { 30, "selectInput",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/selectInput.m"
 };
 
@@ -73,7 +73,7 @@ void selectInput(const emlrtStack *sp, const real_T xNear[13], const real_T
       U[i9] = b_U[ixstart + 5 * i9];
     }
 
-    st.site = &mb_emlrtRSI;
+    st.site = &ob_emlrtRSI;
     rk4(&st, U, uBDot, xNear, jointLimits, kC, legNum, b_candStates, dv16);
     for (i9 = 0; i9 < 80; i9++) {
       candTransArrays[ixstart + 5 * i9] = dv16[i9];

@@ -15,15 +15,15 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo s_emlrtRSI = { 30, "getXStar",
+static emlrtRSInfo u_emlrtRSI = { 30, "getXStar",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"
 };
 
-static emlrtRSInfo t_emlrtRSI = { 32, "getXStar",
+static emlrtRSInfo v_emlrtRSI = { 32, "getXStar",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/getXStar.m"
 };
 
-static emlrtRSInfo u_emlrtRSI = { 15, "asin",
+static emlrtRSInfo w_emlrtRSI = { 15, "asin",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/asin.m" };
 
 /* Function Definitions */
@@ -68,9 +68,9 @@ real_T getXStar(const emlrtStack *sp, real_T z, real_T angle, boolean_T selector
   B = (((kC_l1 - kC_l4 * muDoubleScalarSin(kC_zeta)) - kC_l6) - kC_l8) - kC_r;
   if (!selector) {
     B = ((-z + B) - kC_l5 * muDoubleScalarSin(kC_zeta + angle)) / kC_l3;
-    st.site = &s_emlrtRSI;
+    st.site = &u_emlrtRSI;
     if ((B < -1.0) || (1.0 < B)) {
-      b_st.site = &u_emlrtRSI;
+      b_st.site = &w_emlrtRSI;
       b_eml_error(&b_st);
     }
 
@@ -78,9 +78,9 @@ real_T getXStar(const emlrtStack *sp, real_T z, real_T angle, boolean_T selector
       muDoubleScalarCos(kC_zeta + angle);
   } else {
     B = ((B - kC_l3 * muDoubleScalarSin(angle)) - z) / kC_l5;
-    st.site = &t_emlrtRSI;
+    st.site = &v_emlrtRSI;
     if ((B < -1.0) || (1.0 < B)) {
-      b_st.site = &u_emlrtRSI;
+      b_st.site = &w_emlrtRSI;
       b_eml_error(&b_st);
     }
 

@@ -12,6 +12,7 @@
 #include "randomStateGenerator.h"
 #include "sherpaTTIK.h"
 #include "eml_error.h"
+#include "fprintf.h"
 #include "asin.h"
 #include "sin.h"
 #include "log.h"
@@ -23,7 +24,11 @@ static emlrtRSInfo e_emlrtRSI = { 22, "sherpaTTIK",
   "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
 };
 
-static emlrtRSInfo f_emlrtRSI = { 14, "sqrt",
+static emlrtRSInfo f_emlrtRSI = { 54, "sherpaTTIK",
+  "/Users/fuji/Dropbox/phd/matlab/singleLegPlanning/single_leg_planner/matlab/kinematics/sherpaTTIK.m"
+};
+
+static emlrtRSInfo g_emlrtRSI = { 14, "sqrt",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" };
 
 /* Function Definitions */
@@ -68,7 +73,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   real_T kC_l6_im;
   real_T kC_l8_re;
   real_T kC_l8_im;
-  real_T re;
+  real_T b_gamma;
   real_T r;
   real_T kC_l4_re;
   real_T kC_l4_im;
@@ -125,7 +130,6 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   real_T c_kC_l7_re;
   real_T c_kC_l7_im;
   real_T ar;
-  real_T alpha;
   creal_T y;
   creal_T gammaRaw[2];
   emlrtStack st;
@@ -151,7 +155,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   st.site = &e_emlrtRSI;
   x = u[0] * u[0] + u[1] * u[1];
   if (x < 0.0) {
-    b_st.site = &f_emlrtRSI;
+    b_st.site = &g_emlrtRSI;
     eml_error(&b_st);
   }
 
@@ -253,7 +257,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc40.im;
   kC_l8_re = (kC_l8 + kC_r) * dc42.re;
   kC_l8_im = (kC_l8 + kC_r) * dc42.im;
-  re = 4.0 * (kC_l5 * kC_l5) * dc35.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc35.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc35.im;
   kC_l4_re = ((((((-kC_l4 + x * dc36.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc39.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -261,8 +265,8 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc36.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc39.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc41.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  beta = re * kC_l4_re - r * kC_l4_im;
-  r = re * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc43.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
@@ -352,17 +356,17 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc33.re;
   u_im = u[2] * u[2] * dc33.im;
   if (dc35.im == 0.0) {
-    re = dc35.re / 2.0;
+    b_gamma = dc35.re / 2.0;
     r = 0.0;
   } else if (dc35.re == 0.0) {
-    re = 0.0;
+    b_gamma = 0.0;
     r = dc35.im / 2.0;
   } else {
-    re = dc35.re / 2.0;
+    b_gamma = dc35.re / 2.0;
     r = dc35.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc36.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc36.im);
@@ -387,17 +391,17 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc46.re);
   c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc46.im);
   if (dc47.im == 0.0) {
-    re = dc47.re / 2.0;
+    b_gamma = dc47.re / 2.0;
     r = 0.0;
   } else if (dc47.re == 0.0) {
-    re = 0.0;
+    b_gamma = 0.0;
     r = dc47.im / 2.0;
   } else {
-    re = dc47.re / 2.0;
+    b_gamma = dc47.re / 2.0;
     r = dc47.im / 2.0;
   }
 
-  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (re + 0.5));
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_gamma + 0.5));
   r = 2.0 * (kC_l4 * kC_l7 * r);
   b_x_re = x * g_x.re;
   b_x_im = x * g_x.im;
@@ -466,32 +470,32 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      dc25.re = (ar + beta * u_im) / alpha;
-      dc25.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      dc25.re = (ar + b_gamma * u_im) / beta;
+      dc25.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      dc25.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      dc25.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      dc25.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      dc25.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      dc25.re = (beta * ar + u_im) / alpha;
-      dc25.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      dc25.re = (b_gamma * ar + u_im) / beta;
+      dc25.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
@@ -561,7 +565,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc41.im;
   kC_l8_re = (kC_l8 + kC_r) * dc43.re;
   kC_l8_im = (kC_l8 + kC_r) * dc43.im;
-  re = 4.0 * (kC_l5 * kC_l5) * dc36.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc36.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc36.im;
   kC_l4_re = ((((((-kC_l4 + x * dc37.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc40.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -569,8 +573,8 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc37.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc40.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc42.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  beta = re * kC_l4_re - r * kC_l4_im;
-  r = re * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc44.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
@@ -660,17 +664,17 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc34.re;
   u_im = u[2] * u[2] * dc34.im;
   if (dc36.im == 0.0) {
-    re = dc36.re / 2.0;
+    b_gamma = dc36.re / 2.0;
     r = 0.0;
   } else if (dc36.re == 0.0) {
-    re = 0.0;
+    b_gamma = 0.0;
     r = dc36.im / 2.0;
   } else {
-    re = dc36.re / 2.0;
+    b_gamma = dc36.re / 2.0;
     r = dc36.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc37.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc37.im);
@@ -773,38 +777,38 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      dc26.re = (ar + beta * u_im) / alpha;
-      dc26.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      dc26.re = (ar + b_gamma * u_im) / beta;
+      dc26.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      dc26.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      dc26.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      dc26.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      dc26.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      dc26.re = (beta * ar + u_im) / alpha;
-      dc26.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      dc26.re = (b_gamma * ar + u_im) / beta;
+      dc26.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
   b_log(&dc26);
   gammaRaw[0].re = -kC_zeta - (dc25.re * 0.0 - dc25.im);
-  re = dc26.re * 0.0 - dc26.im;
+  gammaRaw[1].re = -kC_zeta - (dc26.re * 0.0 - dc26.im);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
   b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * muDoubleScalarSin(kC_zeta)
@@ -942,7 +946,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc40.im;
   kC_l8_re = (kC_l8 + kC_r) * dc42.re;
   kC_l8_im = (kC_l8 + kC_r) * dc42.im;
-  beta = 4.0 * (kC_l5 * kC_l5) * dc35.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc35.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc35.im;
   kC_l4_re = ((((((-kC_l4 + x * dc36.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc39.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -950,14 +954,14 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc36.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc39.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc41.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  alpha = beta * kC_l4_re - r * kC_l4_im;
-  r = beta * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc43.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
     dc43.im;
-  dc34.re = dc34.re * (d_a * d_a) + (alpha * kC_l2_re - r * kC_l2_im);
-  dc34.im = dc34.im * (d_a * d_a) + (alpha * kC_l2_im + r * kC_l2_re);
+  dc34.re = dc34.re * (d_a * d_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc34.im = dc34.im * (d_a * d_a) + (beta * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc34);
   dc35.re = kC_zeta * 2.0 * 0.0;
   dc35.im = kC_zeta * 2.0;
@@ -1017,17 +1021,17 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc33.re;
   u_im = u[2] * u[2] * dc33.im;
   if (dc35.im == 0.0) {
-    beta = dc35.re / 2.0;
+    b_gamma = dc35.re / 2.0;
     r = 0.0;
   } else if (dc35.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc35.im / 2.0;
   } else {
-    beta = dc35.re / 2.0;
+    b_gamma = dc35.re / 2.0;
     r = dc35.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc36.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc36.im);
@@ -1052,20 +1056,20 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   c_kC_l4_re = e_x * e_x * (kC_l4 * kC_l4 * dc46.re);
   c_kC_l4_im = e_x * e_x * (kC_l4 * kC_l4 * dc46.im);
   if (dc47.im == 0.0) {
-    beta = dc47.re / 2.0;
+    b_gamma = dc47.re / 2.0;
     r = 0.0;
   } else if (dc47.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc47.im / 2.0;
   } else {
-    beta = dc47.re / 2.0;
+    b_gamma = dc47.re / 2.0;
     r = dc47.im / 2.0;
   }
 
-  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_gamma + 0.5));
   r = 2.0 * (kC_l4 * kC_l7 * r);
-  alpha = x * f_x.re;
-  beta = x * f_x.im;
+  beta = x * f_x.re;
+  b_gamma = x * f_x.im;
   d_kC_l2_re = kC_l2 * i_x.re;
   d_kC_l2_im = kC_l2 * i_x.im;
   c_kC_l7_re = kC_l7 * k_x.re;
@@ -1100,10 +1104,10 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     * 0.0)) + kC_l4 * u[2] * muDoubleScalarSin(2.0 * kC_zeta)) + (b_kC_l4_re +
     b_kC_l4_im * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r *
              0.0)) + kC_l2 * kC_l4 * ((x_re + x_im * 0.0) + 1.0));
-  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (beta * 0.0 - b_gamma)) + u[2] *
     g_x.re) - kC_l1 * h_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     j_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
-  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * g_x.im) -
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (beta + b_gamma * 0.0)) + u[2] * g_x.im) -
     kC_l1 * h_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * j_x.im) -
                       (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) * y.im);
   if (r == 0.0) {
@@ -1130,32 +1134,32 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      y.re = (ar + beta * u_im) / alpha;
-      y.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      y.re = (ar + b_gamma * u_im) / beta;
+      y.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      y.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      y.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      y.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      y.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      y.re = (beta * ar + u_im) / alpha;
-      y.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      y.re = (b_gamma * ar + u_im) / beta;
+      y.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
@@ -1248,7 +1252,7 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc40.im;
   kC_l8_re = (kC_l8 + kC_r) * dc42.re;
   kC_l8_im = (kC_l8 + kC_r) * dc42.im;
-  beta = 4.0 * (kC_l5 * kC_l5) * dc35.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc35.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc35.im;
   kC_l4_re = ((((((-kC_l4 + x * dc36.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc39.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -1256,14 +1260,14 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc36.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc39.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc41.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  alpha = beta * kC_l4_re - r * kC_l4_im;
-  r = beta * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc43.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
     dc43.im;
-  dc34.re = dc34.re * (b_a * b_a) + (alpha * kC_l2_re - r * kC_l2_im);
-  dc34.im = dc34.im * (b_a * b_a) + (alpha * kC_l2_im + r * kC_l2_re);
+  dc34.re = dc34.re * (b_a * b_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc34.im = dc34.im * (b_a * b_a) + (beta * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc34);
   dc35.re = kC_zeta * 2.0 * 0.0;
   dc35.im = kC_zeta * 2.0;
@@ -1347,17 +1351,17 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc33.re;
   u_im = u[2] * u[2] * dc33.im;
   if (dc35.im == 0.0) {
-    beta = dc35.re / 2.0;
+    b_gamma = dc35.re / 2.0;
     r = 0.0;
   } else if (dc35.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc35.im / 2.0;
   } else {
-    beta = dc35.re / 2.0;
+    b_gamma = dc35.re / 2.0;
     r = dc35.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc36.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc36.im);
@@ -1382,20 +1386,20 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc46.re);
   c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc46.im);
   if (dc47.im == 0.0) {
-    beta = dc47.re / 2.0;
+    b_gamma = dc47.re / 2.0;
     r = 0.0;
   } else if (dc47.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc47.im / 2.0;
   } else {
-    beta = dc47.re / 2.0;
+    b_gamma = dc47.re / 2.0;
     r = dc47.im / 2.0;
   }
 
-  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_gamma + 0.5));
   r = 2.0 * (kC_l4 * kC_l7 * r);
-  alpha = x * g_x.re;
-  beta = x * g_x.im;
+  beta = x * g_x.re;
+  b_gamma = x * g_x.im;
   d_kC_l2_re = kC_l2 * j_x.re;
   d_kC_l2_im = kC_l2 * j_x.im;
   c_kC_l7_re = kC_l7 * dc48.re;
@@ -1430,10 +1434,10 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     * 0.0)) + kC_l4 * u[2] * muDoubleScalarSin(2.0 * kC_zeta)) + (b_kC_l4_re +
     b_kC_l4_im * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r *
              0.0)) + kC_l2 * kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
-  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (beta * 0.0 - b_gamma)) + u[2] *
     h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc49.re);
-  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * h_x.im) -
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (beta + b_gamma * 0.0)) + u[2] * h_x.im) -
     kC_l1 * i_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * k_x.im) -
                       (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) *
                      dc49.im);
@@ -1461,39 +1465,39 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      dc25.re = (ar + beta * u_im) / alpha;
-      dc25.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      dc25.re = (ar + b_gamma * u_im) / beta;
+      dc25.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      dc25.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      dc25.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      dc25.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      dc25.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      dc25.re = (beta * ar + u_im) / alpha;
-      dc25.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      dc25.re = (b_gamma * ar + u_im) / beta;
+      dc25.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
   b_log(&dc25);
-  beta = dc25.re;
+  b_gamma = dc25.re;
   dc25.re = dc25.re * 0.0 - dc25.im;
-  dc25.im = beta + dc25.im * 0.0;
+  dc25.im = b_gamma + dc25.im * 0.0;
   b_sin(&dc25);
   kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
               muDoubleScalarSin(kC_zeta)) - kC_l5 * dc25.re;
@@ -1525,25 +1529,30 @@ void b_sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   }
 
   b_asin(&dc26);
-  alpha = muDoubleScalarAtan2(u[1], u[0]);
+  r = muDoubleScalarAtan2(u[1], u[0]);
 
   /* beta = betaRaw(1); */
   /* gamma = gammaRaw(1); */
-  if ((alpha >= jointLimits[0]) && (alpha <= jointLimits[1]) && (-dc25.re >=
+  if ((r >= jointLimits[0]) && (r <= jointLimits[1]) && (-dc25.re >=
        jointLimits[2]) && (-dc25.re <= jointLimits[3]) && (gammaRaw[0].re >=
        jointLimits[4]) && (gammaRaw[0].re <= jointLimits[5])) {
     beta = -dc25.re;
-    r = gammaRaw[0].re;
-
-    /* elseif alpha >= alphaMin && alpha <= alphaMax && betaRaw(2) >= betaMin && betaRaw(2) <= betaMax && gammaRaw(2) >= gammaMin && gammaRaw(2) <= gammaMax */
-  } else {
+    b_gamma = gammaRaw[0].re;
+  } else if ((r >= jointLimits[0]) && (r <= jointLimits[1]) && (-dc26.re >=
+              jointLimits[2]) && (-dc26.re <= jointLimits[3]) && (gammaRaw[1].re
+              >= jointLimits[4]) && (gammaRaw[1].re <= jointLimits[5])) {
     beta = -dc26.re;
-    r = -kC_zeta - re;
+    b_gamma = gammaRaw[1].re;
+  } else {
+    st.site = &f_emlrtRSI;
+    b_fprintf(&st);
+    beta = -dc25.re;
+    b_gamma = gammaRaw[0].re;
   }
 
-  q[0] = alpha;
+  q[0] = r;
   q[1] = beta;
-  q[2] = r;
+  q[2] = b_gamma;
 }
 
 void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
@@ -1587,7 +1596,7 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   real_T kC_l6_im;
   real_T kC_l8_re;
   real_T kC_l8_im;
-  real_T re;
+  real_T b_gamma;
   real_T r;
   real_T kC_l4_re;
   real_T kC_l4_im;
@@ -1644,7 +1653,6 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   real_T c_kC_l7_re;
   real_T c_kC_l7_im;
   real_T ar;
-  real_T alpha;
   creal_T y;
   creal_T gammaRaw[2];
   emlrtStack st;
@@ -1670,7 +1678,7 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   st.site = &e_emlrtRSI;
   x = u[0] * u[0] + u[1] * u[1];
   if (x < 0.0) {
-    b_st.site = &f_emlrtRSI;
+    b_st.site = &g_emlrtRSI;
     eml_error(&b_st);
   }
 
@@ -1772,7 +1780,7 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc15.im;
   kC_l8_re = (kC_l8 + kC_r) * dc17.re;
   kC_l8_im = (kC_l8 + kC_r) * dc17.im;
-  re = 4.0 * (kC_l5 * kC_l5) * dc10.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc10.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc10.im;
   kC_l4_re = ((((((-kC_l4 + x * dc11.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc14.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -1780,8 +1788,8 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc11.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc14.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc16.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  beta = re * kC_l4_re - r * kC_l4_im;
-  r = re * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc18.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
@@ -1871,17 +1879,17 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc8.re;
   u_im = u[2] * u[2] * dc8.im;
   if (dc10.im == 0.0) {
-    re = dc10.re / 2.0;
+    b_gamma = dc10.re / 2.0;
     r = 0.0;
   } else if (dc10.re == 0.0) {
-    re = 0.0;
+    b_gamma = 0.0;
     r = dc10.im / 2.0;
   } else {
-    re = dc10.re / 2.0;
+    b_gamma = dc10.re / 2.0;
     r = dc10.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc11.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc11.im);
@@ -1906,17 +1914,17 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc21.re);
   c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc21.im);
   if (dc22.im == 0.0) {
-    re = dc22.re / 2.0;
+    b_gamma = dc22.re / 2.0;
     r = 0.0;
   } else if (dc22.re == 0.0) {
-    re = 0.0;
+    b_gamma = 0.0;
     r = dc22.im / 2.0;
   } else {
-    re = dc22.re / 2.0;
+    b_gamma = dc22.re / 2.0;
     r = dc22.im / 2.0;
   }
 
-  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (re + 0.5));
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_gamma + 0.5));
   r = 2.0 * (kC_l4 * kC_l7 * r);
   b_x_re = x * g_x.re;
   b_x_im = x * g_x.im;
@@ -1985,32 +1993,32 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      dc0.re = (ar + beta * u_im) / alpha;
-      dc0.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      dc0.re = (ar + b_gamma * u_im) / beta;
+      dc0.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      dc0.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      dc0.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      dc0.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      dc0.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      dc0.re = (beta * ar + u_im) / alpha;
-      dc0.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      dc0.re = (b_gamma * ar + u_im) / beta;
+      dc0.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
@@ -2080,7 +2088,7 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc16.im;
   kC_l8_re = (kC_l8 + kC_r) * dc18.re;
   kC_l8_im = (kC_l8 + kC_r) * dc18.im;
-  re = 4.0 * (kC_l5 * kC_l5) * dc11.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc11.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc11.im;
   kC_l4_re = ((((((-kC_l4 + x * dc12.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc15.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -2088,8 +2096,8 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc12.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc15.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc17.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  beta = re * kC_l4_re - r * kC_l4_im;
-  r = re * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc19.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
@@ -2179,17 +2187,17 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc9.re;
   u_im = u[2] * u[2] * dc9.im;
   if (dc11.im == 0.0) {
-    re = dc11.re / 2.0;
+    b_gamma = dc11.re / 2.0;
     r = 0.0;
   } else if (dc11.re == 0.0) {
-    re = 0.0;
+    b_gamma = 0.0;
     r = dc11.im / 2.0;
   } else {
-    re = dc11.re / 2.0;
+    b_gamma = dc11.re / 2.0;
     r = dc11.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (re + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc12.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc12.im);
@@ -2292,38 +2300,38 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      dc1.re = (ar + beta * u_im) / alpha;
-      dc1.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      dc1.re = (ar + b_gamma * u_im) / beta;
+      dc1.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      dc1.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      dc1.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      dc1.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      dc1.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      dc1.re = (beta * ar + u_im) / alpha;
-      dc1.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      dc1.re = (b_gamma * ar + u_im) / beta;
+      dc1.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
   b_log(&dc1);
   gammaRaw[0].re = -kC_zeta - (dc0.re * 0.0 - dc0.im);
-  re = dc1.re * 0.0 - dc1.im;
+  gammaRaw[1].re = -kC_zeta - (dc1.re * 0.0 - dc1.im);
   a = kC_l8 + kC_r;
   b_a = kC_l8 + kC_r;
   b_a = ((((((((((((((((((((((((kC_l1 * kC_l1 - 2.0 * muDoubleScalarSin(kC_zeta)
@@ -2461,7 +2469,7 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc15.im;
   kC_l8_re = (kC_l8 + kC_r) * dc17.re;
   kC_l8_im = (kC_l8 + kC_r) * dc17.im;
-  beta = 4.0 * (kC_l5 * kC_l5) * dc10.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc10.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc10.im;
   kC_l4_re = ((((((-kC_l4 + x * dc11.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc14.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -2469,14 +2477,14 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc11.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc14.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc16.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  alpha = beta * kC_l4_re - r * kC_l4_im;
-  r = beta * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc18.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
     dc18.im;
-  dc9.re = dc9.re * (d_a * d_a) + (alpha * kC_l2_re - r * kC_l2_im);
-  dc9.im = dc9.im * (d_a * d_a) + (alpha * kC_l2_im + r * kC_l2_re);
+  dc9.re = dc9.re * (d_a * d_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc9.im = dc9.im * (d_a * d_a) + (beta * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc9);
   dc10.re = kC_zeta * 2.0 * 0.0;
   dc10.im = kC_zeta * 2.0;
@@ -2536,17 +2544,17 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc8.re;
   u_im = u[2] * u[2] * dc8.im;
   if (dc10.im == 0.0) {
-    beta = dc10.re / 2.0;
+    b_gamma = dc10.re / 2.0;
     r = 0.0;
   } else if (dc10.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc10.im / 2.0;
   } else {
-    beta = dc10.re / 2.0;
+    b_gamma = dc10.re / 2.0;
     r = dc10.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc11.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc11.im);
@@ -2571,20 +2579,20 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   c_kC_l4_re = e_x * e_x * (kC_l4 * kC_l4 * dc21.re);
   c_kC_l4_im = e_x * e_x * (kC_l4 * kC_l4 * dc21.im);
   if (dc22.im == 0.0) {
-    beta = dc22.re / 2.0;
+    b_gamma = dc22.re / 2.0;
     r = 0.0;
   } else if (dc22.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc22.im / 2.0;
   } else {
-    beta = dc22.re / 2.0;
+    b_gamma = dc22.re / 2.0;
     r = dc22.im / 2.0;
   }
 
-  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_gamma + 0.5));
   r = 2.0 * (kC_l4 * kC_l7 * r);
-  alpha = x * f_x.re;
-  beta = x * f_x.im;
+  beta = x * f_x.re;
+  b_gamma = x * f_x.im;
   d_kC_l2_re = kC_l2 * i_x.re;
   d_kC_l2_im = kC_l2 * i_x.im;
   c_kC_l7_re = kC_l7 * k_x.re;
@@ -2619,10 +2627,10 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     * 0.0)) + kC_l4 * u[2] * muDoubleScalarSin(2.0 * kC_zeta)) + (b_kC_l4_re +
     b_kC_l4_im * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r *
              0.0)) + kC_l2 * kC_l4 * ((x_re + x_im * 0.0) + 1.0));
-  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (beta * 0.0 - b_gamma)) + u[2] *
     g_x.re) - kC_l1 * h_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     j_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * y.re);
-  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * g_x.im) -
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (beta + b_gamma * 0.0)) + u[2] * g_x.im) -
     kC_l1 * h_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * j_x.im) -
                       (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) * y.im);
   if (r == 0.0) {
@@ -2649,32 +2657,32 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      y.re = (ar + beta * u_im) / alpha;
-      y.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      y.re = (ar + b_gamma * u_im) / beta;
+      y.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      y.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      y.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      y.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      y.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      y.re = (beta * ar + u_im) / alpha;
-      y.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      y.re = (b_gamma * ar + u_im) / beta;
+      y.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
@@ -2767,7 +2775,7 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l6_im = kC_l6 * dc15.im;
   kC_l8_re = (kC_l8 + kC_r) * dc17.re;
   kC_l8_im = (kC_l8 + kC_r) * dc17.im;
-  beta = 4.0 * (kC_l5 * kC_l5) * dc10.re;
+  b_gamma = 4.0 * (kC_l5 * kC_l5) * dc10.re;
   r = 4.0 * (kC_l5 * kC_l5) * dc10.im;
   kC_l4_re = ((((((-kC_l4 + x * dc11.re) + (u_re * 0.0 - u_im)) - (kC_l1_re *
     0.0 - kC_l1_im)) - kC_l2 * dc14.re) + (kC_l6_re * 0.0 - kC_l6_im)) + kC_l7 *
@@ -2775,14 +2783,14 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   kC_l4_im = (((((x * dc11.im + (u_re + u_im * 0.0)) - (kC_l1_re + kC_l1_im *
     0.0)) - kC_l2 * dc14.im) + (kC_l6_re + kC_l6_im * 0.0)) + kC_l7 * dc16.im) +
     (kC_l8_re + kC_l8_im * 0.0);
-  alpha = beta * kC_l4_re - r * kC_l4_im;
-  r = beta * kC_l4_im + r * kC_l4_re;
+  beta = b_gamma * kC_l4_re - r * kC_l4_im;
+  r = b_gamma * kC_l4_im + r * kC_l4_re;
   kC_l2_re = ((((((kC_l2 - kC_l1 * 0.0) + kC_l6 * 0.0) - kC_l7) + (kC_l8 + kC_r)
                 * 0.0) - x) + u[2] * 0.0) + kC_l4 * dc18.re;
   kC_l2_im = ((((0.0 - kC_l1) + kC_l6) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
     dc18.im;
-  dc9.re = dc9.re * (b_a * b_a) + (alpha * kC_l2_re - r * kC_l2_im);
-  dc9.im = dc9.im * (b_a * b_a) + (alpha * kC_l2_im + r * kC_l2_re);
+  dc9.re = dc9.re * (b_a * b_a) + (beta * kC_l2_re - r * kC_l2_im);
+  dc9.im = dc9.im * (b_a * b_a) + (beta * kC_l2_im + r * kC_l2_re);
   eml_scalar_sqrt(&dc9);
   dc10.re = kC_zeta * 2.0 * 0.0;
   dc10.im = kC_zeta * 2.0;
@@ -2866,17 +2874,17 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   u_re = u[2] * u[2] * dc8.re;
   u_im = u[2] * u[2] * dc8.im;
   if (dc10.im == 0.0) {
-    beta = dc10.re / 2.0;
+    b_gamma = dc10.re / 2.0;
     r = 0.0;
   } else if (dc10.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc10.im / 2.0;
   } else {
-    beta = dc10.re / 2.0;
+    b_gamma = dc10.re / 2.0;
     r = dc10.im / 2.0;
   }
 
-  kC_l4_re = 2.0 * (kC_l4 * x * (beta + 0.5));
+  kC_l4_re = 2.0 * (kC_l4 * x * (b_gamma + 0.5));
   kC_l4_im = 2.0 * (kC_l4 * x * r);
   b_kC_l1_re = 2.0 * (kC_l1 * kC_l6 * dc11.re);
   b_kC_l1_im = 2.0 * (kC_l1 * kC_l6 * dc11.im);
@@ -2901,20 +2909,20 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   c_kC_l4_re = c_x * c_x * (kC_l4 * kC_l4 * dc21.re);
   c_kC_l4_im = c_x * c_x * (kC_l4 * kC_l4 * dc21.im);
   if (dc22.im == 0.0) {
-    beta = dc22.re / 2.0;
+    b_gamma = dc22.re / 2.0;
     r = 0.0;
   } else if (dc22.re == 0.0) {
-    beta = 0.0;
+    b_gamma = 0.0;
     r = dc22.im / 2.0;
   } else {
-    beta = dc22.re / 2.0;
+    b_gamma = dc22.re / 2.0;
     r = dc22.im / 2.0;
   }
 
-  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (beta + 0.5));
+  d_kC_l4_re = 2.0 * (kC_l4 * kC_l7 * (b_gamma + 0.5));
   r = 2.0 * (kC_l4 * kC_l7 * r);
-  alpha = x * g_x.re;
-  beta = x * g_x.im;
+  beta = x * g_x.re;
+  b_gamma = x * g_x.im;
   d_kC_l2_re = kC_l2 * j_x.re;
   d_kC_l2_im = kC_l2 * j_x.im;
   c_kC_l7_re = kC_l7 * dc23.re;
@@ -2949,10 +2957,10 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     * 0.0)) + kC_l4 * u[2] * muDoubleScalarSin(2.0 * kC_zeta)) + (b_kC_l4_re +
     b_kC_l4_im * 0.0)) + (c_kC_l4_re + c_kC_l4_im * 0.0)) - (d_kC_l4_re + r *
              0.0)) + kC_l2 * kC_l4 * ((f_x.re + f_x.im * 0.0) + 1.0));
-  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (alpha * 0.0 - beta)) + u[2] *
+  u_re = 2.0 * kC_l5 * (((((((kC_l4 * 0.0 - (beta * 0.0 - b_gamma)) + u[2] *
     h_x.re) - kC_l1 * i_x.re) + (d_kC_l2_re * 0.0 - d_kC_l2_im)) + kC_l6 *
     k_x.re) - (c_kC_l7_re * 0.0 - c_kC_l7_im)) + (kC_l8 + kC_r) * dc24.re);
-  r = 2.0 * kC_l5 * (((((((kC_l4 - (alpha + beta * 0.0)) + u[2] * h_x.im) -
+  r = 2.0 * kC_l5 * (((((((kC_l4 - (beta + b_gamma * 0.0)) + u[2] * h_x.im) -
     kC_l1 * i_x.im) + (d_kC_l2_re + d_kC_l2_im * 0.0)) + kC_l6 * k_x.im) -
                       (c_kC_l7_re + c_kC_l7_im * 0.0)) + (kC_l8 + kC_r) *
                      dc24.im);
@@ -2980,39 +2988,39 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
     }
   } else {
     d_kC_l4_re = muDoubleScalarAbs(u_re);
-    alpha = muDoubleScalarAbs(r);
-    if (d_kC_l4_re > alpha) {
-      beta = r / u_re;
-      alpha = u_re + beta * r;
-      dc0.re = (ar + beta * u_im) / alpha;
-      dc0.im = (u_im - beta * ar) / alpha;
-    } else if (alpha == d_kC_l4_re) {
+    beta = muDoubleScalarAbs(r);
+    if (d_kC_l4_re > beta) {
+      b_gamma = r / u_re;
+      beta = u_re + b_gamma * r;
+      dc0.re = (ar + b_gamma * u_im) / beta;
+      dc0.im = (u_im - b_gamma * ar) / beta;
+    } else if (beta == d_kC_l4_re) {
       if (u_re > 0.0) {
+        b_gamma = 0.5;
+      } else {
+        b_gamma = -0.5;
+      }
+
+      if (r > 0.0) {
         beta = 0.5;
       } else {
         beta = -0.5;
       }
 
-      if (r > 0.0) {
-        alpha = 0.5;
-      } else {
-        alpha = -0.5;
-      }
-
-      dc0.re = (ar * beta + u_im * alpha) / d_kC_l4_re;
-      dc0.im = (u_im * beta - ar * alpha) / d_kC_l4_re;
+      dc0.re = (ar * b_gamma + u_im * beta) / d_kC_l4_re;
+      dc0.im = (u_im * b_gamma - ar * beta) / d_kC_l4_re;
     } else {
-      beta = u_re / r;
-      alpha = r + beta * u_re;
-      dc0.re = (beta * ar + u_im) / alpha;
-      dc0.im = (beta * u_im - ar) / alpha;
+      b_gamma = u_re / r;
+      beta = r + b_gamma * u_re;
+      dc0.re = (b_gamma * ar + u_im) / beta;
+      dc0.im = (b_gamma * u_im - ar) / beta;
     }
   }
 
   b_log(&dc0);
-  beta = dc0.re;
+  b_gamma = dc0.re;
   dc0.re = dc0.re * 0.0 - dc0.im;
-  dc0.im = beta + dc0.im * 0.0;
+  dc0.im = b_gamma + dc0.im * 0.0;
   b_sin(&dc0);
   kC_l6_re = ((((kC_l6 - kC_l1) + (kC_l8 + kC_r)) + u[2]) + kC_l4 *
               muDoubleScalarSin(kC_zeta)) - kC_l5 * dc0.re;
@@ -3044,25 +3052,30 @@ void sherpaTTIK(const emlrtStack *sp, const real_T u[3], real_T kC_l1, real_T
   }
 
   b_asin(&dc1);
-  alpha = muDoubleScalarAtan2(u[1], u[0]);
+  r = muDoubleScalarAtan2(u[1], u[0]);
 
   /* beta = betaRaw(1); */
   /* gamma = gammaRaw(1); */
-  if ((alpha >= jointLimits[0]) && (alpha <= jointLimits[1]) && (-dc0.re >=
-       jointLimits[2]) && (-dc0.re <= jointLimits[3]) && (gammaRaw[0].re >=
-       jointLimits[4]) && (gammaRaw[0].re <= jointLimits[5])) {
+  if ((r >= jointLimits[0]) && (r <= jointLimits[1]) && (-dc0.re >= jointLimits
+       [2]) && (-dc0.re <= jointLimits[3]) && (gammaRaw[0].re >= jointLimits[4])
+      && (gammaRaw[0].re <= jointLimits[5])) {
     beta = -dc0.re;
-    r = gammaRaw[0].re;
-
-    /* elseif alpha >= alphaMin && alpha <= alphaMax && betaRaw(2) >= betaMin && betaRaw(2) <= betaMax && gammaRaw(2) >= gammaMin && gammaRaw(2) <= gammaMax */
-  } else {
+    b_gamma = gammaRaw[0].re;
+  } else if ((r >= jointLimits[0]) && (r <= jointLimits[1]) && (-dc1.re >=
+              jointLimits[2]) && (-dc1.re <= jointLimits[3]) && (gammaRaw[1].re >=
+              jointLimits[4]) && (gammaRaw[1].re <= jointLimits[5])) {
     beta = -dc1.re;
-    r = -kC_zeta - re;
+    b_gamma = gammaRaw[1].re;
+  } else {
+    st.site = &f_emlrtRSI;
+    b_fprintf(&st);
+    beta = -dc0.re;
+    b_gamma = gammaRaw[0].re;
   }
 
-  q[0] = alpha;
+  q[0] = r;
   q[1] = beta;
-  q[2] = r;
+  q[2] = b_gamma;
 }
 
 /* End of code generation (sherpaTTIK.c) */

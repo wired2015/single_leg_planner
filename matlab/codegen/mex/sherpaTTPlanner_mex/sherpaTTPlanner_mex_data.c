@@ -15,96 +15,96 @@
 
 /* Variable Definitions */
 const volatile char_T *emlrtBreakCheckR2012bFlagVar;
-emlrtRSInfo g_emlrtRSI = { 37, "randomState",
+emlrtRSInfo i_emlrtRSI = { 37, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo h_emlrtRSI = { 45, "randomState",
+emlrtRSInfo j_emlrtRSI = { 45, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo i_emlrtRSI = { 46, "randomState",
+emlrtRSInfo k_emlrtRSI = { 46, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo j_emlrtRSI = { 48, "randomState",
+emlrtRSInfo l_emlrtRSI = { 48, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo k_emlrtRSI = { 49, "randomState",
+emlrtRSInfo m_emlrtRSI = { 49, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo l_emlrtRSI = { 51, "randomState",
+emlrtRSInfo n_emlrtRSI = { 51, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo m_emlrtRSI = { 52, "randomState",
+emlrtRSInfo o_emlrtRSI = { 52, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo n_emlrtRSI = { 59, "randomState",
+emlrtRSInfo p_emlrtRSI = { 59, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo o_emlrtRSI = { 62, "randomState",
+emlrtRSInfo q_emlrtRSI = { 62, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo p_emlrtRSI = { 68, "randomState",
+emlrtRSInfo r_emlrtRSI = { 68, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo q_emlrtRSI = { 69, "randomState",
+emlrtRSInfo s_emlrtRSI = { 69, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo r_emlrtRSI = { 70, "randomState",
+emlrtRSInfo t_emlrtRSI = { 70, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo eb_emlrtRSI = { 29, "nearestNeighbour",
+emlrtRSInfo gb_emlrtRSI = { 29, "nearestNeighbour",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/nearestNeighbour.m"
 };
 
-emlrtRSInfo fb_emlrtRSI = { 18, "min",
+emlrtRSInfo hb_emlrtRSI = { 18, "min",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/datafun/min.m" };
 
-emlrtRSInfo gb_emlrtRSI = { 15, "eml_min_or_max",
+emlrtRSInfo ib_emlrtRSI = { 15, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-emlrtRSInfo hb_emlrtRSI = { 96, "eml_min_or_max",
+emlrtRSInfo jb_emlrtRSI = { 96, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-emlrtRSInfo ib_emlrtRSI = { 229, "eml_min_or_max",
+emlrtRSInfo kb_emlrtRSI = { 229, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-emlrtRSInfo jb_emlrtRSI = { 202, "eml_min_or_max",
+emlrtRSInfo lb_emlrtRSI = { 202, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-emlrtRSInfo kb_emlrtRSI = { 20, "eml_int_forloop_overflow_check",
+emlrtRSInfo mb_emlrtRSI = { 20, "eml_int_forloop_overflow_check",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m"
 };
 
-emlrtRSInfo ob_emlrtRSI = { 21, "colon",
+emlrtRSInfo qb_emlrtRSI = { 21, "colon",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/colon.m" };
 
-emlrtRSInfo pb_emlrtRSI = { 79, "colon",
+emlrtRSInfo rb_emlrtRSI = { 79, "colon",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/colon.m" };
 
-emlrtMCInfo emlrtMCI = { 56, 9, "randomState",
+emlrtMCInfo b_emlrtMCI = { 56, 9, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtMCInfo b_emlrtMCI = { 41, 9, "eml_min_or_max",
+emlrtMCInfo c_emlrtMCI = { 41, 9, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-emlrtMCInfo c_emlrtMCI = { 38, 19, "eml_min_or_max",
+emlrtMCInfo d_emlrtMCI = { 38, 19, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
@@ -132,15 +132,15 @@ emlrtBCInfo m_emlrtBCI = { -1, -1, 26, 9, "d", "nearestNeighbour",
   0 };
 
 sherpaTTPlanner_mexStackData *c_sherpaTTPlanner_mexStackDataL;
-emlrtRSInfo jc_emlrtRSI = { 56, "randomState",
+emlrtRSInfo mc_emlrtRSI = { 56, "randomState",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/randomState.m"
 };
 
-emlrtRSInfo lc_emlrtRSI = { 38, "eml_min_or_max",
+emlrtRSInfo oc_emlrtRSI = { 38, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 
-emlrtRSInfo nc_emlrtRSI = { 41, "eml_min_or_max",
+emlrtRSInfo qc_emlrtRSI = { 41, "eml_min_or_max",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/eml/eml_min_or_max.m"
 };
 

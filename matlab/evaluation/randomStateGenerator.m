@@ -1,6 +1,26 @@
-function states = randomStateGenerator(NUM_POINTS,jointLimits,kC,panHeight,legNum)
+%RANDOMSTATEGENERATOR Generates N number of random states that are valid in
+%the Sherpa_TT leg's configuration space.
+%
+%Inputs:
+%-N: The number of random states to be generated.
+%-jointLimits: A 2x10 array of joint angular limits and angular positions.
+%-kC: A structure containing the kinematic constants of the Sherpa TT leg.
+%-panHeight: The height of the pan coordinate frame relative to the the
+%wheel contact point.
+%-legNum: The leg identifier.
+%
+%Outputs:
+%-states: A Nx6 array. Each row of the array describes a single state. A
+%state has the structure [x y z xDot yDot zDot]. The state coordinates are
+%realtive to the body frame.
+%
+%randomStateGenerator.m
+%author: wreid
+%date: 20150305
 
-    states = zeros(NUM_POINTS,6);
+function states = randomStateGenerator(N,jointLimits,kC,panHeight,legNum)
+
+    states = zeros(N,6);
     
     cartesianLimits = zeros(1,4);
     betaMin = jointLimits(1,2);
@@ -16,7 +36,7 @@ function states = randomStateGenerator(NUM_POINTS,jointLimits,kC,panHeight,legNu
     cartesianLimits(3) = u3(3);
     cartesianLimits(4) = u4(3);
 
-    for i = 1:NUM_POINTS
+    for i = 1:N
         states(i,:) = [randomPoint(jointLimits,cartesianLimits,panHeight,kC,legNum) 0 0 0];
     end
     

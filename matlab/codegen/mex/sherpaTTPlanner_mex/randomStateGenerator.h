@@ -21,8 +21,8 @@
 #include "sherpaTTPlanner_mex_types.h"
 
 /* Function Declarations */
-extern void randomStateGenerator(const emlrtStack *sp, int32_T NUM_POINTS, const
-  real_T jointLimits[20], const struct0_T *kC, real_T panHeight, int32_T legNum,
+extern void randomStateGenerator(const emlrtStack *sp, int32_T N, const real_T
+  jointLimits[20], const struct0_T *kC, real_T panHeight, int32_T legNum,
   emxArray_real_T *states);
 
 #endif

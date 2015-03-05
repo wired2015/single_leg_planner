@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo nb_emlrtRSI = { 112, "rk4",
+static emlrtRSInfo pb_emlrtRSI = { 112, "rk4",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/rk4.m"
 };
 
@@ -207,7 +207,7 @@ void rk4(const emlrtStack *sp, const real_T uIn[2], const real_T uBDot[6], const
     b_alpha[1] = beta;
     b_alpha[2] = b_gamma;
     b_alpha[3] = 0.0;
-    st.site = &nb_emlrtRSI;
+    st.site = &pb_emlrtRSI;
     getPhiAndOmega(&st, uBDot, b_alphaDot, b_alpha, kC, legNum, &phi, &omega);
 
     /*          %Check if phi is above threshold, if so then stop the leg and drive */

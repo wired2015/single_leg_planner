@@ -2,7 +2,7 @@
 // File: randomStateGenerator.cpp
 //
 // MATLAB Coder version            : 2.7
-// C/C++ source code generated on  : 04-Mar-2015 14:32:33
+// C/C++ source code generated on  : 05-Mar-2015 10:13:51
 //
 
 // Include Files
@@ -18,7 +18,7 @@
 // Function Definitions
 
 //
-// Arguments    : int NUM_POINTS
+// Arguments    : int N
 //                const double jointLimits[20]
 //                const struct0_T *kC
 //                double panHeight
@@ -26,8 +26,8 @@
 //                emxArray_real_T *states
 // Return Type  : void
 //
-void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
-  struct0_T *kC, double panHeight, int legNum, emxArray_real_T *states)
+void randomStateGenerator(int N, const double jointLimits[20], const struct0_T
+  *kC, double panHeight, int legNum, emxArray_real_T *states)
 {
   int i21;
   int loop_ub;
@@ -47,11 +47,31 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
   static const signed char iv7[4] = { 0, 0, 0, 1 };
 
   int i22;
+
+  // RANDOMSTATEGENERATOR Generates N number of random states that are valid in
+  // the Sherpa_TT leg's configuration space.
+  //
+  // Inputs:
+  // -N: The number of random states to be generated.
+  // -jointLimits: A 2x10 array of joint angular limits and angular positions.
+  // -kC: A structure containing the kinematic constants of the Sherpa TT leg.
+  // -panHeight: The height of the pan coordinate frame relative to the the
+  // wheel contact point.
+  // -legNum: The leg identifier.
+  //
+  // Outputs:
+  // -states: A Nx6 array. Each row of the array describes a single state. A
+  // state has the structure [x y z xDot yDot zDot]. The state coordinates are
+  // realtive to the body frame.
+  //
+  // randomStateGenerator.m
+  // author: wreid
+  // date: 20150305
   i21 = states->size[0] * states->size[1];
-  states->size[0] = NUM_POINTS;
+  states->size[0] = N;
   states->size[1] = 6;
   emxEnsureCapacity((emxArray__common *)states, i21, (int)sizeof(double));
-  loop_ub = NUM_POINTS * 6;
+  loop_ub = N * 6;
   for (i21 = 0; i21 < loop_ub; i21++) {
     states->data[i21] = 0.0;
   }
@@ -125,7 +145,7 @@ void randomStateGenerator(int NUM_POINTS, const double jointLimits[20], const
   cartesianLimits_idx_3 = ((((kC->l1 + kC->l3 * std::sin(-jointLimits[3])) -
     kC->l4 * std::sin(kC->zeta)) - kC->l5 * std::sin(jointLimits[4] + kC->zeta))
     - kC->l6) - (kC->l8 + kC->r);
-  for (loop_ub = 0; loop_ub + 1 <= NUM_POINTS; loop_ub++) {
+  for (loop_ub = 0; loop_ub + 1 <= N; loop_ub++) {
     // randomState Picks a random state from the state space.
     //    A random state is selected from the state space within the boundaries of 
     //    the state space as defined by the MIN and MAX vectors. The state space has 

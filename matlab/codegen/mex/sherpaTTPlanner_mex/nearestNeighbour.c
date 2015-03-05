@@ -45,11 +45,11 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
   real_T b_T[93];
   boolean_T b4;
   const mxArray *y;
-  static const int32_T iv13[2] = { 1, 36 };
+  static const int32_T iv15[2] = { 1, 36 };
 
-  const mxArray *m3;
-  char_T cv8[36];
-  static const char_T cv9[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
+  const mxArray *m4;
+  char_T cv12[36];
+  static const char_T cv13[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
     'l', 'b', 'o', 'x', ':', 'a', 'u', 't', 'o', 'D', 'i', 'm', 'I', 'n', 'c',
     'o', 'm', 'p', 'a', 't', 'i', 'b', 'i', 'l', 'i', 't', 'y' };
 
@@ -130,9 +130,9 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
   ix = b_d->size[1];
   ixstart = (int32_T)nodeIDCount;
   emlrtDynamicBoundsCheckFastR2012b(ixstart, 1, ix, &c_emlrtBCI, sp);
-  st.site = &eb_emlrtRSI;
-  b_st.site = &fb_emlrtRSI;
-  c_st.site = &gb_emlrtRSI;
+  st.site = &gb_emlrtRSI;
+  b_st.site = &hb_emlrtRSI;
+  c_st.site = &ib_emlrtRSI;
   if (((int32_T)nodeIDCount == 1) || ((int32_T)nodeIDCount != 1)) {
     b4 = true;
   } else {
@@ -142,25 +142,25 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
   if (b4) {
   } else {
     y = NULL;
-    m3 = emlrtCreateCharArray(2, iv13);
+    m4 = emlrtCreateCharArray(2, iv15);
     for (ixstart = 0; ixstart < 36; ixstart++) {
-      cv8[ixstart] = cv9[ixstart];
+      cv12[ixstart] = cv13[ixstart];
     }
 
-    emlrtInitCharArrayR2013a(&c_st, 36, m3, cv8);
-    emlrtAssign(&y, m3);
-    d_st.site = &lc_emlrtRSI;
-    e_st.site = &nc_emlrtRSI;
-    error(&d_st, message(&e_st, y, &b_emlrtMCI), &c_emlrtMCI);
+    emlrtInitCharArrayR2013a(&c_st, 36, m4, cv12);
+    emlrtAssign(&y, m4);
+    d_st.site = &oc_emlrtRSI;
+    e_st.site = &qc_emlrtRSI;
+    error(&d_st, message(&e_st, y, &c_emlrtMCI), &d_emlrtMCI);
   }
 
-  d_st.site = &hb_emlrtRSI;
+  d_st.site = &jb_emlrtRSI;
   ixstart = 1;
   *d = b_d->data[0];
   itmp = 0;
   if ((int32_T)nodeIDCount > 1) {
     if (muDoubleScalarIsNaN(*d)) {
-      f_st.site = &jb_emlrtRSI;
+      f_st.site = &lb_emlrtRSI;
       if (2 > (int32_T)nodeIDCount) {
         b5 = false;
       } else {
@@ -168,7 +168,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
       }
 
       if (b5) {
-        g_st.site = &kb_emlrtRSI;
+        g_st.site = &mb_emlrtRSI;
         check_forloop_overflow_error(&g_st);
       }
 
@@ -187,7 +187,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
     }
 
     if (ixstart < (int32_T)nodeIDCount) {
-      f_st.site = &ib_emlrtRSI;
+      f_st.site = &kb_emlrtRSI;
       if (ixstart + 1 > (int32_T)nodeIDCount) {
         b_ixstart = false;
       } else {
@@ -195,7 +195,7 @@ void nearestNeighbour(const emlrtStack *sp, const real_T x[13], const real_T T
       }
 
       if (b_ixstart) {
-        g_st.site = &kb_emlrtRSI;
+        g_st.site = &mb_emlrtRSI;
         check_forloop_overflow_error(&g_st);
       }
 

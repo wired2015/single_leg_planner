@@ -2,7 +2,7 @@
  * File: _coder_sherpaTTPlanner_api.c
  *
  * MATLAB Coder version            : 2.7
- * C/C++ source code generated on  : 04-Mar-2015 14:32:33
+ * C/C++ source code generated on  : 05-Mar-2015 10:13:51
  */
 
 /* Include Files */
@@ -591,7 +591,7 @@ static const mxArray *f_emlrt_marshallOut(const emxArray_real_T *u)
 void randomStateGenerator_api(const mxArray *prhs[5], const mxArray *plhs[1])
 {
   emxArray_real_T *states;
-  int32_T NUM_POINTS;
+  int32_T N;
   real_T (*jointLimits)[20];
   struct0_T kC;
   real_T panHeight;
@@ -604,14 +604,14 @@ void randomStateGenerator_api(const mxArray *prhs[5], const mxArray *plhs[1])
   prhs[1] = emlrtProtectR2012b(prhs[1], 1, false, -1);
 
   /* Marshall function inputs */
-  NUM_POINTS = j_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "NUM_POINTS");
+  N = j_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N");
   jointLimits = e_emlrt_marshallIn(&st, emlrtAlias(prhs[1]), "jointLimits");
   g_emlrt_marshallIn(&st, emlrtAliasP(prhs[2]), "kC", &kC);
   panHeight = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[3]), "panHeight");
   legNum = j_emlrt_marshallIn(&st, emlrtAliasP(prhs[4]), "legNum");
 
   /* Invoke the target function */
-  randomStateGenerator(NUM_POINTS, *jointLimits, &kC, panHeight, legNum, states);
+  randomStateGenerator(N, *jointLimits, &kC, panHeight, legNum, states);
 
   /* Marshall function outputs */
   plhs[0] = g_emlrt_marshallOut(states);

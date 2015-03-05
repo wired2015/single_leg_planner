@@ -22,8 +22,6 @@
 
 /* Variable Declarations */
 extern const volatile char_T *emlrtBreakCheckR2012bFlagVar;
-extern emlrtRSInfo g_emlrtRSI;
-extern emlrtRSInfo h_emlrtRSI;
 extern emlrtRSInfo i_emlrtRSI;
 extern emlrtRSInfo j_emlrtRSI;
 extern emlrtRSInfo k_emlrtRSI;
@@ -34,18 +32,20 @@ extern emlrtRSInfo o_emlrtRSI;
 extern emlrtRSInfo p_emlrtRSI;
 extern emlrtRSInfo q_emlrtRSI;
 extern emlrtRSInfo r_emlrtRSI;
-extern emlrtRSInfo eb_emlrtRSI;
-extern emlrtRSInfo fb_emlrtRSI;
+extern emlrtRSInfo s_emlrtRSI;
+extern emlrtRSInfo t_emlrtRSI;
 extern emlrtRSInfo gb_emlrtRSI;
 extern emlrtRSInfo hb_emlrtRSI;
 extern emlrtRSInfo ib_emlrtRSI;
 extern emlrtRSInfo jb_emlrtRSI;
 extern emlrtRSInfo kb_emlrtRSI;
-extern emlrtRSInfo ob_emlrtRSI;
-extern emlrtRSInfo pb_emlrtRSI;
-extern emlrtMCInfo emlrtMCI;
+extern emlrtRSInfo lb_emlrtRSI;
+extern emlrtRSInfo mb_emlrtRSI;
+extern emlrtRSInfo qb_emlrtRSI;
+extern emlrtRSInfo rb_emlrtRSI;
 extern emlrtMCInfo b_emlrtMCI;
 extern emlrtMCInfo c_emlrtMCI;
+extern emlrtMCInfo d_emlrtMCI;
 extern emlrtRTEInfo c_emlrtRTEI;
 extern emlrtRTEInfo h_emlrtRTEI;
 extern emlrtBCInfo emlrtBCI;
@@ -53,9 +53,9 @@ extern emlrtRTEInfo s_emlrtRTEI;
 extern emlrtBCInfo c_emlrtBCI;
 extern emlrtBCInfo m_emlrtBCI;
 extern sherpaTTPlanner_mexStackData *c_sherpaTTPlanner_mexStackDataL;
-extern emlrtRSInfo jc_emlrtRSI;
-extern emlrtRSInfo lc_emlrtRSI;
-extern emlrtRSInfo nc_emlrtRSI;
+extern emlrtRSInfo mc_emlrtRSI;
+extern emlrtRSInfo oc_emlrtRSI;
+extern emlrtRSInfo qc_emlrtRSI;
 
 #endif
 

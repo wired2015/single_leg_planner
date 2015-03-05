@@ -23,39 +23,39 @@
 #include <stdio.h>
 
 /* Variable Definitions */
-static emlrtRSInfo v_emlrtRSI = { 39, "buildBiDirectionalRRT",
+static emlrtRSInfo x_emlrtRSI = { 39, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo w_emlrtRSI = { 63, "buildBiDirectionalRRT",
+static emlrtRSInfo y_emlrtRSI = { 63, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo x_emlrtRSI = { 64, "buildBiDirectionalRRT",
+static emlrtRSInfo ab_emlrtRSI = { 64, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo y_emlrtRSI = { 72, "buildBiDirectionalRRT",
+static emlrtRSInfo bb_emlrtRSI = { 72, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo ab_emlrtRSI = { 75, "buildBiDirectionalRRT",
+static emlrtRSInfo cb_emlrtRSI = { 75, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo bb_emlrtRSI = { 115, "buildBiDirectionalRRT",
+static emlrtRSInfo db_emlrtRSI = { 115, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo cb_emlrtRSI = { 116, "buildBiDirectionalRRT",
+static emlrtRSInfo eb_emlrtRSI = { 116, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo db_emlrtRSI = { 117, "buildBiDirectionalRRT",
+static emlrtRSInfo fb_emlrtRSI = { 117, "buildBiDirectionalRRT",
   "/Users/fuji/Dropbox/PhD/matlab/singleLegPlanning/single_leg_planner/matlab/rrt/biDirectionalRRT/buildBiDirectionalRRT.m"
 };
 
-static emlrtRSInfo qb_emlrtRSI = { 283, "colon",
+static emlrtRSInfo sb_emlrtRSI = { 283, "colon",
   "/Applications/MATLAB_R2014b.app/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRTEInfo b_emlrtRTEI = { 5, 32, "buildBiDirectionalRRT",
@@ -184,7 +184,7 @@ static void traceBranch(const emlrtStack *sp, const real_T T[46500], const
   emxArray_real_T *c_transitionPath;
   int32_T i;
   int32_T b_i;
-  int32_T iv10[2];
+  int32_T iv12[2];
   int32_T loop_ub;
   int32_T i16;
   int32_T next_size[2];
@@ -226,13 +226,13 @@ static void traceBranch(const emlrtStack *sp, const real_T T[46500], const
       b_i = i * 10;
       if (!b2) {
         for (i15 = 0; i15 < 2; i15++) {
-          iv10[i15] = 1 + 9 * i15;
+          iv12[i15] = 1 + 9 * i15;
         }
 
         b2 = true;
       }
 
-      emlrtMatrixMatrixIndexCheckR2012b(transitionArray_size, 2, iv10, 2,
+      emlrtMatrixMatrixIndexCheckR2012b(transitionArray_size, 2, iv12, 2,
         &d_emlrtECI, sp);
       i15 = c_transitionPath->size[0] * c_transitionPath->size[1];
       c_transitionPath->size[0] = transitionPath->size[0] + 1;
@@ -354,11 +354,11 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
   int32_T absb;
   boolean_T b0;
   const mxArray *y;
-  static const int32_T iv3[2] = { 1, 36 };
+  static const int32_T iv5[2] = { 1, 36 };
 
-  const mxArray *m1;
-  char_T cv2[36];
-  static const char_T cv3[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
+  const mxArray *m2;
+  char_T cv6[36];
+  static const char_T cv7[36] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
     'l', 'b', 'o', 'x', ':', 'a', 'u', 't', 'o', 'D', 'i', 'm', 'I', 'n', 'c',
     'o', 'm', 'p', 'a', 't', 'i', 'b', 'i', 'l', 'i', 't', 'y' };
 
@@ -462,15 +462,15 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
                     &b_emlrtRTEI);
   emxInit_real_T(sp, &d, 2, &h_emlrtRTEI, true);
   for (i = 0; i < 998; i++) {
-    st.site = &v_emlrtRSI;
+    st.site = &x_emlrtRSI;
     for (i4 = 0; i4 < 46500; i4++) {
       SD->u1.f0.T1[i4] = T1[i4];
     }
 
-    b_st.site = &bb_emlrtRSI;
+    b_st.site = &db_emlrtRSI;
     randomState(&b_st, jointLimits, panHeight, kC->l1, kC->l2, kC->l3, kC->l4,
                 kC->l5, kC->l6, kC->l7, kC->l8, kC->zeta, kC->r, xRand);
-    b_st.site = &cb_emlrtRSI;
+    b_st.site = &eb_emlrtRSI;
 
     /* nearestNeigbour.m */
     /* author: wreid */
@@ -521,9 +521,9 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
     i4 = d->size[1];
     absb = (int32_T)nodeIDCount1;
     emlrtDynamicBoundsCheckFastR2012b(absb, 1, i4, &c_emlrtBCI, &b_st);
-    c_st.site = &eb_emlrtRSI;
-    d_st.site = &fb_emlrtRSI;
-    e_st.site = &gb_emlrtRSI;
+    c_st.site = &gb_emlrtRSI;
+    d_st.site = &hb_emlrtRSI;
+    e_st.site = &ib_emlrtRSI;
     if (((int32_T)nodeIDCount1 == 1) || ((int32_T)nodeIDCount1 != 1)) {
       b0 = true;
     } else {
@@ -533,25 +533,25 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
     if (b0) {
     } else {
       y = NULL;
-      m1 = emlrtCreateCharArray(2, iv3);
+      m2 = emlrtCreateCharArray(2, iv5);
       for (cdiff = 0; cdiff < 36; cdiff++) {
-        cv2[cdiff] = cv3[cdiff];
+        cv6[cdiff] = cv7[cdiff];
       }
 
-      emlrtInitCharArrayR2013a(&e_st, 36, m1, cv2);
-      emlrtAssign(&y, m1);
-      f_st.site = &lc_emlrtRSI;
-      g_st.site = &nc_emlrtRSI;
-      error(&f_st, message(&g_st, y, &b_emlrtMCI), &c_emlrtMCI);
+      emlrtInitCharArrayR2013a(&e_st, 36, m2, cv6);
+      emlrtAssign(&y, m2);
+      f_st.site = &oc_emlrtRSI;
+      g_st.site = &qc_emlrtRSI;
+      error(&f_st, message(&g_st, y, &c_emlrtMCI), &d_emlrtMCI);
     }
 
-    f_st.site = &hb_emlrtRSI;
+    f_st.site = &jb_emlrtRSI;
     ixstart = 1;
     dist2Go = d->data[0];
     absb = 0;
     if ((int32_T)nodeIDCount1 > 1) {
       if (muDoubleScalarIsNaN(dist2Go)) {
-        h_st.site = &jb_emlrtRSI;
+        h_st.site = &lb_emlrtRSI;
         if (2 > (int32_T)nodeIDCount1) {
           b1 = false;
         } else {
@@ -559,7 +559,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
         }
 
         if (b1) {
-          i_st.site = &kb_emlrtRSI;
+          i_st.site = &mb_emlrtRSI;
           check_forloop_overflow_error(&i_st);
         }
 
@@ -578,7 +578,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
       }
 
       if (ixstart < (int32_T)nodeIDCount1) {
-        h_st.site = &ib_emlrtRSI;
+        h_st.site = &kb_emlrtRSI;
         if (ixstart + 1 > (int32_T)nodeIDCount1) {
           b_ixstart = false;
         } else {
@@ -586,7 +586,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
         }
 
         if (b_ixstart) {
-          i_st.site = &kb_emlrtRSI;
+          i_st.site = &mb_emlrtRSI;
           check_forloop_overflow_error(&i_st);
         }
 
@@ -606,7 +606,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
       b_T1[i4] = T1[absb + 500 * i4];
     }
 
-    b_st.site = &db_emlrtRSI;
+    b_st.site = &fb_emlrtRSI;
     selectInput(&b_st, b_T1, xRand, kC, 0.39269908169872414, jointLimits, uBDot,
                 legNum, unusedU1, transitionArray);
     unusedU1[0] = (real_T)nodeIDCount1 + 1.0;
@@ -727,13 +727,13 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
         xRand[i4] = T1[i + 500 * i4];
       }
 
-      st.site = &w_emlrtRSI;
+      st.site = &y_emlrtRSI;
       traceBranch(&st, T1, xRand, pathT1);
       for (i4 = 0; i4 < 13; i4++) {
         xRand[i4] = T2[absb + 500 * i4];
       }
 
-      st.site = &x_emlrtRSI;
+      st.site = &ab_emlrtRSI;
       traceBranch(&st, T2, xRand, pathT2);
       if ((T1[1500] == nInit[3]) && (T1[2000] == nInit[4]) && (T1[2500] ==
            nInit[5])) {
@@ -782,9 +782,9 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
         }
       }
 
-      st.site = &y_emlrtRSI;
-      b_st.site = &ob_emlrtRSI;
-      c_st.site = &pb_emlrtRSI;
+      st.site = &bb_emlrtRSI;
+      b_st.site = &qb_emlrtRSI;
+      c_st.site = &rb_emlrtRSI;
       if (path->size[0] < 1) {
         absb = -1;
         apnd = 0;
@@ -806,7 +806,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
         absb = ixstart - 1;
       }
 
-      d_st.site = &qb_emlrtRSI;
+      d_st.site = &sb_emlrtRSI;
       i4 = d->size[0] * d->size[1];
       d->size[0] = 1;
       d->size[1] = absb + 1;
@@ -882,7 +882,7 @@ void buildBiDirectionalRRT(sherpaTTPlanner_mexStackData *SD, const emlrtStack
         }
       }
 
-      st.site = &ab_emlrtRSI;
+      st.site = &cb_emlrtRSI;
       ixstart = path->size[0];
       i4 = b_pathC->size[0] * b_pathC->size[1];
       b_pathC->size[0] = ixstart;
